@@ -1,6 +1,7 @@
 # 			BS Company Presents:
 #    ---  Balduran's Seatower  ---
-		Modification for BGT, BG:EE, and EET
+		
+Modification for BGT, BG:EE, and EET
 			
 
 This is an Early Access Open Beta version (EAOB). 
