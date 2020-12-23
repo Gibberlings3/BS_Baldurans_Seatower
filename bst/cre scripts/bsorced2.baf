@@ -1,0 +1,8 @@
+IF
+	See([PC])
+	Global("bsSorcedTalk","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSorcedTalk","LOCALS",1)
+		Dialogue(Protagonist)
+END

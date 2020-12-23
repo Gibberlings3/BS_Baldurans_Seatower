@@ -1,0 +1,27 @@
+// Apply to anyone who doesn't fight
+IF
+ !Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #30
+		RandomWalk()
+		Continue()
+	RESPONSE #35
+		RandomTurn()
+		Continue()
+	RESPONSE #35
+		Wait(7)
+		Continue()
+END
+
+// Conditions to turn red
+IF
+  OR(2)
+	 AttackedBy([GOODCUTOFF],DEFAULT)
+	 Heard([ANYONE],2002)
+  !Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+		Shout(2002)
+		ChangeAIScript("ysmorale",OVERRIDE)
+END

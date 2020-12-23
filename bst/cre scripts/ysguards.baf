@@ -1,0 +1,14 @@
+// Conditions to turn red
+// CallToArms is a just-in-case that may not be used 
+IF
+  OR(3)
+	 AttackedBy([GOODCUTOFF],DEFAULT)
+	 Heard([ANYONE],2002)
+	 Global("ysCallToArms","GLOBAL",1)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+		Shout(2002)
+		ChangeAIScript("ysgrdfgt",OVERRIDE)
+END

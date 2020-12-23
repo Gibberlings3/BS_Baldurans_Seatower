@@ -1,0 +1,45 @@
+//---------------------------------------------------------
+// Klaus' Override script
+//---------------------------------------------------------
+IF
+	Dead("bsvprab")
+	Global("bsRabbitQuest","GLOBAL",7)
+	Global("bsRQ_InitiateDialogue","LOCALS",0)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsRQ_InitiateDialogue","LOCALS",1)
+		CreateCreature("bstq007",[1698.1641],2)
+		CreateCreature("bstq008",[1774.1715],4)
+END
+
+IF
+	Global("bsRQ_InitiateDialogue","LOCALS",1)
+THEN
+	RESPONSE #100
+		Dialogue([PC])
+END
+
+
+IF
+	See("bsvprab")
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	See("bsvprab")
+	HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+THEN
+	RESPONSE #100
+		Spell("bsvprab",WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+END
+
+IF
+	See("bsvprab")
+THEN
+	RESPONSE #100
+		Attack("bsvprab")
+END

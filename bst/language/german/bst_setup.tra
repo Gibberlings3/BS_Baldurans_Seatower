@@ -1,0 +1,15 @@
+
+
+/* z_quest_doppelgangers.d */
+@10100  = ~[Imoen] Oh... Oh! Ist der NIEDLICH! <CHARNAME>, können wir den mitnehmen? Bitte? Bitte! Wenn wir ihn richtig erziehen, dann wird er bestimmt ganz friedlich. Er könnte zum Beispiel die Ratten in den Scheunen der Bauern fressen! Oder so.~
+@10101  = ~[Jaheira, mit Imoen] Imoen, seid nicht albern. Nachahmer sind Monster der hinterhältigsten Art, und sie lassen sich nicht zähmen. Auch dieser wird eines Tages zu einem Doppelgänger heranwachsen.~
+@10102  = ~[Jaheira] <CHARNAME>, lasst Euch von der vermeintlichen Friedlichkeit dieses jungen Nachahmers nicht täuschen. Wir müssen ihn töten, schon allein zum Schutz der Stadtbevölkerung.~
+@10103  = ~[Imoen] Och menno. Der ist einfach zu knuffig... Naja, stimmt schon, wir können ihn wohl nicht einfach am Leben lassen... Aber schade ist es wirklich.~
+
+
+/* zz_quest_fireelemental.d */
+@10250  = ~[Imoen] Oh, das sieht ja fast schon traurig aus. Müssen wir das töten?~
+@10251  = ~[Ajantis] Ein Feuerelementar in einem Vorratsraum voller Holzkisten und Fässer! Das dürfen wir nicht zulassen, <CHARNAME>.~
+@10252  = ~[Kagain] Wir dürfen vor allem nicht zulassen, dass es noch näher an die guten Metfässer kommt.~
+@10253  = ~[Jaheira] Feuerelementare sind nicht von bösr Natur, <CHARNAME>. Sie werden durch große Feuer von ihrer Ebene in unsere angelockt - und gehen durch große Feuer auch wieder zurück.~
+@10254  = ~[Dynaheir] Die Köchin scheint Recht damit zu haben, dass es nicht lange im feuchten Keller überlebt. Mir scheint, dieser Keller profitiert eher noch davon, dass er etwas getrocknet wird.~

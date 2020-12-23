@@ -1,0 +1,76 @@
+/* slaver quest: spawn slavers south of Wyrm's Crossing */
+
+/* Add Mapnote */
+IF
+	OR(2)
+		GlobalGT("bsConfrontSlaveTraders","GLOBAL",2)
+		GlobalGT("bsSlaverQuest","GLOBAL",3)
+	GlobalLT("bsConfrontSlaveTraders","GLOBAL",10)
+	GlobalLT("bsSlaverQuest","GLOBAL",10)
+	Global("bsSQMapnote","MYAREA",0)
+THEN
+	RESPONSE #100
+  		AddMapNote([459.3017],@47)
+		SetGlobal("bsSQMapnote","MYAREA",1)
+
+END
+/* Remove Map Note after quest end */
+IF
+	OR(2)
+		GlobalGT("bsConfrontSlaveTraders","GLOBAL",9)
+		GlobalGT("bsSlaverQuest","GLOBAL",9)
+	GlobalLT("bsSQMapnote","MYAREA",2)
+THEN
+	RESPONSE #100
+  		RemoveMapNote([459.3017],@47)
+		SetGlobal("bsSQMapnote","MYAREA",2)
+
+END
+
+/* Place Flaming Fist contact north of meeting place */
+IF
+	Global("bsConfrontSlaveTraders","GLOBAL",3)
+	TimeOfDay(NIGHT)
+	Global("bsPlaceFF","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsPlaceFF","MYAREA",1)
+		CreateCreature("bsslavff",[505.2094],8)
+
+END
+
+/* Place Slave traders */
+IF
+	OR(2)
+		Global("bsConfrontSlaveTraders","GLOBAL",4)
+		Global("bsSlaverQuest","GLOBAL",4)
+	!Global("bsConfrontSlaveTraders","GLOBAL",3)
+	TimeOfDay(NIGHT)
+	Global("bsPlaceSlavers","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsPlaceSlavers","MYAREA",1)
+		CreateCreature("bsslav04",[193.3431],12)
+		CreateCreature("bsslav05",[254.3537],8)
+		CreateCreature("bsslav05",[541.3341],8)
+		CreateCreature("bsslav06",[162.3363],8)
+		CreateCreature("bsslav06",[253.3234],8)
+		CreateCreature("bsslav07",[476.3230],8)
+
+END
+
+/* all slavers dead */
+IF 
+	Global("bsConfrontSlaveTraders","GLOBAL",4)
+	NumDead("bsslav05",2)
+	NumDead("bsslav06",2)
+	Dead("bsslav04")
+	Dead("bsslav07")
+	InMyArea(Player1)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		Wait(3)
+		SetGlobal("bsConfrontSlaveTraders","GLOBAL",5)
+		CreateCreature("bsslavff",[476.3230],8)
+END

@@ -1,0 +1,39 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,30)
+	GlobalLT("bsPrisonMyconiziden","GLOBAL",3)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11009)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,30)
+	Global("bsPrisonMyconiziden","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bsPrisonMyconiziden","GLOBAL",4)
+		DisplayStringHead(Myself,@11014)
+END
+
+
+
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,30)
+	Global("bsPrisonMyconiziden","GLOBAL",4)
+THEN
+	RESPONSE #100
+		SetGlobal("bsPrisonMyconiziden","GLOBAL",5)
+		DisplayStringHead(Myself,@11010)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,30)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11007)
+END

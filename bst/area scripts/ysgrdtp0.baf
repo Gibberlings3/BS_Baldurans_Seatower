@@ -1,0 +1,17 @@
+IF
+  IsOverMe("ysguard5")
+  Global("ysguard5IsMoving","GLOBAL",0)
+THEN
+  RESPONSE #100
+  SetGlobal("ysguard5IsMoving","GLOBAL",1)
+  Continue()
+END
+
+IF
+  IsOverMe("yssgt2")
+  Global("ysSerjeante2IsMoving","GLOBAL",0)
+THEN
+  RESPONSE #100
+  SetGlobal("ysSerjeante2IsMoving","GLOBAL",1)
+  Continue()
+END

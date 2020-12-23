@@ -1,0 +1,54 @@
+//NashkelCarnival
+
+/* create smuggler contact */
+IF
+	Global("bsCreateSmuggler","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateSmuggler","MYAREA",1)
+		CreateCreature("bssmgl01",[4284.3568],0)
+END
+
+IF
+	Global("bsSmugglerAttacked","GLOBAL",4)
+	GlobalLT("bsCreateSmuggler","MYAREA",2)
+	!Exists("bssmgl01")
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateSmuggler","MYAREA",2)
+		CreateCreature("bssmgl04",[4141.3455],0)
+		CreateCreature("bssmgl04",[4365.3392],0)
+		CreateCreature("bssmgl04",[4047.3628],10)
+		CreateCreature("bssmgl04",[4408.3770],7)
+		CreateCreature("bssmgl04",[4270.3787],8)
+END
+
+IF 
+	Dead("bssmgl02")
+	GlobalGT("bsSmugglerQuest","GLOBAL",0)
+	GlobalLT("bsSmugglerQuest","GLOBAL",50)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@830)
+		EraseJournalEntry(@832)
+		EraseJournalEntry(@833)
+		EraseJournalEntry(@834)
+		EraseJournalEntry(@835)
+		EraseJournalEntry(@836)
+		EraseJournalEntry(@837)
+		EraseJournalEntry(@838)
+		EraseJournalEntry(@839)
+		AddJournalEntry(@831,QUEST_DONE)
+		SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
+		SetGlobal("bsSmugglerQuest","GLOBAL",50)
+END
+
+IF 
+	Dead("bssmgl02")
+	Global("bsShucksBrother","GLOBAL",1)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@805)
+		AddJournalEntry(@806,QUEST_DONE)
+		SetGlobal("bsShucksBrother","GLOBAL",41)
+END

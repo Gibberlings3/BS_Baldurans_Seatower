@@ -1,0 +1,46 @@
+/* PC opened Mimic once */
+IF
+	OpenState("DOOR 04",TRUE)
+	Global("bsOpenMimic","MYAREA",0)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ClearAllActions()
+		StartCutSceneMode()
+//		PlaySound("EFF_P92")
+		SmallWait(20)
+		CloseDoor("DOOR 04")
+		SmallWait(20)
+		OpenDoor("DOOR 04")
+		Wait(1)
+		ActionOverride("bsmimic1",StartDialogNoSet([PC]))
+		SetInterrupt(TRUE)
+END
+
+IF
+//	Global("JermienJob","GLOBAL",1)
+	Global("bsCreateMimicBlood","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateItem("MISC6Y",0,0,0)
+		SetGlobal("bsCreateMimicBlood","MYAREA",1)
+END
+
+IF
+	OR(3)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		OpenState("DOOR 04",TRUE)
+		GlobalTimerExpired("bsTailorMimicTimer","GLOBAL")
+	Range([PC],15)
+	Global("bsOpenMimic","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		OpenDoor("DOOR 04")
+		ActionOverride("bsmimic1",DestroyItem("mage01"))
+		SetGlobal("bsOpenMimic","MYAREA",2)
+		Enemy()
+END
+
+

@@ -1,0 +1,18 @@
+// King of the Restless Dead
+IF
+	Global("bsTalkedToKRD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsTalkedToKRD","GLOBAL",2)
+		FaceObject([PC])
+		StartDialogNoSet(Protagonist)
+END
+
+IF
+	Global("bsRaiseRestlesDead","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsRaiseRestlesDead","MYAREA",2)
+		FaceObject([PC])
+		StartDialogNoSet(Protagonist)
+END

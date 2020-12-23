@@ -1,0 +1,179 @@
+/* Seatower Commander Airard */
+IF
+	Global("bsCreateCommancer","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateCommancer","MYAREA",1)
+		CreateCreature("bstrcmdr",[1130.649],2)
+		CreateCreature("yssgt3",[1213.695],4)
+END
+
+/* Seatower Mage Master Shizell */
+IF
+	Global("bsCreateMage","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateMage","MYAREA",1)
+		CreateCreature("bstrmage",[878.1335],6)
+END
+
+/* Doppelganger Quest: tailor is dead and PC found the hidden tunnel: set variable to report to Commander */
+IF
+	Global("bsDoppelgangerTailor","GLOBAL",0)
+	Global("bsFoundExitDocks","GLOBAL",1)
+	Dead("bstailor")
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerTailor","GLOBAL",1)
+END
+
+
+/* Doppelganger Quest: create second doppelganger (prison guard):
+-if PC went normal quest way and already found hole in prison wall
+-if PC entered tower first time after Sarevok was dead */
+
+IF
+	OR(2)
+		GlobalGT("bsSeaCaveOpen","GLOBAL",0)
+		GlobalGT("bsJumpStartDGQuest","GLOBAL",0)
+	GlobalLT("bsDoppelgangerQuest","GLOBAL",2)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsDoppelgangerQuest","GLOBAL",2)
+		CreateCreature("bsprgrd1",[996.687],4)
+END
+
+/* Doppelganger quest: clean up commander's study and let him talk to PC again and create Doppelganger in mage's study */
+
+IF
+	Global("bsDoppelgangerQuest","GLOBAL",5)
+	!Exists("bsdopp01")
+THEN
+	RESPONSE #100
+        	ActionOverride("bsdopp02",DestroySelf())
+        	ActionOverride("bsdopp03",DestroySelf())
+		CreateCreature("bsdopp01",[821.1403],10)
+        	ActionOverride("bstrmage",FaceObject("bsdopp01"))
+        	ActionOverride("bsdopp01",Polymorph(CLERIC_MALE_HUMAN))
+		ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
+END
+
+/* PC reported to Commander about Doppelganger tailor: mage will be in the barracks and doppelganger from his study gone */
+IF
+	Global("bsDoppelgangerQuest","GLOBAL",7)
+THEN
+	RESPONSE #100
+        	ActionOverride("bstrmage",Deactivate(Myself))
+//MoveBetweenAreas("ys0103",[257.577],0))
+        	ActionOverride("bsdopp01",DestroySelf())
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",8)
+END
+
+/* Doppelganger quest is finished: mage will be back in his study */
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",9)
+	Global("bsDoppelgangerQuestFinished","MYAREA",0)
+THEN
+	RESPONSE #100
+        	ActionOverride("bstrmage",Activate(Myself))
+        	ActionOverride("bstrmage",SetNumTimesTalkedTo(1))
+		SetGlobal("bsDoppelgangerQuestFinished","MYAREA",1)
+END
+
+
+// Create Lady Springfall, Quest "An Orphan in the Seatower"
+IF
+  Global("bsCreateOrphanquest","MYAREA",0)
+THEN
+  RESPONSE #100
+		CreateCreature("bstq001",[467.1119],14)
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",1)
+END
+
+IF
+  Global("bsOrphanQuest","GLOBAL",3)
+  GlobalLT("bsCreateOrphanquest","MYAREA",3)
+THEN
+  RESPONSE #100
+		ActionOverride("bstq001",EscapeArea())
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",3)
+END
+
+IF
+  Global("bsOrphanQuest","GLOBAL",4)
+  GlobalLT("bsCreateOrphanquest","MYAREA",2)
+THEN
+  RESPONSE #100
+		ActionOverride("bstq001",EscapeAreaMove("bs1010",1102,349,2))
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",2)
+END
+
+/* create guest that talks about rats first time, Quest "Strange Happenings in Room No. 3.4" */
+IF
+	Global("bsCreateRabbitGuest","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bstq006",[795.655],4)
+		SetGlobal("bsCreateRabbitGuest","MYAREA",1)
+END
+
+/* create rat, Quest "Rats in the Seatower Inn" */
+IF
+	Global("bsRatQuest","GLOBAL",1)
+	Global("bsCreateRat","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bstq010",[655.747],4)
+		SetGlobal("bsCreateRat","MYAREA",1)
+END
+
+IF
+	OR(2)
+		Global("bsRatQuest","GLOBAL",1)
+		Global("bsRatQuest","GLOBAL",2)
+		Exists("bstq010")
+		Dead("bstq010")
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsRatQuest","GLOBAL",4)
+END
+
+IF
+	Global("bsRatQuest","GLOBAL",3)
+THEN
+	RESPONSE #100
+		ActionOverride("bstq010",DestroyItem("bstqrat2"))
+		SmallWait(1)
+		ActionOverride("bstq010",Kill(Myself())
+ 	 	SetGlobal("bsRatQuest","GLOBAL",4)
+END
+
+IF
+	GlobalGT("bsRatQuest","GLOBAL",3)
+	Global("bsDestroyRat","MYAREA",0)
+THEN
+	RESPONSE #100 
+		ActionOverride("bstq010",DestroySelf())
+ 	 	SetGlobal("bsDestroyRat","MYAREA",1)
+END
+
+IF
+	OR(2)
+		PartyHasItem("bstqrat1")
+		PartyHasItem("bstqrat2")
+	Global("bsRatJournalEntry","MYAREA",0)
+THEN
+	RESPONSE #100 
+		EraseJournalEntry(@790)
+		AddJournalEntry(@791,QUEST)
+ 	 	SetGlobal("bsRatJournalEntry","MYAREA",1)
+END
+
+/* Help Shuck's brother: detection whether PC left the top floor */
+IF
+	Global("bsShucksBrother","GLOBAL",4)
+THEN
+	RESPONSE #100 
+		SetGlobal("bsShucksBrother","GLOBAL",5)
+END
+

@@ -1,0 +1,17 @@
+IF
+	InMyArea(Player1)
+	!Dead("bsslav01")
+	Global("bsWorkingWithSmugglers","GLOBAL",1)
+	GlobalGT("bsShucksBrother","GLOBAL",3)
+	GlobalGT("bsSmugglerQuest","GLOBAL",1)
+	GlobalTimerExpired("bsSlaveTimer2","GLOBAL") //just make sure messenger doesn't spawn directly at the dock's entrance
+	Global("bsSlaverQuest","GLOBAL",1)
+	CombatCounter(0)
+	!Global("Chapter","GLOBAL",%tutu_chapter_6%)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSlaverQuest","GLOBAL",2)
+		CreateCreatureObjectOffSet("bsslvmsg",Player1,[5.5])
+		Continue()
+END
+		

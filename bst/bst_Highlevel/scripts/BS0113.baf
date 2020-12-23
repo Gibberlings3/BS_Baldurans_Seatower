@@ -1,0 +1,9 @@
+IF
+	Global("Otyugh_Summon","BS0113",0)
+	LevelGT(Player1,6)
+THEN
+	RESPONSE #100
+		SetGlobal("Otyugh_Summon","BS0113",1) 
+        CreateCreature("BSOTYUGH",[1023.627],9)
+END
+

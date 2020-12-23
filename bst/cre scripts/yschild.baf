@@ -1,0 +1,8 @@
+// Children - find a target to run away from
+IF
+  Allegiance(Myself,ENEMY)
+	See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+    RunAwayFrom(LastSeenBy(Myself),60)
+END

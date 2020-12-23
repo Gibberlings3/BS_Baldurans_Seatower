@@ -1,0 +1,29 @@
+
+IF
+	Global("bsJournalEntries","MYAREA",0) 
+	GlobalLT("bsSmugglerQuest","GLOBAL",50)
+	Global("bsDeliverFigs","GLOBAL",1)
+	Global("bsSMQOpenedBox","GLOBAL",0) 
+	Global("bsSMQAteFigs","GLOBAL",0)
+	!GlobalTimerExpired("bsSmugglerQuestTimer1","GLOBAL")
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@833)
+		AddJournalEntry(@834,QUEST)
+		SetGlobal("bsJournalEntries","MYAREA",1)
+END
+
+IF
+	Global("bsJournalEntries","MYAREA",0) 
+	GlobalLT("bsSmugglerQuest","GLOBAL",50)
+	Global("bsDeliverFigs","GLOBAL",1)
+	OR(3)
+		Global("bsSMQOpenedBox","GLOBAL",1) 
+		Global("bsSMQAteFigs","GLOBAL",1)
+		GlobalTimerExpired("bsSmugglerQuestTimer1","GLOBAL")
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@833)
+		AddJournalEntry(@835,QUEST)
+		SetGlobal("bsJournalEntries","MYAREA",1)
+END

@@ -1,0 +1,7 @@
+IF
+	Global("bs_PlaceLiqueur","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_PlaceLiqueur","MYAREA",1)
+		ActionOverride("Container 1",CreateItem("bsdpliq1",0,0,0))
+END

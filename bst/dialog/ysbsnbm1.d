@@ -1,0 +1,51 @@
+BEGIN ysbsnbm1
+
+IF ~RandomNum(10,1)~ THEN BEGIN 1
+  SAY @2060
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,2)~ THEN BEGIN 2
+  SAY @2061
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,3)~ THEN BEGIN 3
+  SAY @2062
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,4)~ THEN BEGIN 4
+  SAY @2063
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,5)~ THEN BEGIN 5
+  SAY @2064
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,6)~ THEN BEGIN 6
+  SAY @2065
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,7)~ THEN BEGIN 7
+  SAY @2066
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,8)~ THEN BEGIN 8
+  SAY @2067
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,9)~ THEN BEGIN 9
+  SAY @2068
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(10,10)~ THEN BEGIN 10
+  SAY @2069
+  IF ~~ THEN EXIT
+END

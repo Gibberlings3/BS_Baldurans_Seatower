@@ -1,0 +1,20 @@
+// Failed in the gnoll nightmare
+IF
+	See(Protagonist)
+	Global("bsDream151","GLOBAL",3)
+THEN
+	RESPONSE #100
+		Wait(1)
+		Dialogue(Protagonist)
+END
+
+// All six sequences complete
+IF
+	See(Protagonist)
+	Global("bsDreamComplete","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDreamComplete","GLOBAL",3)
+		Wait(1)
+		Dialogue(Protagonist)
+END

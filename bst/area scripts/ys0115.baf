@@ -1,0 +1,9 @@
+/* treasury */
+
+IF
+	Global("bsSpawnTreasurer","MYAREA",0)
+THEN
+	RESPONSE #100
+  		SetGlobal("bsSpawnTreasurer","MYAREA",1)	
+		CreateCreature("bstrsure",[313.221],1)
+END

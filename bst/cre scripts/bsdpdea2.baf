@@ -1,0 +1,15 @@
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",2)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+IF
+	Global("bsDoppTurnBarracks","MYAREA",1)
+	Global("bsDoppTurnMyself","LOCALS",0)	
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppTurnMyself","LOCALS",1)
+		ApplySpell(Myself,DOPPLEGANGER_CHANGE_DEFAULT)
+END

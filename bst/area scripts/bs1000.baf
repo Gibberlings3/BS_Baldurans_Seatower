@@ -1,0 +1,287 @@
+/* this is to open up Seatower */
+
+
+// Create mapnotes 
+IF
+  Global("bsSetupSeatower","MYAREA",0)
+THEN
+  RESPONSE #100
+  	AddMapNote([2260.1047],@20)
+  	AddMapNote([2769.1185],@21)
+  	AddMapNote([2147.1737],@22)
+  	AddMapNote([3116.2027],@23)
+  	AddMapNote([3256.711],@24)
+  	AddMapNote([2664.904],@25)
+  	AddMapNote([4352.1426],@31)
+  	AddMapNote([4599.1961],@33)
+  	AddMapNote([999.2034],@34)
+  	AddMapNote([1866.2166],@36)
+  	AddMapNote([1970.1161],@39) //Treasury
+  	AddMapNote([788.1584],@40) //Chionthar Tower
+  	AddMapNote([3156.2558],@41) //Traitor's Tower
+  	AddMapNote([4406.550],@42) //Chain Tower
+  	AddMapNote([683.2370],@43) //Dradeel's Tower
+  	AddMapNote([1574.969],@44) //South Harbour Tower
+  	AddMapNote([1888.721],@45) //Harbour Tower
+  	AddMapNote([4846.1587],@46) //Est Tower
+  	AddMapNote([3759.2128],@50) //Tower well
+  	AddMapNote([3914.268],@51) //Tower Beacon
+ 	SetGlobal("bsSetupSeatower","MYAREA",1)
+END
+
+
+// Unlock and prepare the area
+IF
+  GlobalLT("bsOpenSeatower","GLOBAL",2)
+  Global("bsSetupSeatower","MYAREA",1)
+THEN
+  RESPONSE #100
+		Unlock("DOOR 02")
+		Unlock("DOOR 05")
+		Unlock("DOOR 07")
+//		Unlock("DOOR 08")
+		Unlock("DOOR 13")
+//		Unlock("DOOR 14")
+		Unlock("DOOR 15") //Tannery door
+		Unlock("DOOR 16")
+		OpenDoor("DOOR 09") //main gates
+		OpenDoor("DOOR 13")
+		OpenDoor("DOOR 14")
+		TriggerActivation("Travbs1010",TRUE)
+		CreateCreature("ysstcgrd",[3804.1941],1)
+		CreateCreature("ysstcgrd",[2781.1652],1)
+		CreateCreature("ysstcgrd",[1992.1258],15)  // Tower Guard
+		CreateCreature("ysstcgrd",[1901.1212],1)  // Tower Guard
+		CreateCreature("bsgrdbcn",[3732.554],6)
+		CreateCreature("bsboybcn",[3599.522],0) 
+		CreateCreature("bsmanbcn",[3504.518],0)
+		CreateCreature("bswellgl",[3827.2108],3) 
+		CreateCreature("bswellbo",[3804.2086],0) 
+		CreateCreature("bswellma",[3845.2058],2) 
+		AmbientActivate("GreenSmoke",FALSE)
+		SetGlobal("bsOpenSeatower","GLOBAL",2)
+END
+
+/* deactivate triggers to bs1001.are. These are deprecated. */
+IF
+	Global("bsDeactivateTriggersbs1001","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("Yst6info",FALSE)
+		TriggerActivation("bs1001t1",FALSE)
+		SetGlobal("bsDeactivateTriggersbs1001","MYAREA",1)
+END
+
+/* doppelganger quest: if PC enters tower for the first time after Sarevok's defeat, quest will "jump start"  ONLY if PC doesn't have access to prison / were to the prison already */
+
+IF
+	GlobalGT("DukeThanks","GLOBAL",0)
+	Global("bsPrisonEntry","GLOBAL",0)
+	Global("bsGavePrisonPass","GLOBAL",0)
+	Global("bsJumpStartDGQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsJumpStartDGQuest","GLOBAL",1)
+END
+
+
+//Doppelgangerquest: doppelgangers guards are gone after fumes are spread with the tanner's help */
+/* all Doppelgangers are dead: detection */
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",1)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",5)
+	NumDead("bsdopp07",5) //found all already
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11022)
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",5)
+END
+
+/* create doppelgangers dependening on how many the player already found: */
+
+IF
+	Global("bsDoppelgangerInTower","GLOBAL",4)
+	NumDead("bsdopp07",4) 
+	Global("bsDoppelgangerQuestSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerQuestSpawn","MYAREA",1)
+		CreateCreature("bsdopp07",[2642.1704],6)
+END
+IF
+	Global("bsDoppelgangerInTower","GLOBAL",4)
+	NumDead("bsdopp07",3) 
+	Global("bsDoppelgangerQuestSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerQuestSpawn","MYAREA",1)
+		CreateCreature("bsdopp07",[2642.1704],6)
+		CreateCreature("bsdopp07",[2744.1776],6)
+END
+
+IF
+	Global("bsDoppelgangerInTower","GLOBAL",4)
+	NumDead("bsdopp07",2) 
+	Global("bsDoppelgangerQuestSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerQuestSpawn","MYAREA",1)
+		CreateCreature("bsdopp07",[2642.1704],6)
+		CreateCreature("bsdopp07",[2744.1776],6)
+		CreateCreature("bsdopp07",[2850.1705],6)
+END
+
+IF
+	Global("bsDoppelgangerInTower","GLOBAL",4)
+	NumDead("bsdopp07",1) 
+	Global("bsDoppelgangerQuestSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerQuestSpawn","MYAREA",1)
+		CreateCreature("bsdopp07",[2642.1704],6)
+		CreateCreature("bsdopp07",[2744.1776],6)
+		CreateCreature("bsdopp07",[2850.1705],6)
+		CreateCreature("bsdopp07",[2896.1806],6)
+END
+
+IF
+	Global("bsDoppelgangerInTower","GLOBAL",4)
+	!Dead("bsdopp07") //did find none so far
+	Global("bsDoppelgangerQuestSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerQuestSpawn","MYAREA",1)
+		CreateCreature("bsdopp07",[2642.1704],6)
+		CreateCreature("bsdopp07",[2744.1776],6)
+		CreateCreature("bsdopp07",[2850.1705],6)
+		CreateCreature("bsdopp07",[2896.1806],6)
+		CreateCreature("bsdopp07",[3015.1846],6)
+END
+
+
+//Doppelgangerquest: spawn real guards 
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",0)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",10)
+	Global("bsDoppelgangerSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerSpawn","MYAREA",1)
+		CreateCreature("bsdpgrd1",[2779.1677],6)
+		CreateCreature("bsdpgrd1",[4425.852],6)
+		CreateCreature("bsdpgrd1",[3338.2408],6)
+		CreateCreature("bsdpgrd1",[700.2337],6)
+		CreateCreature("bsdpgrd1",[4275.1114],12)
+END
+
+//Doppelgangerquest: spawn doppelgangers
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",0)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",4)
+	Global("bsDoppelgangerSpawn","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerSpawn","MYAREA",2)
+		CreateCreature("bsdpgrd5",[777.1563],6)
+		CreateCreature("bsdpgrd5",[1981.1259],0)
+		CreateCreature("bsdpgrd5",[1532.1971],12)
+		CreateCreature("bsdpgrd5",[3902.1287],0)
+END
+
+
+//Doppelgangerquest: Doppelgangers in barracks will be gone after fight.
+IF
+	Global("bsDoppelgangerInTower","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",3)
+END
+
+//Doppelgangerquest:
+/* create guest that talks about tanner's stink */
+IF
+	PartyHasItem("bsdopdr")
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",2)
+	Global("bsCreateDGCivilian","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsdpciv",[2786.1739],4)
+		SetGlobal("bsCreateDGCivilian","MYAREA",1)
+END
+
+
+/* spawn Lenard: Missing Monk quest */
+IF
+	Global("bsCreateLenard","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateLenard","MYAREA",1)
+		CreateCreature("bslenard",[1871.1435],15)
+END
+
+
+/* spawn Klaus after he was kicked out of the inn */
+IF
+	Global("bsRabbitQuest","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bsRabbitQuest","GLOBAL",4)
+		CreateCreature("bstq004",[1523.1794],14)
+END
+
+/* Klaus conjurs the vampiric rabbit */
+IF
+	Global("bsRabbitQuest","GLOBAL",6)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		SetGlobal("bsRabbitQuest","GLOBAL",7)
+		ActionOverride("bstq004",ForceSpellPoint([1523.1794],FLASHY_2))
+		Wait(2)
+		CreateCreature("bsvprab",[1523.1794],14)
+		Wait(1)		
+		EndCutSceneMode()
+END
+
+//all rabbit quest cres leave area
+IF
+	Global("bsRabbitQuest","GLOBAL",8)
+THEN
+	RESPONSE #100
+		ActionOverride("bstq004",EscapeArea())
+		ActionOverride("bstq007",EscapeArea())
+		ActionOverride("bstq008",EscapeArea())
+		SetGlobal("bsRabbitQuest","GLOBAL",9)
+END
+
+/* Help Shuck's brother: detection whether PC left the top floor */
+IF
+	Global("bsShucksBrother","GLOBAL",4)
+THEN
+	RESPONSE #100 
+		SetGlobal("bsShucksBrother","GLOBAL",5)
+END
+
+
+
+
+
+// Tannery door
+IF
+	TimeOfDay(NIGHT)
+  	!Global("bsLockTannerDoor","MYAREA",1)
+THEN
+	RESPONSE #100
+		Lock("DOOR 15")
+		SetGlobal("bsLockTannerDoor","MYAREA",1)
+END
+
+IF
+	TimeOfDay(DAY)
+  	!Global("bsLockTannerDoor","MYAREA",0)
+THEN
+	RESPONSE #100
+		Unlock("DOOR 15")
+		SetGlobal("bsLockTannerDoor","MYAREA",0)
+END

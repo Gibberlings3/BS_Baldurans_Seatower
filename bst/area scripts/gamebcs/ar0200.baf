@@ -1,0 +1,12 @@
+// Missing Monk quest
+
+/* create beggars */
+IF
+	Global("bsCreateBeggars","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateBeggars","MYAREA",1)
+		CreateCreature("bsmm002",[2061.3056],0)
+END
+
+

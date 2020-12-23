@@ -1,0 +1,12 @@
+IF
+	Global("bsSmugglerAttacked","GLOBAL",0)
+	OR(2)
+		Dead("bssmgl01")
+		HitBy([PC],CRUSHING)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("bsSmugglerAttacked","GLOBAL",3)
+		StartCutSceneMode() 
+		StartCutScene("bscut001")
+END

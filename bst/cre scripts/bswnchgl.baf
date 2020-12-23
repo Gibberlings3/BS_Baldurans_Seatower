@@ -1,0 +1,208 @@
+/* script of girl at winchtower */
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",0)
+THEN 
+	RESPONSE #100
+
+		DisplayStringHead(Myself,@11072)
+		Wait(1)
+		DisplayStringHead("bswinch1",@2421)
+		Wait(2)
+		DisplayStringHead("bswinch1",@2422)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWinch","MYAREA",1)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",1)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11060)
+		Wait(1)
+		DisplayStringHead("bswinch1",@2411)
+		Wait(1)
+		DisplayStringHead(Myself,@11061)
+		Wait(1)
+		DisplayStringHead("bswinch1",@2410)
+		Wait(2)
+		DisplayStringHead(Myself,@2412)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildWinch","MYAREA",2)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",2)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@2423)
+		Wait(2)
+		DisplayStringHead("bswinch1",@2424)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWinch","MYAREA",3)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",3)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@2425)
+		Wait(2)
+		DisplayStringHead("bswinch1",@2426)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildWinch","MYAREA",4)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",4)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11062)
+		Wait(2)
+		DisplayStringHead("bswinch1",@11063)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildWinch","MYAREA",5)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",5)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11064)
+		Wait(1)
+		DisplayStringHead("bswinch1",@11065)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWinch","MYAREA",6)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswinch1",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",6)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@2428)
+		Wait(1)
+		DisplayStringHead("bswinch1",@2429)
+		Wait(3)
+		DisplayStringHead(Myself,@11066)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildWinch","MYAREA",7)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswnchwm",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",7)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@2430)
+		Wait(2)
+		DisplayStringHead("bswnchwm",@11067)
+		Wait(2)
+		DisplayStringHead("bswinch1",@11068)
+		SetGlobalTimer("bsCCWinchTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildWinch","MYAREA",8)
+END
+
+
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswinch1")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("bswnchwm",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bsCuriousChildWinch","MYAREA",8)
+	GlobalTimerExpired("bsCCWinchTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bswinch1",@2432)
+		Wait(6)
+		DisplayStringHead(Myself,@11069)
+		Wait(2)
+		DisplayStringHead("bswnchwm",@11070)
+		SetGlobal("bsCuriousChildWinch","MYAREA",9)
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

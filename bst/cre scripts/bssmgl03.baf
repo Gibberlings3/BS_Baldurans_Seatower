@@ -1,0 +1,38 @@
+IF
+	Global("bsSmugglersLeave","GLOBAL",1)
+THEN
+	RESPONSE #100
+		EscapeArea()
+END
+
+IF
+	Global("bsSmugglerAttacked","GLOBAL",2)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		ChangeEnemyAlly(Myself,NEUTRAL)
+END
+
+IF
+	OR(2)
+		Global("bsSmugglerAttacked","GLOBAL",1)
+		Global("bsSmugglerAttacked","GLOBAL",4)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF 
+	Allegiance(Myself,NEUTRAL)
+	OR(5)
+		Allegiance("bssmgl02",ENEMY)
+		Dead("bssmgl03")
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		HitBy([GOODCUTOFF],CRUSHING)
+		HPPercentLT(Myself,100)
+THEN
+	RESPONSE #100
+		Enemy()
+END

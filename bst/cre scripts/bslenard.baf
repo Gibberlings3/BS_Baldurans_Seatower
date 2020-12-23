@@ -1,0 +1,39 @@
+/* initiate dialogue at murder site */
+IF
+	Global("bsMissingMonk","GLOBAL",3)
+THEN
+	RESPONSE #100
+		Dialogue([PC])
+END
+
+/* remove from tower area after Martina is found */
+
+IF
+	AreaCheck("BS1000")
+	GlobalGT("bsMissingMonk","GLOBAL",2)
+	GlobalLT("bsCreateLenard","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateLenard","MYAREA",2)
+		DestroySelf()
+END
+	
+/* sigh to himself if PC is near */
+IF 
+	Global("bsMissingMonk","GLOBAL",0)
+	!RealGlobalTimerNotExpired("bs_LenardSighTimer","GLOBAL")
+	See([PC])
+THEN
+	RESPONSE #25
+	  RealSetGlobalTimer("bs_LenardSighTimer","GLOBAL",10)
+	  DisplayStringHead(Myself,@11073)
+	RESPONSE #25	
+	  RealSetGlobalTimer("bs_LenardSighTimer","GLOBAL",10)
+	  DisplayStringHead(Myself,@11074)
+	RESPONSE #25	
+	  RealSetGlobalTimer("bs_LenardSighTimer","GLOBAL",10)
+	  DisplayStringHead(Myself,@11075)
+	RESPONSE #25	
+	  RealSetGlobalTimer("bs_LenardSighTimer","GLOBAL",10)
+	  DisplayStringHead(Myself,@11076)
+END

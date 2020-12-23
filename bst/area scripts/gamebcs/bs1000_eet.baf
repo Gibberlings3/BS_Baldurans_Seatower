@@ -1,0 +1,31 @@
+IF
+Time(DUSK_END)
+!GlobalTimerNotExpired("K#TimerSunset","GLOBAL")
+OR(6)
+AreaCheckObject("BS1000",Player1)
+AreaCheckObject("BS1000",Player2)
+AreaCheckObject("BS1000",Player3)
+AreaCheckObject("BS1000",Player4)
+AreaCheckObject("BS1000",Player5)
+AreaCheckObject("BS1000",Player6)
+THEN
+RESPONSE #100
+StartMovie("BGSUNSET")
+SetGlobalTimer("K#TimerSunset","GLOBAL",ONE_HOUR)
+END
+
+IF
+Time(DAWN_END)
+!GlobalTimerNotExpired("K#TimerSunrise","GLOBAL")
+OR(6)
+AreaCheckObject("BS1000",Player1)
+AreaCheckObject("BS1000",Player2)
+AreaCheckObject("BS1000",Player3)
+AreaCheckObject("BS1000",Player4)
+AreaCheckObject("BS1000",Player5)
+AreaCheckObject("BS1000",Player6)
+THEN
+RESPONSE #100
+StartMovie("BGSUNRIS")
+SetGlobalTimer("K#TimerSunrise","GLOBAL",ONE_HOUR)
+END

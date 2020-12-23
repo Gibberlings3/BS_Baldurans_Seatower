@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+        	CutSceneId(Player1)
+		ActionOverride("bsstgc",GiveItemCreate("MINHP1","bsstgc",0,0,0))
+		ActionOverride("bstrmage",GiveItemCreate("MINHP1","bstrmage",0,0,0))
+		ActionOverride("bsstgc",FillSlot(SLOT_BELT))
+		ActionOverride("bstrmage",FillSlot(SLOT_BELT))
+        	ActionOverride("bstrmage",Face(12))
+        	SmallWait(5)
+        	ActionOverride("bstrmage",ReallyForceSpellPointRES("bsdoppdr",[500.500]))
+        	Wait(1)
+        	SetGlobal("bsDoppTurnBarracks","MYAREA",1)
+		EndcutSceneMode()
+END

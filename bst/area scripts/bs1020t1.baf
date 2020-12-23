@@ -1,0 +1,6 @@
+IF
+	IsOverMe([ANYONE])
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@30)
+END

@@ -1,0 +1,15 @@
+// Create Alguine's Ghost
+IF
+	Global("bsCreateAlguineGhostFM5","GLOBAL",0)
+	OR(6)
+		IsOverMe(Player1)
+		IsOverMe(Player2)
+		IsOverMe(Player3)
+		IsOverMe(Player4)
+		IsOverMe(Player5)
+		IsOverMe(Player6)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineGhostFM5","GLOBAL",1)
+		CreateCreature("bsalghst",[1479.1330],7)
+END

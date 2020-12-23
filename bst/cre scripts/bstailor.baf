@@ -1,0 +1,12 @@
+IF
+	See([PC])
+	OR(3)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		Global("bsDoppelAttacked","MYAREA",1)
+		Global("bsFoundExitDocks","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelAttacked","MYAREA",1)
+		StartDialogNoSet([PC])
+END
+

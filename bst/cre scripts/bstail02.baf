@@ -1,0 +1,16 @@
+IF
+	OR(2)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		Global("bsDoppelAttacked","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelAttacked","MYAREA",1)
+		ApplySpell(Myself,DOPPLEGANGER_CHANGE_DEFAULT_LESSER)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		RandomWalk()
+END

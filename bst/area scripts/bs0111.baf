@@ -1,0 +1,23 @@
+/* Spawn smuggler doppelganger */
+IF
+	Global("bsCreateDoppelgangerSmuggler","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateDoppelgangerSmuggler","MYAREA",1)
+		CreateCreature("bssmgl05",[248.239],0) //smuggler
+		CreateCreature("bssmgl05",[203.335],10) //smuggler
+		CreateCreature("bssmgl07",[383.252],0) //smuggler
+		CreateCreature("bssmgl06",[322.325],6) //smuggler
+		ActionOverride("Shelf01",CreateItem("bsdpliqu",0,0,0))
+END
+
+IF
+	OpenState("DOOR02",TRUE)
+	Global("bsOpenCover","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead("Tranbs0113",@11023)
+ 	 	SetGlobal("bsOpenCover","MYAREA",1)
+END
+
+

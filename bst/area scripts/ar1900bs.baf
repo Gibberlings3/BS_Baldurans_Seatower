@@ -1,0 +1,34 @@
+// Double-check that charname is in the right place
+// to open the bandit camp ruins
+IF
+	IsOverMe([PC])
+	Global("ar1900bs","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("ar1900bs","GLOBAL",1)
+END
+
+IF
+	!IsOverMe([PC])
+	Global("ar1900bs","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("ar1900bs","GLOBAL",0)
+END
+
+IF
+	Global("ar1900bs","GLOBAL",1)
+	Global("bsUsedAlmiranScroll","GLOBAL",1)
+//	NumInParty(1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsUsedAlmiranScroll","GLOBAL",2)
+		ForceSpellRES("bs00002",Myself)
+		Wait(5)
+		ActionOverride(Player1,LeaveAreaLUA("bs0128","",[452.2071],10))
+		ActionOverride(Player2,LeaveAreaLUA("bs0128","",[468.2100],10))
+		ActionOverride(Player3,LeaveAreaLUA("bs0128","",[405.2107],10))
+		ActionOverride(Player4,LeaveAreaLUA("bs0128","",[447.2112],10))
+		ActionOverride(Player5,LeaveAreaLUA("bs0128","",[355.2131],10))
+		ActionOverride(Player6,LeaveAreaLUA("bs0128","",[389.2153],10))
+END

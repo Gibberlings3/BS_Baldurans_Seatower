@@ -1,0 +1,346 @@
+/* spawn Nathoriel (Shuck's Brother) after he is free */
+
+IF
+	Global("bsShucksBrother","GLOBAL",5)
+THEN
+	RESPONSE #100
+		CreateCreature("bsshckbr",[657.509],14)
+		OpenDoor("DOOR0004")
+		SetGlobal("bsShucksBrother","GLOBAL",6)
+END
+
+/* spawn Klaus after he was taken in by the monks */
+IF
+	Global("bsRabbitQuest","GLOBAL",9)
+THEN
+	RESPONSE #100
+		SetGlobal("bsRabbitQuest","GLOBAL",10)
+		CreateCreature("bstq004",[355.685],14)
+		ActionOverride("bstq004",SetNumTimesTalkedTo(1))
+END
+
+/* spawn Ulf after he is free */
+
+IF
+	Global("bsFreedUlf","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CreateCreature("bsghast2",[344.679],14)
+		SetGlobal("bsFreedUlf","GLOBAL",2)
+END
+
+
+/* Abbot heals */
+
+/* Player1 */
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	StateCheck(Player1,STATE_DEAD)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player1,CLERIC_RAISE_DEAD))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	!CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player1,CLERIC_LESSER_RESTORATION))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player1,CLERIC_HEAL))
+		Wait(2)
+		Continue()
+END
+
+
+/* Player2 */
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InPartyAllowDead(Player2)
+	StateCheck(Player2,STATE_DEAD)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player2,CLERIC_RAISE_DEAD))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player2)
+	!CheckStat(Player2, 0, LEVELDRAIN)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player2,CLERIC_LESSER_RESTORATION))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player2)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player2,CLERIC_HEAL))
+		Wait(2)
+		Continue()
+END
+
+/* Player3 */
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InPartyAllowDead(Player3)
+	StateCheck(Player3,STATE_DEAD)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player3,CLERIC_RAISE_DEAD))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player3)
+	!CheckStat(Player3, 0, LEVELDRAIN)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player3,CLERIC_LESSER_RESTORATION))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player3)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player3,CLERIC_HEAL))
+		Wait(2)
+		Continue()
+END
+
+/* Player4 */
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InPartyAllowDead(Player4)	
+	StateCheck(Player4,STATE_DEAD)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player4,CLERIC_RAISE_DEAD))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player4)
+	!CheckStat(Player4, 0, LEVELDRAIN)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player4,CLERIC_LESSER_RESTORATION))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player4)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player4,CLERIC_HEAL))
+		Wait(2)
+		Continue()
+END
+
+/* Player5 */
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InPartyAllowDead(Player5)
+	StateCheck(Player5,STATE_DEAD)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player5,CLERIC_RAISE_DEAD))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player5)
+	!CheckStat(Player5, 0, LEVELDRAIN)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player5,CLERIC_LESSER_RESTORATION))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player5)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player5,CLERIC_HEAL))
+		Wait(2)
+		Continue()
+END
+
+/* Player6 */
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InPartyAllowDead(Player6)
+	StateCheck(Player6,STATE_DEAD)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player6,CLERIC_RAISE_DEAD))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	!CheckStat(Player6, 0, LEVELDRAIN)
+	InParty(Player6)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player6,CLERIC_LESSER_RESTORATION))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+	InParty(Player6)
+THEN
+	RESPONSE #100
+		ActionOverride("bssatos",ReallyForceSpell(Player6,CLERIC_HEAL))
+		Wait(2)
+		Continue()
+END
+
+IF
+	Global("bsAbbotHeals","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bsAbbotHeals","GLOBAL",4)
+		ActionOverride("bssatos",StartDialogNoSet([PC])
+END
+
+
+
+/* abbot offered to fully heal party once - deactivate */
+IF
+ Global("bsAbbotHeals","GLOBAL",2)
+ !HPPercentLT(Player1,100)
+ !HPPercentLT(Player2,100)
+ !HPPercentLT(Player3,100)
+ !HPPercentLT(Player4,100)
+ !HPPercentLT(Player5,100)
+ !HPPercentLT(Player6,100)
+ !StateCheck(Player1,STATE_DEAD)
+ !StateCheck(Player2,STATE_DEAD)
+ !StateCheck(Player3,STATE_DEAD)
+ !StateCheck(Player4,STATE_DEAD)
+ !StateCheck(Player5,STATE_DEAD)
+ !StateCheck(Player6,STATE_DEAD)
+ !StateCheck(Player1,CD_STATE_NOTVALID)
+ !StateCheck(Player2,CD_STATE_NOTVALID)
+ !StateCheck(Player3,CD_STATE_NOTVALID)
+ !StateCheck(Player4,CD_STATE_NOTVALID)
+ !StateCheck(Player5,CD_STATE_NOTVALID)
+ !StateCheck(Player6,CD_STATE_NOTVALID)
+ CheckStat(Player1, 0, LEVELDRAIN)
+ CheckStat(Player2, 0, LEVELDRAIN)
+ CheckStat(Player3, 0, LEVELDRAIN)
+ CheckStat(Player4, 0, LEVELDRAIN)
+ CheckStat(Player5, 0, LEVELDRAIN)
+ CheckStat(Player6, 0, LEVELDRAIN)
+ !StateCheck(Player1,STATE_BLIND)
+ !StateCheck(Player2,STATE_BLIND)
+ !StateCheck(Player3,STATE_BLIND)
+ !StateCheck(Player4,STATE_BLIND)
+ !StateCheck(Player5,STATE_BLIND)
+ !StateCheck(Player6,STATE_BLIND)
+ !StateCheck(Player1,STATE_DISEASED)
+ !StateCheck(Player2,STATE_DISEASED)
+ !StateCheck(Player3,STATE_DISEASED)
+ !StateCheck(Player4,STATE_DISEASED)
+ !StateCheck(Player5,STATE_DISEASED)
+ !StateCheck(Player6,STATE_DISEASED)
+ !StateCheck(Player1,STATE_FEEBLEMINDED)
+ !StateCheck(Player2,STATE_FEEBLEMINDED)
+ !StateCheck(Player3,STATE_FEEBLEMINDED)
+ !StateCheck(Player4,STATE_FEEBLEMINDED)
+ !StateCheck(Player5,STATE_FEEBLEMINDED)
+ !StateCheck(Player6,STATE_FEEBLEMINDED)
+THEN
+	RESPONSE #100
+		SetGlobal("bsAbbotHeals","GLOBAL",1)
+END
+
+/* abbot offered to fully heal party once - activate */
+IF
+ Global("bsAbbotHeals","GLOBAL",1)
+OR(42)
+ HPPercentLT(Player1,100)
+ HPPercentLT(Player2,100)
+ HPPercentLT(Player3,100)
+ HPPercentLT(Player4,100)
+ HPPercentLT(Player5,100)
+ HPPercentLT(Player6,100)
+ StateCheck(Player1,STATE_DEAD)
+ StateCheck(Player2,STATE_DEAD)
+ StateCheck(Player3,STATE_DEAD)
+ StateCheck(Player4,STATE_DEAD)
+ StateCheck(Player5,STATE_DEAD)
+ StateCheck(Player6,STATE_DEAD)
+ StateCheck(Player1,CD_STATE_NOTVALID)
+ StateCheck(Player2,CD_STATE_NOTVALID)
+ StateCheck(Player3,CD_STATE_NOTVALID)
+ StateCheck(Player4,CD_STATE_NOTVALID)
+ StateCheck(Player5,CD_STATE_NOTVALID)
+ StateCheck(Player6,CD_STATE_NOTVALID)
+ !CheckStat(Player1, 0, LEVELDRAIN)
+ !CheckStat(Player2, 0, LEVELDRAIN)
+ !CheckStat(Player3, 0, LEVELDRAIN)
+ !CheckStat(Player4, 0, LEVELDRAIN)
+ !CheckStat(Player5, 0, LEVELDRAIN)
+ !CheckStat(Player6, 0, LEVELDRAIN)
+ StateCheck(Player1,STATE_BLIND)
+ StateCheck(Player2,STATE_BLIND)
+ StateCheck(Player3,STATE_BLIND)
+ StateCheck(Player4,STATE_BLIND)
+ StateCheck(Player5,STATE_BLIND)
+ StateCheck(Player6,STATE_BLIND)
+ StateCheck(Player1,STATE_DISEASED)
+ StateCheck(Player2,STATE_DISEASED)
+ StateCheck(Player3,STATE_DISEASED)
+ StateCheck(Player4,STATE_DISEASED)
+ StateCheck(Player5,STATE_DISEASED)
+ StateCheck(Player6,STATE_DISEASED)
+ StateCheck(Player1,STATE_FEEBLEMINDED)
+ StateCheck(Player2,STATE_FEEBLEMINDED)
+ StateCheck(Player3,STATE_FEEBLEMINDED)
+ StateCheck(Player4,STATE_FEEBLEMINDED)
+ StateCheck(Player5,STATE_FEEBLEMINDED)
+ StateCheck(Player6,STATE_FEEBLEMINDED)
+THEN
+	RESPONSE #100
+		SetGlobal("bsAbbotHeals","GLOBAL",2)
+END

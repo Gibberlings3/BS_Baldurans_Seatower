@@ -1,0 +1,124 @@
+//---------------------------------------------------------
+// Initial halls all visited
+//---------------------------------------------------------
+IF
+	Global("bsVisitedHalls","GLOBAL",0)
+	Global("bsCreateAlguineFM1","GLOBAL",1)
+	Global("bsCreateAlguineFM2","GLOBAL",1)
+	Global("bsCreateAlguineFM3L","GLOBAL",1)
+	Global("bsCreateAlguineFM4","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsVisitedHalls","GLOBAL",4)
+END
+
+//---------------------------------------------------------
+// Area BS0128 - dead Tanarr'i
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineHFM","GLOBAL",3)
+	Global("bsAlguineTan","GLOBAL",0)
+	Dead("bstanar")
+	Global("bsFreedUlf","GLOBAL",1) //after Ulf had his speech and went away
+THEN
+	RESPONSE #100
+		JumpToPoint([785.383])
+		ForceSpellRES("SPWI402",Myself)
+		Wait(2)
+		SetGlobal("bsAlguineTan","GLOBAL",1)
+END
+
+//---------------------------------------------------------
+// Area BS0128 - charname's second visit
+//---------------------------------------------------------
+IF
+	Global("bsHFMTrap","GLOBAL",2)
+	Global("bsAlguineTan","GLOBAL",3)
+THEN
+	RESPONSE #100
+		JumpToPoint([785.383])
+		Wait(11)
+		ForceSpellRES("SPWI402",Myself)
+		Wait(2)
+		SetGlobal("bsAlguineTan","GLOBAL",4)
+END
+
+//---------------------------------------------------------
+// Area BS0129
+//---------------------------------------------------------
+IF
+	AreaCheck("bs0129")
+	Global("bsCreateAlguineFM1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineFM1","GLOBAL",1)
+		ForceSpellRES("SPWI402",Myself)
+		Wait(2)
+		CreateCreature("bsalgune",[581.523],2)
+		Wait(1)
+		JumpToPoint([630.241])
+END
+
+//---------------------------------------------------------
+// Area BS0130
+//---------------------------------------------------------
+IF
+	AreaCheck("bs0130")
+	Global("bsCreateAlguineFM2","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineFM2","GLOBAL",1)
+		ForceSpellRES("SPWI402",Myself)
+		Wait(2)
+		CreateCreature("bsalgune",[926.772],2)
+		Wait(1)
+		JumpToPoint([550.204])
+END
+
+//---------------------------------------------------------
+// Area BS0131
+//---------------------------------------------------------
+IF
+	AreaCheck("bs0131")
+	Global("bsCreateAlguineFM3L","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineFM3L","GLOBAL",1)
+		ForceSpellRES("SPWI402",Myself)
+		Wait(2)
+		CreateCreature("bsalgune",[463.213],2)
+		Wait(1)
+		JumpToPoint([389.610])
+END
+
+//---------------------------------------------------------
+// Area BS0133
+//---------------------------------------------------------
+IF
+	AreaCheck("bs0133")
+	Global("bsCreateAlguineFM4","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineFM4","GLOBAL",1)
+		ForceSpellRES("SPWI402",Myself)
+//		Wait(2) //for some reason this needs to be removed or he won't spawn
+		CreateCreature("bsalgune",[700.1078],8)
+		Wait(1)
+		JumpToPoint([389.610])
+END
+
+//---------------------------------------------------------
+// Area BS0134
+//---------------------------------------------------------
+IF
+	AreaCheck("bs0134")
+	Global("bsCreateAlguineFM5","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineFM5","GLOBAL",1)
+		ForceSpellRES("SPWI402",Myself)
+		Wait(2)
+		CreateCreature("bsalgune",[1479.1330],7)
+		Wait(1)
+		JumpToPoint([982.313])
+END

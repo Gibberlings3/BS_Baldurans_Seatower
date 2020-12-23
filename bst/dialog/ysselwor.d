@@ -1,0 +1,26 @@
+BEGIN ysselwor
+
+IF ~RandomNum(5,1)~ THEN BEGIN 1
+  SAY @1060
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(5,2)~ THEN BEGIN 11
+  SAY @1064
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(5,3)~ THEN BEGIN 2
+  SAY @1061
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(5,4)~ THEN BEGIN 3
+  SAY @1062
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(5,5)~ THEN BEGIN 4
+  SAY @1063
+  IF ~~ THEN EXIT
+END

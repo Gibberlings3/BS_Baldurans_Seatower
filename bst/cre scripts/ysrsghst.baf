@@ -1,0 +1,14 @@
+//---------------------------------------------------------
+// Activate the King of the Restless Dead inside the catacombs
+//---------------------------------------------------------
+IF
+	AreaCheck("ys0119")
+	Global("bsTalkedToKRD","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ForceSpellRES("BS00001",Myself)
+		Wait(2)
+		CreateCreature("ysrsdead",[-1.-1],0)
+		SetGlobal("bsTalkedToKRD","GLOBAL",1)
+		DestroySelf()
+END

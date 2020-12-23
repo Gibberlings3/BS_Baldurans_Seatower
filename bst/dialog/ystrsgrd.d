@@ -1,0 +1,21 @@
+BEGIN ystrsgrd
+
+IF ~RandomNum(4,1)~ THEN BEGIN 1
+  SAY @1140
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(4,2)~ THEN BEGIN 2
+  SAY @1141
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(4,3)~ THEN BEGIN 3
+  SAY @1142
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(4,4)~ THEN BEGIN 4
+  SAY @1143
+  IF ~~ THEN EXIT
+END

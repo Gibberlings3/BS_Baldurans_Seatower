@@ -1,0 +1,75 @@
+// Initial area setup
+IF
+	Global("bsDream151","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsgnolld",[1567.1127],6)
+		CreateCreature("bsgnolld",[1139.957],6)
+		CreateCreature("bsgnolld",[889.720],6)
+		CreateCreature("bsgnold2",[374.679],6)
+		CreateCreature("bsgnold2",[679.522],1)
+		CreateCreature("bsgnold2",[602.388],2)
+		CreateCreature("bsgnold2",[580.311],1)
+//		CreateCreature("bsgnold2",[441.232],1)
+		CreateCreature("bsgnold4",[430.450],8)
+		CreateCreature("bsgnold5",[222.258],8)
+		CreateCreature("bsgnold5",[182.433],8)
+		CreateCreature("bsgnold5",[221.506],8)
+		CreateCreature("bsvoice",[2174.1811],8)
+		TriggerActivation("DOOR0001",FALSE)
+		TriggerActivation("TRAVBS0152",FALSE)
+		SetGlobal("bsDream151","GLOBAL",1)
+// Triggers Voice
+		SetGlobal("bsDreamAreaGnoll","GLOBAL",1)
+END
+
+IF
+	PartyhasItem("BSPOTND")
+	Global("bsOpenDoor","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("DOOR0001",TRUE)
+		TriggerActivation("TRAVBS0152",TRUE)
+		OpenDoor("DOOR0001")
+		Wait(1)
+		DisplayStringHead("DOOR0001",@11004)
+		SetGlobal("bsOpenDoor","MYAREA",1)
+END
+
+/*
+// After talking to the Poisoned Man
+IF
+	Global("bsDream151","GLOBAL",2)
+//	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		CreateCreature("bsalgbk",[430.450],8) //need a helper cre to get rid of doubled potion, just using this one because it's not important
+		SmallWait(1)
+//		CopyGroundPilesTo("bs0153",[0.0])
+//		CreateCreature("bsgnold2",[617.570],6)
+//		CreateCreature("bsgnold2",[515.616],6)
+//		CreateCreature("bsgnold2",[217.601],8)
+//		CreateCreature("bsgnold3",[362.420],8)
+//		CreateCreature("bsgnold3",[402.430],8)
+//		CreateCreature("bsgnold3",[422.440],8)
+//		CreateCreature("bsgnold4",[430.450],8)
+		CreateCreature("bsgnold4",[422.440],8)
+//		CreateCreature("bsgnold3",[435.460],8)
+//		CreateCreature("bsgnold3",[380.448],8)
+		ActionOverride("bsalgbk",PickUpItem("BSPOTND"))
+		SmallWait(1)
+		ActionOverride("bsalgbk",DestroySelf())
+		SetGlobal("bsDream151","GLOBAL",3)
+END
+
+// Keep track of charname's hitpoints
+IF
+	HPPercentLT(Protagonist,40)
+THEN
+	RESPONSE #100
+		FadeToColor([50.0],0)
+		ActionOverride(Protagonist,LeaveAreaLUA("bs0157","",[193.311],14))
+		FadeFromColor([50.0],0)
+END
+
+*/

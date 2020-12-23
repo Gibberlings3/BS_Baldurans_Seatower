@@ -1,0 +1,84 @@
+/* Sea Caves */
+
+IF
+	Global("bsSeaCaveOpen","GLOBAL",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("Travys0109",FALSE)
+		TriggerActivation("bs0200t3",TRUE)
+		AddJournalEntry(@816,QUEST)
+		SetGlobal("bsSeaCaveOpen","GLOBAL",1)
+END
+
+IF
+	Global("bsSeaCaveOpen","GLOBAL",2)
+THEN
+	RESPONSE #100
+		TriggerActivation("Travys0109",TRUE)
+		TriggerActivation("bs0200t3",FALSE)
+		SetGlobal("bsSeaCaveOpen","GLOBAL",3)
+END
+
+IF
+	Global("bsCloseTempleIslandExit","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0160",FALSE)
+		TriggerActivation("bs0200t2",TRUE)
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",1)
+END
+
+IF
+	Global("bsTempleIslandOpen","GLOBAL",1)
+	GlobalLT("bsCloseTempleIslandExit","MYAREA",2)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0160",TRUE)
+		TriggerActivation("bs0200t2",FALSE)
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",2)
+END
+
+/* player found the dead adjutant */
+/* before reporting the hole to the Seatower Commander */
+IF
+	Global("bsFoundSerjeante","GLOBAL",0)
+	GlobalLT("bsDoppelgangerQuest","GLOBAL",3)
+	GlobalGT("bsJournalEntrySerjeante","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsFoundSerjeante","GLOBAL",1)
+		AddJournalEntry(@819,QUEST)
+END
+/* after the doppelganger incident in the office */
+IF
+	Global("bsFoundSerjeante","GLOBAL",0)
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",2)
+	GlobalGT("bsJournalEntrySerjeante","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsFoundSerjeante","GLOBAL",1)
+		AddJournalEntry(@820,QUEST)
+END
+
+/* Interrogator's work - make Halfslinger go back to his house */
+
+IF
+	Global("bsInquisitorsWork","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsInquisitorsWork","GLOBAL",3)
+END
+
+/* PC has black pearl quest from Master Shizell */
+IF
+	PartyHasItem("bsblkprl")
+	GlobalGT("bsBlackPearlQuest","GLOBAL",0)
+	Global("bsBlackPearlJournal","LOCALS",0)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@850)
+		EraseJournalEntry(@851)
+		AddJournalEntry(@858,QUEST)
+		SetGlobal("bsBlackPearlJournal","LOCALS",1)
+END
+

@@ -1,0 +1,32 @@
+IF
+	!Global("bsShucksBrother","GLOBAL",50)
+	GlobalGT("bsShucksBrother","GLOBAL",0)
+	Global("bsCreateStolenGold","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateStolenGold","MYAREA",1)
+		ActionOverride("Chest",CreateItem("MISC07",1467,0,0)
+END
+
+IF
+	Global("bsPCSawStolenGold","GLOBAL",1)
+	Global("bsJournalEntries","MYAREA",0)
+	Global("bsShucksBrother","GLOBAL",1) //not talked to smugglers yet
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@805)
+		AddJournalEntry(@750,QUEST)
+		AddJournalEntry(@808,QUEST)
+		SetGlobal("bsJournalEntries","MYAREA",1)
+END
+
+IF
+	Global("bsPCSawStolenGold","GLOBAL",1)
+	Global("bsJournalEntries","MYAREA",0)
+	GlobalGT("bsShucksBrother","GLOBAL",1) //talked to smugglers
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@805)
+		AddJournalEntry(@750,QUEST)
+		SetGlobal("bsJournalEntries","MYAREA",1)
+END

@@ -1,0 +1,6 @@
+
+//BST Area Links Table 
+SRC_AREA  SRC_NWSE  TARGET_ARE  ENTRY_NAME  TRV_TIME  DEF_ENTRY  ENC1     ENC2     ENC3     ENC4     ENC5     ENC_PROB
+
+AR1200    S         bs1000      exitfw1200  0         1          N        N        N        N        N        0
+bs1000    N         AR1200      exitbs1000  0         1          N        N        N        N        N        0

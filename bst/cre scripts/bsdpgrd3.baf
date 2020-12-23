@@ -1,0 +1,10 @@
+IF
+	Global("bsDoppTurnMyself","LOCALS",0)	
+	OR(2)
+		HitBy([PC],CRUSHING)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppTurnMyself","LOCALS",1)
+		ApplySpell(Myself,DOPPLEGANGER_CHANGE_DEFAULT)
+END

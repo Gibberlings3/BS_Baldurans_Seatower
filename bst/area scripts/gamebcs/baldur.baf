@@ -1,0 +1,34 @@
+
+/* If fire elemental is in barrel and PC dawdled too long */
+IF
+	Global("bsFireElementQuest","GLOBAL",9)
+	GlobalTimerExpired("bsFireElementTimer","GLOBAL")
+	PartyHasItem("bsbarrl4")
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		TakePartyItem("bsbarrl4") 
+		DestroyItem("bsbarrl4")
+		CreateCreatureObjectOffSet("bsfrelem",Player1,[5.5])
+		EraseJournalEntry(@901)
+		EraseJournalEntry(@904)
+		EraseJournalEntry(@906)
+		EraseJournalEntry(@910)
+		AddJournalEntry(@911,QUEST_DONE)
+		ActionOverride("bsfrelem",Enemy())
+		SetGlobal("bsFireElementQuest","GLOBAL",13)
+		Continue()	
+END
+
+/* know Bhaal heritage */
+
+IF %BGT_VAR%
+OR(2)
+ Global("P#KnowBhaal","GLOBAL",1) //BG1NPC Project
+ PartyHasItem("%tutu_var%SCRL2J")
+Global("bsKnowBhaal","GLOBAL",0)
+THEN
+ RESPONSE #100
+ SetGlobal("bsKnowBhaal","GLOBAL",1)
+ Continue()
+END

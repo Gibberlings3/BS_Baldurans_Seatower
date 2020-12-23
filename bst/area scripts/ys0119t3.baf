@@ -1,0 +1,18 @@
+//This calls the King of the Restless Dead first time
+
+IF
+	OR(2)
+		Entered([ANYONE])
+		IsOverMe([ANYONE])
+	Global("bsRaiseRestlesDead","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bsRaiseRestlesDead","MYAREA",1)
+		Wait(1)
+		CreateVisualEffect("SPRAISED",[465.377])
+		Wait(3)
+		CreateCreature("ysrsdead",[465.377],2)  
+		ActionOverride("ysrsdead",SetSequence(SEQ_AWAKE))
+		SetInterrupt(TRUE)
+END

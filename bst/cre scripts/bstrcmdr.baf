@@ -1,0 +1,50 @@
+IF
+	Global("bsDoppelgangerQuest","GLOBAL",3)
+	Dead("bsdopp02")
+	Dead("bsdopp03")
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck("bstrmage",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",4)
+END
+
+IF
+	Global("bsDoppelgangerQuest","GLOBAL",4)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck("bstrmage",CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		StartDialogNoSet(Player1)
+END
+
+/* foreward quest with slave traders: PC left once and returns. */
+IF
+	Global("bsSlaveWitnessInterrogated","GLOBAL",1)
+	!Range([PC],20)
+	!Detect([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("bsSlaveWitnessInterrogated","GLOBAL",2)
+END
+
+/* Journal entry handling of PC reported everything from the Seacaves */
+IF
+	GlobalGT("bsFoundSerjeante","GLOBAL",1) //reported dead Adjutant
+	Global("bsSeaCaveOpenLOC","LOCALS",1) //reported seacave exit to traitor's tower
+	Global("bsFoundExitUmberleeLOC","LOCALS",1) //reported exit to temple of Umberlee
+	Global("bsFoundExitDocksLOC","LOCALS",1) //reported exit to docks
+//	Global("bsFoundSahuaginLOC","LOCALS",1) ##not done yet
+	Global("bsPCMetSmugglerLOC","LOCALS",1)
+	Global("bsTailorLOC","LOCALS",1) //reported about the tailor
+	Global("bsJournalHandlingSeaCave","LOCALS",0) 
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@818)
+		AddJournalEntry(@822,QUEST_DONE)
+		SetGlobal("bsJournalHandlingSeaCave","LOCALS",1)
+END

@@ -1,0 +1,29 @@
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@8203) // You can't decipher anything from this distance.
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	CheckStatGT(LastTrigger,25,LORE)
+
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@8204) 
+
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	CheckStatLT(LastTrigger,26,LORE)
+
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@8205) // This large heptagram is engraved with mysterious runes that you cannot decipher.
+END
+

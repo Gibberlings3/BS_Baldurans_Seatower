@@ -1,0 +1,7 @@
+IF
+	Global("bsDream151","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ActionOverride(Myself,Kill(Myself))
+END
+

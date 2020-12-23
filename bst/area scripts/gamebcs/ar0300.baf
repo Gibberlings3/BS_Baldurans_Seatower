@@ -1,0 +1,40 @@
+// Missing Monk quest
+
+/* create beggars */
+IF
+	Global("bsCreateBeggars","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("bsBodyTrap",FALSE)
+		SetGlobal("bsCreateBeggars","MYAREA",1)
+		CreateCreature("bsmm001",[1349.1375],0)
+		Continue()
+END
+
+/* create Lenard */
+IF
+	Global("bsMissingMonk","GLOBAL",3)
+	Global("bsCreateLenard","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("bsBodyTrap",FALSE)
+		SetGlobal("bsCreateLenard","MYAREA",1)
+		CreateCreature("bslenard",[1210.1086],12)
+		Continue()
+		
+END
+
+/* activate info point for Martina's corpse */
+
+IF
+	Global("bsMissingMonk","GLOBAL",2)
+	Global("bsActivateBodytrap","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("bsBodyTrap",TRUE)
+		SetGlobal("bsActivateBodytrap","MYAREA",1)
+		Continue()
+		
+END
+
+

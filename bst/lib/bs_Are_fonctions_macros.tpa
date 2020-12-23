@@ -1,0 +1,940 @@
+/*=========================================================================== *
+ *                                                                            *
+ *        F U N C T I O N S   &   M A C R O S   :   A R E   F I L E S         *
+ *                                                                            *
+ *=========================================================================== */
+
+/* ================================================================================================================================================================================ *
+   OVERALL FUNCTIONS and MACROS :
+   ------------------------------
+	- MACRO bs_DEF_AREA_OFFSETS					:	DÉFINITION des offsets généraux des fichiers ARE.																=> line   60
+													LOADS the main offsets used to patch ARE files.
+	- FUNCTION bs_READ_AREA_STRUCTURE			:	LECTURE des valeurs des offsets généraux d'un fichier ARE.														=> line  153
+													READS the values of the main offsets in a ARE file.
+	- MACRO bs_READ_AREA_DOOR_STRUCTURE			:	LECTURE des valeurs des offsets utilisés pour modifier une porte dans un fichier ARE.							=> line  271
+													READS the values of the main offsets used to patch a door in a ARE file.
+	- MACRO bs_READ_AREA_REGION_STRUCTURE		:	LECTURE des valeurs des offsets utilisés pour modifier une région dans un fichier ARE.							=> line  325
+													READS the values of the main offsets used to patch a region in a ARE file.
+
+   FUNCTIONS and MACROS REPLACING DOORS AND REGIONS INTO A MAP (.ARE) :
+   --------------------------------------------------------------------
+	- FUNCTION bs_CLONE_AREA_DOOR				:	LECTURE et STOCKAGE des paramètres d'une porte pour la cloner ou la modifier.									=> line  383
+													READS a door settings and STORE them to patch or copy them later.
+	- MACRO bs_ADD_AREA_DOOR					:	GÉNÉRATION automatique et LANCEMENT de la fonction fj_are_structure pour ajouter une porte.						=> line  496
+													AUTO-GENERATE and LAUNCH the fj_are_structure function to add a new door.
+	- FUNCTION bs_CLONE_AREA_REGION				:	LECTURE et STOCKAGE des paramètres d'une région pour la cloner ou la modifier.									=> line  703
+													READS a region settings and STORE them to patch or copy them later.
+	- MACRO bs_ADD_AREA_REGION					:	GÉNÉRATION automatique et LANCEMENT de la fonction fj_are_structure pour ajouter une region.					=> line  810
+													AUTO-GENERATE and LAUNCH the fj_are_structure function to add a new region.
+ * ================================================================================================================================================================================ */
+
+/* ==================================================================================================================== *
+	HOW TO USE THEM :
+	-----------------
+
+	1. Insert those those lines in your tp2:
+
+INCLUDE ~%MOD_FOLDER%/lib/bs_Are_fonctions_macros.tpa~				// Load Library (area functions and macros).
+INCLUDE ~%MOD_FOLDER%/lib/bs_vertices_table.tpa~					// Load Arrays of new doors vertex
+
+	2. If you insert new vertices and new impeded cell blocks, fill them in bs_vertices_table.tpa.
+
+	3. Launch the bs_DEF_AREA_OFFSETS macro:
+
+LAM ~bs_DEF_AREA_OFFSETS~
+
+	4. Create a tph file (AddARxxxx.tph) for each area you want to patch and launch it:
+INCLUDE ~%MOD_FOLDER%/lib/AddARxxxx.tph~
+
+Note: Read AddBG_AR0800Door.tph and AddBG2_AR0400Door.tph to check how they work.
+
+ * ==================================================================================================================== */
+
+/* ============================================================================ *
+ *                                                                              *
+ *          O V E R A L L    F U N C T I O N S    a n d    M A C R O S          *
+ *                                                                              *
+ * ============================================================================ */
+
+/* ============================================================================= *
+ * MACRO bs_DEF_AREA_OFFSETS : DÉFINITION des offsets généraux des fichiers ARE. *
+ *							   LOADS the main offsets used to patch ARE files.   *
+ * ----------------------------------------------------------------------------- *
+ * Lancée une seule fois avant de modifier une ou plusieurs cartes.              *
+ * Launched once before patching one or several are files.                       *
+ * ============================================================================= */
+
+DEFINE_ACTION_MACRO ~bs_DEF_AREA_OFFSETS~ 
+BEGIN
+// Section and file sizes
+	OUTER_SET bs_are_min_size				= 0x11b	// Area minimum size
+	OUTER_SET bs_are_actor_size				= 0x110	// Size of actors section
+	OUTER_SET bs_are_region_size			= 0xc4	// Size of regions section
+	OUTER_SET bs_are_spawn_size				= 0xc8	// Size of spawn points section
+	OUTER_SET bs_are_entrance_size			= 0x68	// Size of entrances section
+	OUTER_SET bs_are_container_size			= 0xc0	// Size of containers section
+	OUTER_SET bs_are_itm_size				= 0x14	// Size of items section
+	OUTER_SET bs_are_vertex_size			= 0x04	// Size of vertices section					- size of one set of X, Y coordinates
+	OUTER_SET bs_are_ambient_size			= 0xd4	// Size of ambients section
+	OUTER_SET bs_are_variable_size			= 0x54	// Size of variables section				- not used in PS:T ou 0x50 IESPD
+	OUTER_SET bs_are_door_size				= 0xc8	// Size of doors section
+	OUTER_SET bs_are_animation_size			= 0x4c	// Size of animations section
+	OUTER_SET bs_are_til_size				= 0x6c	// Size of tiled objects section 0			- not used in PS:T
+	OUTER_SET bs_are_song_size				= 0x90	// Size of songs section					- no count, offset only
+	OUTER_SET bs_are_rest_size				= 0xe4	// Size of rest interruptions				- no count, offset only
+	OUTER_SET bs_are_mapnote_size			= 0x34	// Size of  Automap notes section			- not used in PS:T ?
+	OUTER_SET bs_are_project_size			= 0x1a	// Size of Projectile Traps section			- only used in BG2? or 0x1C IESDP ??? waiting for Avenger answer to validate it.
+// File header
+	OUTER_SET bs_are_wed_of					= 0x008 // Area WED
+	OUTER_SET bs_are_flag1_of				= 0x014 /* Area flag (AREAFLAG.IDS) = bit 0: Save allowed - bit 1: Tutorial area (not BG1) - bit 2: Dead magic zone - bit 3: Dream
+													   BGEE = 	bit 0: Save not allowed - bit 1: Tutorial area - bit 2: Dead magic zone - bit 3: Dream - 
+																bit 4: Player1 death does not end the game - bit 5: Resting not allowed - bit 6: Travel not allowed */
+	OUTER_SET bs_are_NArea_of				= 0x018	// Offset to Resref of the area to the North of this area
+	OUTER_SET bs_are_NArea_flags_of			= 0x020 // Offset to North area flags = bit 0: Party Required - bit 1: Party Enabled
+	OUTER_SET bs_are_EArea_of				= 0x024	// Offset to Resref of the area to the East of this area
+	OUTER_SET bs_are_EArea_flags_of			= 0x02c	// Offset to East area flags = bit 0: Party Required - bit 1: Party Enabled
+	OUTER_SET bs_are_SArea_of				= 0x030	// Offset to Resref of the area to the South of this area
+	OUTER_SET bs_are_SArea_flags_of			= 0x038	// Offset to South area flags = bit 0: Party Required - bit 1: Party Enabled
+	OUTER_SET bs_are_WArea_of				= 0x03c	// Offset to Resref of the area to the West of this area
+	OUTER_SET bs_are_WArea_flags_of			= 0x044	// Offset to West area flags = bit 0: Party Required - bit 1: Party Enabled
+	OUTER_SET bs_are_flag2_of				= 0x048 /* Area flags (AREATYPE.IDS) =	bit 0: Outdoor - bit 1: Day/night - bit 2: Weather - bit 3: City - bit 4: Forest - bit 5: Dungeon -
+																					bit 6: Extended night - bit 7: Can rest indoors */
+	OUTER_SET bs_are_rain_prob_of			= 0x04a	// Offset to Rain probability
+	OUTER_SET bs_are_snow_prob_of			= 0x04c	// Offset to Snow probability
+//	OUTER_SET bs_are_fog_prob_of			= 0x04e 	2 (word) 	// Offset to Fog probability (BGEE only)
+	OUTER_SET bs_are_lightg_prob_of			= 0x050	// Offset to Lightning probability
+//	OUTER_SET bs_are_wind_speed_of			= 0x052 	2 (word)	// BG1:TotS, IWD:ToTL, BG2:ToB: Wind speed (unused?) - BGEE: Overlay transparency (only first byte)
+ 	OUTER_SET bs_are_actors_of				= 0x054 // Offset to actors
+	OUTER_SET bs_are_actors_nb				= 0x058	// Count of actors
+	OUTER_SET bs_are_regions_nb				= 0x05a	// Count of regions
+	OUTER_SET bs_are_regions_of				= 0x05c	// Offset to regions
+	OUTER_SET bs_are_region_text_of			= 0x64 	// Offset to Information text (for info points) : SPECIAL (used by homemade functions to avoid lines of codes)
+	OUTER_SET bs_are_spawns_of				= 0x060	// Offset to spawn points
+	OUTER_SET bs_are_spawns_nb				= 0x064	// Count of spawn points
+	OUTER_SET bs_are_entrances_of			= 0x068	// Offset to entrances
+	OUTER_SET bs_are_entrances_nb			= 0x06c	// Count of entrances
+	OUTER_SET bs_are_containers_of			= 0x070	// Offset to containers
+	OUTER_SET bs_are_containers_nb			= 0x074	// Count of containers
+	OUTER_SET bs_are_container_string_of	= 0x84	// Offset to Lockpick string : SPECIAL (used by homemade functions to avoid lines of codes)
+	OUTER_SET bs_are_items_nb				= 0x076	// Count of items
+	OUTER_SET bs_are_items_of				= 0x078	// Offset to items
+	OUTER_SET bs_are_vertices_of			= 0x07c	// Offset to vertices
+	OUTER_SET bs_are_vertices_nb			= 0x080	// Count of vertices
+	OUTER_SET bs_are_ambients_nb			= 0x082	// Count of ambients
+	OUTER_SET bs_are_ambients_of			= 0x084	// Offset to ambients
+	OUTER_SET bs_are_variables_of			= 0x088	// Offset to variables						- not used in PS:T
+	OUTER_SET bs_are_variables_nb			= 0x08c	// Count of variables						- not used in PS:T
+/*	OUTER_SET bs_are_tiled_object_flag_of	= 0x090	// Offset to tiled object flags
+	OUTER_SET bs_are_tiled_object_flag_nb	= 0x092	// Count of tiled object flags */
+	OUTER_SET bs_are_script_of				= 0x094	// Area script
+/*	OUTER_SET bs_are_explored_size			= 0x09c	// Size of explored bitmask section			- not applicable	- no count, offset only
+	OUTER_SET bs_are_explored_of			= 0x0a0	// Offset to explored bitmask				- no count, offset only
+*/	OUTER_SET bs_are_doors_nb				= 0x0a4	// Count of doors
+	OUTER_SET bs_are_doors_of				= 0x0a8	// Offset to doors
+	OUTER_SET bs_are_door_string_of			= 0x98	// Offset to Lockpick string : SPECIAL (used by homemade functions to avoid lines of codes)
+	OUTER_SET bs_are_animations_nb			= 0x0ac	// Count of animations
+	OUTER_SET bs_are_animations_of			= 0x0b0	// Offset to animation
+	OUTER_SET bs_are_tiles_nb				= 0x0b4	// Count of tiled objects					- not used in PS:T
+	OUTER_SET bs_are_tiles_of				= 0x0b8	// Offset to tiled objects					- not used in PS:T
+	OUTER_SET bs_are_songs_of				= 0x0bc	// Offset to song entries					- no count, offset only
+	OUTER_SET bs_are_rest_of				= 0x0c0	// Offset to rest interruptions				- no count, offset only
+	OUTER_SET bs_are_mapnotes_of			= 0x0c4	// Offset of the automap notes section		- not used in PS:T = 0xFFFFFFFF
+	OUTER_SET bs_are_mapnotes_nb			= 0x0c8	// Count of the automap notes section		- Ps:T = Offset of the automap note section
+	OUTER_SET bs_are_note_string_of			= 0x04 	// Note text (dialog.tlk or TOH/TOT file) : SPECIAL (used by homemade functions to avoid lines of codes)
+	OUTER_SET bs_are_proj_traps_of			= 0x0cc	// Offset to the Projectile Traps section	- Ps:T = Number of entries in the automap note section
+	OUTER_SET bs_are_proj_traps_nb			= 0x0d0	// Count of the Projectile Traps section	- only used in BG2?
+	OUTER_SET bs_are_rest_movie_Day_of		= 0x0d4	// BG2: ToB, BGEE - Rest movie (day)
+	OUTER_SET bs_are_rest_movie_Night_of	= 0x0dc	// BG2: ToB, BGEE - Rest movie (night)
+
+END	// of DEFINE_ACTION_MACRO
+
+
+/* ============================================================================================ *
+ * FUNCTION bs_READ_AREA_STRUCTURE : LECTURE des valeurs des offsets généraux d'un fichier ARE. *
+ *									 READ the values of the main offsets in a ARE file.         *
+ * -------------------------------------------------------------------------------------------- *
+ * Lancée systématiquement avant de modifier un élément d'une carte.                            *
+ * Launched before patching any section in a are file.                                          *
+ * ============================================================================================ */
+
+DEFINE_PATCH_FUNCTION ~bs_READ_AREA_STRUCTURE~ 
+	RET	bs_are_wed				// Area WED
+		bs_are_flag1			// Area flag (AREAFLAG.IDS) = bit 0: Save allowed - bit 1: Tutorial area (not BG1) - bit 2: Dead magic zone - bit 3: Dream
+		bs_are_flag2			// Area flags (AREATYPE.IDS) = bit 0: Outdoor - bit 1: Day/night - bit 2: Weather - bit 3: City - bit 4: Forest - bit 5: Dungeon - bit 6: Extended night - bit 7: Can rest indoors
+/*		bs_are_NArea			// Resref of the area to the North of this area							|
+		bs_are_NArea_flags		// North area flags = bit 0: Party Required - bit 1: Party Enabled		|
+		bs_are_EArea			// Resref of the area to the East of this area							|
+		bs_are_EArea_flags		// East area flags = bit 0: Party Required - bit 1: Party Enabled		|			Unused for the moment
+		bs_are_SArea			// Resref of the area to the South of this area							|
+		bs_are_SArea_flags		// South area flags = bit 0: Party Required - bit 1: Party Enabled		|
+		bs_are_WArea			// Resref of the area to the West of this area							|
+		bs_are_WArea_flags		// West area flags = bit 0: Party Required - bit 1: Party Enabled		|
+*/		bs_are_rain_prob		// Rain probability
+		bs_are_snow_prob		// Snow probability
+		bs_are_lightg_prob		// Lightning probability
+		bs_are_actors_num		// Count of actors
+		bs_are_actors_off		// Offset to actors
+		bs_are_regions_num		// Count of regions
+		bs_are_regions_off		// Offset to regions
+		bs_are_spawns_off		// Offset to spawn points
+		bs_are_spawns_num		// Count of spawn points
+		bs_are_entrances_off	// Offset to entrances
+		bs_are_entrances_num	// Count of entrances
+		bs_are_containers_off	// Offset to containers
+		bs_are_containers_num	// Count of containers
+		bs_are_items_num		// Count of items
+		bs_are_items_off		// Offset to items
+		bs_are_vertices_off		// Offset to vertices
+		bs_are_vertices_num		// Count of vertices
+		bs_are_ambients_num		// Count of ambients
+		bs_are_ambients_off		// Offset to ambients
+		bs_are_variables_off	// Offset to variables						- not used in PS:T
+		bs_are_variables_num	// Count of variables						- not used in PS:T
+		bs_are_script			// Area script
+//		bs_are_explored_off		// Offset to explored bitmask				- no count, offset only		|			Unused for the moment
+		bs_are_doors_num		// Count of doors
+		bs_are_doors_off		// Offset to doors
+		bs_are_animations_num	// Count of animations
+		bs_are_animations_off	// Offset to animation
+/*		bs_are_tiles_flag_off	// Offset to tiled object flags											|			Unused for the moment
+		bs_are_tiles_flag_num	// Count of tiled object flags											|*/
+		bs_are_tiles_num		// Count of tiled objects					- not used in PS:T
+		bs_are_tiles_off		// Offset to tiled objects					- not used in PS:T
+		bs_are_songs_off		// Offset to song entries
+		bs_are_rest_off			// Offset to rest interruptions
+		bs_are_mapnotes_off		// Offset of the automap notes section		- not used in PS:T : 0xFFFFFFFF
+		bs_are_mapnotes_num		// Count of the automap notes section		- not used in PS:T
+		bs_are_proj_traps_off	// Offset to the Projectile Traps section	- only used in BG2?
+		bs_are_proj_traps_num	// Count of the Projectile Traps section	- only used in BG2?
+		bs_are_movie_Day		// BG2: ToB - Rest movie (day)
+		bs_are_movie_Night		// BG2: ToB - Rest movie (night)
+BEGIN
+
+	READ_ASCII bs_are_wed_of				bs_are_wed (8) NULL			// Area WED
+	READ_LONG  bs_are_flag1_of				bs_are_flag1	// Area flag (AREAFLAG.IDS) = bit 0: Save allowed - bit 1: Tutorial area (not BG1) - bit 2: Dead magic zone - bit 3: Dream
+	READ_SHORT bs_are_flag2_of				bs_are_flag2				// Area flags (AREATYPE.IDS) = bit 0: Outdoor - bit 1: Day/night - bit 2: Weather - bit 3: City - bit 4: Forest - bit 5: Dungeon - bit 6: Extended night - bit 7: Can rest indoors
+/*	READ_ASCII bs_are_NArea_of				bs_are_NArea (8) NULL		// Resref of the area to the North of this area
+	READ_LONG  bs_are_NArea_flags_of		bs_are_NArea_flags 			// North area flags = bit 0: Party Required - bit 1: Party Enabled
+	READ_ASCII bs_are_EArea_of				bs_are_EArea (8) NULL		// Resref of the area to the East of this area
+	READ_LONG  bs_are_EArea_flags_of		bs_are_EArea_flags			// East area flags = bit 0: Party Required - bit 1: Party Enabled
+	READ_ASCII bs_are_SArea_of				bs_are_SArea (8) NULL		// Resref of the area to the South of this area
+	READ_LONG  bs_are_SArea_flags_of		bs_are_SArea_flags			// South area flags = bit 0: Party Required - bit 1: Party Enabled
+	READ_ASCII bs_are_WArea_of				bs_are_WArea (8) NULL		// Resref of the area to the West of this area
+	READ_LONG  bs_are_WArea_flags_of		bs_are_WArea_flags			// West area flags = bit 0: Party Required - bit 1: Party Enabled
+*/	READ_SHORT bs_are_rain_prob_of			bs_are_rain_prob			// Rain probability
+	READ_SHORT bs_are_snow_prob_of			bs_are_snow_prob			// Snow probability
+	READ_SHORT bs_are_lightg_prob_of		bs_are_lightg_prob			// Lightning probability
+	READ_LONG  bs_are_actors_of				bs_are_actors_off			// Offset to actors
+	READ_SHORT bs_are_actors_nb				bs_are_actors_num			// Count of actors
+	READ_SHORT bs_are_regions_nb			bs_are_regions_num			// Count of regions
+	READ_LONG  bs_are_regions_of			bs_are_regions_off			// Offset to regions
+	READ_LONG  bs_are_spawns_of				bs_are_spawns_off			// Offset to spawn points
+	READ_LONG  bs_are_spawns_nb				bs_are_spawns_num			// Count of spawn points
+	READ_LONG  bs_are_entrances_of			bs_are_entrances_off		// Offset to entrances
+	READ_LONG  bs_are_entrances_nb			bs_are_entrances_num		// Count of entrances
+	READ_LONG  bs_are_containers_of			bs_are_containers_off		// Offset to containers
+	READ_SHORT bs_are_containers_nb			bs_are_containers_num		// Count of containers
+	READ_SHORT bs_are_items_nb				bs_are_items_num			// Count of items
+	READ_LONG  bs_are_items_of				bs_are_items_off			// Offset to items
+	READ_LONG  bs_are_vertices_of			bs_are_vertices_off			// Offset to vertices
+	READ_SHORT bs_are_vertices_nb			bs_are_vertices_num			// Count of vertices
+	READ_SHORT bs_are_ambients_nb			bs_are_ambients_num			// Count of ambients
+	READ_LONG  bs_are_ambients_of			bs_are_ambients_off			// Offset to ambients
+	READ_LONG  bs_are_variables_of			bs_are_variables_off		// Offset to variables						- not used in PS:T
+	READ_LONG  bs_are_variables_nb			bs_are_variables_num		// Count of variables						- not used in PS:T
+	READ_ASCII bs_are_script_of				bs_are_script (8) NULL		// Area script
+//	READ_LONG  bs_are_explored_of			bs_are_explored_off			// Offset to explored bitmask				- no count, offset only
+//	SET bs_are_explo_num	= 1											// Only 1 Explored Bitmap section per area	- This isn't really needed.
+	READ_LONG  bs_are_doors_nb				bs_are_doors_num			// Count of doors
+	READ_LONG  bs_are_doors_of				bs_are_doors_off			// Offset to doors
+	READ_LONG  bs_are_animations_nb			bs_are_animations_num		// Count of animations
+	READ_LONG  bs_are_animations_of			bs_are_animations_off		// Offset to animation
+/*	READ_SHORT bs_are_tiled_object_flag_of	bs_are_tiles_obj_flag_off	// Offset to tiled object flags
+	READ_SHORT bs_are_tiled_object_flag_nb	bs_are_tiles_obj_flag_num	// Count of tiled object flags */
+	READ_LONG  bs_are_tiles_nb				bs_are_tiles_num			// Count of tiled objects					- not used in PS:T
+	READ_LONG  bs_are_tiles_of				bs_are_tiles_off			// Offset to tiled objects					- not used in PS:T
+//	SET bs_are_song_num		= 1											// Only 1 song section per area				- This isn't really needed.
+	READ_LONG  bs_are_songs_of				bs_are_songs_off			// Offset to song entries
+//	SET bs_are_rest_num		= 1									// Only 1 rest section per area				- This isn't really needed.
+	READ_LONG  bs_are_rest_of				bs_are_rest_off				// Offset to rest interruptions
+	READ_LONG  bs_are_mapnotes_of			bs_are_mapnotes_off			// Offset of the automap notes section		- not used in PS:T : 0xFFFFFFFF
+	READ_LONG  bs_are_mapnotes_nb			bs_are_mapnotes_num			// Count of the automap notes section		- not used in PS:T
+	READ_LONG  bs_are_proj_traps_of			bs_are_proj_traps_off		// Offset to the Projectile Traps section	- only used in BG2?
+	READ_LONG  bs_are_proj_traps_nb			bs_are_proj_traps_num		// Count of the Projectile Traps section	- only used in BG2?
+	READ_ASCII bs_are_rest_movie_Day_of		bs_are_movie_Day (8) NULL	// BG2: ToB - Rest movie (day)
+	READ_ASCII bs_are_rest_movie_Night_of	bs_are_movie_Night (8) NULL	// BG2: ToB - Rest movie (night)
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* ========================================================================================================================= *
+ * MACRO bs_READ_AREA_DOOR_STRUCTURE : LECTURE des valeurs des offsets utilisés pour modifier une porte dans un fichier ARE. *
+ *									   READ the values of the main offsets used to patch a door in a ARE file.               *
+ * ------------------------------------------------------------------------------------------------------------------------- *
+ * Lancée systématiquement avant de modifier une porte d'une carte.                                                          *
+ * Launched before patching a door in an area.                                                                               *
+ * ------------------------------------------------------------------------------------------------------------------------- *
+ * VARIABLE pré-définie (predefined) : bs_door_offset                                                                        *
+ *	SET bs_door_offset = "%bs_are_doors_off%" + ("%bs_are_door_size%" * d) with d = door index                               *
+ * ========================================================================================================================= */
+
+DEFINE_PATCH_MACRO ~bs_READ_AREA_DOOR_STRUCTURE~ 
+BEGIN
+
+	READ_ASCII	(bs_door_offset + 0x0000) fj_name (32) NULL				// Name
+	READ_ASCII	(bs_door_offset + 0x0020) fj_door_wed_id (8) NULL		// Door ID (to link with WED)
+	READ_LONG	(bs_door_offset + 0x0028) fj_flags						// Flags
+	READ_SHORT	(bs_door_offset + 0x0038) fj_open_box_left				// Minimum bounding box of the door polygon (when open)
+	READ_SHORT	(bs_door_offset + 0x003a) fj_open_box_top				// Minimum bounding box of the door polygon (when open)
+	READ_SHORT	(bs_door_offset + 0x003c) fj_open_box_right				// Minimum bounding box of the door polygon (when open)
+	READ_SHORT	(bs_door_offset + 0x003e) fj_open_box_bottom			// Minimum bounding box of the door polygon (when open)
+	READ_SHORT	(bs_door_offset + 0x0040) fj_closed_box_left			// Minimum bounding box of the door polygon (when closed)
+	READ_SHORT	(bs_door_offset + 0x0042) fj_closed_box_top				// Minimum bounding box of the door polygon (when closed)
+	READ_SHORT	(bs_door_offset + 0x0044) fj_closed_box_right			// Minimum bounding box of the door polygon (when closed)
+	READ_SHORT	(bs_door_offset + 0x0046) fj_closed_box_bottom			// Minimum bounding box of the door polygon (when closed)
+//	READ_LONG	(bs_door_offset + 0x0048) bs_open_cell_offset			// Index of first "vertex" in the impeded cell block (when open). These entries are x.y coordinates in the area search map. When the door is open, these cells cannot be entered by any object.
+//	READ_SHORT	(bs_door_offset + 0x004c) bs_open_cell_num				// Count of "vertices" in impeded cell block (when open)
+//	READ_SHORT	(bs_door_offset + 0x004e) bs_closed_cell_num			// Count of "vertices" in impeded cell block (when closed)
+//	READ_LONG	(bs_door_offset + 0x0050) bs_closed_cell_offset			// Index of first "vertex" in the impeded cell block (when closed). These entries are x.y coordinates in the area search map. When the door is closed, these cells cannot be entered by any object.
+	READ_ASCII	(bs_door_offset + 0x0058) fj_door_open_wav (8) NULL		// Door open sound
+	READ_ASCII	(bs_door_offset + 0x0060) fj_door_close_wav (8) NULL	// Door close sound
+	READ_LONG	(bs_door_offset + 0x0068) fj_cursor_idx					// Cursor index (cursors.bam)
+	READ_SHORT	(bs_door_offset + 0x006c) fj_trap_detect				// Trap detection difficulty
+	READ_SHORT	(bs_door_offset + 0x006e) fj_trap_remove				// Trap removal difficulty
+	READ_SHORT	(bs_door_offset + 0x0070) fj_trap_active				// Door is trapped (0=No, 1=Yes)
+	READ_SHORT	(bs_door_offset + 0x0072) fj_trap_status				// Trap detected (0=No, 1=Yes)
+	READ_SHORT	(bs_door_offset + 0x0074) fj_trap_loc_x					// Trap launch target X coordinate
+	READ_SHORT	(bs_door_offset + 0x0076) fj_trap_loc_y					// Trap launch target Y coordinate
+	READ_ASCII	(bs_door_offset + 0x0078) fj_key_resref (8) NULL		// Key item
+	READ_ASCII	(bs_door_offset + 0x0080) fj_door_script (8) NULL		// Door script
+	READ_LONG	(bs_door_offset + 0x0088) fj_detect_diff				// Detection difficulty (secret doors)
+	READ_LONG	(bs_door_offset + 0x008c) fj_locked_diff				// Lock difficulty (0-100)
+	READ_SHORT	(bs_door_offset + 0x0090) fj_open_loc_x					// X location to open the door (when open)
+	READ_SHORT	(bs_door_offset + 0x0092) fj_open_loc_y					// Y location to open the door (when open)
+	READ_SHORT	(bs_door_offset + 0x0094) fj_closed_loc_x				// X location to open the door (when closed)
+	READ_SHORT	(bs_door_offset + 0x0096) fj_closed_loc_y				// Y location to open the door (when closed)
+	READ_LONG	(bs_door_offset + 0x0098) fj_lockpick_strref			// Lock-pick string
+	READ_ASCII	(bs_door_offset + 0x009c) fj_travel_trigger (24) NULL	// Travel trigger name
+	READ_LONG	(bs_door_offset + 0x00b4) fj_dlg_strref					// Dialog speaker name
+	READ_ASCII	(bs_door_offset + 0x00b8) fj_dlg_resref (8) NULL		// Dialog resref
+
+END	// of DEFINE_PATCH_MACRO
+
+
+/* ============================================================================================================================ *
+ * MACRO bs_READ_AREA_REGION_STRUCTURE : LECTURE des valeurs des offsets utilisés pour modifier une région dans un fichier ARE. *
+ *										 READ the main offsets used to patch a region in a ARE file.                            *
+ * ---------------------------------------------------------------------------------------------------------------------------- *
+ * Lancée systématiquement avant de modifier une région d'une carte.                                                            *
+ * Launched before patching a region in an area.                                                                                *
+ * ---------------------------------------------------------------------------------------------------------------------------- *
+ * VARIABLE pré-définie (predefined) : bs_region_offset                                                                         *
+ *	SET bs_region_offset = "%bs_are_regions_off%" + ("%bs_are_region_size%" * r) with r = region index                          *
+ * ============================================================================================================================ */
+
+DEFINE_PATCH_MACRO ~bs_READ_AREA_REGION_STRUCTURE~ 
+BEGIN
+
+	READ_ASCII	(bs_region_offset + 0x0000) fj_name (32) NULL				// Name
+	READ_SHORT	(bs_region_offset + 0x0020) fj_type							// Region type (0=trap, 1=info, 2=travel)
+	READ_SHORT	(bs_region_offset + 0x0022) fj_box_left						// leftmost X coordinate of the region’s bounding box
+	READ_SHORT	(bs_region_offset + 0x0024) fj_box_top						// topmost Y coordinate of the region’s bounding box
+	READ_SHORT	(bs_region_offset + 0x0026) fj_box_right					// rightmost X coordinate of the region’s bounding box
+	READ_SHORT	(bs_region_offset + 0x0028) fj_box_bottom					// bottommost Y coordinate of the region’s bounding box
+//	READ_SHORT	(bs_region_offset + 0x002a) bs_num_vertices					// Count of vertices composing the perimeter of this region
+//	READ_LONG	(bs_region_offset + 0x002c) bs_off_vertices					// Index of first vertex for this region
+//	READ_LONG	(bs_region_offset + 0x0030) 	Trigger value
+	READ_LONG	(bs_region_offset + 0x0034) fj_cursor_idx					// Region’s mouse cursor index (from cursors.bam)
+	READ_ASCII	(bs_region_offset + 0x0038) fj_destination_area (8) NULL	// Destination area resource reference (for travel regions)
+	READ_ASCII	(bs_region_offset + 0x0040) fj_destination_name (32) NULL	// Entrance name in the destination area (for travel regions)
+	READ_LONG	(bs_region_offset + 0x0060) fj_flags						/* Flags : bit 0: Key required - bit 1: Reset trap (for proximity triggers) - 
+																				bit 2: Party Required flag (for travel triggers) - bit 3: Detectable - bit 4: NPC activates - 
+																				bit 5: Active in tutorial area only - bit 6: Anyone activates - bit 7: No string - 
+																				bit 8: Deactivated (for proximity triggers) - bit 9: Party only - bit 10: Alternative point - 
+																				bit 11: Door closed */
+	READ_LONG	(bs_region_offset + 0x0064) fj_info_point_strref			// Information text string reference (for info points, default -1)
+	READ_SHORT	(bs_region_offset + 0x0068) fj_trap_detect					/* Trap detection difficulty percentage. N.B. A value of 100 or higher will prevent the trap from
+																			   being detected (e.g. via thief skills, Find Traps effect). */
+	READ_SHORT	(bs_region_offset + 0x006a) fj_trap_remove					// Trap removal difficulty percentage
+	READ_SHORT	(bs_region_offset + 0x006c) fj_trap_active					// Whether the region is trapped (0=no, 1=yes)
+	READ_SHORT	(bs_region_offset + 0x006e) fj_trap_status					// Whether the trap is detected (0=no, 1=yes)
+	READ_SHORT	(bs_region_offset + 0x0070) fj_loc_x						// Trap launch X coordinate
+	READ_SHORT	(bs_region_offset + 0x0072) fj_loc_y						// Trap launch Y coordinate
+	READ_ASCII	(bs_region_offset + 0x0078) fj_key_resref (8) NULL			// Filename of the region’s key
+	READ_ASCII	(bs_region_offset + 0x007c) fj_reg_script (8) NULL			// Filename of the Region script
+	READ_SHORT	(bs_region_offset + 0x0084) fj_alt_x						// Alternative use point X coordinate
+	READ_SHORT	(bs_region_offset + 0x0086) fj_alt_y						// Alternative use point Y coordinate
+/*	READ_ASCII	(bs_region_offset + 0x00ac) fj_sound (8) NULL				// Sound (PST, PSTEE)
+	READ_SHORT	(bs_region_offset + 0x00b4) fj_talk_loc_x					// Talk location point X coordinate (PST, PSTEE)
+	READ_SHORT	(bs_region_offset + 0x00b6) fj_talk_loc_y					// Talk location point Y coordinate (PST, PSTEE)
+	READ_ASCII	(bs_region_offset + 0x00b8) fj_speaker_strref (4) NULL		// Speaker name (PST, PSTEE) (default -1)
+	READ_ASCII	(bs_region_offset + 0x00bc) fj_dialog (8) NULL				// Dialog file (PST, PSTEE)
+*/
+END	// of DEFINE_PATCH_MACRO
+
+
+/* =================================================================================================================== *
+ *                                                                                                                     *
+ *            F U N C T I O N S    &    M A C R O S    R E P L A C I N G    D O O R S    &    R E G I O N S            *
+ *                                                                                                                     *
+ * =================================================================================================================== */
+
+/* =================================================================================================================== *
+ * FUNCTION bs_CLONE_AREA_DOOR : LECTURE et STOCKAGE des paramètres d'une porte pour la cloner ou la modifier.         *
+ *								 READ a door settings and STORE them to patch or copy them later.                      *
+ * ------------------------------------------------------------------------------------------------------------------- *
+ * Lancée systématiquement avant de cloner une porte d'une carte. La variable bs_Delete permet de supprimer la porte   *
+ * après avoir enregistré ses paramètres.                                                                              *
+ * Launched before cloning a door in an area. bs_Delete allows to delete the door after having stored its settings.    *
+ * =================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~bs_CLONE_AREA_DOOR~ 
+INT_VAR	bs_Delete = 0			// Whether we delete or not the door (O = No - 1 = Yes).
+STR_VAR bs_Area = ""			// Which area to patch (ARE file without ext.).
+		bs_Door = ""			// Door's name to clone.
+RET		bs_match_door			// Control variable : 0 (door not found) OR 1 (door found)
+		fj_flags				// Flags
+		fj_open_box_left		// Minimum bounding box of the door polygon (when open)
+		fj_open_box_top			// Minimum bounding box of the door polygon (when open)
+		fj_open_box_right		// Minimum bounding box of the door polygon (when open)
+		fj_open_box_bottom		// Minimum bounding box of the door polygon (when open)
+		fj_closed_box_left		// Minimum bounding box of the door polygon (when closed)
+		fj_closed_box_top		// Minimum bounding box of the door polygon (when closed)
+		fj_closed_box_right		// Minimum bounding box of the door polygon (when closed)
+		fj_closed_box_bottom	// Minimum bounding box of the door polygon (when closed)
+		fj_cursor_idx			// Cursor index (cursors.bam)
+		fj_trap_detect			// Trap detection difficulty
+		fj_trap_remove			// Trap removal difficulty
+		fj_trap_active			// Door is trapped (0=No, 1=Yes)
+		fj_trap_status			// Trap detected (0=No, 1=Yes)
+		fj_trap_loc_x			// Trap launch target X coordinate
+		fj_trap_loc_y			// Trap launch target Y coordinate
+		fj_detect_diff			// Detection difficulty (secret doors)
+		fj_locked_diff			// Lock difficulty (0-100)
+		fj_open_loc_x			// X location to open the door (when open)
+		fj_open_loc_y			// Y location to open the door (when open)
+		fj_closed_loc_x			// X location to open the door (when closed)
+		fj_closed_loc_y			// Y location to open the door (when closed)
+		fj_lockpick_strref		// Lock-pick string
+		fj_name					// Door’s name
+		fj_door_wed_id			// Door ID (to link with WED)
+		fj_door_open_wav		// Door open sound
+		fj_door_close_wav		// Door close sound
+		fj_key_resref			// Key item
+		fj_door_script			// Door script
+		fj_travel_trigger		// Travel trigger name
+		fj_dlg_strref			// Dialog speaker name
+		fj_dlg_resref			// Dialog resref
+
+BEGIN
+
+// 1.First, we seek the door to modify.
+// ------------------------------------
+	LPF ~bs_READ_AREA_STRUCTURE~ RET bs_are_doors_num bs_are_doors_off bs_are_vertices_off bs_are_vertices_num END
+	SET bs_match_door = 0
+	FOR (d = 0 ; d < bs_are_doors_num ; ++d) BEGIN			// Looping through doors
+		PATCH_IF (bs_match_door = 0) BEGIN
+			SET bs_door_offset = "%bs_are_doors_off%" + ("%bs_are_door_size%" * d)
+			READ_ASCII bs_door_offset "nom" (32) NULL
+			PATCH_IF ("%bs_Door%" STRING_COMPARE_CASE "%nom%" = 0) BEGIN 
+				SET bs_num_door_match = d					// index used by the fj_are_structure function to delete the door (if needed)
+				SET bs_match_door = 1						// door found
+				SET d = bs_are_doors_num					// door found : stop the process
+			END	// of PATCH_IF ("%bs_Door%" STRING_COMPARE_CASE "%nom%" = 0)
+		END		// of PATCH_IF (bs_match_door = 0)
+	END			// of FOR (d = 0 ; d < bs_are_doors_num ; ++d)
+
+// If the door is found.
+// ---------------------
+	PATCH_IF (bs_match_door) BEGIN
+
+/* Control debug : useless when the function works fine !
+LPF TO_HEX_NUMBER INT_VAR value = bs_are_doors_off minDigits = 1 prefix = 1 RET off_door = hexNumber END
+LPF TO_HEX_NUMBER INT_VAR value = bs_are_vertices_off minDigits = 1 prefix = 1 RET off_vert = hexNumber END
+LPF TO_HEX_NUMBER INT_VAR value = bs_door_offset minDigits = 1 prefix = 1 RET off_door_found = hexNumber END
+PATCH_LOG ~CONTROL FUNCTION bs_MODIFY_DOOR : %bs_Door% in %SOURCE_FILE%
+%bs_are_doors_num% doors		- offset doors		= %bs_are_doors_off% (%off_door%)
+%bs_are_vertices_num% vertices	- offset vertices	= %bs_are_vertices_off% (%off_vert%)
+Offset Door %bs_Door% found = %bs_door_offset% (%off_door_found%)  	-	%bs_num_door_match%~*/
+
+// 2. We store the door settings to clone the door.
+// ------------------------------------------------
+		LPM ~bs_READ_AREA_DOOR_STRUCTURE~
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG ~CONTROL 2 FUNCTION bs_MODIFY_DOOR ==> settings of door %bs_Door% in %SOURCE_FILE% :
+======================================================
+- Name = %fj_name%	- Door ID (to link with WED) = %fj_door_wed_id%	- Flags = %fj_flags%
+- Minimum bounding box of the door polygon (when open)	 = Left (%fj_open_box_left%)	- Right (%fj_open_box_right%)	- Top (%fj_open_box_top%)	- Bottom (%fj_open_box_bottom%)
+- Minimum bounding box of the door polygon (when closed) = Left (%fj_closed_box_left%)	- Right (%fj_closed_box_right%)	- Top (%fj_closed_box_top%)	- Bottom (%fj_closed_box_bottom%)
+- Door sounds = open (%fj_door_open_wav%) - close (%fj_door_close_wav%)
+- Cursor index (cursors.bam) = %fj_cursor_idx%
+- Trap difficulty = detection (%fj_trap_detect%) - removal (%fj_trap_remove%) - Door is trapped (0=No, 1=Yes) = %fj_trap_active%
+- Trap detected (0=No, 1=Yes) = %fj_trap_status% - Trap launch target = X coordinate (%fj_trap_loc_x%) - Y coordinate (%fj_trap_loc_y%)
+- Door script = %fj_door_script%
+- Detection difficulty (secret doors) = %fj_detect_diff% - Lock difficulty (0-100) = %fj_locked_diff% - Key item = %fj_key_resref%
+- Location to open the door : when open [X (%fj_open_loc_x%) - Y (%fj_open_loc_y%)]	--- when closed [X (%fj_closed_loc_x%) - Y (%fj_closed_loc_y%)].
+- Lock-pick string = %fj_lockpick_strref%
+- Travel trigger name = %fj_travel_trigger%
+- Dialog speaker name = %fj_dlg_strref%	- Dialog resref = %fj_dlg_resref%~*/
+
+
+// 3. We delete the original door (if needed).
+// -------------------------------------------
+		PATCH_IF bs_Delete BEGIN
+			LPF fj_are_structure INT_VAR fj_delete_mode = %bs_num_door_match% STR_VAR fj_structure_type = door END
+		END
+
+	END ELSE BEGIN
+		PATCH_PRINT "WARNING: Door %bs_Door% not found in %bs_Area%"
+	END	// of PATCH_IF (match_door)
+
+END		// of DEFINE_ACTION_FUNCTION
+
+
+/* =========================================================================================================================================================================== *
+ * MACRO bs_ADD_AREA_DOOR : GÉNÉRATION automatique et LANCEMENT de la fonction fj_are_structure pour ajouter une porte.                                                        *
+ *							AUTO-GENERATE and LAUNCH the fj_are_structure function to add a new door.                                                                          *
+ * --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Ajoute une porte dans une carte à partir de paramètres définis - une liste de variables fj_xxxxx définies automatiquement par la fonction bs_CLONE_DOOR, lancée auparavant. *
+ * Add a door in an area using pre-defined settings - list of fj_xxxxx variables automatically defined by the bs_CLONE_DOOR function,launched before.                          *
+ * --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Notes :	 - Il est possible de modifier manuellement ces variables avant de lancer la macro.                                                                                *
+ *			   You can modify those variables before launching the macro.                                                                                                      *
+ *			-  Calcule automatiquement la nouvelle bounding box si on ajoute des vertex.                                                                                       *
+ *			   Automatically calculate the bounding box values if we change the vertex.                                                                                        *
+ * Exemples	:                                                                                                                                                                  *
+ *	- Attribuer un nouveau nom à la porte clonée - Give a new name to the cloned door.							==> SPRINT fj_name "nouveau nom ("new name")                   *
+ *	- Changer les flags de la porte - Modify the door flags.													==> SET fj_flags = ((1 << 1) | (1 << 6) | (1 << 9))            *
+ *					(1 << 1) [locked] - (1 << 6) [located = linked] (1 << 9) [can be looked through]                                                                           *
+ *	- Changer le niveau de difficulté d'ouverture de la porte - Modify the Lock difficulty (0-100).				==> SET fj_locked_diff = 100                                   *
+ *	- Changer le message en cas d'échec d'ouverture de la porte - Modify the Lock-pick string.					==> SET fj_lockpick_strref = RESOLVE (@nnnn)                   *
+ *	- Attribuer une (ou modifier la) clé pour ouvrir la porte - Give a (or modify the) key to open the door.	==> SPRINT fj_key_resref "L#NSKey"                             *
+ *	- Changer le script attribué à la porte - Modify the door script.											==> SPRINT fj_door_script "script"                             *
+ *	- Changer le Travel trigger associé à la porte - Modify the Travel trigger.									==> SPRINT fj_travel_trigger "TranL#NSEn"                      *
+ * =========================================================================================================================================================================== */
+
+DEFINE_PATCH_MACRO ~bs_ADD_AREA_DOOR~ 
+BEGIN
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG "bs_ADD_AREA_DOOR
+%fj_name%
+fj_open_box_left = %fj_open_box_left%
+fj_open_box_right = %fj_open_box_right%
+fj_open_box_top = %fj_open_box_top%
+fj_open_box_bottom = %fj_open_box_bottom%
+fj_closed_box_left = %fj_closed_box_left%
+fj_closed_box_right = %fj_closed_box_right%
+fj_closed_box_top = %fj_closed_box_top%
+fj_closed_box_bottom = %fj_closed_box_bottom%"*/
+
+// 0. Variables used to automatically generate the bounding box.
+// -------------------------------------------------------------
+	SET fj_old_open_box_left		= fj_open_box_left
+	SET fj_old_open_box_right		= fj_open_box_right
+	SET fj_old_open_box_top			= fj_open_box_top
+	SET fj_old_open_box_bottom		= fj_open_box_bottom
+	SET fj_old_closed_box_left		= fj_closed_box_left
+	SET fj_old_closed_box_right		= fj_closed_box_right
+	SET fj_old_closed_box_top		= fj_closed_box_top
+	SET fj_old_closed_box_bottom	= fj_closed_box_bottom
+	SET bs_open_box_left			= 9999
+	SET bs_open_box_right			= 0
+	SET bs_open_box_top				= 9999
+	SET bs_open_box_bottom			= 0
+	SET bs_closed_box_left			= 9999
+	SET bs_closed_box_right			= 0
+	SET bs_closed_box_top			= 9999
+	SET bs_closed_box_bottom		= 0
+
+// 1. First, we read the bs_New_are_vertices Array and auto-generate door vertex (open & closed).
+// ----------------------------------------------------------------------------------------------
+	SET bs_Nb_vertices_open		= 0		// Nb of new vertices for the open door polygone
+	SET bs_Nb_vertices_closed	= 0		// Nb of new vertices for the closed door polygone
+	SPRINT bs_recap_vertex ""			// String used to automatically add new vertices in fj_are_structure function (values set in bs_New_vertices array).
+
+	PATCH_PHP_EACH bs_New_are_vertices AS donnees => door BEGIN
+		PATCH_IF ("%donnees_0%" STRING_COMPARE_CASE "%bs_Area%" = 0) && ("%door%" STRING_COMPARE_CASE "%fj_name%" = 0) BEGIN 
+			PATCH_IF ("%donnees_1%" STRING_COMPARE_CASE "OP" = 0) BEGIN 
+				SPRINT add_vertex EVAL "fj_door_open_vert_%bs_Nb_vertices_open%" 
+				bs_Nb_vertices_open +=1
+			END
+			PATCH_IF ("%donnees_1%" STRING_COMPARE_CASE "CL" = 0) BEGIN 
+				SPRINT add_vertex EVAL "fj_door_closed_vert_%bs_Nb_vertices_closed%" 
+				bs_Nb_vertices_closed +=1 
+			END
+
+			PATCH_IF NOT (IS_AN_INT "%donnees_2%") BEGIN bs_v_coordX = 9999 END ELSE BEGIN bs_v_coordX = EVAL "%donnees_2%" END
+			PATCH_IF NOT (IS_AN_INT "%donnees_3%") BEGIN bs_v_coordY = 9999 END ELSE BEGIN bs_v_coordY = EVAL "%donnees_3%" END
+
+			PATCH_IF ("%bs_v_coordX%" != 9999) AND ("%bs_v_coordY%" != 9999) BEGIN
+				SPRINT bs_recap_vertex EVAL "%bs_recap_vertex% %add_vertex% = (%bs_v_coordX% + (%bs_v_coordY% << 16))"
+				PATCH_IF ("%donnees_1%" STRING_COMPARE_CASE "OP" = 0) BEGIN
+					PATCH_IF (bs_v_coordX < 5120) && (bs_v_coordX < bs_open_box_left) BEGIN		SET bs_open_box_left = bs_v_coordX END
+					PATCH_IF (bs_v_coordX < 5120) && (bs_v_coordX > bs_open_box_right) BEGIN	SET bs_open_box_right = bs_v_coordX END
+					PATCH_IF (bs_v_coordY < 3840) && (bs_v_coordY < bs_open_box_top) BEGIN		SET bs_open_box_top = bs_v_coordY END
+					PATCH_IF (bs_v_coordY < 3840) && (bs_v_coordY > bs_open_box_bottom) BEGIN	SET bs_open_box_bottom = bs_v_coordY END
+				END
+				PATCH_IF ("%donnees_1%" STRING_COMPARE_CASE "CL" = 0) BEGIN
+					PATCH_IF (bs_v_coordX < 5120) && (bs_v_coordX < bs_closed_box_left) BEGIN	SET bs_closed_box_left = bs_v_coordX END
+					PATCH_IF (bs_v_coordX < 5120) && (bs_v_coordX > bs_closed_box_right) BEGIN	SET bs_closed_box_right = bs_v_coordX END
+					PATCH_IF (bs_v_coordY < 3840) && (bs_v_coordY < bs_closed_box_top) BEGIN	SET bs_closed_box_top = bs_v_coordY END
+					PATCH_IF (bs_v_coordY < 3840) && (bs_v_coordY > bs_closed_box_bottom) BEGIN	SET bs_closed_box_bottom = bs_v_coordY END
+				END
+/* Control debug : useless when the function works fine !
+PATCH_LOG ~bs_recap_vertex = %bs_recap_vertex%~*/
+			END
+
+		END	// of PATCH_IF ("%donnees_0%" STRING_COMPARE_CASE "%bs_Area%" = 0) && ("%door%" STRING_COMPARE_CASE "%bs_Door%" = 0)
+	END		// of PATCH_PHP_EACH bs_New_are_vertices
+
+// 2. Second, we auto-generate bounding boxes values (open & closed).
+// ------------------------------------------------------------------
+	PATCH_IF (bs_open_box_left != 9999)		&& (bs_open_box_left != %fj_open_box_left%)			BEGIN fj_open_box_left = bs_open_box_left END
+	PATCH_IF (bs_open_box_right != 9999)	&& (bs_open_box_right != %fj_open_box_right%)		BEGIN fj_open_box_right = bs_open_box_right END
+	PATCH_IF (bs_open_box_top != 9999)		&& (bs_open_box_top != %fj_open_box_top%)			BEGIN fj_open_box_top = bs_open_box_top END
+	PATCH_IF (bs_open_box_bottom != 9999)	&& (bs_open_box_bottom != %fj_open_box_bottom%)		BEGIN fj_open_box_bottom = bs_open_box_bottom END
+	PATCH_IF (bs_closed_box_left != 9999)	&& (bs_closed_box_left != %fj_closed_box_left%)		BEGIN fj_closed_box_left = bs_closed_box_left END
+	PATCH_IF (bs_closed_box_right != 9999)	&& (bs_closed_box_right != %fj_closed_box_right%)	BEGIN fj_closed_box_right = bs_closed_box_right END
+	PATCH_IF (bs_closed_box_top != 9999)	&& (bs_closed_box_top != %fj_closed_box_top%)		BEGIN fj_closed_box_top = bs_closed_box_top END
+	PATCH_IF (bs_closed_box_bottom != 9999)	&& (bs_closed_box_bottom != %fj_closed_box_bottom%)	BEGIN fj_closed_box_bottom = bs_closed_box_bottom END
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG "RECAP
+fj_open_box_left	: old = %fj_old_open_box_left%	--> new = %bs_open_box_left%
+fj_open_box_right	: old = %fj_old_open_box_right%	--> new = %bs_open_box_right%
+fj_open_box_top		: old = %fj_old_open_box_top%	--> new = %bs_open_box_top%
+fj_open_box_bottom	: old = %fj_old_open_box_bottom%	--> new = %bs_open_box_bottom%
+
+fj_closed_box_left	: old = %fj_old_closed_box_left%	--> new = %bs_closed_box_left%
+fj_closed_box_right	: old = %fj_old_closed_box_right%	--> new = %bs_closed_box_right%
+fj_closed_box_top	: old = %fj_old_closed_box_top%	--> new = %bs_closed_box_top%
+fj_closed_box_bottom	: old = %fj_old_closed_box_bottom%	--> new = %bs_closed_box_bottom%
+"*/
+
+// 3. Third, we read the bs_Doors_cell_vertices Array and auto-generate impeded cell blocks door.
+// ----------------------------------------------------------------------------------------------
+	SET bs_Nb_cell_vertices_open	= 0		// Nb of new impeded cell blocks for the open door
+	SET bs_Nb_cell_vertices_closed	= 0		// Nb of new impeded cell blocks for the closed door
+
+	PATCH_PHP_EACH bs_Doors_cell_vertices AS donnees => door BEGIN
+		PATCH_IF ("%donnees_0%" STRING_COMPARE_CASE "%bs_Area%" = 0) && ("%door%" STRING_COMPARE_CASE "%fj_name%" = 0) BEGIN 
+			PATCH_IF ("%donnees_1%" STRING_COMPARE_CASE "OP" = 0) BEGIN 
+				SPRINT add_cell_vertex EVAL "fj_cell_open_vert_%bs_Nb_cell_vertices_open%" 
+				bs_Nb_cell_vertices_open +=1
+			END
+			PATCH_IF ("%donnees_1%" STRING_COMPARE_CASE "CL" = 0) BEGIN 
+				SPRINT add_cell_vertex EVAL "fj_cell_closed_vert_%bs_Nb_cell_vertices_closed%" 
+				bs_Nb_cell_vertices_closed +=1 
+			END
+
+			PATCH_IF NOT (IS_AN_INT "%donnees_2%") BEGIN bs_v_coordX = 9999 END ELSE BEGIN bs_v_coordX = EVAL "%donnees_2%" END
+			PATCH_IF NOT (IS_AN_INT "%donnees_3%") BEGIN bs_v_coordY = 9999 END ELSE BEGIN bs_v_coordY = EVAL "%donnees_3%" END
+
+			PATCH_IF ("%bs_v_coordX%" != 9999) AND ("%bs_v_coordY%" != 9999) BEGIN
+				SPRINT bs_recap_vertex EVAL "%bs_recap_vertex% %add_cell_vertex% = (%bs_v_coordX% + (%bs_v_coordY% << 16))"
+/* Control debug : useless when the function works fine !
+PATCH_LOG ~bs_recap_vertex = %bs_recap_vertex%~*/
+			END
+
+		END	// of PATCH_IF ("%donnees_0%" STRING_COMPARE_CASE "%bs_Area%" = 0) && ("%door%" STRING_COMPARE_CASE "%bs_Door%" = 0)
+	END		// of PATCH_PHP_EACH bs_Doors_cell_vertices
+
+// 4. Fourth, we auto-generate fj_are_structure function : create door structure.
+// ------------------------------------------------------------------------------
+	TEXT_SPRINT bs_inputdoor_settings ~
+LPF fj_are_structure
+INT_VAR
+	fj_flags					// Flags
+	fj_open_box_left			// Minimum bounding box of the door polygon (when open)
+	fj_open_box_top				// Minimum bounding box of the door polygon (when open)
+	fj_open_box_right			// Minimum bounding box of the door polygon (when open)
+	fj_open_box_bottom			// Minimum bounding box of the door polygon (when open)
+	fj_closed_box_left			// Minimum bounding box of the door polygon (when closed)
+	fj_closed_box_top			// Minimum bounding box of the door polygon (when closed)
+	fj_closed_box_right			// Minimum bounding box of the door polygon (when closed)
+	fj_closed_box_bottom		// Minimum bounding box of the door polygon (when closed)
+	fj_cursor_idx				// Cursor index (cursors.bam)
+	fj_trap_detect				// Trap detection difficulty
+	fj_trap_remove				// Trap removal difficulty
+	fj_trap_active				// Door is trapped (0=No, 1=Yes)
+	fj_trap_status				// Trap detected (0=No, 1=Yes)
+	fj_trap_loc_x				// Trap launch target X coordinate
+	fj_trap_loc_y				// Trap launch target Y coordinate
+	fj_detect_diff				// Detection difficulty (secret doors)
+	fj_locked_diff				// Lock difficulty (0-100)
+	fj_open_loc_x				// X location to open the door (when open)
+	fj_open_loc_y				// Y location to open the door (when open)
+	fj_closed_loc_x				// X location to open the door (when closed)
+	fj_closed_loc_y				// Y location to open the door (when closed)
+	fj_lockpick_strref			// Lock-pick string
+~
+	TEXT_SPRINT bs_inputdoor_settings ~%bs_inputdoor_settings% %bs_recap_vertex%
+STR_VAR
+	fj_structure_type = "door"
+	fj_name				// Door’s name
+	fj_door_wed_id		// Door ID (to link with WED)
+	fj_door_open_wav	// Door open sound
+	fj_door_close_wav	// Door close sound
+	fj_key_resref		// Key item
+	fj_door_script		// Door script
+	fj_travel_trigger	// Travel trigger name
+	fj_dlg_strref		// Dialog speaker name
+	fj_dlg_resref		// Dialog resref
+END
+~
+
+// 5. Fifth, we generate include file.
+// -----------------------------------
+	INNER_ACTION BEGIN
+<<<<<<<< .../bs_door_create.tph
+>>>>>>>>
+		COPY - ~.../bs_door_create.tph~ ~.../bs_door_create.tph~
+			INSERT_BYTES 0 (STRING_LENGTH ~%bs_inputdoor_settings%~)
+			WRITE_ASCIIE 0 ~%bs_inputdoor_settings%~
+	END
+	PATCH_REINCLUDE ~.../bs_door_create.tph~
+
+END		// of DEFINE_PATCH_FUNCTION
+
+
+/* =================================================================================================================== *
+ * FUNCTION bs_CLONE_AREA_REGION : LECTURE et STOCKAGE des paramètres d'une région pour la cloner ou la modifier.      *
+ *								   READ a region settings and store them to patch or copy them later.                  *
+ * ------------------------------------------------------------------------------------------------------------------- *
+ * Lancée systématiquement avant de cloner une region d'une carte. La variable bs_Delete permet de supprimer la région *
+ * après avoir enregistré ses paramètres.                                                                              *
+ * Launched before cloning a region in a area. bs_Delete allows to delete the door after having stored its settings.   *
+ * =================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~bs_CLONE_AREA_REGION~ 
+INT_VAR	bs_Delete		= 0		// Whether we delete or not the region (O = No - 1 = Yes).
+		bs_X_box_left	= "-1"	// Special case for your mod !
+STR_VAR bs_Area = ""			// Which area to patch (ARE file without ext.).
+		bs_Region = ""			// Region's name to clone.
+RET		bs_match_region
+		fj_type					// Region type (0=trap, 1=info, 2=travel)
+		fj_box_left				// leftmost X coordinate of the region’s bounding box
+		fj_box_top				// topmost Y coordinate of the region’s bounding box
+		fj_box_right			// rightmost X coordinate of the region’s bounding box
+		fj_box_bottom			// bottommost Y coordinate of the region’s bounding box
+		fj_cursor_idx			// Cursor index (cursors.bam)
+		fj_flags				// Flags
+		fj_info_point_strref	// Information text string reference (for info points, default -1)
+		fj_trap_detect			// Trap detection difficulty
+		fj_trap_remove			// Trap removal difficulty
+		fj_trap_active			// Region is trapped (0=No, 1=Yes)
+		fj_trap_status			// Trap detected (0=No, 1=Yes)
+		fj_loc_x				// Trap launch X coordinate
+		fj_loc_y				// Trap launch Y coordinate
+		fj_alt_x				// Alternative use point X coordinate
+		fj_alt_y				// Alternative use point Y coordinate
+		fj_name					// Region’s name
+		fj_destination_area		// Destination area resource reference (for travel regions)
+		fj_destination_name		// Entrance name in the destination area (for travel regions)
+		fj_key_resref			// Filename of the region’s key
+		fj_reg_script			// Filename of the Region script
+BEGIN
+
+// 1. First, we seek the region to modify.
+// ---------------------------------------
+	LPF ~bs_READ_AREA_STRUCTURE~ RET bs_are_regions_num bs_are_regions_off bs_are_vertices_off bs_are_vertices_num END
+	SET bs_match_region = 0
+	FOR (r = 0 ; r < bs_are_regions_num ; ++r) BEGIN					// Looping through regions
+		PATCH_IF (bs_match_region = 0) BEGIN
+			SET bs_region_offset = "%bs_are_regions_off%" + ("%bs_are_region_size%" * r)
+			READ_ASCII bs_region_offset "region" (32) NULL
+			PATCH_IF ("%bs_Region%" STRING_COMPARE_CASE "%region%" = 0) BEGIN 
+				PATCH_IF (bs_X_box_left	> "-1") BEGIN 
+					READ_SHORT (bs_region_offset + 0x0022) X_box_left	// leftmost X coordinate of the region’s bounding box
+					PATCH_IF (bs_X_box_left = X_box_left) BEGIN 
+						SET bs_num_region_match = r						// needed to delete the region
+						SET bs_match_region = 1
+						SET r = bs_are_regions_num						// region found : stop the process
+					END ELSE BEGIN
+						SET bs_num_region_match = r						// needed to delete the region
+						SET bs_match_region = 1
+						SET r = bs_are_regions_num						// region found : stop the process
+					END	// of PATCH_IF (bs_X_box_left = X_box_left%)
+				END		// of PATCH_IF (bs_X_box_left	> "-1")
+			END			// of PATCH_IF ("%bs_Region%" STRING_COMPARE_CASE "%region%" = 0)
+		END				// of PATCH_IF (bs_match_region = 0)
+	END					// of FOR (r = 0 ; r < bs_are_region_num ; ++r)
+
+// If the region is found.
+// -----------------------
+	PATCH_IF (bs_match_region) BEGIN
+
+/* Control debug : useless when the function works fine !
+LPF TO_HEX_NUMBER INT_VAR value = bs_are_regions_off minDigits = 1 prefix = 1 RET off_region = hexNumber END
+LPF TO_HEX_NUMBER INT_VAR value = bs_are_vertices_off minDigits = 1 prefix = 1 RET off_vert = hexNumber END
+LPF TO_HEX_NUMBER INT_VAR value = bs_region_offset minDigits = 1 prefix = 1 RET off_region_found = hexNumber END
+PATCH_LOG ~CONTROL FUNCTION bs_MODIFY_DOOR : %bs_Door% in %SOURCE_FILE%
+%bs_are_regions_num% regions	- offset regions	= %bs_are_regions_off% (%off_region%)
+%bs_are_vertices_num% vertices	- offset vertices	= %bs_are_vertices_off% (%off_vert%)
+Offset region %bs_Region% found = %bs_region_offset% (%off_region_found%)  			%bs_num_region_match%~*/
+
+// 2. We store the region settings to copy them into a new region.
+// ---------------------------------------------------------------
+		LPM ~bs_READ_AREA_REGION_STRUCTURE~
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG ~CONTROL 2 FUNCTION bs_MODIFY_REGION ==> settings of region %bs_Region% in %SOURCE_FILE% :
+======================================================
+- Name = %fj_name%	- Region type (0=trap, 1=info, 2=travel) = %fj_type%	- Flags = %fj_flags%
+- Minimum bounding box of the region polygon = Left (%fj_box_left%)	- Right (%fj_box_right%)	- Top (%fj_box_top%)	- Bottom (%fj_box_bottom%)
+
+- Cursor index (cursors.bam) = %fj_cursor_idx%
+- Trap difficulty = detection (%fj_trap_detect%) - removal (%fj_trap_remove%) - Region is trapped (0=No, 1=Yes) = %fj_trap_active%
+- Trap detected (0=No, 1=Yes) = %fj_trap_status% - Trap launch target = X coordinate (%fj_loc_x%) - Y coordinate (%fj_loc_y%) - Alternative use point = X coordinate (%fj_alt_x%) - Y coordinate (%fj_alt_y%)
+- Region script = %fj_reg_script%	-	Travel regions = Destination area : %fj_destination_area%	- Entrance name in the destination area : %fj_destination_name%
+- Key item = %fj_key_resref%	- Information text string reference (for info points, default -1) = %fj_info_point_strref%
+- Travel trigger name = %fj_travel_trigger%
+- Dialog speaker name = %fj_dlg_strref%	- Dialog resref = %fj_dlg_resref%~*/
+
+// 3. We delete the original region (if needed).
+// ---------------------------------------------
+		PATCH_IF bs_Delete BEGIN
+			LPF fj_are_structure INT_VAR fj_delete_mode = %bs_num_region_match% STR_VAR fj_structure_type = region END
+		END
+
+	END	ELSE BEGIN
+		PATCH_PRINT "Region %bs_Region% not found in %bs_Area%"
+	END	// of PATCH_IF (match_region)
+
+END		// of DEFINE_PATCH_FUNCTION
+
+
+/* ============================================================================================================================================================================== *
+ * MACRO bs_ADD_AREA_REGION : GÉNÉRATION automatique et LANCEMENT de la fonction fj_are_structure pour ajouter une region.                                                        *
+ * 							  AUTO-GENERATE and LAUCNH the fj_are_structure function to add a new region.                                                                         *
+ * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ *
+ * Ajoute une region dans une carte à partir de paramètres définis - une liste de variables fj_xxxxx définies automatiquement par la fonction bs_CLONE_REGION, lancée auparavant. *
+ * LAdd a region in an area using pre-defined settings - list of fj_xxxxx variables automatically defined by the bs_CLONE_DOOR function,launched before.                          *
+ * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ *
+ * Notes :	 - Il est possible de modifier manuellement ces variables avant de lancer la macro.                                                                                   *
+ *			   You can modify those variables before launching the macro.                                                                                                         *
+ *			-  Calcule automatiquement la nouvelle bounding box si on ajoute des vertex.                                                                                          *
+ *			   Automatically calculate the bounding box values if we change the vertex.                                                                                           *
+ * Exemples	:                                                                                                                                                                     *
+ *	- Attribuer un nouveau nom à la region clonée - Give a new name to the cloned region.						==> SPRINT fj_name "nouveau nom ("new name")                      *
+ *	- Changer le type de région - Modify the Region type (0 = trap, 1 = info, 2 = travel)						==> SET fj_type = 2                                               *
+ *	- Changer les flags de la région - Modify the region flags.													==> SET (1 << 11) // (blocked = connected to door)                *
+ *	- Changer le script attribué à la région - Modify the region script.										==> SPRINT fj_reg_script "script"                                 *
+ *	- Changer le message d'information de la région - Modify the Information text string reference.				==> SET fj_info_point_strref = "-1" // -1 par défaut              *
+ *	- Changer la carte de destination - Modify the Destination area resource reference (for travel regions).	==> SPRINT fj_destination_area "RANI53"                           *
+ *	- Changer l'entrée dans la carte de destination - Modify the Entrance name in the destination area (for travel regions). ==> SPRINT SPRINT fj_destination_name "Fromoutside"  *
+ *	- Changer le niveau de difficulté de détection d'un piège - Modify the Trap detection difficulty (0-100).	==> SET fj_trap_detect = 80                                       *
+ *	- Changer le niveau de difficulté de désamorçage d'un piège - Modify the Trap removal difficulty (0-100).	==> SET fj_trap_remove = 75                                       *
+ *	- Changer l'activation du piège d'une région - Modify whether the Region is trapped (0 = No, 1 = Yes).		==> SET fj_trap_active = 1 // (0 = No, 1 = Yes)                   *
+ *	- Changer le statut d'un piège - Modify the Trap status.	                                                ==> SET fj_trap_status = 0 // Trap detected (0 = No, 1 = Yes)     *
+ *	- Modifier les coordonnées de lancement d'un piège - Modify the Trap launch X coordinates.					==> SET fj_loc_x = 489	-	SET fj_loc_y = 1735                   *
+ * ============================================================================================================================================================================== */
+
+DEFINE_PATCH_MACRO ~bs_ADD_AREA_REGION~ 
+BEGIN
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG "fj_box_left = %fj_box_left%
+fj_box_right = %fj_box_right%
+fj_box_top = %fj_box_top%
+fj_box_bottom = %fj_box_bottom%"*/
+
+// 0. Variables used to automatically generate the bounding box.
+// -------------------------------------------------------------
+	SET fj_old_box_left		= fj_box_left
+	SET fj_old_box_right	= fj_box_right
+	SET fj_old_box_top		= fj_box_top
+	SET fj_old_box_bottom	= fj_box_bottom
+	SET bs_box_left			= 9999
+	SET bs_box_right		= 0
+	SET bs_box_top			= 9999
+	SET bs_box_bottom		= 0
+
+// 1. First, we read the bs_New_are_vertices Array : auto-generate region vertex and bounding box.
+// -----------------------------------------------------------------------------------------------
+	SET bs_Nb_vertices		= 0	// Nb of new vertices for the region polygone
+	SPRINT bs_recap_vertex ""	// String used to automatically add new region vertices in fj_are_structure function (values set in bs_New_vertices array).
+
+	PATCH_PHP_EACH bs_New_are_vertices AS donnees => region BEGIN
+		PATCH_IF ("%donnees_0%" STRING_COMPARE_CASE "%bs_Area%" = 0) && ("%region%" STRING_COMPARE_CASE "%fj_name%" = 0) BEGIN 
+			SPRINT add_vertex EVAL "fj_vertex_%bs_Nb_vertices%" 
+			bs_Nb_vertices +=1
+
+			PATCH_IF NOT (IS_AN_INT "%donnees_2%") BEGIN bs_v_coordX = 9999 END ELSE BEGIN bs_v_coordX = EVAL "%donnees_2%" END
+			PATCH_IF NOT (IS_AN_INT "%donnees_3%") BEGIN bs_v_coordY = 9999 END ELSE BEGIN bs_v_coordY = EVAL "%donnees_3%" END
+
+			PATCH_IF ("%bs_v_coordX%" != 9999) AND ("%bs_v_coordY%" != 9999) BEGIN
+				SPRINT bs_recap_vertex EVAL "%bs_recap_vertex% %add_vertex% = (%bs_v_coordX% + (%bs_v_coordY% << 16))"
+				PATCH_IF (bs_v_coordX < 5120) && (bs_v_coordX < bs_box_left)	BEGIN SET bs_box_left = bs_v_coordX END
+				PATCH_IF (bs_v_coordX < 5120) && (bs_v_coordX > bs_box_right)	BEGIN SET bs_box_right = bs_v_coordX END
+				PATCH_IF (bs_v_coordY < 3840) && (bs_v_coordY < bs_box_top)		BEGIN SET bs_box_top = bs_v_coordY END
+				PATCH_IF (bs_v_coordY < 3840) && (bs_v_coordY > bs_box_bottom)	BEGIN SET bs_box_bottom = bs_v_coordY END
+/* Control debug : useless when the function works fine !
+PATCH_LOG ~%bs_recap_vertex%~*/
+			END
+
+		END	// of PATCH_IF ("%donnees_0%" STRING_COMPARE_CASE "%bs_Area%" = 0) && ("%region%" STRING_COMPARE_CASE "%bs_Region%" = 0)
+	END		// of PATCH_PHP_EACH bs_New_are_vertices
+
+// 2. Second, we auto-generate bounding box values.
+// ------------------------------------------------
+	PATCH_IF (bs_box_left != 9999)		&& (bs_box_left != %fj_box_left%)		BEGIN fj_box_left = bs_box_left END
+	PATCH_IF (bs_box_right != 9999)		&& (bs_box_right != %fj_box_right%)		BEGIN fj_box_right = bs_box_right END
+	PATCH_IF (bs_box_top != 9999)		&& (bs_box_top != %fj_box_top%)			BEGIN fj_box_top = bs_box_top END
+	PATCH_IF (bs_box_bottom != 9999)	&& (bs_box_bottom != %fj_box_bottom%)	BEGIN fj_box_bottom = bs_box_bottom END
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG "RECAP
+fj_box_left		: old = %fj_old_box_left%	--> new = %bs_box_left%
+fj_box_right	: old = %fj_old_box_right%	--> new = %bs_box_right%
+fj_box_top		: old = %fj_old_box_top%	--> new = %bs_box_top%
+fj_box_bottom	: old = %fj_old_box_bottom%	--> new = %bs_box_bottom%
+"*/
+
+// 3. Third, we auto-generate fj_are_structure function : create region structure.
+// -------------------------------------------------------------------------------
+	TEXT_SPRINT bs_inputregion_settings ~LPF fj_are_structure
+INT_VAR
+	fj_type					// Region type (0=trap, 1=info, 2=travel)
+	fj_box_left				// leftmost X coordinate of the region’s bounding box
+	fj_box_top				// topmost Y coordinate of the region’s bounding box
+	fj_box_right			// rightmost X coordinate of the region’s bounding box
+	fj_box_bottom			// bottommost Y coordinate of the region’s bounding box
+	fj_cursor_idx			// Cursor index (cursors.bam)
+	fj_flags				// Flags
+	fj_info_point_strref	// Information text string reference (for info points, default -1)
+	fj_trap_detect			// Trap detection difficulty
+	fj_trap_remove			// Trap removal difficulty
+	fj_trap_active			// Region is trapped (0=No, 1=Yes)
+	fj_trap_status			// Trap detected (0=No, 1=Yes)
+	fj_loc_x				// Trap launch X coordinate
+	fj_loc_y				// Trap launch Y coordinate
+	fj_alt_x				// Alternative use point X coordinate
+	fj_alt_y				// Alternative use point Y coordinate
+~
+	TEXT_SPRINT bs_inputregion_settings ~%bs_inputregion_settings% %bs_recap_vertex%
+
+STR_VAR
+	fj_structure_type = "region"
+	fj_name					// Region’s name
+	fj_destination_area		// Destination area resource reference (for travel regions)
+	fj_destination_name		// Entrance name in the destination area (for travel regions)
+	fj_key_resref			// Filename of the region’s key
+	fj_reg_script			// Filename of the Region script
+END
+~
+
+// 4. Fourth, we generate include file.
+// ------------------------------------
+	INNER_ACTION BEGIN
+<<<<<<<< .../bs_region_create.tph
+>>>>>>>>
+		COPY - ~.../bs_region_create.tph~ ~.../bs_region_create.tph~
+			INSERT_BYTES 0 (STRING_LENGTH ~%bs_inputregion_settings%~)
+			WRITE_ASCIIE 0 ~%bs_inputregion_settings%~
+	END
+	PATCH_REINCLUDE ~.../bs_region_create.tph~
+
+END		// of DEFINE_PATCH_MACRO

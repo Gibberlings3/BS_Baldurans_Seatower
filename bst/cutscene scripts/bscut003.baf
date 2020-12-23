@@ -1,0 +1,15 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+        	CutSceneId(Player1)
+        	ActionOverride("bstrmage",FaceObject("bsdopp01"))
+        	SmallWait(5)
+        	ActionOverride("bstrmage",ForceSpell("bsdopp01",FLASHY_1))
+        	SmallWait(5)
+        	ActionOverride("bsdopp01",Polymorph(DOPPLEGANGER))
+        	Wait(1)
+		ActionOverride("bsdopp01",Enemy())
+		EndcutSceneMode()
+END
+

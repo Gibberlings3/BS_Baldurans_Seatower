@@ -1,0 +1,12 @@
+// Initial area setup
+IF
+	Global("bsDream155","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsbandit",[630.341],8)
+		CreateCreature("bsbandit",[490.313],10)
+		CreateCreature("bsbandit",[486.294],10)
+		CreateCreature("bsbandt2",[487.423],9)
+		CreateCreature("bsbandt2",[513.481],8)
+		SetGlobal("bsDream155","GLOBAL",1)
+END

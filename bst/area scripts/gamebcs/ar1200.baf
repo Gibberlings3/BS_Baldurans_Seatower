@@ -1,0 +1,163 @@
+
+/* Doppelganger quest */
+/* create commoner Docks, deactivate original door info trigger, set mapnote for tailor shop */
+IF
+	Global("bsCreateCommoner","MYAREA",0)
+THEN
+	RESPONSE #100
+  		AddMapNote([4290.390],@38)
+//		Unlock("DOOR 01")
+//		OpenDoor("DOOR 01")
+		TriggerActivation("InfoHouse",FALSE)
+		SetGlobal("bsCreateCommoner","MYAREA",1)
+		CreateCreature("bscommw1",[4090.600],0)
+		Continue()
+END
+
+/* doppelganger quest: timer run out wile PC was away from the tower. There is only one timer but several quest instances need to be considered. */
+/* Global("bsDGQuestAborted","GLOBAL",2) is set in the Seatower Commander's dialogue if PC tells him that they won't help further after investigating the hole in the prison wall. */
+
+/* First stage:
+timer run out while PC was told to investigating the hole in the prison wall */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL") 
+	Global("bsDoppelgangerQuest","GLOBAL",6)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",1)
+		Continue()
+END
+
+/* Second stage:
+timer run out after PC reported his findings from the tunnel into the docks / doppelganger tailor but did not fight against the doppelgangers in the barracks */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL") 
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",6)
+	GlobalLT("bsDoppelgangerQuest","GLOBAL",10)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",3)
+		Continue()
+END
+
+/* Third stage:
+timer run out after PC received "Mimic Powder" */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL") 
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",11)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",5)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",4)
+		Continue()
+END
+
+/* Fourth stage:
+timer run out after PC used tanner's help to spread the "Mimic Powder" across the tower's premises but PC did not kill all doppelgangers */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL") 
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",11)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",5)
+	NumDeadGT("bsdopp07",0)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",5)
+		Continue()
+END
+
+/* Mimic Powder: will be expired */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	HasItem("bsdopdr",Player1)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakeItemReplace("bsdopd2","bsdopdr",Player1)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END
+
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	HasItem("bsdopdr",Player2)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakeItemReplace("bsdopd2","bsdopdr",Player2)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END
+
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	HasItem("bsdopdr",Player3)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakeItemReplace("bsdopd2","bsdopdr",Player3)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END
+
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	HasItem("bsdopdr",Player4)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakeItemReplace("bsdopd2","bsdopdr",Player4)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END
+
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	HasItem("bsdopdr",Player5)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakeItemReplace("bsdopd2","bsdopdr",Player5)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END
+
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	HasItem("bsdopdr",Player6)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakeItemReplace("bsdopd2","bsdopdr",Player6)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END
+
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	PartyHasItem("bsdopdr")
+	!HasItem("bsdopdr",Player1)
+	!HasItem("bsdopdr",Player2)
+	!HasItem("bsdopdr",Player3)
+	!HasItem("bsdopdr",Player4)
+	!HasItem("bsdopdr",Player5)
+	!HasItem("bsdopdr",Player6)
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		TakePartyItem("bsdopdr")
+		GiveItemCreate("bsdopd2",Player1,0,0,0)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		Continue()
+END

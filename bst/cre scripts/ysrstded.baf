@@ -1,0 +1,70 @@
+// Safety check - should already be Enemy()
+IF
+  !Allegiance(Myself,ENEMY)
+	See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+		Enemy()
+		Continue()
+END
+
+// If I'm going to fight and I can't see GOODCUTOFF
+// then keep moving randomly until I can see GOODCUTOFF.
+// This should mix things up nicely.
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  !LOS(Player1,30)
+  !LOS(Player2,30)
+  !LOS(Player3,30)
+  !LOS(Player4,30)
+  !LOS(Player5,30)
+  !LOS(Player6,30)
+THEN
+  RESPONSE #100
+    RandomWalk()
+    Continue()
+END
+
+// Load a target
+IF
+  Allegiance(Myself,ENEMY)
+	See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+		Continue()
+END
+
+// Select my ranged weapon
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  !Range(LastSeenBy(Myself),4)
+THEN
+  RESPONSE #100
+    EquipRanged()
+   	SmallWait(3)
+    Continue()
+END
+
+// Select my melee weapon
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Range(LastSeenBy(Myself),4)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+   	SmallWait(3)
+   	Continue()
+END
+
+// Now attack
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Detect([GOODCUTOFF])
+THEN
+ RESPONSE #100
+   AttackOneRound(LastSeenBy(Myself))
+END

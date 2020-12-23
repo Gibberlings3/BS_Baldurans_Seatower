@@ -1,0 +1,32 @@
+IF
+  OR(6)
+    IsOverMe(Player1)
+    IsOverMe(Player2)
+    IsOverMe(Player3)
+    IsOverMe(Player4)
+    IsOverMe(Player5)
+    IsOverMe(Player6)
+  Global("yst6trap1","GLOBAL",0)
+THEN
+  RESPONSE #100
+    ActionOverride(Player1,LeaveAreaLUA("bs1001","",[296.229],2)
+    ActionOverride(Player2,LeaveAreaLUA("bs1001","",[296.229],2)
+    ActionOverride(Player3,LeaveAreaLUA("bs1001","",[296.229],2)
+    ActionOverride(Player4,LeaveAreaLUA("bs1001","",[296.229],2)
+    ActionOverride(Player5,LeaveAreaLUA("bs1001","",[296.229],2)
+    ActionOverride(Player6,LeaveAreaLUA("bs1001","",[296.229],2)
+    SetGlobal("yst6trap1","GLOBAL",1)
+END
+
+IF
+  !IsOverMe(Player1)
+  !IsOverMe(Player2)
+  !IsOverMe(Player3)
+  !IsOverMe(Player4)
+  !IsOverMe(Player5)
+  !IsOverMe(Player6)
+  Global("yst6trap1","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("yst6trap1","GLOBAL",0)
+END

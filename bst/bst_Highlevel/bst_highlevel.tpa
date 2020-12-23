@@ -1,0 +1,142 @@
+///////////////////////////////////////////////////////////////////////
+// BST: Highlevel-Encounter tpa
+//
+// INCLUDE ~bst/bst_Highlevel/bst_highlevel.tpa~
+///////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+    //Missing Animations
+    COPY ~bst/bst_Highlevel/Glabrezu_animations~         ~override~
+    //Missing Creature-Sounds
+    COPY ~bst/bst_Highlevel/Glabrezu_sounds~         ~override~
+END
+
+//##################################################
+// tis files
+//##################################################
+
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  COPY ~bst/bst_Highlevel/tis_bgee~   ~override~      // PVRZ tiles for v2 TIS files
+END
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  COPY ~bst/bst_Highlevel/tis_bgee~   ~override~      // PVRZ tiles for v2 TIS files
+END 
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN // not Enhanced Edition
+  COPY_LARGE ~bst/bst_Highlevel/tis_bg2~         ~override~      // use v1-format TIS files
+END
+
+//##################################################
+// different bam files
+//##################################################
+
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  COPY ~bst/bst_Highlevel/bam_BGEE~   ~override~      // EE bam
+END
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  COPY ~bst/bst_Highlevel/bam_BGEE~   ~override~      // EE bam
+END 
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN // not Enhanced Edition
+  COPY ~bst/bst_Highlevel/bam_bg2~         ~override~      // BG2 bam
+END
+
+/* mos - only neded for BGT */
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  COPY ~bst/bst_Highlevel/mos_bg2~ ~Override~
+END
+
+//##################################################
+// Areas
+//##################################################
+COPY ~bst/bst_Highlevel/areas~         ~override~
+//##################################################
+// Bams
+//##################################################
+COPY ~bst/bst_Highlevel/bam/.~ ~override/.~
+
+//##################################################
+// Items
+//##################################################
+COPY ~bst/bst_Highlevel/itm/copy~         ~override~
+COPY ~bst/bst_Highlevel/itm/BS#114CO.itm~         ~override/BS#114CO.itm~
+  SAY NAME1 @8000
+  SAY NAME2 @8000
+  SAY UNIDENTIFIED_DESC @8002
+  SAY DESC @8002
+  
+// Long Sword+3: Different string-refs for different game types
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+COPY  ~bst/bst_Highlevel/itm/BSSW1H73.itm~         ~override/BSSW1H73.itm~     // EE Longsword +3 with string references
+  SAY NAME2 @8004 
+  SAY DESC @8005  
+END
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN //  Enhanced Edition Trilogy
+COPY  ~bst/bst_Highlevel/itm/BSSW1H73.itm~         ~override/BSSW1H73.itm~     // EET Longsword +3 w/o string references
+END
+ 
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN // not Enhanced Edition
+COPY  ~bst/bst_Highlevel/itm/BSSW1H73.itm~         ~override/BSSW1H73.itm~     // BG2 Longsword +3 w/o string references
+END  
+
+//##################################################
+// Creatures
+//##################################################
+COPY ~bst/bst_Highlevel/cre/copy~         ~override~
+
+ACTION_IF GAME_IS ~bgt eet~ THEN BEGIN
+  COPY_EXISTING ~BSGLABRE.cre~ ~override~
+    SAY NAME1 #38955 SAY NAME2 #38955
+END
+
+COPY ~bst/bst_Highlevel/cre/BSOTYUGH.cre~ ~override/BSOTYUGH.cre~
+SAY NAME1 @8100 SAY NAME2 @8101
+
+
+//##################################################
+// Scripts
+//##################################################
+COMPILE ~bst/bst_Highlevel/scripts/BSGLABRE.baf~
+
+COMPILE ~bst/bst_Highlevel/scripts/BS#114C1.baf~
+COPY_EXISTING ~BS#114C1.bcs~   ~override/BS#114C1.bcs~
+REPLACE ~999999~ @8201
+COMPILE ~bst/bst_Highlevel/scripts/BS#114C2.baf~
+COPY_EXISTING ~BS#114C2.bcs~   ~override/BS#114C2.bcs~
+REPLACE ~999999~ @8201
+COMPILE ~bst/bst_Highlevel/scripts/BS#114C3.baf~
+COPY_EXISTING ~BS#114C3.bcs~   ~override/BS#114C3.bcs~
+REPLACE ~999999~ @8201
+COMPILE ~bst/bst_Highlevel/scripts/BS#114C4.baf~
+COPY_EXISTING ~BS#114C4.bcs~   ~override/BS#114C4.bcs~
+REPLACE ~999999~ @8201
+COMPILE ~bst/bst_Highlevel/scripts/BS#114C5.baf~
+COPY_EXISTING ~BS#114C5.bcs~   ~override/BS#114C5.bcs~
+REPLACE ~999999~ @8201
+COMPILE ~bst/bst_Highlevel/scripts/BS#114C6.baf~
+COPY_EXISTING ~BS#114C6.bcs~   ~override/BS#114C6.bcs~
+REPLACE ~999999~ @8201
+
+COMPILE ~bst/bst_Highlevel/scripts/BS0113.baf~
+
+COMPILE ~bst/bst_Highlevel/scripts/BS0114.baf~
+	   
+COMPILE ~bst/bst_Highlevel/scripts/BS#114IN.baf~
+
+//##################################################
+// Spells
+//##################################################
+COPY ~bst/bst_Highlevel/spells/bs#wi994.spl~ ~override/bs#wi994.spl~
+SAY NAME1 @8006 SAY NAME2 @8006	   
+
+//##################################################
+// Copy ambient sounds to override in BGT to prevent crashes
+//##################################################
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+COPY_EXISTING ~GACAVM01.WAV~   ~override/GACAVM01.WAV~
+END
+

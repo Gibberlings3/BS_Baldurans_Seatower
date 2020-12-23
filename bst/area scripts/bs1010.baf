@@ -1,0 +1,78 @@
+// Create Lars and the Attendant, Quest "An Orphan in the Seatower"
+
+
+IF
+  Global("bsCreateRoryn","MYAREA",0)
+THEN
+  RESPONSE #100
+ 	 	SetGlobal("bsCreateRoryn","MYAREA",1)
+		CreateCreature("bsroryn",[756.840],14)
+END
+
+IF
+  Global("bsCreateAzala","MYAREA",0)
+THEN
+  RESPONSE #100
+ 	 	SetGlobal("bsCreateAzala","MYAREA",1)
+		CreateCreature("bstq009",[859.911],6) //Azala
+END
+
+IF
+  Global("bsCreateOrphanquest","MYAREA",0)
+THEN
+  RESPONSE #100
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",1)
+		CreateCreature("bstq002",[1102.349],0)
+		CreateCreature("bstq003",[1123.361],5)
+END
+
+IF
+  Global("bsOrphanQuest","GLOBAL",4)
+  GlobalLT("bsCreateOrphanquest","MYAREA",2)
+THEN
+  RESPONSE #100
+		ActionOverride("bstq002",DestroySelf())
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",2)
+END
+
+IF
+  Global("bsOrphanQuest","GLOBAL",5)
+  GlobalLT("bsCreateOrphanquest","MYAREA",4)
+THEN
+  RESPONSE #100
+		ActionOverride("bstq002",EscapeArea())
+		ActionOverride("bstq003",EscapeArea())
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",4)
+END
+
+
+IF
+  Global("bsOrphanQuest","GLOBAL",6)
+  GlobalLT("bsCreateOrphanquest","MYAREA",3)
+THEN
+  RESPONSE #100
+		ActionOverride("bstq001",EscapeArea())
+		ActionOverride("bstq003",EscapeArea())
+ 	 	SetGlobal("bsCreateOrphanquest","MYAREA",3)
+END
+
+/* create guest that talks about rats second time */
+
+
+IF
+	Global("bsCollectRabbits","GLOBAL",3)
+	Global("bsCreateRabbitGuest","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bstq006",[638.758],14)
+		SetGlobal("bsCreateRabbitGuest","MYAREA",1)
+END
+
+/* Interrogator's work - make Halfslinger go back to his house */
+
+IF
+	Global("bsInquisitorsWork","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsInquisitorsWork","GLOBAL",3)
+END

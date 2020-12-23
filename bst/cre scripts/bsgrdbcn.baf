@@ -1,0 +1,181 @@
+/* bsgrdbcn script of beacon guard */
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",0)
+THEN 
+	RESPONSE #100
+
+		DisplayStringHead("bsboybcn",@11026)
+		Wait(1)
+		DisplayStringHead(Myself,@11027)
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",1)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",1)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bsboybcn",@11028)
+		Wait(1)
+		DisplayStringHead(Myself,@11029)
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",2)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",2)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		ActionOverride(Myself,DisplayStringHead("bsboybcn",@11030))
+		ActionOverride(Myself,Wait(2))
+		ActionOverride(Myself,DisplayStringHead(Myself,@11031))
+		ActionOverride(Myself,Wait(3))
+		ActionOverride(Myself,DisplayStringHead("bsboybcn",@11032))
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",3)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",3)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bsboybcn",@11033)
+		Wait(2)
+		DisplayStringHead(Myself,@11034)
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",4)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",4)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bsboybcn",@11035)
+		Wait(2)
+		DisplayStringHead(Myself,@11036)
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",TWO_ROUNDS)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",5)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",5)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bsboybcn",@11037)
+		Wait(1)
+		DisplayStringHead(Myself,@11038)
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",6)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",6)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bsboybcn",@11039)
+		Wait(2)
+		DisplayStringHead(Myself,@11040)
+		SetGlobalTimer("bsCCBeaconTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",7)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bsboybcn")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsboybcn",CD_STATE_NOTVALID)
+	!StateCheck("bsmanbcn",CD_STATE_NOTVALID)
+	Global("bsCuriousChildBeacon","MYAREA",7)
+	GlobalTimerExpired("bsCCBeaconTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead("bsmanbcn",@11041)
+		Wait(2)
+		DisplayStringHead("bsboybcn",@11042)
+		Wait(1)
+		SetGlobal("bsCuriousChildBeacon","MYAREA",8)
+		ActionOverride("bsmanbcn",EscapeArea())
+		ActionOverride("bsboybcn",EscapeArea())
+		SetInterrupt(TRUE)
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

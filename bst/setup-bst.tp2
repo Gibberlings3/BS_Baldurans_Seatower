@@ -1,0 +1,2489 @@
+BACKUP ~bst/backup~
+AUTHOR ~https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/~
+VERSION ~vEAOB.1~
+
+// MODDER setup_tra NONE
+
+README ~bst/documentation/english.bst.txt~
+
+ALWAYS
+
+/* check for a ready SoD (doesn't work on Windows...) */
+
+ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
+  FAIL ~You need to prepare your SoD game before installing mods. Check the readme for more information and a link to download Modmerge or the DLC Merger.~
+END
+
+/* DavidW's code for unifying the area script patching. With many thanks! 
+To be used later in the form:
+
+  LAF extend_area_script STR_VAR area="%Candlekeep%" top="bg1re/script/AR2600.baf"   END
+*/
+  DEFINE_ACTION_FUNCTION extend_area_script 
+    STR_VAR area=""
+            top=""
+            bottom=""
+    BEGIN
+      // find the area script from the area file
+      COPY_EXISTING "%area%.are" override
+           READ_ASCII 0x94 script
+      BUT_ONLY
+      // if it doesn't exist, give it a default name
+      ACTION_IF "%script%" STRING_EQUAL "" BEGIN
+          OUTER_INNER_PATCH_SAVE script "%area%" BEGIN
+                REPLACE_TEXTUALLY "FW" "_AR" // TUTU naming conventions
+          END
+
+  // added by argent77: assign area script if needed
+          COPY_EXISTING "%area%.are" override
+                WRITE_ASCIIE 0x94 ~%script%~ #8
+
+
+      END
+      // extend the script
+      ACTION_IF "%top%" STRING_COMPARE "" BEGIN
+        EXTEND_TOP "%script%.bcs" "%top%" EVALUATE_BUFFER
+      END
+      ACTION_IF "%bottom%" STRING_COMPARE "" BEGIN
+       EXTEND_BOTTOM "%script%.bcs" "%bottom%" EVALUATE_BUFFER
+      END
+    END 
+
+ ACTION_IF GAME_IS ~tutu_totsc~ THEN BEGIN
+  PRINT ~Baldur's Gate Tutu detected~
+  INCLUDE ~bst/lib/g3_tutu_cpmvars.tpa~
+ END
+
+ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  PRINT ~Baldur's Gate Trilogy detected~
+  INCLUDE ~bst/lib/g3_bgt_cpmvars.tpa~ 
+  OUTER_SPRINT ~PLAYER1_NO_BLACKGUARD~ ~~
+  OUTER_SPRINT ~PLAYER2_NO_BLACKGUARD~ ~~
+  OUTER_SPRINT ~PLAYER3_NO_BLACKGUARD~ ~~
+  OUTER_SPRINT ~PLAYER4_NO_BLACKGUARD~ ~~
+  OUTER_SPRINT ~PLAYER5_NO_BLACKGUARD~ ~~
+  OUTER_SPRINT ~PLAYER6_NO_BLACKGUARD~ ~~
+  OUTER_SPRINT ~PLAYER1_BLACKGUARD~ ~~
+  OUTER_SPRINT SPIN996 ~BGIN996~ //TANARI_DEATH_GAZE
+  OUTER_SPRINT ~platform~ ~bgt~
+ END
+
+ ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  /* Tell the player it is using bgee */
+  PRINT ~BG:EE detected...~ 
+  INCLUDE ~bst/lib/g3_bgee_cpmvars.tpa~
+  OUTER_SPRINT ~PLAYER1_NO_BLACKGUARD~ ~!Kit(Player1,Blackguard)~
+  OUTER_SPRINT ~PLAYER2_NO_BLACKGUARD~ ~!Kit(Player2,Blackguard)~
+  OUTER_SPRINT ~PLAYER3_NO_BLACKGUARD~ ~!Kit(Player3,Blackguard)~
+  OUTER_SPRINT ~PLAYER4_NO_BLACKGUARD~ ~!Kit(Player4,Blackguard)~
+  OUTER_SPRINT ~PLAYER5_NO_BLACKGUARD~ ~!Kit(Player5,Blackguard)~
+  OUTER_SPRINT ~PLAYER6_NO_BLACKGUARD~ ~!Kit(Player6,Blackguard)~
+  OUTER_SPRINT ~PLAYER1_BLACKGUARD~ ~Kit(Player1,Blackguard)~
+  OUTER_SPRINT SPIN996 ~SPIN996~ //TANARI_DEATH_GAZE
+  OUTER_SPRINT ~platform~ ~bgee~
+ END
+
+ ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  /* Tell the player it is using eet */
+  PRINT ~EET detected.~
+  INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~
+  OUTER_SPRINT ~PLAYER1_NO_BLACKGUARD~ ~!Kit(Player1,Blackguard)~
+  OUTER_SPRINT ~PLAYER2_NO_BLACKGUARD~ ~!Kit(Player2,Blackguard)~
+  OUTER_SPRINT ~PLAYER3_NO_BLACKGUARD~ ~!Kit(Player3,Blackguard)~
+  OUTER_SPRINT ~PLAYER4_NO_BLACKGUARD~ ~!Kit(Player4,Blackguard)~
+  OUTER_SPRINT ~PLAYER5_NO_BLACKGUARD~ ~!Kit(Player5,Blackguard)~
+  OUTER_SPRINT ~PLAYER6_NO_BLACKGUARD~ ~!Kit(Player6,Blackguard)~
+  OUTER_SPRINT ~PLAYER1_BLACKGUARD~ ~Kit(Player1,Blackguard)~
+  OUTER_SPRINT SPIN996 ~SPIN996~ //TANARI_DEATH_GAZE
+  OUTER_SPRINT ~platform~ ~eet~
+ END
+
+  /* BG:EE - formatted texts etc. */
+
+    /* Copies tra files into the autotra-folder (to leave the originals untouched) */
+    DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
+      COPY ~bst/language/english~  ~bst/language/autotra/%LANGUAGE%~
+      COPY ~bst/language/%LANGUAGE%~  ~bst/language/autotra/%LANGUAGE%~
+    END
+
+    LAF autotra_workaround END
+
+
+//  ACTION_DEFINE_ARRAY fl#noconvert BEGIN END
+
+ ACTION_DEFINE_ARRAY fl#reload BEGIN bst_setup END
+
+    LAF HANDLE_CHARSETS
+      INT_VAR
+        infer_charsets = 1
+      STR_VAR
+        tra_path = EVAL ~bst/language/autotra~
+//        noconvert_array = fl#noconvert
+        reload_array = fl#reload
+ END
+
+   /* TRAs declared in LANGUAGE must be reloaded - by hand, because of the copying (for non-EE version (for every running of installer!) - ALWAYS */
+
+  LOAD_TRA ~bst/language/autotra/english/bst_setup.tra~
+  LOAD_TRA ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+
+END //ALWAYS
+
+
+LANGUAGE ~English~ ~english~ ~bst/language/english/bst_setup.tra~
+/*
+LANGUAGE ~German~ ~german~ ~bst/language/english/bst_setup.tra~
+			   ~bst/language/german/bst_setup.tra~
+
+*/
+
+// Quest title
+BEGIN @1
+
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ @2
+//FORBID_COMPONENT ~setup-bp-bgt-worldmap.tp2~ ~0~ @3
+
+
+//***************************************************
+//Patch the user's ids files as necessary
+//***************************************************
+	APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~
+	              UNLESS ~CD_STATE_NOTVALID~
+	APPEND ~state.ids~ ~0x00102029 STATE_HARMLESS~
+								UNLESS ~0x00102029 STATE_HARMLESS~
+	APPEND ~state.ids~ ~0x00400010 STATE_NOT_VISIBLE~
+								UNLESS ~0x00400010 STATE_NOT_VISIBLE~
+
+  APPEND ~shoutids.ids~ ~1001 POISONED~
+								UNLESS ~1001 POISONED~
+  APPEND ~shoutids.ids~ ~2024 SEE_ENEMY~
+								UNLESS ~2024 SEE_ENEMY~
+  APPEND ~shoutids.ids~ ~2001 HELP~
+								UNLESS ~2001 HELP~
+
+  APPEND ~specific.ids~ ~202 HAS_SHIELDS~
+								UNLESS ~202 HAS_SHIELDS~
+  APPEND ~specific.ids~ ~202 HAS_SHIELD~
+								UNLESS ~202 HAS_SHIELD~
+  APPEND ~specific.ids~ ~201 NEEDS_BREACH~
+								UNLESS ~201 NEEDS_BREACH~
+
+	APPEND ~ACTION.IDS~ ~31 SpellRES(S:RES*,O:Target*)~
+	              UNLESS ~31 SpellRES(S:RES\*,O:Target\*)~
+	APPEND ~ACTION.IDS~ ~95 SpellPointRES(S:RES*,P:Target*)~
+	              UNLESS ~95 SpellPointRES(S:RES\*,P:Target\*)~
+	APPEND ~ACTION.IDS~ ~113 ForceSpellRES(S:RES*,O:Target)~
+	              UNLESS ~113 ForceSpellRES(S:RES\*,O:Target)~
+	APPEND ~ACTION.IDS~ ~114 ForceSpellPointRES(S:RES*,P:Target)~
+	              UNLESS ~114 ForceSpellPointRES(S:RES\*,P:Target)~
+	APPEND ~ACTION.IDS~ ~147 RemoveSpellRES(S:Spell*)~
+	              UNLESS ~147 RemoveSpellRES(S:Spell\*)~
+	APPEND ~ACTION.IDS~ ~160 ApplySpellRES(S:RES*,O:Target)~
+	              UNLESS ~160 ApplySpellRES(S:RES\*,O:Target)~
+	APPEND ~ACTION.IDS~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
+	              UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~
+	APPEND ~ACTION.IDS~ ~191 SpellNoDecRES(S:RES*,O:Target*)~
+	              UNLESS ~191 SpellNoDecRES(S:RES\*,O:Target\*)~
+	APPEND ~ACTION.IDS~ ~192 SpellPointNoDecRES(S:RES*,P:Target*)~
+	              UNLESS ~192 SpellPointNoDecRES(S:RES\*,P:Target\*)~
+	APPEND ~ACTION.IDS~ ~240 ReallyForceSpellDeadRES(S:RES*,O:Target)~
+	              UNLESS ~240 ReallyForceSpellDeadRES(S:RES\*,O:Target)~
+	APPEND ~ACTION.IDS~ ~318 ForceSpellRangeRES(S:RES*,O:Target)~
+	              UNLESS ~318 ForceSpellRangeRES(S:RES\*,O:Target)~
+	APPEND ~ACTION.IDS~ ~319 ForceSpellPointRangeRES(S:RES*,P:Target)~
+	              UNLESS ~319 ForceSpellPointRangeRES(S:RES\*,P:Target)~
+	APPEND ~ACTION.IDS~ ~337 ReallyForceSpellPointRES(S:RES*,P:Target*)~
+	              UNLESS ~337 ReallyForceSpellPointRES(S:RES\*,P:Target\*)~
+	APPEND ~ACTION.IDS~ ~7 CreateCreature(S:NewObject*,P:Location*,I:Face*Face)~
+								UNLESS ~7 CreateCreature(S:NewObject*,P:Location*,I:Face*Face)~
+
+	APPEND ~TRIGGER.IDS~ ~0x00A1 SpellCastOnMeRES(S:Spell*,O:Caster*)~
+	              UNLESS ~0x00A1 SpellCastOnMeRES(S:Spell\*,O:Caster\*)~
+	APPEND ~TRIGGER.IDS~ ~0x0091 SpellCastRES(S:Spell*,O:Object*)~
+	              UNLESS ~0x0091 SpellCastRES(S:Spell\*,O:Object\*)~
+	APPEND ~TRIGGER.IDS~ ~0x00A6 SpellCastPriestRES(S:Spell*,O:Object*)~
+	              UNLESS ~0x00A6 SpellCastPriestRES(S:Spell\*,O:Object\*)~
+	APPEND ~TRIGGER.IDS~ ~0x00A7 SpellCastInnateRES(S:Spell*,O:Object*)~
+	              UNLESS ~0x00A7 SpellCastInnateRES(S:Spell\*,O:Object\*)~
+	APPEND ~TRIGGER.IDS~ ~0x4031 HaveSpellRES(S:Spell*)~
+	              UNLESS ~0x4031 HaveSpellRES(S:Spell\*)~
+	APPEND ~TRIGGER.IDS~ ~0x40D5 ActuallyInCombat()~
+	              UNLESS ~0x40D5 ActuallyInCombat()~
+
+	COPY ~bst/ids/formatio.ids~ ~override/formatio.ids~
+	COPY ~bst/ids/face.ids~ ~override/face.ids~
+
+//****************************************************
+// Patch the harbour to accept a new entrance and exit
+// this is for testing
+// Don't forget to take out for release
+//****************************************************
+COPY_EXISTING ~%BaldursGateDocks%.are~ ~override~
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 140
+    fj_box_top      = 3420
+    fj_box_right    = 270
+    fj_box_bottom   = 3455
+    fj_cursor_idx   = 34   //travel wheel
+    fj_vertex_0     = 140 + (3420 << 16)
+    fj_vertex_1     = 270 + (3420 << 16)
+    fj_vertex_2     = 270 + (3455 << 16)
+    fj_vertex_3     = 140 + (3455 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travbs1000
+    fj_destination_area = bs1000
+    fj_destination_name = exitfw1200
+  END
+
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 225
+    fj_loc_y       = 3430
+    fj_orientation = 7   //NE
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs1000
+  END
+BUT_ONLY_IF_IT_CHANGES
+
+//****************************************************
+// Patch the Bandit Camp to take a magic portal
+//****************************************************
+COPY_EXISTING ~%BanditCamp%.are~ ~override~
+
+// New entrance from bs0128
+//  LPF fj_are_structure
+//    INT_VAR
+//    fj_loc_x       = 2336
+//    fj_loc_y       = 2289
+//    fj_orientation = 2   //SW
+//    STR_VAR
+//    fj_structure_type = entrance
+//    fj_name           = exitbs0128
+//  END
+
+// Check trap for Almiran's Scroll
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 0    //trap
+    fj_box_left     = 1507
+    fj_box_top      = 1894
+    fj_box_right    = 3098
+    fj_box_bottom   = 2956
+//    fj_cursor_idx   = 4
+    fj_vertex_0     = 1525 + (2956 << 16)
+    fj_vertex_1     = 2089 + (2951 << 16)
+    fj_vertex_2     = 3098 + (2259 << 16)
+    fj_vertex_3     = 2472 + (1894 << 16)
+    fj_vertex_4     = 1507 + (2820 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = trapbs0128
+    fj_reg_script				= ar1900bs
+  END
+/*
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 0    //trap
+    fj_box_left     = 2317
+    fj_box_top      = 2247
+    fj_box_right    = 2407
+    fj_box_bottom   = 2286
+    fj_cursor_idx   = 4
+    fj_vertex_0     = 2379 + (2247 << 16)
+    fj_vertex_1     = 2407 + (2264 << 16)
+    fj_vertex_2     = 3012 + (2267 << 16)
+    fj_vertex_3     = 2472 + (1894 << 16)
+    fj_vertex_4     = 1507 + (2820 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = trapbs0128
+    fj_reg_script				= ar1900bs
+  END
+*/
+
+BUT_ONLY_IF_IT_CHANGES
+
+
+//****************************************************
+// Patch Baldur's Gate NE to take one trap
+//****************************************************
+COPY_EXISTING ~%NEBaldursGate%.are~ ~override~
+
+// Martina's body
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 1278
+    fj_box_top      = 920
+    fj_box_right    = 1458
+    fj_box_bottom   = 1010
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 1312 + (920 << 16)
+    fj_vertex_1     = 1458 + (920 << 16)
+    fj_vertex_2     = 1392 + (1010 << 16)
+    fj_vertex_3     = 1278 + (1010 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bsBodyTrap
+    fj_reg_script				= bsbodyt1
+  END
+
+BUT_ONLY_IF_IT_CHANGES
+
+
+//****************************************************
+/* entrance in Waterqueen's temple AR0609.are */
+//****************************************************
+
+COPY_EXISTING ~%BaldursGateDocks_WaterQueensHouse%.are~ ~override~
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 1300
+    fj_box_top      = 501
+    fj_box_right    = 1388
+    fj_box_bottom   = 625
+    fj_cursor_idx   = 34   //travel wheel
+    fj_vertex_0     = 1312 + (625 << 16)
+    fj_vertex_1     = 1372 + (625 << 16)
+    fj_vertex_2     = 1388 + (566 << 16)
+    fj_vertex_3     = 1382 + (501 << 16)
+    fj_vertex_4     = 1300 + (525 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travbs0200
+    fj_destination_area = BS0200
+    fj_destination_name = exitar0609
+  END
+
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 1265
+    fj_loc_y       = 526
+    fj_orientation = 6
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs0200
+  END
+
+/* trigger area before entrance is free */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 1300
+    fj_box_top      = 501
+    fj_box_right    = 1388
+    fj_box_bottom   = 625
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 1312 + (625 << 16)
+    fj_vertex_1     = 1372 + (625 << 16)
+    fj_vertex_2     = 1388 + (566 << 16)
+    fj_vertex_3     = 1382 + (501 << 16)
+    fj_vertex_4     = 1300 + (525 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = BS0200ex
+    fj_reg_script   = bs0609tr
+END
+BUT_ONLY_IF_IT_CHANGES
+
+
+
+// ****************************************************
+/* entrance into house in the north of Docks - tailor shop
+existing door (Door01, Door ID DOOR01, needs polygons) */
+// ****************************************************
+
+
+COPY_EXISTING ~%BaldursGateDocks%.are~  ~override~
+/* info trigger for tailor shop */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 4240
+    fj_box_top      = 363
+    fj_box_right    = 4280
+    fj_box_bottom   = 461
+    fj_cursor_idx   = 22 //question mark
+    fj_info_point_strref  = RESOLVE_STR_REF(@38)
+    fj_vertex_0     = 4240 + (431 << 16)
+    fj_vertex_1     = 4280 + (461 << 16)
+    fj_vertex_2     = 4280 + (390 << 16)
+    fj_vertex_3     = 4240 + (363 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bsar1200t1
+END
+BUT_ONLY_IF_IT_CHANGES
+
+
+/* add travel trigger and door. polygons for door by Gwendolyne. Thank you very much! */
+INCLUDE ~bst/lib/bs_Are_fonctions_macros.tpa~    // Load Library (area functions & macros).
+INCLUDE ~bst/tpa/bs_vertices_table.tpa~            // Load Arrays of new doors vertex.
+
+LAM ~bs_DEF_AREA_OFFSETS~                        // LOADS the main offsets used to patch ARE files.
+
+INCLUDE ~bst/tpa/AddBG1_AR1200Door.tph~
+
+
+
+//##################################################
+// Journal Entries
+
+/* The Fletcher's Feathers */
+ADD_JOURNAL TITLE (@700) @720 @721 @722 @723 @724 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Halfslinger's Ale */
+ADD_JOURNAL TITLE (@701) @730 @731 @732 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* The Tanner's Troubles */
+ADD_JOURNAL TITLE (@702) @740 @741 @742 @743 @744 @745 @746 @747 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* The Stolen Ilmater's Alms */
+ADD_JOURNAL TITLE (@703) @750 @751 @752 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* The Mysterious Scroll */
+ADD_JOURNAL TITLE (@704) @760 @761 @762 @763 @764 @765 @766 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Help Shuck's Brother */
+ADD_JOURNAL TITLE (@705) @805 @806 @807 @808 @809 @810 @811 @812 @813 @814 @815 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Dark Power in the Seatower Catacombs */
+ADD_JOURNAL TITLE (@706) @774 @775 @776 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* An Orphan in the Seatower */
+ADD_JOURNAL TITLE (@707) @777 @778 @779 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Cage the Rabbits */
+ADD_JOURNAL TITLE (@708) @780 @781 @782 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Strange Happenings in Room No. 3.4 */
+ADD_JOURNAL TITLE (@709) @785 @786 @787 @788 @789 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Rats in the Seatower Inn */
+ADD_JOURNAL TITLE (@710) @790 @791 @792 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Missing Monk in the Seatower */
+ADD_JOURNAL TITLE (@711) @793 @794 @795 @796 @797 @798 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* The Prisoner in the Seatower Prison */
+ADD_JOURNAL TITLE (@712) @799 @800 @801 @802 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Working with the Smugglers */
+ADD_JOURNAL TITLE (@713) @830 @831 @832 @833 @834 @835 @836 @837 @838 @839 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* ~Confront the Slave Traders in Baldur's Gate */
+ADD_JOURNAL TITLE (@714) @880 @881 @882 @883 @884 @885 @886 @887 @888 @889 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Myconides in the Seatower Prison */
+ADD_JOURNAL TITLE (@715) @753 @754 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Doppelgangers Inside the Seatower */
+ADD_JOURNAL TITLE (@716) @860 @861 @862 @863 @864 @865 @866 @867 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* The Breach in the Seatower Prison */
+ADD_JOURNAL TITLE (@717) @816 @817 @818 @822 @823 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Ingredients for the Seatower Mage */
+ADD_JOURNAL TITLE (@718) @850 @851 @852 @853 @854 @855 @856 @857 @858 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* The Dead Adjutant */
+ADD_JOURNAL TITLE (@719) @819 @820 @821 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Working for the Slavers */
+ADD_JOURNAL TITLE (@842) @840 @841 @843 @844 @845 @846 @847 @848 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Liqueur for the Tanner */
+ADD_JOURNAL TITLE (@875) @874 @876 @877 @878 @879 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Fire Elemental in the Seatower Storeroom */
+ADD_JOURNAL TITLE (@900) @901 @902 @903 @904 @905 @906 @907 @908 @909 @910 @911 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Fire Proof Barrel for the Seatower Armorer */
+ADD_JOURNAL TITLE (@912) @913 @914 @915 @916 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+/* Sea Troll's Sebaceous Gland for the Seatower Winchman */
+ADD_JOURNAL TITLE (@917) @918 @919 USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+
+/* bgt: delete journal entries upon start of BG2 */
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  EXTEND_TOP ~AR0602.bcs~ ~bst/area scripts/gamebcs/bgt_AR0602.baf~ EVALUATE_BUFFER USING ~bst/language/autotra/%LANGUAGE%/bst_setup.tra~
+END
+
+
+//##################################################
+//patching of itemdial.2da for "interactive" items.
+	COPY_EXISTING ~itemdial.2da~ ~override~
+	BUT_ONLY_IF_IT_CHANGES
+//Almiran's scroll
+	APPEND ~itemdial.2da~ ~BSALMIRN   4978  BSALMIRN~
+	               UNLESS ~BSALMIRN   4978  BSALMIRN~
+	BUT_ONLY_IF_IT_CHANGES
+//Sealed Box
+	APPEND ~itemdial.2da~ ~bSSMQ002   4978  bSSMQ002~ 
+	               UNLESS ~bSSMQ002   4978  bSSMQ002~
+	BUT_ONLY_IF_IT_CHANGES
+
+//##################################################
+// Bams
+	COPY ~bst/bam/.~ ~override/.~
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  COPY ~bst/bams_bg2/.~ ~override/.~
+END
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+  COPY ~bst/bams_ee/.~ ~override/.~
+END
+
+//##################################################
+//VVC
+	COPY ~bst/vvc/.~ ~override/.~
+
+
+//##################################################
+//Sounds
+	COPY ~bst/sounds/.~ ~override/.~
+
+
+//##################################################
+//Spells
+	COPY ~bst/spells/bsdark01.spl~ ~override/bsdark01.spl~
+  		SAY NAME1 @400
+
+	COPY ~bst/spells/bsdoppdr.spl~ ~override/bsdoppdr.spl~
+  		SAY NAME1 @401
+		SAY NAME2 @401
+
+	COPY ~bst/spells/copy/.~ ~override/.~
+
+//##################################################
+// Items
+
+INCLUDE ~bst/tpa/ADD_ITEM_HEADER.tpa~
+INCLUDE ~bst/tpa/create_items.tpa~
+
+
+// Almiran's Scroll
+	COPY ~bst/items/bsalmirn.itm~ ~override/bsalmirn.itm~
+	SAY NAME2 @510
+	SAY IDENTIFIED_DESC @511
+
+// Rabbit Cage
+	COPY ~bst/items/bscage.itm~ ~override/bscage.itm~
+	SAY NAME1 @533
+	SAY NAME2 @533
+	SAY IDENTIFIED_DESC @534
+
+// Sealed Box
+	COPY ~bst/items/bssmq002.itm~ ~override/bssmq002.itm~
+	SAY NAME1 @540
+	SAY NAME2 @540
+	SAY IDENTIFIED_DESC @541
+
+// Alive Rat
+	COPY ~bst/items/bstqrat1.itm~ ~override/bstqrat1.itm~
+	SAY NAME1 @535
+	SAY NAME2 @535
+	SAY IDENTIFIED_DESC @536
+
+// Dead Rat
+	COPY ~bst/items/bstqrat2.itm~ ~override/bstqrat2.itm~
+	SAY NAME1 @535
+	SAY NAME2 @535
+	SAY IDENTIFIED_DESC @537
+// Ring of Anti-Venom
+	COPY ~bst/items/bsavring.itm~ ~override/bsavring.itm~
+	SAY NAME1 @544 /* ~Ring of Anti-Venom~ */
+	SAY NAME2 @544 /* ~Ring of Anti-Venom~ */
+	SAY IDENTIFIED_DESC @545 /* ~This ring is an unadorned silver band.  However, its plain appearance belies the powerful magic within.  A Ring of Anti-Venom is eagerly sought after by royalty, influential political figures and other potential assassination targets.   
+
+STATISTICS:
+
+Wearer is immune to all poison.~ */
+
+/* need item description for BG:EE */
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  COPY_EXISTING ~bsavring.itm~ ~override~
+	SAY NAME1 @544
+	SAY NAME2 @544
+	SAY IDENTIFIED_DESC @545
+END
+
+//Black Pearl
+	COPY ~bst/items/bsblkprl.itm~ ~override/bsblkprl.itm~
+	SAY NAME1 @546
+	SAY NAME2 @546
+	SAY IDENTIFIED_DESC @547
+
+// Herb Liqueur
+	COPY ~bst/items/bsdpliqu.itm~ ~override/bsdpliqu.itm~
+	SAY NAME1 @552
+	SAY NAME2 @552
+	SAY IDENTIFIED_DESC @553
+// Plum Liqueur
+	COPY ~bst/items/bsdpliqu.itm~ ~override/bsdpliq1.itm~
+	SAY NAME1 @560
+	SAY NAME2 @560
+	SAY IDENTIFIED_DESC @561
+// Bitter Liqueur
+	COPY ~bst/items/bsdpliqu.itm~ ~override/bsdpliq2.itm~
+	SAY NAME1 @562
+	SAY NAME2 @562
+	SAY IDENTIFIED_DESC @563
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+// False Arla's Dragonsbane needs other BAM in BGT
+	COPY_EXISTING ~ysalbane.itm~ ~override~
+      WRITE_ASCIIE 0x0058 ~CSLNG01~ // Description icon (BAM)
+END
+
+// Mimic Powder
+	COPY ~bst/items/bsdopdr.itm~ ~override/bsdopdr.itm~
+	SAY NAME1 @550
+	SAY NAME2 @550
+	SAY IDENTIFIED_DESC @551
+
+// Expired Mimic Powder
+	COPY ~bst/items/bsdopd2.itm~ ~override/bsdopd2.itm~
+	SAY NAME1 @554
+	SAY NAME2 @554
+	SAY IDENTIFIED_DESC @555
+
+// Empty Barrel
+	COPY ~bst/items/bsbarrl1.itm~ ~override/bsbarrl1.itm~
+	SAY NAME1 @565
+	SAY NAME2 @565
+	SAY IDENTIFIED_DESC @566
+
+// Barrel full of Water
+	COPY ~bst/items/bsbarrl2.itm~ ~override/bsbarrl2.itm~
+	SAY NAME1 @567
+	SAY NAME2 @567
+	SAY IDENTIFIED_DESC @568
+
+// Fire Resistant Barrel
+	COPY ~bst/items/bsbarrl3.itm~ ~override/bsbarrl3.itm~
+	SAY NAME1 @569
+	SAY NAME2 @569
+	SAY IDENTIFIED_DESC @570
+
+// Barrel with Fire Elemental
+	COPY ~bst/items/bsbarrl4.itm~ ~override/bsbarrl4.itm~
+	SAY NAME1 @571
+	SAY NAME2 @571
+	SAY IDENTIFIED_DESC @572
+
+// Golden Dragon ale for <CHARNAME>
+	COPY ~bst/items/bsalepo2.itm~ ~override/bsalepo2.itm~
+	SAY NAME1 @573
+	SAY NAME2 @573
+	SAY IDENTIFIED_DESC @574
+
+// Sea Troll Grease
+	COPY ~bst/items/bswnchft.itm~ ~override/bswnchft.itm~
+	SAY NAME1 @575
+	SAY NAME2 @575
+	SAY IDENTIFIED_DESC @576
+
+/* deprecated
+// Cook's storeroom key
+//	COPY ~bst/items/ysstokey.itm~ ~override/ysstokey.itm~
+//	SAY NAME2 @500
+//	SAY IDENTIFIED_DESC @501
+
+// Goose feathers
+//	COPY ~bst/items/ysgoosef.itm~ ~override/ysgoosef.itm~
+//	SAY NAME2 @502
+//	SAY IDENTIFIED_DESC @503
+
+// Golden Dragon ale
+//	COPY ~bst/items/ysalepot.itm~ ~override/ysalepot.itm~
+//	SAY NAME2 @504
+//	SAY IDENTIFIED_DESC @505
+
+// False Arla's Dragonsbane
+//	COPY ~bst/items/ysalbane.itm~ ~override/ysalbane.itm~
+//	SAY NAME2 @506
+//	SAY IDENTIFIED_DESC @507
+
+// Alguine's key
+//	COPY ~bst/items/bsfmkey.itm~ ~override/bsfmkey.itm~
+//	SAY NAME2 @512
+//	SAY IDENTIFIED_DESC @513
+
+// Catacombs secret door key
+//	COPY ~bst/items/bscckey.itm~ ~override/bscckey.itm~
+//	SAY NAME2 @514
+//	SAY IDENTIFIED_DESC @515
+
+// Chionthar Tower key
+//	COPY ~bst/items/bscdkey.itm~ ~override/bscdkey.itm~
+//	SAY NAME2 @516
+//	SAY IDENTIFIED_DESC @517
+
+// -----
+// Dream items
+// -----
+// Antidote
+//	COPY ~bst/items/bspotnd.itm~ ~override/bspotnd.itm~
+//	SAY NAME2 @526
+//	SAY IDENTIFIED_DESC @527
+// Horn
+//	COPY ~bst/items/bshornd.itm~ ~override/bshornd.itm~
+// Talon
+//	COPY ~bst/items/bsclawd.itm~ ~override/bsclawd.itm~
+//	SAY NAME2 @524
+//	SAY IDENTIFIED_DESC @525
+// Bone dagger
+//	COPY ~bst/items/bsdaggd.itm~ ~override/bsdaggd.itm~
+//	SAY NAME2 @518
+//	SAY IDENTIFIED_DESC @519
+// Candle
+//	COPY ~bst/items/bscandld.itm~ ~override/bscandld.itm~
+//	SAY NAME2 @522
+//	SAY IDENTIFIED_DESC @523
+// Candle
+//	COPY ~bst/items/bsskulld.itm~ ~override/bsskulld.itm~
+//	SAY NAME2 @520
+//	SAY IDENTIFIED_DESC @521
+
+/* quest items Seatower */
+
+// bstq001.itm Lars' Drawing
+
+*/
+
+
+//##################################################
+// Cre
+
+// Noblefolk - names fit for BGT&Tutu&EET, too
+	COPY ~bst/cre/ysbsnbm1.cre~ ~override/ysbsnbm1.cre~
+	COPY ~bst/cre/ysbsnbm2.cre~ ~override/ysbsnbm2.cre~
+	COPY ~bst/cre/ysbsnbm3.cre~ ~override/ysbsnbm3.cre~
+	COPY ~bst/cre/ysbsnbw1.cre~ ~override/ysbsnbw1.cre~
+	COPY ~bst/cre/ysbsnbw2.cre~ ~override/ysbsnbw2.cre~
+	COPY ~bst/cre/ysbsnbw3.cre~ ~override/ysbsnbw3.cre~
+	COPY ~bst/cre/ysbsnbw4.cre~ ~override/ysbsnbw4.cre~
+// Cook
+	COPY ~bst/cre/ysmcook1.cre~ ~override/ysmcook1.cre~
+	SAY NAME1 @100
+	SAY NAME2 @100
+// Cook's apprentice
+	COPY ~bst/cre/ysmcook2.cre~ ~override/ysmcook2.cre~
+	SAY NAME1 @101
+	SAY NAME2 @101
+// Blacksmith
+	COPY ~bst/cre/ysblksmt.cre~ ~override/ysblksmt.cre~
+	SAY NAME1 @102
+	SAY NAME2 @102
+// Fletcher
+	COPY ~bst/cre/ysfltchr.cre~ ~override/ysfltchr.cre~
+	SAY NAME1 @106
+	SAY NAME2 @106
+// Priest of Selune
+	COPY ~bst/cre/ysselune.cre~ ~override/ysselune.cre~
+	SAY NAME1 @103
+	SAY NAME2 @103
+// Worshipper of Selune
+	COPY ~bst/cre/ysselwor.cre~ ~override/ysselwor.cre~
+	SAY NAME1 @110
+	SAY NAME2 @110
+// Seatower guards
+//guards on main tower area bs1000 and barracks ground floor ys0103
+	COPY ~bst/cre/ysbrkgrd.cre~ ~override/ysbrkgrd.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+//guards in barracks ground first floor ys0107
+	COPY ~bst/cre/ysbrkgd2.cre~ ~override/ysbrkgd2.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+//guards on main tower area bs1000
+	COPY ~bst/cre/ysstcgrd.cre~ ~override/ysstcgrd.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+	COPY ~bst/cre/ysguard1.cre~ ~override/ysguard1.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+	COPY ~bst/cre/ysguard2.cre~ ~override/ysguard2.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+	COPY ~bst/cre/ysguard3.cre~ ~override/ysguard3.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+	COPY ~bst/cre/ysguard4.cre~ ~override/ysguard4.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+	COPY ~bst/cre/ysguard5.cre~ ~override/ysguard5.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+//guards in Treasury ys0115
+	COPY ~bst/cre/ystrsgrd.cre~ ~override/ystrsgrd.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+// guards in South Harbour Tower ys0126
+	COPY ~bst/cre/ysshtgrd.cre~ ~override/ysshtgrd.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+//guard on tower top (watches beacon)
+	COPY ~bst/cre/bsgrdbcn.cre~ ~override/bsgrdbcn.cre~
+	SAY NAME1 @163
+	SAY NAME2 @163
+// Tower Sergeants (bs1000)
+	COPY ~bst/cre/yssgt1.cre~ ~override/yssgt1.cre~
+	SAY NAME1 @105
+	SAY NAME2 @105
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+	COPY ~bst/cre/yssgt2.cre~ ~override/yssgt2.cre~
+	SAY NAME1 @105
+	SAY NAME2 @105
+	WRITE_ASCII 0x260 ~bstrdeac~ #8
+//Commander's Adjutant
+	COPY ~bst/cre/yssgt3.cre~ ~override/yssgt3.cre~
+	SAY NAME1 @105
+	SAY NAME2 @105
+//Tower Treasurer
+	COPY ~bst/cre/bstrsure.cre~ ~override/bstrsure.cre~
+	SAY NAME1 @161
+	SAY NAME2 @161
+// Halfslinger
+	COPY ~bst/cre/yshafslg.cre~ ~override/yshafslg.cre~
+	SAY NAME1 @109
+	SAY NAME2 @109
+// Farmer
+	COPY ~bst/cre/ysfarmer.cre~ ~override/ysfarmer.cre~
+	SAY NAME1 @111
+	SAY NAME2 @111
+// Farmer's wife
+	COPY ~bst/cre/ysfarmwi.cre~ ~override/ysfarmwi.cre~
+	SAY NAME1 @112
+	SAY NAME2 @112
+// King of the Restless Dead
+	COPY ~bst/cre/ysrsdead.cre~ ~override/ysrsdead.cre~
+	SAY NAME1 @113
+	SAY NAME2 @113
+// King of the Restless Dead's Ghost
+	COPY ~bst/cre/ysrsghst.cre~ ~override/ysrsghst.cre~
+	SAY NAME1 @113
+	SAY NAME2 @113
+// Restless Dead
+	COPY ~bst/cre/ysrstdd1.cre~ ~override/ysrstdd1.cre~
+	SAY NAME1 @113
+	SAY NAME2 @113
+	COPY ~bst/cre/ysrstdd2.cre~ ~override/ysrstdd2.cre~
+	SAY NAME1 @113
+	SAY NAME2 @113
+	COPY ~bst/cre/ysrstdd3.cre~ ~override/ysrstdd3.cre~
+	SAY NAME1 @113
+	SAY NAME2 @113
+// Alguine the 'mad mage'
+	COPY ~bst/cre/bsalgune.cre~ ~override/bsalgune.cre~
+	SAY NAME1 @115
+	SAY NAME2 @115
+// Alguine's ghost (invisible cre)
+	COPY ~bst/cre/bsalghst.cre~ ~override/bsalghst.cre~
+	SAY NAME1 @115
+	SAY NAME2 @115
+// Invisible cre for the ~The Book Of Planes~ in Alguine's librabry
+	COPY ~bst/cre/bsalgbk.cre~ ~override/bsalgbk.cre~
+	SAY NAME1 @529
+	SAY NAME2 @529
+//Nabassu Fledgling
+	COPY ~bst/cre/bstanar.cre~ ~override/bstanar.cre~
+	SAY NAME1 @114
+	SAY NAME2 @114
+//Ghast (turns into "Ulf" bsghast2.cre)
+	COPY ~bst/cre/bsghast1.cre~ ~override/bsghast1.cre~
+
+// Tanner
+	COPY ~bst/cre/bstanner.cre~ ~override/bstanner.cre~
+	SAY NAME1 @116
+	SAY NAME2 @116
+// Winchmen
+	COPY ~bst/cre/bswinch1.cre~ ~override/bswinch1.cre~
+	SAY NAME1 @117
+	SAY NAME2 @117
+	COPY ~bst/cre/bswinch2.cre~ ~override/bswinch2.cre~
+	SAY NAME1 @166
+	SAY NAME2 @166
+// Dream Voice
+	COPY ~bst/cre/bsvoice.cre~ ~override/bsvoice.cre~
+// Dream Poisoned Man
+	COPY ~bst/cre/bspoisod.cre~ ~override/bspoisod.cre~
+// Dream FAI Guard
+	COPY ~bst/cre/bsfaigrd.cre~ ~override/bsfaigrd.cre~
+// Dream Gnolls
+	COPY ~bst/cre/bsgnolld.cre~ ~override/bsgnolld.cre~
+	COPY ~bst/cre/bsgnold2.cre~ ~override/bsgnold2.cre~
+	COPY ~bst/cre/bsgnold4.cre~ ~override/bsgnold4.cre~
+	COPY ~bst/cre/bsgnold5.cre~ ~override/bsgnold5.cre~
+// Dream Messenger
+	COPY ~bst/cre/bsmessed.cre~ ~override/bsmessed.cre~
+// Dream Woman
+	COPY ~bst/cre/bswomand.cre~ ~override/bswomand.cre~
+// Dream White Knight
+	COPY ~bst/cre/bswhitkd.cre~ ~override/bswhitkd.cre~
+// Dream Ogre
+	COPY ~bst/cre/bsogred.cre~ ~override/bsogred.cre~
+// Dream Warrior
+	COPY ~bst/cre/bswarrid.cre~ ~override/bswarrid.cre~
+	COPY ~bst/cre/bsbandit.cre~ ~override/bsbandit.cre~
+	COPY ~bst/cre/bsbandt2.cre~ ~override/bsbandt2.cre~
+// Dream Sorceror
+	COPY ~bst/cre/bssorced.cre~ ~override/bssorced.cre~
+	SAY NAME1 @118
+	SAY NAME2 @118
+	COPY ~bst/cre/bsorced2.cre~ ~override/bsorced2.cre~
+	SAY NAME1 @118
+	SAY NAME2 @118
+// Dream Gorion
+	COPY ~bst/cre/bsgoriod.cre~ ~override/bsgoriod.cre~
+// Dream dialog
+	COPY ~bst/cre/bsdialog.cre~ ~override/bsdialog.cre~
+// Seatower Commander Airard
+	COPY ~bst/cre/bstrcmdr.cre~ ~override/bstrcmdr.cre~
+	SAY NAME1 @119
+	SAY NAME2 @119
+// Captain of Guards Dungarth
+	COPY ~bst/cre/bsstgc.cre~ ~override/bsstgc.cre~
+	SAY NAME1 @120
+	SAY NAME2 @120
+// Abbot Guoremor
+	COPY ~bst/cre/bssatos.cre~ ~override/bssatos.cre~
+	SAY NAME1 @128
+	SAY NAME2 @128
+// Pirate
+	COPY ~bst/cre/bspirate.cre~ ~override/bspirate.cre~
+	SAY NAME1 @124
+	SAY NAME2 @124
+// Pirate Captain
+	COPY ~bst/cre/bspircpt.cre~ ~override/bspircpt.cre~
+	SAY NAME1 @125
+	SAY NAME2 @125
+// Monk of Ilmater (male and female)
+	COPY ~bst/cre/bsmonk.cre~ ~override/bsmonk.cre~
+	SAY NAME1 @127
+	SAY NAME2 @127
+	COPY ~bst/cre/bsfmonk.cre~ ~override/bsfmonk.cre~
+	SAY NAME1 @126
+	SAY NAME2 @126
+//Seatower
+//Roryn, seatower staff
+	COPY ~bst/cre/bsroryn.cre~ ~override/bsroryn.cre~
+	SAY NAME1 @137
+	SAY NAME2 @137
+//orphan in the Seatower
+//Lady Springfall
+	COPY ~bst/cre/bstq001.cre~ ~override/bstq001.cre~
+	SAY NAME1 @129
+	SAY NAME2 @129
+//Attendant
+	COPY ~bst/cre/bstq002.cre~ ~override/bstq002.cre~
+	SAY NAME1 @130
+	SAY NAME2 @130
+//Lars
+	COPY ~bst/cre/bstq003.cre~ ~override/bstq003.cre~
+	SAY NAME1 @131
+	SAY NAME2 @131
+//Rabbits!
+	COPY ~bst/cre/bsrabbit.cre~ ~override/bsrabbit.cre~
+	SAY NAME1 @140
+	SAY NAME2 @140
+//Vampiric Rabbit!
+	COPY ~bst/cre/bsvprab.cre~ ~override/bsvprab.cre~
+	SAY NAME1 @136
+	SAY NAME2 @136
+//Klaus
+	COPY ~bst/cre/bstq004.cre~ ~override/bstq004.cre~
+	SAY NAME1 @132
+	SAY NAME2 @132
+//Ulf
+	COPY ~bst/cre/bsghast2.cre~ ~override/bsghast2.cre~
+	SAY NAME1 @133
+	SAY NAME2 @133
+//Guest 3rd floor
+	COPY ~bst/cre/bstq005.cre~ ~override/bstq005.cre~
+	SAY NAME1 @134
+	SAY NAME2 @134
+
+//Guest 2rd floor
+	COPY ~bst/cre/bstq006.cre~ ~override/bstq006.cre~
+	SAY NAME1 @135
+	SAY NAME2 @135
+
+//Priestess of Selune (temporary quest cre)
+	COPY ~bst/cre/bstq007.cre~ ~override/bstq007.cre~
+	SAY NAME1 @103
+	SAY NAME2 @103
+
+//Monk of Ilmater (temporary quest cre)
+	COPY ~bst/cre/bstq008.cre~ ~override/bstq008.cre~
+	SAY NAME1 @126
+	SAY NAME2 @126
+
+//Rats in the Seatower Inn
+	COPY ~bst/cre/bstq009.cre~ ~override/bstq009.cre~
+	SAY NAME1 @138 //Alaza
+	SAY NAME2 @138
+
+//Rats in the Seatower Inn
+	COPY_EXISTING ~rat.cre~ ~override/bstq010.cre~
+	SAY NAME1 @139 //Betsy the Rat
+	SAY NAME2 @139
+WRITE_ASCII 0x280 ~bstq010~ #8
+WRITE_ASCII 0x2cc ~bstq010~ #8
+  ADD_CRE_ITEM ~bstqrat2~ #0 #0 #0 ~IDENTIFIED~ ~QITEM1~
+
+//Missing Monk quest
+//Tower Guard Lenard
+	COPY ~bst/cre/bslenard.cre~ ~override/bslenard.cre~
+	SAY NAME1 @121
+	SAY NAME2 @121
+//Beggars
+	COPY ~bst/cre/bsmm001.cre~ ~override/bsmm001.cre~
+	SAY NAME1 @141
+	SAY NAME2 @141
+	COPY ~bst/cre/bsmm002.cre~ ~override/bsmm002.cre~
+	SAY NAME1 @142
+	SAY NAME2 @142
+
+//Tower Guard Shuck
+	COPY ~bst/cre/bsshuck.cre~ ~override/bsshuck.cre~
+	SAY NAME1 @122
+	SAY NAME2 @122
+//Nathoriel, Shuck's brother
+	COPY ~bst/cre/bsshckbr.cre~ ~override/bsshckbr.cre~
+	SAY NAME1 @123
+	SAY NAME2 @123
+//Smugglers
+	COPY ~bst/cre/bssmgl01.cre~ ~override/bssmgl01.cre~
+	SAY NAME1 @143
+	SAY NAME2 @143
+	COPY ~bst/cre/bssmgl02.cre~ ~override/bssmgl02.cre~
+	SAY NAME1 @144
+	SAY NAME2 @144
+	COPY ~bst/cre/bssmgl03.cre~ ~override/bssmgl03.cre~
+	COPY ~bst/cre/bssmgl04.cre~ ~override/bssmgl04.cre~
+	COPY ~bst/cre/bssmgl05.cre~ ~override/bssmgl05.cre~
+	COPY ~bst/cre/bssmgl06.cre~ ~override/bssmgl06.cre~
+	COPY ~bst/cre/bssmgl07.cre~ ~override/bssmgl07.cre~
+//slave traders
+//Leonhard
+	COPY ~bst/cre/bsslav01.cre~ ~override/bsslav01.cre~
+	SAY NAME1 @108
+	SAY NAME2 @108
+/* bouncers, hostile */
+	COPY ~bst/cre/bsslav02.cre~ ~override/bsslav02.cre~
+	SAY NAME1 @145
+	SAY NAME2 @145
+	COPY ~bst/cre/bsslav03.cre~ ~override/bsslav03.cre~
+	SAY NAME1 @145
+	SAY NAME2 @145
+/* bouncers, neutral */
+	COPY ~bst/cre/bsslav04.cre~ ~override/bsslav04.cre~
+	SAY NAME1 @145
+	SAY NAME2 @145
+	COPY ~bst/cre/bsslav05.cre~ ~override/bsslav05.cre~
+	SAY NAME1 @145
+	SAY NAME2 @145
+	COPY ~bst/cre/bsslav06.cre~ ~override/bsslav06.cre~
+	SAY NAME1 @145
+	SAY NAME2 @145
+	COPY ~bst/cre/bsslav07.cre~ ~override/bsslav07.cre~
+	SAY NAME1 @162
+	SAY NAME2 @162
+/* Flaming Fist at meeting point */
+	COPY ~bst/cre/bsslavff.cre~ ~override/bsslavff.cre~
+//Messenger
+	COPY ~bst/cre/bsslvmsg.cre~ ~override/bsslvmsg.cre~
+
+//Tower Guard Jai (prison)
+	COPY ~bst/cre/bsprgrd2.cre~ ~override/bsprgrd2.cre~
+	SAY NAME1 @151
+	SAY NAME2 @151
+//Prison Guard
+	COPY ~bst/cre/bsprgrd1.cre~ ~override/bsprgrd1.cre~
+	SAY NAME1 @152
+	SAY NAME2 @152
+
+//Sahuagin
+	COPY ~bst/cre/bssahu01.cre~ ~override/bssahu01.cre~
+	SAY NAME1 @146
+	SAY NAME2 @146
+	COPY ~bst/cre/bssahu02.cre~ ~override/bssahu02.cre~
+	SAY NAME1 @147
+	SAY NAME2 @147
+	COPY ~bst/cre/bssahu03.cre~ ~override/bssahu03.cre~
+	SAY NAME1 @148
+	SAY NAME2 @148
+	COPY ~bst/cre/bssahu04.cre~ ~override/bssahu04.cre~
+	SAY NAME1 @149
+	SAY NAME2 @149
+
+//Myconide
+	COPY ~bst/cre/bsmycon1.cre~ ~override/bsmycon1.cre~
+	SAY NAME1 @150
+	SAY NAME2 @150
+
+//neutral doppelganger
+	COPY ~bst/cre/bsdopp01.cre~ ~override/bsdopp01.cre~
+
+/* Doppelganger quest */
+//guards for Doppelganger quest: real guards
+	COPY ~bst/cre/bsdpgrd1.cre~ ~override/bsdpgrd1.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bsdpdeac~ #8
+//guards for Doppelganger quest: doppelgangers in barracks
+	COPY ~bst/cre/bsdpgrd2.cre~ ~override/bsdpgrd2.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bsdpdea1~ #8
+//guards for Doppelganger quest: higher doppelgangers in barracks
+	COPY ~bst/cre/bsdpgrd3.cre~ ~override/bsdpgrd3.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bsdpdea2~ #8
+//guards for Doppelganger quest: doppelgangers on tower premises outside barracks
+	COPY ~bst/cre/bsdpgrd2.cre~ ~override/bsdpgrd5.cre~
+	SAY NAME1 @104
+	SAY NAME2 @104
+	WRITE_ASCII 0x260 ~bsdpdea3~ #8
+	WRITE_ASCII 0x280 ~bsdpgrd5~ #32
+	WRITE_ASCII 0x248 ~bsdpgrd5~ #8
+//quest relevant Doppelganger (hostile)
+//doppelgängers in Seatower Commander's office
+	COPY ~bst/cre/bsdopp02.cre~ ~override/bsdopp02.cre~
+	COPY ~bst/cre/bsdopp03.cre~ ~override/bsdopp03.cre~
+//doppelgängers for smugglers beneath tailor shop
+	COPY ~bst/cre/bsdopp02.cre~ ~override/bsdopp04.cre~
+	WRITE_ASCII 0x280 ~bsdopp04~ #32
+	COPY ~bst/cre/bsdopp03.cre~ ~override/bsdopp05.cre~
+	WRITE_ASCII 0x280 ~bsdopp05~ #32
+//doppelgänger for tailor (has key)
+	COPY ~bst/cre/bsdopp02.cre~ ~override/bsdopp06.cre~
+	WRITE_ASCII 0x280 ~bstailor~ #32
+  ADD_CRE_ITEM ~bstaikey~ #1 #0 #0 ~identified&unstealable~ ~inv1~
+//hostile Doppelgangers on tower premises outside barracks
+	COPY ~bst/cre/bsdopp03.cre~ ~override/bsdopp07.cre~
+	WRITE_ASCII 0x280 ~bsdopp07~ #32
+
+//Tailor
+	COPY ~bst/cre/bstailor.cre~ ~override/bstailor.cre~
+	SAY NAME1 @158
+	SAY NAME2 @158
+//Tailor's assistant
+	COPY ~bst/cre/bstail02.cre~ ~override/bstail02.cre~
+	SAY NAME1 @159
+	SAY NAME2 @159
+//Mimic baby in Tailor Shop
+	COPY ~bst/cre/bsmimic1.cre~ ~override/bsmimic1.cre~
+	SAY NAME1 @160
+	SAY NAME2 @160
+//Guest outside
+	COPY ~bst/cre/bstq006.cre~ ~override/bsdpciv.cre~
+	SAY NAME1 @135
+	SAY NAME2 @135
+	WRITE_ASCII 0x280 ~bsdpciv~ #32
+	WRITE_ASCII 0x248 ~bsdpciv~ #8
+	WRITE_ASCII 0x2cc ~bsdpciv~ #8
+
+//Tower Mage Master Shizell
+	COPY ~bst/cre/bstrmage.cre~ ~override/bstrmage.cre~
+	SAY NAME1 @153
+	SAY NAME2 @153
+
+//Orc Worker
+	COPY ~bst/cre/bsorcwrk.cre~ ~override/bsorcwrk.cre~
+	SAY NAME1 @154
+	SAY NAME2 @154
+//Orc Archer
+	COPY ~bst/cre/bsorcarc.cre~ ~override/bsorcarc.cre~
+	SAY NAME1 @155
+	SAY NAME2 @155
+//Orc Priest
+	COPY ~bst/cre/bsorcprs.cre~ ~override/bsorcprs.cre~
+	SAY NAME1 @156
+	SAY NAME2 @156
+//Orc Mage
+	COPY ~bst/cre/bsorcmge.cre~ ~override/bsorcmge.cre~
+	SAY NAME1 @157
+	SAY NAME2 @157
+//Commoner Docks BG
+	COPY ~bst/cre/bscommw1.cre~ ~override/bscommw1.cre~
+
+//fire elemental in storeroom
+	COPY ~bst/cre/bsfrelem.cre~ ~override/bsfrelem.cre~
+	SAY NAME1 @164
+	SAY NAME2 @164
+
+//commoner on platform
+	COPY ~bst/cre/bsmanbcn.cre~ ~override/bsmanbcn.cre~
+
+//boy on platform
+	COPY ~bst/cre/bsboybcn.cre~ ~override/bsboybcn.cre~
+
+//Seatower Well (helper creature for dialogue)
+	COPY ~bst/cre/bswllspy.cre~ ~override/bswllspy.cre~
+	SAY NAME1 @107
+	SAY NAME2 @107
+
+// Drowned Spirit
+	COPY ~bst/cre/bsplsprt.cre~ ~override/bsplsprt.cre~
+	SAY NAME1 @165
+	SAY NAME2 @165
+
+//commoner in Winchtower
+	COPY ~bst/cre/bswnchwm.cre~ ~override/bswnchwm.cre~
+
+//girl in Winchtower
+	COPY ~bst/cre/bswnchgl.cre~ ~override/bswnchgl.cre~
+
+//commoner at well
+	COPY ~bst/cre/bswellma.cre~ ~override/bswellma.cre~
+
+//girl at well
+	COPY ~bst/cre/bswellgl.cre~ ~override/bswellgl.cre~
+
+//boy at well
+	COPY ~bst/cre/bswellbo.cre~ ~override/bswellbo.cre~
+
+// Sea Troll
+	COPY ~bst/cre/bsseatrl.cre~ ~override/bsseatrl.cre~
+	SAY NAME1 @167
+	SAY NAME2 @167
+
+// Sea Troll (1 HP cre)
+	COPY ~bst/cre/bsseatr2.cre~ ~override/bsseatr2.cre~
+	SAY NAME1 @167
+	SAY NAME2 @167
+
+
+//##################################################
+
+/* patch existing cres */
+
+/* give item to sea troll in BGII sewers */
+ACTION_IF FILE_EXISTS_IN_GAME ~rogtro02.cre~ THEN BEGIN
+  COPY_EXISTING ~rogtro02.cre~ ~override~
+  ADD_CRE_ITEM ~bswnchft~ #1 #0 #0 ~identified&unstealable~ ~inv~
+END
+
+
+
+
+
+//##################################################
+// Stores
+// Temple of Selune
+	COPY ~bst/stores/ysselune.sto~ ~override/.~
+	SAY 0xc @20
+
+// Armorer
+	COPY ~bst/stores/ysblksmt.sto~ ~override/.~
+	SAY 0xc @22
+
+// Fletcher
+	COPY ~bst/stores/ysfltchr.sto~ ~override/.~
+	SAY 0xc @23
+
+// Halfslinger
+	COPY ~bst/stores/yshafslg.sto~ ~override/.~
+	SAY 0xc @25
+
+// Tanner
+	COPY ~bst/stores/bstanner.sto~ ~override/.~
+	SAY 0xc @116
+
+//Seatower Inn
+	COPY ~bst/stores/bsroryn.sto~ ~override/.~
+	SAY 0xc @35
+	SAY 0xf4 @37
+
+//Master Shizell
+	COPY ~bst/stores/bstrmage.sto~ ~override/.~
+	SAY 0xc @48
+
+
+/* Add BG:EE items for BG:EE/EET */
+ACTION_IF GAME_IS ~bgee eet~ BEGIN
+  COPY_EXISTING ~yshafslg.sto~ ~override~
+	ADD_STORE_ITEM ~BULL09~ AFTER  ~BULL03~ #0 #0 #0 ~IDENTIFIED~ #5
+	ADD_STORE_ITEM ~BULL07~ AFTER  ~BULL03~ #0 #0 #0 ~IDENTIFIED~ #10
+	ADD_STORE_ITEM ~SLNG11~ AFTER  ~SLNG02~ #0 #0 #0 ~IDENTIFIED~ #1
+
+  COPY_EXISTING ~ysblksmt.sto~ ~override~
+	ADD_STORE_ITEM ~SHLD06A~ AFTER  ~SHLD06~ #0 #0 #0 ~IDENTIFIED~ #2
+	ADD_STORE_ITEM ~SHLD04A~ AFTER  ~SHLD04~ #0 #0 #0 ~IDENTIFIED~ #1
+END
+
+//##################################################
+// Areas
+	COPY ~bst/areas/.~ ~override/.~
+	COPY ~bst/areas/ys0118/ys0118.are~ ~override/ys0118.are~
+	SAY 0x244 @26
+	COPY ~bst/areas/bs1000/bs1000.are~ ~override/bs1000.are~
+	SAY 0x371c @27
+	SAY 0x37e0 @28
+    WRITE_BYTE 0x0052 0 // Set overlay transparency to 0 (default/~50%).  Was 4
+	COPY ~bst/areas/bs1020/bs1020.are~ ~override/bs1020.are~
+	SAY 0x3cc @29
+  COPY ~bst/areas/bs0139/bs0139.are~ ~override/bs0139.are~
+    WRITE_BYTE 0x0052 0 // Set overlay transparency to 0 (default/~50%).  Was 15
+
+/* add wine shelf to bs0111.are */
+COPY_EXISTING ~bs0111.ARE~ ~override~
+  LPF fj_are_structure
+  INT_VAR
+    fj_loc_x          = 400
+    fj_loc_y          = 237
+    fj_type           = 6 //shelf
+    fj_lock_diff      = 0
+    fj_trap_remove_diff = 0
+    fj_box_left       = 394
+    fj_box_top        = 117
+    fj_box_right      = 495
+    fj_box_bottom     = 184
+    fj_vertex_0       = 495 + (245 << 16)
+    fj_vertex_1       = 394 + (180 << 16)
+    fj_vertex_2       = 394 + (117 << 16)
+    fj_vertex_3       = 488 + (184 << 16)
+//    fj_vertex_4       = 132 + (400 << 16)
+  STR_VAR
+    fj_structure_type = container
+    fj_name           = "Shelf01"
+  END
+BUT_ONLY
+
+/* add green smoke animation to tanner's chimney (doppelganger quest) */
+COPY_EXISTING ~bs1000.are~ ~override~
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x        = 4678
+    fj_loc_y        = 1837
+//    fj_schedule    = -1 //always
+//    fj_bam_seq      = 
+//    fj_bam_frame    = 
+    fj_flags        = 0b00000000000000000000000111000011 //Is shown, No shadow, Not covered by wall, Draw as background, Play all frames
+    fj_loc_z        = 0
+    fj_transparent  = 0
+//    fj_init_frame   =
+    fj_loop_chance  = 0
+//    fj_skip_cycles  =
+//    fj_bmp_resref   =
+    STR_VAR
+    fj_structure_type   = animation
+    fj_name             = GreenSmoke
+    fj_bam_resref   = ~bs#ylfms~
+  END
+
+/* trigger area for well */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 3715
+    fj_box_top      = 2070
+    fj_box_right    = 3814
+    fj_box_bottom   = 2161
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 3769 + (2161 << 16)
+    fj_vertex_1     = 3787 + (2159 << 16)
+    fj_vertex_2     = 3814 + (2101 << 16)
+    fj_vertex_3     = 3733 + (2070 << 16)
+    fj_vertex_4     = 3715 + (2150 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = Well01
+    fj_reg_script   = bs1000t2
+END
+
+/* trigger area for beacon */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 3844
+    fj_box_top      = 208
+    fj_box_right    = 3981
+    fj_box_bottom   = 375
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 3844 + (375 << 16)
+    fj_vertex_1     = 3973 + (364 << 16)
+    fj_vertex_2     = 3981 + (242 << 16)
+    fj_vertex_3     = 3853 + (208 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = BeaconInteraction
+    fj_reg_script   = bs1000t3
+END
+BUT_ONLY_IF_IT_CHANGES
+
+/* add barrel to ys0112.are */
+/* barrel container for loot 01 */
+COPY_EXISTING ~ys0112.ARE~ ~override~
+  LPF fj_are_structure
+  INT_VAR
+    fj_loc_x          = 405
+    fj_loc_y          = 306
+    fj_type           = 11 //barrel
+    fj_lock_diff      = 0
+    fj_trap_remove_diff = 0
+    fj_box_left       = 366
+    fj_box_top        = 261
+    fj_box_right      = 390
+    fj_box_bottom     = 282
+    fj_vertex_0       = 377 + (282 << 16)
+    fj_vertex_1       = 382 + (282 << 16)
+    fj_vertex_2       = 387 + (281 << 16)
+    fj_vertex_3       = 391 + (277 << 16)
+    fj_vertex_4       = 391 + (259 << 16)
+    fj_vertex_5       = 389 + (254 << 16)
+    fj_vertex_6       = 385 + (249 << 16)
+    fj_vertex_7       = 376 + (248 << 16)
+    fj_vertex_8       = 370 + (250 << 16)
+    fj_vertex_9       = 366 + (261 << 16)
+    fj_vertex_10       = 366 + (261 << 16)
+    fj_vertex_11       = 370 + (278 << 16)
+  STR_VAR
+    fj_structure_type = container
+    fj_name           = "Barrel01"
+  END
+BUT_ONLY
+/* barrel container for loot 02 */
+COPY_EXISTING ~ys0112.ARE~ ~override~
+  LPF fj_are_structure
+  INT_VAR
+    fj_loc_x          = 696
+    fj_loc_y          = 316
+    fj_type           = 11 //barrel
+    fj_lock_diff      = 0
+    fj_trap_remove_diff = 0
+    fj_box_left       = 698
+    fj_box_top        = 252
+    fj_box_right      = 725
+    fj_box_bottom     = 303
+    fj_vertex_0       = 710 + (303 << 16)
+    fj_vertex_1       = 717 + (300 << 16)
+    fj_vertex_2       = 723 + (295 << 16)
+    fj_vertex_3       = 725 + (261 << 16)
+    fj_vertex_4       = 722 + (256 << 16)
+    fj_vertex_5       = 713 + (252 << 16)
+    fj_vertex_6       = 705 + (253 << 16)
+    fj_vertex_7       = 698 + (261 << 16)
+    fj_vertex_8       = 698 + (296 << 16)
+    fj_vertex_9       = 707 + (303 << 16)
+  STR_VAR
+    fj_structure_type = container
+    fj_name           = "Barrel02"
+  END
+BUT_ONLY
+
+/* crate container for loot 01 */
+COPY_EXISTING ~ys0112.ARE~ ~override~
+  LPF fj_are_structure
+  INT_VAR
+    fj_loc_x          = 561
+    fj_loc_y          = 602
+    fj_type           = 12 //crate
+    fj_lock_diff      = 0
+    fj_trap_remove_diff = 0
+    fj_box_left       = 498
+    fj_box_top        = 548
+    fj_box_right      = 548
+    fj_box_bottom     = 614
+    fj_vertex_0       = 525 + (614 << 16)
+    fj_vertex_1       = 548 + (586 << 16)
+    fj_vertex_2       = 546 + (561 << 16)
+    fj_vertex_3       = 516 + (548 << 16)
+    fj_vertex_4       = 498 + (571 << 16)
+    fj_vertex_5       = 524 + (585 << 16)
+  STR_VAR
+    fj_structure_type = container
+    fj_name           = "Crate01"
+  END
+BUT_ONLY
+
+/* info point for alestore */
+COPY_EXISTING ~ys0112.ARE~ ~override~
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 92
+    fj_box_top      = 166
+    fj_box_right    = 361
+    fj_box_bottom   = 442
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 117 + (442 << 16)
+    fj_vertex_1     = 131 + (442 << 16)
+    fj_vertex_2     = 361 + (208 << 16)
+    fj_vertex_3     = 295 + (166 << 16)
+    fj_vertex_4     = 92 + (387 << 16)
+    fj_info_point_strref  =RESOLVE_STR_REF (@49)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = Alestore
+//    fj_reg_script   = 
+END
+BUT_ONLY
+
+/* barrel that can be picked up by player */
+COPY_EXISTING ~ys0112.ARE~ ~override~
+  LPF fj_are_structure
+  INT_VAR
+    fj_loc_x          = 376
+    fj_loc_y          = 329
+    fj_type           = 4 //pile
+    fj_lock_diff      = 0
+    fj_trap_remove_diff = 0
+/*
+    fj_box_left       = 366
+    fj_box_top        = 261
+    fj_box_right      = 390
+    fj_box_bottom     = 282
+    fj_vertex_0       = 377 + (282 << 16)
+    fj_vertex_1       = 391 + (277 << 16)
+    fj_vertex_2       = 390 + (259 << 16)
+    fj_vertex_3       = 385 + (249 << 16)
+    fj_vertex_4       = 378 + (250 << 16)
+    fj_vertex_5       = 372 + (255 << 16)
+    fj_vertex_6       = 366 + (261 << 16)
+    fj_vertex_7       = 370 + (282 << 16)
+*/
+  STR_VAR
+    fj_structure_type = container
+    fj_name           = "BarrelPile"
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_con_itm_idx    = SHORT_AT 0x74 - 1 // a new container will be last in the file
+    fj_flags          = 1 // identified
+    STR_VAR
+    fj_name           = bsbarrl1
+    fj_structure_type = itm
+  END
+BUT_ONLY	
+
+/* tis */
+//COPY_LARGE ~bst/tis/.~ ~override/.~
+
+  ACTION_IF GAME_IS ~bgee eet~ BEGIN
+    //COPY_LARGE ~bst/tis_bgee/.~ ~override/.~
+    INCLUDE ~bst/lib/a7_pvrz_tis.tpa~
+    ACTION_BASH_FOR ~bst/tis_bgee~ ~.*\.tis$~ BEGIN
+      COPY ~%BASH_FOR_FILESPEC%~ ~override~
+        LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+      LAF TIS_RES_TO_PVRZ STR_VAR tis_res = EVAL ~%BASH_FOR_FILESPEC%~ RET prefix END
+      ACTION_IF (new_base_index >= 0) BEGIN // It is strongly recommended to check the return values of "UPDATE_PVRZ_INDICES".
+        ACTION_BASH_FOR ~bst/tis_bgee~ ~%prefix%[0-9][0-9]\.pvrz$~ BEGIN // Installing associated PVRZ resources
+          LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = EVAL ~%BASH_FOR_FILESPEC%~ END
+        END
+      END
+    END
+  ACTION_BASH_FOR ~bst/tis_bgee~ ~.*\.wed$~ BEGIN
+    COPY ~%BASH_FOR_FILESPEC%~ ~override~
+  END
+  END ELSE BEGIN
+    COPY_LARGE ~bst/tis_bg2/.~ ~override/.~
+  END
+
+/* needed Ambient-Sounds and Animations */
+
+COPY_EXISTING ~AMB_E10A.WAV~ ~override~
+COPY_EXISTING ~AMB_E21A.WAV~ ~override~
+COPY_EXISTING ~AMB_M13A.WAV~ ~override~
+COPY_EXISTING ~AMB_M29.WAV~ ~override~
+COPY_EXISTING ~GACAVM02.WAV~   ~override~
+COPY_EXISTING ~FIRE_3.BAM~ ~override~
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~FIRE_1.BAM~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/FIRE_1.BAM~ ~override~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~FIRE_4BL.BAM~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/FIRE_4BL.BAM~ ~override~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~FIRE_4GS.BAM~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/FIRE_4GS.BAM~ ~override~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~AM0310B.WAV~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/AM0310B.WAV~ ~override~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~AM0802.WAV~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/AM0802.WAV~ ~override~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~AM3017.WAV~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/AM3017.WAV~ ~override~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~GATRCH03.WAV~ THEN BEGIN
+  COPY ~bst/bamwav_bgee/GATRCH03.WAV~ ~override~
+END
+  
+
+/* adapt area travel trigger to different areas */
+
+
+//bs0110 smuggler house in BG city 
+/* travel trigger */
+COPY_EXISTING ~bs0110.are~ ~override~
+/* exit to outside BaldursGateDocks */
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 100
+    fj_box_top      = 547
+    fj_box_right    = 168
+    fj_box_bottom   = 643
+    fj_cursor_idx   = 42
+    fj_vertex_0     = 102 + (547 << 16)
+    fj_vertex_1     = 100 + (610 << 16)
+    fj_vertex_2     = 168 + (643 << 16)
+    fj_vertex_3     = 168 + (575 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travar1200
+    fj_destination_area = EVAL ~%BaldursGateDocks%~
+    fj_destination_name = exitbs0110
+  END
+BUT_ONLY_IF_IT_CHANGES
+
+
+//bs0160.are
+/* entrance in bs0160 Old Temple Island */
+COPY_EXISTING ~bs0160.are~ ~override~
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 1751
+    fj_loc_y       = 2094
+    fj_orientation = 10
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs0200
+  END
+BUT_ONLY_IF_IT_CHANGES
+
+
+
+//bs0200.are
+/* sea caves: add travel triggers */
+COPY_EXISTING ~bs0200.are~ ~override~
+/* exit and entrance to prison ys0106.are */
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 259
+    fj_box_top      = 874
+    fj_box_right    = 316
+    fj_box_bottom   = 969
+    fj_cursor_idx   = 34   //travel wheel
+    fj_vertex_0     = 268 + (969 << 16)
+    fj_vertex_1     = 316 + (934 << 16)
+    fj_vertex_2     = 308 + (886 << 16)
+    fj_vertex_3     = 276 + (874 << 16)
+    fj_vertex_4     = 259 + (928 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travys0106
+    fj_destination_area = ys0106
+    fj_destination_name = exitbs0200
+  END
+
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 396
+    fj_loc_y       = 1017
+    fj_orientation = 12
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitys0106
+  END
+
+/* exit to tunnel in north west */
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 27
+    fj_box_top      = 262
+    fj_box_right    = 174
+    fj_box_bottom   = 421
+    fj_cursor_idx   = 34   //travel wheel
+    fj_vertex_0     = 70 + (421 << 16)
+    fj_vertex_1     = 174 + (394 << 16)
+    fj_vertex_2     = 166 + (262 << 16)
+    fj_vertex_3     = 27 + (286 << 16)
+    fj_vertex_4     = 37 + (354 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travbs0112
+    fj_destination_area = BS0112
+    fj_destination_name = exitbs0200
+  END
+/* entrance */ 
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 175
+    fj_loc_y       = 399
+    fj_orientation = 14
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs0112
+  END
+
+/* exit and entrance to Waterqueen's temple AR0609.are */
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 1678
+    fj_box_top      = 187
+    fj_box_right    = 1792
+    fj_box_bottom   = 303
+    fj_cursor_idx   = 28 //stairs
+    fj_vertex_0     = 1768 + (303 << 16)
+    fj_vertex_1     = 1792 + (241 << 16)
+    fj_vertex_2     = 1741 + (187 << 16)
+    fj_vertex_3     = 1678 + (178 << 16)
+    fj_vertex_4     = 1678 + (247 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travar0609
+    fj_destination_area = EVAL ~%BaldursGateDocks_WaterQueensHouse%~
+    fj_destination_name = exitbs0200
+  END
+
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 1634
+    fj_loc_y       = 318
+    fj_orientation = 3
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitar0609
+  END
+
+/* travel trigger to Old Temple Island */
+//trigger point with script
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 1027
+    fj_box_top      = 573
+    fj_box_right    = 1155
+    fj_box_bottom   = 720
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 1067 + (720 << 16)
+    fj_vertex_1     = 1155 + (702 << 16)
+    fj_vertex_2     = 1133 + (620 << 16)
+    fj_vertex_3     = 1086 + (573 << 16)
+    fj_vertex_3     = 1027 + (622 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bs0200t2
+    fj_reg_script   = bs0200t2
+END
+
+/* exit and entrance to temple island */
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 1027
+    fj_box_top      = 573
+    fj_box_right    = 1155
+    fj_box_bottom   = 720
+    fj_cursor_idx   = 34   //travel wheel
+    fj_vertex_0     = 1067 + (720 << 16)
+    fj_vertex_1     = 1155 + (702 << 16)
+    fj_vertex_2     = 1133 + (620 << 16)
+    fj_vertex_3     = 1086 + (573 << 16)
+    fj_vertex_3     = 1027 + (622 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travbs0160
+    fj_destination_area = BS0160
+    fj_destination_name = exitbs0200
+  END
+/* entrance is probably not needed */ 
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 1239
+    fj_loc_y       = 612
+    fj_orientation = 12
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs0160
+  END
+
+/* trigger area before exit to ys0109 is free */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 1574
+    fj_box_top      = 978
+    fj_box_right    = 1717
+    fj_box_bottom   = 1133
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 1574 + (1079 << 16)
+    fj_vertex_1     = 1636 + (1133 << 16)
+    fj_vertex_2     = 1717 + (1035 << 16)
+    fj_vertex_3     = 1658 + (978 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bs0200t3
+    fj_reg_script   = bs0200t3
+END
+
+/* earth heap with the adjutant's body */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 382
+    fj_box_top      = 872
+    fj_box_right    = 505
+    fj_box_bottom   = 962
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 457 + (962 << 16)
+    fj_vertex_1     = 505 + (911 << 16)
+    fj_vertex_2     = 441 + (872 << 16)
+    fj_vertex_3     = 382 + (913 << 16)
+    fj_vertex_4     = 420 + (947 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bs0200t4
+    fj_reg_script   = bs0200t4
+END
+
+/* info trigger for black pearl */
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 893
+    fj_box_top      = 467
+    fj_box_right    = 938
+    fj_box_bottom   = 501
+    fj_cursor_idx   = 22 //question mark
+    fj_vertex_0     = 906 + (501 << 16)
+    fj_vertex_1     = 938 + (497 << 16)
+    fj_vertex_2     = 936 + (468 << 16)
+    fj_vertex_3     = 904 + (467 << 16)
+    fj_vertex_4     = 893 + (489 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bs0200t5
+    fj_reg_script   = bs0200t5
+END
+
+/* deprecated
+//container for Black Pearl
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type        = 8 //nonvisible
+    fj_loc_x       = 930
+    fj_loc_y       = 472
+    fj_box_left    = 920
+    fj_box_top     = 462
+    fj_box_right   = 941
+    fj_box_bottom  = 485
+    fj_trap_loc_x  = 930
+    fj_trap_loc_y  = 472
+    fj_vertex_0    = 920 + (485 << 16)
+    fj_vertex_1    = 939 + (481 << 16)
+    fj_vertex_2    = 941 + (471 << 16)
+    fj_vertex_3    = 932 + (462 << 16)
+    fj_vertex_4    = 920 + (469 << 16)
+    fj_vertex_5    = 932 + (462 << 16)
+    STR_VAR
+    fj_structure_type = container
+    fj_name           = ~bs0200c1~
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_con_itm_idx    = SHORT_AT 0x74 - 1 // a new container will be last in the file
+    fj_flags          = 1 // identified
+    STR_VAR
+    fj_name           = bsblkprl
+    fj_structure_type = itm
+  END
+*/
+
+BUT_ONLY_IF_IT_CHANGES
+
+
+//bs1000.are
+/* travel trigger to the dock district (crossplatform coding) */
+///////////////////////////////////////////////////////////////
+// for testing
+// remove for final release
+/////////////////////////////////////////////////////////////////
+COPY_EXISTING ~bs1000.are~ ~override~
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 454
+    fj_box_top      = 1
+    fj_box_right    = 605
+    fj_box_bottom   = 35
+    fj_cursor_idx   = 34 //world travel
+    fj_vertex_0     = 454 + (0 << 16)
+    fj_vertex_1     = 460 + (35 << 16)
+    fj_vertex_2     = 605 + (35 << 16)
+    fj_vertex_3     = 599 + (0 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = Travfw1200
+    fj_destination_area = EVAL ~%BaldursGateDocks%~
+    fj_destination_name = exitbs1000
+  END
+
+/* travel trigger to bs1001.are */
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 4328
+    fj_box_top      = 716
+    fj_box_right    = 4370
+    fj_box_bottom   = 782
+    fj_cursor_idx   = 42   //open door
+    fj_vertex_0     = 4329 + (768 << 16)
+    fj_vertex_1     = 4368 + (782 << 16)
+    fj_vertex_2     = 4370 + (740 << 16)
+    fj_vertex_3     = 4367 + (731 << 16)
+    fj_vertex_4     = 4358 + (719 << 16)
+    fj_vertex_5     = 4351 + (717 << 16)
+    fj_vertex_6     = 4342 + (716 << 16)
+    fj_vertex_7     = 4334 + (718 << 16)
+    fj_vertex_8     = 4328 + (723 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = Travbs1001top
+    fj_destination_area = bs1001
+    fj_destination_name = exitbs1000top
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 4374
+    fj_loc_y       = 818
+    fj_orientation = 0
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs1001top
+  END
+BUT_ONLY
+
+//bs1001.are
+/* travel trigger to bs1000.are (top wall) */
+COPY_EXISTING ~bs1001.are~ ~override~
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 333
+    fj_box_top      = 78
+    fj_box_right    = 440
+    fj_box_bottom   = 182
+    fj_cursor_idx   = 28   //stairs
+    fj_vertex_0     = 376 + (78 << 16)
+    fj_vertex_1     = 333 + (148 << 16)
+    fj_vertex_2     = 393 + (182 << 16)
+    fj_vertex_3     = 440 + (119 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = Travbs1000top
+    fj_destination_area = bs1000
+    fj_destination_name = exitbs1001top
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 243
+    fj_loc_y       = 275
+    fj_orientation = 3
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs1000top
+  END
+BUT_ONLY
+
+//ys0106.are
+/* prison: trigger points for moldy area */
+COPY_EXISTING ~ys0106.are~ ~override~
+//trigger point with script
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 486
+    fj_box_top      = 90
+    fj_box_right    = 554
+    fj_box_bottom   = 183
+    fj_cursor_idx   = 22   //question mark
+    fj_vertex_0     = 523 + (183 << 16)
+    fj_vertex_1     = 554 + (171 << 16)
+    fj_vertex_2     = 553 + (120 << 16)
+    fj_vertex_3     = 498 + (90 << 16)
+    fj_vertex_3     = 486 + (163 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = bs0200ex
+    fj_reg_script   = ys0106tr
+END
+
+/* exit and entrance to sea caves */
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 486
+    fj_box_top      = 90
+    fj_box_right    = 554
+    fj_box_bottom   = 183
+    fj_cursor_idx   = 34   //travel wheel
+    fj_vertex_0     = 523 + (183 << 16)
+    fj_vertex_1     = 554 + (171 << 16)
+    fj_vertex_2     = 553 + (120 << 16)
+    fj_vertex_3     = 498 + (90 << 16)
+    fj_vertex_3     = 486 + (163 << 16)
+    fj_flags        = 0b0000000000000100  //full party required, autosave
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = travbs0200
+    fj_destination_area = BS0200
+    fj_destination_name = exitys0106
+  END
+
+  LPF fj_are_structure
+    INT_VAR
+    fj_loc_x       = 514
+    fj_loc_y       = 240
+    fj_orientation = 3
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = exitbs0200
+  END
+BUT_ONLY_IF_IT_CHANGES
+
+
+
+//YS0119.are
+/* give catacomb range detection trigger (YS0119) */
+COPY_EXISTING ~YS0119.are~ ~override~
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 0    //trap
+    fj_box_left    = 302  //kleinstes x
+    fj_box_top     = 343   //kleinstes y
+    fj_box_right   = 411  //größtes x 
+    fj_box_bottom  = 442 //größtes y
+    fj_loc_x       = 354
+    fj_loc_y       = 365
+    fj_vertex_0    = 320 + (442 << 16) 
+    fj_vertex_1    = 411 + (432 << 16)
+    fj_vertex_2    = 388 + (343 << 16)
+    fj_vertex_3    = 293 + (352 << 16)
+    fj_vertex_4    = 302 + (402 << 16) 
+    STR_VAR
+    fj_structure_type   = region
+    fj_trap_detect      = 100
+    fj_trap_active      = 1
+    fj_trap_status      = 0
+    fj_name             = KRDTrigger
+    fj_reg_script   	= ys0119t3
+  END
+
+BUT_ONLY_IF_IT_CHANGES
+
+
+/* mos - only neded for BGT */
+
+ACTION_IF GAME_IS ~bgt~ BEGIN
+  COPY ~bst/mos_bg2~ ~Override~
+END
+
+
+
+
+//##################################################
+
+/* Cutscene scripts */
+COMPILE EVALUATE_BUFFER ~bst/cutscene scripts/.~
+
+
+
+//##################################################
+// Area Scripts
+
+/* extend existing ones */
+LAF extend_area_script STR_VAR area="%NWBaldursGate_Helm&Cloak_L1%" bottom="bst/area scripts/gamebcs/ar0116.baf"   END
+
+/* EXTEND_TOP to make sure it is executed */
+LAF extend_area_script STR_VAR area="%NEBaldursGate%" top="bst/area scripts/gamebcs/ar0300.baf"   END
+
+LAF extend_area_script STR_VAR area="%NBaldursGate%" bottom="bst/area scripts/gamebcs/ar0200.baf"   END
+
+LAF extend_area_script STR_VAR area="%DurlagsTower_L3%" bottom="bst/area scripts/gamebcs/ar0504.baf"   END
+
+LAF extend_area_script STR_VAR area="%BaldursGateDocks_WaterQueensHouse%" bottom="bst/area scripts/gamebcs/ar0609.baf"   END
+
+LAF extend_area_script STR_VAR area="%WyrmsCrossing%" bottom="bst/area scripts/gamebcs/ar0900.baf"   END
+
+LAF extend_area_script STR_VAR area="%SWBaldursGate_YeOldeInn_L1%" bottom="bst/area scripts/gamebcs/ar1113.baf"   END
+
+/* this needed to be patched via EXTEND_TOP or it wasn't executed */
+LAF extend_area_script STR_VAR area="%BaldursGateDocks%" top="bst/area scripts/gamebcs/ar1200.baf"   END
+
+LAF extend_area_script STR_VAR area="%ShipwrecksCoast%" bottom="bst/area scripts/gamebcs/ar3100.baf"   END
+
+LAF extend_area_script STR_VAR area="%NashkelCarnival%" bottom="bst/area scripts/gamebcs/ar4900.baf"   END
+
+/* attach messenger for slave trader quest */
+LAF extend_area_script STR_VAR area="%BaldursGateDocks%" top="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%CentralBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%EBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%NBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%WBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%NEBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%NWBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%SEBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+LAF extend_area_script STR_VAR area="%SWBaldursGate%" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
+
+/* compile mod area scripts (includes trigger scripts) */
+COMPILE EVALUATE_BUFFER ~bst/area scripts/.~
+
+
+/* only BGT+EET: sunrise / sunset movies */
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  EXTEND_BOTTOM ~bs1000.bcs~ ~bst/area scripts/gamebcs/bs1000_bgt.baf~
+END
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  EXTEND_BOTTOM ~bs1000.bcs~ ~bst/area scripts/gamebcs/bs1000_eet.baf~
+END
+
+/* patch baldur.bcs:
+- to know whether PC knows about Bhaal heritage (for King of Restless Dead) 
+- fire elemental will break out of barrel when timer run */
+
+EXTEND_TOP ~baldur.bcs~ ~bst/area scripts/gamebcs/baldur.baf~ EVALUATE_BUFFER 
+
+
+/* patch Tamoko's dialogue with Know Bhaal variable */
+
+<<<<<<<< ...inlined/bst_tamoko.d
+
+ADD_TRANS_ACTION ~TAMOKO~ BEGIN 14 15 16 17 18 END BEGIN END
+~SetGlobal("bsKnowBhaal","GLOBAL",1)~
+
+>>>>>>>>
+
+COMPILE ~...inlined/bst_tamoko.d~ EVALUATE_BUFFER 
+
+///////
+// scripts from BGII missing in BG:EE
+
+ACTION_IF !FILE_EXISTS_IN_GAME ~mage10a.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/mage10a.baf~
+END
+
+ACTION_IF !FILE_EXISTS_IN_GAME ~OARCH02.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/OARCH02.baf~
+END
+
+ACTION_IF !FILE_EXISTS_IN_GAME ~pries8a.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/pries8a.baf~
+END
+
+ACTION_IF !FILE_EXISTS_IN_GAME ~priest12.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/priest12.baf~
+END
+
+/* for Leonhard 'the Fierce' (slave trader contact) bsslav01.cre */
+ACTION_IF !FILE_EXISTS_IN_GAME ~THIEFMAG.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/THIEFMAG.baf~
+END
+
+/* for slave trader bouncers bsslav02-03.cre */
+ACTION_IF !FILE_EXISTS_IN_GAME ~THIEF14T.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/THIEF14T.baf~
+END
+
+/* for slave trader bouncers bsslav02-03.cre */
+ACTION_IF !FILE_EXISTS_IN_GAME ~GPUSE.bcs~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~bst/area scripts/gamebcs/GPUSE.baf~
+END
+
+
+//##################################################
+// Dialog
+	COMPILE EVALUATE_BUFFER ~bst/dialog/.~
+
+
+/* for BGT, make Ragefast's state 17 true also if Ramazith's quest was not accepted */
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  <<<<<<<< ...inlined/bst_bgt_ragefast.d
+   REPLACE_STATE_TRIGGER RAGEFA 17 ~True()~
+  >>>>>>>>
+  COMPILE ~...inlined/bst_bgt_ragefast.d~ EVALUATE_BUFFER 
+END
+
+//##################################################
+// Cre Scripts
+	COMPILE EVALUATE_BUFFER ~bst/cre scripts/react/ysreact.baf~ // Do ysreact first to prevent compile warnings
+	COMPILE EVALUATE_BUFFER ~bst/cre scripts/.~
+
+
+
+// Append mastarea.2da with the new areas
+  APPEND ~MASTAREA.2da~ ~bs1000 value~ UNLESS ~bs1000~ //Seatower
+
+
+
+//##################################################
+/* High level encounter under the Tailor's Shop, by Acifer */
+
+WITH_TRA ~bst/language/autotra/%LANGUAGE%/bst_highlevel.tra~ BEGIN 
+
+  INCLUDE ~bst/bst_Highlevel/bst_highlevel.tpa~
+
+END
+
+
+
+//##################################################
+/////                                                  \\\\\
+///// Worldmap                                         \\\\\
+/////                                                  \\\\\
+
+PRINT @4
+
+MKDIR ~Worldmap~
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_areas.tbl~ BEGIN
+	COPY ~Worldmap/map_mods_areas.tbl~ ~Worldmap~
+		APPEND_FILE ~bst/wmp/areas.tbl~
+END ELSE BEGIN
+	COPY ~bst/wmp/areas.tbl~ ~Worldmap/map_mods_areas.tbl~
+END
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_links.tbl~ BEGIN
+	COPY ~Worldmap/map_mods_links.tbl~ ~Worldmap~
+		APPEND_FILE ~bst/wmp/%platform%/links.tbl~
+END ELSE BEGIN
+	COPY ~bst/wmp/%platform%/links.tbl~ ~Worldmap/map_mods_links.tbl~
+END
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_trans.tra~ BEGIN
+	COPY ~Worldmap/map_mods_trans.tra~ ~Worldmap~
+		APPEND_FILE ~bst/language/autotra/%LANGUAGE%/worldmap.tra~
+END ELSE BEGIN
+	COPY ~bst/language/autotra/%LANGUAGE%/worldmap.tra~ ~Worldmap/map_mods_trans.tra~
+END
+
+ACTION_IF NOT MOD_IS_INSTALLED ~setup-bp-bgt-worldmap.tp2~ ~0~ THEN BEGIN
+
+    ACTION_IF GAME_IS ~eet~ BEGIN
+        INCLUDE ~bst/lib/ADD_MAP_ICONS_EE.tpa~
+        LAF ADD_MAP_ICONS_EE
+            INT_VAR
+            icon_index = 0 // sequence (cycle) number of your first icon in your .bam, indexed from 0
+            STR_VAR
+            path_to_icons = ~bst/wmp/eet/BST_Icon.bam~ // full path to the .bam file containing your icons, e.g. ~mymod/bam/mapicons.bam~
+            patch_to_pvrz = ~bst/wmp/eet~ // directory patch to .pvrz files associated with your merging .bam icon, e.g. ~mymod/pvrz~
+            worldmap = ~worldmap~ // which .wmp file should these icons be associated with, e.g. ~worldm25~
+            RET
+            new_icon_index // sequence number of your first icon in the new .bam - use this when you patch the worldmap
+        END
+	COPY ~%MOD_FOLDER%/wmp/%platform%/eet_areas.tbl~  ~%MOD_FOLDER%/wmp/%platform%~
+		REPLACE_TEXTUALLY ~new_icon_index~ ~%new_icon_index%~
+    END
+
+    ACTION_IF GAME_IS ~bgee~ BEGIN
+
+        COPY_EXISTING ~mapicons.bam~ ~override~
+            READ_ASCII 0x0 sig (4)
+            READ_ASCII 0x4 version (4)
+        ACTION_IF (~%sig%~ STRING_EQUAL_CASE ~BAM ~ AND ~%version%~ STRING_EQUAL_CASE ~v2  ~) BEGIN
+            //PRINT ~v2~
+            INCLUDE ~bst/lib/ADD_MAP_ICONS_EE.tpa~
+            LAF ADD_MAP_ICONS_EE
+                INT_VAR
+                    icon_index = 0 // sequence (cycle) number of your first icon in your .bam, indexed from 0
+                STR_VAR
+                    path_to_icons = ~bst/wmp/BGEE/v2/BST_Icon.bam~ // full path to the .bam file containing your icons, e.g. ~mymod/bam/mapicons.bam~
+                    patch_to_pvrz = ~bst/wmp/BGEE/v2~ // directory patch to .pvrz files associated with your merging .bam icon, e.g. ~mymod/pvrz~
+                    worldmap = ~worldmap~ // which .wmp file should these icons be associated with, e.g. ~worldm25~
+                RET
+                    new_icon_index // sequence number of your first icon in the new .bam - use this when you patch the worldmap
+            END  
+        END
+        ACTION_IF (~%sig%~ STRING_EQUAL_CASE ~BAM ~ AND ~%version%~ STRING_EQUAL_CASE ~v1  ~) BEGIN
+            //PRINT ~v1~
+            INCLUDE ~bst/lib/ADD_MAP_ICONS.tpa~
+            LAF ADD_MAP_ICONS
+                INT_VAR
+                    icon_index = 0 // sequence (cycle) number of your first icon in your .bam, indexed from 0
+                STR_VAR
+                    path_to_icons = ~bst/wmp/BGEE/v1/BST_Icon.bam~ // full path to the .bam file containing your icons, e.g. ~mymod/bam/mapicons.bam~
+                    worldmap = ~worldmap~ // which .wmp file should these icons be associated with, e.g. ~worldm25~
+                RET
+                    new_icon_index // sequence number of your first icon in the new .bam - use this when you patch the worldmap
+            END
+        END
+
+	COPY ~%MOD_FOLDER%/wmp/%platform%/bgee_areas.tbl~  ~%MOD_FOLDER%/wmp/%platform%~
+		REPLACE_TEXTUALLY ~new_icon_index~ ~%new_icon_index%~
+    END
+
+    ACTION_IF GAME_IS ~bgt~ BEGIN
+   
+        INCLUDE ~bst/lib/ADD_MAP_ICONS.tpa~
+        LAF ADD_MAP_ICONS
+            INT_VAR
+                icon_index = 0 // sequence (cycle) number of your first icon in your .bam, indexed from 0
+            STR_VAR
+                path_to_icons = ~bst/wmp/BGT/BST_Icon.bam~ // full path to the .bam file containing your icons, e.g. ~mymod/bam/mapicons.bam~
+                worldmap = ~worldmap~ // which .wmp file should these icons be associated with, e.g. ~worldm25~
+            RET
+                new_icon_index // sequence number of your first icon in the new .bam - use this when you patch the worldmap
+        END
+	COPY ~%MOD_FOLDER%/wmp/%platform%/bgt_areas.tbl~  ~%MOD_FOLDER%/wmp/%platform%~
+		REPLACE_TEXTUALLY ~new_icon_index~ ~%new_icon_index%~
+    END
+END 
+
+
+/* workaround until path finding in "add_worldmap_tbl.tpa" is fixed */
+ACTION_IF MOD_IS_INSTALLED ~setup-bp-bgt-worldmap.tp2~ ~0~ THEN BEGIN
+ COPY ~%MOD_FOLDER%/wmp/%platform%/%platform%_areas.tbl~  ~%MOD_FOLDER%/wmp/%platform%~
+		REPLACE_TEXTUALLY ~new_icon_index~ ~28~
+END
+
+
+ACTION_IF GAME_IS ~bgee~ BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/add_worldmap_tbl.tpa~
+	LAF ADD_WORLDMAP_TBL
+		INT_VAR
+		verbose = 1
+		inclSv = 0
+		STR_VAR
+		path_to_areas = EVAL ~%MOD_FOLDER%/wmp/bgee/bgee_areas.tbl~
+		path_to_areas_bp = EVAL ~%MOD_FOLDER%/wmp/areas.tbl~
+		path_to_links = EVAL ~%MOD_FOLDER%/wmp/bgee/links.tbl~
+		path_to_trans = EVAL ~%MOD_FOLDER%/language/autotra/%LANGUAGE%/worldmap.tra~
+	END
+END
+
+ACTION_IF GAME_IS ~eet~ BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/add_worldmap_tbl.tpa~
+	LAF ADD_WORLDMAP_TBL
+		INT_VAR
+		verbose = 1
+		inclSv = 0
+		STR_VAR
+		path_to_areas = EVAL ~%MOD_FOLDER%/wmp/%platform%/eet_areas.tbl~
+		path_to_areas_bp = EVAL ~%MOD_FOLDER%/wmp/areas.tbl~
+		path_to_links = EVAL ~%MOD_FOLDER%/wmp/%platform%/links.tbl~
+		path_to_trans = EVAL ~%MOD_FOLDER%/language/autotra/%LANGUAGE%/worldmap.tra~
+	END
+END
+
+ACTION_IF GAME_IS ~bgt~ BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/add_worldmap_tbl.tpa~
+	LAF ADD_WORLDMAP_TBL
+		INT_VAR
+		verbose = 1
+		inclSv = 0
+		STR_VAR
+		path_to_areas = EVAL ~%MOD_FOLDER%/wmp/%platform%/bgt_areas.tbl~
+		path_to_areas_bp = EVAL ~%MOD_FOLDER%/wmp/areas.tbl~
+		path_to_links = EVAL ~%MOD_FOLDER%/wmp/%platform%/links.tbl~
+		path_to_trans = EVAL ~%MOD_FOLDER%/language/autotra/%LANGUAGE%/worldmap.tra~
+	END
+END
+
+
+
+
+//##################################################
+// Area names for EE v2 debug console
+
+INCLUDE ~bst/lib/bs_cheat_functions.tpa~
+
+// Array with area name definitions (key: area resref, value: tra reference without '@')
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cheat_areas BEGIN
+  ~BS0101~ => 120000
+  ~BS0102~ => 120001
+  ~BS0103~ => 120002
+  ~BS0104~ => 120003
+  ~BS0105~ => 120004
+  ~BS0110~ => 120005
+  ~BS0111~ => 120006
+  ~BS0112~ => 120007
+  ~BS0113~ => 120008
+  ~BS0114~ => 120009
+  ~BS0127~ => 120010
+  ~BS0128~ => 120011
+  ~BS0129~ => 120012
+  ~BS0130~ => 120013
+  ~BS0131~ => 120014
+  ~BS0132~ => 120015
+  ~BS0133~ => 120016
+  ~BS0134~ => 120017
+  ~BS0135~ => 120018
+  ~BS0136~ => 120019
+  ~BS0137~ => 120020
+  ~BS0138~ => 120021
+  ~BS0139~ => 120022
+  ~BS0140~ => 120023
+  ~BS0141~ => 120024
+  ~BS0150~ => 120025
+  ~BS0151~ => 120026
+  ~BS0152~ => 120027
+  ~BS0153~ => 120028
+  ~BS0154~ => 120029
+  ~BS0155~ => 120030
+  ~BS0156~ => 120031
+  ~BS0157~ => 120032
+  ~BS0160~ => 120033
+  ~BS0200~ => 120034
+  ~BS1000~ => 120035
+  ~BS1001~ => 120036
+  ~BS1010~ => 120037
+  ~BS1011~ => 120038
+  ~BS1020~ => 120039
+  ~BS1021~ => 120040
+  ~YS0102~ => 120041
+  ~YS0103~ => 120042
+  ~YS0104~ => 120043
+  ~YS0105~ => 120044
+  ~YS0106~ => 120045
+  ~YS0107~ => 120046
+  ~YS0108~ => 120047
+  ~YS0109~ => 120048
+  ~YS0112~ => 120049
+  ~YS0113~ => 120050
+  ~YS0114~ => 120051
+  ~YS0115~ => 120052
+  ~YS0116~ => 120053
+  ~YS0117~ => 120054
+  ~YS0118~ => 120055
+  ~YS0119~ => 120056
+  ~YS0122~ => 120057
+  ~YS0123~ => 120058
+  ~YS0124~ => 120059
+  ~YS0125~ => 120060
+  ~YS0126~ => 120061
+END
+
+LAF INSTALL_CHEAT_AREAS
+STR_VAR
+  area_array = ~cheat_areas~
+  table_name = ~cheatAreas~
+END
+
+
+
+/* Fix Dock District Search Map - this might become an own component later */
+
+/* using Weigo's search map modding tool */
+
+INCLUDE ~%MOD_FOLDER%/lib/alter_searchmap.tpa~
+    LAF ALTER_SEARCHMAP
+        STR_VAR
+        path_to_2da_file = EVAL ~%MOD_FOLDER%/tpa/AR1200SR_changes.2da~ // full path to the *changes.2da file, e.g. ~mymod/bam/AR3700SR_changes_ee.2da~
+        areaname = EVAL ~%BaldursGateDocks%~                             // area name, e.g. ~AR3700~
+    END
+
+

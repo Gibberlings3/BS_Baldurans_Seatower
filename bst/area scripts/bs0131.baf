@@ -1,0 +1,8 @@
+// Create Alguine's Ghost
+IF
+	Global("bsCreateAlguineGhostFM3L","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguineGhostFM3L","GLOBAL",1)
+		CreateCreature("bsalghst",[463.213],2)
+END

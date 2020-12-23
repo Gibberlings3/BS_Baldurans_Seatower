@@ -1,0 +1,28 @@
+// Book
+IF
+	OR(6)
+		IsOverMe(Player1)
+		IsOverMe(Player2)
+		IsOverMe(Player3)
+		IsOverMe(Player4)
+		IsOverMe(Player5)
+		IsOverMe(Player6)
+	Global("bstabletrap","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@32)
+		SetGlobal("bstabletrap","GLOBAL",1)
+END
+
+IF
+	!IsOverMe(Player1)
+	!IsOverMe(Player2)
+	!IsOverMe(Player3)
+	!IsOverMe(Player4)
+	!IsOverMe(Player5)
+	!IsOverMe(Player6)
+	Global("bstabletrap","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bstabletrap","GLOBAL",0)
+END

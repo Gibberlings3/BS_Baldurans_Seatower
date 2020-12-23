@@ -1,0 +1,172 @@
+// Defeated in the Dream 5 nightmare scenario
+IF
+	Global("bsDream151","GLOBAL",3)
+THEN
+	RESPONSE #100
+		CreateCreature("bsdialog",[245.346],6)
+END
+
+// Create ghost Gorion
+IF
+	Global("bsCreateGorion","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateGorion","GLOBAL",1)
+		CreateCreature("bsgoriod",[245.346],6)
+END
+
+// Dream sequence completed
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CreateCreature("bsdialog",[245.346],6)
+		Continue()
+END
+
+// How many evil innates?
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	PartyHasItem("bshornd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamEvil","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	PartyHasItem("bsclawd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamEvil","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	PartyHasItem("bsdaggd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamEvil","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	PartyHasItem("bscandld")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamEvil","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	PartyHasItem("bspotnd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamEvil","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	PartyHasItem("bsskulld")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamEvil","GLOBAL",1)
+		Continue()
+END
+
+// How many good innates?
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	!PartyHasItem("bshornd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamGood","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	!PartyHasItem("bsclawd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamGood","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	!PartyHasItem("bsdaggd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamGood","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	!PartyHasItem("bscandld")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamGood","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	!PartyHasItem("bspotnd")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamGood","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+	!PartyHasItem("bsskulld")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bsDreamGood","GLOBAL",1)
+		Continue()
+END
+
+// Remove all dream items and tell bsdialog creature to use the data
+IF
+	Global("bsDreamComplete","GLOBAL",1)
+THEN
+	RESPONSE #100
+		TakePartyItem("bshornd")
+		TakePartyItem("bsclawd")
+		TakePartyItem("bsdaggd")
+		TakePartyItem("bscandld")
+		TakePartyItem("bspotnd")
+		TakePartyItem("bsskulld")
+		SetGlobal("bsDreamComplete","GLOBAL",2)
+END
+
+/* finished */
+
+IF
+	Global("bsDreamDone","GLOBAL",1)
+	Global("bsDreamDoneMoveGroup","MYAREA",0)
+
+THEN
+	RESPONSE #100
+			SetGlobal("bsDreamDoneMoveGroup","MYAREA",1)
+			AddXPObject(Protagonist,6000)
+			FadeToColor([50.0],0)
+			Wait(2)
+			ActionOverride(Player1,LeaveAreaLUA("bs0140","",[451.379],14))
+			ActionOverride(Player2,LeaveAreaLUA("bs0140","",[448.376],2))
+			ActionOverride(Player3,LeaveAreaLUA("bs0140","",[460.374],3))
+			ActionOverride(Player4,LeaveAreaLUA("bs0140","",[462.370],3))
+			ActionOverride(Player5,LeaveAreaLUA("bs0140","",[440.379],12))
+			ActionOverride(Player6,LeaveAreaLUA("bs0140","",[449.372],11))
+			FadeFromColor([50.0],0)
+			Wait(2)
+			RestParty()
+END

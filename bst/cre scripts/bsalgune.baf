@@ -1,0 +1,139 @@
+//---------------------------------------------------------
+// Reverse speech spell
+//---------------------------------------------------------
+IF
+	Global("bsAlguineSpeechSpell","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,WIZARD_CHAOS_VISUALS_ONLY)
+		Wait(2)
+		SetGlobal("bsAlguineSpeechSpell","GLOBAL",2)
+		SetGlobal("bsTalkToAlguineHFM","GLOBAL",2)
+		Dialogue(Myself)
+END
+
+//---------------------------------------------------------
+// Initial meeting
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineHFM","GLOBAL",0)
+	See([PC])
+THEN
+	RESPONSE #100
+		Wait(1)
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Dead Tanarr'i - controlled from Alguine's Ghost
+//---------------------------------------------------------
+IF
+	Global("bsAlguineTan","GLOBAL",1)
+THEN
+	RESPONSE #100
+		JumpToPoint([785.383])
+		SetGlobal("bsAlguineTan","GLOBAL",2)
+		Continue()
+END
+
+IF
+	Global("bsAlguineTan","GLOBAL",2)
+	See([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("bsAlguineTan","GLOBAL",3)
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Charname's second visit to the blind room - controlled from Alguine's Ghost
+//---------------------------------------------------------
+IF
+	Global("bsAlguineTan","GLOBAL",4)
+THEN
+	RESPONSE #100
+		JumpToPoint([785.383])
+		SetGlobal("bsAlguineTan","GLOBAL",5)
+		Continue()
+END
+
+IF
+	Global("bsAlguineTan","GLOBAL",5)
+	See([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("bsAlguineTan","GLOBAL",6)
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Future Memory 1
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineFM1","GLOBAL",0)
+	AreaCheck("bs0129")
+	See([PC])
+THEN
+	RESPONSE #100
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Future Memory 2
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineFM2","GLOBAL",0)
+	AreaCheck("bs0130")
+	See([PC])
+THEN
+	RESPONSE #100
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Future Memory 3 lower floor
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineFM3L","GLOBAL",0)
+	AreaCheck("bs0131")
+	See([PC])
+THEN
+	RESPONSE #100
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Future Memory 4
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineFM4","GLOBAL",0)
+	AreaCheck("bs0133")
+	See([PC])
+THEN
+	RESPONSE #100
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// Future Memory 5
+//---------------------------------------------------------
+IF
+	Global("bsTalkToAlguineFM5","GLOBAL",0)
+	AreaCheck("bs0134")
+	See([PC])
+THEN
+	RESPONSE #100
+		Dialogue(Protagonist)
+END
+
+//---------------------------------------------------------
+// At home
+//---------------------------------------------------------
+IF
+	AreaCheck("bs0140")
+	Global("bsDreamDone","GLOBAL",1)
+	See([PC])
+THEN
+	RESPONSE #100
+		Dialogue(Protagonist)
+END

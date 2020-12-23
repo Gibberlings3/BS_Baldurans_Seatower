@@ -1,0 +1,26 @@
+IF
+	Global("BS#GlabrezuSummon","BS0114",6)
+THEN
+	RESPONSE #100
+                ClearAllActions()
+		StartCutSceneMode()
+		SetGlobal("BS#GlabrezuSummon","BS0114",7)
+                DisplayString("Trigger_heptagram",@8200)
+		ScreenShake([50.50],15)
+		Wait(1)
+		CreateVisualEffect("ICMAGICH",[786.399])
+		Wait(1)
+		OpenDoor("Door01")
+                CreateCreature("BSGLABRE",[781.480],9)
+               	EndCutSceneMode()
+END
+
+IF
+	Global("BS#GlabrezuSummon","BS0114",5)
+	Global("Glabrezu_Warning","BS0114",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Glabrezu_Warning","BS0114",1)
+        DisplayString("Trigger_heptagram",@8201)
+END
+

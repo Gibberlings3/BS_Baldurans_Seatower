@@ -1,0 +1,9 @@
+IF
+	!Contains("BS#114CO",Myself)
+	Global("Wardstone_3_Removed","BS0114",0)
+THEN
+	RESPONSE #100
+                SetGlobal("Wardstone_3_Removed","BS0114",1)
+		IncrementGlobal("BS#GlabrezuSummon","BS0114",1)
+END
+

@@ -1,0 +1,154 @@
+COPY_EXISTING ~%BaldursGateDocks%.are~  ~override~
+	PATCH_IF (SOURCE_SIZE > bs_are_min_size) BEGIN
+
+// 1. Create a new travel trigger.
+// -------------------------------
+		LPF fj_are_structure
+		INT_VAR fj_type = 2					// the region type (0=trap, 1=info, 2=travel)
+			fj_flags = (1 << 11)			// the bitwise region flags (blocked = connected to door)
+			fj_box_left = 4282				// the leftmost X coordinate of the region’s bounding box
+			fj_box_top = 421				// the topmost Y coordinate of the region’s bounding box
+			fj_box_right = 4317				// the rightmost X coordinate of the region’s bounding box
+			fj_box_bottom = 508				// the bottommost Y coordinate of the region’s bounding box
+			fj_cursor_idx = 30				// the region’s mouse cursor index (from cursors.bam) : door
+			fj_loc_x = 4052					// the trap launch X coordinate
+			fj_loc_y = 532					// the trap launch Y coordinate
+//			fj_alt_x = 						// the activation point X coordinate
+//			fj_alt_y = 						// the activation point Y coordinate
+			fj_vertex_0 = (4282 + (481 << 16))
+			fj_vertex_1 = (4317 + (508 << 16))
+			fj_vertex_2 = (4317 + (451 << 16))
+			fj_vertex_3 = (4282 + (421 << 16))
+		STR_VAR fj_structure_type = region
+			fj_destination_area = "BS0110"		// the destination area resource reference (for travel regions);
+			fj_destination_name = exitar1200	// the entrance name in the destination area (for travel regions);
+			fj_name = travbs0110				// the region’s name
+		END
+
+// 1. Create a new entrance.
+// -------------------------
+		LPF fj_are_structure
+		INT_VAR fj_loc_x = 4197		// the X coordinate
+				fj_loc_y = 560		// the Y coordinate
+				fj_orientation = 2	// the facing direction (northwest)
+		STR_VAR fj_structure_type = entrance
+				fj_name = exitbs0110	// the entrance’s name
+		END
+
+// 3. We read the new area structure (because it has been modified).
+// -----------------------------------------------------------------
+		LPF ~bs_READ_AREA_STRUCTURE~ RET bs_are_doors_num bs_are_doors_off bs_are_vertices_off bs_are_vertices_num bs_are_wed bs_are_flag2 END
+
+/* Control debug : useless when the function works fine !
+LPF TO_HEX_NUMBER INT_VAR value = bs_are_doors_off minDigits = 1 prefix = 1 RET off_door = hexNumber END
+LPF TO_HEX_NUMBER INT_VAR value = bs_are_vertices_off minDigits = 1 prefix = 1 RET off_vert = hexNumber END
+PATCH_LOG ~CONTROL %SOURCE_FILE% :
+%bs_are_doors_num% doors		- offset doors		= %bs_are_doors_off% (%off_door%)
+%bs_are_vertices_num% vertices	- offset vertices	= %bs_are_vertices_off% (%off_vert%)~*/
+
+// 4. We store the door settings and delete it (mandatory to add new cell vertices).
+// ---------------------------------------------------------------------------------
+		SPRINT bs_Area "%BaldursGateDocks%"
+		SPRINT bs_Door "DOOR01"
+		LPF ~bs_CLONE_AREA_DOOR~ INT_VAR bs_Delete = 1 STR_VAR bs_Area bs_Door 
+		RET	bs_match_door			// Control variable : 0 (door not found) OR 1 (door found)
+			fj_flags				// Flags
+			fj_open_box_left		// Minimum bounding box of the door polygon (when open)
+			fj_open_box_top			// Minimum bounding box of the door polygon (when open)
+			fj_open_box_right		// Minimum bounding box of the door polygon (when open)
+			fj_open_box_bottom		// Minimum bounding box of the door polygon (when open)
+			fj_closed_box_left		// Minimum bounding box of the door polygon (when closed)
+			fj_closed_box_top		// Minimum bounding box of the door polygon (when closed)
+			fj_closed_box_right		// Minimum bounding box of the door polygon (when closed)
+			fj_closed_box_bottom	// Minimum bounding box of the door polygon (when closed)
+			fj_cursor_idx			// Cursor index (cursors.bam)
+			fj_trap_detect			// Trap detection difficulty
+			fj_trap_remove			// Trap removal difficulty
+			fj_trap_active			// Door is trapped (0=No, 1=Yes)
+			fj_trap_status			// Trap detected (0=No, 1=Yes)
+			fj_trap_loc_x			// Trap launch target X coordinate
+			fj_trap_loc_y			// Trap launch target Y coordinate
+			fj_detect_diff			// Detection difficulty (secret doors)
+			fj_locked_diff			// Lock difficulty (0-100)
+			fj_open_loc_x			// X location to open the door (when open)
+			fj_open_loc_y			// Y location to open the door (when open)
+			fj_closed_loc_x			// X location to open the door (when closed)
+			fj_closed_loc_y			// Y location to open the door (when closed)
+			fj_lockpick_strref		// Lock-pick string
+			fj_name					// Door’s name
+			fj_door_wed_id			// Door ID (to link with WED)
+			fj_door_open_wav		// Door open sound
+			fj_door_close_wav		// Door close sound
+			fj_key_resref			// Key item
+			fj_door_script			// Door script
+			fj_travel_trigger		// Travel trigger name
+			fj_dlg_strref			// Dialog speaker name
+			fj_dlg_resref			// Dialog resref
+		END
+
+		PATCH_IF bs_match_door BEGIN
+/* Control debug : useless when the function works fine !
+PATCH_LOG "Door : %bs_Door% - %bs_Area%"
+PATCH_LOG ~CONTROL 3 FUNCTION bs_CLONE_AREA_DOOR ==> settings of door %bs_Door% in %SOURCE_FILE% :
+======================================================
+- Name = %fj_name%	- Door ID (to link with WED) = %fj_door_wed_id%	- Flags = %fj_flags%
+- Minimum bounding box of the door polygon (when open)	 = Left (%fj_open_box_left%)	- Right (%fj_open_box_right%)	- Top (%fj_open_box_top%)	- Bottom (%fj_open_box_bottom%)
+- Minimum bounding box of the door polygon (when closed) = Left (%fj_closed_box_left%)	- Right (%fj_closed_box_right%)	- Top (%fj_closed_box_top%)	- Bottom (%fj_closed_box_bottom%)
+- Door sounds = open (%fj_door_open_wav%) - close (%fj_door_close_wav%)
+- Cursor index (cursors.bam) = %fj_cursor_idx%
+- Trap difficulty = detection (%fj_trap_detect%) - removal (%fj_trap_remove%) - Door is trapped (0=No, 1=Yes) = %fj_trap_active%
+- Trap detected (0=No, 1=Yes) = %fj_trap_status% - Trap launch target = X coordinate (%fj_trap_loc_x%) - Y coordinate (%fj_trap_loc_y%)
+- Door script = %fj_door_script%
+- Detection difficulty (secret doors) = %fj_detect_diff% - Lock difficulty (0-100) = %fj_locked_diff% - Key item = %fj_key_resref%
+- Location to open the door : when open [X (%fj_open_loc_x%) - Y (%fj_open_loc_y%)]	--- when closed [X (%fj_closed_loc_x%) - Y (%fj_closed_loc_y%)].
+- Lock-pick string = %fj_lockpick_strref%
+- Travel trigger name = %fj_travel_trigger%
+- Dialog speaker name = %fj_dlg_strref%	- Dialog resref = %fj_dlg_resref%~*/
+
+// 5. We adjust a few door settings.
+// ---------------------------------
+
+			SET fj_flags = (1 << 6)					//  located = linked (1 << 1 locked, , 1 << 9 can be looked through], 1 << 10 Uses key), 
+/* useless --> auto-generate by the macro ! 
+			SET fj_open_box_left		= 4237		// Minimum bounding box of the door polygon (when open)
+			SET fj_open_box_top			= 419		// Minimum bounding box of the door polygon (when open)
+			SET fj_open_box_right		= 4280		// Minimum bounding box of the door polygon (when open)
+			SET fj_open_box_bottom		= 503		// Minimum bounding box of the door polygon (when open)
+			SET fj_closed_box_left		= 4281		// Minimum bounding box of the door polygon (when closed)
+			SET fj_closed_box_top		= 417		// Minimum bounding box of the door polygon (when closed)
+			SET fj_closed_box_right		= 4312		// Minimum bounding box of the door polygon (when closed)
+			SET fj_closed_box_bottom	= 506		// Minimum bounding box of the door polygon (when closed)*/
+			SET fj_trap_loc_x			= 4200		// Trap launch target X coordinate
+			SET fj_trap_loc_y			= 440		// Trap launch target Y coordinate
+			SET fj_locked_diff			= 0			// Lock difficulty (0-100)
+//			SPRINT fj_key_resref		"##"		// Key item
+//			SPRINT fj_door_script					// Door script
+//			SET fj_lockpick_strref					// Lock-pick string
+			SPRINT fj_travel_trigger "travbs0110"	// Travel trigger name
+
+// 6. We add the new door which replaces the original one.
+// -------------------------------------------------------
+			LPM ~bs_ADD_AREA_DOOR~ 
+
+/* Control debug : useless when the function works fine !
+PATCH_LOG ~CONTROL 4 ==> settings of door %bs_Door% in %SOURCE_FILE% :
+======================================================
+- Name = %fj_name%	- Door ID (to link with WED) = %fj_door_wed_id%	- Flags = %fj_flags%
+- Minimum bounding box of the door polygon (when open)	 = Left (%fj_open_box_left%)	- Right (%fj_open_box_right%)	- Top (%fj_open_box_top%)	- Bottom (%fj_open_box_bottom%)
+- Minimum bounding box of the door polygon (when closed) = Left (%fj_closed_box_left%)	- Right (%fj_closed_box_right%)	- Top (%fj_closed_box_top%)	- Bottom (%fj_closed_box_bottom%)
+- Door sounds = open (%fj_door_open_wav%) - close (%fj_door_close_wav%)
+- Cursor index (cursors.bam) = %fj_cursor_idx%
+- Trap difficulty = detection (%fj_trap_detect%) - removal (%fj_trap_remove%) - Door is trapped (0=No, 1=Yes) = %fj_trap_active%
+- Trap detected (0=No, 1=Yes) = %fj_trap_status% - Trap launch target = X coordinate (%fj_trap_loc_x%) - Y coordinate (%fj_trap_loc_y%)
+- Door script = %fj_door_script%
+- Detection difficulty (secret doors) = %fj_detect_diff% - Lock difficulty (0-100) = %fj_locked_diff% - Key item = %fj_key_resref%
+- Location to open the door : when open [X (%fj_open_loc_x%) - Y (%fj_open_loc_y%)]	--- when closed [X (%fj_closed_loc_x%) - Y (%fj_closed_loc_y%)].
+- Lock-pick string = %fj_lockpick_strref%
+- Travel trigger name = %fj_travel_trigger%
+- Dialog speaker name = %fj_dlg_strref%	- Dialog resref = %fj_dlg_resref%~*/
+PATCH_LOG "Door : %bs_Door% - %bs_Area%"
+
+		END	// of PATCH_IF bs_match_door BEGIN
+
+	END		// of PATCH_IF (SOURCE_SIZE > bs_are_min_size)
+BUT_ONLY

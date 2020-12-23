@@ -1,0 +1,5 @@
+
+//BST New Area Table
+SHORT_NAME  CONTENT  LONG_NAME  FLAGS  BAM_ANIM  	   X_POS  Y_POS  NAME         TOOLTIP      LOAD_IM
+
+bs1000      bs1000   bs1000    3      new_icon_index       200   1613   @BST_100000   @BST_100000   N        //Balduran's Seatower

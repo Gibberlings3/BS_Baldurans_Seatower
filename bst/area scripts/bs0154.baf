@@ -1,0 +1,8 @@
+// Initial area setup
+IF
+	Global("bsDream154","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsvoice",[1038.455],8)
+		SetGlobal("bsDream154","GLOBAL",1)
+END

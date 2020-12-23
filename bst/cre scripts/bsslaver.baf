@@ -1,0 +1,31 @@
+IF
+	Allegiance(Myself,ENEMY)
+	!Name("bsslav04",Myself)
+	Global("bsChangeScript","LOCALS",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("THIEF14T",DEFAULT)	
+		SetGlobal("bsChangeScript","LOCALS",1)
+END
+
+IF
+	Allegiance(Myself,NEUTRAL)
+	Global("bsSlaversHostile","MYAREA",1)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF 
+	Allegiance(Myself,NEUTRAL)
+	OR(5)
+		Allegiance("bsslav07",ENEMY)
+		Dead("bsslav07")
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		HitBy([GOODCUTOFF],CRUSHING)
+		HPPercentLT(Myself,100)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSlaversHostile","MYAREA",1)
+		Enemy()
+END

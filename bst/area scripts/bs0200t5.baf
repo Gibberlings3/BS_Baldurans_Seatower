@@ -1,0 +1,55 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bsFoundBlackPearl","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsFoundBlackPearl","GLOBAL",1)
+		DisplayStringHead(LastTrigger,@11017)
+END
+
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bsFoundBlackPearl","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsFoundBlackPearl","GLOBAL",2)
+		SetGlobal("bsPearlLocation","GLOBAL",1)
+		DisplayStringHead(LastTrigger,@11018)
+		AmbientActivate("Shell_closed",FALSE)
+		AmbientActivate("Shell_open",TRUE)
+END
+
+/* PC found black pearl */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bsFoundBlackPearl","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsFoundBlackPearl","GLOBAL",3)
+		DisplayStringHead(LastTrigger,@11019)
+		ActionOverride(LastTrigger,GiveItemCreate("bsblkprl",Myself,1,0,0))
+		AmbientActivate("Shell_open",FALSE)
+		AmbientActivate("Shell_empty",TRUE)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	GlobalGT("bsFoundBlackPearl","GLOBAL",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@11020)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@11007)
+END
+

@@ -1,0 +1,8 @@
+/* script for all rabbits */
+
+IF
+	GlobalGT("bsCollectRabbits","GLOBAL",1)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

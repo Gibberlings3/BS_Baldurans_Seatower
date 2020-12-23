@@ -1,0 +1,25 @@
+/* bstanar.bcs - Nabassu Fledgling. 1x Death Gaze, 1x Darkness */
+
+
+IF
+	See([PC])
+	Global("bsNabassu_DeathGaze","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsNabassu_DeathGaze","LOCALS",1)
+		ForceSpellRES("%SPIN996%",SecondNearest([PC]))  // Death Gaze
+		Wait(1)
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+
+IF
+	See([PC])
+	Global("bsNabassu_Darkness","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsNabassu_Darkness","LOCALS",1)
+		ForceSpellRES("bsdark01",NearestEnemyOf(Myself))
+		Wait(1)
+		AttackOneRound(NearestEnemyOf(Myself))
+END

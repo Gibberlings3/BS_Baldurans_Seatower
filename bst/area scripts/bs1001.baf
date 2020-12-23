@@ -1,0 +1,22 @@
+/* deactivate triggers - deprecated */
+
+IF
+	Global("bsDeactivateTriggers","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("Yst1info",FALSE)
+		TriggerActivation("Yst6trap",FALSE)
+		SetGlobal("bsDeactivateTriggers","MYAREA",1)
+END
+
+/* spawn mother and girl */
+
+IF
+  Global("bsSpawnVisitors","MYAREA",0)
+THEN
+  RESPONSE #100
+		CreateCreature("bswnchgl",[524.326],16) 
+		CreateCreature("bswnchwm",[572.288],12) 
+		SetGlobal("bsSpawnVisitors","MYAREA",1)
+END
+

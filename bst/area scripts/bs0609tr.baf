@@ -1,0 +1,10 @@
+IF
+	Clicked([ANYONE])
+	GlobalGT("bsSeaCaveOpen","GLOBAL",0)
+	GlobalLT("bsCloseSeaExit","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCloseSeaExit","MYAREA",2)
+		DisplayStringHead(Myself,@11013)
+END
+

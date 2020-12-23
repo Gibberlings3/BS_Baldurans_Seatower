@@ -1,0 +1,20 @@
+/* Exit to Sea Caves */
+
+IF
+	Global("bsCloseSeaExit","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0200",FALSE)
+		SetGlobal("bsCloseSeaExit","MYAREA",1)
+END
+
+
+IF
+	Global("bsCloseSeaExit","MYAREA",2)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0200",TRUE)
+		SetGlobal("bsFoundExitUmberlee","GLOBAL",1)
+		SetGlobal("bsCloseSeaExit","MYAREA",3)
+END
+

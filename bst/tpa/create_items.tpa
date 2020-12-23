@@ -1,0 +1,992 @@
+//##################################################
+// Items
+
+/*
+// Almiran's Scroll
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsalmirn~
+  COPY ~override/bsalmirn.itm~ ~override/bsalmirn.itm~
+    // Item Header: //
+      SAY          NAME2  @510       // Identified Name (strref)
+      WRITE_LONG   0x0018 2156       // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_LONG   0x0034 1200       // Price
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~BSALMIRN~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @511 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSALMRNC~ // Description icon (BAM)
+*/
+
+
+// Catacombs secret door key
+  CREATE ~ITM~ VERSION ~V1  ~ ~bscckey~
+  COPY ~override/bscckey.itm~ ~override/bscckey.itm~
+    // Item Header: //
+      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      SAY          NAME2  @514      // Identified Name (strref)
+      WRITE_LONG   0x0018 109       // Flags
+      WRITE_SHORT  0x001c 8         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2   // Item animation
+      WRITE_LONG   0x0034 7500      // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bscdkey2~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      SAY          IDENTIFIED_DESC @515 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSCCKYC~ // Description icon (BAM)
+
+// Chionthar Tower key
+  CREATE ~ITM~ VERSION ~V1  ~ ~bscdkey~
+  COPY ~override/bscdkey.itm~ ~override/bscdkey.itm~
+    // Item Header: //
+      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      SAY          NAME2  @516      // Identified Name (strref)
+      WRITE_LONG   0x0018 45        // Flags
+      WRITE_SHORT  0x001c 8         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2   // Item animation
+      WRITE_LONG   0x0034 7500      // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~BSCDKEY~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      SAY          IDENTIFIED_DESC @517 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSCDKYC~ // Description icon (BAM)
+
+
+// Alguine's key
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsfmkey~
+  COPY ~override/bsfmkey.itm~ ~override/bsfmkey.itm~
+    // Item Header: //
+      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      SAY          NAME2  @512       // Identified Name (strref)
+      WRITE_LONG   0x0018 109        // Flags
+      WRITE_SHORT  0x001c 8          // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_LONG   0x0034 7500       // Price
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~BSFMKEY~  // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~  // Ground icon (BAM)
+      WRITE_LONG   0x004c 1          // Weight
+      SAY          IDENTIFIED_DESC @513 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSFMKEYC~ // Description icon (BAM)
+
+
+// Seatower Prison pass
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsprpass~
+  COPY ~override/bsprpass.itm~ ~override/bsprpass.itm~
+    // Item Header: //
+      SAY NAME1  @508        		// Unidentified Name (strref)
+      SAY NAME2 @508                 // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~YSTWRPSS~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @509       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+// False Arla's Dragonsbane
+  CREATE ~ITM~ VERSION ~V1  ~ ~ysalbane~
+  COPY ~override/ysalbane.itm~ ~override/ysalbane.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 6733      // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      SAY          NAME2  @506      // Identified Name (strref)
+      WRITE_LONG   0x0018 108       // Flags
+      WRITE_SHORT  0x001c 18        // Item type
+      WRITE_ASCIIE 0x0022 ~SL~ #2   // Item animation
+      WRITE_SHORT  0x0026 3         // Min Strength (unused in BG1)
+      WRITE_BYTE   0x002f 12        // Kit Usability 4
+      WRITE_BYTE   0x0031 107       // Weapon Proficiency
+      WRITE_LONG   0x0034 100       // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~ISLNG03~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSLNG01~ // Ground icon (BAM)
+      WRITE_LONG   0x0050 6650      // Unidentified Description (strref)
+      //SAY        UNIDENTIFIED_DESC ~~ // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @507 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CSLNG03~ // Description icon (BAM)
+      WRITE_LONG   0x0060 1         // Enchantment
+    // Item Ability (Extended Header) 0 //
+      LPF ADD_ITEM_HEADER
+        INT_VAR
+          type            = 4         // Attack type
+          location        = 1         // Location
+          target          = 1         // Target type
+          range           = 50        // Range
+          speed           = 3         // Speed
+          thaco           = 1         // THAC0 bonus
+          dicesize        = 6         // Dice sides
+          damage          = 1         // Damage bonus
+          damage_type     = 4         // Damage type
+          depletion       = 1         // Charge depletion behaviour
+          flags           = 4         // Flags
+          projectile      = 1         // Projectile animation (projectl.ids/missile.ids)
+          is_sling        = 1         // Misc. Projectile qualifier (0=No, 1=Yes)
+        STR_VAR
+          icon            = ~ISLNG03~ // Use icon
+      END
+    // Equipping Effect (Feature Block) 0 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 7    // Opcode number
+             target        = 1    // Target type
+             parameter1    = 101  // Parameter 1
+             parameter2    = 21   // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 1 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 7    // Opcode number
+             target        = 1    // Target type
+             parameter1    = 236  // Parameter 1
+             parameter2    = 20   // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 2 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 1    // Opcode number
+             target        = 1    // Target type
+             parameter1    = 1    // Parameter 1
+             parameter2    = 1    // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+
+// Golden Dragon ale
+  CREATE ~ITM~ VERSION ~V1  ~ ~ysalepot~
+  COPY ~override/ysalepot.itm~ ~override/ysalepot.itm~
+    // Item Header: //
+      SAY          NAME2  @504       // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 56         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_LONG   0x0034 5          // Price
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~YSALEPOT~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GPOTN01~  // Ground icon (BAM)
+      WRITE_LONG   0x004c 8          // Weight
+      SAY          IDENTIFIED_DESC @505 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSALEPOC~ // Description icon (BAM)
+
+// Goose feathers
+  CREATE ~ITM~ VERSION ~V1  ~ ~ysgoosef~
+  COPY ~override/ysgoosef.itm~ ~override/ysgoosef.itm~
+    // Item Header: //
+      SAY          NAME1  @502  
+      SAY          NAME2  @502       // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_ASCIIE 0x003a ~YSGOOSEF~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @503 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSGOOSEC~ // Description icon (BAM)
+
+// Cook's storeroom key
+  CREATE ~ITM~ VERSION ~V1  ~ ~ysstokey~
+  COPY ~override/ysstokey.itm~ ~override/ysstokey.itm~
+    // Item Header: //
+      SAY          NAME2  @500      // Identified Name (strref)
+      WRITE_LONG   0x0018 45        // Flags
+      WRITE_SHORT  0x001c 8         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2   // Item animation
+      WRITE_LONG   0x0034 2         // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~IKEY10~  // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      SAY          IDENTIFIED_DESC @501 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CKEY10~  // Description icon (BAM)
+
+
+
+// Slave Trader's Pamphlet
+  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq001~
+  COPY ~override/bssmq001.itm~ ~override/bssmq001.itm~
+    // Item Header: //
+      SAY NAME1  @538        		// Unidentified Name (strref)
+      SAY NAME2 @538                 // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~IMISC1C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @539       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CSCRL2J~ // Description icon (BAM)
+
+/*
+// Sealed Box
+  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq002~
+  COPY ~override/bssmq002.itm~ ~override/bssmq002.itm~
+    // Item Header: //
+      SAY 	   NAME1  @540       // Unidentified Name (strref)
+      SAY          NAME2  @540       // Identified Name (strref)
+      WRITE_LONG   0x0018 2156       // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_LONG   0x0034 1500       // Price
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~bssmq002~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @541 // Identified Description (strref)
+//      WRITE_ASCIIE 0x0058 ~##~ // Description icon (BAM)
+*/
+
+
+// Lars' Drawing
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstq001~
+  COPY ~override/bstq001.itm~ ~override/bstq001.itm~
+    // Item Header: //
+      SAY          NAME1  @531 
+      SAY          NAME2  @531       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~bstq001~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @532 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~bstqc01~ // Description icon (BAM)
+
+/*
+// Rabbit Cage
+  CREATE ~ITM~ VERSION ~V1  ~ ~bscage~
+  COPY ~override/bscage.itm~ ~override/bscage.itm~
+    // Item Header: //
+      SAY          NAME1  @533        // Unidentified Name (strref)
+      SAY          NAME2  @533      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_LONG   0x0034 1         // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bscage~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 5         // Weight
+     // SAY          UNIDENTIFIED_DESC @534 // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @534 // Identified Description (strref)
+      //WRITE_ASCIIE 0x0058 ~~ // Description icon (BAM)
+*/
+
+/*
+// Alive Rat
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstqrat1~
+  COPY ~override/bstqrat1.itm~ ~override/bstqrat1.itm~
+    // Item Header: //
+      SAY          NAME1  @535        // Unidentified Name (strref)
+      SAY          NAME2  @535      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_LONG   0x0034 1         // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bstqrat1~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 5         // Weight
+     // SAY          UNIDENTIFIED_DESC @536 // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @536 // Identified Description (strref)
+      //WRITE_ASCIIE 0x0058 ~~ // Description icon (BAM)
+*/
+/*
+// Dead Rat
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstqrat2~
+  COPY ~override/bstqrat2.itm~ ~override/bstqrat2.itm~
+    // Item Header: //
+      SAY          NAME1  @535        // Unidentified Name (strref)
+      SAY          NAME2  @535      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_LONG   0x0034 1         // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bstqrat2~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 5         // Weight
+     // SAY          UNIDENTIFIED_DESC @537 // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @537 // Identified Description (strref)
+      //WRITE_ASCIIE 0x0058 ~~ // Description icon (BAM)
+*/
+
+// Slave Trader's Notes
+  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq003~
+  COPY ~override/bssmq003.itm~ ~override/bssmq003.itm~
+    // Item Header: //
+      SAY NAME1  @542        		// Unidentified Name (strref)
+      SAY NAME2 @542             // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 37         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~IBOOK91~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GBOOK01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @543       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CBOOK91~ // Description icon (BAM)
+
+
+// Tailor's key
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstaikey~
+  COPY ~override/bstaikey.itm~ ~override/bstaikey.itm~
+    // Item Header: //
+      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      SAY          NAME2  @548       // Identified Name (strref)
+      WRITE_LONG   0x0018 109        // Flags
+      WRITE_SHORT  0x001c 8          // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_LONG   0x0034 0       // Price
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~bstaykey~  // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~  // Ground icon (BAM)
+      WRITE_LONG   0x004c 1          // Weight
+      SAY          IDENTIFIED_DESC @549 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSFMKEYC~ // Description icon (BAM)
+
+
+// Treasure note: 500 gold
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt00~
+  COPY ~override/bstrnt00.itm~ ~override/bstrnt00.itm~
+    // Item Header: //
+      SAY          NAME1  @556 
+      SAY          NAME2  @556       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~YSTWRPSS~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @564       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+
+// Treasure note: 3000 gold
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt03~
+  COPY ~override/bstrnt03.itm~ ~override/bstrnt03.itm~
+    // Item Header: //
+      SAY          NAME1  @556 
+      SAY          NAME2  @556       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~YSTWRPSS~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @557       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+
+// Treasure note: 5000 gold
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt05~
+  COPY ~override/bstrnt05.itm~ ~override/bstrnt05.itm~
+    // Item Header: //
+      SAY          NAME1  @556 
+      SAY          NAME2  @556       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~YSTWRPSS~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @558       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+// Treasure note: 20,000 gold
+  CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt20~
+  COPY ~override/bstrnt20.itm~ ~override/bstrnt20.itm~
+    // Item Header: //
+      SAY          NAME1  @556 
+      SAY          NAME2  @556       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~YSTWRPSS~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @559       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+
+// -----
+// Dream items
+// -----
+// Antidote
+  CREATE ~ITM~ VERSION ~V1  ~ ~bspotnd~
+  COPY ~override/bspotnd.itm~ ~override/bspotnd.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 6976      // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      SAY          NAME2  @526      // Identified Name (strref)
+      WRITE_LONG   0x0018 108       // Flags
+      WRITE_SHORT  0x001c 56        // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2   // Item animation
+      WRITE_LONG   0x0034 100       // Price
+      WRITE_SHORT  0x0038 24        // Stack amount
+      WRITE_ASCIIE 0x003a ~IPOTN20~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GPOTN01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x0050 16264     // Unidentified Description (strref)
+      //SAY        UNIDENTIFIED_DESC ~~ // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @527// Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CPOTN41~ // Description icon (BAM)
+
+// Horn
+  CREATE ~ITM~ VERSION ~V1  ~ ~bshornd~
+  COPY ~override/bshornd.itm~ ~override/bshornd.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 17291     // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      WRITE_LONG   0x000c 17291     // Identified Name (strref)
+      //SAY        NAME2  ~~        // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_LONG   0x0034 18000     // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bshorndi~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x0050 11849     // Unidentified Description (strref)
+      //SAY        UNIDENTIFIED_DESC ~~ // Unidentified Description (strref)
+      WRITE_LONG   0x0054 11849     // Identified Description (strref)
+      //SAY        IDENTIFIED_DESC ~~ // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC73~ // Description icon (BAM)
+    // Item Ability (Extended Header) 0 //
+      LPF ADD_ITEM_HEADER
+        INT_VAR
+          type            = 3         // Attack type
+          location        = 3         // Location
+          target          = 5         // Target type
+          range           = 1         // Range
+          dicesize        = 6         // Dice sides
+          damage_type     = 1         // Damage type
+          charges         = 30        // Charges
+          depletion       = 1         // Charge depletion behaviour
+          projectile      = 1         // Projectile animation (projectl.ids/missile.ids)
+          overhand        = 34        // Melee animation word 1
+          backhand        = 33        // Melee animation word 2
+          thrust          = 33        // Melee animation word 3
+        STR_VAR
+          icon            = ~IMISC73~ // Use icon
+      END
+      // Item Ability Effect (Feature Block) 0 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1         // Number of extended header (starting from 1) the effect should be added to
+             type          = 3         // Type of header to which the effect should be added
+             opcode        = 206       // Opcode number
+             target        = 1         // Target type
+             power         = 4         // Power
+             parameter1    = "-1"      // Parameter 1
+             resist_dispel = 1         // Resistance
+             duration      = 18        // Duration
+             probability1  = 100       // Probability 1
+          STR_VAR
+             resource      = ~sppr211~ // Resource
+        END
+      // Item Ability Effect (Feature Block) 1 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1         // Number of extended header (starting from 1) the effect should be added to
+             type          = 3         // Type of header to which the effect should be added
+             opcode        = 206       // Opcode number
+             target        = 1         // Target type
+             power         = 4         // Power
+             parameter1    = "-1"      // Parameter 1
+             resist_dispel = 1         // Resistance
+             duration      = 18        // Duration
+             probability1  = 100       // Probability 1
+          STR_VAR
+             resource      = ~spwi213~ // Resource
+        END
+      // Item Ability Effect (Feature Block) 2 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1         // Number of extended header (starting from 1) the effect should be added to
+             type          = 3         // Type of header to which the effect should be added
+             opcode        = 206       // Opcode number
+             target        = 1         // Target type
+             power         = 4         // Power
+             parameter1    = "-1"      // Parameter 1
+             resist_dispel = 1         // Resistance
+             duration      = 18        // Duration
+             probability1  = 100       // Probability 1
+          STR_VAR
+             resource      = ~spwi215~ // Resource
+        END
+      // Item Ability Effect (Feature Block) 3 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1         // Number of extended header (starting from 1) the effect should be added to
+             type          = 3         // Type of header to which the effect should be added
+             opcode        = 206       // Opcode number
+             target        = 1         // Target type
+             power         = 4         // Power
+             parameter1    = "-1"      // Parameter 1
+             resist_dispel = 1         // Resistance
+             duration      = 18        // Duration
+             probability1  = 100       // Probability 1
+          STR_VAR
+             resource      = ~sppr105~ // Resource
+        END
+      // Item Ability Effect (Feature Block) 4 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 5   // Parameter 1
+             parameter2    = 2   // Parameter 2
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 5 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 33  // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 2   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 6 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 34  // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 2   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 7 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 35  // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 2   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 8 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 36  // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 2   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 9 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 37  // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 2   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 10 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 102 // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 1   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 11 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 102 // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter1    = 2   // Parameter 1
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 12 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1             // Number of extended header (starting from 1) the effect should be added to
+             type          = 3             // Type of header to which the effect should be added
+             opcode        = 8             // Opcode number
+             target        = 1             // Target type
+             power         = 4             // Power
+             parameter1    = "-1011417088" // Parameter 1
+             parameter2    = 3             // Parameter 2
+             resist_dispel = 1             // Resistance
+             duration      = 18            // Duration
+             probability1  = 100           // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 13 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 142 // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             parameter2    = 23  // Parameter 2
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 14 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 155 // Opcode number
+             target        = 1   // Target type
+             power         = 4   // Power
+             resist_dispel = 1   // Resistance
+             duration      = 18  // Duration
+             probability1  = 100 // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 15 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1             // Number of extended header (starting from 1) the effect should be added to
+             type          = 3             // Type of header to which the effect should be added
+             opcode        = 8             // Opcode number
+             target        = 1             // Target type
+             power         = 4             // Power
+             parameter1    = "-1161822208" // Parameter 1
+             parameter2    = 5             // Parameter 2
+             resist_dispel = 1             // Resistance
+             duration      = 18            // Duration
+             probability1  = 100           // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 16 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1             // Number of extended header (starting from 1) the effect should be added to
+             type          = 3             // Type of header to which the effect should be added
+             opcode        = 8             // Opcode number
+             target        = 1             // Target type
+             power         = 4             // Power
+             parameter1    = "-1111293952" // Parameter 1
+             parameter2    = 6             // Parameter 2
+             resist_dispel = 1             // Resistance
+             duration      = 18            // Duration
+             probability1  = 100           // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 17 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1            // Number of extended header (starting from 1) the effect should be added to
+             type          = 3            // Type of header to which the effect should be added
+             opcode        = 8            // Opcode number
+             target        = 1            // Target type
+             power         = 4            // Power
+             parameter1    = "-960299008" // Parameter 1
+             parameter2    = 4            // Parameter 2
+             resist_dispel = 1            // Resistance
+             duration      = 18           // Duration
+             probability1  = 100          // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 18 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1             // Number of extended header (starting from 1) the effect should be added to
+             type          = 3             // Type of header to which the effect should be added
+             opcode        = 8             // Opcode number
+             target        = 1             // Target type
+             power         = 4             // Power
+             parameter1    = "-1111687168" // Parameter 1
+             resist_dispel = 1             // Resistance
+             duration      = 18            // Duration
+             probability1  = 100           // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 19 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1             // Number of extended header (starting from 1) the effect should be added to
+             type          = 3             // Type of header to which the effect should be added
+             opcode        = 8             // Opcode number
+             target        = 1             // Target type
+             power         = 4             // Power
+             parameter1    = "-1263271936" // Parameter 1
+             parameter2    = 2             // Parameter 2
+             resist_dispel = 1             // Resistance
+             duration      = 18            // Duration
+             probability1  = 100           // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 20 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1             // Number of extended header (starting from 1) the effect should be added to
+             type          = 3             // Type of header to which the effect should be added
+             opcode        = 8             // Opcode number
+             target        = 1             // Target type
+             power         = 4             // Power
+             parameter1    = "-1162412032" // Parameter 1
+             parameter2    = 1             // Parameter 2
+             resist_dispel = 1             // Resistance
+             duration      = 18            // Duration
+             probability1  = 100           // Probability 1
+        END
+      // Item Ability Effect (Feature Block) 21 //
+        LPF ADD_ITEM_EFFECT
+          INT_VAR
+             header        = 1   // Number of extended header (starting from 1) the effect should be added to
+             type          = 3   // Type of header to which the effect should be added
+             opcode        = 12  // Opcode number
+             target        = 1   // Target type
+             parameter1    = 10  // Parameter 1
+             timing        = 1   // Timing mode
+             probability1  = 100 // Probability 1
+             dicesize      = 6   // Dice Sides
+        END
+
+// Talon
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsclawd~
+  COPY ~override/bsclawd.itm~ ~override/bsclawd.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 17289     // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      SAY          NAME2  @524      // Identified Name (strref)
+      WRITE_LONG   0x0018 124       // Flags
+      WRITE_SHORT  0x001c 10        // Item type
+      WRITE_LONG   0x0034 10000     // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bsclawdi~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC72~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x0050 11847     // Unidentified Description (strref)
+      //SAY        UNIDENTIFIED_DESC ~~ // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @525 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC72~ // Description icon (BAM)
+    // Equipping Effect (Feature Block) 0 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 142  // Opcode number
+             target        = 1    // Target type
+             parameter2    = 35   // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 1 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 65   // Opcode number
+             target        = 1    // Target type
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             duration      = 60   // Duration
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 2 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             target        = 1    // Target type
+             parameter1    = 1    // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 3 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 33   // Opcode number
+             target        = 1    // Target type
+             parameter1    = "-4" // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 4 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 34   // Opcode number
+             target        = 1    // Target type
+             parameter1    = 3    // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 5 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 35   // Opcode number
+             target        = 1    // Target type
+             parameter1    = 3    // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 6 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 36   // Opcode number
+             target        = 1    // Target type
+             parameter1    = 3    // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 7 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 37   // Opcode number
+             target        = 1    // Target type
+             parameter1    = 3    // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 8 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             target        = 1    // Target type
+             parameter1    = 4    // Parameter 1
+             parameter2    = 2    // Parameter 2
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 9 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 10   // Opcode number
+             target        = 1    // Target type
+             parameter1    = "-2" // Parameter 1
+             timing        = 2    // Timing mode
+             resist_dispel = 2    // Resistance
+             probability1  = 100  // Probability 1
+      END
+
+// Bone dagger
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsdaggd~
+  COPY ~override/bsdaggd.itm~ ~override/bsdaggd.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 6343      // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      SAY          NAME2  @518      // Identified Name (strref)
+      WRITE_ASCIIE 0x0010 ~MISC56~  // BG1, BG2, BGEE: Replacement item (ITM) | PSTEE: Drop sound - played when the item is dropped in the inventory (WAV)
+      WRITE_LONG   0x0018 108       // Flags
+      WRITE_SHORT  0x001c 16        // Item type
+      WRITE_ASCIIE 0x0022 ~DD~ #2   // Item animation
+      WRITE_SHORT  0x0026 3         // Min Strength (unused in BG1)
+      WRITE_BYTE   0x0031 96        // Weapon Proficiency
+      WRITE_LONG   0x0034 2000      // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~IDAGG01~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GDAGG01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x0050 6720      // Unidentified Description (strref)
+      //SAY        UNIDENTIFIED_DESC ~~ // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @519 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CDAGG01~ // Description icon (BAM)
+      WRITE_LONG   0x0060 2         // Enchantment
+    // Item Ability (Extended Header) 0 //
+      LPF ADD_ITEM_HEADER
+        INT_VAR
+          type            = 1         // Attack type
+          location        = 1         // Location
+          target          = 1         // Target type
+          thaco           = 2         // THAC0 bonus
+          dicesize        = 4         // Dice sides
+          dicenumber      = 1         // Dice thrown
+          damage          = 2         // Damage bonus
+          damage_type     = 1         // Damage type
+          depletion       = 1         // Charge depletion behaviour
+          flags           = 1         // Flags
+          projectile      = 1         // Projectile animation (projectl.ids/missile.ids)
+          backhand        = 20        // Melee animation word 2
+          thrust          = 80        // Melee animation word 3
+        STR_VAR
+          icon            = ~IDAGG01~ // Use icon
+      END
+    // Equipping Effect (Feature Block) 0 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 7    // Opcode number
+             target        = 1    // Target type
+             parameter1    = 226  // Parameter 1
+             parameter2    = 21   // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 1 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 7    // Opcode number
+             target        = 1    // Target type
+             parameter1    = 237  // Parameter 1
+             parameter2    = 20   // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+    // Equipping Effect (Feature Block) 2 //
+      LPF ADD_ITEM_EQEFFECT
+        INT_VAR
+             insert_point  = "-1" // The position of the feature block
+             opcode        = 7    // Opcode number
+             target        = 1    // Target type
+             parameter1    = 207  // Parameter 1
+             parameter2    = 16   // Parameter 2
+             timing        = 2    // Timing mode
+             probability1  = 100  // Probability 1
+      END
+
+// Candle
+  CREATE ~ITM~ VERSION ~V1  ~ ~bscandld~
+  COPY ~override/bscandld.itm~ ~override/bscandld.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 17294     // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      SAY          NAME2  @522      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~IMISC74~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      SAY          IDENTIFIED_DESC @523 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC74~ // Description icon (BAM)
+
+// Woman's Scull
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsskulld~
+  COPY ~override/bsskulld.itm~ ~override/bsskulld.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 7019      // Unidentified Name (strref)
+      //SAY        NAME1  ~~        // Unidentified Name (strref)
+      SAY          NAME2  @520      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_LONG   0x0034 1         // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~IMISC50~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x0050 10242     // Unidentified Description (strref)
+      //SAY        UNIDENTIFIED_DESC ~~ // Unidentified Description (strref)
+      SAY          IDENTIFIED_DESC @521 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC50~ // Description icon (BAM)

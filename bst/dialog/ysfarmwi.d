@@ -1,0 +1,41 @@
+BEGIN ysfarmwi
+
+/*
+IF ~Global("ysTalkedToFarmersWife","GLOBAL",0)
+		GlobalLT("bs##","GLOBAL",10)~ THEN BEGIN 0
+	SAY @1360
+	IF~~THEN REPLY@1361 GOTO 2
+	IF~~THEN REPLY@1362 GOTO 1
+	IF~~THEN REPLY@1363 GOTO 1
+END
+*/
+
+IF ~~ THEN BEGIN 1
+	SAY @1364
+	IF~~THEN
+		DO~SetGlobal("ysTalkedToFarmersWife","GLOBAL",1)~
+	EXIT
+END
+
+IF ~~ THEN BEGIN 2
+	SAY @1365
+	IF~~THEN
+		DO~SetGlobal("ysTalkedToFarmersWife","GLOBAL",1)~
+	EXIT
+END
+
+IF ~RandomNum(3,1)~ THEN BEGIN 10
+	SAY @1366
+	IF~~THEN EXIT
+END
+
+IF ~RandomNum(3,2)~ THEN BEGIN 11
+	SAY @1367
+	IF~~THEN EXIT
+END
+
+IF ~RandomNum(3,3)~ THEN BEGIN 12
+	SAY @1368
+	IF~~THEN EXIT
+END
+

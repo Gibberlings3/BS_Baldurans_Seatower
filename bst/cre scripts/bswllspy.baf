@@ -1,0 +1,14 @@
+IF
+	Range([PC],20)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+
+IF
+	!Range([PC],20)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

@@ -1,0 +1,7 @@
+IF
+	See(Protagonist)
+THEN
+	RESPONSE #100
+		Wait(1)
+		Dialogue(Protagonist)
+END

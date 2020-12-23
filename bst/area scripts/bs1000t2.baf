@@ -1,0 +1,17 @@
+/* script for well in bs1000 */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		CreateCreatureImpassableAllowOverlap("bswllspy",[3760.2133],0)
+END
+
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11007)
+END

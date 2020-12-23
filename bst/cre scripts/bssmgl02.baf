@@ -1,0 +1,57 @@
+
+IF 
+	Allegiance(Myself,NEUTRAL)
+	OR(4)
+		Allegiance("bssmgl03",ENEMY)
+		Dead("bssmgl03")
+		HitBy([PC],CRUSHING)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11005)
+		ActionOverride("bssmgl02",DestroyItem("MINHP1"))
+		SetGlobal("bsSmugglerAttacked","GLOBAL",4)
+		Enemy()
+END
+
+
+IF
+	Global("bsSmugglersLeave","GLOBAL",1)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@830)
+		EraseJournalEntry(@832)
+		EraseJournalEntry(@833)
+		EraseJournalEntry(@834)
+		EraseJournalEntry(@835)
+		EraseJournalEntry(@838)
+		//##
+		EscapeArea()
+END
+
+
+
+IF
+	Global("bsSmugglerAttacked","GLOBAL",2)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		StartDialogNoSet(Player1)
+END
+
+
+
+IF
+	Global("bsShucksBrother","GLOBAL",1)
+	Global("bsSmugglerAttacked","GLOBAL",1)
+	Allegiance(Myself,ENEMY)
+	OR(3)
+		Dead("bssmgl03")
+		Dead("bssmgl04")
+		HPLT(Myself,10)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("bsSmugglerAttacked","GLOBAL",2)
+		ChangeEnemyAlly(Myself,NEUTRAL)
+END

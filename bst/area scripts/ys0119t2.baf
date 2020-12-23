@@ -1,0 +1,13 @@
+// This script primes script ys0119t1.
+//
+// If the tomb has been clicked on then prime the trap.
+// If the trap is not primed then it will not call
+// the King of the Restless Dead.
+IF
+	Clicked([ANYONE])
+	Global("ys0119TombTrigger","Global",0)
+	Global("ys0119Tomb","Global",0)
+THEN
+	RESPONSE #100
+		SetGlobal("ys0119TombTrigger","Global",1)
+END

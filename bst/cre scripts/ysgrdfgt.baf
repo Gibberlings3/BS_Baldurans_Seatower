@@ -1,0 +1,70 @@
+// Load a target
+IF
+  Allegiance(Myself,ENEMY)
+	See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+		Continue()
+END
+
+// If I'm going to fight and I can't see Player1 then move until I can see Player1
+// Don't allow re-evaluation of action until Player1 is in sight
+IF
+  ActionListEmpty()
+  Global("ysGuardOnTheMove","LOCALS",0)
+  Allegiance(Myself,ENEMY)
+  !LOS(Player1,30)
+THEN
+  RESPONSE #100
+    SetGlobal("ysGuardOnTheMove","LOCALS",1)
+    MoveToObject(Player1)
+    Continue()
+END
+
+// Allow re-evaluation when the party is in sight
+// This will also set the initial target for attack
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    SetGlobal("ysGuardOnTheMove","LOCALS",0)
+    Continue()
+END
+
+// Ranged
+IF
+  ActionListEmpty()
+  Gender(Myself,MALE)
+  Allegiance(Myself,ENEMY)
+  HasItem("%tutu_var%bow03",Myself)
+  !Range(LastSeenBy(Myself),4)
+THEN
+  RESPONSE #100
+    EquipRanged()
+   	SmallWait(3)
+    Continue()
+END
+
+// Melee
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Range(LastSeenBy(Myself),4)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+   	SmallWait(3)
+   	Continue()
+END
+
+// Now attack
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Detect([GOODCUTOFF])
+THEN
+ RESPONSE #100
+   AttackOneRound(LastSeenBy(Myself))
+END

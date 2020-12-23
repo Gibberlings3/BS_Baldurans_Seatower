@@ -1,0 +1,13 @@
+// Fade to black
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+        Wait(3)
+        FadeFromColor([20.0],0)
+	EndcutSceneMode()
+	ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
+END 

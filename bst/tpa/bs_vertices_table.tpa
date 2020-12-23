@@ -1,0 +1,57 @@
+/* =================================================================================================================== *
+ *                                                                                                                     *
+ *                                      A R R A Y S    o f    V E R T I C E S                                          *
+ *                                                                                                                     *
+ *     Arrays used to auto-generate the fj_are_structure variables.                                                    *
+ * ------------------------------------------------------------------------------------------------------------------- *
+ *	- bs_New_are_vertices			: LISTE des vertices de portes à ajouter dans les fichiers ARE.		=> line   22   *
+ *									  LIST of new door vertices to add in ARE files.                                   *
+ *	- bs_Doors_cell_vertices		: LISTE des cellules vertices de portes à ajouter.					=> line   42   *
+ *									  LIST of new cell door vertices to add.                                           *
+ *                                                                                                                     *
+ * ------------------------------------------------------------------------------------------------------------------- *
+ *	AREA	= name of the ARE file in which you insert a new door or region.                                           *
+ *	O/C		= OP (Open) / CL (close).                                                                                  *
+ *	X		= X coordinate of the vertex.                                                                              *
+ *	Y		= Y coordinate of the vertex.                                                                              *
+ *	=> xxxx	= name of the new door or region.                                                                          *
+ * =================================================================================================================== */
+
+ACTION_CLEAR_ARRAY bs_New_are_vertices
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY bs_New_are_vertices BEGIN
+//         Area            O/C    X      Y  => Door or Region
+// --------- 0 ------------ 1 --- 2 ---- 3 ------------------
+//	"%BaldursGateDocks%" (don't forget the quotes when you use variables!!!!!!).
+// --------- 0 ------------ 1 --- 2 ---- 3 ------------------
+	"%BaldursGateDocks%",	OP,	4280,   486	=> DOOR01
+	"%BaldursGateDocks%",	OP,	4237,	503	=> DOOR01
+	"%BaldursGateDocks%",	OP,	4237,	432	=> DOOR01
+	"%BaldursGateDocks%",	OP,	4280,	419	=> DOOR01
+
+	"%BaldursGateDocks%",	CL,	4281,   481	=> DOOR01
+	"%BaldursGateDocks%",	CL,	4312,	506	=> DOOR01
+	"%BaldursGateDocks%",	CL,	4312,	442	=> DOOR01
+	"%BaldursGateDocks%",	CL,	4281,	417	=> DOOR01
+
+END
+
+
+ACTION_CLEAR_ARRAY bs_Doors_cell_vertices
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY bs_Doors_cell_vertices BEGIN
+//         Area            O/C    X      Y  => Door or Region
+// --------- 0 ------------ 1 --- 2 ---- 3 ------------------
+//	"%BaldursGateDocks%" (don't forget the quotes when you use variables!!!!!!).
+// --------- 0 ------------ 1 --- 2 ---- 3 ------------------
+	"%BaldursGateDocks%",	OP, 264,	41	=> DOOR01
+	"%BaldursGateDocks%",	OP,	265,	40	=> DOOR01
+	"%BaldursGateDocks%",	OP,	265,	41	=> DOOR01
+	"%BaldursGateDocks%",	OP,	266,	39	=> DOOR01
+	"%BaldursGateDocks%",	OP,	266,	40	=> DOOR01
+	"%BaldursGateDocks%",	OP,	266,	41	=> DOOR01
+	"%BaldursGateDocks%",	OP,	267,	38	=> DOOR01
+	"%BaldursGateDocks%",	OP,	267,	39	=> DOOR01
+	"%BaldursGateDocks%",	OP,	267,	40	=> DOOR01
+
+END

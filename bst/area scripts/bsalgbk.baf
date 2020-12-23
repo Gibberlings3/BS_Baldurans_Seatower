@@ -1,0 +1,30 @@
+/* Book Of the Planes bsalgbk.bcs */
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bsPlaneBookCreation","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsalgbk",[841.785],0)
+		SetGlobal("bsPlaneBookCreation","GLOBAL",1)
+		DisplayStringHead(Player1,@530)
+END
+
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bsPlaneBookCreation","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ActionOverride("bsalgbk",StartDialogueNoSet(Player1))
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11007)
+END

@@ -1,0 +1,181 @@
+/* script of girl at well */
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",0)
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11044)
+		Wait(2)
+		DisplayStringHead("bswellbo",@11045)
+		Wait(1)
+		DisplayStringHead("bswellma",@11046)
+		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWell","MYAREA",1)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",1)
+	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11047)
+		Wait(1)
+		DisplayStringHead("Well01",@11047)
+		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWell","MYAREA",2)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",2)
+	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11048)
+		Wait(2)
+		DisplayStringHead("bswellbo",@11049)
+		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWell","MYAREA",3)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",3)
+	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead(Myself,@11050)
+		Wait(1)
+		DisplayStringHead("bswellma",@11051)
+		Wait(2)
+		DisplayStringHead(Myself,@11052)
+		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWell","MYAREA",4)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",4)
+	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bswellma",@11053)
+		Wait(1)
+		DisplayStringHead("Well01",@11054)
+		Wait(1)
+		DisplayStringHead("bswellma",@11055)
+		Wait(4)
+		DisplayStringHead(Myself,@11056)
+		Wait(2)
+		DisplayStringHead("bswellma",@11071)
+		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWell","MYAREA",5)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",5)
+	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		DisplayStringHead("bswellbo",@11057)
+		Wait(1)
+		DisplayStringHead("bswellma",@11058)
+		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("bsCuriousChildWell","MYAREA",6)
+END
+
+IF 
+	InMyArea(Player1)
+	InMyArea("bswellbo")
+	InMyArea("bswellma")
+	Range(Player1,25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bswellbo",CD_STATE_NOTVALID)
+	!StateCheck("bswellma",CD_STATE_NOTVALID)
+	Global("bsCuriousChildWell","MYAREA",6)
+	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
+THEN 
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead("bswellbo",@11059)
+		Wait(1)
+		SetGlobal("bsCuriousChildWell","MYAREA",7)
+		ActionOverride("bswellbo",EscapeArea())
+		ActionOverride("bswellma",EscapeArea())
+		ActionOverride(Myself,EscapeArea())
+		SetInterrupt(TRUE)
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

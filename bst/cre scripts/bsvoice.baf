@@ -1,0 +1,16 @@
+IF
+	Global("bsCandleTrap","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCandleTrap","GLOBAL",2)
+		Dialogue(Protagonist)
+END
+
+IF
+	Global("bsDreamAreaGnoll","GLOBAL",1)
+	See(Protagonist)
+THEN
+	RESPONSE #100
+		Wait(1)
+		Dialogue(Protagonist)
+END

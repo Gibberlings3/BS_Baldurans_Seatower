@@ -1,0 +1,67 @@
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_DEATH_WARD)  // SPPR409.SPL (Death Ward)
+THEN
+	RESPONSE #100
+		Spell(Myself,CLERIC_DEATH_WARD)  // SPPR409.SPL (Death Ward)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_SLAY_LIVING)  // SPPR511.SPL (Slay Living)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_SLAY_LIVING)  // SPPR511.SPL (Slay Living)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_HARM)  // SPPR608.SPL (Harm)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_HARM)  // SPPR608.SPL (Harm)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_FLAME_STRIKE)  // SPPR503.SPL (Flame Strike)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_FLAME_STRIKE)  // SPPR503.SPL (Flame Strike)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_SLAY_LIVING)  // SPPR511.SPL (Slay Living)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_SLAY_LIVING)  // SPPR511.SPL (Slay Living)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+	!StateCheck(NearestEnemyOf(Myself),STATE_SLEEPING)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HPPercentLT(Myself,20)
+	HaveSpell(CLERIC_HEAL)  // SPPR607.SPL (Heal)
+THEN
+	RESPONSE #100
+		Spell(Myself,CLERIC_HEAL)  // SPPR607.SPL (Heal)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

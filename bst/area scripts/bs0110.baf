@@ -1,0 +1,53 @@
+/* after PC emerged from the hidden door */
+
+IF
+	GlobalGT("bsPCMetSmugglerDoppelgangers","GLOBAL",0)
+	Global("bsOpenHiddenDoor","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsFoundExitDocks","GLOBAL",1)
+		TriggerActivation("Tranbs0111",TRUE)
+		Unlock("DOOR 02")
+		OpenDoor("DOOR 02")
+ 	 	SetGlobal("bsOpenHiddenDoor","MYAREA",1)
+END
+
+/* spawn Tailor and his assistant and mimic*/
+
+IF
+	Global("bsCreateTailor","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateTailor","MYAREA",1)
+		CreateCreature("bstailor",[346.472],0) //Master Usher
+		CreateCreature("bstail02",[490.512],10) //Tailor's assistant
+		CreateCreatureImpassableAllowOverlap("bsmimic1",[885.361],0)
+END
+
+/* Deactivate dead mimic animation */
+IF
+	Global("bsDeactivateDeadMimic","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsDeactivateDeadMimic","MYAREA",1)
+		AmbientActivate("Dead_mimic",FALSE)
+END
+
+/* Mimic Fledgling is dead: activate dead mimic animation */
+IF
+	Global("bsDeactivateDeadMimic","MYAREA",1)
+	Dead("bsmimic1")
+THEN
+	RESPONSE #100	
+		ActionOverride("bsmimic1",DestroySelf())
+		OpenDoor("DOOR 04")	
+		AmbientActivate("Dead_mimic",TRUE)
+ 	 	SetGlobal("bsDeactivateDeadMimic","MYAREA",2)
+END
+
+
+
+
+
+		
+

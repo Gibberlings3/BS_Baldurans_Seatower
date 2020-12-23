@@ -1,0 +1,108 @@
+// Create initial Alguine
+IF
+	Global("bsCreateAlguine","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateAlguine","MYAREA",1)
+		CreateCreature("bsalgune",[566.2005],2)
+		CreateCreature("bsalghst",[566.2005],2)
+END
+
+//journal entry
+IF 
+	Global("bsJournalEntry","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsJournalEntry","MYAREA",1)
+		EraseJournalEntry(@760)
+		EraseJournalEntry(@761)
+		EraseJournalEntry(@762)
+		AddJournalEntry(@763,QUEST)
+END
+
+//Ghast with Nabassu
+IF
+	Global("bsCreateGhast","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateGhast","MYAREA",1)
+		CreateCreature("bsghast1",[430.235],2)
+END
+
+//Nabassu is dead
+IF
+	Global("bsGahstDiesWithNabassu","MYAREA",0)
+	Dead("bstanar")
+	!Dead("bsghast1")
+THEN
+	RESPONSE #50
+		SetInterrupt(FALSE)
+		SetGlobal("bsGahstDiesWithNabassu","MYAREA",1)
+		ActionOverride("bsghast1",Kill(Myself))
+		SetInterrupt(TRUE)
+END
+
+
+IF
+	Global("bsMoveGhastLoc","GLOBAL",0)
+	Dead("bstanar")
+	Dead("bsghast1")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bsMoveGhastLoc","GLOBAL",1)
+		ActionOverride("bsghast1",ForceSpellRES("BS00001",Myself))
+		Wait(1)
+		ActionOverride("bsghast1",CreateCreature("bsghast2",[-1.-1],2))
+		SmallWait(1)
+		ActionOverride("bsghast1",DestroySelf())
+		SmallWait(1)
+		ActionOverride("bsghast2",ForceSpellRES("BS00001",Myself))
+		Wait(1)
+		SetInterrupt(TRUE)
+END
+
+/*
+
+IF
+	Global("bsMoveGhastLoc","MYAREA",1)
+THEN
+	RESPONSE #100
+		ForceSpellRES("BS00001",Myself)
+		Wait(2)
+		SetGlobal("bsMoveGhastLoc","MYAREA",2)
+		StartDialogNoSet([PC])
+END
+
+
+
+//Ghast is dead
+
+IF
+	Global("bsMoveGhastLoc","MYAREA",0)
+	Dead("bstanar")
+	Dead("bsghast1")
+	CombatCounter(0)
+THEN
+	RESPONSE #50
+ 		SaveObjectLocation("MYAREA","bsGhastLocation","bsghast1")
+		SetGlobal("bsMoveGhastLoc","MYAREA",1)
+		CreateCreature("bsghast2",[443.2108],2)
+END
+
+
+
+IF
+	Global("bsMoveGhastLoc","MYAREA",0)
+THEN
+	RESPONSE #50
+		ActionOverride("bsghast1",DestroySelf())
+		ClearAllActions()
+		SmallWait(1)
+		ActionOverride("bsghast2",MoveToSavedLocationn("bsGhastLocation","MYAREA"))
+		SmallWait(1)
+		SetGlobal("bsMoveGhastLoc","MYAREA",1)
+END
+
+*/
+  

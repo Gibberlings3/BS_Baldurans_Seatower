@@ -1,0 +1,9 @@
+IF
+	Global("bsPCMetSmugglerDoppelgangers","GLOBAL",1)
+	Global("bsMyDoppelgangerChange","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsMyDoppelgangerChange","LOCALS",1)
+//		ApplySpell(Myself,DOPPLEGANGER_CHANGE_DEFAULT_LESSER)
+		ReallyForceSpellRES("bsdopsp4",Myself)
+END

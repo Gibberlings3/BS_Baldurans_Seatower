@@ -1,0 +1,33 @@
+IF
+	Global("bsDoppelgangerQuest","GLOBAL",8)
+THEN
+	RESPONSE #100
+		ActionOverride("bsstgc",JumpToPoint([799.448]))
+		SmallWait(1)
+		ActionOverride("bsstgc",MoveToPointNoInterrupt([755.404]))
+		CreateCreature("bstrmage",[702.348],0)
+		ActionOverride("bsstgc",Face(6))
+		ActionOverride("bstrmage",SetNumTimesTalkedTo(1))
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",9)
+		CreateCreature("bsdpgrd1",[322.522],6)
+		CreateCreature("bsdpgrd1",[488.594],6)
+		CreateCreature("bsdpgrd1",[511.383],6)
+		CreateCreature("bsdpgrd1",[771.414],6)
+		CreateCreature("bsdpgrd1",[661.296],6)
+		CreateCreature("bsdpgrd2",[442.546],6)
+		CreateCreature("bsdpgrd2",[422.435],6)
+		CreateCreature("bsdpgrd2",[642.445],6)
+		CreateCreature("bsdpgrd3",[610.368],6)
+END
+
+/* Doppelganger quest ended, also because PC didn't want to help any more or timer run out: restore original situation in barracks */
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",9)
+	Global("bsDoppelgangerQuestFinished","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("bsstgc",MoveToPointNoInterrupt([934.309]))
+		ActionOverride("bsstgc",Face(0))
+        	ActionOverride("bstrmage",DestroySelf())
+		SetGlobal("bsDoppelgangerQuestFinished","MYAREA",1)
+END

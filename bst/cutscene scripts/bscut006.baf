@@ -1,0 +1,13 @@
+/* cutscene gets triggered in Commander of the Guard's dialogue in the barracks after doppelganger quest was done completely (PC did not end help early, timer did not run out): restore original situation */
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+        	FadeToColor([20.0],0)
+        	Wait(3)
+        	FadeFromColor([20.0],0)
+		EndcutSceneMode()
+		ActionOverride("bsstgc",StartDialogNoSet([PC]))
+END

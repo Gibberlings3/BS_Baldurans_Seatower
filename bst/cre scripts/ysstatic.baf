@@ -1,0 +1,12 @@
+// Conditions to turn red
+IF
+  OR(2)
+	 AttackedBy([GOODCUTOFF],DEFAULT)
+	 Heard([ANYONE],2002)
+  !Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+		Shout(2002)
+		ChangeAIScript("ysreact",OVERRIDE)
+END

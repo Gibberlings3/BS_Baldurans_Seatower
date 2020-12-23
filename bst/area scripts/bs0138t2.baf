@@ -1,0 +1,22 @@
+// Book
+IF
+	IsOverMe(Protagonist)
+	Global("bsReadBook","GLOBAL",1)
+	Global("bsDreamTrap","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bsDreamTrap","GLOBAL",1)
+		ActionOverride(Player2,Rest())
+		ActionOverride(Player3,Rest())
+		ActionOverride(Player4,Rest())
+		ActionOverride(Player5,Rest())
+		ActionOverride(Player6,Rest())
+		DisplayStringHead(Protagonist,@9314)
+		FadeToColor([50.0],0)
+		Wait(4)
+		ActionOverride(Protagonist,LeaveAreaLUA("bs0157","",[193.311],14))
+		SetGlobal("bsStartDream","GLOBAL",2)
+		FadeFromColor([50.0],0)
+		SetInterrupt(TRUE)
+END

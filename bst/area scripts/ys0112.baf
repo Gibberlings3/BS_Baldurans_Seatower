@@ -1,0 +1,45 @@
+IF
+	Global("bsSpawnFireElemental","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsfrelem",[296.411],2)
+		ActionOverride("Barrel01",CreateItem("GBERRY",10,0,0))
+		ActionOverride("Barrel02",CreateItem("MISC1I",1,0,0))
+//		ActionOverride("BarrelPile",CreateItem("bsbarrl1",0,0,0))
+		ActionOverride("Crate01",CreateItem("POTN20",2,0,0))
+		SetGlobal("bsSpawnFireElemental","MYAREA",1)
+END
+
+IF
+	GlobalGT("bsFireElementQuest","GLOBAL",8)
+	Exists("bsfrelem")
+THEN
+	RESPONSE #100
+		ActionOverride("bsfrelem",DestroySelf())
+END
+
+IF
+	GlobalLT("bsFireElementQuest","GLOBAL",8)
+	Dead("bsfrelem")
+	GlobalGT("bsBarrelWithWater","GLOBAL",0)
+	GlobalLT("bsBarrelWithWater","GLOBAL",4)
+THEN 
+	RESPONSE #100
+		EraseJournalEntry(@913) 
+		EraseJournalEntry(@914)
+		AddJournalEntry(@916,QUEST_DONE)
+ 		SetGlobal("bsBarrelWithWater","GLOBAL",4)
+END
+
+IF
+	GlobalLT("bsFireElementQuest","GLOBAL",9)
+	Dead("bsfrelem")
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@901)
+		EraseJournalEntry(@904)
+		EraseJournalEntry(@906)
+		EraseJournalEntry(@910)
+		AddJournalEntry(@905,QUEST_DONE)
+		SetGlobal("bsFireElementQuest","GLOBAL",13)
+END

@@ -1,0 +1,29 @@
+
+IF 
+	GlobalLT("bsPrisonEntry","GLOBAL",2)
+	OR(2)
+		Global("bsPrisonEntry","GLOBAL",1)
+		Global("bsJumpStartDGQuest","GLOBAL",1)
+	!See("bssahu04")
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF 
+	Global("bsJumpStartDGQuest","GLOBAL",0)
+	Global("bsPrisonEntry","GLOBAL",0)
+	See([PC])
+THEN
+	RESPONSE #100
+		ActionOverride("bsprgrd1",StartDialogNoSet([PC]))
+END
+
+IF
+	Global("bsPrisonMyconiziden","GLOBAL",1)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END

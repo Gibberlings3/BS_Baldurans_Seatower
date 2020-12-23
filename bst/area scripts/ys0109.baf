@@ -1,0 +1,31 @@
+/* deactivate stuttering sound - will be fixed properly later */
+IF
+    Global("Sound","MYAREA",0)
+THEN
+    RESPONSE #100
+        SoundActivate("Sea",FALSE)
+        SetGlobal("Sound","MYAREA",1)
+END
+
+// Open the secret door
+IF
+	Global("bsSeaCaveOpen","GLOBAL",3)
+THEN
+	RESPONSE #100
+		TriggerActivation("Travbs0200",TRUE)
+		Unlock("DOOR 01")
+		OpenDoor("DOOR 01")
+		SetGlobal("bsSeaCaveOpen","GLOBAL",4)
+END
+
+
+//Deactivate hidden door travel trigger
+IF
+	Global("bsSeaCaveOpen","GLOBAL",0)
+	Global("bsHideSecretDoor","MYAREA",0)
+
+THEN
+	RESPONSE #100
+		TriggerActivation("Travbs0200",FALSE)
+		SetGlobal("bsHideSecretDoor","MYAREA",1)
+END

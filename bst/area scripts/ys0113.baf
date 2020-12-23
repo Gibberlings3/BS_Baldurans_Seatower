@@ -1,0 +1,114 @@
+//Area script of YS0113.are.
+
+/* PC killed a rabbit */
+IF
+	Dead("bsrabbit")
+	GlobalLT("bsCollectRabbits","GLOBAL",2)
+	Global("bsPCSquashedRabbit","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsPCSquashedRabbit","GLOBAL",1)
+END
+
+IF
+	Global("bsCreateRabbits","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateRabbits","MYAREA",1)
+		CreateCreature("bstq004",[785.943],2)
+		CreateCreature("bstq005",[942.991],15)
+		CreateCreature("bsrabbit",[682.1014],2)
+		CreateCreature("bsrabbit",[720.1035],0)
+		CreateCreature("bsrabbit",[773.1017],0)
+		CreateCreature("bsrabbit",[736.982],2)
+		CreateCreature("bsrabbit",[686.949],0)
+		CreateCreature("bsrabbit",[700.909],0)
+		CreateCreature("bsrabbit",[743.931],2)
+		CreateCreature("bsrabbit",[783.942],0)
+		CreateCreature("bsrabbit",[817.923],0)
+		CreateCreature("bsrabbit",[861.940],0)
+END
+
+/* Leonhard forewarded the gold: nomore 20,000 gold on him */
+IF
+	GlobalGT("bsShucksBrother","GLOBAL",4)
+	Global("bs_LeonhardSpentGold","MYAREA",0)
+	!Dead("bsslav01")
+	InMyArea("bsslav01")
+THEN
+	RESPONSE #100
+		ActionOverride("bsslav01",DestroyGold(20000))
+		SetGlobal("bs_LeonhardSpentGold","MYAREA",1)
+END
+
+/* slavers turn hostile */
+IF
+	Global("bsSlaversAttack","MYAREA",1)
+	Global("bsCreateSlavers","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
+		SetGlobal("bsCreateSlavers","MYAREA",1)
+		CreateCreature("bsslav02",[501.1032],0)
+		CreateCreature("bsslav02",[363.1148],12)
+		CreateCreature("bsslav02",[439.1220],10)
+		CreateCreature("bsslav03",[536.1159],2)
+		CreateCreature("bsslav03",[618.1122],8)
+END
+
+/* slaver dead: PC does no longer work with smugglers, either */
+IF
+	Global("bsWorkingWithSmugglers","GLOBAL",1)
+	Dead("bsslav01")
+THEN
+	RESPONSE #100
+		SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
+END
+
+/* in case Leonhard was killed before he could foreward the gold, Shuck's brother will not be freed */
+IF
+	Global("bsShucksBrother","GLOBAL",4)
+	Dead("bsslav01")
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@807)
+		EraseJournalEntry(@809)
+		EraseJournalEntry(@813)
+		AddJournalEntry(@810,QUEST_DONE)
+		SetGlobal("bsShucksBrother","GLOBAL",40)
+END
+
+IF
+	Global("bsCreateTraderContact","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateTraderContact","MYAREA",1)
+		CreateCreature("bsslav01",[561.1108],2)
+		OpenDoor("DOOR 01")
+END
+
+IF
+	Global("bsCreateAnotherRabbit","MYAREA",1)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		ActionOverride("bstq004",ForceSpellPoint([761.962],FLASHY_2))
+		Wait(2)
+		CreateCreature("bsrabbit",[761.962],4)
+		Wait(1)
+		CreateCreature("bsroryn",[876.1062],10) 
+		SetGlobal("bsCreateAnotherRabbit","MYAREA",2)
+		EndCutSceneMode()
+		ActionOverride("bstq004",StartDialogNoSet([PC]))
+END
+
+
+IF
+	Global("bsRabbitQuest","GLOBAL",2)
+THEN
+	RESPONSE #100
+		ActionOverride("bstq004",EscapeArea())
+		ActionOverride("bsroryn",EscapeArea())
+		SetGlobal("bsRabbitQuest","GLOBAL",3)
+END

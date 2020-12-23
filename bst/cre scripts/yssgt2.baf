@@ -1,0 +1,27 @@
+// Conditions to turn red
+IF
+  OR(3)
+   Global("ysCallToArms","GLOBAL",1)
+	 AttackedBy([GOODCUTOFF],DEFAULT)
+	 Heard([ANYONE],2002)
+  !Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+		Shout(2002)
+		ChangeAIScript("ysreact",OVERRIDE)
+END
+
+IF
+  Global("ysSerjeante1IsMoving","GLOBAL",0)
+THEN
+  RESPONSE #100
+  MoveToPoint([4427.850])
+END
+
+IF
+  Global("ysSerjeante1IsMoving","GLOBAL",1)
+THEN
+  RESPONSE #100
+  MoveToPoint([2036.2217])
+END

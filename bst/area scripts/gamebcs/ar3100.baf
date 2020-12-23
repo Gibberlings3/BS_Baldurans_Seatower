@@ -1,0 +1,7 @@
+IF
+	Global("bsSpawnTrolls","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnTrolls","MYAREA",1)
+		CreateCreature("bsseatrl",[436.589],10) //nerfed Sea Troll
+END

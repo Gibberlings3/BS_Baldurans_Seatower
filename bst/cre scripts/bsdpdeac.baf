@@ -1,0 +1,6 @@
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",9)
+THEN
+RESPONSE #100
+	DestroySelf()
+END

@@ -1,0 +1,18 @@
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",3)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+IF
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",4)
+	See([PC])
+	HasItem("bsdopdr",LastSeenBy(Myself))
+	Range(LastSeenBy(Myself),20)
+	Global("bsDoppTurnMyself","LOCALS",0)	
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppTurnMyself","LOCALS",1)
+		ReallyForceSpellRES("bsdopsp6",Myself)
+END

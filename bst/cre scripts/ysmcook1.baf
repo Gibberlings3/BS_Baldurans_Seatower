@@ -1,0 +1,46 @@
+// Conditions to turn red
+IF
+  OR(2)
+	 AttackedBy([GOODCUTOFF],DEFAULT)
+	 Heard([ANYONE],2002)
+  !Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+		Shout(2002)
+		ChangeAIScript("ysreact",OVERRIDE)
+END
+
+// Normal actions
+
+IF 
+    Global("bsFireElementQuest","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    MoveToObjectNoInterrupt("Door0002")
+    Unlock("Door0002" )
+//    OpenDoor("Door0002")
+    DisplayStringHead(Myself,@11043)
+    SetGlobal("bsFireElementQuest","GLOBAL",2)
+    SetInterrupt(TRUE)
+END
+
+
+//walking around the kitchen
+IF
+  True()
+THEN
+  RESPONSE #20
+    MoveToPoint([220.752])
+  RESPONSE #20
+    RandomTurn()
+    Wait(10)
+	RESPONSE #20
+    RandomTurn()
+  RESPONSE #20
+    MoveToPoint([323.803])
+  RESPONSE #20
+    RandomTurn()
+    Wait(3)
+END

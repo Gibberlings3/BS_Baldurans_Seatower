@@ -1,0 +1,147 @@
+/* Spawn prison guards */
+IF
+	Global("bsCreateGuards","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateGuards","MYAREA",1)
+		CreateCreature("bsprgrd2",[603.531],14)
+		CreateCreature("bssahu04",[636.528],14)
+		Unlock("Door 01")
+		Unlock("Door 02")
+		Unlock("Door 03")
+		Unlock("Door 04")
+		Unlock("Door 05")
+END
+
+/* second guard will only spawn for normal quest path, not if PC enters first time after Sarevok is dead */
+IF
+	Global("bsJumpStartDGQuest","GLOBAL",0)
+	Global("bsCreateGuards","MYAREA",1)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateGuards","MYAREA",2)
+		CreateCreature("bsprgrd1",[731.477],0)
+END
+
+/* move Sahuagin into cell after dialogue */
+
+IF
+	GlobalGT("bsPrisonEntry","GLOBAL",0)
+	Exists("bssahu04")
+	Global("bsDestroySahuagin","MYAREA",0)
+THEN
+	RESPONSE #100
+		CloseDoor("Door 06")
+		ActionOverride("bssahu04",DestroySelf())
+ 	 	SetGlobal("bsDestroySahuagin","MYAREA",1)
+		SmallWait(1)
+		CreateCreature("bssahu04",[446.428],14)
+END
+
+/* remove 1st prison guard after PC is gone after dialogue */
+
+IF
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",1)
+	InMyArea("bsprgrd1")
+	Global("bsDestroybsprgrd1","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("bsprgrd1",DestroySelf())
+ 	 	SetGlobal("bsDestroybsprgrd1","MYAREA",1)
+END
+
+
+/* deactivate travel trigger to sea caves */
+IF
+	Global("bsCloseSeaExit","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0200",FALSE)
+		TriggerActivation("bs0200ex",TRUE)
+		SetGlobal("bsCloseSeaExit","MYAREA",1)
+END
+
+
+IF
+	Global("bsPrisonMyconiziden","GLOBAL",5)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0200",TRUE)
+		TriggerActivation("bs0200ex",FALSE)
+		SetGlobal("bsPrisonMyconiziden","GLOBAL",6)
+END
+
+/* Halfslinger will be gone after interrogation */
+
+IF
+	Global("bsInquisitorsWork","GLOBAL",3)
+	InMyArea("yshafslg")
+THEN
+	RESPONSE #100
+		ActionOverride("yshafslg",DestroySelf())
+END
+
+/* Spawn Shuck - "Help Shuck's Brother in Nashkel", "Smugglers in the Seatower" */ 
+IF
+	OR(3)
+		Global("bsMissingMonk","GLOBAL",4)
+		Global("bsMissingMonk","GLOBAL",5)
+		Global("bsMissingMonk","GLOBAL",10)
+	Global("bsCreateShuck","MYAREA",0)
+THEN
+	RESPONSE #100
+		CloseDoor("Door 07")
+		CreateCreature("bsshuck",[603.362],14)
+ 	 	SetGlobal("bsCreateShuck","MYAREA",1)
+END
+
+/* spawn interrogator after talking to Shuck */ 
+IF
+	GlobalGT("bsShucksBrother","GLOBAL",0)
+	Global("bsInquisitorsWork","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsInquisitorsWork","GLOBAL",1)
+		CreateCreature("yshafslg",[656.480],6)
+END
+
+/* Halfslinger will start dialogue */
+IF
+	Global("bsInquisitorsWork","GLOBAL",1)
+	InMyArea("yshafslg")
+THEN
+	RESPONSE #100
+		ActionOverride("yshafslg",Dialogue([PC]))
+END
+
+/* start Myconiziden-Quest (leads to noticing the secret passage) */
+
+IF
+///	GlobalGT("bsShucksBrother","GLOBAL",7)
+	Global("bsPrisonMyconiziden","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsPrisonMyconiziden","GLOBAL",1)
+END
+
+IF
+	Global("bsPrisonMyconiziden","GLOBAL",2)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsPrisonMyconiziden","GLOBAL",3)
+		CreateCreature("bsmycon1",[602.221],14)
+		CreateCreature("bsmycon1",[513.231],14)
+END
+
+/* Sahuagin will die eventually */
+IF
+	GlobalGT("bsSeaCaveOpen","GLOBAL",0)
+	Global("bsPrisonSahuaginGone","MYAREA",0)
+	!Dead("bssahu04")
+THEN
+	RESPONSE #100
+		Unlock("Door 06")
+		OpenDoor("Door 06")
+		ActionOverride("bssahu04",Kill(Myself))
+ 	 	SetGlobal("bsPrisonSahuaginGone","MYAREA",1)
+END

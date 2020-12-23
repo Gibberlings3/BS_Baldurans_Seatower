@@ -1,0 +1,32 @@
+BEGIN bsdpgrd1
+
+
+IF ~RandomNum(6,1)~ THEN BEGIN 1
+  SAY @10082
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(6,2)~ THEN BEGIN 2
+  SAY @10077
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(6,3)~ THEN BEGIN 3
+  SAY @10079
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(6,4)~ THEN BEGIN 4
+  SAY @10080
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(6,5)~ THEN BEGIN 5
+  SAY @10081
+  IF ~~ THEN EXIT
+END
+
+IF ~RandomNum(6,6)~ THEN BEGIN 6
+  SAY @10078
+  IF ~~ THEN EXIT
+END

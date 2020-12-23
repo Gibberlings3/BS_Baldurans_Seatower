@@ -1,0 +1,99 @@
+//Every Tomb Trap has an own script. This is script no 5:
+// "ys011905", variable: Global("ys0119Tomb_05","MYAREA",x)
+
+// This script requires script ys0119t2 to have run.
+//
+// If charname is over the trap box
+// and the block has not run
+// and the trigger is primed i.e. the tomb has been clicked on (ys0119t2)
+// create a little riches and trigger restless dead (random)
+// and set variable to mark this tomb to be empty
+
+/* King of the Restlass Dead warned about not disturbing the graves */
+IF
+	IsOverMe([PC])
+	Global("ysTalkedToRestlessDead","GLOBAL",2)
+	Global("ys0119TombTrigger","Global",1) //set by clicking on Tomb Bait ys0119t2.bcs
+	Global("bsTalkedToKRD","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@11001)
+		SetGlobal("ys0119TombTrigger","Global",0)
+		CreateCreature("YSRSGHST",[-1.-1],0)
+END
+
+/* display stringhead if this tomb was already looted */
+IF
+	IsOverMe([PC])
+	!Global("ysTalkedToRestlessDead","GLOBAL",2)
+	Global("ys0119TombTrigger","Global",1) //set by clicking on Tomb Bait ys0119t2.bcs
+	GlobalGT("ys0119Tomb_05","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@11000)
+		SetGlobal("ys0119TombTrigger","Global",0)
+END
+
+/* create loot and restless dead random */
+IF
+	IsOverMe([PC])
+	!Global("ysTalkedToRestlessDead","GLOBAL",2)
+	Global("ys0119TombTrigger","Global",1) //set by clicking on Tomb Bait ys0119t2.bcs
+	Global("ys0119Tomb_05","MYAREA",0)
+THEN
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11001)
+		CreateCreature("ysrstdd1",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11002)
+		GiveItemCreate("MISC18",[PC],1,1,0)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11003)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11001)
+		CreateCreature("ysrstdd1",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11003)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11002)
+		GiveItemCreate("AMUL09",[PC],1,1,0)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11003)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11002)
+		GiveItemCreate("RING10",[PC],1,1,0)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11002)
+		GiveItemCreate("MISC21",[PC],1,1,0)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(LastTrigger,@11001)
+		CreateCreature("ysrstdd1",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		Continue()
+END
+
+/* count variable of this trap up and reset loot variable for other tombs */
+IF
+	IsOverMe([PC])
+	!Global("ysTalkedToRestlessDead","GLOBAL",2)
+	Global("ys0119Tomb_05","MYAREA",0)
+	Global("ys0119TombTrigger","Global",1) //set by clicking on Tomb Bait ys0119t2.bcs
+THEN
+	RESPONSE #10
+		SetGlobal("ys0119Tomb_05","MYAREA",1)
+		SetGlobal("ys0119TombTrigger","Global",0)
+END

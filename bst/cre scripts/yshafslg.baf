@@ -1,0 +1,10 @@
+IF
+	AreaCheck("YS0106") //prison area
+	Global("bsInquisitorsWork","GLOBAL",2)
+	!See([PC])
+	Global("bsInquisitorLeaves","MYAREA",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+		SetGlobal("bsInquisitorLeaves","MYAREA",0)		
+END

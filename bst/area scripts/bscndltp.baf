@@ -1,0 +1,8 @@
+IF
+	IsOverMe(Protagonist)
+	PartyHasItem("bscandld")
+	Global("bsCandleTrap","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCandleTrap","GLOBAL",1)
+END

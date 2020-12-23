@@ -1,0 +1,251 @@
+IF
+    Die()
+THEN
+    RESPONSE #100
+        ReallyForceSpell(Myself,RED_HOLY_MIGHT)  // SPWI985.SPL (No such index)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+    Global("Teleport","LOCALS",2)
+    Global("Charmed","LOCALS",2)
+THEN
+    RESPONSE #100
+        SetGlobal("Charmed","LOCALS",3)
+        ReallyForceSpell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+END
+
+IF
+    See([PC])
+    Global("Prep","LOCALS",1)
+    Global("Charmed","LOCALS",0)
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+        SetGlobal("Charmed","LOCALS",1)
+END
+
+IF
+    See([PC])
+    !StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+    !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+    !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+    Global("Prep","LOCALS",1)
+    Global("Charmed","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("Charmed","LOCALS",2)
+        ReallyForceSpell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+END
+
+IF
+    See(Player1)
+    HPLT(Myself,50)
+    Global("Teleport","LOCALS",0)
+    !Range(Player1,4)
+THEN
+    RESPONSE #100
+        SetGlobal("Teleport","LOCALS",1)
+        ReallyForceSpellRES("bs#wi994",Player1)  // Teleport without error
+        AttackOneRound(Player1)
+END
+
+IF
+    See(Player2)
+    HPLT(Myself,50)
+    Global("Teleport","LOCALS",0)
+    !Range(Player2,4)
+THEN
+    RESPONSE #100
+        SetGlobal("Teleport","LOCALS",1)
+        ReallyForceSpellRES("bs#wi994",Player2)  // Teleport without error
+        AttackOneRound(Player2)
+END
+
+IF
+    See(Player3)
+    HPLT(Myself,50)
+    Global("Teleport","LOCALS",0)
+    !Range(Player3,4)
+THEN
+    RESPONSE #100
+        SetGlobal("Teleport","LOCALS",1)
+        ReallyForceSpellRES("bs#wi994",Player3)  // Teleport without error
+        AttackOneRound(Player3)
+END
+
+IF
+    See(Player4)
+    HPLT(Myself,50)
+    Global("Teleport","LOCALS",0)
+    !Range(Player4,4)
+THEN
+    RESPONSE #100
+        SetGlobal("Teleport","LOCALS",1)
+        ReallyForceSpellRES("bs#wi994",Player4)  // Teleport without error
+        AttackOneRound(Player4)
+END
+
+IF
+    See(Player5)
+    HPLT(Myself,50)
+    Global("Teleport","LOCALS",0)
+    !Range(Player5,4)
+THEN
+    RESPONSE #100
+        SetGlobal("Teleport","LOCALS",1)
+        ReallyForceSpellRES("bs#wi994",Player5)  // Teleport without error
+        AttackOneRound(Player5)
+END
+
+IF
+    See(Player6)
+    HPLT(Myself,50)
+    Global("Teleport","LOCALS",0)
+    !Range(Player6,4)
+THEN
+    RESPONSE #100
+        SetGlobal("Teleport","LOCALS",1)
+        ReallyForceSpellRES("bs#wi994",Player6)  // Teleport without error
+        AttackOneRound(Player6)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Teleport","LOCALS",1)
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+        SetGlobal("Teleport","LOCALS",2)
+END
+
+IF
+    OR(3)
+        See(NearestEnemyOfType([0.0.0.FIGHTER_ALL]))
+        See(NearestEnemyOfType([0.0.0.PALADIN_ALL]))
+        See(NearestEnemyOfType([0.0.0.RANGER_ALL]))
+    Global("Prep","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_POWER_WORD_STUN)  // SPWI715.SPL (Power Word, Stun)
+        SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Prep","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_POWER_WORD_STUN)  // SPWI715.SPL (Power Word, Stun)
+        SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Prep","LOCALS",2)
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+        SetGlobal("Prep","LOCALS",3)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Prep","LOCALS",4)
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+        SetGlobal("Prep","LOCALS",5)
+END
+
+IF
+    OR(2)
+        See([0.0.0.CLERIC_ALL])
+        See([0.0.0.MAGE_ALL])
+    Global("Prep","LOCALS",3)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Remove Magic)
+        SetGlobal("Prep","LOCALS",4)
+END
+
+IF
+    OR(2)
+        See([0.0.0.CLERIC_ALL])
+        See([0.0.0.MAGE_ALL])
+    Global("Prep","LOCALS",5)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+        SetGlobal("Prep","LOCALS",6)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+    !StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+    Global("Prep","LOCALS",5)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+        SetGlobal("Prep","LOCALS",6)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Prep","LOCALS",1)
+    !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+    !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+    !StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+    OR(4)
+        StateCheck(LastSeenBy(Myself),STATE_HASTED)
+        StateCheck(LastSeenBy(Myself),STATE_BLESS)
+        StateCheck(LastSeenBy(Myself),STATE_DRAWUPONHOLYMIGHT)
+        StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Remove Magic)
+        SetGlobal("Prep","LOCALS",2)
+END
+
+IF
+    See(ThirdNearestEnemyOf(Myself))
+    Global("Prep","LOCALS",1)
+    !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+    !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+    !StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+    OR(4)
+        StateCheck(LastSeenBy(Myself),STATE_HASTED)
+        StateCheck(LastSeenBy(Myself),STATE_BLESS)
+        StateCheck(LastSeenBy(Myself),STATE_DRAWUPONHOLYMIGHT)
+        StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Remove Magic)
+        SetGlobal("Prep","LOCALS",2)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Prep","LOCALS",1)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Remove Magic)
+        SetGlobal("Prep","LOCALS",2)
+END
+
+IF
+    See([GOODCUTOFF])
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+    See([ANYONE])
+    Global("Prep","LOCALS",1)
+THEN
+    RESPONSE #100
+        AttackReevaluate(LastSeenBy(Myself),30)
+END

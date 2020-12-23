@@ -1,0 +1,49 @@
+
+
+/**
+ * Installs area descriptions which are used by the game's debug console for quick travel. (EE 2.0+ games only.)
+ * STR_VAR area_array   Name of an associative array containing the area codes as key and either
+ *                      a literal string or a tra reference (without '@' sign) for the area description as value.
+ * STR_VAR table_name   Case-sensitive name of the table variable in bgee.lua for area names. Default: cheatAreas
+ */
+DEFINE_ACTION_FUNCTION INSTALL_CHEAT_AREAS
+STR_VAR
+  area_array = ~~
+  table_name = ~cheatAreas~
+BEGIN
+  ACTION_IF (GAME_IS ~bgee bg2ee eet iwdee pstee~ &&
+             FILE_EXISTS_IN_GAME ~bgee.lua~ &&
+             NOT ~%area_array%~ STR_EQ ~~ &&
+             NOT ~%table_name%~ STR_EQ ~~) BEGIN
+    OUTER_SET table_exists = 0
+    COPY_EXISTING ~bgee.lua~ ~override~
+      SET table_exists = (INDEX_BUFFER(CASE_SENSITIVE EVALUATE_REGEXP ~\b%table_name%\b~) >= 0)
+    BUT_ONLY IF_EXISTS
+
+    ACTION_IF (table_exists) BEGIN
+      // Use language-specific lua file if available
+      OUTER_TEXT_SPRINT lua_file ~L_%EE_LANGUAGE%.LUA~
+      ACTION_IF (NOT FILE_EXISTS_IN_GAME ~%lua_file%~) BEGIN
+        // Fall back to default bgee.lua, otherwise
+        OUTER_TEXT_SPRINT lua_file ~BGEE.LUA~
+      END
+
+      // Append area table with entries from specified array by using insert commands
+      ACTION_PHP_EACH EVAL ~%area_array%~ AS area => desc BEGIN
+        ACTION_IF (IS_AN_INT ~desc~) BEGIN
+          OUTER_SPRINT desc (AT desc)
+        END
+
+        OUTER_PATCH_SAVE desc ~%desc%~ BEGIN
+          // Ensure safe lua string: escape or replace the more problematic characters
+          REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~\~ ~\\~ // backslash
+          REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~"~ ~\"~ // double quote
+          REPLACE_TEXTUALLY ~[%WNL%]+~ ~ ~  // line break
+        END
+
+        // This syntax requires lua 5.2+ (should be present in all EE game executables)
+        APPEND ~%lua_file%~ ~%table_name%[#%table_name%+1] = {"%area%", "%desc%"}~
+      END
+    END
+  END
+END

@@ -1,0 +1,20 @@
+// Move the party to the blocked area
+IF
+	!Global("bsAlguineBlockedPortal","GLOBAL",1)
+	OR(6)
+		IsOverMe(Player1)
+		IsOverMe(Player2)
+		IsOverMe(Player3)
+		IsOverMe(Player4)
+		IsOverMe(Player5)
+		IsOverMe(Player6)
+THEN
+	RESPONSE #100
+  	ActionOverride(Player1,LeaveAreaLUA("bs0128","",[576.719],10))
+  	ActionOverride(Player2,LeaveAreaLUA("bs0128","",[576.719],10))
+  	ActionOverride(Player3,LeaveAreaLUA("bs0128","",[576.719],10))
+  	ActionOverride(Player4,LeaveAreaLUA("bs0128","",[576.719],10))
+  	ActionOverride(Player5,LeaveAreaLUA("bs0128","",[576.719],10))
+  	ActionOverride(Player6,LeaveAreaLUA("bs0128","",[576.719],10))
+  	IncrementGlobal("bsHFMTrap","GLOBAL",1)
+END

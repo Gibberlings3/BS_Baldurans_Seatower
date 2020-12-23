@@ -1,0 +1,2413 @@
+/* note to translators: comments in brackets [ ] inside the tildas can be ignored! */
+
+@1 = ~The BS Company presents Balduran's Seatower~
+@2 = ~You are installing to the wrong game.~
+@3 = ~This mod should be installed BEFORE the Worldmap mod.~
+@4 = ~Updating Worldmap...~
+
+//******************
+// Mapnotes and info points
+//******************
+@20 = ~Temple of Selune~
+@21 = ~Barracks~
+@22 = ~Armorer~
+@23 = ~Fletcher~
+@24 = ~Balduran's Seatower~
+@25 = ~Halfslinger~
+@26 = ~A list of the day's guard duties. Boring.~
+@27 = ~A larger-than-life statue of Balduran. The statue looks more like an eight-foot tall ogre, about to fall over at any moment.~
+@28 = ~It says 'Balduran'. That's it. It doesn't look like any portrait of Balduran that you've ever seen.~
+@29 = ~Piles of stones ready for the trebuchets on the roof.~
+@30 = ~The trapdoor is locked~
+@31 = ~Temple of Ilmater~
+@32 = ~You read the open page. It says 'I am all colours and I am none'.~
+@33 = ~Tannery~
+@34 = ~Catacombs~
+@35 = ~Seatower Inn~
+@36 = ~Dragon Tower~
+@37 = ~Golden Dragon Ale~
+@38 = ~Master Usher's Finest Clothes~
+@39 = ~Treasury~
+@40 = ~Chionthar Tower~
+@41 = ~Traitor's Tower~
+@42 = ~Chain Tower~
+@43 = ~Dradeel's Tower~
+@44 = ~South Harbour Tower~
+@45 = ~Harbour Tower~
+@46 = ~East Tower~
+@47 = ~Slave Trader's Meeting Point~
+@48 = ~Master Shizell's Magic Items~
+@49 = ~This is the famous and *locked* alestore.~
+@50 = ~Seatower Well~
+@51 = ~Seatower Beacon~
+
+//******************
+// NPC names
+//******************
+@100 = ~Cook~ //female
+@101 = ~Cook's Apprentice~ //female
+@102 = ~Garalt the Armorer~
+@103 = ~Priestess of Selune~
+@104 = ~Tower Guard~ //male
+@105 = ~Tower Sergeant~ //male
+@106 = ~Matha the Fletcher~
+@107 = ~Seatower Well~ 
+@108 = ~Leonhard~
+@109 = ~Halfslinger~
+@110 = ~Worshipper of Selune~ //female
+@111 = ~Seatower Farmer~ //male
+@112 = ~Farmer's Wife~
+@113 = ~Restless Dead~
+@114 = ~Nabassu Fledgling~
+@115 = ~Alguine~
+@116 = ~Tanner~ //male
+@117 = ~Head Winchman Brydw~ //male
+@118 = ~Sorceror~ //male
+@119 = ~Seatower Commander Airard~
+@120 = ~Captain Dungarth~
+@121 = ~Tower Guard Lenard~
+@122 = ~Tower Guard Shuck~
+@123 = ~Nathoriel~
+@124 = ~Pirate~ //male
+@125 = ~Pirate Captain~ //male
+@126 = ~Monk of Ilmater~ //male
+@127 = ~Monk of Ilmater~ //female
+@128 = ~Abbot Guoremor~
+@129 = ~Lady Springfall~
+@130 = ~Legal Attendant~ //male
+@131 = ~Lars~
+@132 = ~Klaus~
+@133 = ~Ulf~
+@134 = ~Guest~ //male
+@135 = ~Guest~ //female
+@136 = ~Vampiric Rabbit~ 
+@137 = ~Inn Master Roryn~ 
+@138 = ~Alaza~
+@139 = ~Betsy the Rat~ 
+@140 = ~Rabbit~  
+@141 = ~Lime~
+@142 = ~Blurt~
+@143 = ~Innocent Looking Berry Picker~ //male
+@144 = ~Holger~
+@145 = ~Bouncer~ //male
+@146 = ~Sahuagin Priestess~
+@147 = ~Sahuagin Chieftain~
+@148 = ~Sahuagin~
+@149 = ~Sahuagin Scout~
+@150 = ~Myconid~
+@151 = ~Tower Guard Jai~ 
+@152 = ~Tower Prison Guard~ 
+@153 = ~Master Shizell~
+@154 = ~Orc Worker~
+@155 = ~Orc Archer~
+@156 = ~Orc Priest~
+@157 = ~Orc Mage~
+@158 = ~Master Usher~
+@159 = ~Tailor's Assistant~ //female
+@160 = ~Mimic Fledgling~
+@161 = ~Tower Treasurer~
+@162 = ~Mannuf~
+@163 = ~Beacon Guard Jose~
+@164 = ~Lesser Fire Elemental~
+@165 = ~Drowned Spirit~
+@166 = ~Winchman's Assistant~ //male
+@167 = ~Sea Troll~
+
+
+//******************
+//Spell Names
+//******************
+
+@400  = ~Darkness~
+@401  = ~Throws Mimic Powder~ //male NPC is doing this
+
+//******************
+//Items
+//******************
+@500 = ~Storeroom key~
+@501 = ~The key to the kitchen storerooms in Balduran's Seatower~
+@502 = ~Goose feathers~
+@503 = ~A bag of goose feathers given to you by the cook's apprentice and destined to be turned into arrow fletchings by the seatower fletcher~
+@504 = ~Tankard for Halfslinger~
+@505 = ~A tankard of Golden Dragon Ale brewed by the cook in Balduran's Seatower. You don't particularly want to remember what it cost you.~
+@506 = ~False Arla's Dragonsbane~
+@507 = ~A very poor copy of the original and very famous Arla's Dragonsbane sling. After all you went through to get this, it really wasn't worth the effort as the copy is only marginally better than an ordinary sling.
+
+
+STATISTICS:
+
+THAC0: +1
+Damage: +1 (missile)
+Speed Factor: 3
+Proficiency Type: Sling
+Type: One-handed
+Requires: 3 Strength
+
+Weight: 1~
+@508 = ~Tower Prison Pass~
+@509 = ~This pass will grant you access to the Seatower's Prison, located in the cellar of the tower.~
+@510 = ~Almiran's Scroll~
+@511 = ~This scroll is supposed to open a hidden door to some ruins in the Wood of Sharp Teeth.~
+@512 = ~Alguine's key~
+@513 = ~Alguine's key opens the locked door in the Halls of Future Memories.~
+@514 = ~The Key to the Catacombs~
+@515 = ~This key opens the hidden door in the mausoleum under Balduran's Seatower.~
+@516 = ~The Key to the Chionthar Tower~
+@517 = ~The key to the mausoleum in the Chionthar Tower. The seatower catacombs lie below the tower.~
+@518 = ~The Ogre's Bone Dagger~
+@519 = ~The blade of this dagger is made of a bone cut from some long dead and forgotten monster. The edge is still as sharp as the day it was carved - and cursed.~
+@520 = ~The Woman's Human Skull~
+@521 = ~The blackened and scorched skull has survived the fire which should have destroyed it.~
+@522 = ~The Sorcerer's Candle~
+@523 = ~This candle contains a single Wish spell. In taking it, you denied the Sorcerer his last request.~
+@524 = ~The Warrior's Talon~
+@525 = ~The creature that once owned this desiccated talon did not live on this plane.~
+@526 = ~The Poisoned Man's Antidote~
+@527 = ~A thick red fluid stirs menacingly in the bottle. In taking it, you denied the Poisoned Man his life.~
+@528 = ~You inspect the grass and see that someone dug and closed a hole not so long ago. Inspecting the patch you find the remains of a young monk buried a few inches below the ground.~
+@529 = ~The Book Of Planes~
+@530 = ~You found this old book buried in the far corner of Alguine's library. You try to read the book but the more you read, the less sense it makes. Much of the book seems to be just... missing... and the rest of it seems to be written by someone not much older than a child. Worse, each time you open the book the pages have changed.~
+@531 = ~Lars' Drawing~
+@532  = ~This is the drawing given to you by Lars, the orphan boy. The picture bears a slight resemblance to what could be a dragon. You have absolutely no idea what you would use this for, but if you just dump it, a child will be very sad and a kitten will die somewhere, probably.~
+@533  = ~Rabbit Cage~
+@534  = ~This is the cage Inn Master Roryn gave you to collect all the rabbits from the third floor of Balduran's Seatower Inn.~
+@535  = ~Betsy the Rat~
+@536  = ~This is the rat you caught on the first floor of the Seatower Inn. It is unusually fat and has a tiny pink ribbon on its tail, on which someone wrote carefully the word "Betsy".
+The rat looks at you, but shows no intent to bite you.~
+@537  = ~This is the carcass of the rat you killed on the first floor of the Seatower Inn. You can still see a tiny pink ribbon on its tail, on which someone wrote carefully the word "Betsy".~
+@538  = ~Slave Trader's Pamphlet~
+@539  = ~This is the slave traders' contact info you received from the smugglers. It is an advertisement for "wild animals excursions" organized by "Leonhard the Fierce", who can be met on the third floor of the Seatower Inn. There is a handwritten note on the back to "ask for the special creatures' tour".~
+@540  = ~Sealed Box~
+@541  = ~The box is light, and nothing is moving inside if shaken.~
+@542  = ~Slave Trader's Notes~
+@543  = ~These are the notes you found on the body of "Leonhard the Fierce", the slave trader contact. It contains a schedule of a variety of innocent sounding excursions.
+There is one entry with a date in the future called "Special Creatures Pursuit".~
+//#73906 (BGII)
+@544  = ~Ring of Anti-Venom~
+//#73913 (BGII)
+@545  = ~This ring is an unadorned silver band.  However, its plain appearance belies the powerful magic within.  Rings of Anti-Venom are eagerly sought after by royalty, influential political figures and other potential assassination targets.   
+
+STATISTICS:
+
+Wearer is immune to all poison.~
+@546  = ~Black Pearl~
+@547  = ~Pearls are formed from layers of aragonite slowly formed around a bit of grit or other irritant inside oysters and other mollusks.  The resulting pearl has a rich, deep luster.  Most of the pearls in the realms are white, however there are rarer varieties such as rainbow and black.
+
+This pearl is of the very rare black color.~
+@548  = ~Tailor's Key~
+@549  = ~This key opens the locked door inside the tailor's shop in the Dock's District.~
+@550  = ~Mimic Powder~
+@551  = ~This is what Master Shizell called "mimic powder". It is in fact a liquid, not a powder, and it is effective in unmasking doppelgangers, not mimics.
+The flask is not completely stoppered and small wisps of fumes can be seen coming out of it. The flask needs to be used quickly before its effectiveness fades. When brought in close proximity to a doppelganger, the fumes – inoffensive on their own –combine with the odors of the Seatower and its environs into a scent that drives doppelgangers into a rage, shifting into their natural forms and attacking.~
+@552  = ~Herb Liqueur~
+@553  = ~This is a very dusty bottle of herbal liquer from some far away distillery. 
+This looks like a bottle that is best kept save until you can give it to the right connoisseur.~
+@554  = ~Expired Mimic Powder~
+@555  = ~There are no more fumes coming out of the flask. The potion is no longer effective against doppelgangers.~
+@556  = ~Treasury Note~
+@557  = ~This treasury note entitles the bearer to a sum of 3000 gold, to be collected in the Seatower Treasury.~
+@558  = ~This treasury note entitles the bearer to a sum of 5000 gold, to be collected in the Seatower Treasury.~
+@559  = ~This treasury note entitles the bearer to a sum of 20,000 gold, to be collected in the Seatower Treasury.~
+@560  = ~Plum Liqueur~
+@561  = ~This is a very exquisite looking bottle of Calimshan Plum Liqueur.
+This looks like a bottle that is best kept save until you can give it to the right connoisseur.~
+@562  = ~Bitter Liqueur~
+@563  = ~This is a very exquisite looking bottle of Amnian Bitter Liqueur.
+This looks like a bottle that is best kept save until you can give it to the right connoisseur.~
+@564  = ~This treasury note entitles the bearer to a sum of 500 gold, to be collected in the Seatower Treasury.~
+@565  = ~Empty Barrel~
+@566  = ~This is an empty barrel.~
+@567  = ~Barrel full of Water~
+@568  = ~This is a barrel full of water.~
+@569  = ~Fire Resistant Barrel~
+@570  = ~This barrel was coated from the inside with a fire resistant layer by the tower blacksmith. It should hold a fire elemental for at least a day.~
+@571  = ~Barrel with Fire Elemental~
+@572  = ~You trapped the fire elemental from the kitchen's storeroom inside this barrel.
+The barrel feels slightly hot and you hear a low crackling like form a fire from time to time.~
+@573 = ~<CHARNAME>'s Golden Dragon Ale~
+@574 = ~A tankard of Golden Dragon Ale brewed by the cook in Balduran's Seatower. Getting it was a bit bothersome, but it was poured for you with best intentions in mind.
+
+STATISTICS:
+
+Dexterity:  -2 penalty
+Special:  Prevents fear
+Duration:  15 turns
+
+Weight: 1~
+@575  = ~Sea Troll's Sebaceous Gland~
+@576 = ~The sebaceous gland you gained from a Sea Troll. It's constantly oozing a gelatic substance that is said to exceptionally protect metal against water.~
+
+//******************
+// Journal entries
+//******************
+
+// Titles (more titles in between)
+@700 = ~The Fletcher's Feathers~
+@701 = ~Halfslinger's Ale~
+@702 = ~The Tanner's Troubles~
+@703 = ~The Stolen Ilmater's Alms~
+@704 = ~The Mysterious Scroll~
+@705 = ~Help Shuck's Brother~
+@706 = ~Dark Power in the Seatower Catacombs~
+@707  = ~An Orphan in the Seatower~
+@708  = ~Cage the Rabbits~
+@709  = ~Strange Happenings in Room No. 3.4~
+@710  = ~Rats in the Seatower Inn~
+@711  = ~Missing Monk in the Seatower~ 
+@712  = ~The Prisoner in the Seatower Prison~
+@713  = ~Working with the Smugglers~
+@714  = ~Confront the Slave Traders in Baldur's Gate~
+@715  = ~Myconides in the Seatower Prison~
+@716  = ~Doppelgangers Inside the Seatower~
+@717  = ~The Breach in the Seatower Prison~
+@718  = ~Ingredients for the Seatower Mage~
+@719  = ~The Dead Adjutant~
+
+// Entries
+// The Fletcher's feathers
+@720 = ~The Fletcher's Feathers
+
+I've agreed to ask the cook for the goose feathers so the fletcher can make more arrows.~
+@721 = ~The Fletcher's Feathers
+
+The fletcher has her feathers and I have some new arrows.~
+@722 = ~The Fletcher's Feathers
+
+I need to ask the cook for the goose feathers so the fletcher will have time to do me a favor with the barrel.~
+@723 = ~The Fletcher's Feathers
+
+I have the feathers for the Seatower fletcher.~
+@724 = ~The Fletcher's Feathers
+
+I need to ask the cook's apprentice for the goose feathers for the Seatower fletcher.~
+
+// Halfslinger's Ale
+@730 = ~Halfslinger's Ale
+
+Tomi of Gullykin has somehow persuaded me to get him a mug of ale from the cook and in return he will give me the copy of the Arla's Dragonsbane sling. He said I'd be better asking the cook's apprentice for the ale first, which makes me sure that there's more to this than a simple request.~
+@731 = ~Halfslinger's Ale
+
+Halfslinger got his ale and after the run-in with the cook I told him he could get his own in future. The sling wasn't worth the effort it took to get it.~
+@732 = ~Halfslinger's Ale
+
+I received a mug of ale for Halfslinger in the Seatower.~
+
+// The Tanner's Troubles
+@740 = ~The Tanner's Troubles
+
+It seems that the tanner is being bullied by the guards just because he is a gnome. I said I'd to talk to the garrison commander about it.~
+@741 = ~The Tanner's Troubles
+
+Captain Dungarth has promised that the tanner will not be bullied in future. I'm sure the tanner would be delighted to hear that.~
+@742 = ~The Tanner's Troubles
+
+Captain Dungarth has said that he will talk to the garrison guard about the bullying but couldn't promise to stop it. I guess the tanner would still be happy to hear about it.~
+@743 = ~The Tanner's Troubles
+
+Captain Dungarth won't do anything about the bullying, and I am pretty sure it's because I'm a gnome. Problems at the bottom always results from the top, hm? Well, I could tell the tanner about it, I suppose.~
+@744 = ~The Tanner's Troubles
+
+I told the tanner that Captain Dungarth wouldn't do anything about his problem with the garrison guards.~
+@745 = ~The Tanner's Troubles
+
+I told the tanner that Captain Dungarth had promised to stop the garrison guards from bullying him.~
+@746 = ~The Tanner's Troubles
+
+I told the tanner that Captain Dungarth said he'd have a word with the garrison troops but couldn't promise to stop the bullying.~
+@747 = ~The Tanner's Troubles
+
+It seems that the tanner is being bullied by the guards just because he is a gnome.~
+
+//The Stolen Ilmater's Alms
+@750 = ~The Stolen Ilmater's Alms
+
+I found the trunk with the stolen gold. I could return it to the abbot of the Ilmater Monastery, if I want to.~
+@751 = ~The Stolen Ilmater's Alms
+
+I returned what was left of the stolen gold to the Monastery. The abbot offered to heal me once completely without taking any pay. Depending on when I will call on this offer, this could be a very generous reward.~
+@752 = ~The Stolen Ilmater's Alms
+
+I decided to keep the stolen gold.~
+
+
+
+//Myconides in the Seatower Prison
+@753 = ~Myconides in the Seatower Prison
+
+A Prison Guard told me that there is a spore colony with angry Myconides in the Seatower Dungeons.~
+
+@754 = ~Myconides in the Seatower Prison
+
+I killed the Myconides and destroyed the spore colony in the Seatower Dungeon.~
+
+
+
+// The Mysterious Scroll
+@760 = ~The Mysterious Scroll
+
+The mage Klaus has given me a strange scroll. The letters will not stand still on the page and it is quite unreadable. He said it opens a dungeon in old ruins in the Wood of Sharp Teeth. He seemed also quite desperate to save someone who is trapped inside. Maybe I can show this to someone versed with magic who can tell me more about it and give me a better starting point where to look for these ruins.~
+@761 = ~The Mysterious Scroll
+
+The mage Klaus has given me a strange scroll. The letters will not stand still on the page and it is quite unreadable. He seemed also quite desperate to save someone who is trapped inside. It has some Thayan notes on it, though. Edwin says he recognises the work and that the message says something about the ruins of a temple in Peldvale. Perhaps we should investigate Tazok's old camp site, there were some ruins there.~
+@762 = ~The Mysterious Scroll
+
+Halbazzar Drin has identified where the scroll must be used. It's the old temple ruins in Peldvale where Tazok set up his camp.~
+@763 = ~The Mysterious Scroll
+
+I got entry to the labyrinth the Thayan scroll talked about.~
+@764 = ~The Mysterious Scroll
+
+I met a man inside the labyrinth under the Bandit Camp ruins. He seems to be the one the mage Klaus wanted us to save. We could indeed save him from the clutches of a Nabassu Fledgling. Once I found the exit myself, I could see whether he found each his way to Klaus.~
+@765 = ~The Mysterious Scroll
+
+I found my way out of that labyrinth and learnt some weird things about my future life, or at least got a little glimps of things I don't understand yet.~
+
+@766 = ~The Mysterious Scroll
+
+I found my way out of that labyrinth and learnt some weird things about my future life, or at least got a little glimps of things I don't understand yet.
+Also, Ulf found his way to Klaus savely.~
+
+
+//Dark Power in the Seatower Catacombs
+@774 = ~Dark Power in the Seatower Catacombs
+
+Seems the Ilmater monastery has problems to keep the catacombs clear of whatever it is that is posing a threat down there. I should talk to the abbot to get more information.~
+@775 = ~Dark Power in the Seatower Catacombs
+
+Abbot Guoremor of the Seatower Monastery asked me to clear out the catacombs from what he called the restless spirits. He gave me two keys for the catacombs. The first one appearently leads into the main catacombs, whereas the second one is for a hidden door that leads to the "real evil". He told me to leave the dead alone or more spirits will stirr, but maybe that would be an option to clear out the catacombs for real - if I want to fight that much, that is. Any way - he told me to be prepared for a "great evil".~
+@776 = ~Dark Power in the Seatower Catacombs
+
+I got a reward from Abbot Guoremor after clearing out the Seatower Catacombs.~
+
+//An Orphan in the Seatower
+@777  = ~An Orphan in the Seatower
+
+Inside the Balduren's Seatower Inn I met a man who is travelling with a boy. The boy should appearently be picked up by a lady who resides on the first floor but so far did not make up her mind to really take over the boy. I could ask her what this is all about.~
+@778  = ~An Orphan in the Seatower
+
+Oh, how "unfortunate"... The grandmother declined to even see her grandson and left without taking him on, after my description of his looks which was not exactly... accurate. Well, that happens if you trust a stranger's testimony more than checking yourself. I don't think I need to feel guilty here, if people are so silly!~
+@779  = ~An Orphan in the Seatower
+
+This was heartwarming. The grandmother took on her grandson, and I think they will do fine.~
+
+//Cage the Rabbits
+@780  = ~Cage the Rabbits
+
+Inn Master Roryn gave me a cage where I can put in the rabbits from the third floor of the Seatower. He'll pay me 50 gold for everyone I bring back in the cage.~
+
+@781  = ~Cage the Rabbits
+
+I caged as much as possible and gave Inn Master Roryn back the cage. He paid me 50 gold per rabbit as promised.~
+
+@782  = ~Cage the Rabbits
+
+I lost interest in chasing rabbits and gave Inn Master Roryn back the cage.~
+
+
+//Strange Happenings in Room No. 3.4
+@785  = ~Strange Happenings in Room No. 3.4
+
+A rather upset inn guest talked about rats running all over the third floor of the Seatower. If I understand one thing about rats, finding them on the third floor and not in the cellar would be a strange coincidence.~
+@786  = ~Strange Happenings in Room No. 3.4
+
+Now I have been warned not to open a door to a room on the third floor of the Seatower. The question is - do I heed the warning, or am I even more tempted to have a look?...~
+@787  = ~Strange Happenings in Room No. 3.4
+
+Er, alright. Appearently, a mage conjured rabbits inside the room in the third floor of the Seatower. Why he would do that is still a mystery, though. He got thrown out of the inn by the staff. Something tells me this is not over yet, that man seemed so desperate. I don't expect him to be any kind of threat, though, looking at all the white, fluffy rabbits running around...
+I can also only assume that the rabbits were the "rats" the other guest believed to have spotted.~
+@788  = ~Strange Happenings in Room No. 3.4
+
+That mad mage is still on the seatower grounds... Waiting for me to show me what he can conjure now. Why is it always me?...~
+@789  = ~Strange Happenings in Room No. 3.4
+
+The mage Klaus found a new home in the Ilmater monastery on the seatower grounds. The monks took pity on him after he conjured a vampiric rabbit as a help for his friend.~
+
+@790  = ~Rats in the Seatower Inn 
+
+Roryn, the inn keeper of Seatower Inn, will give me 50 gold for every rat I find on the inn's second floor.~
+@791  = ~Rats in the Seatower Inn 
+
+I found a rat on the second floor of the Seatower Inn... and I have the suspicion there won't be any more than this one. I should take it to Roryn.~
+@792  = ~Rats in the Seatower Inn 
+
+The rat plague of the Seatower Inn turned out to be Betsy, the pet rat of the Inn Master's daughter.~
+
+//
+@793  = ~Missing Monk in the Seatower
+
+Lenard, a soldier of the Badluran's Saetower is missing his secret lover Martina, a monk from the Seatower's Ilmater Monastery who went missing while being on an errand in town. She was last seen at the Ilmater Shrine in north east Baldur's Gate. I should go there and ask around whether anyone has seen her lately.~
+@794  = ~Missing Monk in the Seatower
+
+A beggar inside the Ilmater's Shrine suggested I'd go around ask other beggars about the missing monk Martina. I need to find the beggar who was here at the shrine when Martina was here.~
+@795  = ~Missing Monk in the Seatower
+
+A beggar in front of the Ilmater's Shrine suggested I'd ask his comrade who should be in front of the palace currently. He was at the shrine the time Martina was there and might have seen her.~
+@796  = ~Missing Monk in the Seatower
+
+A beggar in front of the palace told me that he saw a soldier following Martina behind the Ilmater's Shrine and only him coming back after a while. I surely hope this has nothing to say, but to make sure, I should have a close look behind the shrine myself? If we are dealing with a crime, I fear I need proof before reporting to anyone.~
+@797  = ~Missing Monk in the Seatower
+
+I found Martina... She is dead. From what I know I have to believe the soldier who was sent to search for her killed her, or at least knows what happened that day behind the shrine. Lenard came here and took her remains back to the tower. He suggested I'd go back and talk to the Ilmater Monastery Abbot, and maybe the Seatower Commander would like to talk to me about this, too.~
+@798  = ~Missing Monk in the Seatower
+
+I found Martina... She is dead. The soldier who was sent to search for her killed her, and took the gold the monks collected for alms. Lenard came and took her remains. The Ilmater Monastery Abbot gave me some priest scrolls for my help.~
+
+//The Prisoner in the Seatower Prison
+@799  = ~The Prisoner in the Seatower Prison
+
+I got word that I should talk to the Seatower Commander. He can be found in his office at the second floor of the Seatower.~
+@800 = ~The Prisoner in the Seatower Prison
+
+The Seatower Commander gave me a pass which grants me entrance to the Seatower's prison in the cellar of the main tower. An arrested solder named Shuck requested to talk to me.~ 
+@801 = ~The Prisoner in the Seatower Prison
+
+I went to see the prisoner as told by the commander.~
+@802 = ~The Prisoner in the Seatower Prison
+
+The Seatower Commander told me to go into the Seatower's prison in the cellar of the main tower - an arrested solder named Shuck requested to talk to me.~ 
+
+//Help Shuck's Brother
+@805 = ~Help Shuck's Brother
+
+Shuck, a former soldier of the Seatower and now imprisoned in the Seatower prison, asked me to help his brother who is being threatened by smugglers in Nashkel. 
+To confront them, I need to find their contact south of the Lotus Tent at the Nashkel Carnival. 
+Before I do that, I need to take the gold out of one of the trunks in one of the tower wall quarters - Shuck explained to me how to open the trunk so I'd find the gold. It's in the Dragon Tower, the tower south of the smithy.~
+@806 = ~Help Shuck's Brother
+
+I killed the smugglers before they could tell me where they brought Shuck's brother, so I couldn't help them.~
+@807 = ~Help Shuck's Brother
+
+I couldn't be bothered to help Shuck's brother.~
+@808 = ~Help Shuck's Brother
+
+Shuck, a former soldier of the Seatower and now imprisoned in the Seatower prison, asked me to help his brother who is being threatened by smugglers in Nashkel. 
+To confront them, I need to find their contact south of the Lotus Tent at the Nashkel Carnival.~
+@809 = ~Help Shuck's Brother
+
+Shuck, a former soldier of the Seatower and now imprisoned in the Seatower prison, asked me to help his brother.
+I confronted the smugglers and learned about the whereabouts of Shuck's brother. They sold the brother to slave traders! I need to confront the slavers' contact. They can be found inside the Balduran's Seatower on the top level, pretending to organize excursions into the wild. I need to ask to see the "special creatures" to be recognized as a slave "customer".~
+@810 = ~Help Shuck's Brother
+
+I killed the slave traders before the deal to buy free Shuck's brother was through, so I couldn't help them.~
+@811 = ~Help Shuck's Brother
+
+I waited too long to make the deal to buy free Shuck's brother, so I couldn't help them.~
+@812 = ~Help Shuck's Brother
+
+Buying free shuck's brother will cost 20,000 gold! I am to bring the sum to Leonhard on the top floor of the Balduran's Seatower.~
+@813 = ~Help Shuck's Brother
+
+I paid the requested sum to free Shuck's brother. He will be "delivered" to the Ilmater Monastery on the morrow! I should tell Shuck about this as soon as possible.~
+@814 = ~Help Shuck's Brother
+
+Shuck's brother Nathoriel is safe in the Ilmater Monastery. I am sure Shuck would like to know about that.~
+@815 = ~Help Shuck's Brother
+
+I freed Nathoriel, brother to imprisoned Tower Guard Shuck from the slave traders.~
+
+//The Breach in the Seatower Prison
+@816 = ~The Breach in the Seatower Prison
+
+Behind the hole in the prison wall is a real cave, with exits to several places! I should report to Seatower Commander Airard this is not a dead end.~
+@817 = ~The Breach in the Seatower Prison
+
+I reported the findings behind the hole in the prison wall to the prisonguards, and one of them went to report to the Seatower Commander. He acted kind of weird, though... as if something was wrong with him. I should go to the commander's office in the Seatower and see for myself that the information is passed on accordingly, as it is of utmost importance to the tower's safety.~
+@818 = ~The Breach in the Seatower Prison
+
+The Seatower Commander asked me to investigate the Sea Cave under the Seatower accessible through the tower's prison. Escpecially the question whether there are more doppelgangers lurking and where they came from in the first place. If I have information, I will find him in his normal study on the second level of the tower.~
+@819 = ~The Dead Adjutant
+
+I found a dead sergeant in the Sea Caves beneath the Seatower that I entered through the opening in the prison. I should report this to the Seatower authorities! What is especially strange is that it seems to be the adjutant of the commander, who I saw only recently in the commander's office - alive.~
+@820 = ~The Dead Adjutant
+
+I found the poor dead Adjutant's body in the Sea Caves beneath the Seatower that I entered through the opening in the prison. I should report this to the Seatower Commander.~
+@821 = ~The Dead Adjutant
+
+I told the Seatower Commander about the Adjutant's body in the Sea Caves beneath the Seatower. He said he will arrange a proper burial.~
+@822 = ~The Breach in the Seatower Prison
+
+I reported everything of importance about the seacave to the Seatower Commander.~
+@823 = ~The Breach in the Seatower Prison
+
+The Seatower Commander asked me to investigate the tower's prison, and why both soldiers going down to investigate came back as doppelgangers. He suspects that I will find a breach in the wall where doppelgangers are coming in! If I have information, I will find him in his normal study on the second level of the tower.~
+
+//Working with the Smugglers
+@830 = ~Working with the Smugglers
+
+I am working with the Nashkel smugglers now. They can be found south of the Lotus Tent of the Nashkel Carnival.~
+@831 = ~Working with the Smugglers
+
+I killed Holger.~
+/* ## unfinished - needs more reply options for Shuck as well as the commander
+@832 = ~Working with the Smugglers
+
+Holger gave me a first task: 
+I need to get to know why the smugglers working inside the Seatower are no longer operating. For this, I guess I could start asking Shuck inside the prison. I also guess it doesn't matter to ask the Seatower Commander whether he is responsible, since the smuggler cell seems to have vanished.~
+*/
+@832 = ~Working with the Smugglers
+
+Holger gave me a first task: 
+I need to get to know why the smugglers working inside the Seatower are no longer operating. For this, I guess I just need to keep my eyes open and search around the tower as much as I am able.~
+@833 = ~Working with the Smugglers
+
+Holger gave me a second task: 
+I need to deliver a sealed package to the cook of the Helm and Cloak Tavern in north west Baldur's Gate. I need to hurry as this has to be done in three days, and I am not to open the package!~
+@834 = ~Working with the Smugglers
+
+I delivered a sealed package to the cook of the Helm and Cloak Tavern in north west Baldur's Gate. The content of the box were figs!~
+@835 = ~Working with the Smugglers
+
+I delivered a package to the cook of the Helm and Cloak Tavern in north west Baldur's Gate. The content of the box were figs! I didn't do it quite right, though...~
+@836 = ~Working with the Smugglers
+
+The smugglers stopped working with me.~
+@837 = ~Working with the Smugglers
+
+I stopped working for the smugglers.~
+@838 = ~Working with the Smugglers
+
+I know why the Seatower Cell didn't communicate any more - they were all taken over by doppelgangers.~
+@839 = ~Working with the Smugglers
+
+My work with the smugglers is finished. Holger left his place near the Nashkel Carnival.~
+@840 = ~Working for the Slavers
+
+I got a message from Holger. I am supposed to talk to Leonhard 'the Fierce' on the third floor of the Seatower to get my next assignment.~
+
+@841 = ~Working for the Slavers
+
+I refused to help the slave traders with one of their "shipments".~
+@842  = ~Working for the Slavers~
+@843  = ~Working for the Slavers
+
+I agreed to protect one of the slavers' shipments. I am supposed to go to the western shore of the Chionthar, south of Wyrm's Crossing when night has fallen, and should not forget my weapons.~
+@844  = ~Working for the Slavers
+
+Betrayal! The slavers tried to enslave me "for the galdiator rings". Good thing I already showed Leonhard what I think about him.~
+@845  = ~Working for the Slavers
+
+Together with the Flaming Fist we busted the slavers' shipment. I don't think I'll be welcome by them any longer...~
+@846  = ~Working for the Slavers
+
+I had a last word with Leonhard for the betrayal of his men, but I decided to let him live.~
+@847  = ~Working for the Slavers
+
+Betrayal! The slavers tried to enslave me "for the galdiator rings". I guess I should have a word with Leonhard about this.~
+@848  = ~Working for the Slavers
+
+I decided to kill Leonhard for the betrayal of his men.~
+
+
+//Errands for the Seatower Mage
+@850 = ~Ingredients for the Seatower Mage
+
+The Seatower mage is looking for a Black Pearl, a rather rare specimen of its kind.~
+@851 = ~Ingredients for the Seatower Mage
+
+The Seatower mage is looking for a Black Pearl, a rather rare specimen of its kind. I should be able to find it near quiet, salty water pools.~
+@852 = ~Ingredients for the Seatower Mage
+
+The Seatower mage is also looking for a Belladonna flower, a Winter Wolf pelt, and an Ankheg shell. He will pay me for any of the three I'll bring to him.~
+@853 = ~Ingredients for the Seatower Mage
+
+I brought the Seatower mage a Belladonna flower.~
+@854 = ~Ingredients for the Seatower Mage
+
+I brought the Seatower mage a Winter Wolf pelt.~
+@855 = ~Ingredients for the Seatower Mage
+
+I brought the Seatower mage an Ankheg shell.~
+@856 = ~Ingredients for the Seatower Mage
+
+I brought the Seatower mage all ingredients he was asking for: a Belladonna flower, a Winter Wolf pelt, an Ankheg shell, and a Black Pearl.~
+@857 = ~Ingredients for the Seatower Mage
+
+I brought the Seatower mage a Black Pearl.~
+@858 = ~Ingredients for the Seatower Mage
+
+I have a Black Pearl for the Seatower mage!~
+
+
+
+//Doppelgangers Inside the Seatower
+@860  = ~Doppelgangers Inside the Seatower
+
+Captain of the Guard Dungarth asked me to help with identifying - and killing - doppelgangers amongst the Seatower soldiers. I should walk the tower grounds with the "Mimic Powder" Master Shizell gave me and report any doppelgangers I kill to Captain Dungarth. He and Master Shizell can be found in the Seatower barracks.~
+
+@861  = ~Doppelgangers Inside the Seatower
+The Seatower could use my help to kill the doppelgangers inside the tower grounds. Guard Dungarth and Master Shizell can be found in the Seatower barracks. If I want to help I should not wait too long, as they will not tarry to rid the tower of this threat.~
+@862  = ~Doppelgangers Inside the Seatower
+
+Might there be a more efficient way to draw out the doppelgangers on the tower grounds? If I'd find a way to spread the fumes across the area without them getting burnt, then this could speed up the process of finding the doppelgangers hiding in the Seatower.~
+@863  = ~Doppelgangers Inside the Seatower
+
+Not only Captain Dungarth but also a visitor of the tower remarked about the wind direction coming straight from the tanner's side today, spreading the smell of whatever the tanner is brewing over all the tower area...~
+@864  = ~Doppelgangers Inside the Seatower
+
+I used the tanner's tub to spread the "Mimic Powder" all across the seatower grounds. This should have lured out all doppelgangers at once. I should return to the main tower area to fight them.~
+@865  = ~Doppelgangers Inside the Seatower
+
+The doppelgangers inside the tower are defeated. I should report to the Seatower Commander to receive my reward.~
+@866  = ~Doppelgangers Inside the Seatower
+
+The doppelganger threat to the Seatower is over.~
+@867  = ~Doppelgangers Inside the Seatower
+
+I agreed to help fighting doppelgangers inside the barracks. The Captain gave me time to prepare but I should not wait too long. I should talk to the Captain inside the barracks when I'm ready to fight.~
+
+
+/* Liqueur for the Tanner */
+@874  = ~Liqueur for the Tanner
+
+The Seatower Tanner is interested in three bottles of exquisit liqueur. I guess any bottle of not-to-cheap high-proof beverage will do.~
+@875  = ~Liqueur for the Tanner~
+@876  = ~Liqueur for the Tanner
+
+I agreed to bring three bottles of exquisit liqueur to the Seatower Tanner as compensation for his lost batch. I guess any bottle of not-to-cheap high-proof beverage will do.~
+
+@877  = ~Liqueur for the Tanner
+
+I brought the tanner in the Seatower one bottle of liqueur.~
+@878  = ~Liqueur for the Tanner
+
+I brought the tanner in the Seatower two bottles of liqueur.~
+@879  = ~Liqueur for the Tanner
+
+I brought the tanner in the Seatower all requested three bottles of liqueur.~
+@880  = ~Confront the Slave Traders in Baldur's Gate
+
+The Seatower Commander was aware of the slave traders' doings inside the tower. If I could provide a witness to their schemes it would help the Flaming Fist to take them down.~
+@881  = ~Confront the Slave Traders in Baldur's Gate
+
+The Seatower Commander will be interrogating Shuck's brother to get information about the slavers' doings. Next I return to the Commander he might know more about their plans.~
+@882  = ~Confront the Slave Traders in Baldur's Gate
+
+I know a place *and* a date for one of the slavers' shipments. I could tell the Seatower Commander about it.~
+@883  = ~Confront the Slave Traders in Baldur's Gate
+
+I agreed to help the Flaming Fist against the slavers' doings. I am supposed to go to the western shore of the Chionthar, south of Wyrm's Crossing when night has fallen. The slavers are planning a delivery there for which the Flaming Fist will set an ambush.~
+@884  = ~Confront the Slave Traders in Baldur's Gate
+
+I declined to help against the slavers.~
+@885  = ~Confront the Slave Traders in Baldur's Gate
+
+I brought the Seatower Commander the booklet I found with the slave trader contact. We know a *time* they are planning something now - what we still need is the *where*.~
+@886  = ~Confront the Slave Traders in Baldur's Gate
+
+I brought the Seatower Commander the booklet I found with the slave trader contact. Maybe it will help the Flaming Fist in their fight against the slavers although it only contains cryptic listed dates.~
+@887  = ~Confront the Slave Traders in Baldur's Gate
+
+The Flaming Fist is now approaching the slavers from the south, while I should go to the meeting point from the north and prevent the slaver mercenaries to escape. I should ready my weapons and hurry!~
+@888  = ~Confront the Slave Traders in Baldur's Gate
+
+Together with the Flaming Fist we stopped this slavers' sipment and freed the enslaved commoners. I should talk to the Seatower Commander about this success.~
+@889  = ~Confront the Slave Traders in Baldur's Gate
+
+Together with the Flaming Fist we stopped this slavers' sipment and freed the enslaved commoners. I got a reward from the Seatower Commander.~
+
+@900  = ~Fire Elemental in the Seatower Storeroom~
+@901  = ~Fire Elemental in the Seatower Storeroom
+
+There is a fire elemental in the storeroom adjacent to the Seatower Kitchen. The cook unlocked the door so I can take care of it - somehow.~
+@902  = ~Fire Elemental in the Seatower Storeroom
+
+I put the fire elemental into the huge beacon flame. It should be able to return to its home plane now.~
+@903  = ~Fire Elemental in the Seatower Storeroom
+
+I killed the fire elemental by drowning it in the tower well.~
+@904  = ~Fire Elemental in Seatower Storeroom
+
+The Tower Beacon Guard implied the solution to put the fire elemental into the beacon flame on top of the tower - if we manage to find a container that will hold it for the transport.~
+@905  = ~Fire Elemental in the Seatower Storeroom
+
+I killed the fire elemental.~
+@906  = ~Fire Elemental in the Seatower Storeroom
+
+Master Shizell, the Tower Mage, suggested the fire elemental could be put back into a fire where it would return to its home plane instead of fighting it.~
+@907  = ~Fire Elemental in the Seatower Storeroom
+
+The Seatower Guard took care of the fire elemental in the storeroom.~
+@908  = ~Fire Elemental in the Seatower Storeroom
+
+The Seatower Fletcher will coat the barrel if I bring her a Potion of Fire Resistance.~
+@909  = ~Fire Elemental in the Seatower Storeroom
+
+The barrel is fire proof now and should hold the fire elemental for at least a day.~
+@910  = ~Fire Elemental in the Seatower Storeroom
+
+I trapped the fire elemental inside the fire proof barrel. I should decide what to with it soon, as the barrel will not hold it forever.~
+@911  = ~Fire Elemental in the Seatower Storeroom
+
+I waited too long and the barrel broke. I had to kill the fire elemental.~
+
+@912  = ~Fire Proof Barrel for the Seatower Armorer~
+@913  = ~Fire Proof Barrel for the Seatower Armorer
+
+If I get a fire proof barrel, the Seatower armorer will buy it in case I no longer need it.~
+@914  = ~Fire Proof Barrel for the Seatower Armorer
+
+The armorer will pay me extra if I bring him the fire proof barrel filled with well water.~
+@915  = ~Fire Proof Barrel for the Seatower Armorer
+
+I sold the fire proof barrel to the Seatower Armorer.~
+@916  = ~Fire Proof Barrel for the Seatower Armorer
+
+I have no fire proof barrel I can sell to the Seatower Armorer.~
+@917  = ~Sea Troll's Sebaceous Gland for the Seatower Winchman~
+@918  = ~Sea Troll's Sebaceous Gland for the Seatower Winchman
+
+The Head Winchman of Balduran's Seatower is interested in the sebaceous gland of a Sea Troll.~
+@919  = ~Sea Troll's Sebaceous Gland for the Seatower Winchman
+
+I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Seatower. In case I get more I can always sell it to him.~
+
+//******************
+// Dialog
+//******************
+
+// Priestess of Selune
+@1015 = ~Aren't you a little young to be adventuring? Hmm?~
+@1016 = ~How did you know I was an adventurer?~
+/* this line is also used in bssatos.d */
+@1017 = ~Anything going on here that would need an adventurer?~
+@1018 = ~That's none of your business.~
+@1019 = ~I need some healing.~
+@1020 = ~Goodbye.~
+@1021 = ~The monks are already organizing help for this.~
+@1022 = ~Is that all you know?~
+@1023 = ~Well, there's supposed to be a dark power lurking in the catacombs but no-one knows what it is, but of course, as a Priestess of Selune I can't condone rumours.~
+@1024 = ~A dark power?~
+@1025 = ~So the monks say. They should keep the catacombs clean but no-one has been down there for days! They are so lazy, those monks! Pain-Bearer, fuff!!! Sleep-Weaver more like!~
+@1026 = ~Are you sure about that?~
+@1027 = ~How would I know? What do you think I am - a gossip? I am a Priestess, remember!~
+@1028 = ~How did you know I was an adventurer anyway?~
+@1029 = ~You didn't think the equipment gave you away?~
+@1030 = ~Ahh, so you're one of those, I see. That's fine, no small talk it is.~
+@1031 = ~I can see that. Let me just get myself sorted...~
+@1032 = ~Do come back and visit, hmm?~
+@1033 = ~Alright, what is it you need? Sandrah, priestess of Selune at your service.~
+@1034 = ~Can I see your store?~
+@1035 = ~What can you tell me about Selune?~
+@1036 = ~Of course. One moment...~
+@1037 = ~What *can't* I tell you about Our Lady of Silver? I am a priestess, after all.~
+@1038 = ~As you might know, Selune is the goddess of the moon, and in eternal opposition to her sister, Shar. What else would you like to know?~
+@1039 = ~Can you tell me about her history?~
+@1040 = ~Who are her worshippers?~
+@1041 = ~What can you tell me about Shar?~
+@1042 = ~That's all I wanded to know, thank you.~
+@1043 = ~Selune and her sister, Shar, arose from the primordial essence of the universe. Together, they created Chauntea, embodification of Abeir-Toril, as well as all other heavenly bodies, and gave them life.~
+@1044 = ~They disagreed about the fate of what they had created, and when Selune created the Sun, Shar was infuriated. From their disagreements arose many other deities; war, disease, murder.~
+@1045 = ~In other words, Selune has been around for a long, long time. And in all likelihood the two of them had the very first argument in the history of the universe. Interesting little tidbit, that, I always thought.~
+@1046 = ~Selune has varied and diverse worshippers, from non-evil lycanthropes to female magic users. She has three orders; the Swords of the Lady, the Oracles of the Moon, and the Silverstars. Myself, I aspire to be an Oracle, and divine the fortunes of those who need it.~
+@1047 = ~Tell me more about the Swords of the Lady.~
+@1048 = ~Tell me more about the Oracles of the Moon.~
+@1049 = ~Tell me more about the Silverstars.~
+@1050 = ~Their rivalry stems from the creation of Abeir-Toril and the heavens, and what fate they wished upon them. Their disagreements created any number of other deities, including Mystryl, the original goddess of Magic. Of course, she's been succeeded by Mystra nowadays.~
+@1051 = ~Was there anything else?~
+@1052 = ~What else would you like to know about Selune?~
+@1053 = ~Ahh, the Swords of the Lady... they're often called 'Lunatics' for a reason. They are crusaders, defending us from the evils of Shar and her minions. Not the brightest bunch, despite their important cause.~
+@1054 = ~That's all I wanted to know about the orders, thank you.~
+@1055 = ~The Oracles of the Moon are female diviners, much like I aspire to be, and enact fortune-telling rituals for those who need it. They are some of the most respected priestesses in Selune's care.~
+@1056 = ~The Silverstars live primarily in the Dales, to the north, and dedicate themselves to the protection of the vulnerable. Those who perform exceptionally well are sometimes gifted with a Moonblade by the goddess herself, and most often become inflated with the sense of their own glory as a result.~
+@1057 = ~Forgive me my little jibes. Factional poltiics is not what you asked for, it's just a little well ingrained in my psyche. One of my teachers was a 'gifted' Silverstar. Gifted, my foot.~
+@1058 = ~What else did you want to know?~
+@1059 = ~Ahh, you return. What can this particular priestess of the Moon goddess help you with today?~
+
+// Selune worshippers
+@1060 = ~The goddess of the moon is sooo beautiful. You should worship her too.~
+@1061 = ~I want to be an Oracle of the Moon one day. Of course, that means becoming a priestess first but I don't have the patience for that.~
+@1062 = ~The priestess is so wise and wonderful.~
+@1063 = ~Can't you see I'm deep in contemplation? Go away and stop disturbing me!~
+@1064 = ~All these strange goings on! It frightens me, so it does. I get comfort from praying to Selune.~
+
+/*
+@1065 = 
+@1066 = 
+@1067 = 
+@1068 = 
+*/
+
+//guests and commoners
+@1079 = ~Have you seen this new tailor? Everyone is going all excited about his fine cloths, but noone tells me where I'm supposed to buy my groceries now that the old shop is gone! And look at this mess. They didn't even clear away all the old shop's barrels from the street! I guess the exquisite tailor thinks himself too noble for that.~
+
+// South Harbour Tower guards
+@1080 = ~Give me Land Gate or wall duty any day. At least you get to do something more than just stare out of a hole in the walls.~
+@1081 = ~Do not disturb me when I'm on duty!~
+@1082 = ~Why don't you join us? The pay's good. Okay, so the hours could be better.~
+@1083 = ~What do you want? Civilians are forbidden from the main towers. Please leave now.~
+@1084 = ~Shift is almost over - can't wait to put my feet up!~
+@1085 = ~That damn sergeant. He's got us pinned up here watching the city and for what? Will he tell us? No. So how are we supposed to report 'Anything out of the ordinary' - you tell me, eh?~
+
+// Barrack guards (1)
+@1090 = ~Go away. I'm off duty.~
+@1091 = ~End of shift for me - food and then sleep. Go and bother someone else.~
+@1092 = ~Time for a drink at Jopalin's Tavern. The Low Lantern is too crowded for me.~
+@1093 = ~The Blade and Stars is the best tavern in this area. Have you seen the new barmaid? Wow!~
+@1094 = ~Sleep, sleep, sleep, wonderful sleep. Up all night, sleep all day. Um. Something not quite right there.~
+@1095 = ~I need to head to the nearest potion shop, dammit. My feet hurt like crazy.~
+@1096 = ~I knew them ogre-mages would be no match for a well-armed member of the Flaming Fist! I'd have bashed all their heads in myself if I'd been there!~
+
+// Barrack guards (2)
+@1100 = ~Stand away, citizen!~
+@1101 = ~Off duty at last! Time to find a pint in the Low Lantern.~
+@1102 = ~Go away - I'm tired and I just want to sleep.~
+@1103 = ~Duty, duty, duty. Always duty and it's always my turn.~
+@1104 = ~Shift is almost over - can't wait to put my feet up!~
+@1105 = ~Not now - I have a patrol to do.~
+@1106 = ~Well who would have thought it - an ogre mage in the old catacombs!~
+
+// Wall/yard guards
+@1110 = ~Stand away, citizen!~
+@1111 = ~Do not disturb me when I'm on duty!~
+@1112 = ~Don't go disturbing my guards now!~
+@1113 = ~I doubt you have any legitimate business up here, so please leave the walkway - now.~
+@1114 = ~Shift is almost over - watch these lazy sods abandon the wall like rats off a sinking ship.~
+@1115 = ~See that ship out there? Probably some Luskan raider looking for an easy catch. The Low Lantern is more my kind of ship!~
+@1120 = ~Stand away, citizen!~
+@1121 = ~Do not disturb me when I'm on duty!~
+@1122 = ~Why don't you join us? The pay's good. Okay, so the hours could be better.~
+@1123 = ~I doubt you have any legitimate business up here, so please leave the walkway - now.~
+@1124 = ~Shift is almost over - can't wait to put my feet up!~
+@1125 = ~See that ship out there? Probably some Luskan raider looking for an easy catch. On the other hand, the Low Lantern is more my kind of ship!~
+@1130 = ~Stand away, citizen!~
+@1131 = ~Do not disturb me when I'm on duty!~
+@1132 = ~Why don't you join us? The pay's good. Okay, maybe not. You're way too skinny.~
+@1133 = ~Better down here than up on the wall. I got no head for heights.~
+@1134 = ~What is it about the Blushing Mermaid that attracts all the prettiest girls? There's none so good in the Low Lantern.~
+@1135 = ~I did think about going for a drink in the Low Lantern but you know what? I'd rather sleep.~
+
+// Treasury Guards
+@1140 = ~No sudden moves now.~
+@1141 = ~I'm watching you closely.~
+@1142 = ~Move back to the other side of the table please.~
+@1143 = ~If you want conversation, talk to someone else. I'm here to stop you stealing anything.~
+
+//Tower Treasurer
+@1144 = ~Greetings. What business brings you here?~
+@1145 = ~This is the treasury?~
+@1146 = ~I have a treasure note about 3000 gold I would like you to pay out.~
+@1147 = ~Please give me the 5000 gold it says here on this note.~
+@1148 = ~I need you to pay out the 20,000 gold it says here on this treasurer note.~
+@1149 = ~Nothing, actually.~
+@1150 = ~Anything else?~
+@1151 = ~In this case I'd kindly ask you to leave the treasure room now.~
+@1152 = ~Indeed, it is. If you have a treasure note from the Seatower Commander, I will pay out the mentioned sum in gold.~
+@1153 = ~Indeed. Here you are.~
+@1154 = ~Please give me the 500 gold it says here.~
+/*
+@1155 = 
+@1156 = 
+@1157 = 
+*/
+
+// Fletcher
+@1158 = ~The time I can save with you bringing me the feathers will make up for the time I need to do this. It will be one favor for another.~
+@1159 = ~I assume you want me to do this urgently. Then here is the deal: you bring me the feathers from the cook before she throws them away, and I'll have time for your barrel.~
+@1160 = ~You have the feathers! Beautiful - they'll make fine fletchings for my arrows. Here - it's not much but you did save me the climb up the tower!~
+@1161 = ~I assume you sell things?~
+@1162 = ~Ha, well the tower doesn't accept just anyone to station here. We are also responsible for the Tower Guard's supply, so I assure you we do not exaggerate if we praise our own work.~
+@1163 = ~Good day again. What can I get you?~
+@1164 = ~Let me see your shop.~
+@1165 = ~Nothing.~
+@1166 = ~Good day again. What can I get you? And - I could do with some help if you're willing?~
+@1167 = ~What is it that you need?~
+@1168 = ~Matha the Fletcher at your service. What can I do for you?~
+@1169 = ~A fletcher eh? I see more than just arrows here.~
+@1170 = ~I'll be leaving, good day to you.~
+@1171 = ~The finest arrows and the finest bows in Amn. Take your pick - if you have the gold, of course.~
+@1172 = ~'The finest arrows and the finest bows in Amn'?~
+@1173 = ~[Spelling error in name is on purpose!] Well... alright. Baldur's Gate then. I don't really know how good the bows and arrows are in -say- Purskal.~
+@1174 = ~Not that brilliant, trust me.~
+@1175 = ~[Spelling error in name is on purpose!] Ah! Well at least I know I'm better than the fletchers and bowyers in Purskal!~
+@1176 = ~That depends. Define 'small favour'.~
+@1177 = ~Just as long as it doesn't involve that bloody cook again!~
+@1178 = ~I already said no.~
+@1179 = ~Why, yes it does. Is there a problem with her?~
+@1180 = ~Is there a problem? I take it you've never spoken to the cook? Or her apprentice?~
+@1181 = ~Just let me see your shop and we'll forget about this.~
+@1182 = ~Not recently - I take my meals with the guards. So I can talk to them and see if my goods are doing their job.~
+@1183 = ~Okay. Forget it. What do you need?~
+@1184 = ~I'm almost out of feathers for my next batch of arrows. I happen to know that the tower cook has a fine pair of plump geese for tonight's meal. Would you go and ask her for the feathers? I'd do it myself but I'm stuck here waiting for a shipment of arrow shafts.~
+@1185 = ~I can do that.~
+@1186 = ~I'm not running around after you - do it yourself.~
+@1187 = ~Oh well. It was worth asking.~
+@1188 = ~Thank you, thank you!~
+@1189 = ~Of course. One moment...~
+
+// Seatower cook
+@1190 = ~Whaddya want? I'm busy. Ask the apprentice.~
+@1191 = ~Er... the apprentice there says you might give me a pot of ale.~
+@1192 = ~Nothing.~
+@1193 = ~Ale? ALE, is it? And what gives you that idea?~
+@1194 = ~It's not for me actually.~
+@1195 = ~I can't be bothered with this.~
+@1196 = ~'An get that dirty dwarf outta my kitchen!~
+@1197 = ~If it ain't for you, who's it for?~
+@1198 = ~It's for Halfslinger. He asked me to get him one.~
+@1199 = ~I got no patience with ale-swilling dwarves!~
+@1200 = ~No...~
+@1201 = ~Do you know what happened the last time I found that halfling in my alestore?~
+@1202 = ~He was dead drunk with his head under the tap of the best ale in Baldur's Gate an' the tap was running. Half a barrel of Golden Dragon straight down the drain! I 'ope the fish had a good party because he didn't!~
+@1203 = ~Ohh, right. Are you sure..?~
+@1204 = ~*sigh* Look, you seem a good sort to me.~
+@1205 = ~I beg your pardon?~
+@1206 = ~*If* I was to pour an ale for that halfling, it'll cost ye - five gold pieces or a kiss. I 'eard ye talking to the apprentice over there.~
+@1207 = ~*KISS*~
+@1208 = ~Five gold pieces it is.~
+@1209 = ~That's not the first I poured, though. The first one was for the nice soldier doing the actual *work*.~
+@1210 = ~*giggle* Now that was a pleasant surprise!~
+@1211 = ~Look - I'm busy - very busy. Next person to disturb me gets my ladle round his ear'ole - do you understand? Food to be cooked, ale to be poured - whaddya want anyway?~
+@1212 = ~The fletcher says you've got two plump geese to pluck and she'd like the feathers for her arrows.~
+@1213 = ~Feathers, is it? Feathers? Pah! The apprentice there's in charge of plucking geese. It's about the only thing she can do, short of emptying the slops bucket. Go talk to her - and leave me ALONE!!!~
+@1214 = ~Me, talking to a dwarf about ale...~
+@1215 = ~*If* I was to pour an ale for that halfling, it'll cost ye five gold pieces.~
+@1216 = ~You really don't like dwarves, do you?~
+@1217 = ~"If"? What else is hindering you?~
+@1218 = ~The problem is that the alestore is blocked - one 'o them damn fire things came out of the oven this morn' and I just barely managed to lock it into the storeroom. I haven't opened the door since.~
+@1219 = ~A fire elemental? You have a fire elemental in the cellar?~
+@1220 = ~Right, you hairy little runt!~
+@1221 = ~Kagain! Back off! There's enough trouble around here already without you and your mouth causing more!~
+@1222 = ~Oh.~
+@1223 = ~Well now, isn't that a surprise? A dwarf with manners!~
+@1224 = ~Sooo - I guess you want me to remove it for you?~
+@1225 = ~I am <CHARNAME>, at your service.~
+@1226 = ~So you say, but ye can still keep yer hands off my alestore!~
+@1227 = ~Hey you! Dwarf! The alestore's locked so you can get your dirty carcass out of my kitchen NOW!!!~
+@1228 = ~Yes, well. Be welcome then Yeslick Orothiar - but ye can still keep yer hands off my alestore!~
+@1229 = ~I know it will make some damage but it's so damp down there I'm sure it won't last long. But if ye want that *ale* now ye'd have to get rid of it first.~
+@1230 = ~(sigh) Know what - ye are the fighting sort, are ye not? I'll open the door for ye, maybe ye can take care of the fire creature 'n spare me the scolding from the captain, ey? But watch where ye going down there, it's to that fire monster and out again, don't ye go near the supplies - and if I see ye approaching the alestore it will be my ladle round yer ear'ole I swear!~
+@1231 = ~But I haven't done anything!~
+@1232 = ~Not yet you 'aven't but I know very well you're after the keys to my alestore. That's all dwarves want - drink and the more they can get, the better. And what happens when they get drunk? Trouble - that's what. And everything in sight gets broken. You want to know why I don't like dwarves? That's why!~
+@1233 = ~But... but...~
+@1234 = ~OUT!!!!~
+@1235 = ~Didn't I tell you to get out.  I don't want any dwarf in my kitchen; can't you get that through yer thick skull.~
+@1236 = ~Och, had I known you'd bring a *dwarf* into me kitchen I'd not let ye near me alestore! Make 'm behave, will ye?!~
+@1237 = ~OUT of my kitchen with that fire thing NOW!!~
+@1238 = ~Ye helped me fine down there, <GIRLBOY>.~
+@1239 = ~I promised you a pot of ale for that *Halfslinger*. Here it is - just tell him not to come looking for any more. He's still not forgiven.~
+@1240 = ~One day, Kagain, I swear by Clangeddin's Beard that mouth of yours is going to stop my axe.~
+@1241 = ~Heh! An' that'll be the day the sun shines out of yer arse too. Bend over and we'll take a look, shall we?~
+@1242 = ~I wouldn't want yer dirty ale if it was the last drop in Baldur's Gate and <HESHE> wouldn't either. Yer storeroom's probably got more rats in it than fleas on a mangy cur.~
+@1243 = ~Shut yer yap woman. Yer making me ears hurt and me axe twitchy.~
+@1244 = ~And here is an ale for you. Don't tell me ye don't want it. And don't you let that Halfslinger talk ye into givin' him that!!~
+@1245 = ~Watch yer mouth woman. I 'ad a bath two years ago when I fell in the Chionthar.~
+@1246 = ~Dwarf - yes, but a thief - no. I am sorry if other members of dwarfkind have given you a bad impression of all of us.~
+@1247 = ~Yeslick Orothiar at your service ma'am. May Clangeddin Silverbeard give his blessing upon you.~
+@1248 = ~Madam! I may be a dwarf but I assure ye I'm not dirty!~
+
+//more lines for Fletcher (female)
+@1249 = ~Listen - you wouldn't be able to do me a small favour please?~
+@1250 = ~Me, neither.~
+@1251 = ~That's alright - then I can still say I offer the finest arrows of Baldur's Gate *and* Purskal, because you can't prove me wrong, hm?~
+@1252 = ~Now you sound like the armorer.~
+@1253 = ~Alright, fine. I'll get the feathers for you.~
+@1254 = ~I'm on it.~
+@1255 = ~A pity though.~
+@1256 = ~Oh, that's great!~
+@1257 = ~I don't have time right now for extra errands.~
+@1258 = ~No, not really.~
+@1259 = ~Is there anything I can do for you?~
+@1260 = ~[PC talking to a female] Would you coat this barrel with a fire proof layer from the inside? It needs to withhold a trapped fire elemental for a certain time.~
+@1261 = ~I have all ingredients now. Please coat the barrel so that it is fire proof.~
+@1262 = ~[Spelling error in name is on purpose!] "Purskal", eh?~
+@1263 = ~This will only take a moment.~
+@1264 = ~Here you go. It should be fire proof enough to trap a fire elemental for at least a day.~
+@1265 = ~A barrel is not the wood structure I usually work with, but I am sure I could do that, yes. Bring me a potion of fire resitance and I can do it right away.~
+@1266 = ~If you keep the barrel after dealing with the fire elemental go and ask Garalt - the armorer - whether he wants it. I know he always has a use for fire proof equipment.~
+@1267 = ~And I see you have all needed ingredients for enchanting your barrel.~
+
+
+
+// Halfslinger
+@1280 = ~So do you want to buy any slings today or not? And I could still do with that help.~
+@1281 = ~I give up. What do you want?~
+@1282 = ~Just show me the goods.~
+@1283 = ~No.~
+@1284 = ~'Allo!~
+@1285 = ~Who are you?~
+@1286 = ~Be quiet! I ask the questions first.~
+@1287 = ~Another halfling-hater eh? Fine. The door's that way.~
+@1288 = ~Tomi. Tomi of Gullykin but mostly I gets called Halfslinger.~
+@1289 = ~Halfslinger. Right. I'm not even going to ask.~
+@1290 = ~Why 'Halfslinger'?~
+@1291 = ~Well, good day to you, Halfslinger.~
+@1292 = ~You don't hold back do you?~
+@1293 = ~You could tell me what it is you could do for me.~
+@1294 = ~So you make slings and what you said before was a jest at my expense.~
+@1295 = ~Just like the armorer has the finest arms and armor in Baldur's Gate - and then says he'll sell them cheaper than anywhere else, I suppose.~
+@1296 = ~Oh. So you've, er... made your own experiences, I gather.~
+@1297 = ~Ask what?~
+@1298 = ~Just forget it.~
+@1299 = ~Because I'm a halfling and I'm good with the sling, you blind idiot! Huuh. How many more dumb adventurers are going to ask that question, eh?~
+@1300 = ~How do you know I'm an adventurer?~
+@1301 = ~I knew I was going to regret asking...~
+@1302 = ~You come in here armed to the teeth and ask that?~
+@1303 = ~Right... I think we're even on the dumb question score.~
+@1304 = ~So what can I do for you?~
+@1305 = ~What can you do for me? I haven't got a clue.~
+@1306 = ~Nothing.~
+@1307 = ~The name is Half-Slinger, yes? What do you think I make?~
+@1308 = ~Ohhh.~
+@1309 = ~You irritating little halfling. You irritating little SHORTARSE. Do you do anything but wind people up?~
+@1310 = ~Just saying. You don't have to buy anything from me.~
+@1311 = ~This time, I don't think I'll bother. I'll be going now.~
+@1312 = ~Look, before I show you what I have for sale, can you help me? I'll give you a discount!~
+@1313 = ~Just tell me it doesn't involve that bloody cook again!~
+@1314 = ~How could you send me on an errand to that cook? I'M A DWARF YOU STINKING IDIOT!~
+@1315 = ~Well... yes, it does.~
+@1316 = ~I'm going to regret this. I know I'm going to regret this. That woman eats adventurers for a snack!~
+@1317 = ~No. I'm going nowhere near that ladle-wielding harriden again. Nowhere near. NO.~
+@1318 = ~I've got some lovely slings here - the best on this side of the Sword Coast. Honest. There's even a good copy of Arla's Dragonbane and it's just as deadly as the original.~
+@1319 = ~Just like the fletcher has the best bows and arrows north of 'Purskal', I suppose.~
+@1320 = ~NO! Just show me the goods!~
+@1321 = ~All I want is a pot of ale. You could try talking to the cook's apprentice first. It might not be quite as bad as talking to the cook.~
+@1322 = ~So why don't you go and ask for one?~
+@1323 = ~Still, that cook guards the alestore like a dragon on a gold heap.~
+@1324 = ~The problem is... the last time I wanted a pot of ale I tried to steal it and I got caught in the aleroom.~
+@1325 = ~Dead drunk, I suppose?~
+@1326 = ~Something like that.~
+@1327 = ~If I get this pot of ale, you'll give me the copy of Arla's Dragonbane?~
+@1328 = ~I think I like the idea. It's your decision how much that ale is worth to you.~
+@1329 = ~A pot of ale isn't worth that much - ! Is it?~
+@1330 = ~You tell me.~
+@1331 = ~No, I'm not getting involved in this.~
+@1332 = ~For a <RACE> you sure drive a hard bargain. Alright - the sling for the ale.~
+@1333 = ~Done.~
+@1334 = ~A pot of Golden Dragon ale! How did you do it? No, I don't care! A real pot of Golden Dragon - mmmmm.~
+@1335 = ~I'd make that last if I were you. There's no more where that came from.~
+@1336 = ~Ah, but there is - there always is!~
+@1337 = ~The cook made it pretty clear that's the last ale for you for a very long time. You shouldn't show your face in the kitchen, to be precise.~
+@1338 = ~*BELCH* Here's your sling an' good luck with it.~
+@1339 = ~Yes.~
+@1340 = ~So do you want to buy any slings today or not?~
+@1341 = ~Store's over here.~
+@1342 = ~[Kagain] Ale, is it? Hey, <CHARNAME> ye can get me a couple while you're at it. Six would be better.~
+@1343 = ~Heh. A man after me own 'eart. Or halfling.~
+@1344 = ~What is it you want?~
+@1345 = ~You are the tower's interrogator?~
+@1346 = ~I recognize you! You're the tower's interrogator.~
+@1347 = ~Ah, yes, we met. But let me introduce myself properly, yes?~
+@1348 = ~Ah, yes, we met. Well, a man has to earn a living, yes?~
+@1349 = ~You have your ale - the last one I might add, at least from the cook. Now give me my sling.~
+@1350 = ~Well... now you know why I'm avoiding to go into that kitchen - at least for now!~
+@1351 = ~Indeed, and that's the wiser choice. There's no more where that came from.~
+
+// Farmer's Wife
+@1360 = ~Oh - hello. Are you here to investigate the strange goings-on? We heard that the Flaming Fist were going to send someone to check.~
+@1361 = ~That's right. Do you know anything about it?~
+@1362 = ~What do you know about it? Speak up and quickly!~
+@1363 = ~So you're involved in it, are you?~
+@1364 = ~Oh no, not me. And you needn't be so rude either! But my husband might know something if you speak to him nicely.~
+@1365 = ~Oh no, not me. But my husband might know something if you want to talk to him.~
+@1366 = ~If you want to know anything about the seatower farm then you'd best be speaking to my husband.~
+@1367 = ~I just milk the cows and feed the chickens - and feed my husband, of course. You need to speak to him to learn anything about how the farm runs.~
+@1368 = ~It's not a bad life, living here in the seatower. I'd hate to be down in the slums.~
+
+// Farmer
+@1370 = ~Good day to you again! Is there anything I can do to help you?~
+@1371 = ~Not today.~
+@1372 = ~A good day to you too. I'm the seatower farmer.~
+@1373 = ~And what do you do around here? Why does the seatower need a farmer?~
+@1374 = ~Oh, that's a pity, but no. My cows have special permission from the Dukes because they are the only ones allowed inside the city walls, and even if I'd go and get another one, there is almost not enough grass here for the ones I've got. I'd need to get hey from afar to feed another cow.~
+
+//@1375 = 
+//@1376 = 
+//@1377 = 
+//@1378 = ~Come on now - you must know more than that. You live here!~
+//@1379 = ~Not I. Why would anyone want anything with me? I'm only the seatower farmer.~
+//@1380 = ~Not I. Why would anyone tell me anything? I'm only the seatower farmer.~
+@1381 = ~It's a bit difficult to milk the cow if the door's locked, isn't it?~
+@1382 = ~Why does the seatower need a farmer? The city and all of its shops is just across the bridge.~
+@1383 = ~Oh, partly tradition and partly convenience. I can provide fresh eggs and milk every day and fresh meat if given a day's notice.~
+@1384 = ~That cow looks a bit skinny to me.~
+@1385 = ~You don't mean you slaughter the poor cow!~
+@1386 = ~On no, no! Where would I get fresh milk from then? No, I buy it in the city.~
+@1387 = ~The meat in the city isn't that fresh. You can smell it three streets downwind.~
+@1388 = ~I wouldn't buy it from the butchers in the city either. No, I send my son to order a fresh carcass from one of the farmers outside the city. The meat is delivered to a warehouse in the city and I pick it up from there on the same day.~
+@1389 = ~Ah.~
+@1390 = ~There isn't much more to tell really. I keep the grass to a reasonable level if the cow can't and I do a few odd jobs around the seatower.~
+@1391 = ~Thank you.~
+@1392 = ~Mind where you're putting your feet - ! Too late. The cow's been a bit sickly lately, I'm afraid.~
+@1393 = ~Never mind. I've seen worse on the inside of gnolls.~
+@1394 = ~ There's a bucket of water over there to clean yourself with. That's it <SIRMAAM>. You'll soon get the mess off.~
+@1395 = ~Cheer up Edwin. Green goes very well with red.~
+@1396 = ~NOOO!!!~
+@1397  = ~A good day to you too.~
+@1398  = ~You get fresh meet in the city?~
+@1399  = ~There is an old lady in the city that needs a place for her cow. Would you be willing to take it in?~
+
+
+// King of the Restless Dead
+@1400 = ~Who... callss? Who... disturbs uss?~
+@1401 = ~I am <CHARNAME> of Candlekeep.~
+@1402 = ~Who are you?~
+@1403 = ~Carloan Noname.~
+@1404 = ~You... have disturbed me. I... will ask the questions. Who... are you?~
+@1405 = ~Give me your name first.~
+@1406 = ~I... do not give my name... to intruders... in my domain. Your last chance... mortal... what is your name?~
+@1407 = ~And I don't give my name to skeletons in the closet.~
+@1408 = ~Very well... intruder with no name... Pray to your dead father... for salvation.... and face the restless dead.~
+@1409 = ~Well... Carloan Noname... Noname the Liar... for that is who you are... or... should I call you... <CHARNAME> of Candlekeep?~
+@1410 = ~I didn't mean it, oh King of the Restless Dead.~
+@1411 = ~It was an accident, oh King of the Restless Dead.~
+@1412 = ~It was an accident, you stupid skeleton.~
+@1413 = ~It was an accident. I did not mean to disturb anyone.~
+@1414 = ~You... answer with truth, <CHARNAME> of Candlekeep, but I do not think that... is all you are. What is it that you want? Why... have you disturbed us?~
+@1415 = ~I did not intend to disturb you, Your Majesty.~
+@1416 = ~So you say... <CHARNAME> of Candlekeep... but there are no accidents... in my realm. Why did you... come here?...~
+@1417 = ~Look, it was an accident, okay?~
+@1418 = ~So you say... Carloan Noname... but there are no accidents... in my realm. Pray to your poor gods... for salvation.... and face the restless dead.~
+@1419 = ~So you say... <CHARNAME> of Candlekeep, son... of the Lord of Murder... but there are no accidents... in my realm. Pray to your dead father... and face the restless dead.~
+@1420 = ~So you say... <CHARNAME> of Candlekeep, daughter... of the Lord of Murder... but there are no accidents... in my realm. Pray to your dead father...  and face the restless dead.~
+@1421 = ~Then... tread carefully... in my halls or... face the restless dead.~
+@1422 = ~Do not... flatter me... Noname the Liar... for that is who you are... or... should I call you... <CHARNAME> of Candlekeep?~
+@1423 = ~So you know my name. Why ask then?~
+@1424 = ~How did you find out my name, eh??~
+@1425 = ~I rule... the realm of the restless dead, mortal... and you... are bound here at the end of your days... as was your father...~
+@1426 = ~And who do you serve, King of the Restless Dead?~
+@1427 = ~I serve... Lord Kelemvor Lyonsbane... Lord of Death. Yess... even your father... served him. And you... Noname the Liar... will tread carefully in my halls... or... face the restless dead.~
+@1428 = ~So... you have the wit... to recognise me... Noname the Liar... for that is who you are... or... should I call you... <CHARNAME> of Candlekeep?~
+@1429 = ~I am <CHARNAME> of Candlekeep as you say. Giving away my name at the request of every stranger is not safe these days.~
+@1430 = ~No... it is not... son... of the Lord of Murder. I... give you... fair warning... Tread carefully... in my halls or... face the restless dead.~
+@1431 = ~No... it is not... daughter... of the Lord of Murder. I... give you... fair warning... Tread carefully... in my halls or... face the restless dead.~
+@1432 = ~So... you have the wit... to recognise me... <CHARNAME> of Candlekeep. Why... did you disturb... me?~
+@1433 = ~In truth, I came here to see what I'd find. I would ask almost the same question of you: why are you here?~
+@1434 = ~Old graves contain old gold, Skeleton King, and I am poor.~
+@1435 = ~If I had... the means... I would laugh... mortal. You are ever... the truthful <PRO_RACE>... when you wish. One day... that... truth will... get you into more trouble... than you can handle.~
+@1436 = ~I think it already has.~
+@1437 = ~Not a chance.~
+@1438 = ~Do not... be so flippant, mortal. I rule... the realm of the restless dead and I... know... that you... are bound here... at the end of your days... as was your father...~
+@1439 = ~Curiosity, mortal. I... am not... immune to it. I rule... here.. in the realm of the restless dead... and you <CHARNAME> of Candlekeep... are bound here at the end of your days... to rejoin... your father...~
+@1440 = ~I serve... Lord Kelemvor Lyonsbane... Lord of Death. Even your father... served him... and hated him. I... give you fair warning... tread carefully in my halls... or... face the restless dead.~
+@1441 = ~You... were told... to tread lightly... in my halls. You... have disobeyed that request... and for that... you... must face... the restless dead.~
+@1442 = ~Begone... or die...~
+@1443 = ~Yesss... the Lord of Murder is... now... under my dominion and... serves me.~
+@1444 = ~My father?! What are you talking about?~
+@1445 = ~No... it is not... I... give you... fair warning... Tread carefully... in my halls or... face the restless dead.~
+@1446 = ~Prepare to die, foul creature!~
+@1447 = ~Very well... <CHARNAME> of Candlekeep... Pray to your dead father... for salvation.... and face the restless dead.~
+
+
+//Almiran's Scroll
+@1500 = ~You can:~
+@1501 = ~Read the scroll.~
+@1502 = ~Put the scroll away.~
+@1503 = ~You try to read the scroll but the letters dance all over the surface of the parchment. In a few seconds you start to feel quite nauseous.~
+@1504 = ~You feel stupid reading the scroll to a blank wall but at last the letters stay still!! As you read each letter it disappears in a tiny, barely-visible flash of light. When you come to the end of the scroll the parchment crumbles into a fine brown dust and vanishes for ever on the light breeze.~
+@1505 = ~For a moment nothing happens, then the world of trees and light vanishes into a black nothingness.~
+@1506 = ~You put the scroll away.~
+
+
+//sealed box
+@1510 = ~You look at the box closely.~
+@1511 = ~Investigate the seal.~
+@1512 = ~Open the box.~
+@1513 = ~Eat of the figs.~
+@1514 = ~Put away the box.~
+@1515 = ~You stow away the box.~
+@1516 = ~The seal is huge, displaying a sign of a Calimshanian fruit trading agent. It seals the lid close, there is no way to open that box without either breaking the seal or destroying the whole box.~
+@1517 = ~You eat as much of the figs as you feel like. One of them is really tasty, the other ones not so much.~
+@1518 = ~You open the box, breaking the seal. Inside, there are six figs, carefully wrapped in straw and sawdust.~
+@1519 = ~Some of the figs started rotting.~
+
+
+// Blacksmith
+@2000 = ~Garalt is the name and I sell the the finest arms and armor in Baldur's Gate! Can I sell you anything?~
+@2001 = ~'The finest arms and armor in Baldur's Gate'?~
+@2002 = ~Let me see your shop.~
+@2003 = ~Not today.~
+@2004 = ~If you can find any better or cheaper in this city then I'll match the price - and give you a further discount.~
+@2005 = ~That sounds fair to me, Garalt.~
+@2006 = ~I'll be going now.~
+@2007 = ~Wait a moment - I recognise you! Saw off those doppelgangers and sorted out the Tower Commander's troubles, didn't you? Good job that! Now, is there anything I can get you?~
+@2008 = ~Not at the moment, thank you.~
+@2009 = ~Of course. One moment...~
+@2010 = ~You sound like the fletcher over there.~
+@2011 = ~Welcome back! Can I sell you anything?~
+@2012 = ~Well, we surely know what our work is worth - and so does the Tower Guard.~
+@2013 = ~It definitely is.~
+@2014 = ~[PC talking to a male] Would you coat this barrel with a fire proof layer from the inside? It needs to withhold a trapped fire elemental for a certain time.~
+@2015 = ~Hmm, I *could* coat it with a thin metal layer from the inside but that would take some time as well as quite some amount of iron which is rather rare at the moment. Plus I'm not even sure it then would withhold the heat of a trapped fire elemental. Best you ask Matha - the fletcher, she knows her way around enchanting wood better than I could.~
+@2016 = ~Once you *have* the fire proof barrel and are done using it, though, bring it to me because I have a good use of fire proof equipment. Bring it already filled with water from the well outside and I'll through in an extra 100 gold for not having to carry it myself!~
+@2017 = ~I have a fire resistant barrel here for you. The fletcher said you could have use for it?~
+@2018 = ~I have a fire resistant barrel here for you.~
+@2019 = ~I have a fire resistant barrel filled with well water here for you.~
+@2020 = ~It's the barrel as it is or nothing, I'm afraid.~
+@2021 = ~Yes! I'll buy it gladly. But I'd be even more thrilled if you'd fill it with water from the well for me so I don't have to get it myself?~
+@2022 = ~Alright, I'll do that.~
+@2023 = ~Then I'll take it now. Here is your gold.~
+@2024 = ~That's great!~
+@2025 = ~Much obliged. Here is your gold.~
+@2026 = ~I have a fire resistant barrel for you, filled with well water - it was in anyway, maybe it's of use for you.~
+@2027 = ~Wow, can you read minds? That's exactly what I'll buy off your hands. Fire resistant equipment is good for a forge, and I'm always in need of well water.~
+@2028 = ~Is there anything else I can do for you?~
+//@2029 = 
+
+
+// Cook's apprentice
+@2030 = ~'Allo. Cookie been bending your ear again, 'as she? Wot can I do to 'elp?~
+@2031 = ~'Cookie' there says you've got two plump geese to pluck. The fletcher would like the feathers for her arrows.~
+@2032 = ~Nothing.~
+@2033 = ~Oh them old things. Get all over the kitchen they do. Take as many as you like.~
+@2034 = ~Thank you.~
+@2035 = ~'Allo. Wot you want this time?~
+@2036 = ~A pot of ale...?~
+@2037 = ~A pot of ale??!! That's more than my life's worth to give you that! Umm. Cookie won't be too 'appy with you wanting that either.~
+@2038 = ~Are you sure you can't help?~
+@2039 = ~I'll give you a big kiss.~
+@2040 = ~Oh, alright.~
+@2041 = ~Nah. You'll 'ave to talk to Cookie about that.~
+@2042 = ~*giggle* Me boyfriend wouldn't like it. Nah. You'll 'ave to talk to Cookie.~
+@2043 = ~*shriek* but you're a girlie!! Uhh - no. Talk to Cookie, go on.~
+@2044 = ~'Oo - you're a dwarf. Cookie don't like dwarves.~
+@2045 = ~What??~
+@2046 = ~So what's new? I've heard that a few too many times for one lifetime.~
+@2047 = ~Cookie don't like dwarves. You know - little hairy things like you. Says they're only here to steal her ale.~
+@2048 = ~Go talk to her. I'm only the apprentice 'round here.~
+@2049 = ~Wot I said before.~
+@2050 = ~Some people 'ave got real cloth ears.~
+@2051 = ~You talk to cookie an' see.~
+@2052 = ~Yes, I noticed.~
+
+//more lines for the cook
+@2058 = ~You are aware that your boss is a dwarf, right?~
+@2059 = ~You're a fine dwarf. A real fine one.~
+
+// Noblemen
+@2060 = ~The food here is very good - but then you wouldn't know that, would you? People like yourself would never be invited to a banquet here. Too far out of your social class, eh?~
+@2061 = ~No, no, go away! You just can't get the staff these days, can you?~
+@2062 = ~Just look at this place! Such a shame no-one knows what happened to Balduran, isn't it?~
+@2063 = ~Call this a tower? I've seen better stables than this.~
+@2064 = ~If you push me one more time, I'll be forced to gut you just for the fun of it, so I will!~
+@2065 = ~Out of the way, peasant!~
+@2066 = ~Have you seen the girls in the Blushing Mermaid? Such a deliciously wicked place!~
+@2067 = ~Don't touch me! You might be carrying something contagious!~
+@2068 = ~Go and get - oh! You're not one of the servants, are you? Be off then. I have no time for the likes of you.~
+@2069 = ~Good food, good wine - what else can a man want! More gold, I suppose. More gold is always good.~
+
+// Noblewomen
+@2070 = ~Don't touch me, peasant!~
+@2071 = ~Just look at the colours on these walls! Isn't it wonderful?~
+@2072 = ~Oh the beds here are so divine! I could sink into one and sleep for a year.~
+@2073 = ~You must taste the food here. I swear that cook has the touch of the gods about her.~
+@2074 = ~I wonder what did happen to Balduran, hmm? Such a hero!~
+@2075 = ~If this was my tower I'd soon do something about the guards. Such foul-mouthed ruffians!~
+@2076 = ~Urgh - you smell like the midden heap back home. Be off with you!~
+@2077 = ~What's that I smell? Peasant, is it?~
+@2078 = ~I so wish I was alive when Balduran was alive - such an exciting time, yes? Do you think he would have married me?~
+@2079 = ~If you see my husband you'll let me know, won't you? I'm trying desparately to avoid the drunken fool.~
+
+// Almiran's Scroll
+@2090 = ~You can:~
+@2091 = ~Read the scroll.~
+@2092 = ~Put the scroll away.~
+@2093 = ~You try to read the scroll but the letters dance all over the surface of the parchment. In a few seconds you start to feel quite nauseous.~
+@2094 = ~You feel stupid reading the scroll to a blank wall but at last the letters stay still!! As you read each letter it disappears in a tiny, barely-visible flash of light. When you come to the end of the scroll the parchment crumbles into a fine brown dust and vanishes for ever on the light breeze.~
+@2095 = ~For a moment nothing happens, then the world dissolves around you.~
+@2096 = ~You put the scroll away.~
+
+// Alguine
+@2100 = ~Well, you do seem to want to get yourself into trouble, don't you?~
+@2101 = ~I thought you said there were no more nasty surprises around here?~
+@2102 = ~Just get me out of here, mage!~
+@2103 = ~Ah. I'd say this was more of a surprise rather than a nasty surprise, wouldn't you? There was nothing here trying to kill you this time.~
+@2104 = ~Just get me out of here, please.~
+@2105 = ~Just get us out of here, please.~
+@2106 = ~Certainly. I've taken the precaution of closing that portal, you'll be pleased to hear.~
+@2107 = ~But I thought you couldn't control the portals!~
+@2108 = ~Tut, tut. You don't listen do you? I told you that I put the Nabassu here. Anyway, it won't happen again.~
+@2109 = ~No, no! Go away and explore! There's lots to find yet.~
+@2110 = ~Are you quite sure you've explored *all* of the Halls?~
+@2111 = ~!!seirutnec owt tsal eht rof emoh ym ,seiromem Erutuf fo sllah eht ot Emoclew !gnol os retfa ynapmoc EmoS ees ot ma I desaelp s'tI !emoclew ,Emoclew~
+@2112 = ~UH?~
+@2113 = ~Er - pardon me??~
+@2114 = ~Make sense man!!!~
+@2115 = ~!esnes Gnikam ma i tub~
+@2116 = ~What??~
+@2117 = ~ - tnemom eno tiaw - thgir - seY !ho - Ahw~
+@2118 = ~Is that any better? Yes, yes, of course it is - lots better. A bit of chaos to fight chaos, hmm? At least you'll be able to understand me for a while now. Let me introduce myself - I am Alguine the Mad.~
+@2119 = ~The 'Mad'..?~
+@2120 = ~That... doesn't sound so good.~
+@2121 = ~Oh no. Not another mad mage. Keep away from me, do you hear!~
+@2122 = ~Alguine the Maaadddd hahahahaha. Yes, yes, Alguine the Maaadd Maaadd Mage!!!!! Come to me my pretties - come to Alguine and feast on our new guests. Ohh, they'll be sooo sweeet and delicious!!! Come now to poor lost and lonely Alguine!!!! Haaaaooowwwwwhahahahaha!!~
+@2123 = ~Uh uh...~
+@2124 = ~On no, not again!!! Why is it always me??~
+@2125 = ~I'm thinking I should be killing you right about now.~
+@2126 = ~Ha! Got you! Actually, I'm not mad at all. But I am lonely. I've lived here backwards through time for the last two centuries and the lack of company does get a bit wearing after a while. Occasionally someone pops in but they never stay long. So, really, I'm pleased to see you.~
+@2127 = ~I just couldn't resist the Mad Mage act though!~
+@2128 = ~It's not a good way to make friends, you know.~
+@2129 = ~It nearly got you killed!!~
+@2130 = ~That, my new friend, would have been a blessing. But I'm not sure it is possible to kill me - believe me, I've tried.~
+@2131 = ~Not possible to die?~
+@2132 = ~No, I don't suppose it is really. But it was fun!~
+@2133 = ~What do you mean - 'backwards through time'?~
+@2134 = ~Well, the truth is that I'm cursed. I have no idea who is responsible for the curse but it's quite obvious that I upset someone extremely powerful. Maybe even one of the gods themselves. I don't know.~
+@2135 = ~The curse forces me to live backwards through time. I wake one day and I'm old and wise and know everything; then day by day that knowledge slips away until I'm just a pewling, dribbling babe lying in a pool of fetid waste.~
+@2136 = ~Do you know what it's like, knowing that each day you'll be a little more stupid than the previous day? No, I thought not. Why should you?~
+@2137 = ~That's the power of the curse - I know what's happening even as it all slips away. Even that newborn babe knows it. But I can't find out who did it and I don't know how to break it.~
+@2138 = ~For all I know the source of my misery is already dead and I'm condemned to this forever.~
+@2139 = ~You seem remarkably cheerful despite that.~
+@2140 = ~You probably deserved it. You don't get cursed like this for nothing.~
+@2141 = ~Come now; that's hardly charitable, is it?~
+@2142 = ~I'm not feeling charitable. Some idiot gives me a scroll, instructs me to travel to a camp full of vicious bandits and then tells me to read a bedtime story to a blank wall. Would you be charitable?~
+@2143 = ~Well, if you put it that way, maybe not.~
+@2144 = ~I'm telling you - definately not. And you have no reason to be cheerful either.~
+@2145 = ~But I've grown used to this existance, otherwise I really would have gone mad. Or may be the curse won't allow me to go mad because that would destroy the sense of it? What do you think?~
+@2146 = ~No, no, don't answer that. I did try to kill myself at first but I failed every time. It wasn't for lack of trying. A fireball, a few lightning strikes and a poisonous cloud all in the same place at the same time should have seen off almost anyone, shouldn't it?~
+@2147 = ~But no, I spent a few days being sick, a few more days recovering from the burns and here I am again, hale and hearty.~
+@2148 = ~Did you ever pick the scabs off your injured knees when you were a child, hm?~
+@2149 = ~(Shudders) Where is 'here' anyway?~
+@2150 = ~Yes I did actually. Why?~
+@2151 = ~There's something oddly satisfying about doing that, isn't there? Anyway, welcome to the Halls of Future Memories.~
+@2152 = ~The what??~
+@2153 = ~The Halls of Future Memories. Some places you will recognise later; some you will think you recognise and others you will never visit. It all depends on choices, you see.~
+@2154 = ~Choices?~
+@2155 = ~Yes, choices. I think I know who you are but I'm not sure and I'm not sure I want to really know. I come from your future but I can't see that future because I'm trapped in this place. Feel free to wander around - I'm sure we'll meet up again somewhere in here. But for now... enjoy yourself in the Halls. And be careful of the portals!!~
+@2156 = ~Hmmm. I see you've killed my pet demon.~
+@2157 = ~Your pet demon??!!!~
+@2158 = ~Well, not really my pet demon but I was becoming rather fond of him. He was one of my failed attempts to kill myself - I was able to summon him but after we found out that he couldn't kill me, I wasn't able to send him back to wherever he came from. Never mind. I did get the feeling that he didn't really like me.~
+@2159 = ~Didn't... really... like... you?~
+@2160 = ~That's what I said.~
+@2161 = ~Are you going to tell *us* where they all lead?~
+@2162 = ~That would rather spoil your fun, wouldn't it? Hold on while I sort this mess out... there, that should do it.~
+@2163 = ~Yes. All except one which is a bit strange. There's a locked door there instead of a portal.~
+@2164 = ~Oh yes. I have the key to that door. Normally I'd leave the door locked to keep out unwanted visitors but in this case... here you are.~
+@2165 = ~Do you recognise this place? You should, you know. Or maybe not. How the wind howls from the far abyss!!~
+@2166 = ~That's bit poetic isn't it? The 'far abyss'.~
+@2167 = ~No - why should I recognise this place?~
+@2168 = ~Oh - is it? Yes, I suppose it is. 'How the wind howls from the far abyss' - oh dear yes, very poetic. I didn't mean to sound like that at all.~
+@2169 = ~As for recognising this place - no, I don't.~
+@2170 = ~Ah yes - it is a future memory after all, so you shouldn't recognise it. Silly of me to think otherwise.~
+@2171 = ~Do you know where we are?~
+@2172 = ~You don't have a clue, do you? You're as lost as we are.~
+@2173 = ~Hmph. Be like that.~
+@2174 = ~I'm not sure. The portals can change their destinations depending on who my visitors are. Wherever it is, you may or may not ever go there. If you do go there it could look... different.~
+@2175 = ~Different?~
+@2176 = ~Different, yes. It's your future memory, not mine. Maybe it doesn't exist at all, but that's up to you to find out.~
+@2177 = ~Who do the scales represent?~
+@2178 = ~Kelemvor? Tyr? Who knows? Maybe I will know the answer in my past - or is that in my future? This is so confusing sometimes.~
+@2179 = ~This place is so... empty.~
+@2180 = ~They all are, wherever the portals lead too. Sometimes you can hear voices and sometimes it's just the wind rattling dust in a corner. But you can never feel the wind; have you noticed that?~
+@2181 = ~Just the thought of it makes me feel cold. I think I'll retire to somewhere a little warmer.~
+@2182 = ~Home, sweet home! The fire's always lit and the bed's always made.~
+@2183 = ~By whom?~
+@2184 = ~That sounds a bit spooky to me.~
+@2185 = ~Who lives here?~
+@2186 = ~No one. No one lives here. At least, I've never seen anyone here but the fire's always lit and the bed's always made.~
+@2187 = ~You don't find that just a little odd?~
+@2188 = ~I'd say my whole existance is a little odd, wouldn't you, hmm? This is one of the few places that doesn't seem to change much. This and the library.~
+@2189 = ~The library?~
+@2190 = ~Why don't you live here?~
+@2191 = ~I did - for a while - but I found the fire always being lit and the bed always being made just a little unsettling. I tried throwing water on the fire and I stole the bedclothes but when I came back, the fire was lit and the bed was made. I didn't stay.~
+@2192 = ~Oh. That is... a bit odd.~
+@2193 = ~I'd agree with that sentiment. But now you're here, sit down and get warm.~
+@2194 = ~Is it safe?~
+@2195 = ~You haven't been there yet? You will, you will, trust me. It's a wonderful place.~
+@2196 = ~About as safe as any place on the other side of a portal. That is to say, I don't really know.~
+@2197 = ~Did you ever find out who is doing this?~
+@2198 = ~Afraid of ghosts, are we?~
+@2199 = ~No. If you will excuse me, I have things that I need to do.~
+@2200 = ~OH! Now this is interesting! I've never seen this place before! Is that water I can hear?~
+@2201 = ~Yes - there's a fountain in the other room.~
+@2202 = ~You've never been here before?~
+@2203 = ~If you've never been here before, how come you were able to follow me? Spying on me, are you?~
+@2204 = ~If you've never been here before, how come you were able to follow us? Spying on us, are you?~
+@2205 = ~A fountain! How delightful! I must go and take a look.~
+@2206 = ~Wait a moment - you said you've never been here before?~
+@2207 = ~Wait a moment - if you've never been here before, how come you were able to follow me?~
+@2208 = ~Wait a moment - if you've never been here before, how come you were able to follow us?~
+@2209 = ~No, I haven't. The portals don't always lead to the same places but after two centuries, it's getting rarer to see a new place.~
+@2210 = ~How often do the portals change?~
+@2211 = ~I don't know. They always change when someone new arrives but how often they change otherwise... your guess is definately as good as mine.~
+@2212 = ~But they always lead back to the main Hall?~
+@2213 = ~Not always. Sometimes one portal will lead to another and then you have a merry old time chasing your tail. Or my tail. Or somebody's tail anyway. Eventually you get dropped back into the Hall somewhere. At least, that's what's happened so far.~
+@2214 = ~Eventually?~
+@2215 = ~Eventually. Could be after one portal, could be after many portals. Not worth worrying about.~
+@2216 = ~But if you've never been here before, how come you were able to follow me?~
+@2217 = ~But if you've never been here before, how come you were able to follow us?~
+@2218 = ~Ohh, that's no secret. A mage always knows where his guests are. Politeness and courtesy, you see; just in case they get into trouble.~
+@2219 = ~Like a certain pet demon we had trouble with?~
+@2220 = ~You don't have any more nasty surprises lurking around anywhere, do you?~
+@2221 = ~That's very good of you.~
+@2222 = ~I still think you're spying.~
+@2223 = ~No more nasty surprises lurking anywhere. Or none that I know of anyway. I can't speak for whoever made this place though.~
+@2224 = ~That's good news.~
+@2225 = ~Just as long as you're not spying on me.~
+@2226 = ~Just as long as you're not spying on us.~
+@2227 = ~Come now - what do I gain by spying on you?~
+@2228 = ~Not much, I suppose.~
+@2229 = ~A way out of this place? And how do I get out?~
+@2230 = ~A way out of this place? And how do we get out?~
+@2231 = ~If there was a way out of this place for me I would have found it a long time ago. My guests always leave on their own but I have no idea when they are about to depart or what allows them to do so. You are in no danger from me.~
+@2232 = ~Good.~
+@2233 = ~I'd better not be.~
+@2234 = ~We'd better not be.~
+@2235 = ~That aside; you know, this place intrigues me. There has to be something in the library about it - I must go and look. Come and see me later.~
+@2236 = ~Ah! The biggest tree on the Sword Coast!~
+@2237 = ~How do you know that?~
+@2238 = ~So say you. It just looks like just another tree to me.~
+@2239 = ~Oh dear - you are a grumpy <PRO_RACE> today, aren't you?~
+@2240 = ~I'm sorry. It's... just the whole situation. I don't know where I am or what I'm doing here and no idea if it will ever become clear.~
+@2241 = ~I've got good reason to be.~
+@2242 = ~So have I; probably moreso than you but I'm not grumpy. Look around you - what is there to be grumpy about? It's a beautiful place!~
+@2243 = ~It might be to you but I doubt if it will ever be that way for me.~
+@2244 = ~Listen: I just want out of here. I don't know what I'm doing here and I'm a little fed up with it.~
+@2245 = ~Oh, don't worry about that. It will all become clear in time.~
+@2246 = ~Will it now?~
+@2247 = ~Why yes, of course it will!~
+@2248 = ~For now, I'll take your word for it. Are you sure this is the biggest tree on the Sword Coast?~
+@2249 = ~I don't say it is but there's a book in the library by Volothamp Geddarm that says so. If my memory serves me correctly, it's called 'Volo's Guide to the Sword Coast'.~
+@2250 = ~Volo!!~
+@2251 = ~Not Volo Geddarm! Not that idiot!!~
+@2252 = ~You know the gentleman, do you?~
+@2253 = ~Yes. He used to visit Candlekeep to talk to Gorion. Whenever Volo appeared Gorion and he would vanish into the Candlekeep library for days. I never got to see Volo and I really wanted to talk to him about his travels.~
+@2254 = ~I know him alright. He used to come to Candlekeep when I was younger. I never did like him - puffed-up idiot.~
+@2255 = ~Oh. I see. Well, that's where I got the story of the tree, true or not. Still, the day here is too good to waste, so I think I'll take a look around.~
+@2256 = ~Ah! So you've found your way here at last!~
+@2257 = ~I just went through the front door of a house and ended up in a forest!~
+@2258 = ~Where's here, old man?~
+@2259 = ~'Here', you grumpy, ill-tempered <PRO_RACE> is where I live, when the portal lets me.~
+@2260 = ~Ha! Too often, I say.~
+@2261 = ~You really are unpleasant, do you know that? I normally look forward to having visitors but with you, I look forward to your departure!~
+@2262 = ~Okay, okay; I apologise. That was uncalled for and I should not have said it.~
+@2263 = ~So do I.~
+@2264 = ~That does it. Enough is enough.~
+@2265 = ~Hmm. Your apology is accepted. Be welcome.~
+@2266 = ~And I might be a grumpy, ill-tempered <PRO_RACE>, but I do have a name. It's <CHARNAME>.~
+@2267 = ~Thank you.~
+@2268 = ~Welcome <CHARNAME>. If you haven't found my library yet, it's through the door at the end of the corridor.~
+@2269 = ~Another portal? I just went through the front door of a house and ended up in a forest!~
+@2270 = ~You are welcome, truly. If you haven't found my library yet, it's through the door at the end of the corridor.~
+@2271 = ~You found the hidden portal down on the dock, did you? Yes, that's one of the few stable ones. It always leads here.~
+@2272 = ~And the entrance to your library? Why would I want to go there?~
+@2273 = ~You found the hidden portal down on the dock, did you? Yes, that's one of the few stable ones. It always leads here. If you haven't found my library yet, it's through the door at the end of the corridor.~
+@2274 = ~Your library? Why would I want to go there?~
+@2275 = ~Maybe you don't. I just thought it might contain the answers to why you are here. You will let me know, won't you? Go on; the sooner you look, the sooner we'll know. I'll be along later - or is that sooner? Hmm.~
+@2276 = ~Let me guess. You want to know where you are now?~
+@2277 = ~Of course.~
+@2278 = ~Do you really know?~
+@2279 = ~If you know then tell me. I'm tired of being treated like an idiot.~
+@2280 = ~Have you no patience?~
+@2281 = ~None at all. Not now, not ever.~
+@2282 = ~Then I pity you. Patience is a requisite part of daily life. Without patience, nothing would get done.~
+@2283 = ~There are times, mage, when I would kill you if you would but stay dead!!~
+@2284 = ~Just get on with it and tell me where we are.~
+@2285 = ~Ah, but I won't, will I? So you be wasting your time, hmmm?~
+@2286 = ~Maybe, but I'd also get some serious satisfaction out of trying!!! Now get on with it and tell me where we are!~
+@2287 = ~I don't know. Well; that is, I'm not sure. You hear the voices? Ghosts that haunt a deserted port? Velen; I think. Velen in Tethyr. It's long been rumoured that the ghosts of the past haunt the present in Velen but no-one takes any note.~
+@2288 = ~I hear voices, certainly. But whose voices?~
+@2289 = ~Ghosts of the past? Does that mean they're dead?~
+@2290 = ~So that's what they are. The dead who don't know they're dead.~
+@2291 = ~The people that lived here. Or maybe the noise of the wind is playing tricks on our imagination.~
+@2292 = ~So what you think it could be?~
+@2293 = ~It's not the wind. Are these people all dead?~
+@2294 = ~Not necessarily. They could be the voices of the living past being heard in the here and now. Who knows?~
+@2295 = ~And there is no way of finding out?~
+@2296 = ~You're starting to annoy me again, mage. What do you know about this place?~
+@2297 = ~Magic lies heavy here where the Veil is thin. Past and present - and maybe your future - all mix here. How do we know that the voices are only voices of the past?~
+@2298 = ~I don't. Do you?~
+@2299 = ~More babbling. Is that it? You sound like one of the voices yourself.~
+@2300 = ~No, I don't know either if they are voices of past or present. Velen was a naval outpost of Tethyr, protecting the inner lands against the pirates of the Isles of Nelanther. There was a strong fishing and seafaring community here, although if this is a true representation of Velen then there is little left of it now.~
+@2301 = ~Wait - you said this is Velen. Now you say it's a representation of Velen!~
+@2302 = ~I thought I told you how the portals work, hmm? Maybe I didn't. The portals show a part of the world but not it's not the real area itself. Even the people you see - if you see any at all - are only a ghost of themselves, but they are ghosts that feel and behave as if they are real. Almost as if we are on an ephemeral plane.~
+@2303 = ~How do you know?~
+@2304 = ~I don't.~
+@2305 = ~Oh. So what makes you think that this is happening?~
+@2306 = ~You don't?~
+@2307 = ~Oh for - ! What in the Nine hells DO you know???~
+@2308 = ~Not for certain. But I think I've found out.~
+@2309 = ~Two centuries of research and visiting. Did I tell you that it can get quite lonely when there's no-one else here? Not much else to do, is there? Hmm?~
+@2310 = ~And?~
+@2311 = ~So you've read some books. So what.~
+@2312 = ~I think I've done a bit more than just 'read some books' in that time.~
+@2313 = ~What about it?~
+@2314 = ~I draw conclusions and I test them. That's why I think the portals work as they do, but only the creators really know. And do *not* ask if I know who created the portals because I don't know. Not yet, anyway.~
+@2315 = ~All that said, look around you. The port of Velen was not short of money in its time with all of those naval personel having nowhere else to go. Books in the library say that around here there were also shoals of fish of a type that didn't occur anwhere else on the Sword Coast. On a good day with a following wind it was possible to deliver the catch direct to Athkatla itself.~
+@2316 = ~Those fresh cargos did fetch a pretty penny and made some of the more foolhardy captains very rich over time. Some day I would like to see more of this place, but for now, this is all you will get.~
+@2317 = ~Ah! You're awake then!~
+@2318 = ~Wha - what happened?~
+@2319 = ~I was on my way to the library when I heard a cry and found you slumped on the floor. With the aid of a little magic I brought you back here and well - here you are.~
+@2320 = ~I... I had a dream. A strange dream. I dreamed of Gorion and a voice that insisted that I do - things.~
+@2321 = ~I have no idea. Your companion here came flying into my house demanding my immediate help. I must say, she was extremely insistant. We found you slumped on the floor in the library and brought you back here.~
+@2322 = ~I have no idea. Your companion here came flying into my house demanding my immediate help. I must say, he was extremely insistant. We found you slumped on the floor in the library and brought you back here.~
+@2323 = ~I have no idea. Your companions here say you just slumped to the floor in the library, so they brought you back here.~
+@2324 = ~What things?~
+@2325 = ~Things... no, you don't want to know about it. You just don't.~
+@2326 = ~Very well; I won't ask further. Are you quite well now, <CHARNAME>?~
+@2327 = ~I am. Thank you for your help.~
+@2328 = ~You too, huh? *that* dream where Gorion appears in your bedroom at Candlekeep? Then you go to all those places? You don't want to know about it, Alguine. Trust me - you really don't.~
+@2329 = ~Go on; the sooner you look, the sooner we'll know. I'll be along later - or is that sooner? Hmm.~
+@2330 = ~Very well. It seems you saw everything there is for you here inside the future memories. They will all make sense eventually.~
+@2331 = ~It was my pleasure to have you here. Now it is time for you to go. Fare well.~
+@2332 = ~Hmm. I see you've got yourselves trapped up this corner. You really should be careful of those portals, you know. They could lead anywhere. Almost anywhere. But I know where they lead.~
+@2333 = ~So, are you going to help us out of here or are we trapped now, too?~
+@2334 = ~*As* I just happen to say I was not able to defeat the Nabassu, Fledgling or no, and that man's friend vanished too soon to sort out a plan. Also, young visitor, if you are as old as me - or should I say young? Hmmm... Anyway, if you lived that long you'll learn that everything sorts itself out eventually. As did this, see?~
+@2335 = ~Who was that trapped man here? Why didn't you help him?~
+@2336 = ~The Nabassu "didn't really like you"?~
+
+
+
+// Assistant Winchman
+@2400 = ~Yes?~
+@2401 = ~Who are you?~
+@2402 = ~I'm his assistant. If you want to know more about this place then best ask him. I only started here last week.~
+@2403 = ~Didn't I just tell you that you'd be best talking to Brydw over there?~
+
+// Head Winchman
+@2410 = ~You don't really want that explanation all over again, do you?~
+@2411 = ~Yes.~
+@2412 = ~...No.~
+@2413 = ~Hello. Nice day, innit?~
+@2414 = ~Hello to you too. Who are you?~
+@2415 = ~If you say so. What are you doing here?~
+@2416 = ~No it's not a nice day. It hasn't been a nice day for months now.~
+@2417 = ~Oh right. Shame that. I hope things improve soon. What can I do for you?~
+@2418 = ~What is this place? What in all of Faerûn is that chain for?~
+@2419 = ~I'm the head winchman here. Brydw's the name.~
+@2420 = ~Head Winchman? What in all of Faerûn is that chain for?~
+@2421 = ~That chain is to stop pirates and other undesirables from sailing into the harbour and sacking the city.~
+@2422 = ~You see, when we gets warning that undesirables are sailing for the city, my assistant and I wind the chain up and block the harbour.~
+@2423 = ~So the chain spends most of the time lying on the sea bed?~
+@2424 = ~That's right. Ready and waiting, as you might say.~
+@2425 = ~But doesn't it get rusty just lying there?~
+@2426 = ~Well, yes, it does a bit. But we winds it up every few months, then we cleans off the seaweed and applies a new layer of grease to it.~
+@2427 = ~Ah - I understand now. Thank you.~
+@2428 = ~When's the next time? I'd like to see this!~
+@2429 = ~Unfortunately, love, you've just missed it. That's what all the water is that's lying around here; me and my assistant have just wound the chain back out.~
+@2430 = ~You can't wind it back up again just for me?~
+@2431 = ~That's a pity. Well, thank you for the explanation.~
+@2432 = ~Much as I'd like to help you, love, I'd rather keep what is really a nice cushy job. If you're staying here in the city the best I can do is to let you know when it's going to happen again.~
+@2433 = ~I can't be sure that I'll be staying in Baldur's Gate much longer. Thank you for the offer.~
+@2434 = ~Who are you?~
+@2435 = ~What are you doing here?~
+@2436 = ~Nothing, thanks.~
+@2438 = ~Good day to you.~
+@2439 = ~What exactly is the chain for?~
+@2440 = ~If wound up, that chain protects the city from unwanted ships entering the city's harbor.~
+@2441 = ~Hello again!~
+@2442 = ~I have a Sea Troll's sebaceous gland for you.~
+@2443 = ~For that, me and my assistant need to apply new layers of grease to it every few months. You look like adventurers. I'd be in need of grease, a very special sort.~
+@2444 = ~Please don't tell me you want the grease of the geese from the kitchen.~
+@2445 = ~So?~
+@2446 = ~Ah, no, not that. And if, it'd be more of a wagon load full of gease.~
+@2447 = ~I heard that in Tethyr they use tallow from Sea Trolls as it is especially water resistant. In case you ever come across such a creature, please bring the corresponding part to me - the sebaceous gland it is called I think.~
+@2448 = ~Oh, how exciting! Thanks for going through the trouble. Here is some gold as compensation. I expect this to last for a while, but in case you'll find more, feel free to drop it off here. I'll take any you'll get.~
+@2449 = ~Great! Here is your gold.~
+@2450 = ~I have another Sea Troll's sebaceous gland for you.~
+
+/* Girl and mom in Winchhouse */
+@2455 = ~I'm waiting for the chain to be wound up again!~
+@2456 = ~It smells of old fish and sea weet in here. As if the usual stink on the tower grounds wouldn't be stenuous enough already.~
+
+// Tanner
+@2500 = ~Ah, you again.~
+@2501 = ~Do you have anything for sale?~
+@2502 = ~I spoke to Captain Dungarth about your problems with the garrison soldiers.~
+@2503 = ~Not today.~
+@2504 = ~Yes?~
+@2505 = ~Who are you?~
+@2506 = ~What is this place? A tannery?~
+@2507 = ~What is that awful stink in here?!~
+@2508 = ~I'm the tanner. I produce all of the leather goods needed by the guards in the seatower.~
+@2509 = ~So this is the tannery?~
+@2510 = ~This is the tannery, yes. What else could it be?~
+@2511 = ~But what is that awful stink in here!!?~
+@2512 = ~Look - we've established this is a tannery. Tanneries always smell.~
+@2513 = ~It smells like the back of the Blushing Mermaid at throwing out time. Or is that 'throwing up' time?~
+@2514 = ~Look - this is a tannery. Tanneries always smell.~
+@2515 = ~It smells like the back of the Low Lantern at throwing out time. Or is that 'throwing up' time?~
+@2516 = ~Do you have anything for sale? The sooner I get out of this stink, the better.~
+@2517 = ~Ha! Close enough in both ways.~
+@2518 = ~It's all the same to me - it goes in one end, comes out the other and ends up in a bucket.~
+@2519 = ~It does what?!~
+@2520 = ~I don't believe you.~
+@2521 = ~You have no idea how leather is made, do you?~
+@2522 = ~No. How?~
+@2523 = ~What I know is not important. Do you have anything for sale?~
+@2524 = ~The skins arrive in here still covered in hair, so I wash them in clean water for a few days to get the worst of the dirt off, then if the animal hasn't been skinned properly I have to remove the remains of the fat and flesh with a sharp knife.~
+@2525 = ~The skin goes into the tubs of night water for a few more days until the hairs get loose and I can scrape them off.~
+@2526 = ~After that, I spend a few hours working washing salts into the skins to make the finished leather soft and supple. The type of leather you end up with depends on which animal the skin came from. Simple, eh?~
+@2527 = ~If you say so.~
+@2528 = ~Yes, I do say so, stupid <PRO_RACE>. We gnomes know exactly what we're doing!~
+@2529 = ~I'm ashamed that you're a gnome if you didn't know something as simple as that! May Gond grant you enlightenment!~
+@2530 = ~Ah, you again. You got passed those awful guards okay?~
+@2531 = ~Yes, why?~
+@2532 = ~They think it's good sport to make fun of us gnomes. The entrance to the tannery used to be through the East Tower but that was blocked up years ago after Nelanther pirates tried to capture the seatower. Now the only way down is the rope lift in Traitor's Tower.~
+@2533 = ~Ah.~
+@2534 = ~Yes, 'ah'.~
+@2535 = ~One of these days I swear I'm going to find somewhere else to work - somewhere that appreciates good leather.~
+@2536 = ~I could have a word with the garrison commander if that would help?~
+@2537 = ~Tell me why he would listen to another gnome if he won't listen to me?~
+@2538 = ~I'll try anyway.~
+@2539 = ~Good point. Everybody ignores us anyway - until they need something they think only we can invent...~
+@2540 = ~Hmm - with you being a <PRO_RACE> he might just listen to you. He certainly wouldn't listen to me.~
+@2541 = ~Never mind. The chances are he wouldn't listen to me either.~
+@2542 = ~As it happens, yes.~
+@2543 = ~Oh yes? He isn't going to do anything, is he?~
+@2544 = ~Just the opposite, in fact! He's promised to look into it and to make sure it doesn't happen again.~
+@2545 = ~No.~
+@2546 = ~Not quite, but not too far wrong. He says he'll have a word with the garrison soldiers but can't promise that it won't happen again.~
+@2547 = ~I told you so.~
+@2548 = ~Yes.~
+@2549 = ~Now that's an unexpected and pleasant surprise! Thank you!~
+@2550 = ~Now, as you're here, do you want to buy anything today?~
+@2551 = ~That's about as good as I can expect, I suppose. Well, that's more than I ever achieved.~
+@2552 = ~Never mind then.~
+@2553 = ~The goods are over there.~
+@2554 = ~Good day to you.~
+@2555 = ~It does smell rather... strongly in here.~
+@2556 = ~Why don't you enlighten me?~
+@2557 = ~What of it?~
+@2558 = ~One of their favourite tricks is to leave the winch suspended halfway down into the cave. Another is to just 'forget' that I'm here at all. After the second time they tried that I had the bed brought in by sea. It's never happened since.~
+@2559 = ~I don't think there's anything I can do about that.~
+@2600 = ~I didn't *expect* you to do anything about that! Captain of the Guard Dungarth is who'd need to clear his men's heads, but he certainly wouldn't listen to me.~
+@2601 = ~I'll see what I can do.~
+@2602 = ~I'm not interested in talking. Do you have anything for sale?~
+@2603 = ~I need to get going.~
+@2604 = ~Yes, but why?~
+@2605 = ~That smell is the night water from most of the noble houses in Athkatla. For whatever reason legend has it that the night water from upper-class piss-pots is better for cleaning skins that the same product from the lower classes.~
+@2606 = ~What do you use this for?~
+@2607 = ~Maybe I just want to know how you do it.~
+@2608 = ~Without going into more details - the stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~
+@2609 = ~"Awful guards"?~
+@2610 = ~Well - let's say there might be something you could do for the Garrison Commander. The stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~
+@2611 = ~Maybe you are right.~
+@2612 = ~Then thank you in advance for trying, I suppose.~
+@2613 = ~I came for something else.~
+@2614 = ~Because I am sure he's *not* all thankful and teary about my help with spreading that doppelganger magics. More realistic he'll try to turn that into a possibility to give me a warning about interfering with the tower's affairs!~
+@2615 = ~Do you want to buy something?~
+@2616 = ~I am here to bring you some liqueur.~
+@2617 = ~Easy now, hold your attitute, alright?!~
+@2618 = ~Or what? Are you gonna report me to the guards? Don't worry, they don't need your complaints to make my life miserable.~
+@2619 = ~You want what?! I live on the brim of being kicked out from the tower completely as it is for just doing my work and now you want me to spread stink on *purpose*?!~
+@2620 = ~The tower fights a doppelganger infestation currently. I have this liquid here that will draw them out if the fumes would be spread across the whole tower grounds.~
+@2621 = ~Maybe it wasn't such a good idea. Do you have anything for sale?~
+@2622 = ~Ah, so you thought "the tanner's stink is malfesting itself all over the tower anyway, so he can spread this additional stink, too"?!~
+@2623 = ~Well... yes, actually.~
+@2624 = ~You're predestined for this! All these years listening to the unfriendly remarks, and today of all days the wind direction, the inversive weather conditions - all perfect for this purpose to turn this into something useful! When will you have the opportunity to laugh into the captain's face again like this?~
+@2625 = ~Spreading these fumes would help the tower guard, actually.~
+@2626 = ~Could you? It needs to be done via fume, not by burning it. If we could just put it in whatever you are preparing currently...~
+@2627 = ~So *you* say, but the Guard Commander will find something to blame me for afterwards, you can take my word for that!~
+@2628 = ~...Please? It needs to be done via fume, not by burning it. If we could just put it in whatever you are preparing currently...~
+@2629 = ~We'd just use one of your full tubs.~
+@2630 = ~Ahh, this is just too good to be true! And yes, that was sarcasm!~
+@2631 = ~WHAT?! You want to spoil one of my tubs with that stuff?~
+@2632 = ~Well - duh?~
+@2633 = ~I will compensate you for it.~
+@2634 = ~Man, are you always that disobliging? The guard is fighting doppelgangers as we speak!~
+@2635 = ~Look, it doesn't smell much for normal people. The smell is more irritating for doppelgangers.~
+@2636 = ~It's irritating the hells out of me already, I tell you! I will not risk spoiling a whole load of my leather with that, no way!~
+@2637 = ~Now explain to me again what I will get out of this?~
+@2638 = ~You better help us now or you'll regret it, gnome!~
+@2639 = ~Compensating? I hope you don't think you could just give me some gold and that's it. I need to treat my skins properly or they'll rot! I have orders to fulfill!~
+@2640 = ~What would you want me to do as compensation?~
+@2641 = ~What do you want then? Should I collect the night waters from the soldiers? Or maybe take a leak into that tub over there, eh?!~
+@2642 = ~Yes, and I wish them all the good luck there is! I also understand that you don't *need* to spread these fumes to handle it!~
+@2643 = ~Oh, what would you do? Kill me, the Seatower Tanner? You think you'd come away with this? Oh, or even better - go complain to the Guard Commander? (laughs bitterly) And what would that change, eh?~
+@2644 = ~Ha! You wish.~
+@2645 = ~I have enough night water. But I want compensation for the good stuff I put in there with it. Stop grinnin', I'm talking about liqueur. It makes the leather go softer - and it gives me a better smell while working on it.~ 
+@2646 = ~Bring me three bottles of liqueur. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~
+@2647 = ~Fine, I'll see what I'll find.~
+@2648 = ~You mean something like this?~
+@2649 = ~Listen. You either help us demask the doppelgangers on the tower grounds or I'll make sure you'll lose a lot more than one batch today.~
+@2650 = ~Woah, woah, easy there! Fine, fine! I'll do it, now tone it down you unfriendly <PRO_MANWOMAN>. Being bullied by every bully, that's just my life's luck.~
+@2651 = ~Don't make it cheap, you hear? Five hours of work for naught, and I'm sure the damn Guard won't even appreciate it!~
+@2652 = ~Hmm! Yes, that looks good. Give that to me in a minute when I'm done *ruining* my perfect batch.~
+@2653 = ~(sigh) Oh well. I surely hope Gond agrees to spoiling a good batch like this...~
+@2654 = ~There you go. Let me know whether it worked. I can't wait to put it into the Guard Commander's face when next he'll complain about tannery stink.~
+@2655 = ~Hm? Oh yes, I see.~
+@2656 = ~"Herb Liqueur".~
+@2657 = ~Not bad. Rich flavor.~
+@2658 = ~"Calimshan Plum Liqueur".~
+@2659 = ~That's a nice one indeed.~
+@2660 = ~"Amnian Bitter Liqueur".~
+@2661 = ~Yes, this will do.~
+@2662 = ~Let me stow this away so the guard idiots don't see it when they come in here.~
+@2663 = ~In case you stumble upon good liqueur, I would be interested in three bottles. It makes the leather go softer - and it gives me a better smell while working on it. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~
+/*
+@2660 = 
+@2660 = 
+@2660 = 
+@2660 = 
+@2660 = 
+@2660 = 
+@2660 = 
+*/
+
+
+// Captain Dungarth
+@2700 = ~Yes?~ [BSSTGC]
+@2701 = ~Is there anything I can do here to help?~
+@2702 = ~What is it that you do again? I thought the Captain of the Seatower was in charge?~
+@2703 = ~I've been talking to the tanner and he tells me that he's being bullied by the guards.~
+@2704 = ~Who are you?~
+@2705 = ~Dungarth is my name - Captain Dungarth. I'm the Garrison Commander here.~
+@2706 = ~What does the Garrison Commander do? I thought the Captain of the Seatower was in charge?~
+@2707 = ~He is. My job is to organise the Tower Guards, make sure everyone behaves themselves and to re-unite lost children with whichever parent still wants them.~
+@2708 = ~Now, unless you have anything urgent or pressing, I see that one of my sarjeantes is about to deliver me yet another lost child.~
+@2709 = ~I'll be on my way.~
+@2710 = ~I am ready to fight the doppelgangers now. Bring them on.~
+@2711 = ~About fighting doppelgangers...~
+@2712 = ~I found some doppelgangers but I will stop looking now.~
+@2713 = ~I think I found all of them. At least I can't find any more.~
+@2714 = ~I won't help with your doppelganger problem. You'll have to solve it yourselves!~
+@2715 = ~There is a fire elemental in the kitchen's storeroom...~
+@2716 = ~Oh? Fortunately, the storage room is rather damp - a fact normally not liked very much, but in this case it is to our advantage. Hmm, we can't let it rampage between all the crates and barrels...~
+@2717 = ~No worries, I promised the cook to take care of it. I just wanted to let you know.~
+@2718 = ~Yes, you should do something about it quickly I guess.~
+@2719 = ~I'm at unease to see civilians do our work. The cook probably asked you because she's always cautious of my men coming near the alestore, be there a reason or not... Very well, I will respect her choice, but be sure to get rid of it quickly.~
+@2720 = ~I will send a soldier over as soon as possible.~
+/*
+@2721 = ~##~
+@2722 = ~##~
+@2723 = ~##~
+@2724 = ~##~
+@2725 = ~##~
+*/
+@2726 = ~I'll be here if you need any more information.~
+@2727 = ~Bullied, eh? In what way?~
+@2728 = ~Being left hanging in the bucket, for one. Made fun of because of his job for another.~
+@2729 = ~Now that is not funny at all. The tanner is a most valuable member of the Seatower; his leather is some of the best I've seen for a long time. It won't happen again.~
+@2730 = ~Good day to you.~
+@2731 = ~Being left hanging in the rope lift, you say? Yes - I recall that. I was the one who freed him but I thought the problem was just you gnomes not being strong enough to pull yourselves up.~
+@2732 = ~I'll talk to the tower sergeants - this will have to stop.~
+@2733 = ~I beg your pardon?~
+@2734 = ~I sometimes think that the way you gnomes behave brings the trouble on yourselves.~
+@2735 = ~It's not funny, you know. The tanner is thinking of moving on to somewhere that will appreciate his work.~
+@2736 = ~Look; I'll have a word with the Tower Sarjeantes. Nothing is guaranteed but I'll ask them to be a little more vigilant.~
+@2737 = ~You heard me. Now you better leave me to my work, lest we prove my words right!~
+@2738 = ~There's nothing I can do about that - it's his choice.~
+@2739 = ~Ah, you are the one who found the missing monk and therefore helped us find the guilt of one of our soldiers. It's hard, knowing one of my soldiers did this, and out of greed, as it seems. Our thanks be with you. If you haven't already, the Seatower Commander and the Monastery Abbot wanted to talk to you about it, too.~
+/*
+@2740 = 
+@2741 = 
+@2742 = 
+@2743 = 
+@2744 = 
+@2745 = 
+@2746 = 
+@2747 = 
+@2748 = 
+@2749 = 
+@2750 = 
+@2751 = 
+@2752 = 
+@2753 = 
+@2754 = 
+@2755 = 
+@2756 = 
+@2757 = 
+@2758 = 
+@2759 = 
+@2760 = 
+*/
+
+
+// Halbazzar Drin inserts
+@2850 = ~I have a scroll you might be able to help me with.~
+@2851 = ~You think so? You want me to have a look?~
+@2852 = ~Yes. Someone gave us a scroll that no-one can read and I thought you might be able to tell us something about it.~
+@2853 = ~Let me see... hmmm... Thayan work I'd say by the way the letters dance on the page.~
+@2854 = ~Can you read it?~
+@2855 = ~Read it? Of course I can't read it! It's only meant to be read when you're standing in the right place to use it!~
+@2856 = ~But where's that?~
+@2857 = ~Patience, patience, young <PRO_RACE>. The young have no patience today. Ah! Got it! It's written by a wizard called Almiran and says something about some temple ruins in Peldvale.~
+@2858 = ~Peldvale? There were some ruins near Tazok's camp, this must be it. Thank you, Halbazzar.~
+@2859 = ~Oh, that's quite alright. Bring me the scroll back if it survives, will you?~
+@2860 = ~I'll do that.~
+@2861 = ~Perhaps another time.~
+@2862 = ~I am here to sell you Almiran's scroll, as you requested.~
+@2863 = ~Ah! You've been inside the mentioned temple ruins, then? But see, the thing is the following: this scroll only works if it is *given* to the next person. If I buy it from you, I will not be able to visit the mentioned ruins, but can only give it to someone else.~
+@2864 = ~Fine, I got it for free, too, and it's of no use to me any more, so here you go.~
+@2865 = ~Then you'll have to find someone who'll give it back to you, because I'm only selling this.~
+@2866 = ~Wonderful! This is very generous of you. Now I only have to find the time to actually travel there... Come back again, I might have something for you. Generosity needs to be rewarded.~
+@2867 = ~You mean buy it now, give it to someone and have that person give it back to me? Hm, it's worth a try, unless you change your mind right now and give it to me for free?~
+@2868 = ~No chance. I want to see gold.~
+@2869 = ~Fine, fine! Here you go then. I'll give you 1000 gold for it, that should be the appropriate amount. Although this way, right now, it is completely worthless to *me*.~
+@2870 = ~Ah, my generous adventurers. As I said, generosity should be rewarded. I'll be generous to you, too, although it will ruin my income for this month and more. Take this magical item, and it's a mere coincidence that the value maches the one of the scroll you gave me.~
+
+
+
+
+/* Edwin */
+@2922 = ~Let me see that. Ha! I recognise this work and very poor work it is too. A fool called Almiran wrote this. I could do better when I was barely an apprentice. The letters only stand still when you are in the place that the scroll is to be used! That is why you cannot read it, fool. Hmmm. Something about a ruined temple in Peldvale. I wonder if it's the ruin where that idiot Tazok set up his camp?~
+//@2923 = 
+/* Dynaheir */
+@2924 = ~Show me that paper please, good <CHARNAME>. Pftt! Thayan work. I cannot read it.~
+
+
+// Alguine's Book
+@3500 = ~Open the book~
+@3501 = ~The Infinite Staircase~
+@3502 = ~The Staircase~
+@3503 = ~The Mad Sorceress~
+@3504 = ~The Doorways~
+@3505 = ~Close the book~
+@3506 = ~Baator, or, The Nine Hells~
+@3507 = ~Avernus~
+@3508 = ~Cania~
+@3509 = ~Dis~
+@3510 = ~Maladomini~
+@3511 = ~Malbolge~
+@3512 = ~Minauros~
+@3513 = ~Nessus~
+@3514 = ~Phlegethos~
+@3515 = ~Stygia~
+@3516 = ~The Gods of Toril~
+@3517 = ~Chultan~
+@3518 = ~Drow~
+@3519 = ~Dwarves~
+@3520 = ~Elven~
+@3521 = ~Faerûnian~
+@3522 = ~Gnomish~
+@3523 = ~Halfling~
+@3524 = ~Jhaamdathan~
+@3525 = ~Mulhorandi~
+@3526 = ~Orcish~
+@3527 = ~Talfiric~
+@3528 = ~The Time of Troubles~
+@3529 = ~What happened in the Time of Troubles~
+@3530 = ~What happened afterwards~
+@3531 = ~The Lands of Toril~
+@3532 = ~Aglarond~
+@3533 = ~Amn~
+@3534 = ~Anauroch~
+@3535 = ~Calimshan~
+@3536 = ~Chessenta~
+@3537 = ~Cormyr~
+@3538 = ~Damara~
+@3539 = ~Dambrath~
+@3540 = ~Icewind Dale~
+@3541 = ~Impiltur~
+@3542 = ~Mulhorand~
+@3543 = ~Narfell~
+@3544 = ~Sembia~
+@3545 = ~Thay~
+@3546 = ~Lots of other places~
+@3547 = ~The Races of Toril~
+@3548 = ~Elves~
+@3549 = ~Gnomes~
+@3550 = ~Halflings~
+@3551 = ~Humans~
+@3552 = ~Orcs~
+@3553 = ~You close the strange book and put it away for another day.~
+@3554 = ~You close the strange book but as you do so, a wave of weariness sweeps through you and vanishes as fast as it came.~
+@3555 = ~The Infinite Staircase is haunted by a mad sorceress. You really don't want to go there. But if you do, there's lots of doors leading to different planes and it goes down to the Abyss.~
+@3556 = ~Nobody knows what the mad sorceress looks like or what her name is. Lots of adventurers have tried to kill her but none have ever come back.~
+@3557 = ~If you don't get killed by the mad sorceress then there's lots of doors on the Infinite Staircase that lead to other planes. Nobody's ever been there because they all get killed by the mad sorceress.~
+@3558 = ~Avernus is the top Hell of the Nine Hells and is desolate wasteland with rocky terrain and twisted, stunted trees and bushes. Fireballs keep exploding from the sky.~
+@3559 = ~Cania is an ice world like Stygia, except that it doesn't float on an iceberg like Stygia does and is much colder. Its capital city is called Mephistar and has lots of warm fires inside it.~
+@3560 = ~Dis is the second circle of the Hells and has no mountains or hills at all. It does have a lot of black rivers and is ruled by Dispater, the Lord of the Iron City.~
+@3561 = ~Minauros is the third circle of the Hells and is the home of the Black City, also called Minauros.~
+@3562 = ~I don't know anything about Phlegethos except that it's the fourth layer of the Nine Hells.~
+@3563 = ~Stygia is the fifth circle of the Hells. Stygia is world made from a giant iceberg and is covered with snow and has blizzards blowing all the time. The river Styx runs through Stygia and all the other Hells (except those Hells that it doesn't run through).~
+@3564 = ~This page is blank.~
+@3565 = ~Maladomini (I don't think I've spelled that right) is full of ruined cities because its Great Lord couldn't make his mind up where he wanted to live.~
+@3566 = ~A drawing of a cat occupies the whole of this page. It is well executed and the eyes look straight at you from whatever angle you view the page.~
+@3567 = ~The Drow worship a giant spider call Lolth. I don't like spiders. They're nasty creepy-crawlies.~
+@3568 = ~The Dwarves worship fourteen gods called the Morin Modnin Morndinsman Moadins(Here the author has made four attempts to spell Morndinsamman and has crossed out each one. He/she seems to have given up at this point).~
+@3569 = ~Elves have their own gods that they brought with them when they moved to Faerûn. They're called the Seldarine.~
+@3570 = ~Gnomes worship the Lords of the Golden Hills. I don't know anything else about them but they sound nice.~
+@3571 = ~Halflings mostly worship Arvoreen but they have other gods too such as Yondalla. Arvoreen has two swords for his symbol.~
+@3572 = ~Humans worship lots of different deities in Faerûn such as Waukeen and Tempus. I'm going to worship Mystra when I'm old enough because I want to be a Chosen of Mystra like Elminster.~
+@3573 = ~Orcs worship Gruumsh who is a nasty cruel bloodthirsty god. I don't like the sound of him at all.~
+@3574 = ~Someone has erased this page by scraping the ink off with a rough stone and then making a drawing of a tree. The tree looks oddly familiar. Some of the following pages seem to be missing too.~
+@3575 = ~Aglarond is full of magic and mysterious people. It sticks out into the Sea Of Fallen Stars and has Thay on the other side. Its capital is called Veltalar. The people of Aglarond don't like strangers.~
+@3576 = ~Amn is really rich because it has lots of merchants. Amn was always having wars with Baldur's Gate but it never won them for very long. There are lots of mountains and fortresses in Amn such as the Cloudpeak Mountains and Crimmor. Athkatla is the main city of Amn and its streets are paved with gold. (Hmmm. If the streets are paved with gold how come the thieves haven't pulled them all up and sold them?)~
+@3577 = ~Anauroch is a big desert and it's full of ruins where the Netherese cities fell out of the sky (I'd like to have seen the flying cities). Nobody really lives there.~
+@3578 = ~Calimshan is full of Calishites. It has a swamp called the Swamp of Spiders and a big desert called the Calim Desert. They also have some moving hills called the Marching Mountains and their merchants make lots of money. Just like Amn really.~
+@3579 = ~Cormyr is called the Land of the Purple Dragon but I don't know why it's called that. The capital is called Suzail and Cormyr is sometimes called the Forest Kingdom. It has a big lake in the middle called the Dragonsmere which leads to the Sea of Fallen Stars. The Cormytes are very clever because they have big beacons which they light when danger threatens and they tell everybody to go and hide until the invaders have gone away.~
+@3580 = ~As you open the page a Kua Toan warrior seems to jump off the paper at you. You swear that you could hear his hissing warcry, so real does the drawing look.~
+@3581 = ~Icewind Dale has ten different towns called the Ten Towns and is on the other side of the Spine of the World. Icewind Dale is very cold because it's always winter there. Easthaven is the most important town but Kuldahar is also very important. Kuldahar has a magic oak tree that keeps it warm. In all the other towns the houses have a fire to keep them warm, otherwise the people will freeze to death.~
+@3582 = ~I don't know anything about Impiltur except that humans, dwarves and halflings all live together and it's a long way away.~
+@3583 = ~Mulhorand is ruled by a lot of priests and has a lot of farmers. The capital city is called Skuld and the Mulhorandis have slaves too. The slaves are treated well but they all die of old age while they are still young. Mulhorand is famous for its horses which come from the Cliffs of Leaping Horses which aren't cliffs at all but huge wide-open grasslands.~
+@3584 = ~The page is dominated by the head of what is obviously a blue dragon. The teeth and tongue look hungrily at you and the dragon's eyes stab flames into the dark. You shudder in admiration at the power of the pen that drew this.~
+@3585 = ~Selgaunt is the capital of Sembia. It has a big temple dedicated to the war goddess Shar. Selgaunt is on the Sea of Fallen Stars and you can see the Pirate Isles from the top of the tallest towers. Sembia used to belong to the Netherese Empire until the cities fell out of the sky when it became independant.~
+@3586 = ~Thay is full of Red Wizards because that is where they come from. It has a huge mountain in the middle called the Thaymount and the capital is called the Citadel. The Citadel is ruled by a cruel lich called Szass Tam. Thayans also have slaves like Mulhorand but the Thayan slaves aren't treated nicely at all. The Red Wizards are always trying to take over other lands but they never succeed. They think they're better than anyone else but they can't be because otherwise they'd rule all the lands.~
+@3587 = ~It looks like the author of the book set out to list the lands that he/she had missed but gave up and scratched them out. At the bottom of the page a huge snake waits patiently for a meal to come within reach and in the top right corner a vulture circles endlessly.~
+@3588 = ~Drow are black elves that live underground. Their home is called the Underdark. The Drow will melt in the sun so they can only go out at night.~
+@3589 = ~There are lots of different types of Dwarves. Dwarves can live to 400 years old. Lady dwarves all have beards except when they shave them off.~
+@3590 = ~Gnomes are very small like Halflings. They like building things and live in houses built underground. All gnomes are artists.~
+@3591 = ~Halflings are very small like Gnomes. Halflings like singing songs and telling stories and are very brave.~
+@3592 = ~Nobody likes Orcs because they are rough and nasty. They have grey or green skins and are always fighting. Orcs don't live in cities but camp out at night. They have lots of orc children who die young.~
+
+// Pirate Captain
+@3600 = ~Well, look what we have here men. Our ticket off this gods-forsaken island!~
+@3601 = ~Oh?~
+@3602 = ~Your what?~
+@3603 = ~Well, it's like this. That storm that blew up in the islands last week? It wrecked us here, that's what it did. It's that boat of yours - that's our ticket off this island.~
+@3604 = ~So, you can either give it to us peacefully and we might even leave you a bit of food and water, or we can do it the hard way and leave your corpses to the sea.~
+@3605 = ~There is another way.~
+@3606 = ~Sorry. It stays my boat. You're just going to have to wait for more of your kind to sail this way.~
+@3607 = ~Well, it's like this, lady. That storm that blew up in the islands last week? It wrecked us here, that's what it did. It's that boat of yours - that's our ticket off this island.~
+@3608 = ~'Lady'? The last one who called me 'lady' in that tone of voice is eating daisy roots. Would you like to join them?~
+@3609 = ~Ooo - I'm so scared. Can't you just see my knees shaking? They'll rattle all the way from here to that boat!~
+@3610 = ~Very funny. There is another way.~
+@3611 = ~Well, you're just going to have to let them rattle until more of your kind to sail this way. That boat stays mine.~
+@3612 = ~And what's that, eh? A magic carpet out of here?~
+@3613 = ~You wait until my business is finished here and I take you and your men off this island.~
+@3614 = ~And what business is that then?~
+@3615 = ~None of yours. That's between me and the monks.~
+@3616 = ~None of yours. That's between us and the monks.~
+@3617 = ~That cowardly bunch of skirt-wearers! Wouldn't let us in when we drove on the rocks, would they? Why should they let you in?~
+@3618 = ~That's for me to know.~
+@3619 = ~Playing the tough one eh? Ah well, too late now - my very generous offer has just expired. Alright men - they're all yours!~
+@3620 = ~I'm afraid not. That boat is ours and it comes without you. Alright men - they're all yours!~
+
+/*
+@3650 = 
+@3651 = 
+@3652 = 
+@3653 = 
+*/
+
+// Monks of Ilmater
+@3654 = ~Thank you for helping us! Oh - thank you! May Ilmater shower blessings upon you!~
+@3655 = ~Poor Martina killed! May Ilmater guide her to his Protection.~
+@3656 = ~A soldier killing a monk! How in Ilmater's Name did that happen! But he is in prison now, isn't he?~
+@3657 = ~A soldier killing a monk! Whoever heard of such a thing!~
+@3658 = ~Ilmather's Blessing shine on thee!~
+@3659 = ~Please talk to the abbot if you need any services.~
+/*
+@3660 = ~
+@3661 = ~
+*/
+
+// Abbot Guoremor (BSSATOS.dlg)
+
+@3700 = ~Greetings, I am Guoremor, the Abbot of this Ilmater Monastery. If there is anything we can help you with, please let us know. You are welcome to pray at the shrine, but please refrain from disturbing the monks inside their quarters.~
+@3701 = ~You are the ones that found poor Martina. Yes, there is a lot of greed and evil in this world. We Followers of Ilmater try to do our best, but there is only so much we can do. Appearently, soldier Shuck had a lot of debts to pay for, so he forced his way to our collected alms, killing poor Martina in the process. Please, as a sign of our gratitude, take these scrolls. May they help you doing good.~
+@3702 = ~If you haven't spoken to the Seatower Commander yet, I have word that he is looking for you. It is about the prisoner.~
+@3703 = ~I see you bear injuries from your last battles, my friends. Did you come to call on my debts? Should I restore you to full health?~
+@3704 = ~Yes, please do so, and thanks.~
+@3705 = ~No, not today. I'll spare that for another day.~
+@3706 = ~With pleasure. Please wait until I am finished.~
+@3707 = ~There, all of you should be as good as new. Ilmater's Blessing be with you.~
+@3708 = ~Welcome again.~
+@3709 = ~Well... we would have a task for a group of fearless adventurers. There is evil inside the tower's catacombs, and usually we monks of Ilmater take care it does not accumulate to a point where it cannot be handled properly. Unfortunately, due to recent events we were not able to do our incantations regularly and now we are not sure what manifested inside. We would need someone with the necessary capabilities to go into the inner sanctuary and look what they'll find.~ 
+@3710 = ~What do you think would await me there?~
+@3711 = ~I'll do it.~
+@3712 = ~What would be the reward?~
+@3713 = ~I'm not interested.~
+@3714 = ~We call it the restless spirits. Skeletons, mainly... but maybe even something much darker. You should prepare to fight against undead.~
+@3715 = ~Wonderful. This takes a huge burden off our shoulders. The first tomb presents no danger, but do not go into the catacombs hastily, and please respect the rest of the dead, or there will be consequences - not from us, but from the restless dead themselves.~ 
+@3716 = ~I will give you two keys. The first one is for the catacombs itself, but only we monks have the key for the inner sanctuary where the evil arises. You need to find the hidden door. Walk through it and be prepared to face great evil. I will give you one reward right away, because it would be foolish not to.~
+@3717 = ~We do not have much to give, but I will forward you a gold reward from the Tower Captain, as well as some scrolls and potions from our fund.~
+@3718 = ~Ah well, this would have been too easy for us, ha. Then we will deal with this ourselves later. Until then, the catacombs will stay locked so there won't be any danger for the common folk. Please be so kind and do not spread the rumor, least it stirrs a panic - or attracts fearnoughts to endanger themselves.~
+@3719 = ~Is that so! You are a good person for bringing it here, my friend. Do you happen to know how much exactly is left?~
+@3720 = ~I do, as a matter of fact. It was 1467 gold exact.~
+@3721 = ~No, I took the gold from where it was hidden by the thief and brought it here.~
+@3722 = ~Something around 1500 gold, I think.~
+@3723 = ~Do you expect me to count that for you?~
+@3724 = ~No, I don't. How much was the whole sum, if I may ask?~
+@3725 = ~I'm the abbot of this monastery. We are followers of Ilmater, the Crying God.~
+@3726 = ~Is there anything else I can do for you?~
+@3727 = ~I have here what is left of the alms that were stolen by the soldier.~
+@3728 = ~What a pity so much gold was stolen from your monastery. Especially pitiful that it will never be recovered.~
+@3729 = ~The priestess of Selune said you have some troubles in the catacombs worth for an adventurer?~
+@3730 = ~Is there anything more you'd need help with?~
+@3731 = ~About the task you offered me - I would be ready to do it now.~
+@3732 = ~We had a... chat with the restless dead in the catacombs.~ 
+@3733 = ~What do you do here?~
+@3734 = ~Thank you and good day to you.~
+@3735 = ~Is that so! What exactly did you find?~
+@3736 = ~A skeleton which proclaimed to be the ruler of the dead manifested in the inner sanctuary and said curious things about my father.~
+@3737 = ~There is a talking skeleton in the inner sanctuary. I couldn't fight it, though, it only sends it minions.~
+@3738 = ~If you treat carefully, be polite and do not disturb the rest of the dead, the catacombs should be safe.~
+@3739 = ~Indeed? Interesting. This should suffice until we are strong enough to do the usual cantations again. You did us a great deed, indeed. Let me give you your reward, you earned it. Ilmater's mercy be with you.~
+@3740 = ~Ah, so it is more than half of what we collected.~
+@3741 = ~No, no of course not.~
+@3742 = ~It was an unusually large sum we raised by a charity event here, inside the tower. A lot of wealthy folks like to spend their time here, as the atmosphere is a very special one. Originally, it was a total over 2000 gold...~
+@3743 = ~...2068, to be exact.~
+@3744 = ~...2067, to be exact.~
+@3745 = ~2068... that makes a difference to 601 to what was left. 1 gold coin for the beggar in front of the Ilmater's Shrine... and probably 600 with which Shuck tried to pay off the debts.~
+@3746 = ~Impressive, for times like these.~
+@3747 = ~Aha.~
+@3748 = ~(sigh) Yes, poor Martina didn't come far with her round that day...~
+@3749 = ~I sincerely hope the gold did good wherever it was spent. If only Soldier Shuck would have talked to us instead of forcing his way to it... much would be different. There is always a way without violence.~
+@3750 = ~Thank you for bringing it, my friend. Please, do undestand that I will not offer you any gold or item as a reward in this case, as no mundane reward would be appropriate. But next time you come here all bruised and battered, I will bestow my god's blessings on you without taking your gold for it.~
+@3751 = ~It is. People want to do good, if they are shown a way how to do so with their own means.~
+@3752 = ~Yes, it is sad. So the prisoner spent it all, hm? Sad, really. Thank you for letting me know.~
+@3753 = ~The restless spirits in the catacombs was all we needed help with. I'm afraid there is nothing more from our side.~
+/*
+@3754 = 
+@3755 = 
+@3756 = 
+@3757 = 
+@3758 = 
+@3759 = 
+@3760 = 
+*/
+
+
+
+
+/* @8000 range is for the High Level Encounter (bst_highlevel.tra) */
+
+
+// Restored dream areas
+// Voice
+@9194 = ~You've not the time for this! You must get the talon before it's taken by another!~ [VOICE01]
+@9195 = ~Leave the fool to his own battle! You have a destiny to follow!~
+@9196 = ~Leave him. Get the talon! He is beyond help. It is pointless to stay!~
+@9197 = ~You have squandered your time and lost the talon! Unfortunate. Changes will have to be made.~
+@9198 = ~The talon that gives power to those demanding, and abandons the weak to their fate. You are stronger for it.~
+@9199 = ~It is the horn you seek! Claim what should be yours!~ [VOICE03]
+@9200 = ~It is of no concern who it's truly for! Take what is meant for you! He'll never know the difference!~ [VOICE04]
+@9201 = ~The horn with the will to take what is yours, and what should be yours.~
+@9202 = ~You betray what you were born to be! There will be a price to pay!~
+@9203 = ~It is the candle you must seek!~
+@9224 = ~Forget the old man! His time is past! The wish should be yours!~ [VOICE05]
+@9225 = ~Use it yourself, and know the legacy of your true father!~ [VOICE06]
+@9226 = ~You have done well.~
+@9227 = ~You have wasted the power of the candle on the old man! There is much to be done before you are worthy!~
+@9228 = ~Seek the dagger next! It is nearby in the hands of a great evil Ogre! Slay it and take your rightful prize!~ [VOICE07]
+@9229 = ~Look at them! The knight is obviously the one to help! The beast cannot be other than it was born to be! Kill it!~ [VOICE08]
+@9230 = ~The beast is an ogre! They are evil; they cannot be otherwise! Do what you know MUST be done! Will you attack it or not?!~ [VOICE09]
+@9233 = ~A dagger of bone. A piece of the father bred in the child. You will be what you were born to be.~
+@9234 = ~You disrespect your true calling at every turn. It will make your destiny all the more painful!~
+@9235 = ~Pathetic! You are not even worthy of the true test! It is a wonder you are suitable at all!~
+@9236 = ~The potion you seek is here! Search the bodies! Their dead hold the prize!~ [VOICE10]
+@9238 = ~Ignore him! Drink the potion yourself and know the essence of your heritage!~ [VOICE11]
+@9239 = ~Drink deep the blood of the father and the tears of the dead. They shall sustain you, for they are the very essence of your destiny!~
+@9240 = ~It is an insult to the very blood in your veins! You WILL learn to act accordingly!~
+@9241 = ~It is the last item you seek! Of course you're worthy of it!~ [VOICE12]
+@9242 = ~You know you are all that and more! You have power immeasurable in your future! You are destined for a veritable godhood!~ [VOICE13]
+@9245 = ~It is the Godhead itself, literal and figurative! Prepare yourself, for the return will come soon!~
+@9247 = ~Your fate will be sealed despite your petty rejection of the ways of your father. The return is nigh regardless!~
+
+// Charname
+@9231 = ~Ogre or not, this creature is no threat. I'll not harm him!~
+@9232 = ~The beast will die, as all of its kind should!~
+@9243 = ~I am all that you seek! There are none alive or dead better than I!~
+@9244 = ~Many a great person has walked this land. I cannot claim to be above them all.~
+@9272 = ~Yes, I am who you seek.~
+@9273 = ~No, and I have not seen him.~
+@9286 = ~My destiny is more important than your paltry life. Cheers.~
+@9287 = ~I cannot refuse this man his very life! He needs this potion more than I!~
+@9292 = ~You are right. Only a weakling asks for help.~
+@9293 = ~I cannot leave him to die alone!~
+@9294 = ~No! It is not mine to use.~
+@9295 = ~I will. This old fool has no need of it.~
+@9314 = ~Ahhh! - uhhhh - uh~
+
+// Gorion
+@9296 = ~Awake, my adopted child. Awake and face the terrible tests ahead of thee.~
+@9297 = ~Speak not, for I have but little time. This place is the Between. 'Tis not so much real, as it is a dream, though not so much a dream, as it is real.~
+@9298 = ~That which should be dead can cast its tentacles here, and your life is already wound within its grasping limbs. There is always hope, however, and your actions here shall determine the grip with which you are held.~
+@9299 = ~I can tell you no more of your true lineage than I did in life, but you will learn much here. You must pursue several items, for they are key to who you are. A Talon is the first, followed by the horn of great beast, a candle of light, a dagger of bone, a potion of blood and tears, and a blackened skull.~
+@9300 = ~I must leave you now, for 'tis a great strain to remain in the Between. No ordinary mortal can remain for long, so I must leave you to your search. I wish I could say I am leaving you here alone, but you are not.~
+@9301 = ~Seek wisely and true, and remember ye well: 'Tis often the journey that shapes the child, and not so much where they must go.~
+
+// Dream (nightmare?) dialog
+@9302 = ~As the gnoll's blade slashes into your chest you awake with a start and a strangled cry.~
+@9303 = ~But are you awake? Or is this still part of the dream? You are back in the Between where Gorion found you just minutes - or was it hours? - ago.~
+@9304 = ~Something is very wrong. Something is not completed. Something you cannot put your finger on. Something that -~
+@9305 = ~A long, drawn-out, agonised howl of 'NOOOOOOOOO' assaults your sleeping ears and again you awake with a terrible start in a place you do not recognise.~
+@9306 = ~From your restless dreams there comes a tantalising glimpse of the power within you. Symbols - many symbols - float in and out of focus before you.~
+@9307 = ~Charm Person~
+@9308 = ~Cloak of Fear~
+@9309 = ~Cure Serious Wounds~
+@9310 = ~Invisibility~
+@9311 = ~Create Morningstar~
+@9312 = ~Shield of the Archons~
+@9313 = ~As you touch the symbol there is a startling flash and something rushes through your prone body. With a cry you awake and spring to your feet.~
+
+// Warrior
+@9261 = ~Help! I need your aid! There are too many!~ [WARRI01]
+@9262 = ~I am so cold... (moan)... I... am dying... Please... stay with me awhile...~ [WARRI02]
+@9263 = ~I don't want to die alone...~ [WARRI03]
+@9264 = ~Thank you...~ [WARRI04]
+
+// Messenger
+@9267 = ~Salutations! I have come looking for someone, to deliver a gift. A horn actually.~ [MESSN01]
+@9268 = ~I seek the First Reader of this great library. Perhaps you have seen him? This is to be his property, and I can give it to no other.~ [MESSN02]
+@9269 = ~Do you claim to be the First Reader?~
+@9270 = ~Then I bear a message for you as well.~ [MESSN03]
+@9271 = ~Nor would you want the gift I bear. I take my leave.~
+
+// Ogre
+@9277 = ~Me no beast! Me don't want fight! Go 'way!~ [TOGRE01]
+@9278 = ~Shiny man attack ME! I be good but he make fight! He want kill for no reason!~ [TOGRE02]
+@9279 = ~You no hurt me, me no hurt you! Me don't care if me born bad! Me be good if me want to! You too... remember. You born VERY bad. Maybe you be good if you want too.~ [TOGRE03]
+
+// White Knight
+@9280 = ~You there! Help me dispose of this beast! His kind are a plague on the land!~ [WKNIG01]
+@9281 = ~Don't believe a word it says! Born evil they are! Everyone knows that! The only good ogre is a dead ogre!~ [WKNIG02]
+@9282 = ~You chose right! Beings of flesh ARE what they ARE. There is no escaping your destiny. Best you remember that! Here, this is yours!~ [WKNIG03]
+
+// Poisoned Man
+@9283 = ~Please... that pack of gnolls... they poisoned me. Was there a flask among them? It must be the antidote. Please...~ [POISN01]
+//#5237
+@9284 = ~Please... show some charity... I'll die without it.~ [POISN02]
+@9285 = ~Thank you. Your actions are my antidote. Let the blood of the father not despoil the son!~ [POISN03]
+
+// Woman
+@9288 = ~Greetings, fellow traveler. I have been entrusted to give this skull to they who are most worthy.~ [TWOMN01]
+@9289 = ~The recipient must be more heroic, charitable, courageous, and HUMBLE than anyone else living or dead. Are you such a person?~ [TWOMN02]
+@9290 = ~Truly you deserve this and whatever else it brings. You've the ego of a deity to believe yourself humble and yet claim to be better than all who have died. It will certainly make the bonding easier... though not for you!~ [TWOMN03]
+@9291 = ~The Godhead is rejected! Can there yet be hope? We shall see...~ [TWOMN04]
+
+// Sorceror
+@9274 = ~Young one! Please stop a while. I need your help. I am old and dying... and I've one hope left to me. In my room... there is an enchanted candle. It has one last wish spell within it. I am too weak to retrieve it, but you could.~ [SORCR01]
+@9275 = ~This candle is my last chance, child. Please... bring it to me.~ [SORCR02]
+@9276 = ~Thank you, I am renewed. You have resisted great temptation for a stranger's benefit. A rare act of compassion for one so destined.~ [SORCR03]
+
+//Seatower Quests
+//An Orphan in the Seatower
+/*
+@10000  =
+@10001  = 
+@10002  = 
+@10003  = 
+*/
+@10004  = ~Yes, I know this is not the right pace for a young child like this boy. I can't help it that the old crone doesn't want to see him. Lars! Stop making a mess and drink your juice properly. Man, I wished someone would go upstairs and tell this woman that I am not getting paid for waiting up until she made up her mind about this child!~
+@10005  = ~Great, just great. The old crone left without talking to me. At least she sent some gold my way. Come on, Lars, let's find you a new home.~
+@10006  = ~Lars, just be quiet for a moment, yes? (sigh)~
+@10007  = ~Hello! Mister bought me three juices already! Mister is really nice!~ 
+@10008  = ~This is my grandma! My grandma! She looks a bit scary but I think I like her.~
+@10009  = ~Good day to you, young <PRO_MANWOMAN>. I apologize, but I need to think a matter over, so I wish you a good day.~
+@10010  = ~Yes, the man downstairs said you are supposed to pick up the boy he is travelling with.~
+@10011  = ~If I am assuming correctly, you are the woman who is suposed to adopt young Lars who is waiting with his attendant downstairs?~
+@10012  = ~So, sure I can't help you with that boy downstairs?~
+@10013  = ~Good day to you, too.~
+@10014  = ~Ah, does he tell the whole inn now... wonderful. I apologize, this was by no means addressed at you, specifically. That man is not the best choice for this obligation, but there is not much I can do, I did not enlist him with the task. (sigh) Noone did, actually, not from our family, that is. See, the child is my deceised daughter's son - my grandson.~
+@10015  = ~Yes, yes, I know - "why does she not fly down the stairs and take that poor child into her arms?" Well, it's not that easy. It never is. But this is no business to bother you with, my good <PRO_LADYLORD>. You do not need to burden yourself with such matters.~
+@10016  = ~On the contrary, I'd be delighted to help in any way.~
+@10017  = ~It does sound like an intriguing story, to be honest.~
+@10018  = ~Indeed. Farwell.~
+@10019  = ~That is very kind of you, but I wouldn't know how... Other than listening to my woes and tell me whether I am a silly old hag who should come to her senses!~
+@10020  = ~A story... yes, it indeed is one.~
+@10021  = ~See - my daughter, my one child, fell in love with a man who... who treated her badly. He made her obedient and made her rejecting me, I knew she suffered but there was not much I could do. Now my daughter died, that man is nowhere to be found, and I... I am scared.~
+@10022  = ~I am scared that boy looks like him. That I look into his face and see the man who maltreated my Silvia, who is responsible for her withering away. I... I couldn't stand it. I would make him suffer for what he did, although I know that child is innocent. I just... I can't.~
+@10023  = ~You mean you didn't really see him until now?~
+@10024  = ~He's right downstairs. Why not go down and have a look? Maybe he looks completely different!~ 
+@10025  = ~You are a silly old hag who should come to her senses!~
+@10026  = ~You should feel responsible for your grandson, no matter the looks.~
+@10027  = ~Ah well, I wouldn't care about one brat, either. Good day to you.~
+@10028  = ~...I beg your pardon?~
+@10029  = ~That's what you said I should call you, remember?~
+@10030  = ~It's not necessarily my opinion, I just wanted to say that to a complete stranger once!~
+@10031  = ~So you think I should go downstairs and act like a responsible grandmother?~
+@10032  = ~Absolutely!~
+@10033  = ~Do you have to take him in if you don't like him? There are foster homes, as well.~
+@10034  = ~Whatever. Good day to you.~
+@10035  = ~I... I didn't dare.~
+@10036  = ~I know I should feel responsible for my own grandchild.~
+@10037  = ~But you... you already saw him, yes? Tell me... does he have black hair?~
+@10038  = ~No, his hair is more dark brown-ish, actually.~
+@10039  = ~(lie) Yes, black as night with bats and crows in it!~
+@10040  = ~I don't remember.~
+@10041  = ~I know it's a bit much, being drawn into a stranger's problems so. But...~
+@10042  = ~Oh... And his eyes, are they more blue... or grey?~
+@10043  = ~Hm... more grey, I think.~
+@10044  = ~(lie) Blue, definitely.~
+@10045  = ~I really don't remember.~
+@10046  = ~Blue eyes...~
+@10047  = ~So it... it could very well be that my worst nightmares...~
+@10048  = ~Hm. I need to have a look into that boys eyes.~
+@10049  = ~Black hair and blue eyes... that is *him*, that is him... No, I can't stand it, I will not face this child... I thank you, stranger, for your help. I will take care of that boy, but not in my house. I need to leave.~
+@10050  = ~Could it be...~
+@10051  = ~I thank you, kind <PRO_SIRMAAM>. I will go downstairs. I finally found the courage!~
+@10052  = ~There you are! You wonderful, kind <PRO_LADYLORD>! Can you imagine? My grandson! He looks just like my son!~
+@10053  = ~Your son? You wanted to say he looks alike your daughter, I guess?~
+@10054  = ~What do you mean?~
+@10055  = ~So, all is well, then?~
+@10056  = ~Whatever, I'm not interested in your problems.~
+@10057  = ~No, no, my *son*.~
+@10058  = ~I see. Well, I wanted to let you know nontheless. You are a kind person, even if you don't let it show at all times.~
+@10059  = ~Oh yes. Everything!~
+@10060  = ~My dear, little Joeffrey, who died from the measles when he was 10... I... Look at this boy! The same big, grey eyes, the same brownish hair... He...~
+@10061  = ~This... This boy is of my flesh and blood. He is my grand-son!... I... I thank you for bringing me to him, <PRO_LADYLORD>. I *thank* you.~
+@10062  = ~Grandma? I draw a picture for you.~
+@10063  = ~Oh, how nice.... But oh, I didn't bring anything for you! Can you imagine? How about.. how about we go to the carnival and have a huge bag of sugared almonds, hm?~
+@10064  = ~Oh, I love almonds!~
+@10065  = ~And this drawing is for you! You are a fearless adventurer, are you not?~
+@10066  = ~Well then, Lars! Let's go to the carnival!~
+@10067  = ~Wohoo!~
+@10068  = ~I am talking about my *son*.~
+/*
+@10069  = 
+@10070  = 
+*/
+
+/* Tower Guards, "Doppelgangers Inside the Seatower" quest */
+@10071  = ~Everyone is in the barracksss... I wonder what for.~
+@10072  = ~What'sss up?~
+@10073  = ~I wouldn't mind a good fish... The stink of the see makesss me hungry.~
+@10074  = ~What does that mage think, does he think he'll scare usss?~
+@10075  = ~We will be rewarded when thisss is over.~
+@10076  = ~We should watch out for civiliansss!~
+@10077  = ~Stand away, citizen! This is guard's duty.~
+@10078  = ~Protect the civilians!~
+@10079  = ~Something's fishy for sure.~
+@10080  = ~It's rare that Master Shizell shows himself in the barracks. Something is going on for sure.~
+@10081  = ~Maybe we'll get a higher pay, when this is over.~
+@10082  = ~Captain is quite edgy as of late.~
+@10083  = ~Ssssssss...~
+
+/* z_quest_doppelgangers.d */
+@10100  = ~[Imoen] Oh... Oh! This is so CUTE! <CHARNAME>, can we keep it? Please? Please! If we train it right, it could feed on the rats in the farmers' barns... or something.~
+@10101  = ~[Jaheira, with Imoen] Imoen, do not ridicule yourself. Mimics are monsters of the most perfidious sort - they cannot be tamed. It will grow into a doppelganger some day, too.~
+@10102  = ~[Jaheira] <CHARNAME>, don't let yourself be fooled by this mimic's alleged peacefulness. We have to kill it, if only to protect the normal people.~
+@10103  = ~[Imoen] Awww... it's just too cute. Oh well, alright, I get it, we have to kill it because it's dangerous blahblahblah... Its such a pity, though!~
+
+/* zz_quest_fireelemental.d */
+@10250  = ~[Imoen] Oh, look at it! It looks almost sad. Do we have to kill it?~
+@10251  = ~[Ajantis] A fire elemental inside a cellar full of wooden barrels and crates! We must not allow that, <CHARNAME>.~
+@10252  = ~[Kagain] Above all, we must not allow it to get any closer to the good ale barrels.~
+@10253  = ~[Jaheira] Fire elementals are not evil, <CHARNAME>. We could use a fire proof container to put it back into a big flame and it will return to its plane.~
+@10254  = ~[Dynaheir] The cook seems to be right about it not surviving long in a damp cellar. Rather this cellar benefits from being dried a little.~
+
+
+/* Sahuagin Scout in Seatower Prison */
+@10999  = ~Odg! Kla odg gul! Hrrrghh!~
+
+
+//******************
+// Skript lines
+//******************
+
+@11000  = ~This tomb is now empty.~
+@11001  = ~You disturbed the rest of the dead!~
+@11002  = ~You find a little trinket in the tomb.~
+@11003  = ~You find nothing in this tomb.~
+@11004  = ~From within the fortress, you hear a faint voice calling for help.~
+@11005  = ~Really, now?~
+@11006  = ~The exit is blocked by a rather big stone, but it seems to be quite lose. You could try to shove it to the other side.~
+@11007  = ~You are too far away to do anything here.~
+@11008  = ~You push the stone, and finally it gives way and leaves a narrow but sufficient opening. It is dark on the other side, but you can hear and smell the sea.~
+@11009  = ~The corner is damp, and a small spore colony is growing in it, covering half of the wall.~
+@11010  = ~You destroy the hostile spore colony, reveiling an opening in the walls.~
+@11011  = ~The tunnel is blocked by rocks and rubble.~
+@11012  = ~The water in the pool is clear and seems to shine with a blue light.~
+@11013  = ~Now that you know where to look, you notice the secret exit to the Sea Caves.~
+@11014  = ~This seems to be the corner the soldier mentioned. A small spore colony coveres half of the wall. To make sure there will not be more hostile Myconides, this colony should be destroyed. You could do so easily with your weapons.~
+@11015  = ~Under a thin layer of dirt you find the corpse of a tower sergeant. He is wearing the sign of the commander's adjutant.~
+@11016  = ~The dirt pile is empty.~
+@11017  = ~This is an extraordinary large clam growing at the shallow edge of the pool. You can pry the shell open if you want.~
+@11018  = ~You open the shell. Inside is a huge black pearl!~
+@11019  = ~You take the pearl and stow it into your backpack.~
+@11020  = ~The shell is empty.~
+@11021  = ~Aaaaaaaahhhh!~
+@11022  = ~You covered all of the tower grounds using the "Mimic Powder" fumes, but there is no more doppelgangers to be found. It seems you already demasked all of them.~
+@11023  = ~The moment the cover is removed, a stenuous stench emerges from the debths below.~
+@11024  = ~The fire of the beacon burns hot with a mighty roar.~
+@11025  = ~You put the barrel with the fire elemental into the beacon fire to release the creature.~
+@11026  = ~Can I put a stick into the fire?~
+@11027  = ~No, please stay away from the beacon. It's dangerous.~
+@11028  = ~Do you have to fill in oil every day?~
+@11029  = ~We do it on a regular basis, but the fire would last a week with what it has now.~
+@11030  = ~The flame was moving! I swear!~
+@11031  = ~Large fires always attract fire elementals. We are here to ensure they stay in the flames.~
+@11032  = ~Oooh.~
+@11033  = ~Could you just use a giant fire elemental for the flame?~
+@11034  = ~That's probably too dangerous - and too unreliable. The beacon needs to give a constant flare, or the ships will get lost.~
+@11035  = ~Is it true the fire can be seen from the ships out on the sea?~
+@11036  = ~Yes, that's exactly what it is for. They know where the city is this way.~
+@11037  = ~Is it true the fire can be seen from Tethyr?~
+@11038  = ~That's... probably too far away.~
+@11039  = ~Did you have to fight a lot of fire elementals?~
+@11040  = ~You sure have a lot of questions. Hmm, all these years in total it was maybe 4, 5? It really doesn't happen very often that they leave the flames.~
+@11041  = ~Young man, we pestered this soldier long enough. We have to go now. Say thank you to the nice man.~
+@11042  = ~Thank you!~
+@11043  = ~There, door's unlocked. Make sure that thing doesn't escape into the kitchen!~
+@11044  = ~Can I throw a gold coin in, mom? Please? Please?~
+@11045  = ~Me too! Me too!~
+@11046  = ~Fine, here you go. Make a fine wish!~
+@11047  = ~*splish*~
+@11048  = ~What did you wish for?~
+@11049  = ~You are not supposed to tell! It's bad luck if you do.~
+@11050  = ~Mom, can we throw in another coin?~
+@11051  = ~No, honey. That's better spent on honeybread, hm?~
+@11052  = ~Honeybread! I want to eat some.~
+@11053  = ~Sweety, are you coming? We'll go inside.~
+@11054  = ~*plunk*~
+@11055  = ~Oh, what did I hear there? Was that a stone? Make sure not to anger the well spirit, my dear, or it will come out to get you!~
+@11056  = ~*shreeek* A ghost?! This is scary.~
+@11057  = ~Will the ghost buy honeybread with our coins, too?~
+@11058  = ~I don't think so, love. Let's go.~
+@11059  = ~I'm coming!~
+@11060  = ~Block the harbor?~
+@11061  = ~With the chain?~
+@11062  = ~Only seaweed? Do you also find nice shells?~
+@11063  = ~Yes, shells, too. But not really nice ones. Shells that attach to the chain is the worst to remove.~
+@11064  = ~Did you ever wind in a dolphin?~
+@11065  = ~Uhm, no.~
+@11066  = ~Awww.~
+@11067  = ~Rose! What a question. Forgive us, good sir.~
+@11068  = ~No worries, ma'am, I have a little one, too.~
+@11069  = ~No, I'll wait here.~
+@11070  = ~(sigh)~
+@11071  = ~It's just a tale, love, nothing to worry.~
+@11072  = ~What is the chain for?~
+@11073  = ~I wished I could switch shifts with somebody! How am I supposed to go looking if I am so tied up here.~
+@11074  = ~(sigh) I hope she's alright.~
+@11075  = ~She's usually not that long away. No matter what the abbot says!~
+@11076  = ~How I wished I could talk to someone about this!~
+
+//******************
+// Area names (for EE debug console)
+//******************
+@120000 = ~Temple Island – Inside upper level~
+@120001 = ~Temple Island – Inside lower level~
+@120002 = ~Temple Island – Caves~
+@120003 = ~Temple Island – Blue Room~
+@120004 = ~Temple Island – Library/Staircase~
+@120005 = ~Tailor's Shop~
+@120006 = ~Tailor's Shop Cellar~
+@120007 = ~Smuggler Tunnel~
+@120008 = ~Tailor's Cellar Sewers~
+@120009 = ~Glabrezu's Imprisonment~
+@120010 = ~Tannery~
+@120011 = ~Halls of Future Memories~
+@120012 = ~Future Memory 1~
+@120013 = ~Future Memory 2~
+@120014 = ~Future Memory 3 lower floor~
+@120015 = ~Future Memory 3 upper floor~
+@120016 = ~Future Memory 4~
+@120017 = ~Future Memory 5~
+@120018 = ~Future Memory 5 H1 upper floor~
+@120019 = ~Future Memory 5 H2~
+@120020 = ~Future Memory 5 H3~
+@120021 = ~Future Memory Library~
+@120022 = ~Future Memory 6~
+@120023 = ~Future Memory 6 H1~
+@120024 = ~Future Memory 5 H1 lower floor~
+@120025 = ~Dream 6 – The Woman~
+@120026 = ~Dream 5 – The Poisoned Man Outside~
+@120027 = ~Dream 5 – The Poisoned Man~
+@120028 = ~Dream 2 – The Messenger~
+@120029 = ~Dream 3 – White Knight~
+@120030 = ~Dream 1 – The Warrior~
+@120031 = ~Dream 4 – The Sorceror~
+@120032 = ~Dream Bedroom~
+@120033 = ~Temple Island~
+@120034 = ~Seacave~
+@120035 = ~Seatower Island~
+@120036 = ~Winch house~
+@120037 = ~Seatower first floor~
+@120038 = ~Seatower second floor~
+@120039 = ~East Tower upper floor~
+@120040 = ~East Tower lower floor~
+@120041 = ~Armorer~
+@120042 = ~Barracks ground floor~
+@120043 = ~Fletcher~
+@120044 = ~Temple of Selune~
+@120045 = ~Seatower prison~
+@120046 = ~Barracks second floor~
+@120047 = ~Traitor's Tower~
+@120048 = ~Cave under Traitor's Tower~
+@120049 = ~Seatower storerooms~
+@120050 = ~Seatower third floor~
+@120051 = ~Halfling house~
+@120052 = ~Treasury~
+@120053 = ~Farmhouse~
+@120054 = ~Mauseleum~
+@120055 = ~Dradeel's Tower upper floor~
+@120056 = ~Catacombs~
+@120057 = ~Dradeel's Tower lower floor~
+@120058 = ~Monastery of Ilmater~
+@120059 = ~DragonTower upper floor~
+@120060 = ~Dragon Tower lower floor~
+@120061 = ~South Harbour Tower~

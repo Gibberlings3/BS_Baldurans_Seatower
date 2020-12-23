@@ -1,0 +1,34 @@
+IF
+	!InMyArea("bsdpgrd3")
+	!HPGT(Nearestenemyof(Myself),0)
+	!HPGT(SecondNearestenemyof(Myself),0)
+	!HPGT(ThirdNearestenemyof(Myself),0)
+	!HPGT(FourthNearestenemyof(Myself),0)
+	CombatCounter(0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck("bstrmage",CD_STATE_NOTVALID)
+	See(Player1)
+	Global("bsDoppelgangerQuest","GLOBAL",10)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ReallyForceSpellRES("SPPR607",Myself)
+		ActionOverride("bstrmage",ReallyForceSpellRES("SPPR607",Myself))
+		DestroyItem("MINHP1")
+		ActionOverride("bstrmage",DestroyItem("MINHP1"))
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",11)
+		SetInterrupt(TRUE)
+END
+
+IF 
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	Global("bsDoppelgangerQuest","GLOBAL",11)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+		

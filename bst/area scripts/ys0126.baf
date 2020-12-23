@@ -1,0 +1,13 @@
+
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",0)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",10)
+	Global("bsDoppelgangerSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerSpawn","MYAREA",1)
+		CreateCreature("bsdpgrd1",[310.276],7)
+		CreateCreature("bsdpgrd1",[121.342],6)
+		CreateCreature("bsdpgrd1",[354.429],14)
+		CreateCreature("bsdpgrd5",[565.376],14)
+END

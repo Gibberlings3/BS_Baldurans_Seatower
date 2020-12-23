@@ -1,0 +1,33 @@
+IF
+	OR(2)
+		Difficulty(EASY)
+		LevelLT(Player1,5)
+	Global("bsSpawnTrolls","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnTrolls","MYAREA",1)
+		CreateCreature("bsseatrl",[773.833],10) //nerfed Sea Troll
+END
+
+IF
+	!LevelLT(Player1,5)
+	Difficulty(NORMAL)
+	Global("bsSpawnTrolls","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnTrolls","MYAREA",1)
+		CreateCreature("bsseatrl",[773.833],10) //nerfed Sea Troll
+		CreateCreature("bsseatrl",[557.807],12) //nerfed Sea Troll
+END
+
+IF
+	!LevelLT(Player1,5)
+	DifficultyGT(NORMAL)
+	Global("bsSpawnTrolls","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnTrolls","MYAREA",1)
+		CreateCreature("bsseatrl",[773.833],10) //nerfed Sea Troll
+		CreateCreature("bsseatrl",[557.807],12) //nerfed Sea Troll
+		CreateCreature("bsseatrl",[1016.892],8) //nerfed Sea Troll
+END

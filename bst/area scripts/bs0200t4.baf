@@ -1,0 +1,27 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	GlobalLT("bsFoundSerjeante","GLOBAL",3)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11015)
+		IncrementGlobal("bsJournalEntrySerjeante","MYAREA",1)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	GlobalGT("bsFoundSerjeante","GLOBAL",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11016)
+END
+
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,20)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11007)
+END

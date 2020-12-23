@@ -1,0 +1,32 @@
+IF
+	Global("bsPCMetSmugglerDoppelgangers","GLOBAL",0)
+	See([PC])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("bsDoppelgangerChange","MYAREA",1)
+	Global("bsRunAwayFrom","LOCALS",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11021)
+		SetGlobal("bsRunAwayFrom","LOCALS",1)
+		MoveToPoint([116.322])
+END
+
+IF 
+	Global("bsDoppelgangerChange","MYAREA",1)
+	NumDead("bsdopp05",2)
+	Dead("bsdopp04")
+	Detect([PC])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerChange","MYAREA",2)
+		StartDialogNoSet([PC])
+END
+	
+	

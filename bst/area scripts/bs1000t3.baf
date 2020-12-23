@@ -1,0 +1,45 @@
+/* script for beacon in bs1000 */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	!PartyHasItem("bsbarrl4")
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11024)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	PartyHasItem("bsbarrl4")
+	Global("bsReleaseFireElement","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		StartCutSceneMode()
+		DisplayStringHead(Myself,@11025)
+		SetGlobal("bsReleaseFireElement","MYAREA",1)
+		TakePartyItem("bsbarrl4")
+		DestroyItem("bsbarrl4")
+		GiveItemCreate("bsbarrl3",[PC],0,0,0)
+        	FadeToColor([20.0],0)
+        	Wait(3)
+        	FadeFromColor([20.0],0)
+		EraseJournalEntry(@901)
+		EraseJournalEntry(@904)
+		EraseJournalEntry(@906)
+		EraseJournalEntry(@910)
+		AddexperienceParty(1000)
+		AddJournalEntry(@902,QUEST_DONE)
+		SetGlobal("bsFireElementQuest","GLOBAL",10)
+		EndcutSceneMode()
+		SetInterrupt(TRUE)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11007)
+END

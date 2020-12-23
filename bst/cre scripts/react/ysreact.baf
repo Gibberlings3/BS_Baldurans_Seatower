@@ -1,0 +1,114 @@
+// Load a target to run away from if needed
+IF
+  Allegiance(Myself,ENEMY)
+	See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+		Continue()
+END
+
+// Female - one chance in ten to fight
+IF
+  ActionListEmpty()
+  Global("ysOnTheMove","LOCALS",0)
+  Gender(Myself,FEMALE)
+  Allegiance(Myself,ENEMY)
+  !RandomNum(9,9)
+THEN
+	RESPONSE #100
+		SetGlobal("ysFemaleRun","LOCALS",1)
+    RunAwayFrom(LastSeenBy(Myself),75)
+		Continue()
+END
+
+// Male - one chance in fifty to run away if not carrying a bow
+// and at least one of the party is within melee range
+IF
+  ActionListEmpty()
+  Global("ysOnTheMove","LOCALS",0)
+  Gender(Myself,MALE)
+  Allegiance(Myself,ENEMY)
+  !HasItem("%tutu_var%bow01",Myself)
+  !HasItem("%tutu_var%bow05",Myself)
+  OR(6)
+    Range(Player1,4)
+    Range(Player2,4)
+    Range(Player3,4)
+    Range(Player4,4)
+    Range(Player5,4)
+    Range(Player6,4)
+  RandomNum(49,49)
+THEN
+	RESPONSE #100
+		SetGlobal("ysMaleRun","LOCALS",1)
+    RunAwayFrom(LastSeenBy(Myself),45)
+END
+
+// If I'm going to fight and I can't see Player1 then move until I can see Player1
+// Don't allow re-evaluation of action until Player1 is in sight
+IF
+  ActionListEmpty()
+  Global("ysOnTheMove","LOCALS",0)
+  Allegiance(Myself,ENEMY)
+  Global("ysFemaleRun","LOCALS",0)
+  Global("ysMaleRun","LOCALS",0)
+  !LOS(Player1,30)
+THEN
+  RESPONSE #100
+    SetGlobal("ysOnTheMove","LOCALS",1)
+    MoveToObject(Player1)
+    Continue()
+END
+
+// Allow re-evaluation when the party is in sight
+// This will also set the initial target for attack
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    SetGlobal("ysOnTheMove","LOCALS",0)
+    Continue()
+END
+
+// Ranged - no female bow carriers
+IF
+  ActionListEmpty()
+  Gender(Myself,MALE)
+  Allegiance(Myself,ENEMY)
+  Global("ysMaleRun","LOCALS",0)
+  OR(2)
+    HasItem("%tutu_var%bow01",Myself)
+    HasItem("%tutu_var%bow05",Myself)
+  !Range(LastSeenBy(Myself),4)
+THEN
+  RESPONSE #100
+    EquipRanged()
+   	SmallWait(3)
+    Continue()
+END
+
+// Melee
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Global("ysFemaleRun","LOCALS",0)
+  Global("ysMaleRun","LOCALS",0)
+  Range(LastSeenBy(Myself),4)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+   	SmallWait(3)
+   	Continue()
+END
+
+// Now attack
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Detect([GOODCUTOFF])
+THEN
+ RESPONSE #100
+   AttackOneRound(LastSeenBy(Myself))
+END

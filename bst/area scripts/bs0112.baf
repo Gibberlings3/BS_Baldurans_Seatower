@@ -1,0 +1,17 @@
+/* Spawn guarding and working orcs */
+IF
+	Global("bsCreateOrcs","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsCreateOrcs","MYAREA",1)
+		CreateCreature("bsorcwrk",[1276.1193],12) //Orc Worker
+		CreateCreature("bsorcwrk",[1329.1313],10) //Orc Worker
+		CreateCreature("bsorcwrk",[1494.1237],0) //Orc Worker
+		CreateCreature("bsorcarc",[1589.1368],6) //Orc Archer
+		CreateCreature("bsorcmge",[1658.1101],6) //Orc Mage
+
+		CreateCreature("bsorcwrk",[1984.805],3) //Orc Worker
+		CreateCreature("bsorcarc",[2032.731],3) //Orc Archer
+		CreateCreature("bsorcarc",[2076.744],3) //Orc Archer
+		CreateCreature("bsorcprs",[2095.683],3) //Orc Priest
+END

@@ -1,0 +1,383 @@
+			BS Company Presents:
+                        ---  Balduran's Seatower  ---
+		Modification for BGT, BG:EE, and EET
+			
+
+This is an Early Access Open Beta version (EAOB). 
+Expect bugs and please report anything you'll find in the BST Forum at Gibberlings!	 
+All existing quests of the EAOB are finishable but more content is planned for future versions. 
+
+BS Balduran's Seatower Modification (BST) is a mod for BGT, BG:EE, and EET, adding a new area to Baldur's Gate City, with several larger and small quests and encounters inside the new city district as well as related additions to the existing areas.
+
+
+
+DESCRIPTION
+
+The Seatower Area is accessible via the far south-west corner of the Docks Disrict. After visiting once, it is accessible via the worldmap.
+In the Early Access Open Beta there is also a direct travel trigger from the docks to the seatower area.
+
+Note: After installation of the EAOB, you need to play a new game or at least a save where you did not visit the BG City Areas before.
+The Seatower Area is reachable via a direct travel trigger from the south-west corner of the Docks.
+For a new game, the Seatower Area will also be on the worldmap. 
+
+
+
+LIST OF COMPONENTS (EAOB)
+
+"An Orphan in the Seatower": 
+-------------------------------
+Given after talking to the "Legal Assistant" on the first floor of the Seatower (Inn). 
+
+Walkthrough: PC needs to talk to Lady Springfall on the second floor of the tower and tell her how the boy looks. PC can lie for evil quest end. Quest ends after meeting the boy on the first floor again.
+There are two quest ends:
+-if the PC lies to Lady Springfall she will abandon the boy.
+-if the PC tells the truth Lady Springfall will adopt the boy.
+Quest reward item is "Lars' Drawing" which has no use whatsoever. 
+
+
+"Cage the Rabbits":
+-------------------------------
+Given by Inn Master Roryn after incident on third floor for quest "Strange Happenings in Room No. 3.4" if none of the rabbit were killed. 
+
+Walkthrough: The PC receives a cage and has to cage the rabbits on the third level of the Seatower (done by klicking on the rabbits). Quest ends after giving the cage back to Inn Master Roryn.
+There is 11 rabbits in total. The quest can be ended any time by giving back the cage, quest reward is 50 gold for every caught rabbit. 
+
+
+"Confront the Slave Traders in Baldur's Gate": 
+-------------------------------
+Given by Seatower Commander. 
+
+Walkthrough: After learning that Leonhard "the Fierce" on the third floor of the Seatower is a slaver contact, the PC can tell the Seatower Commander about it. To confront the slave traders two things are needed:
+1. the PC needs to gather information about *where* the slavers will transfer slaves next.
+2. the PC needs to gather information about *when* the slavers will transfer slaves next.
+There are different possibilities to gather these information, depending on whether the PC is working with the smugglers or not (quest "Working with the Smugglers"):
+-If working with the smugglers, the PC will be summoned to Leonhard "the Fierce" into the Seatower and get information about when and where. With these information, the PC can go to the Seatower Commander.
+-Independent on whether the PC is working with the smugglers, the information can be gathered by freeing Shuck's brother (quest "Help Shuck's Brother") and telling the Seatower Commander about it, and killing Leonhard "the Fierce" which will drop a booklet with all the dates. In this case the knowledge about where will be aquired viy Shuck's freed brother by the Seatower Commander (PC has to leave and return to the Commander for him to have the information).
+3. After time and place are known, the slave traders can be confronted at night on the map with the bridge (Wyrm's Crossing) in the far south corner on the west bank of the river. A Flaming Fist Soldier will approach the PC before the meeting place of the slavers.
+4. The PC needs to fight the slavers at the meeting point.
+5. The quest is finished after talking to the Seatower Commander again.
+Note: in BG:EE/EET the area can be left at the west border. Do not leave the area during the fight with the slavers because returning via the worldmap will bring you to the bridge again and not into the south corner so you'll have to walk back to the meeting point which might be immersion breaking.
+Note: If the quest to save Shuck's brother was declined and the PC does not work with the smugglers, the slavers cannot be confronted. The booklet can still be brought to the Seatower Commander in case Leonhard was killed.
+Note: if the PC works with the smugglers (quest "Working with the Smugglers"), the slavers can be confronted without the smugglers turning hostile as long as Leonhard "the Fierce", the slaver contact, was not killed.
+
+
+"Dark Power in the Seatower Catacombs": 
+-------------------------------
+Given by abbot in the Ilmater Monastery. 
+
+Walkthrough: PC will receive two keys (for legacy reasons it's two). The first opens the tomb in the "Chionthar Tower", the second one opens the hidden door inside the tomb to the catacombs. PC needs to talk to the Restles Dead in the far away tomb of the catacombs (behind a hidden door). Quest ends after reporting to the abbot.
+Note: Depending on the behavior of the PC and whether the tombs are plundered, this quest can be finished without any fighting or a lot of fighting.
+
+
+"Doppelgangers Inside the Seatower": 
+-------------------------------
+This is the main quest inside the tower which is connected to a lot of other quests.
+Chapter 1-5: quest starts after or during quest "The Breach in the Seatower Prison": after the hole in the prison wall is reported to the Seatower Commander.
+After Sarevok was revealed in the Duchal Palace (or is dead/BGII): quest starts directly by speaking to the Seatower Commander the first time.
+Note: after the quest started there will be a quest timer of 5 to one ingame days depending on the quest status. Exceeding the timer while being away from the tower grounds or the seacave will set the quest to completed without the PC's help. 
+
+Walkthrough: 
+- Quest starts in the Seatower Commander's Office: he will be attacked by two doppelgangers.
+- PC gets quest to investigate the hole in the prison wall ("The Breach in the Seatower Prison"). 
+-PC has to go through the hole in the prison wall and further until the dopelgangers inside the tailor's shop are killed.
+-After reporting about the doppelgangers in the Tailor's Shop to the Seatower Commander )officially for quest "The Breach in the Seatower Prison"), quest will proceed.
+- PC will be asked to go into the barracks and help the Captain and the Seatower Mage against the doppelgangers inside the barracks. Refusing will skip to next quest status.
+- PC will be asked to help against the doppelgangers on the seatower grounds. Quest item: "Mimic Powder". Approaching or talking to certain soldiers on the tower grounds with quest item in inventory will make them turn into doppelgangers. Refusing will skip to next quest status. Note: Disguised doppelgangers could also be attacked directly. They need to turn into doppelgangers to be counted for the quest, though.
+Note: There is a total of five disguised doppelgangers on the tower grounds outside the barracks.
+--1 in front of the treasury [1981.1259].
+--1 on the balustrade between Dradeel's Tower and Dragon Tower [1532.1971].
+--1 on top of the Chionthar Tower [777.1563].
+--1 on the little balcony above the main entrance to the Seatower Inn (accessible from inside second floor) [3902.1287].
+--1 inside the South Harbor Tower.
+- PC can speed up the process by asking the tanner to use the Mimic Powder in one of his tubs to spread the fumes (activates quest "Liqueur for the Tanner" if not declined). If done so, all remaining doppelgangers will gather in front of the baracks. The amount of doppelgangers gathering in front of the barracks will be max 5 dependent on how many were already killed.
+Note: if going to the tanner by entering via the Chaintower and going clock wise to the Traitor's Tower, no disguised doppelgangers will be met on the way. If going via South Harbor Tower, 4 of 5 disguised doppelgangers will be met before reaching the tanner.
+- PC needs to talk to Captain again after defeating all 5 doppelgangers.
+- Quest ends by talking to Seatower Commander.
+
+
+"Fire Elemental in the Seatower Storeroom": 
+-------------------------------
+Given by cook if PC asks about quest item of quest "Halfslinger's Ale". 
+
+Walkthrough: Intermediate quest items: barrel (can be found in cellar), fletcher will coat it with a Potion of Fire Resistance if quest "The Fletcher's Feathers" is finished.
+There are five possible quest ends:
+- kill the fire elemental in the cellar
+- trap the fire elemental in a fire coated barrel and set it free into the tower's beacon flame (on top of the tower)
+- trap the fire elemental in a fire coated barrel and drown it in the well (evil quest solution, -1 to reputation)
+- trap the fire elemental in a fire coated barrel for more than two ingame days and kill it when it escapes the barrel.
+- report the fire elemental to the Captain in the barracks and let the soldiers handle it. The elemental will be gone next the PC goes into the kitchen.
+
+"Fire Proof Barrel for the Seatower Armorer": 
+-------------------------------
+Given by the armorer if asked whether he can make a barrel fire proof. 
+
+Walkthrough: Empty barrel has to be in the PC's inventory to ask. Quest can also be aquired via the fletcher: she will mention that the armorer is always in need of fire proof equipment. Armorer will ask the PC to also fill the barrel with water so he doesn't have to carry it. The fire coated barrel can be filled with water at the well on the seatower grounds after the quest "Fire Elemental in the Seatower Storeroom" is finished.
+Quest ends by selling the barrel to the armorer.
+
+
+"Halfslinger's Ale": 
+-------------------------------
+Given by Halfslinger (inside small house between Temple of Selune and Barracks).  
+
+Walkthrough: Quest item handed out by the cook after completion of the quest "Fire Elemental in the Seatower Storeroom".
+
+
+"Help Shuck's Brother": 
+-------------------------------
+Given by Shuck inside the Seatower Prison. 
+Prerequisite: quest "The Prisoner in the Seatower Prison" is aquired/finished.
+
+Walkthrough: 
+-after talking to Shuck, PC needs to go and talk to the smugglers at the Nashkell Carnival (south of the Lotus Tent).
+-talk to the "Innocent Berry Picker" and mention Shuck's Brother.
+-Smuggler will give the PC a voucher for Leonhard "the Fierce" on the third floor of the Seatower Inn.
+-PC needs to talk to Leonhard "the Fierce".
+-PC needs to bring 20,000 gold to Leonhard. Note: there is a timer of two ingame days. After that, the brother can no longer be bought free.
+Note: the gold can be aquired via the Seatower Commander, which will start the quest "Confront the Slave Traders in Baldur's Gate".
+-after paying the gold, Shuck's brother Nathoriel will be inside the Ilmater Monastery. The quest ends by talking to Nathoriel and then telling Shuck inside the prison about it.
+Note: Nathoriel can only be freed in case the PC goes through with these quest steps (i.e. if the smugglers are killed before giving the voucher, PC does not pay the gold in time, Leonhard was killed too early.)
+
+
+"Ingredients for the Seatower Mage": 
+-------------------------------
+Given by Seatower Mage Master Shizell on second floor of the tower. 
+
+Walkthrough: Quest ends when all requested items are brought to the mage.
+Items requested are:
+-Black Pearl. This Pearl can be found while doing the quest "The Breach in the Prison Wall" in the Seacave behind the hole in the prison wall.
+-Belladonna flower. One Belladona flower is added to the kitchen storeroom behind a locked door (accessible via quest "Fire Elemental in the Seatower Storeroom").
+-Winter Wolf pelt.
+-Ankheg shell.
+
+
+"Liqueur for the Tanner": 
+-------------------------------
+Given by the tanner after or during the quest "Doppelgangers Inside the Seatower". 
+
+Walkthrough: Quest items is three bottles of liqueur, quest ends by bringing all of them to the tanner.
+-Herb Liqueur: is in a wine shelf under the Tailor's Shop (accessible via the quest "The Breach in the Seatower Prison")
+-Plum Liqueur: is in Davaeorn's chambers (Cloakwood Mines)
+-Bitter Liqueur: is in Durlag's Tower, level with Riggilo
+
+
+"Missing Monk in the Seatower": 
+-------------------------------
+Given by Tower Guard Lenard on the outside door of the South Harbor Tower. Objective is to search for the monk Martina. 
+
+Walkthrough: PC needs to ask the beggar "Lime" in front of the Ilmater Shrine, then beggar "Blurt" in front of the Palace, then investigate the pile behind the Ilmater Shrine. Quest ends with Tower Guard Lenard appearing behind the shrine, too.
+The quest can be rejected. After finishing the quest, going to the Seatower Commander on the second floor of the tower will start the quest "The Prisoner in the Seatower Prison".
+
+
+"Myconides in the Seatower Prison": 
+-------------------------------
+Given by Tower Guard Jai after the PC entered the prison with a Prison Pass (from quest "Help Shuck's Brother" or "Doppelgangers Inside the Seatower" depending on game chapter). 
+
+Walkthrough: Quest end is if the Myconides and the spore colony in the Prison is destroyed. The spore colony is in the corner behind the cell door of the cell on the north wall.
+
+
+"Sea Troll Grease for the Seatower Winchman":  
+-------------------------------
+Given by Head Winchman Brydw in the Winch Tower.
+
+Walkthrough: PC needs to kill a Sea Troll and take the dropped item. Currently it's Sea Troll Grease but will be changed to Sea Troll Sebaceous Gland.
+Sea Troll currently is in the north of the Shipwreck Area at the beach.
+
+
+"The Breach in the Seatower Prison": 
+-------------------------------
+starts when quest "Myconides in the Seatower Prison" is finished and PC enters Seacave through the hole in the prison wall. 
+
+Walkthrough: This quest is about exploring everything behind the hole in the prison wall which leads into the Seacave. In chapters 1-5, returning to the Seatower Commander now will start the quest "Doppelgangers Inside the Seatower". Note: if the quest "Doppelgangers Inside the Seatower" is also active then there is a timer which cannot be exceeded or the quest "Doppelgangers Inside the Seatower" will end without the PC's help, so any investigation which will lead further away should be done later.
+The quest is finished if all findings are reported to the Seatower Commander:
+-seacave with buried Adjutant
+-exit to the Temple of Umberlee
+-exit to the Traitor's Tower - will leave the secret tunnel open
+-exit to the Docks
+-whereabouts of the smugglers under the tower
+-doppelgangers inside the tailor's shop.
+Reporting about the doppelgangers inside the Tailor's shop will also proceed the quest "Doppelgangers Inside the Seatower".
+
+
+"The Dead Adjutant": 
+-------------------------------
+Starts by fining the buried dead Adjutant in the Seacave. Prerequsisite is quest "The Breach in the Seatower Prison". 
+
+Walkthrough: Ends by reporting about the dead adjutant to the Seatower Commander.
+
+
+"The Fletcher's Feathers": 
+-------------------------------
+Given by Matha the fletcher. 
+
+Walkthrough: Quest item handed out by cook's assistant after talking to the cook first.
+
+
+"The Prisoner in the Seatower Prison": 
+-------------------------------
+Given by the Seatower Commander. Quest item is the Prison Pass which will grant access to the tower's prison. 
+Prerequisite: quest "Missing Monk in the Seatower" is finished or declined.
+
+Walkthrough: This is just an interim quest to get the PC into the prison without spoiling content via journal title. It ends once the PC talks to Shuck inside the prison. Getting access to the prison will start the quests "Myconides in the Seatower Prison" and "Help Shuck's Brother".
+
+
+"The Stolen Ilmater's Alms": 
+-------------------------------
+Given by Script if PC takes the stolen gold out of the trunk in Dragon Tower (only available after hearing about it, quest "Help Shuck's Brother"). 
+
+Walkthrough: Two possible quest ends: gold can be returned to the abbot in the Ilmater Monastery, or PC can lie to the abbot that the gold is gone and keep it.
+
+
+"The Tanner's Troubles": 
+-------------------------------
+Given by Tanner if talked to a second time. 
+
+Walkthrough: Requires talking to the Captain in the Barracks and reporting back to the tanner. Quest ends different depending on charisma and whether the PC is a gnome.
+
+
+"Rats in the Seatower Inn": 
+-------------------------------
+Quest given by Inn Master Roryn after finishing the quest "Cage the Rabbits". 
+
+Walkthrough: Quest starts by guest complaining about rats on the second floor while PC is near Inn Master Roryn. The "rats" is only one rat "Betsy" on the second floor of the tower, right at the stairs when coming up from below. Quest ends by giving the rat to Inn Master Roryn.
+There are two quest ends:
+-the rat was taken alive
+-the rat was killed and the carcass is given to Inn Master Roryn.
+
+
+"Strange Happenings in Room No. 3.4": 
+-------------------------------
+First journal entries by two guests inside the tower talking about rats and strange happenings in one of the rooms. Actual quest starts when PC talks to mage Klaus on the third floor of the tower. 
+
+Walkthrough: Quest ends outside when PC talks to Klaus again and fights the monster he conjures. After the fight Klaus will give the PC the quest "The Mysterious Scroll" and move to Ilmater Monastery.
+Leads to quest "Cage the Rabbits" if PC speaks to Inn Master Roryn after the incident inside the room.
+
+
+"Working for the Slavers": 
+-------------------------------
+Given by Leonhard "the Fierce" on the third floor of the tower. Prerequisite is giving him the voucher received for the quest "Help Shuck's Brother" and working for Holger ("Working for the Smugglers"). 
+
+Walkthrough: Quest ends after the slave trader's transfer of merchandise is finished. After finishing the (first) two quests for the smugglers and finishing the quest about Shuck's brother, one ingame day later there will be a message inside one of the BG city areas to call the PC to Leonahrd "the Fierce" inside the third level of the tower.
+There are several quest ends:
+-Slavers can be betrayed to the Seatower Commander (quest "Confront the Slave Traders in Baldur's Gate").
+-PC meets with slavers without telling the Seatower Commander.
+
+
+"Working with the Smugglers": 
+-------------------------------
+Given by Holger (the smuggler) on the Nashkell Carnival south of the Lotus Tent, only after talking to him for the quest "Help Shuck's Brother". 
+
+Walkthrough: PC has to ask to work for Holger. Holger will note the presence of paladins but give the PC a chance nontheless.
+-first quest is to deliver a sealed box to the cook in the Helm and Cloak (timer: three days)
+-second quest is to report back about the smugglers in the Seatower. The whereabouts of the smugglers in the Seatower will be known while doing the quest "The Breach in the Seatower Prison".
+-there is no more quests yet but this will be expanded on.
+Quest ends by reporting to Holger on the Nashkell Carnival south of the Lotus Tent. Smugglers will leave.
+After working for the smugglers, finishing quest "Help Shuck's Brother", and Leonhard "the Fierce" (slave trader contact on the third floor for the tower) still alive, the PC will get a message for quest "Working for the Slavers".
+Note: the smugglers will attack if Leonhard "the Fierce" inside the Seatower was killed.
+Easter Egg: when working / having worked for the smugglers, the smuggler in chapter 6 who offers to take the group inside the city will refer to Holger.
+
+
+INSTALLATION
+
+Note: If you've previously installed the mod, remove it before extracting the new version. To do this, uninstall all previously installed components and delete the mod folder and executables. When installing or uninstalling, do not close the DOS window by clicking on the X button! Instead, press the Enter key when instructed to do so.
+
+
+BGII:EE
+If you use BG Enhanced Edition from GOG or Steam, you need to prepare your game before installing any mods:
+Link: https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+
+(deprecated tool: 
+https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-based-dlc-into-something-weidu-nearinfinity-dltcep-can-use/p1)
+
+ 
+General (Windows, Mac OS X, and Linux)
+Make sure you back up your game acordingly, just to be sure. 
+
+Extract the contents of the mod archive to your game's main directory. 
+NOTE: For BG:EE it is important that you istall the mod to the language version you are playing the game in. Otherwise, the dialogues of the mod will not show but give error messages.
+
+
+Windows
+On successful extraction, there should be an bst folder and a setup-bst.exe file in your game folder. To install, simply double-click setup-bst.exe and follow the instructions on screen.
+Run setup-bst.exe in your game folder also to uninstall the mod.
+
+Mac OS X
+If properly extracted, you should have a bst folder, setup-bst, and setup-bst.command in your game's main directory folder. To install, simply double-click setup-bst.command and follow the instructions on screen.
+Also run setup-bst.command in your game folder to uninstall the mod.
+
+Linux
+Download the latest version of WeiDU for Linux from WeiDU.org and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, cd to your BG installation directory, run 'tolower' and answer Y to both queries. You can avoid running the second option (linux.ini) if you have already ran it once in the same directory. If you are unsure, running tolower and choosing both options is the safe bet.
+Run WeInstall setup-bst in your game folder to install the mod. Then run wine BGMain.exe and start playing.
+
+
+NOTE: BG(II):EE are actively supported games. Please note that every patch update will wipe your current mod setup! If in the middle of a modded game you might want to delay the patch update as even after reinstalling the mods, you might not be able to continue with your old savegames. 
+
+
+If you have installation problems or encounter any bugs, please post your bug report in one of the forum threads given below.
+
+Direkt links: 
+English forum: https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/
+
+German thread at Kerzenburgforum: https://baldurs-gate.de/index.php?threads/baldurans-seeturm-mod-in-entwicklung.44842/
+
+
+COMPATIBILITY
+
+BS Balduran's Seatower Mod is coded using WeiDU and does not overwrite any files. It should be compatible with most other (WeiDU) mods. 
+
+BP-Worldmap-Mod:
+-The Seatower Mod is independent of the Worldmap Mod, but compatible. The new area will be patched to the Worldmap of all compatible games (BGT, BG:EE, EET). If the Worldmap Mod is needed for other mods, the preferred order would be BST - Worldmap Mod.
+If the Worldmap Mod is installed after BST, the icon of the BST area will be also added but will be shifted on the worldmap.
+
+
+KNOWN ISSUES
+
+When uninstalling the mod there is error messages about "error copying" of several files (mainly are files) which can be ignored.
+
+There are several items that still miss description items.
+
+
+
++++++++++++++++Please do not translate below here ++++++++++++++++++++++++
+
+
+CREDITS
+
+The current list of credits is here:
+https://www.gibberlings3.net/forums/topic/30846-credits/
+
+
+
+TOOLS USED
+
+IESDP					https://gibberlings3.github.io/iesdp/index.htm
+Near Infinity				https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1
+WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
+ 					(formerly: http://www.weidu.org)
+grepWin					http://tools.stefankueng.com/grepWin.html
+WinMerge				http://winmerge.org/
+
+Modding communities, tutorials and technical assistance:
+
+The Gibberlings Three			https://www.gibberlings3.net/
+Pocket Plane Group			http://pocketplane.net
+Spellhold Studios			http://www.shsforums.net/
+Kerzenburgforum (German)		https://baldurs-gate.de/index.php
+The Black Wyrm's Lair			http://blackwyrmlair.net
+
+Further Links:
+DLC Merger 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+
+
+LEGAL INFORMATION
+
+==========================================================================
+This mod is not developed, supported, or endorsed by BioWare, Black Isle Studios, Interplay Entertainment Corp., the Wizards of the Coast, Overhaul Games or Beamdog. All other trademarks and copyrights are property of their respective owners.
+
+Just like anywhere else, the graphics and area art of the mod is copyrighted according to law to the respective artists.
+==========================================================================
+
+
+HISTORY
+
+Version EAOB.1 
+- first public release as Early Access Open Beta

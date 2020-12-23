@@ -1,0 +1,30 @@
+@8000    = ~Golden Disc~
+//@8001    = ~Golden Disc~
+@8002    = ~At first glance, this golden disc looks like an oversized coin, but it is way too large to be used as some kind of ancient currency. On its top side you recognize an embossed pentagram. It looks centuries old and seems to be very valuable.~
+//@8003    = ~At first glance, this golden disc looks like an oversized coin, but it is way too large to be used as some kind of ancient currency. On its top side you recognize an embossed pentagram. It looks centuries old and seems to be very valuable.~
+@8004	 = ~Long Sword +3~
+@8005	 = ~These swords are usually referred to as double-edged swords, war swords, or military swords. The blade hums slightly in your hand, the only overt evidence that magic runs through it.
+
+STATISTICS:
+
+THAC0: +3
+Damage: 1d8+3 (slashing)
+Speed Factor: 2
+Proficiency Type: Long Sword
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 2~
+@8006	    = ~Teleport without error~
+@8100		= ~Otyugh~
+@8101		= ~Otyugh~
+
+@8200		= ~You remove the last coin, and some kind of seal seems to be broken.~
+@8201		= ~The tension in this room is rising rapidly. You doubt that it's a good idea to remove the last coin.~
+@8203		= ~You can't decipher anything from this distance.~
+@8204		= ~Ancient runes in the middle of this heptagram say the following: 
+"Seven runes with six holy discs to find 
+to be placed on the edges the seventh to bind"~
+@8205		= ~This large heptagram is engraved with mysterious runes that you cannot decipher.~	  
+

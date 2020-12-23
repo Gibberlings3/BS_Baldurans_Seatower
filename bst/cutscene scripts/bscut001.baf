@@ -1,0 +1,22 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+        	CutSceneId(Player1)
+        	FadeToColor([20.0],0)
+        	Wait(1)
+        	ActionOverride("bssmgl01",Createcreature("bssmgl02",[-1.-1],0))
+        	SmallWait(1)
+        	ActionOverride("bssmgl01",DestroySelf())
+        	ActionOverride("bssmgl02",FaceObject(Player1))
+		CreateCreature("bssmgl03",[4246.3523],0)
+		CreateCreature("bssmgl03",[4346.3519],0)
+		CreateCreature("bssmgl03",[4281.3674],8)
+        	SmallWait(1)
+        	MoveViewObject(Player1,INSTANT)
+        	FadeFromColor([20.0],0)
+        	Wait(1)
+		EndcutSceneMode()
+        	ActionOverride("bssmgl02",StartDialogNoSet(Player1))
+END
+

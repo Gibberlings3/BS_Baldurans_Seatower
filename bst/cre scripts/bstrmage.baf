@@ -1,0 +1,29 @@
+/* Doppelganger in mage's study dead: mage should initialize dialogue */
+IF
+	Dead("bsdopp01")
+	Global("bsDoppel01Dead","GLOBAL",0)
+THEN
+	RESPONSE #100
+		StartDialogNoSet(Player1)
+END
+
+/* journal entry management "Ingredients for the Seatower Mage" */
+
+IF
+	Global("bsBlackPearlQuest","GLOBAL",2)
+	Global("bsBroughtBelladonna","LOCALS",1)
+	Global("bsBroughtWolfpelt","LOCALS",1)
+	Global("bsBroughtAnkheg","LOCALS",1)
+THEN
+	RESPONSE #100 
+		EraseJournalEntry(@850)
+		EraseJournalEntry(@851)
+		EraseJournalEntry(@852)
+		EraseJournalEntry(@853)
+		EraseJournalEntry(@854)
+		EraseJournalEntry(@855)
+		EraseJournalEntry(@857)
+		AddJournalEntry(@856,QUEST_DONE)
+		SetGlobal("bsBlackPearlQuest","GLOBAL",3)
+END
+
