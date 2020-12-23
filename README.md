@@ -28,10 +28,6 @@ Please refer to the [readme](https://gibberlings3.github.io/Documentation/readme
 
 ## LEGAL INFORMATION
 
-==========================================================================
 This mod is not developed, supported, or endorsed by BioWare, Black Isle Studios, Interplay Entertainment Corp., the Wizards of the Coast, Overhaul Games or Beamdog. All other trademarks and copyrights are property of their respective owners.
-
 Just like anywhere else, the graphics and area art of the mod is copyrighted according to law to the respective artists.
-==========================================================================
-
 
