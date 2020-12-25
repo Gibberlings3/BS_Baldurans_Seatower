@@ -1,7 +1,13 @@
 			BS Company Presents:
                         ---  Balduran's Seatower  ---
 		Modification for BGT, BG:EE, and EET
-			
+		
+
+*Citizens of Baldur's Gate!
+
+We are happy to give you the chance to take a stroll around the Balduran's Seatower!
+
+Enter and be at awe at the great architecture, the wonders, and hidden treasures that will await anyone bold enough to enter the tower with adventures in mind!*	
 
 This is an Early Access Open Beta version (EAOB). 
 Expect bugs and please report anything you'll find in the BST Forum at Gibberlings!	 
@@ -15,6 +21,14 @@ DESCRIPTION
 
 The Seatower Area is accessible via the far south-west corner of the Docks Disrict. After visiting once, it is accessible via the worldmap.
 In the Early Access Open Beta there is also a direct travel trigger from the docks to the seatower area.
+
+The Early Access Open Beta has approximately 50% of the planned content which can be played without any loose ends. It is directly compatible with BGT, BG:EE w/o SoD, and EET.
+
+If you need the Worldmap for other mods, install it after BST and use the current 10.2.6.
+
+You can play from a previous save if it is from before entering BG city for the first time. In this case, the Seatower will not show on your worldmap but is accessible through a direct travel link from the south west corner of the docks.
+
+Have a look at the readme to see a list of the available quests - but don't spoil yourself too much! Everything starts by entering the Seatower area. 
 
 Note: After installation of the EAOB, you need to play a new game or at least a save where you did not visit the BG City Areas before.
 The Seatower Area is reachable via a direct travel trigger from the south-west corner of the Docks.
@@ -378,6 +392,11 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 
 HISTORY
+
+Version EAOB.2:
+- (EE) areas of BST should not mangle original game areas because of PVZR naming scheme
+- added bst.ini to tupport ALIEN's Project Infinity
+- added more general mod/version descriptions to the readme.
 
 Version EAOB.1 
 - first public release as Early Access Open Beta
