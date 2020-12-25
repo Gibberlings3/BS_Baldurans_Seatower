@@ -15,6 +15,8 @@ END
 // tis files
 //##################################################
 
+/*
+!!tis for ee are integrate into bst/tis_bgee so the PVRZ naming will be consistent for the whole game and no ther area graphics will be mangeld. Putting a separate "UPDATE_PVRZ_INDICES" block here lead to black areas bs0113, bs0114.
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN
   COPY ~bst/bst_Highlevel/tis_bgee~   ~override~      // PVRZ tiles for v2 TIS files
 END
@@ -22,6 +24,7 @@ END
 ACTION_IF GAME_IS ~eet~ THEN BEGIN
   COPY ~bst/bst_Highlevel/tis_bgee~   ~override~      // PVRZ tiles for v2 TIS files
 END 
+*/
 
 ACTION_IF GAME_IS ~bgt~ THEN BEGIN // not Enhanced Edition
   COPY_LARGE ~bst/bst_Highlevel/tis_bg2~         ~override~      // use v1-format TIS files

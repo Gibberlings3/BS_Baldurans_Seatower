@@ -1,6 +1,6 @@
 BACKUP ~bst/backup~
 AUTHOR ~https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/~
-VERSION ~vEAOB.1~
+VERSION ~vEAOB.2~  
 
 // MODDER setup_tra NONE
 
@@ -1559,6 +1559,7 @@ BUT_ONLY
   ACTION_IF GAME_IS ~bgee eet~ BEGIN
     //COPY_LARGE ~bst/tis_bgee/.~ ~override/.~
     INCLUDE ~bst/lib/a7_pvrz_tis.tpa~
+
     ACTION_BASH_FOR ~bst/tis_bgee~ ~.*\.tis$~ BEGIN
       COPY ~%BASH_FOR_FILESPEC%~ ~override~
         LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
