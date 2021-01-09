@@ -28,7 +28,7 @@ END
 IF ~~ THEN lenard_03
 SAY ~Her name is Martina and she is a monk of the Ilmater Monastery here in the Tower. See... the captain doesn't approve of in-tower liaisons, it's not against any official rules but we all know he despises mingling of tower folks. So I'm a bit bound to keeping this low... I reported her missing already and the commander sent a comrade to investigate already, so anything I can do about this without deserting my post is done, I need an outsider to help.~
 = ~So, appearently Martina was seen at the Ilmater Shrine in north east Baldur's Gate before she left again, but that's now also over two week ago! The abbot thinks it's nothing uncommon and doesn't see a need for another search party. I know Martina helps the poor wherever she finds them and that her duties as monk of Ilmater means she will stay and help wherever she sees people in need, and it wouldn't be the first time this takes her away for weeks without notice. But this time it's been too long without any message to me, which is uncommon.~
-= ~I am quite desparate to hear any news. If you'd just go to the Ilmater Shrine in the north east of the town and ask about her whereabouts and whether she was seen after we searched for her, I would be really grateful and will give you a magical necklace I won in last year's sparring contest.~
+= ~I am quite desperate to hear any news. If you'd just go to the Ilmater Shrine in the north east of the town and ask about her whereabouts and whether she was seen after we searched for her, I would be really grateful and will give you a magical necklace I won in last year's sparring contest.~
 ++ ~I'll do it.~ DO ~SetGlobal("bsMissingMonk","GLOBAL",1)~ UNSOLVED_JOURNAL @793 + lenard_04
 ++ ~No, I don't have time for that.~ + lenard_02
 END
@@ -172,7 +172,7 @@ END
 
 IF ~~ THEN beggar02_04
 SAY ~Now that I think of it, I only saw him later. It was quite a while later, though, so I didn't give much to it, but now that I think of it - if he was behind the shrine all that time I'd wonder what he was doing, except maybe sleep off a hangover, heh. I didn't see Martina again, but since she went to spread the alms, I didn't expect her to come around the shrine anytime soon again, anyway.~
-++ ~You comrade said he didn't get any alms for a while now.~ + beggar02_06
+++ ~Your comrade said he didn't get any alms for a while now.~ + beggar02_06
 ++ ~Thank you for your help.~ + beggar02_08
 END
 

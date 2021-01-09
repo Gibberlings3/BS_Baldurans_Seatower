@@ -395,6 +395,7 @@ HISTORY
 
 Version EAOB.3:
 - fixed bsslvff.cre so it gives no warnings when installing SCS
+- typo corrections
 
 Version EAOB.2:
 - (EE) areas of BST should not mangle original game areas because of PVZR naming scheme

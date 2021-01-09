@@ -47,7 +47,7 @@ IF ~~ THEN + free_06
 END
 
 IF ~~ THEN free_06
-SAY ~I need to find him and see how he fares. The poor man, he must be really desparate... Thank you, my saviors. I have nothing on me that could be of use to you, but next time we meet, I'll have something ready to give you!~
+SAY ~I need to find him and see how he fares. The poor man, he must be really desperate... Thank you, my saviors. I have nothing on me that could be of use to you, but next time we meet, I'll have something ready to give you!~
 IF ~~ THEN DO ~SetGlobal("bsFreedUlf","GLOBAL",1) 
 EraseJournalEntry(@763)
 ActionOverride("bsghast2",CreateVisualEffectObject("SPDIMNDR",Myself))
