@@ -393,6 +393,9 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 HISTORY
 
+Version EAOB.3:
+- fixed bsslvff.cre so it gives no warnings when installing SCS
+
 Version EAOB.2:
 - (EE) areas of BST should not mangle original game areas because of PVZR naming scheme
 - added bst.ini to tupport ALIEN's Project Infinity
