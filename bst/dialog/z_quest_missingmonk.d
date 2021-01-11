@@ -114,7 +114,7 @@ END
 
 IF ~~ THEN beggar01_01
 SAY ~Thank you for your generosity!~
-+ ~Global("bsMissingMonk","GLOBAL",1) Global("bsAskedMissingMonk","MYAREA",0)~ + ~I am looking for a monk of Ilmater, Martina her name. Did you see her lately?~ DO ~SetGlobal("bsAskedMissingMonk","MYAREA",1)~ + beggar01_02
++ ~Global("bsMissingMonk","GLOBAL",1) Global("bsAskedMissingMonk","GLOBAL",0)~ + ~I am looking for a monk of Ilmater, Martina her name. Did you see her lately?~ DO ~SetGlobal("bsAskedMissingMonk","GLOBAL",1)~ + beggar01_02
 ++ ~Good day.~ EXIT
 END
 
