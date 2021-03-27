@@ -393,6 +393,9 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 HISTORY
 
+Version EAOB.5:
+- fixed face.ids directions
+
 Version EAOB.4:
 - Blurt should talk after Lime gave the info about him.
 - Changed reference in Fletcher's dialogue to Sword Coast instead of Amn.
