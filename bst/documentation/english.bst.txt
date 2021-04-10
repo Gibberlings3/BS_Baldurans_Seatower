@@ -398,6 +398,7 @@ Version EAOB.6:
 -(EE) barrel in ys0112.are should not disappear after some time.
 -Commander should initiate dialogue after doppelgangers are discovered.
 -Cook should always unlock (and now also open) door to storeroom.
+-Tower mage should give mimic blood and take gold if he sells it to the party.
 -Journal entries for tower mage fed ex quest should close if all items are brought.
 -Tanner should give XP for every liqueur each.
 -Corrected name in one line (Ulf -> Klaus).

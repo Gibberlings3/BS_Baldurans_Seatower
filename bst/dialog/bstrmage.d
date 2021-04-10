@@ -146,7 +146,8 @@ END
 
 IF ~~ THEN mimicblood_02
 SAY ~I do, actually. I would sell it to you for 500 gold.~
-++ ~Sounds like a good deal.~ DO ~TakePartyItem("MISC6Y") GiveGoldForce(500)~ + mimicblood_01
++ ~PartyGoldGT(499)~ + ~Sounds like a good deal.~ DO ~GiveItem("MISC6Y",[PC]) TakePartyGold(500)~ + mimicblood_01
++ ~!PartyGoldGT(499)~ + ~Seems I don't have enough gold.~ + open_shop
 ++ ~No, maybe I'll find another one elsewhere.~ + open_shop
 END
 
