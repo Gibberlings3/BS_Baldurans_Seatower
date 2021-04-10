@@ -1,6 +1,6 @@
 BACKUP ~bst/backup~
 AUTHOR ~https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/~
-VERSION ~vEAOB.5~  
+VERSION ~vEAOB.6~  
 
 // MODDER setup_tra NONE
 
@@ -142,31 +142,27 @@ BEGIN @1
 
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ @2
 //FORBID_COMPONENT ~setup-bp-bgt-worldmap.tp2~ ~0~ @3
+FORBID_COMPONENT ~EET_end.tp2~ ~0~ @5
+FORBID_COMPONENT ~EET_end.tp2~ ~1~ @5
 
 
 //***************************************************
 //Patch the user's ids files as necessary
 //***************************************************
-	APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~
-	              UNLESS ~CD_STATE_NOTVALID~
-	APPEND ~state.ids~ ~0x00102029 STATE_HARMLESS~
-								UNLESS ~0x00102029 STATE_HARMLESS~
-	APPEND ~state.ids~ ~0x00400010 STATE_NOT_VISIBLE~
-								UNLESS ~0x00400010 STATE_NOT_VISIBLE~
+  APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
 
-  APPEND ~shoutids.ids~ ~1001 POISONED~
-								UNLESS ~1001 POISONED~
-  APPEND ~shoutids.ids~ ~2024 SEE_ENEMY~
-								UNLESS ~2024 SEE_ENEMY~
-  APPEND ~shoutids.ids~ ~2001 HELP~
-								UNLESS ~2001 HELP~
 
-  APPEND ~specific.ids~ ~202 HAS_SHIELDS~
-								UNLESS ~202 HAS_SHIELDS~
-  APPEND ~specific.ids~ ~202 HAS_SHIELD~
-								UNLESS ~202 HAS_SHIELD~
-  APPEND ~specific.ids~ ~201 NEEDS_BREACH~
-								UNLESS ~201 NEEDS_BREACH~
+//  APPEND ~state.ids~ ~0x00102029 STATE_HARMLESS~ UNLESS ~0x00102029 STATE_HARMLESS~
+/* is STATE_NOT_TARGETABLE in EE */
+//  APPEND ~state.ids~ ~0x00400010 STATE_NOT_VISIBLE~ UNLESS ~0x00400010 STATE_NOT_VISIBLE~
+
+//  APPEND ~shoutids.ids~ ~1001 POISONED~ UNLESS ~1001 POISONED~
+//  APPEND ~shoutids.ids~ ~2024 SEE_ENEMY~ UNLESS ~2024 SEE_ENEMY~
+//  APPEND ~shoutids.ids~ ~2001 HELP~ UNLESS ~2001 HELP~
+
+//  APPEND ~specific.ids~ ~202 HAS_SHIELDS~ UNLESS ~202 HAS_SHIELDS~
+//  APPEND ~specific.ids~ ~202 HAS_SHIELD~ UNLESS ~202 HAS_SHIELD~
+//  APPEND ~specific.ids~ ~201 NEEDS_BREACH~ UNLESS ~201 NEEDS_BREACH~
 
 	APPEND ~ACTION.IDS~ ~31 SpellRES(S:RES*,O:Target*)~
 	              UNLESS ~31 SpellRES(S:RES\*,O:Target\*)~
@@ -176,8 +172,7 @@ REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ @2
 	              UNLESS ~113 ForceSpellRES(S:RES\*,O:Target)~
 	APPEND ~ACTION.IDS~ ~114 ForceSpellPointRES(S:RES*,P:Target)~
 	              UNLESS ~114 ForceSpellPointRES(S:RES\*,P:Target)~
-	APPEND ~ACTION.IDS~ ~147 RemoveSpellRES(S:Spell*)~
-	              UNLESS ~147 RemoveSpellRES(S:Spell\*)~
+	APPEND ~ACTION.IDS~ ~147 RemoveSpellRES(S:Spell*)~ UNLESS ~147 RemoveSpellRES(S:Spell\*)~
 	APPEND ~ACTION.IDS~ ~160 ApplySpellRES(S:RES*,O:Target)~
 	              UNLESS ~160 ApplySpellRES(S:RES\*,O:Target)~
 	APPEND ~ACTION.IDS~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
@@ -194,8 +189,8 @@ REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ @2
 	              UNLESS ~319 ForceSpellPointRangeRES(S:RES\*,P:Target)~
 	APPEND ~ACTION.IDS~ ~337 ReallyForceSpellPointRES(S:RES*,P:Target*)~
 	              UNLESS ~337 ReallyForceSpellPointRES(S:RES\*,P:Target\*)~
-	APPEND ~ACTION.IDS~ ~7 CreateCreature(S:NewObject*,P:Location*,I:Face*Face)~
-								UNLESS ~7 CreateCreature(S:NewObject*,P:Location*,I:Face*Face)~
+
+//	APPEND ~ACTION.IDS~ ~7 CreateCreature(S:NewObject*,P:Location*,I:Face*Face)~ UNLESS ~7 CreateCreature(S:NewObject*,P:Location*,I:Face*Face)~
 
 	APPEND ~TRIGGER.IDS~ ~0x00A1 SpellCastOnMeRES(S:Spell*,O:Caster*)~
 	              UNLESS ~0x00A1 SpellCastOnMeRES(S:Spell\*,O:Caster\*)~
@@ -210,8 +205,8 @@ REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ @2
 	APPEND ~TRIGGER.IDS~ ~0x40D5 ActuallyInCombat()~
 	              UNLESS ~0x40D5 ActuallyInCombat()~
 
-	COPY ~bst/ids/formatio.ids~ ~override/formatio.ids~
-	COPY ~bst/ids/face.ids~ ~override/face.ids~
+//	COPY ~bst/ids/formatio.ids~ ~override/formatio.ids~
+//	COPY ~bst/ids/face.ids~ ~override/face.ids~
 
 //****************************************************
 // Patch the harbour to accept a new entrance and exit
