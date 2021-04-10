@@ -398,6 +398,8 @@ Version EAOB.6:
 -(EE) barrel in ys0112.are should not disappear after some time.
 -Commander should initiate dialogue after doppelgangers are discovered.
 -Cook also opens door to storeroom.
+-Journal entries for tower mage fed ex quest should close if all items are brought.
+-Tanner should give XP for every liqueur each.
 -Corrected name in one line (Ulf -> Klaus).
 -(BGT) description BAMs for Betsy the Rat (alive & dead).
 -Corrected location of plum liqueur in readme.
