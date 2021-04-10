@@ -94,7 +94,7 @@ Walkthrough:
 - Quest starts in the Seatower Commander's Office: he will be attacked by two doppelgangers.
 - PC gets quest to investigate the hole in the prison wall ("The Breach in the Seatower Prison"). 
 -PC has to go through the hole in the prison wall and further until the dopelgangers inside the tailor's shop are killed.
--After reporting about the doppelgangers in the Tailor's Shop to the Seatower Commander )officially for quest "The Breach in the Seatower Prison"), quest will proceed.
+-After reporting about the doppelgangers in the Tailor's Shop to the Seatower Commander (officially for quest "The Breach in the Seatower Prison"), quest will proceed.
 - PC will be asked to go into the barracks and help the Captain and the Seatower Mage against the doppelgangers inside the barracks. Refusing will skip to next quest status.
 - PC will be asked to help against the doppelgangers on the seatower grounds. Quest item: "Mimic Powder". Approaching or talking to certain soldiers on the tower grounds with quest item in inventory will make them turn into doppelgangers. Refusing will skip to next quest status. Note: Disguised doppelgangers could also be attacked directly. They need to turn into doppelgangers to be counted for the quest, though.
 Note: There is a total of five disguised doppelgangers on the tower grounds outside the barracks.
@@ -149,7 +149,7 @@ Walkthrough:
 -PC needs to bring 20,000 gold to Leonhard. Note: there is a timer of two ingame days. After that, the brother can no longer be bought free.
 Note: the gold can be aquired via the Seatower Commander, which will start the quest "Confront the Slave Traders in Baldur's Gate".
 -after paying the gold, Shuck's brother Nathoriel will be inside the Ilmater Monastery. The quest ends by talking to Nathoriel and then telling Shuck inside the prison about it.
-Note: Nathoriel can only be freed in case the PC goes through with these quest steps (i.e. if the smugglers are killed before giving the voucher, PC does not pay the gold in time, Leonhard was killed too early.)
+Note: Nathoriel can only be freed in case the PC goes through with these quest steps, otherwise quest will fail (i.e. if the smugglers are killed before giving the voucher, PC does not pay the gold in time, Leonhard was killed too early.)
 
 
 "Ingredients for the Seatower Mage": 
@@ -170,7 +170,7 @@ Given by the tanner after or during the quest "Doppelgangers Inside the Seatower
 
 Walkthrough: Quest items is three bottles of liqueur, quest ends by bringing all of them to the tanner.
 -Herb Liqueur: is in a wine shelf under the Tailor's Shop (accessible via the quest "The Breach in the Seatower Prison")
--Plum Liqueur: is in Davaeorn's chambers (Cloakwood Mines)
+-Plum Liqueur: is in Ye Olde Inn (AR1113 in BG:EE)
 -Bitter Liqueur: is in Durlag's Tower, level with Riggilo
 
 
@@ -393,6 +393,17 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 HISTORY
 
+Version EAOB.6:
+-(EE) coins in bs0114.are should not disappear after some time.
+-Commander should initiate dialogue after doppelgangers are discovered.
+-Corrected name in one line (Ulf -> Klaus).
+-(BGT) description BAMs for Betsy the Rat (alive & dead).
+-Corrected location of plum liqueur in readme.
+-removed unnecessary copy of bswllspy.cre.
+-typo corrections.
+-Added check to forbit installation after EET_End.
+-removed unnecessary changes to action.ids and copying of "face.ids" and "formatio.ids" to override
+
 Version EAOB.5:
 - fixed face.ids directions
 
@@ -402,7 +413,6 @@ Version EAOB.4:
 
 Version EAOB.3:
 - fixed bsslvff.cre so it gives no warnings when installing SCS
-- typo corrections
 
 Version EAOB.2:
 - (EE) areas of BST should not mangle original game areas because of PVZR naming scheme
