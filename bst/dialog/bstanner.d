@@ -487,22 +487,21 @@ END //APPEND
 CHAIN
 IF ~~ THEN bstanner liqueurquest
 @2655 /* ~Hm? Oh yes, I see.~ */
-== bstanner IF ~PartyHasItem("bsdpliqu")~ THEN @2656 /* ~"Herb Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1)~
+== bstanner IF ~PartyHasItem("bsdpliqu")~ THEN @2656 /* ~"Herb Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1) AddexperienceParty(150)~
 == bstanner IF ~PartyHasItem("bsdpliqu")~ THEN @2657 /* ~Not bad. Rich flavor.~ */ DO ~TakePartyItem("bsdpliqu") DestroyItem("bsdpliqu")~
-== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2658 /* ~"Calimshan Plum Liqueur".~ */DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1)~
-== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2659 /* ~That's a nice one indeed.~ */DO ~TakePartyItem("bsdpliq1") DestroyItem("bsdpliq1")~
-== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2660 /* ~"Amnian Bitter Liqueur".~ */DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1)~
-== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2661 /* ~Yes, this will do.~ */ DO ~TakePartyItem("bsdpliq2") DestroyItem("bsdpliq2")~
+== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2658 /* ~"Calimshan Plum Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1) AddexperienceParty(150)~
+== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2659 /* ~That's a nice one indeed.~ */ DO ~TakePartyItem("bsdpliq1") DestroyItem("bsdpliq1")~
+== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2660 /* ~"Amnian Bitter Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1) AddexperienceParty(150)~
+== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2661 /* ~Yes, this will do.~ */  DO ~TakePartyItem("bsdpliq2") DestroyItem("bsdpliq2")~
 == bstanner @2662 /* ~Let me stow this away so the guard idiots don't see it when they come in here.~ */
 END
 IF ~~ THEN EXIT
 /* PC brings them for compensation - no pay */
-IF ~Global("bsTannerQuest","GLOBAL",2)~ THEN DO ~AddexperienceParty(150)
-EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",3)~ THEN DO ~AddexperienceParty(150) EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",4)~ THEN DO ~AddexperienceParty(150) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",2)~ THEN DO ~EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",3)~ THEN DO ~EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",4)~ THEN DO ~EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
 
 /* PC brings them as quest - gets pay */
-IF ~Global("bsTannerQuest","GLOBAL",6)~ THEN DO ~AddexperienceParty(150) GiveGoldForce(100) EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",7)~ THEN DO ~AddexperienceParty(150) GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",8)~ THEN DO ~AddexperienceParty(150) GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",6)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",7)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",8)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
