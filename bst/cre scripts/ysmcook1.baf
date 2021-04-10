@@ -13,20 +13,6 @@ END
 
 // Normal actions
 
-IF 
-    Global("bsFireElementQuest","GLOBAL",1)
-THEN
-  RESPONSE #100
-    SetInterrupt(FALSE)
-    MoveToObjectNoInterrupt("Door0002")
-    Unlock("Door0002" )
-    OpenDoor("Door0002")
-    DisplayStringHead(Myself,@11043)
-    SetGlobal("bsFireElementQuest","GLOBAL",2)
-    SetInterrupt(TRUE)
-END
-
-
 //walking around the kitchen
 IF
   True()

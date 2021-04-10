@@ -1,6 +1,18 @@
+/* Open door to the storeroom - cook */
+IF 
+    Global("bsFireElementQuest","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    ActionOverride("ysmcook1",MoveToObjectNoInterrupt("Door0002"))
+    Unlock("Door0002" )
+    OpenDoor("Door0002")
+    DisplayStringHead("ysmcook1",@11043)
+    SetGlobal("bsFireElementQuest","GLOBAL",2)
+    SetInterrupt(TRUE)
+END
+
 // Create Lars and the Attendant, Quest "An Orphan in the Seatower"
-
-
 IF
   Global("bsCreateRoryn","MYAREA",0)
 THEN
