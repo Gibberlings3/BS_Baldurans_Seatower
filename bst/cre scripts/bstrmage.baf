@@ -11,9 +11,9 @@ END
 
 IF
 	Global("bsBlackPearlQuest","GLOBAL",2)
-	Global("bsBroughtBelladonna","LOCALS",1)
-	Global("bsBroughtWolfpelt","LOCALS",1)
-	Global("bsBroughtAnkheg","LOCALS",1)
+	Global("bsBroughtBelladonna","GLOBAL",1)
+	Global("bsBroughtWolfpelt","GLOBAL",1)
+	Global("bsBroughtAnkheg","GLOBAL",1)
 THEN
 	RESPONSE #100 
 		EraseJournalEntry(@850)
