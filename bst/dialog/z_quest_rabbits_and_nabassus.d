@@ -55,7 +55,7 @@ ActionOverride("bsghast2",DestroySelf())~ UNSOLVED_JOURNAL @764 EXIT
 END
 
 IF ~~ THEN free_07
-SAY ~Crazy Mage? Are you talking about Ulf, by any chance?~
+SAY ~Crazy Mage? Are you talking about Klaus, by any chance?~
 ++ ~I think that was his name, yes. He was searching for someone strong enough to save "him". So I guess he was referring to you?~ + free_05
 ++ ~What of it?~ + free_04
 END
