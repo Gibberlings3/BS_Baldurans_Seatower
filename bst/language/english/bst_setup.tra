@@ -4,6 +4,7 @@
 @2 = ~You are installing to the wrong game.~
 @3 = ~This mod should be installed BEFORE the Worldmap mod.~
 @4 = ~Updating Worldmap...~
+@5 = ~This mod needs to be installed before EET_End on your EET install.~
 
 //******************
 // Mapnotes and info points
@@ -914,8 +915,8 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @1168 = ~Matha the Fletcher at your service. What can I do for you?~
 @1169 = ~A fletcher eh? I see more than just arrows here.~
 @1170 = ~I'll be leaving, good day to you.~
-@1171 = ~The finest arrows and the finest bows on all the Sword Coast.. Take your pick - if you have the gold, of course.~
-@1172 = ~'The finest arrows and the finest bows on all the Sword Coast.'?~
+@1171 = ~The finest arrows and the finest bows on all the Sword Coast. Take your pick - if you have the gold, of course.~
+@1172 = ~'The finest arrows and the finest bows on all the Sword Coast'?~
 @1173 = ~[Spelling error in name is on purpose!] Well... alright. Baldur's Gate then. I don't really know how good the bows and arrows are in -say- Purskal.~
 @1174 = ~Not that brilliant, trust me.~
 @1175 = ~[Spelling error in name is on purpose!] Ah! Well at least I know I'm better than the fletchers and bowyers in Purskal!~
@@ -1984,7 +1985,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @3706 = ~With pleasure. Please wait until I am finished.~
 @3707 = ~There, all of you should be as good as new. Ilmater's Blessing be with you.~
 @3708 = ~Welcome again.~
-@3709 = ~Well... we would have a task for a group of fearless adventurers. There is evil inside the tower's catacombs, and usually we monks of Ilmater take care it does not accumulate to a point where it cannot be handled properly. Unfortunately, due to recent events we were not able to do our incantations regularly and now we are not sure what manifested inside. We would need someone with the necessary capabilities to go into the inner sanctuary and look what they'll find.~ 
+@3709 = ~Well... we would have a task for a group of fearless adventurers. There is evil inside the tower's catacombs, and usually we monks of Ilmater take care it does not accumulate to a point where it cannot be handled properly. Unfortunately, due to recent events we were not able to do our incantations regularly and now we are not sure what has manifested inside. We would need someone with the necessary capabilities to go into the inner sanctuary and see what they can find.~ 
 @3710 = ~What do you think would await me there?~
 @3711 = ~I'll do it.~
 @3712 = ~What would be the reward?~

@@ -50,7 +50,7 @@ Global("bsMissingMonk","GLOBAL",5)~ THEN ~It's the gold I wanted... I never mean
 END
 ++ ~So, your brother is addicted to Black Lotus and you expect me to bail him out of his debts?~ + shuck_04_1
 ++ ~Smugglers in Nashkel? Tell me more.~ + shuck_06
-+ ~Global("bsSmugglerAttacked","GLOBAL",3)~ + ~Smugglers in Nashkel? Hm.. I might have an idea who that would be. Tell me more.~ + shuck_06
++ ~Global("bsSmugglerAttacked","GLOBAL",3)~ + ~Smugglers in Nashkel? Hm... I might have an idea who that would be. Tell me more.~ + shuck_06
 ++ ~And you expect me to do what?~ + shuck_05
 
 APPEND bsshuck
