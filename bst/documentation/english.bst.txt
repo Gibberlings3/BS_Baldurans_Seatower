@@ -395,6 +395,7 @@ HISTORY
 
 Version EAOB.6:
 -(EE) coins in bs0114.are should not disappear after some time.
+-(EE) barrel in ys0112.are should not disappear after some time.
 -Commander should initiate dialogue after doppelgangers are discovered.
 -Cook also opens door to storeroom.
 -Corrected name in one line (Ulf -> Klaus).

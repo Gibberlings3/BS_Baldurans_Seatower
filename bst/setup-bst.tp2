@@ -1519,7 +1519,8 @@ COPY_EXISTING ~ys0112.ARE~ ~override~
     fj_loc_y          = 329
     fj_type           = 4 //pile
     fj_lock_diff      = 0
-    fj_trap_remove_diff = 0
+    fj_trap_remove_diff = 0    
+    fj_flags       = 0b00000000000000000001000000
 /*
     fj_box_left       = 366
     fj_box_top        = 261
