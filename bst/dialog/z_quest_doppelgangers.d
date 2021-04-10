@@ -53,7 +53,7 @@ IF ~~ THEN DO ~ActionOverride("bstrcmdr",ReallyForceSpellRES("SPPR607",Myself)) 
 SetGlobal("bsDoppelgangerQuest","GLOBAL",5)
 ClearAllActions()
 StartCutSceneMode()
-StartCutScene("bscut002")~ EXIT
+StartCutScene("bscut007")~ EXIT
 END
 
 END //APPEND
