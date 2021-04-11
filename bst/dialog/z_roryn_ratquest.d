@@ -317,7 +317,7 @@ IF ~~ THEN bstq010 rat_02
 == ~%SKIE_JOINED%~ IF ~InParty("skie") InMyArea("skie") !StateCheck("skie",CD_STATE_NOTVALID)~ THEN ~*Who* would take a *rat* as a pet?! Ewwwww!~
 == ~%ELDOTH_JOINED%~ IF ~InParty("eldoth") InMyArea("eldoth") !StateCheck("eldoth",CD_STATE_NOTVALID)~ THEN ~There is all sorts of ladies here with their offspring, who knows what those spoilt brats like to do to pass their time.~
 == ~%SKIE_JOINED%~ IF ~InParty("skie") InMyArea("skie") !StateCheck("skie",CD_STATE_NOTVALID)~ THEN ~Oh, you mean to anger the nanny? Hm... But a *rat*? Ewwwww!~
-== %IMOEN_JOINED% IF ~InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN ~How about Minsc takes it and I get Boo?~
+== %IMOEN_JOINED% IF ~InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID) InParty("MINSC")~ THEN ~How about Minsc takes it and I get Boo?~
 == ~%MINSC_JOINED%~ IF ~InParty("MINSC") InMyArea("MINSC") !StateCheck("MINSC",CD_STATE_NOTVALID) HasItem("MISC84","MINSC")
 InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN ~It will be a cold day in hell before I give up Boo!~
 == ~%MINSC_JOINED%~ IF ~InParty("MINSC") InMyArea("MINSC") !StateCheck("MINSC",CD_STATE_NOTVALID) HasItem("MISC84","MINSC")~ THEN ~<CHARNAME> has to take care of squeeking companion for whomever it belongs now!~
