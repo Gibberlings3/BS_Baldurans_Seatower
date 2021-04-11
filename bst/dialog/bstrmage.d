@@ -106,8 +106,8 @@ IF ~~ THEN DO ~EraseJournalEntry(@850)~ UNSOLVED_JOURNAL @851 EXIT
 END
 
 IF ~~ THEN pearl
-SAY ~A black pearl! You are the first one to actually return with one. And it was... it was right under this tower?! Now I feel foolish. All this time it was right behind a wall... Thank you for bringing it to me. Here is 5000 gold as compensation.~
-IF ~~ THEN DO ~GiveGoldForce(5000) 
+SAY ~A black pearl! You are the first one to actually return with one. And it was... it was right under this tower?! Now I feel foolish. All this time it was right behind a wall... Thank you for bringing it to me. Here is 2000 gold as compensation.~
+IF ~~ THEN DO ~GiveGoldForce(2000) 
 EraseJournalEntry(@850)
 EraseJournalEntry(@851)
 EraseJournalEntry(@858)
