@@ -174,7 +174,7 @@ END
 IF ~Global("bsTalkedToTanner","GLOBAL",1)~ THEN BEGIN 20
 	SAY @2530 /* ~Ah, you again. You got passed those awful guards okay?~ */
 	IF~~THEN REPLY @2531 /* ~Yes, why?~ */ GOTO 21
-	IF~~THEN REPLY @2609 /* ~"Awful guards"?~ */ GOTO 21
+	IF~~THEN REPLY @2660 /* ~"Awful guards"?~ */ GOTO 21
 	IF~~THEN REPLY @2554 /* ~Good day to you.~ */ EXIT
 END
 
@@ -499,9 +499,9 @@ IF ~~ THEN EXIT
 /* PC brings them for compensation - no pay */
 IF ~Global("bsTannerQuest","GLOBAL",2)~ THEN DO ~EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
 IF ~Global("bsTannerQuest","GLOBAL",3)~ THEN DO ~EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",4)~ THEN DO ~EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",4)~ THEN DO ~EraseJournalEntry(@874) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
 
 /* PC brings them as quest - gets pay */
 IF ~Global("bsTannerQuest","GLOBAL",6)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
 IF ~Global("bsTannerQuest","GLOBAL",7)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",8)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
+IF ~Global("bsTannerQuest","GLOBAL",8)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@874) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
