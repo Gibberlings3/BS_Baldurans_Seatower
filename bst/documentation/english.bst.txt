@@ -416,7 +416,7 @@ Version EAOB.6:
 -Corrected location of plum liqueur in readme.
 -removed unnecessary copy of bswllspy.cre.
 -typo corrections.
--Added check to forbit installation after EET_End.
+-Added check to forbid installation after EET_End.
 -removed unnecessary changes to action.ids and copying of "face.ids" and "formatio.ids" to override
 
 Version EAOB.5:
