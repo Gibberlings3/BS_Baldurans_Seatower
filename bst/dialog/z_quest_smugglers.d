@@ -191,9 +191,9 @@ SAY ~There you are again! Any news from my brother?~
 + ~OR(3)
 Global("bsShucksBrother","GLOBAL",4)
 Global("bsShucksBrother","GLOBAL",5)
-Global("bsShucksBrother","GLOBAL",6)~ + ~The sum is paid, he will be in safety shortly.~ DO ~SetGlobal("bsShuckTalk28","GLOBAL",1)~ + shuck_28
+Global("bsShucksBrother","GLOBAL",6)~ + ~The sum is paid, he will be in safety shortly.~ DO ~SetGlobal("bsShuckTalk28","MYAREA",1)~ + shuck_28
 + ~Global("bsShucksBrother","GLOBAL",2) !Global("bsShucksBrother","GLOBAL",40)~ + ~Well, appearently he was sold to slave traders... I'm on it, though.~ + shuck_23
-+ ~Global("bsShucksBrother","GLOBAL",3)~ + ~I know how to buy him free, but the slavers want 20,000 gold!~ + shuck_25
++ ~Global("bsShucksBrother","GLOBAL",3)~ + ~I know how to buy him free, but the slavers want 20,000 gold!~ DO ~SetGlobal("bsShuckKnowsSum","MYAREA",1)~ + shuck_25
 + ~Global("bsShucksBrother","GLOBAL",41)~ + ~Well... I think I was a bit too amitious there. The smugglers didn't have time to tell me where your brother is now, but at least I killed the lot!~ + shuck_16
 + ~Global("bsShucksBrother","GLOBAL",30)~ + ~Hm, I decided I don't care. Sorry.~ + shuck_16
 + ~Global("bsShucksBrother","GLOBAL",35)~ + ~I waited too long to make the deal with the slave traders... I am sorry, he is out of my reach.~ + shuck_26
@@ -240,8 +240,9 @@ END
 
 IF ~~ THEN shuck_27
 SAY ~He... he is?~
-IF ~~ THEN + shuck_28
-IF ~Global("bsShuckTalk28","GLOBAL",1)~ THEN + shuck_29
+IF ~Global("bsShuckKnowsSum","MYAREA",0)~ THEN + shuck_31
+IF ~Global("bsShuckKnowsSum","MYAREA",1)~ THEN + shuck_28
+IF ~Global("bsShuckTalk28","MYAREA",1)~ THEN + shuck_29
 END
 
 IF ~~ THEN shuck_28
@@ -263,12 +264,11 @@ SAY ~I thank you for your help. I will pray for you every day.~
 IF ~~ THEN EXIT
 END
 
-/*
-IF ~~ THEN shuck_
-SAY 
+IF ~~ THEN shuck_31
+SAY ~Something tells me it was more complicated than just giving the smugglers the gold I had. I thank you! Thank you!~
+IF ~~ THEN EXIT
+IF ~Global("bsShucksBrother","GLOBAL",7)~ THEN + shuck_29
 END
-
-*/
 
 END //APPEND
 
@@ -336,7 +336,8 @@ END
 
 IF ~~ THEN talk_05
 SAY ~Have a good day then. And, say 'hello' to my brother, will you? The shiny knight stuck in prison, who would have guessed.~
-IF ~~ THEN DO ~
+IF ~~ THEN EXIT
+IF ~GlobalLT("bsShucksBrother","GLOBAL",7)~ THEN DO ~
 EraseJournalEntry(@812)
 EraseJournalEntry(@813)
 SetGlobal("bsShucksBrother","GLOBAL",7)~ UNSOLVED_JOURNAL @814 EXIT
@@ -374,7 +375,6 @@ SAY ~(wails) You leave me at the commander's mercy? Didn't you hear about his in
 + ~Global("bsNathorielTalk03","MYAREA",0)~ + ~That's also a way to say "thank you", I guess.~ DO ~SetGlobal("bsNathorielTalk03","MYAREA",1)~ + talk_03
 + ~Global("bsNathorielTalk01","MYAREA",0)~ + ~Now what, I thought I'd put you into my mine where you can work your debts off for the rest of your life.~ DO ~SetGlobal("bsNathorielTalk01","MYAREA",1)~ + talk_01
 + ~Global("bsNathorielTalk04","MYAREA",0)~ + ~You are lucky I was ready to part with such a great sum for someone I don't even know.~ DO ~SetGlobal("bsNathorielTalk04","MYAREA",1)~ + talk_04
-++ ~You are lucky I was ready to part with such a great sum for someone I don't even know.~ + talk_04
 ++ ~This has nothing to do with your former life - or has it? This is about you being a slave trader victim, and a help to bring justice to the other victims and the city!~ + talk_05 
 ++ ~You come to strength now, the monks should see to your recovery.~ + talk_05
 ++ ~Well then, good bye.~ + talk_05 
