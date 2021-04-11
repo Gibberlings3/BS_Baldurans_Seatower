@@ -189,11 +189,11 @@ Given by Tower Guard Jai after the PC entered the prison with a Prison Pass (fro
 Walkthrough: Quest end is if the Myconides and the spore colony in the Prison is destroyed. The spore colony is in the corner behind the cell door of the cell on the north wall.
 
 
-"Sea Troll Grease for the Seatower Winchman":  
+"Sea Troll Sebaceous Gland for the Seatower Winchman":  
 -------------------------------
 Given by Head Winchman Brydw in the Winch Tower.
 
-Walkthrough: PC needs to kill a Sea Troll and take the dropped item. Currently it's Sea Troll Grease but will be changed to Sea Troll Sebaceous Gland.
+Walkthrough: PC needs to kill a Sea Troll and take the dropped item. 
 Sea Troll currently is in the north of the Shipwreck Area at the beach.
 
 
@@ -400,8 +400,18 @@ Version EAOB.6:
 -Cook should always unlock (and now also open) door to storeroom.
 -Tower mage should give mimic blood and take gold if he sells it to the party.
 -Journal entries for tower mage fed ex quest should close if all items are brought.
+-Fixed reply option in tanner's dialogue.
 -Tanner should give XP for every liqueur each.
+-Journal entry about tanner's liqueur should be removed after completing the quest.
+-There should be no doubled reply option in dialogue with Nathoriel.
+-Shuck should only know about the exact sum if the PC told him.
+-Quest about Shuck's brother should close properly, ending and journal entry should not loop when talking to one after the other.
+-Restless Dead skeletons should not drop +1 weapons and give XP when killed.
+-Reward for Black Pearl lowered to 2000 gold.
+-Betsy the rat: Imoen should only mention Minsc if he is in party.
+-Messenger for smuggler/slaver quest should spawn on main tower area, as well.
 -Corrected name in one line (Ulf -> Klaus).
+-Corrected readme quest description for winchman (Troll Sebaceous Gland instead of Troll Grease).
 -(BGT) description BAMs for Betsy the Rat (alive & dead).
 -Corrected location of plum liqueur in readme.
 -removed unnecessary copy of bswllspy.cre.

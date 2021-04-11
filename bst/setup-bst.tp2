@@ -2,8 +2,6 @@ BACKUP ~bst/backup~
 AUTHOR ~https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/~
 VERSION ~vEAOB.6~
 
-// MODDER setup_tra NONE
-
 README ~bst/documentation/english.bst.txt~
 
 ALWAYS
@@ -656,7 +654,7 @@ END
 	SAY NAME2 @573
 	SAY IDENTIFIED_DESC @574
 
-// Sea Troll Grease
+// Sea Troll Sebaceous Gland
 	COPY ~bst/items/bswnchft.itm~ ~override/bswnchft.itm~
 	SAY NAME1 @575
 	SAY NAME2 @575

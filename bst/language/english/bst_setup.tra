@@ -456,7 +456,7 @@ I found Martina... She is dead. The soldier who was sent to search for her kille
 //The Prisoner in the Seatower Prison
 @799  = ~The Prisoner in the Seatower Prison
 
-I got word that I should talk to the Seatower Commander. He can be found in his office at the second floor of the Seatower.~
+I got word that I should talk to the Seatower Commander. He can be found in his office at the second floor of the main tower.~
 @800 = ~The Prisoner in the Seatower Prison
 
 The Seatower Commander gave me a pass which grants me entrance to the Seatower's prison in the cellar of the main tower. An arrested solder named Shuck requested to talk to me.~ 
@@ -1670,7 +1670,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @2606 = ~What do you use this for?~
 @2607 = ~Maybe I just want to know how you do it.~
 @2608 = ~Without going into more details - the stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~
-@2609 = ~"Awful guards"?~
+@2609 = ~The stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~
 @2610 = ~Well - let's say there might be something you could do for the Garrison Commander. The stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~
 @2611 = ~Maybe you are right.~
 @2612 = ~Then thank you in advance for trying, I suppose.~
@@ -1725,8 +1725,8 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @2661 = ~Yes, this will do.~
 @2662 = ~Let me stow this away so the guard idiots don't see it when they come in here.~
 @2663 = ~In case you stumble upon good liqueur, I would be interested in three bottles. It makes the leather go softer - and it gives me a better smell while working on it. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~
+@2660 = ~"Awful guards"?~
 /*
-@2660 = 
 @2660 = 
 @2660 = 
 @2660 = 
