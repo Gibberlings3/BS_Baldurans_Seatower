@@ -398,10 +398,10 @@ Version EAOB.7:
 -Fletcher should give feathers quest when asked about the barrel.
 -There should be a (new) sea troll after receiving the quest for the sea troll gland.
 -Quest about Dark Power in the Catacombs will now have solved quest entry after reporting to the abbot.
--Expired Mimic Poweder renamed to "Empty". The empty bottle will be returned from the tanner and can be sold to the tower mage.
+-Expired Mimic Powder renamed to "Empty". The empty bottle will be returned from the tanner and can be sold to the tower mage.
 -added description how to reach the prison to journal entry and prison pass.
 -Typo corrections.
--Spawning of messenger for slaver quest is patched to bs1000.bcs, too.
+-Spawning of messenger for slaver quest is patched to bs1000.bcs, too (instead of the scfript block being inside the file).
 -Added globally unique LABEL to support Project Infinity.
 -Updated install order syntax for PI.
 -Corrected entries in cpmvars for "Beregost_House08".
