@@ -324,12 +324,12 @@ END //APPEND
 BEGIN bsrabbit
 
 IF ~!PartyHasItem("bscage")~ THEN rabbit
-SAY ~(The rabbit does not fight your grib. You could take it - but what would you do with a struggling rabit in your backpack?)~
+SAY ~(The rabbit is easy to catch. You could take it - but what would you do with a struggling rabit in your backpack?)~
 IF ~~ THEN EXIT
 END
 
 IF ~PartyHasItem("bscage")~ THEN rabbit_01
-SAY ~(The rabbit does not fight your grib.)~
+SAY ~(The rabbit is easy to catch.)~
 ++ ~(You take it up.)~ + rabbit_03
 ++ ~(You let it go.)~ + rabbit_02
 END

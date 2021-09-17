@@ -146,7 +146,7 @@ Requires: 3 Strength
 
 Weight: 1~
 @508 = ~Tower Prison Pass~
-@509 = ~This pass will grant you access to the Seatower's Prison, located in the cellar of the tower.~
+@509 = ~This pass will grant you access to the Seatower's Prison, located in the cellar of the tower. The entry is down the stairs in the main tower.~
 @510 = ~Almiran's Scroll~
 @511 = ~This scroll is supposed to open a hidden door to some ruins in the Wood of Sharp Teeth.~
 @512 = ~Alguine's key~
@@ -203,8 +203,8 @@ The flask is not completely stoppered and small wisps of fumes can be seen comin
 @552  = ~Herb Liqueur~
 @553  = ~This is a very dusty bottle of herbal liquer from some far away distillery. 
 This looks like a bottle that is best kept save until you can give it to the right connoisseur.~
-@554  = ~Expired Mimic Powder~
-@555  = ~There are no more fumes coming out of the flask. The potion is no longer effective against doppelgangers.~
+@554  = ~Empty Mimic Powder~
+@555  = ~There is no more content inside the flask. The potion is no longer effective against doppelgangers.~
 @556  = ~Treasury Note~
 @557  = ~This treasury note entitles the bearer to a sum of 3000 gold, to be collected in the Seatower Treasury.~
 @558  = ~This treasury note entitles the bearer to a sum of 5000 gold, to be collected in the Seatower Treasury.~
@@ -459,7 +459,7 @@ I found Martina... She is dead. The soldier who was sent to search for her kille
 I got word that I should talk to the Seatower Commander. He can be found in his office at the second floor of the main tower.~
 @800 = ~The Prisoner in the Seatower Prison
 
-The Seatower Commander gave me a pass which grants me entrance to the Seatower's prison in the cellar of the main tower. An arrested solder named Shuck requested to talk to me.~ 
+The Seatower Commander gave me a pass which grants me entrance to the Seatower's prison in the cellar of the main tower. An arrested solder named Shuck requested to talk to me. To reach the prison, I need to take the stairs down in the main tower.~ 
 @801 = ~The Prisoner in the Seatower Prison
 
 I went to see the prisoner as told by the commander.~
@@ -2172,15 +2172,15 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @10011  = ~If I am assuming correctly, you are the woman who is suposed to adopt young Lars who is waiting with his attendant downstairs?~
 @10012  = ~So, sure I can't help you with that boy downstairs?~
 @10013  = ~Good day to you, too.~
-@10014  = ~Ah, does he tell the whole inn now... wonderful. I apologize, this was by no means addressed at you, specifically. That man is not the best choice for this obligation, but there is not much I can do, I did not enlist him with the task. (sigh) Noone did, actually, not from our family, that is. See, the child is my deceised daughter's son - my grandson.~
+@10014  = ~Ah, does he tell the whole inn now... wonderful. I apologize, this was by no means addressed at you, specifically. That man is not the best choice for this obligation, but there is not much I can do, I did not enlist him with the task. (sigh) Noone did, actually, not from our family, that is. See, the child is my deceased daughter's son - my grandson.~
 @10015  = ~Yes, yes, I know - "why does she not fly down the stairs and take that poor child into her arms?" Well, it's not that easy. It never is. But this is no business to bother you with, my good <PRO_LADYLORD>. You do not need to burden yourself with such matters.~
 @10016  = ~On the contrary, I'd be delighted to help in any way.~
 @10017  = ~It does sound like an intriguing story, to be honest.~
 @10018  = ~Indeed. Farwell.~
 @10019  = ~That is very kind of you, but I wouldn't know how... Other than listening to my woes and tell me whether I am a silly old hag who should come to her senses!~
 @10020  = ~A story... yes, it indeed is one.~
-@10021  = ~See - my daughter, my one child, fell in love with a man who... who treated her badly. He made her obedient and made her rejecting me, I knew she suffered but there was not much I could do. Now my daughter died, that man is nowhere to be found, and I... I am scared.~
-@10022  = ~I am scared that boy looks like him. That I look into his face and see the man who maltreated my Silvia, who is responsible for her withering away. I... I couldn't stand it. I would make him suffer for what he did, although I know that child is innocent. I just... I can't.~
+@10021  = ~See - my daughter, my one child, fell in love with a man who... who treated her badly. He made her obedient and made her reject me, I knew she suffered but there was not much I could do. Now my daughter is dead, that man is nowhere to be found, and I... I am scared.~
+@10022  = ~I am scared that boy looks like him. That I look into his face and see the man who maltreated my Silvia, who is responsible for her withering away. I... I couldn't stand it. I would make him suffer for what that man did, although I know the child is innocent. I just... I can't.~
 @10023  = ~You mean you didn't really see him until now?~
 @10024  = ~He's right downstairs. Why not go down and have a look? Maybe he looks completely different!~ 
 @10025  = ~You are a silly old hag who should come to her senses!~
@@ -2210,7 +2210,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @10049  = ~Black hair and blue eyes... that is *him*, that is him... No, I can't stand it, I will not face this child... I thank you, stranger, for your help. I will take care of that boy, but not in my house. I need to leave.~
 @10050  = ~Could it be...~
 @10051  = ~I thank you, kind <PRO_SIRMAAM>. I will go downstairs. I finally found the courage!~
-@10052  = ~There you are! You wonderful, kind <PRO_LADYLORD>! Can you imagine? My grandson! He looks just like my son!~
+@10052  = ~There you are! You wonderful, kind <PRO_LADYLORD>! Can you imagine? My grandson - he looks just like my son!~
 @10053  = ~Your son? You wanted to say he looks alike your daughter, I guess?~
 @10054  = ~What do you mean?~
 @10055  = ~So, all is well, then?~

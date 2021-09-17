@@ -478,7 +478,8 @@ EraseJournalEntry(@862) EraseJournalEntry(@863)
 SetGlobalTimer("bsDoppelgangerQuestTimer","GLOBAL",ONE_DAY)
 SetGlobal("bsDoppelgangerQuest","GLOBAL",14)
 SetGlobal("bsDoppelgangerInTower","GLOBAL",4)
-SetGlobal("bsDGTannersHelp","GLOBAL",1)~ UNSOLVED_JOURNAL @864 EXIT
+SetGlobal("bsDGTannersHelp","GLOBAL",1)
+GiveItemCreate("bsdopd2",[PC],1,0,0)~ UNSOLVED_JOURNAL @864 EXIT
 END
 
 END //APPEND

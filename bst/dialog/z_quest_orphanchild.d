@@ -53,7 +53,7 @@ IF ~Global("bsOrphanQuest","GLOBAL",0)~ THEN EXIT
 END
 
 IF ~~ THEN grandma_01
-SAY @10014 /* ~Ah, does he tell the whole inn now... wonderful. I apologize, this was by no means addressed at you, specifically. That man is not the best choice for this obligation, but there is not much I can do, I did no enlist him with the task. (sigh) Noone did, actually, not from our family, that is. See, the child is my deceised daughter's son - my grandson.~ */
+SAY @10014 /* ~Ah, does he tell the whole inn now... wonderful. I apologize, this was by no means addressed at you, specifically. That man is not the best choice for this obligation, but there is not much I can do, I did no enlist him with the task. (sigh) Noone did, actually, not from our family, that is. See, the child is my deceased daughter's son - my grandson.~ */
 = @10015 /* ~Yes, yes, I know - "why does she not fly down the stairs and take that poor child into her arms?" Well, it's not that easy. It never is. But this is no business to bother you with, my good <PRO_LADYLORD>. You do not need to burden yourself with such matters.~ */
 ++ @10016 /* ~On the contrary, I'd be delighted to help in any way.~ */ + grandma_02
 ++ @10017 /* ~It does sound like an intriguing story, to be honest.~ */ + grandma_03

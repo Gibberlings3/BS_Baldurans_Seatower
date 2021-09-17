@@ -121,6 +121,7 @@ There are five possible quest ends:
 - trap the fire elemental in a fire coated barrel for more than two ingame days and kill it when it escapes the barrel.
 - report the fire elemental to the Captain in the barracks and let the soldiers handle it. The elemental will be gone next the PC goes into the kitchen.
 
+
 "Fire Proof Barrel for the Seatower Armorer": 
 -------------------------------
 Given by the armorer if asked whether he can make a barrel fire proof. 
@@ -392,6 +393,18 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 
 HISTORY
+
+Version EAOB.7:
+-Fletcher should give feathers quest when asked about the barrel.
+-There should be a (new) sea troll after receiving the quest for the sea troll gland.
+-Quest about Dark Power in the Catacombs will now have solved quest entry after reporting to the abbot.
+-Expired Mimic Poweder renamed to "Empty". The empty bottle will be returned from the tanner and can be sold to the tower mage.
+-added description how to reach the prison to journal entry and prison pass.
+-Typo corrections.
+-Spawning of messenger for slaver quest is patched to bs1000.bcs, too.
+-Added globally unique LABEL to support Project Infinity.
+-Updated install order syntax for PI.
+-Corrected entries in cpmvars for "Beregost_House08".
 
 Version EAOB.6:
 -(EE) coins in bs0114.are should not disappear after some time.

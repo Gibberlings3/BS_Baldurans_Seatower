@@ -155,7 +155,7 @@ GiveItemCreate("POTN20",[PC],3,0,0)
 GiveItemCreate("POTN21",[PC],2,0,0)
 GiveItemCreate("RESTORE",[PC],2,0,0)
 EraseJournalEntry(@775)
-SetGlobal("bsClearedCatacombs","GLOBAL",5)~ SOLVED_JOURNAL @775 EXIT
+SetGlobal("bsClearedCatacombs","GLOBAL",5)~ SOLVED_JOURNAL @776 EXIT
 END
 
 IF ~~ THEN greetings_11

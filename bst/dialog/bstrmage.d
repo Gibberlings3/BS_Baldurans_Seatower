@@ -49,6 +49,7 @@ SAY ~Is there anything else you want?~
 + ~PartyHasItem("bsdopdr") Global("bsDGQAskedMP","GLOBAL",0)~ + ~What exactly is this "Mimic Powder"? How does it work?~ DO ~SetGlobal("bsDGQAskedMP","GLOBAL",1)~ + dp_quest_04
 + ~PartyHasItem("MISC6Y") GlobalLT("bsGotMimicBlood","GLOBAL",2)~ + ~I found some mimic blood. Do you have a use for it?~ + mimicblood
 + ~HasItem("MISC6Y",Myself)~ + ~Would you sell back the mimic blood? I need it for something else.~ + mimicblood_02
++ ~PartyHasItem("bsdopd2")~ + ~Do you have further use for the empty flask of your mimic "powder"?~ + empty_flask
 
 /* fire elemental in storeroom */
 + ~GlobalGT("bsFireElementQuest","GLOBAL",0)
@@ -65,7 +66,10 @@ PartyHasItem("bsbarrl1") Global("bsAskedCBMage","GLOBAL",0)~ + @2014 /* ~[PC tal
 + ~Global("bsPearlLocation","GLOBAL",0)~ + ~Where do you think I could find such a Black Pearl?~ DO ~SetGlobal("bsPearlLocation","GLOBAL",1)~ + pearllocation
 + ~Global("bsMageErrands","GLOBAL",0)~ + ~Do you have any more errands to do?~ DO ~SetGlobal("bsMageErrands","GLOBAL",1)~ + errands
 + ~PartyHasItem("bsblkprl")~ + ~I found a Black Pearl! It was in a sea cave right under this tower.~ DO ~TakePartyItem("bsblkprl") DestroyItem("bsblkprl") SetGlobal("bsFoundBlackPearl","GLOBAL",4) SetGlobal("bsPearlLocation","GLOBAL",1)~ + pearl
-+ ~Global("bsMageErrands","GLOBAL",1) PartyHasItem("MISC1I") Global("bsBroughtBelladonna","GLOBAL",0)~ + ~I have a Belladonna flower for you.~ DO ~TakePartyItemNum("MISC1I",1) DestroyItem("MISC1I") SetGlobal("bsBroughtBelladonna","GLOBAL",1)~ + belladonna
++ ~Global("bsMageErrands","GLOBAL",1) 
+OR(2)
+PartyHasItem("MISC1I")
+PartyHasItem("bdbellad") Global("bsBroughtBelladonna","GLOBAL",0)~ + ~I have a Belladonna flower for you.~ DO ~SetGlobal("bsBroughtBelladonna","GLOBAL",1)~ + belladonna
 + ~Global("bsMageErrands","GLOBAL",1) PartyHasItem("MISC01") Global("bsBroughtWolfpelt","GLOBAL",0)~ + ~I have a Winter Wolf pelt for you.~ DO ~TakePartyItemNum("MISC01",1) DestroyItem("MISC01") SetGlobal("bsBroughtWolfpelt","GLOBAL",1)~ + winterwolf
 + ~Global("bsMageErrands","GLOBAL",1) PartyHasItem("MISC12") Global("bsBroughtAnkheg","GLOBAL",0)~ + ~I have an Ankheg shell for you.~ DO ~TakePartyItemNum("MISC12",1) DestroyItem("MISC12") SetGlobal("bsBroughtAnkheg","GLOBAL",1)~ + ankhegshell
 
@@ -116,7 +120,8 @@ END
 
 IF ~~ THEN belladonna
 SAY ~Wonderful! I sense you had to go far for that one. Here is your payment, 300 gold.~
-IF ~~ THEN DO ~GiveGoldForce(300)~ UNSOLVED_JOURNAL @853 EXIT
+IF ~PartyHasItem("bdbellad")~ THEN DO ~TakePartyItemNum("bdbellad",1) DestroyItem("MISC1I") GiveGoldForce(300)~ UNSOLVED_JOURNAL @853 EXIT
+IF ~PartyHasItem("MISC1I")~ THEN DO ~TakePartyItemNum("MISC1I",1) DestroyItem("MISC1I") GiveGoldForce(300)~ UNSOLVED_JOURNAL @853 EXIT
 END
 
 IF ~~ THEN winterwolf
@@ -150,5 +155,11 @@ SAY ~I do, actually. I would sell it to you for 500 gold.~
 + ~!PartyGoldGT(499)~ + ~Seems I don't have enough gold.~ + open_shop
 ++ ~No, maybe I'll find another one elsewhere.~ + open_shop
 END
+
+IF ~~ THEN empty_flask
+SAY ~I do, actually! Those half-open flask are rather hard to come by. Here, a little gold as a compensation.~
+IF ~~ THEN DO ~GiveGoldForce(150) TakePartyItem("bsdopd2") DestroyItem("bsdopd2")~ EXIT
+END
+
 
 END //APPEND

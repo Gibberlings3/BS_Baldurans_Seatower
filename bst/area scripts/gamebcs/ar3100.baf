@@ -1,4 +1,15 @@
 IF
+	Global("bsSpawnTrolls","MYAREA",1)
+	Global("bsWinchGreaseQuest","GLOBAL",1)
+	!Exists("bsseatrl")
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnTrolls","MYAREA",2)
+		CreateCreature("bsseatrl",[436.589],10) //nerfed Sea Troll
+END
+
+
+IF
 	Global("bsSpawnTrolls","MYAREA",0)
 THEN
 	RESPONSE #100

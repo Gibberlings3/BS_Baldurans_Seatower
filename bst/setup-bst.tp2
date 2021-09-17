@@ -1,6 +1,6 @@
 BACKUP ~bst/backup~
 AUTHOR ~https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/~
-VERSION ~vEAOB.6~
+VERSION ~vEAOB.7pre~  
 
 README ~bst/documentation/english.bst.txt~
 
@@ -137,6 +137,9 @@ LANGUAGE ~German~ ~german~ ~bst/language/english/bst_setup.tra~
 
 // Quest title
 BEGIN @1
+DESIGNATED 0
+LABEL BS_BalduransSeatower-main
+
 
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ @2
 //FORBID_COMPONENT ~setup-bp-bgt-worldmap.tp2~ ~0~ @3
@@ -2139,6 +2142,9 @@ LAF extend_area_script STR_VAR area="%SWBaldursGate%" bottom="bst/area scripts/g
 
 /* compile mod area scripts (includes trigger scripts) */
 COMPILE EVALUATE_BUFFER ~bst/area scripts/.~
+
+/* also add messenger to Seatower Area */
+LAF extend_area_script STR_VAR area="bs1000" bottom="bst/area scripts/gamebcs/spawn_messenger_slaverquest.baf"   END
 
 
 /* only BGT+EET: sunrise / sunset movies */
