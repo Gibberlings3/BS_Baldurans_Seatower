@@ -47,6 +47,7 @@ To be used later in the form:
       END
     END 
 
+OUTER_SET enhanced_edition = 0 
  ACTION_IF GAME_IS ~tutu_totsc~ THEN BEGIN
   PRINT ~Baldur's Gate Tutu detected~
   INCLUDE ~bst/lib/g3_tutu_cpmvars.tpa~
@@ -67,6 +68,7 @@ To be used later in the form:
  END
 
  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  OUTER_SET enhanced_edition = 1 
   /* Tell the player it is using bgee */
   PRINT ~BG:EE detected...~ 
   INCLUDE ~bst/lib/g3_bgee_cpmvars.tpa~
@@ -82,6 +84,7 @@ To be used later in the form:
  END
 
  ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  OUTER_SET enhanced_edition = 1 
   /* Tell the player it is using eet */
   PRINT ~EET detected.~
   INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~
@@ -656,6 +659,13 @@ END
 	SAY NAME1 @573
 	SAY NAME2 @573
 	SAY IDENTIFIED_DESC @574
+  PATCH_IF enhanced_edition BEGIN
+    LPF CLONE_EFFECT INT_VAR match_opcode = 161 opcode = 321 parameter2 = 0 STR_VAR resource = spin105 END // EEs also remove horror to get rid of spinny animation
+    LPF CLONE_EFFECT INT_VAR match_opcode = 161 opcode = 321 parameter2 = 0 STR_VAR resource = spwi205 END 
+    LPF CLONE_EFFECT INT_VAR match_opcode = 296 opcode = 328 parameter2 = 106 special = 1 END // set spell state RESIST_FEAR
+    LPF CLONE_EFFECT INT_VAR match_opcode = 296 opcode = 328 parameter2 =  67 special = 1 END // set spell state BUFF_PRO_EFFECTS
+  END  
+    
 
 // Sea Troll Sebaceous Gland
 	COPY ~bst/items/bswnchft.itm~ ~override/bswnchft.itm~
