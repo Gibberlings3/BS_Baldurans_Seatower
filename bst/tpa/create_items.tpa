@@ -463,7 +463,6 @@
              type          = 3         // Type of header to which the effect should be added
              opcode        = 206       // Opcode number
              target        = 1         // Target type
-             power         = 4         // Power
              parameter1    = "-1"      // Parameter 1
              resist_dispel = 1         // Resistance
              duration      = 18        // Duration
@@ -478,7 +477,6 @@
              type          = 3         // Type of header to which the effect should be added
              opcode        = 206       // Opcode number
              target        = 1         // Target type
-             power         = 4         // Power
              parameter1    = "-1"      // Parameter 1
              resist_dispel = 1         // Resistance
              duration      = 18        // Duration
@@ -493,7 +491,6 @@
              type          = 3         // Type of header to which the effect should be added
              opcode        = 206       // Opcode number
              target        = 1         // Target type
-             power         = 4         // Power
              parameter1    = "-1"      // Parameter 1
              resist_dispel = 1         // Resistance
              duration      = 18        // Duration
@@ -508,7 +505,6 @@
              type          = 3         // Type of header to which the effect should be added
              opcode        = 206       // Opcode number
              target        = 1         // Target type
-             power         = 4         // Power
              parameter1    = "-1"      // Parameter 1
              resist_dispel = 1         // Resistance
              duration      = 18        // Duration
@@ -522,7 +518,6 @@
              header        = 1   // Number of extended header (starting from 1) the effect should be added to
              type          = 3   // Type of header to which the effect should be added
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 5   // Parameter 1
              parameter2    = 2   // Parameter 2
              resist_dispel = 1   // Resistance
@@ -536,7 +531,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 33  // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 2   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -549,7 +543,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 34  // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 2   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -562,7 +555,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 35  // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 2   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -575,7 +567,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 36  // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 2   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -588,7 +579,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 37  // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 2   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -601,7 +591,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 102 // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 1   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -614,7 +603,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 102 // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter1    = 2   // Parameter 1
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -627,7 +615,6 @@
              type          = 3             // Type of header to which the effect should be added
              opcode        = 8             // Opcode number
              target        = 1             // Target type
-             power         = 4             // Power
              parameter1    = "-1011417088" // Parameter 1
              parameter2    = 3             // Parameter 2
              resist_dispel = 1             // Resistance
@@ -641,7 +628,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 142 // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              parameter2    = 23  // Parameter 2
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
@@ -654,7 +640,6 @@
              type          = 3   // Type of header to which the effect should be added
              opcode        = 155 // Opcode number
              target        = 1   // Target type
-             power         = 4   // Power
              resist_dispel = 1   // Resistance
              duration      = 18  // Duration
              probability1  = 100 // Probability 1
@@ -666,7 +651,6 @@
              type          = 3             // Type of header to which the effect should be added
              opcode        = 8             // Opcode number
              target        = 1             // Target type
-             power         = 4             // Power
              parameter1    = "-1161822208" // Parameter 1
              parameter2    = 5             // Parameter 2
              resist_dispel = 1             // Resistance
@@ -680,7 +664,6 @@
              type          = 3             // Type of header to which the effect should be added
              opcode        = 8             // Opcode number
              target        = 1             // Target type
-             power         = 4             // Power
              parameter1    = "-1111293952" // Parameter 1
              parameter2    = 6             // Parameter 2
              resist_dispel = 1             // Resistance
@@ -694,7 +677,6 @@
              type          = 3            // Type of header to which the effect should be added
              opcode        = 8            // Opcode number
              target        = 1            // Target type
-             power         = 4            // Power
              parameter1    = "-960299008" // Parameter 1
              parameter2    = 4            // Parameter 2
              resist_dispel = 1            // Resistance
@@ -708,7 +690,6 @@
              type          = 3             // Type of header to which the effect should be added
              opcode        = 8             // Opcode number
              target        = 1             // Target type
-             power         = 4             // Power
              parameter1    = "-1111687168" // Parameter 1
              resist_dispel = 1             // Resistance
              duration      = 18            // Duration
@@ -721,7 +702,6 @@
              type          = 3             // Type of header to which the effect should be added
              opcode        = 8             // Opcode number
              target        = 1             // Target type
-             power         = 4             // Power
              parameter1    = "-1263271936" // Parameter 1
              parameter2    = 2             // Parameter 2
              resist_dispel = 1             // Resistance
@@ -735,7 +715,6 @@
              type          = 3             // Type of header to which the effect should be added
              opcode        = 8             // Opcode number
              target        = 1             // Target type
-             power         = 4             // Power
              parameter1    = "-1162412032" // Parameter 1
              parameter2    = 1             // Parameter 2
              resist_dispel = 1             // Resistance
