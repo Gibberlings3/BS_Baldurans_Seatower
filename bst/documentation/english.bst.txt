@@ -394,6 +394,9 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 HISTORY
 
+Version ##:
+-changed 24bit Lightmaps to 8bit (bs0110,bs0111, bs0112).
+
 Version EAOB.7:
 -Fletcher should give feathers quest when asked about the barrel.
 -There should be a (new) sea troll after receiving the quest for the sea troll gland.
