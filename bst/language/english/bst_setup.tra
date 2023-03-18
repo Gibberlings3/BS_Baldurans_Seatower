@@ -436,7 +436,7 @@ The rat plague of the Seatower Inn turned out to be Betsy, the pet rat of the In
 //
 @793  = ~Missing Monk in the Seatower
 
-Lenard, a soldier of the Badluran's Saetower is missing his secret lover Martina, a monk from the Seatower's Ilmater Monastery who went missing while being on an errand in town. She was last seen at the Ilmater Shrine in north east Baldur's Gate. I should go there and ask around whether anyone has seen her lately.~
+Lenard, a soldier of the Balduran's Saetower is missing his secret lover Martina, a monk from the Seatower's Ilmater Monastery who went missing while being on an errand in town. She was last seen at the Ilmater Shrine in north east Baldur's Gate. I should go there and ask around whether anyone has seen her lately.~
 @794  = ~Missing Monk in the Seatower
 
 A beggar inside the Ilmater's Shrine suggested I'd go around ask other beggars about the missing monk Martina. I need to find the beggar who was here at the shrine when Martina was here.~
@@ -1598,7 +1598,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 
 /* Girl and mom in Winchhouse */
 @2455 = ~I'm waiting for the chain to be wound up again!~
-@2456 = ~It smells of old fish and sea weet in here. As if the usual stink on the tower grounds wouldn't be stenuous enough already.~
+@2456 = ~It smells of old fish and seaweed in here. As if the usual stink on the tower grounds wouldn't be bad enough already.~
 
 // Tanner
 @2500 = ~Ah, you again.~
@@ -2162,7 +2162,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @10002  = 
 @10003  = 
 */
-@10004  = ~Yes, I know this is not the right pace for a young child like this boy. I can't help it that the old crone doesn't want to see him. Lars! Stop making a mess and drink your juice properly. Man, I wished someone would go upstairs and tell this woman that I am not getting paid for waiting up until she made up her mind about this child!~
+@10004  = ~Yes, I know this is not the right place for a young child like this boy. I can't help it that the old crone doesn't want to see him. Lars! Stop making a mess and drink your juice properly. Man, I wished someone would go upstairs and tell this woman that I am not getting paid for waiting up until she made up her mind about this child!~
 @10005  = ~Great, just great. The old crone left without talking to me. At least she sent some gold my way. Come on, Lars, let's find you a new home.~
 @10006  = ~Lars, just be quiet for a moment, yes? (sigh)~
 @10007  = ~Hello! Mister bought me three juices already! Mister is really nice!~ 
@@ -2292,7 +2292,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @11020  = ~The shell is empty.~
 @11021  = ~Aaaaaaaahhhh!~
 @11022  = ~You covered all of the tower grounds using the "Mimic Powder" fumes, but there is no more doppelgangers to be found. It seems you already demasked all of them.~
-@11023  = ~The moment the cover is removed, a stenuous stench emerges from the debths below.~
+@11023  = ~The moment the cover is removed, a stinging stench emerges from the debths below.~
 @11024  = ~The fire of the beacon burns hot with a mighty roar.~
 @11025  = ~You put the barrel with the fire elemental into the beacon fire to release the creature.~
 @11026  = ~Can I put a stick into the fire?~

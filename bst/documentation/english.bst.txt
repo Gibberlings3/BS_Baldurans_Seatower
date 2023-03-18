@@ -394,8 +394,13 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 HISTORY
 
-Version ##:
--changed 24bit Lightmaps to 8bit (bs0110,bs0111, bs0112).
+Version EAOB.8:
+-Fixed spawning of doppelganger in Master Shizell's study.
+-NPC interjections into fire elemental quest should only happen once.
+-changed 24bit Lightmaps to 8bit (bs0110,bs0111, bs0112) to prevent random crashing.
+-more BAMs for items in EE (uses BG2 BAMs).
+-item fixes.
+-typo corrections.
 
 Version EAOB.7:
 -Fletcher should give feathers quest when asked about the barrel.

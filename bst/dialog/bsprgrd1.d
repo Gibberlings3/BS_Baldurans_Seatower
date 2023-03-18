@@ -186,7 +186,7 @@ IF ~GlobalGT("bsDoppelgangerQuest","GLOBAL",1) Global("bsInTheLoop","LOCALS",1)~
 END
 
 IF ~~ THEN doppelgangerquest_grd2_03
-SAY ~(sigh) I hope *someone* tell's me what is going on.~
+SAY ~(sigh) I hope *someone* tells me what is going on.~
 IF ~~ THEN EXIT
 END
 

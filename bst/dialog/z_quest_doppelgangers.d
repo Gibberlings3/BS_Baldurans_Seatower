@@ -27,14 +27,15 @@ IF WEIGHT #-1
 == yssgt3 IF ~Global("bsJumpStartDGQuest","GLOBAL",0)~ THEN ~Not the *tower's* safety, sir. I said "ours"! They found the breach in the prison walls. We are no longer ssssafe!~
 == yssgt3 IF ~GlobalGT("bsJumpStartDGQuest","GLOBAL",0)~ THEN ~Not the *tower's* safety, sir. I said "ours"! Ourssss...~
 END
-IF ~~ THEN DO ~ActionOverride("bstrcmdr",GiveItemCreate("MINHP1","bstrcmdr",0,0,0))
+IF ~~ THEN DO ~SetInterrupt(FALSE)
+ActionOverride("bstrcmdr",GiveItemCreate("MINHP1","bstrcmdr",0,0,0))
 SetGlobal("bsDoppelgangerQuest","GLOBAL",3)
 ActionOverride("bstrcmdr",FillSlot(SLOT_BELT))
 //ActionOverride("yssgt3",ApplySpell(Myself,"bsdopsp1"))
 //ActionOverride("bsprgrd1",ApplySpell(Myself,"bsdopsp2"))
 ActionOverride("yssgt3",ReallyForceSpellRES("bsdopsp1","yssgt3"))
 ActionOverride("bsprgrd1",ReallyForceSpellRES("bsdopsp2","bsprgrd1"))
-~ EXIT
+SetInterrupt(TRUE)~ EXIT
 
 
 APPEND bstrcmdr 
@@ -70,22 +71,25 @@ IF WEIGHT #-1
 == bstrcmdr IF ~GlobalGT("bsJumpStartDGQuest","GLOBAL",0)~ THEN ~Here, take this pass, it will grant you acces to the prison if you show it to the guards.~ 
 
 END
-IF ~~ THEN DO ~GiveItemCreate("bsprpass",[PC],1,0,0)
+IF ~~ THEN DO ~SetInterrupt(FALSE)
+GiveItemCreate("bsprpass",[PC],1,0,0)
 SetGlobal("bsGavePrisonPass","GLOBAL",1)
 ActionOverride("bstrcmdr",DestroyItem("MINHP1"))
 SetGlobal("bsDoppelgangerQuest","GLOBAL",6)
 SetGlobalTimer("bsDoppelgangerQuestTimer","GLOBAL",FIVE_DAYS)
 EraseJournalEntry(@816)
 EraseJournalEntry(@817)
-AddJournalEntry(@823,QUEST)~ EXIT
-IF ~Global("bsJumpStartDGQuest","GLOBAL",0)~ THEN DO ~
+AddJournalEntry(@823,QUEST)
+SetInterrupt(TRUE)~ EXIT
+IF ~Global("bsJumpStartDGQuest","GLOBAL",0)~ THEN DO ~SetInterrupt(FALSE)
 ActionOverride("bstrcmdr",DestroyItem("MINHP1"))
 SetGlobal("bsKnowsBreakthrough","LOCALS",1)
 SetGlobal("bsDoppelgangerQuest","GLOBAL",6)
 SetGlobalTimer("bsDoppelgangerQuestTimer","GLOBAL",FIVE_DAYS)
 EraseJournalEntry(@816)
 EraseJournalEntry(@817)
-AddJournalEntry(@818,QUEST)~ EXIT
+AddJournalEntry(@818,QUEST)
+SetInterrupt(TRUE)~ EXIT
 
 
 APPEND bstrcmdr 
@@ -186,7 +190,7 @@ IF ~~ THEN + doppelgangers_18
 END
 
 IF ~~ THEN doppelgangers_18
-SAY ~Go to the barracks and talk to Captain Dungarth when you want to join the fight, and do it as soon as possible. Now that we are aware of the situation, we cannot not waste any more time than necessary to settle this.~
+SAY ~Go to the barracks and talk to Captain Dungarth when you want to join the fight, and do it as soon as possible. Now that we are aware of the situation, we cannot waste any more time than necessary to settle this.~
 IF ~~ THEN + doppelgangers_15
 END
 

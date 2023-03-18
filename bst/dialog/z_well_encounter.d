@@ -104,7 +104,7 @@ InParty("alora") InMyArea("alora") !StateCheck("alora",CD_STATE_NOTVALID)~ THEN 
 == ~%MONTARON_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)
 InParty("montaron") InMyArea("montaron") !StateCheck("montaron",CD_STATE_NOTVALID)~ THEN ~[Montaron] Had I known you separate so easily with gold coins, I wouldn't have joined force with you, <CHARNAME>. Are we *done* here?!~
 == ~%IMOEN_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)
-InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN ~[Imoen] I know I just did it myself, but... Imagining all the coins at the bottom of the cold, dark water - for *millenials* before someone makes them shine again is rather depressing... Have to focus on the wishes! The wishes. I hope you wished for someting great, <CHARNAME>!~
+InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN ~[Imoen] I know I just did it myself, but... Imagining all the coins at the bottom of the cold, dark water - for *millenia* before someone makes them shine again is rather depressing... Have to focus on the wishes! The wishes. I hope you wished for someting great, <CHARNAME>!~
 == ~%YESLICK_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)
 InParty("yeslick") InMyArea("yeslick") !StateCheck("yeslick",CD_STATE_NOTVALID)
 Gender(Player1,MALE)~ THEN ~[Yeslick, PC male] I'm not sure what you are wishing there for, lad, but I'm pretty sure doing it multiple times will not increase the likelyhood of it coming true.~

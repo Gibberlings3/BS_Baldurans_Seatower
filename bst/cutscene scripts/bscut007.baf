@@ -9,5 +9,5 @@ THEN
         Wait(3)
         FadeFromColor([20.0],0)
 	EndcutSceneMode()
-	ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
+//	ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
 END 
