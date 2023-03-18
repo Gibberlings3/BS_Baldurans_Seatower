@@ -231,7 +231,7 @@ END //APPEND
 /* PC received the booklet with dates bssmq003.itm */
 CHAIN
 IF ~~ THEN bstrcmdr slaversquest_04
-~Let me see. Hmm, this seems a to be a list of their planned moves. "Special creatures", eh? Yes, we know about that code name. They are planning something that night to be sure.~
+~Let me see. Hmm, this seems to be a list of their planned moves. "Special creatures", eh? Yes, we know about that code name. They are planning something that night to be sure.~
 DO ~TakePartyItem("bssmq003") DestroyItem("bssmq003") SetGlobal("bsSQCommanderKnowsTimes","LOCALS",1)~
 
 /* commander doesn't know place: general comment */

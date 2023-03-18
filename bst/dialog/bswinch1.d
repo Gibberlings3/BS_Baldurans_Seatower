@@ -78,6 +78,6 @@ END
 
 BEGIN bswnchwm
 IF ~True()~ THEN mother
-SAY @2456 /* ~It smells of old fish and sea weet in here. As if the usual stink on the tower grounds wouldn't be stenuous enough already.~ */
+SAY @2456 /* ~It smells of old fish and seaweed in here. As if the usual stink on the tower grounds wouldn't be bad enough already.~ */
 IF ~~ THEN EXIT
 END

@@ -1,6 +1,6 @@
 BACKUP ~bst/backup~
 AUTHOR ~https://www.gibberlings3.net/forums/forum/213-baldurans-seatower/~
-VERSION ~vEAOB.7~  
+VERSION ~vEAOB.8~  
 
 README ~bst/documentation/english.bst.txt~
 
@@ -507,11 +507,8 @@ END
 
 //##################################################
 // Bams
-	COPY ~bst/bam/.~ ~override/.~
-
-ACTION_IF GAME_IS ~bgt~ THEN BEGIN
-  COPY ~bst/bams_bg2/.~ ~override/.~
-END
+COPY ~bst/bam/.~ ~override/.~
+COPY ~bst/bams_bg2/.~ ~override/.~
 ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
   COPY ~bst/bams_ee/.~ ~override/.~
 END

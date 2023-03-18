@@ -6,11 +6,11 @@ BEGIN bsfrelem
 CHAIN
 IF ~True()~ THEN bsfrelem fire_elemental
 ~The fire elemental is literally blocking the way to the alestore. It hovers in the least moist corner of the cellar and doesn't show any intentions of attacking you. It's flames seem to be dimmer than what you would expect.~
-== ~%IMOEN_JOINED%~ IF ~InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN @10250
-== ~%AJANTIS_JOINED%~ IF ~InParty("ajantis") InMyArea("ajantis") !StateCheck("ajantis",CD_STATE_NOTVALID)~ THEN @10251
-== ~%KAGAIN_JOINED%~ IF ~InParty("kagain") InMyArea("kagain") !StateCheck("kagain",CD_STATE_NOTVALID)~ THEN @10252
-== ~%JAHEIRA_JOINED%~ IF ~InParty("jaheira") InMyArea("jaheira") !StateCheck("jaheira",CD_STATE_NOTVALID)~ THEN @10253
-== ~%DYNAHEIR_JOINED%~ IF ~InParty("dynaheir") InMyArea("dynaheir") !StateCheck("dynaheir",CD_STATE_NOTVALID)~ THEN @10254
+== ~%IMOEN_JOINED%~ IF ~Global("bdFEInt_Imoen","MYAREA",0) InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN @10250 DO ~SetGlobal("bdFEInt_Imoen","MYAREA",1)~
+== ~%AJANTIS_JOINED%~ IF ~Global("bdFEInt_Ajantis","MYAREA",0) InParty("ajantis") InMyArea("ajantis") !StateCheck("ajantis",CD_STATE_NOTVALID)~ THEN @10251 DO ~SetGlobal("bdFEInt_Ajantis","MYAREA",1)~
+== ~%KAGAIN_JOINED%~ IF ~Global("bdFEInt_Kagain","MYAREA",0) InParty("kagain") InMyArea("kagain") !StateCheck("kagain",CD_STATE_NOTVALID)~ THEN @10252 DO ~SetGlobal("bdFEInt_Kagain","MYAREA",1)~
+== ~%JAHEIRA_JOINED%~ IF ~Global("bdFEInt_Jaheira","MYAREA",0) InParty("jaheira") InMyArea("jaheira") !StateCheck("jaheira",CD_STATE_NOTVALID)~ THEN @10253 DO ~SetGlobal("bdFEInt_Jaheira","MYAREA",1)~
+== ~%DYNAHEIR_JOINED%~ IF ~Global("bdFEInt_Dynaheir","MYAREA",0) InParty("dynaheir") InMyArea("dynaheir") !StateCheck("dynaheir",CD_STATE_NOTVALID)~ THEN @10254 DO ~SetGlobal("bdFEInt_Dynaheir","MYAREA",1)~
 == bsfrelem IF ~PartyHasItem("bsbarrl1") Global("bsWoodBarrelInfo","LOCALS",0)~ THEN ~(You could try and trap the fire elemental in the wooden barrel, but it would probably eat through the wood rather quickly. The barrel would best have a fire-proof coating on the inside.)~ DO ~SetGlobal("bsWoodBarrelInfo","LOCALS",1)~
 END
 IF ~!PartyHasItem("bsbarrl3")~ THEN EXIT
