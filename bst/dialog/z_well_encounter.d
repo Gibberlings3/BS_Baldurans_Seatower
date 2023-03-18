@@ -102,7 +102,7 @@ InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_N
 == ~%ALORA_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)
 InParty("alora") InMyArea("alora") !StateCheck("alora",CD_STATE_NOTVALID)~ THEN ~[Alora] Had I known you separate so easily with gold coins, <CHARNAME>, I wouldn't have spent so much time looking through pockets elsehwere. *giggles* Don't let me spoil your fun, though!~
 == ~%MONTARON_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)
-InParty("montaron") InMyArea("montaron") !StateCheck("monatron",CD_STATE_NOTVALID)~ THEN ~[Montaron] Had I known you separate so easily with gold coins, I wouldn't have joined force with you, <CHARNAME>. Are we *done* here?!~
+InParty("montaron") InMyArea("montaron") !StateCheck("montaron",CD_STATE_NOTVALID)~ THEN ~[Montaron] Had I known you separate so easily with gold coins, I wouldn't have joined force with you, <CHARNAME>. Are we *done* here?!~
 == ~%IMOEN_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)
 InParty("%IMOEN_DV%") InMyArea("%IMOEN_DV%") !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN ~[Imoen] I know I just did it myself, but... Imagining all the coins at the bottom of the cold, dark water - for *millenials* before someone makes them shine again is rather depressing... Have to focus on the wishes! The wishes. I hope you wished for someting great, <CHARNAME>!~
 == ~%YESLICK_JOINED%~ IF ~Global("bsGoldIntoWell","MYAREA",4)

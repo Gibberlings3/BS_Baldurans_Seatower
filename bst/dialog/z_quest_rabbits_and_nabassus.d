@@ -196,7 +196,7 @@ CHAIN
 IF ~~ THEN bstq007 selune_02
 ~Well then, what to do with this stupid fool?!~
 == bstq008 ~This man is very troubled, Priestess of Selune. We monks of Ilmater will take him in and give him shelter, until his racing mind calms down again.~
-== bstq007 ~Pftt, suit yourselves. But I guarantee you, we will *not* be able to hear your screams if that madman continues to conjure vampriric rabbits inside the monastery. (snort)~
+== bstq007 ~Pftt, suit yourselves. But I guarantee you, we will *not* be able to hear your screams if that madman continues to conjure vampiric rabbits inside the monastery. (snort)~
 END
 
 /*

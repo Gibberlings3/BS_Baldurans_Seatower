@@ -73,7 +73,7 @@ IF~~THEN BEGIN 7
 	SAY@9313
 	IF~~THEN
 		DO~SetGlobal("bsDreamDone","GLOBAL",1)
-ActionOverride(Protagonist,AddSpecialAbility("SPR701"))
+ActionOverride(Protagonist,AddSpecialAbility("SPPR701"))
 	//ActionOverride(Protagonist,MoveToSavedLocationn("bsBeginDream","GLOBAL"))
 ~
 	EXIT
