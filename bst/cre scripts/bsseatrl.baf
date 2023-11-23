@@ -10,6 +10,7 @@ IF
 	HPLT(Myself,12)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		StartTimer(77,6)
 		ChangeAnimationNoEffect("bsseatr2")  // Sea Troll
 END
