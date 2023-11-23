@@ -1243,25 +1243,31 @@ WRITE_ASCII 0x2cc ~bstq010~ #8
 	COPY ~bst/cre/bswellbo.cre~ ~override/bswellbo.cre~
 
 // Sea Troll
-	COPY ~bst/cre/bsseatrl.cre~ ~override/bsseatrl.cre~
-	SAY NAME1 @167
-	SAY NAME2 @167
+COPY ~bst/cre/bsseatrl.cre~ ~override/bsseatrl.cre~
+  SAY NAME1 @167
+  SAY NAME2 @167
+  PATCH_IF enhanced_edition BEGIN
+    WRITE_ASCII 0x248 ~troll01~ #8 // remove death-revive bits in script; items handle this on EEs
+  END  
 
-// Sea Troll (1 HP cre)
-	COPY ~bst/cre/bsseatr2.cre~ ~override/bsseatr2.cre~
-	SAY NAME1 @167
-	SAY NAME2 @167
+ACTION_IF !enhanced_edition BEGIN // only need alternate, dead troll for non-ee
 
+  // Sea Troll (1 HP cre)
+    COPY ~bst/cre/bsseatr2.cre~ ~override/bsseatr2.cre~
+    SAY NAME1 @167
+    SAY NAME2 @167
+
+END
 
 //##################################################
 
 /* patch existing cres */
 
 /* give item to sea troll in BGII sewers */
-ACTION_IF FILE_EXISTS_IN_GAME ~rogtro02.cre~ THEN BEGIN
-  COPY_EXISTING ~rogtro02.cre~ ~override~
+COPY_EXISTING ~rogtro01.cre~ ~override~
+              ~rogtro02.cre~ ~override~
   ADD_CRE_ITEM ~bswnchft~ #1 #0 #0 ~identified&unstealable~ ~inv~
-END
+  IF_EXISTS
 
 
 
