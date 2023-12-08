@@ -393,6 +393,13 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 
 HISTORY
+Version EAOB.9:
+-sea troll revision for smoother killing experience, by CamDawg: oBG2 troll handling not needed on EEs; Adding interrupt-false to dead troll transformation; Adding item, swapping 'dead' script to highest script slot.
+-fletcher should not forget that she already received feathers if asked to coat the barrel (feather quest should not have to be done twice).
+-added failsafe dialogue in case the Seatower Commander can't see the PC when doppelganger questline was done.
+-compatibility with The Calling's Black Pearl: added reaction to TC's pearl and extra dialogue for BST's; adjusted item description.
+-tanner should call the Amnian Bitter Liquer by its correct name.
+-typo correction.
 
 Version EAOB.8:
 -Fixed spawning of doppelganger in Master Shizell's study.
