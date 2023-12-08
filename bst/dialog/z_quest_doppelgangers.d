@@ -166,6 +166,15 @@ SAY ~Captain Dungarth will shortly have assembled the soldiers in the barracks, 
 END
 
 IF WEIGHT #-1
+~Global("bsDoppelgangerMissesPC","MYAREA",0)
+!See(Player1)
+GlobalGT("bsDoppelgangerQuest","GLOBAL",14)
+GlobalLT("bsDoppelgangerQuest","GLOBAL",19)~ THEN doppelgangers_14_no_pc
+SAY ~You are one of <CHARNAME>'s companions, are you not? Tell <PRO_HIMHER> that I want to see her.~
+IF ~~ THEN DO ~SetGlobal("bsDoppelgangerMissesPC","MYAREA",1)~ EXIT
+END
+
+IF WEIGHT #-1
 ~See(Player1)
 GlobalGT("bsDoppelgangerQuest","GLOBAL",14)
 GlobalLT("bsDoppelgangerQuest","GLOBAL",19)~ THEN doppelgangers_14

@@ -7,7 +7,7 @@ BEGIN bstrmage
 
 
 IF ~AreaCheck("bs1011") Global("bsBlackPearlQuest","GLOBAL",0)~ THEN welcome
-SAY ~Oh, welcome to my study. I am Master Shizell, the Seatower mage. You look like adventurers who get around. Amongst other things, I am on the lookout for a very rare black pearl. If you ever come across any, please consider bringing it here and I will compensate you accordingly.~
+SAY ~Oh, welcome to my study. I am Master Shizell, the Seatower mage. You look like adventurers who get around. Amongst other things, I am on the lookout for a very rare black pearl. Not the usual kind, but one taken freshly out of its shell. If you ever come across any, please consider bringing it here and I will compensate you accordingly.~
 IF ~~ THEN DO ~SetGlobal("bsBlackPearlQuest","GLOBAL",1)~ UNSOLVED_JOURNAL @850 EXIT
 END
 
@@ -65,7 +65,8 @@ PartyHasItem("bsbarrl1") Global("bsAskedCBMage","GLOBAL",0)~ + @2014 /* ~[PC tal
 /* fed ex quests */
 + ~Global("bsPearlLocation","GLOBAL",0)~ + ~Where do you think I could find such a Black Pearl?~ DO ~SetGlobal("bsPearlLocation","GLOBAL",1)~ + pearllocation
 + ~Global("bsMageErrands","GLOBAL",0)~ + ~Do you have any more errands to do?~ DO ~SetGlobal("bsMageErrands","GLOBAL",1)~ + errands
-+ ~PartyHasItem("bsblkprl")~ + ~I found a Black Pearl! It was in a sea cave right under this tower.~ DO ~TakePartyItem("bsblkprl") DestroyItem("bsblkprl") SetGlobal("bsFoundBlackPearl","GLOBAL",4) SetGlobal("bsPearlLocation","GLOBAL",1)~ + pearl
++ ~PartyHasItem("cdbpearl")~ + ~I have a black pearl here... would this suffice for your purposes?~ + wrong_pearl
++ ~PartyHasItem("bsblkprl")~ + ~I found a fresh Black Pearl! It was in a sea cave right under this tower.~ DO ~TakePartyItem("bsblkprl") DestroyItem("bsblkprl") SetGlobal("bsFoundBlackPearl","GLOBAL",4) SetGlobal("bsPearlLocation","GLOBAL",1)~ + pearl
 + ~Global("bsMageErrands","GLOBAL",1) 
 OR(2)
 PartyHasItem("MISC1I")
@@ -161,5 +162,12 @@ SAY ~I do, actually! Those half-open flask are rather hard to come by. Here, a l
 IF ~~ THEN DO ~GiveGoldForce(150) TakePartyItem("bsdopd2") DestroyItem("bsdopd2")~ EXIT
 END
 
-
 END //APPEND
+
+
+CHAIN
+IF ~~ THEN bstrmage wrong_pearl
+~Ah, no, this one is already too dry.~
+== bstrmage IF ~Global("BS_MageMentionsDrying","MYAREA",0)~ THEN ~I want a fresh one for a special drying process I invented - it should make the pearl even more powerful.~ DO ~SetGlobal("BS_MageMentionsDrying","MYAREA",1)~
+END
+IF ~~ THEN + open_shop

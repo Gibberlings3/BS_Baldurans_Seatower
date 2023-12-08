@@ -174,7 +174,7 @@ END
 IF ~Global("bsTalkedToTanner","GLOBAL",1)~ THEN BEGIN 20
 	SAY @2530 /* ~Ah, you again. You got passed those awful guards okay?~ */
 	IF~~THEN REPLY @2531 /* ~Yes, why?~ */ GOTO 21
-	IF~~THEN REPLY @2660 /* ~"Awful guards"?~ */ GOTO 21
+	IF~~THEN REPLY @2664 /* ~"Awful guards"?~ */ GOTO 21
 	IF~~THEN REPLY @2554 /* ~Good day to you.~ */ EXIT
 END
 
