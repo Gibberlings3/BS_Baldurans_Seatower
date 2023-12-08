@@ -191,10 +191,10 @@ There is one entry with a date in the future called "Special Creatures Pursuit".
 STATISTICS:
 
 Wearer is immune to all poison.~
-@546  = ~Black Pearl~
-@547  = ~Pearls are formed from layers of aragonite slowly formed around a bit of grit or other irritant inside oysters and other mollusks.  The resulting pearl has a rich, deep luster.  Most of the pearls in the realms are white, however there are rarer varieties such as rainbow and black.
+@546  = ~Enshelled Black Pearl~
+@547  = ~Pearls consist of layers of aragonite agonizingly formed around a bit of grit or other irritant inside oysters and other mollusks.  The resulting pearl has a rich, deep luster.  Most of the pearls in the realms are white, however there are rarer varieties such as rainbow and black. This pearl is black, a highly valued variant for their unique magical properties, particularly by diviners.
 
-This pearl is of the very rare black color.~
+This pearl is fresh from its shell and gleams with seawater.~
 @548  = ~Tailor's Key~
 @549  = ~This key opens the locked door inside the tailor's shop in the Dock's District.~
 @550  = ~Mimic Powder~
@@ -602,7 +602,7 @@ I decided to kill Leonhard for the betrayal of his men.~
 //Errands for the Seatower Mage
 @850 = ~Ingredients for the Seatower Mage
 
-The Seatower mage is looking for a Black Pearl, a rather rare specimen of its kind.~
+The Seatower mage is looking for a Black Pearl. They are a rather rare specimen of its kind as it is - and the one he wants is supposed to be fresh from the shell.~
 @851 = ~Ingredients for the Seatower Mage
 
 The Seatower mage is looking for a Black Pearl, a rather rare specimen of its kind. I should be able to find it near quiet, salty water pools.~
@@ -1419,7 +1419,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @2208 = ~Wait a moment - if you've never been here before, how come you were able to follow us?~
 @2209 = ~No, I haven't. The portals don't always lead to the same places but after two centuries, it's getting rarer to see a new place.~
 @2210 = ~How often do the portals change?~
-@2211 = ~I don't know. They always change when someone new arrives but how often they change otherwise... your guess is definately as good as mine.~
+@2211 = ~I don't know. They always change when someone new arrives but how often they change otherwise... your guess is definitely as good as mine.~
 @2212 = ~But they always lead back to the main Hall?~
 @2213 = ~Not always. Sometimes one portal will lead to another and then you have a merry old time chasing your tail. Or my tail. Or somebody's tail anyway. Eventually you get dropped back into the Hall somewhere. At least, that's what's happened so far.~
 @2214 = ~Eventually?~
@@ -1725,14 +1725,14 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @2661 = ~Yes, this will do.~
 @2662 = ~Let me stow this away so the guard idiots don't see it when they come in here.~
 @2663 = ~In case you stumble upon good liqueur, I would be interested in three bottles. It makes the leather go softer - and it gives me a better smell while working on it. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~
-@2660 = ~"Awful guards"?~
+@2664 = ~"Awful guards"?~
 /*
-@2660 = 
-@2660 = 
-@2660 = 
-@2660 = 
-@2660 = 
-@2660 = 
+@2665 = 
+@2666 = 
+@2667 = 
+@2668 = 
+@2669 = 
+@2670 = 
 */
 
 
