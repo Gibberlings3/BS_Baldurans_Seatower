@@ -199,7 +199,7 @@ CHAIN
 IF ~~ THEN ysfltchr coat_barrel_02
 @1265 /* ~A barrel is not the wood structure I usually work with, but I am sure I could do that, yes. I'd need a Potion of Fire Resitance for it to work.~ */ DO ~SetGlobal("bsAskedCoatBarrel","LOCALS",1) AddJournalEntry(@908,QUEST)~
 == ysfltchr IF ~Global("ys_GetFeathers","GLOBAL",0)~ THEN @1184 /* ~I'm almost out of feathers for my next batch of arrows. I happen to know that the tower cook has a fine pair of plump geese for tonight's meal. Would you go and ask her for the feathers? I'd do it myself but I'm stuck here waiting for a shipment of arrow shafts.~ */
-== ysfltchr @1159 /* ~I assume you want me to do this urgently. Then here is the deal: you bring me the feathers from the cook before she throws them away, and I'll have time for your barrel.~ */ DO ~SetGlobal("ys_GetFeathers","GLOBAL",2) AddJournalEntry(@722,QUEST)~
-== ysfltchr @1158 /* ~The time I can save with you bringing me the feathers will make up for the time I need to do this. It will be one favor for another.~ */
+= @1159 /* ~I assume you want me to do this urgently. Then here is the deal: you bring me the feathers from the cook before she throws them away, and I'll have time for your barrel.~ */ DO ~SetGlobal("ys_GetFeathers","GLOBAL",2) AddJournalEntry(@722,QUEST)~
+= @1158 /* ~The time I can save with you bringing me the feathers will make up for the time I need to do this. It will be one favor for another.~ */
 == ysfltchr IF ~Global("bsBarrelWithWater","GLOBAL",0)~ THEN @1266 /* ~If you keep the barrel after dealing with the fire elemental go and ask Garalt - the armorer - whether he wants it. I know he always has a use for fire proof equipment.~ */ DO ~SetGlobal("bsBarrelWithWater","GLOBAL",1) AddJournalEntry(@913,QUEST)~
 EXIT
