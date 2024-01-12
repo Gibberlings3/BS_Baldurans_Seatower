@@ -137,6 +137,11 @@ LANGUAGE ~German~ ~german~ ~bst/language/english/bst_setup.tra~
 			   ~bst/language/german/bst_setup.tra~
 
 */
+/*
+LANGUAGE ~Simplified Chinese tranlation by Lewis Liu~ ~sChinese~ ~bst/language/english/bst_setup.tra~
+			   ~bst/language/schinese/bst_setup.tra~
+
+*/
 
 // Quest title
 BEGIN @1
