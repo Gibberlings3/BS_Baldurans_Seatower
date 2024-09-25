@@ -1572,7 +1572,12 @@ BUT_ONLY
 
     ACTION_BASH_FOR ~bst/tis_bgee~ ~.*\.tis$~ BEGIN
       COPY ~%BASH_FOR_FILESPEC%~ ~override~
-        LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+        PATCH_IF ~%BASH_FOR_RES%~ STR_EQ ~bs1000N~ BEGIN
+            SET target_base_index = 8    //  B1000N00 - B1000N07 should be skipped for BGGO extended night (Ulgoth Beard BG1000)
+        END ELSE BEGIN
+            SET target_base_index = "-1" // every other area begins by 0
+        END
+        LPF UPDATE_PVRZ_INDICES INT_VAR target_base_index = ~%target_base_index%~ RET original_base_index new_base_index END
       LAF TIS_RES_TO_PVRZ STR_VAR tis_res = EVAL ~%BASH_FOR_FILESPEC%~ RET prefix END
       ACTION_IF (new_base_index >= 0) BEGIN // It is strongly recommended to check the return values of "UPDATE_PVRZ_INDICES".
         ACTION_BASH_FOR ~bst/tis_bgee~ ~%prefix%[0-9][0-9]\.pvrz$~ BEGIN // Installing associated PVRZ resources
