@@ -575,16 +575,39 @@ END
 	SAY NAME2 @575
 	SAY IDENTIFIED_DESC @576
 
-/*
 // ---------------
 // New store items
 // ---------------
 
 // Headband of Charisma
-	COPY ~bst/items/bsband01.itm~ ~override/bsband01.itm~
+	COPY ~bst/items/bsband01.itm~ ~override~
 	SAY NAME2 @577
 	SAY IDENTIFIED_DESC @578
-*/
+
+// Silver Dart of Selune
+	COPY ~bst/items/bsdart01.itm~ ~override~
+	SAY NAME2 @579
+	SAY IDENTIFIED_DESC @580
+
+// Dull Brown Ioun Stone
+	COPY ~bst/items/bsioun01.itm~ ~override~
+	SAY NAME2 @581
+	SAY IDENTIFIED_DESC @582
+
+// Longbow of Speed +2
+	COPY ~bst/items/bslbow01.itm~ ~override~
+	SAY NAME2 @583
+	SAY IDENTIFIED_DESC @584
+
+// Paladin's Plate
+	COPY ~bst/items/bsplat01.itm~ ~override~
+	SAY NAME2 @585
+	SAY IDENTIFIED_DESC @586
+
+// Ring of Illusions
+	COPY ~bst/items/bsring01.itm~ ~override~
+	SAY NAME2 @587
+	SAY IDENTIFIED_DESC @588
 
 /* deprecated
 // Cook's storeroom key

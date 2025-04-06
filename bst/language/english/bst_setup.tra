@@ -1,4 +1,4 @@
-/* note to translators: comments in brackets [ ] inside the tildas can be ignored! */
+/* note to translators: comments in brackets [ ] inside the tildes can be ignored! */
 
 @1 = ~The BS Company presents Balduran's Seatower~
 @2 = ~You are installing to the wrong game.~
@@ -9,7 +9,7 @@
 @7 = ~This component requires the main component of BST.~
 
 //******************
-// Mapnotes and info points
+// Map notes and info points
 //******************
 @20 = ~Temple of Selune~
 @21 = ~Barracks~
@@ -23,7 +23,7 @@
 @29 = ~Piles of stones ready for the trebuchets on the roof.~
 @30 = ~The trapdoor is locked~
 @31 = ~Temple of Ilmater~
-@32 = ~You read the open page. It says 'I am all colours and I am none'.~
+@32 = ~You read the open page. It says 'I am all colors and I am none'.~
 @33 = ~Tannery~
 @34 = ~Catacombs~
 @35 = ~Seatower Inn~
@@ -35,12 +35,12 @@
 @41 = ~Traitor's Tower~
 @42 = ~Chain Tower~
 @43 = ~Dradeel's Tower~
-@44 = ~South Harbour Tower~
-@45 = ~Harbour Tower~
+@44 = ~South Harbor Tower~
+@45 = ~Harbor Tower~
 @46 = ~East Tower~
 @47 = ~Slave Trader's Meeting Point~
 @48 = ~Master Shizell's Magic Items~
-@49 = ~This is the famous and *locked* alestore.~
+@49 = ~This is the famous and *locked* ale store.~
 @50 = ~Seatower Well~
 @51 = ~Seatower Beacon~
 
@@ -57,7 +57,7 @@
 @107 = ~Seatower Well~ 
 @108 = ~Leonhard~
 @109 = ~Halfslinger~
-@110 = ~Worshipper of Selune~ //female
+@110 = ~Worshiper of Selune~ //female
 @111 = ~Seatower Farmer~ //male
 @112 = ~Farmer's Wife~
 @113 = ~Restless Dead~
@@ -65,7 +65,7 @@
 @115 = ~Alguine~
 @116 = ~Tanner~ //male
 @117 = ~Head Winchman Brydw~ //male
-@118 = ~Sorceror~ //male
+@118 = ~Sorcerer~ //male
 @119 = ~Seatower Commander Airard~
 @120 = ~Captain Dungarth~
 @121 = ~Tower Guard Lenard~
@@ -203,7 +203,7 @@ This pearl is fresh from its shell and gleams with seawater.~
 @551  = ~This is what Master Shizell called "mimic powder". It is in fact a liquid, not a powder, and it is effective in unmasking doppelgangers, not mimics.
 The flask is not completely stoppered and small wisps of fumes can be seen coming out of it. The flask needs to be used quickly before its effectiveness fades. When brought in close proximity to a doppelganger, the fumes – inoffensive on their own –combine with the odors of the Seatower and its environs into a scent that drives doppelgangers into a rage, shifting into their natural forms and attacking.~
 @552  = ~Herb Liqueur~
-@553  = ~This is a very dusty bottle of herbal liquer from some far away distillery. 
+@553  = ~This is a very dusty bottle of herbal liqueur from some far away distillery. 
 This looks like a bottle that is best kept save until you can give it to the right connoisseur.~
 @554  = ~Empty Mimic Powder~
 @555  = ~There is no more content inside the flask. The potion is no longer effective against doppelgangers.~
@@ -238,7 +238,76 @@ Duration:  15 turns
 
 Weight: 1~
 @575  = ~Sea Troll's Sebaceous Gland~
-@576 = ~The sebaceous gland you gained from a Sea Troll. It's constantly oozing a gelatic substance that is said to exceptionally protect metal against water.~
+@576 = ~The sebaceous gland you gained from a Sea Troll. It's constantly oozing a gelatin substance that is said to exceptionally protect metal against water.~
+@577  = ~Headband of Charisma~
+@578  = ~This jewel-studded headband would already fetch plenty of attention on its own, but it bears a subtle enchantment that makes viewers see the bearer in a very positive light, regarding <PRO_HIMHER> as a great leader or trustworthy authority.
+
+STATISTICS:
+
+Equipped abilities:
+- Charisma: Set to 18
+
+Weight: 1~
+@579  = ~Silver Dart of Selune~
+@580  = ~This small weapon has been blessed by Selune, the Moon Maiden, and as such has special powers against lycanthropes, which are affected by the Moon's pure silver light.
+
+STATISTICS:
+
+Combat abilities:
+- Returns to the wielder's hand when thrown
+- Can harm creatures only harmed by silver weapons
+
+THAC0: +2, +4 vs. lycanthropes
+Damage: 1d3+2, +4 vs. lycanthropes (missile)
+Speed Factor: 1
+Proficiency Type: Dart
+Type: One-handed
+
+Weight: 0~
+@581  = ~Silver Sphere Ioun Stone~
+@582  = ~This silvery sphere has a powerful abjuration which protects the user from back-stabs.
+
+STATISTICS:
+
+Equipped abilities:
+- Immunity to backstabbing.
+
+Weight: 2~
+@583  = ~Longbow of Speed +2~
+@584  = ~This enchanted longbow can launch deadly volleys of arrows.  There is no known name or history; it seems to be a relatively recently made item that hasn't had the time to gather any real fame yet.
+
+STATISTICS:
+
+Combat abilities:
+- 1 extra attack per round
+
+THAC0: +3
+Speed Factor: 5
+Proficiency Type: Longbow
+Type: Two-handed
+Requires:
+ 6 Strength
+
+Weight: 3~
+@585  = ~Paladin's Plate +2~
+@586  = ~This blessed suit of armor was created by the clergy of Lathander for the sole purpose of combating the constant threat of undead- and fiendish monsters to Faerun.  It has had a great number of owners over the ages, most of whom lived short but exciting and action-filled lives.
+
+Armor Class: 1 (-2 vs. slashing, +2 bonus vs. demonic and undead)
+Requires:
+ 12 Strength
+
+Weight: 25~
+@587  = ~Ring of Illusions~
+@588  = ~This ring and about a handful others similar to it were some three hundred years ago by a gnome thief/illusionist whose identify has been lost to history.  It can cast a number of illusion spells on the wearer on demand.  Although anyone can use it, it's a favorite of thieves and wizards who seek to befuddle and mislead their enemies.
+
+STATISTICS:
+
+Charged abilities:
+- Blur (1/day)
+- Invisibility (1/day)
+- Mirror Image (1/day)
+
+Weight: 0~
 
 //******************
 // Journal entries
@@ -260,7 +329,7 @@ Weight: 1~
 @712  = ~The Prisoner in the Seatower Prison~
 @713  = ~Working with the Smugglers~
 @714  = ~Confront the Slave Traders in Baldur's Gate~
-@715  = ~Myconides in the Seatower Prison~
+@715  = ~Myconids in the Seatower Prison~
 @716  = ~Doppelgangers Inside the Seatower~
 @717  = ~The Breach in the Seatower Prison~
 @718  = ~Ingredients for the Seatower Mage~
@@ -334,14 +403,14 @@ I decided to keep the stolen gold.~
 
 
 
-//Myconides in the Seatower Prison
-@753 = ~Myconides in the Seatower Prison
+//Myconids in the Seatower Prison
+@753 = ~Myconids in the Seatower Prison
 
-A Prison Guard told me that there is a spore colony with angry Myconides in the Seatower Dungeons.~
+A Prison Guard told me that there is a spore colony with angry Myconids in the Seatower Dungeons.~
 
-@754 = ~Myconides in the Seatower Prison
+@754 = ~Myconids in the Seatower Prison
 
-I killed the Myconides and destroyed the spore colony in the Seatower Dungeon.~
+I killed the Myconids and destroyed the spore colony in the Seatower Dungeon.~
 
 
 
@@ -351,7 +420,7 @@ I killed the Myconides and destroyed the spore colony in the Seatower Dungeon.~
 The mage Klaus has given me a strange scroll. The letters will not stand still on the page and it is quite unreadable. He said it opens a dungeon in old ruins in the Wood of Sharp Teeth. He seemed also quite desperate to save someone who is trapped inside. Maybe I can show this to someone versed with magic who can tell me more about it and give me a better starting point where to look for these ruins.~
 @761 = ~The Mysterious Scroll
 
-The mage Klaus has given me a strange scroll. The letters will not stand still on the page and it is quite unreadable. He seemed also quite desperate to save someone who is trapped inside. It has some Thayan notes on it, though. Edwin says he recognises the work and that the message says something about the ruins of a temple in Peldvale. Perhaps we should investigate Tazok's old camp site, there were some ruins there.~
+The mage Klaus has given me a strange scroll. The letters will not stand still on the page and it is quite unreadable. He seemed also quite desperate to save someone who is trapped inside. It has some Thayan notes on it, though. Edwin says he recognizes the work and that the message says something about the ruins of a temple in Peldvale. Perhaps we should investigate Tazok's old camp site, there were some ruins there.~
 @762 = ~The Mysterious Scroll
 
 Halbazzar Drin has identified where the scroll must be used. It's the old temple ruins in Peldvale where Tazok set up his camp.~
@@ -368,7 +437,7 @@ I found my way out of that labyrinth and learnt some weird things about my futur
 @766 = ~The Mysterious Scroll
 
 I found my way out of that labyrinth and learnt some weird things about my future life, or at least got a little glimps of things I don't understand yet.
-Also, Ulf found his way to Klaus savely.~
+Also, Ulf found his way to Klaus safely.~
 
 
 //Dark Power in the Seatower Catacombs
@@ -377,7 +446,7 @@ Also, Ulf found his way to Klaus savely.~
 Seems the Ilmater monastery has problems to keep the catacombs clear of whatever it is that is posing a threat down there. I should talk to the abbot to get more information.~
 @775 = ~Dark Power in the Seatower Catacombs
 
-Abbot Guoremor of the Seatower Monastery asked me to clear out the catacombs from what he called the restless spirits. He gave me two keys for the catacombs. The first one appearently leads into the main catacombs, whereas the second one is for a hidden door that leads to the "real evil". He told me to leave the dead alone or more spirits will stirr, but maybe that would be an option to clear out the catacombs for real - if I want to fight that much, that is. Any way - he told me to be prepared for a "great evil".~
+Abbot Guoremor of the Seatower Monastery asked me to clear out the catacombs from what he called the restless spirits. He gave me two keys for the catacombs. The first one apparently leads into the main catacombs, whereas the second one is for a hidden door that leads to the "real evil". He told me to leave the dead alone or more spirits will stir, but maybe that would be an option to clear out the catacombs for real - if I want to fight that much, that is. Any way - he told me to be prepared for a "great evil".~
 @776 = ~Dark Power in the Seatower Catacombs
 
 I got a reward from Abbot Guoremor after clearing out the Seatower Catacombs.~
@@ -385,7 +454,7 @@ I got a reward from Abbot Guoremor after clearing out the Seatower Catacombs.~
 //An Orphan in the Seatower
 @777  = ~An Orphan in the Seatower
 
-Inside the Balduren's Seatower Inn I met a man who is travelling with a boy. The boy should appearently be picked up by a lady who resides on the first floor but so far did not make up her mind to really take over the boy. I could ask her what this is all about.~
+Inside the Balduran's Seatower Inn I met a man who is travelling with a boy. The boy should apparently be picked up by a lady who resides on the first floor but so far did not make up her mind to really take over the boy. I could ask her what this is all about.~
 @778  = ~An Orphan in the Seatower
 
 Oh, how "unfortunate"... The grandmother declined to even see her grandson and left without taking him on, after my description of his looks which was not exactly... accurate. Well, that happens if you trust a stranger's testimony more than checking yourself. I don't think I need to feel guilty here, if people are so silly!~
@@ -416,7 +485,7 @@ A rather upset inn guest talked about rats running all over the third floor of t
 Now I have been warned not to open a door to a room on the third floor of the Seatower. The question is - do I heed the warning, or am I even more tempted to have a look?...~
 @787  = ~Strange Happenings in Room No. 3.4
 
-Er, alright. Appearently, a mage conjured rabbits inside the room in the third floor of the Seatower. Why he would do that is still a mystery, though. He got thrown out of the inn by the staff. Something tells me this is not over yet, that man seemed so desperate. I don't expect him to be any kind of threat, though, looking at all the white, fluffy rabbits running around...
+Er, alright. Apparently, a mage conjured rabbits inside the room in the third floor of the Seatower. Why he would do that is still a mystery, though. He got thrown out of the inn by the staff. Something tells me this is not over yet, that man seemed so desperate. I don't expect him to be any kind of threat, though, looking at all the white, fluffy rabbits running around...
 I can also only assume that the rabbits were the "rats" the other guest believed to have spotted.~
 @788  = ~Strange Happenings in Room No. 3.4
 
@@ -1979,7 +2048,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 // Abbot Guoremor (BSSATOS.dlg)
 
 @3700 = ~Greetings, I am Guoremor, the Abbot of this Ilmater Monastery. If there is anything we can help you with, please let us know. You are welcome to pray at the shrine, but please refrain from disturbing the monks inside their quarters.~
-@3701 = ~You are the ones that found poor Martina. Yes, there is a lot of greed and evil in this world. We Followers of Ilmater try to do our best, but there is only so much we can do. Appearently, soldier Shuck had a lot of debts to pay for, so he forced his way to our collected alms, killing poor Martina in the process. Please, as a sign of our gratitude, take these scrolls. May they help you doing good.~
+@3701 = ~You are the ones that found poor Martina. Yes, there is a lot of greed and evil in this world. We Followers of Ilmater try to do our best, but there is only so much we can do. Apparently, soldier Shuck had a lot of debts to pay for, so he forced his way to our collected alms, killing poor Martina in the process. Please, as a sign of our gratitude, take these scrolls. May they help you doing good.~
 @3702 = ~If you haven't spoken to the Seatower Commander yet, I have word that he is looking for you. It is about the prisoner.~
 @3703 = ~I see you bear injuries from your last battles, my friends. Did you come to call on my debts? Should I restore you to full health?~
 @3704 = ~Yes, please do so, and thanks.~
@@ -2285,7 +2354,7 @@ I brought a sebaceous gland of a Sea Troll to the Head Winchman of Balduran's Se
 @11011  = ~The tunnel is blocked by rocks and rubble.~
 @11012  = ~The water in the pool is clear and seems to shine with a blue light.~
 @11013  = ~Now that you know where to look, you notice the secret exit to the Sea Caves.~
-@11014  = ~This seems to be the corner the soldier mentioned. A small spore colony coveres half of the wall. To make sure there will not be more hostile Myconides, this colony should be destroyed. You could do so easily with your weapons.~
+@11014  = ~This seems to be the corner the soldier mentioned. A small spore colony coveres half of the wall. To make sure there will not be more hostile Myconids, this colony should be destroyed. You could do so easily with your weapons.~
 @11015  = ~Under a thin layer of dirt you find the corpse of a tower sergeant. He is wearing the sign of the commander's adjutant.~
 @11016  = ~The dirt pile is empty.~
 @11017  = ~This is an extraordinary large clam growing at the shallow edge of the pool. You can pry the shell open if you want.~
