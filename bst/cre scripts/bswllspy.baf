@@ -1,5 +1,6 @@
 IF
 	Range([PC],20)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		StartDialogNoSet([PC])

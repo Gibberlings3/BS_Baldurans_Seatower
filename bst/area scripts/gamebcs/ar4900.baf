@@ -9,6 +9,39 @@ THEN
 		CreateCreature("bssmgl01",[4284.3568],0)
 END
 
+/* spawn more smuggler for fight */
+IF
+	DifficultyGT(EASIEST)
+	Global("bsSmugglerAttacked","GLOBAL",4)
+	GlobalLT("bsCreateSmuggler","MYAREA",2)
+	!Exists("bssmgl01")
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl04",[4141.3455],0)
+		CreateCreature("bssmgl04",[4365.3392],0)
+        Continue()
+END
+IF
+	DifficultyGT(NORMAL)
+	Global("bsSmugglerAttacked","GLOBAL",4)
+	GlobalLT("bsCreateSmuggler","MYAREA",2)
+	!Exists("bssmgl01")
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl04",[4047.3628],10)
+        Continue()
+END
+IF
+	DifficultyGT(HARD)
+	Global("bsSmugglerAttacked","GLOBAL",4)
+	GlobalLT("bsCreateSmuggler","MYAREA",2)
+	!Exists("bssmgl01")
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl04",[4270.3787],8)
+		CreateCreature("bssmgl04",[4408.3770],7)
+        Continue()
+END
 IF
 	Global("bsSmugglerAttacked","GLOBAL",4)
 	GlobalLT("bsCreateSmuggler","MYAREA",2)
@@ -16,31 +49,58 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("bsCreateSmuggler","MYAREA",2)
-		CreateCreature("bssmgl04",[4141.3455],0)
-		CreateCreature("bssmgl04",[4365.3392],0)
-		CreateCreature("bssmgl04",[4047.3628],10)
-		CreateCreature("bssmgl04",[4408.3770],7)
-		CreateCreature("bssmgl04",[4270.3787],8)
+END
+
+/* Holger is dead */
+IF
+	Dead("bssmgl02")
+	Global("bsWorkingWithSmugglers","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsWorkingWithSmugglers","GLOBAL",2)
 END
 
 IF 
 	Dead("bssmgl02")
-	GlobalGT("bsSmugglerQuest","GLOBAL",0)
 	GlobalLT("bsSmugglerQuest","GLOBAL",50)
 THEN
 	RESPONSE #100
+		EraseJournalEntry(@824)
+		EraseJournalEntry(@825)
+		EraseJournalEntry(@826)
+		EraseJournalEntry(@827)
+		EraseJournalEntry(@828)
+		EraseJournalEntry(@829)
 		EraseJournalEntry(@830)
 		EraseJournalEntry(@832)
 		EraseJournalEntry(@833)
 		EraseJournalEntry(@834)
 		EraseJournalEntry(@835)
-		EraseJournalEntry(@836)
-		EraseJournalEntry(@837)
 		EraseJournalEntry(@838)
-		EraseJournalEntry(@839)
+		EraseJournalEntry(@100102)
+		EraseJournalEntry(@100103)
+		EraseJournalEntry(@100104)
+		EraseJournalEntry(@100105)
+		EraseJournalEntry(@100106)
+		EraseJournalEntry(@100107)
+		EraseJournalEntry(@100109)
+		EraseJournalEntry(@100110)
+		EraseJournalEntry(@100112)
+		EraseJournalEntry(@100114)
+		EraseJournalEntry(@100128)
+		EraseJournalEntry(@100131)
+		EraseJournalEntry(@100132)
+		EraseJournalEntry(@100143)
+		EraseJournalEntry(@100144)
+		EraseJournalEntry(@100145)
+		EraseJournalEntry(@100146)
+		EraseJournalEntry(@100147)
+		EraseJournalEntry(@100150)
+		EraseJournalEntry(@100154)
+		EraseJournalEntry(@100156)
 		AddJournalEntry(@831,QUEST_DONE)
-		SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
-		SetGlobal("bsSmugglerQuest","GLOBAL",50)
+		SetGlobal("bsWorkingWithSmugglers","GLOBAL",2)
+		SetGlobal("bsSmugglerQuest","GLOBAL",51)
 END
 
 IF 
@@ -51,4 +111,264 @@ THEN
 		EraseJournalEntry(@805)
 		AddJournalEntry(@806,QUEST_DONE)
 		SetGlobal("bsShucksBrother","GLOBAL",41)
+END
+
+//third smuggler quest - spawn Edgar at night fall
+IF
+	!Dead("bssmgl02")
+	TimeOfDay(NIGHT)
+	Global("bsSmugglerQuest","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",4)
+		CreateCreature("bssmgl08",[4705.2009],11)
+END
+/* despawn him during day */
+IF
+	InMyArea("bssmgl02")
+	!Dead("bssmgl02")
+	TimeOfDay(DAY)
+	Global("bsSmugglerQuest","GLOBAL",4)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",3)
+		ActionOverride("bssmgl08",DestroySelf())
+END
+
+/* create night masks */
+IF
+	Global("bsSmugglerQuest","GLOBAL",5)
+	PartyHasItem("bssmq004")
+	TimeOfDay(NIGHT)
+	!Exists("bssmgl09")
+	!Exists("bssmgl10")
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",6)
+		CreateCreature("bssmgl09",[4847.1174],0)
+		CreateCreature("bssmgl10",[4952.1167],0)
+END
+/* despawn night masks */
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	OR(2)
+		TimeOfDay(DAY)
+		!PartyHasItem("bssmq004")
+	InMyArea("bssmgl09")
+	InMyArea("bssmgl10")
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@11151)
+		ActionOverride("bssmgl09",DestroySelf())
+		ActionOverride("bssmgl10",DestroySelf())
+		SetGlobal("bsSmugglerQuest","GLOBAL",5)
+END
+
+/* fight: spawn more night masks */
+IF
+	DifficultyGT(EASIEST)
+    GlobalGT("bs_NightMasksAttack","MYAREA",0)
+    GlobalLT("bs_NightMasksAttack","MYAREA",10)
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl11",[4720.1231],14)
+		CreateCreature("bssmgl11",[5067.1215],3)
+		IncrementGlobal("bs_Numberofbssmgl11","MYAREA",2)
+        Continue()
+END
+IF
+	DifficultyGT(NORMAL)
+    GlobalGT("bs_NightMasksAttack","MYAREA",0)
+    GlobalLT("bs_NightMasksAttack","MYAREA",10)
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl11",[4918.1373],8)
+		IncrementGlobal("bs_Numberofbssmgl11","MYAREA",1)
+        Continue()
+END
+IF
+	DifficultyGT(HARD)
+    GlobalGT("bs_NightMasksAttack","MYAREA",0)
+    GlobalLT("bs_NightMasksAttack","MYAREA",10)
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl11",[4745.1342],11)
+		IncrementGlobal("bs_Numberofbssmgl11","MYAREA",1)
+        Continue()
+END
+/* fight: spawn even more if PC opened box */
+IF
+	OR(2)
+		Difficulty(EASIEST)
+		DifficultyGT(EASIEST)
+    Global("bs_NightMasksAttack","MYAREA",5)
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl11",[5005.1088],0)
+		IncrementGlobal("bs_Numberofbssmgl11","MYAREA",1)
+        Continue()
+END
+IF
+	DifficultyGT(NORMAL)
+    Global("bs_NightMasksAttack","MYAREA",5)
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl11",[4963.1296],8)
+		IncrementGlobal("bs_Numberofbssmgl11","MYAREA",1)
+        Continue()
+END
+IF
+	DifficultyGT(HARD)
+    Global("bs_NightMasksAttack","MYAREA",5)
+THEN
+	RESPONSE #100
+		CreateCreature("bssmgl11",[4796.1351],11)
+		IncrementGlobal("bs_Numberofbssmgl11","MYAREA",1)
+        Continue()
+END
+IF
+    GlobalGT("bs_NightMasksAttack","MYAREA",0)
+    GlobalLT("bs_NightMasksAttack","MYAREA",10)
+THEN
+	RESPONSE #100
+        SetGlobal("bs_NightMasksAttack","MYAREA",10)
+END
+
+/* Night Masks are dead: spawn Amnian soldiers */
+/* depending on number of spawned Night Masks */
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+	Global("bs_Numberofbssmgl11","MYAREA",0)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+    NumDeadGT("bssmgl11",1)
+	Global("bs_Numberofbssmgl11","MYAREA",2)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+    NumDeadGT("bssmgl11",2)
+	Global("bs_Numberofbssmgl11","MYAREA",3)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+    NumDeadGT("bssmgl11",3)
+	Global("bs_Numberofbssmgl11","MYAREA",4)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+    NumDeadGT("bssmgl11",4)
+	Global("bs_Numberofbssmgl11","MYAREA",5)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+    NumDeadGT("bssmgl11",5)
+	Global("bs_Numberofbssmgl11","MYAREA",6)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+IF
+	Global("bsSmugglerQuest","GLOBAL",6)
+	Dead("bssmgl09")
+	Dead("bssmgl10")
+    NumDeadGT("bssmgl11",6)
+	GlobalGT("bs_Numberofbssmgl11","MYAREA",6)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",7)
+END
+
+IF
+	Global("bsSmugglerQuest","GLOBAL",7)
+	Global("bs_SpawnFFAfterNM","MYAREA",0)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bs_SpawnFFAfterNM","MYAREA",1)
+		CreateCreatureObjectOffset("bssmgl12",Player1,[-15.-15])
+		CreateCreatureObjectOffset("bssmgl13",Player1,[15.15])
+		SetInterrupt(TRUE)
+END
+
+
+/* start smuggler quest when Holger is dead and PC found the items - set journal entry */
+IF
+	Dead("bssmgl02")
+	PartyHasItem("bssmq002")
+	PartyHasItem("bssmq007")
+	Global("bs_SmugglerDeadJournalEntry","MYAREA",0)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100141,QUEST)
+		SetGlobal("bs_SmugglerDeadJournalEntry","MYAREA",1)
+END
+
+//place proclamation into container
+IF
+	Global("bs_Container01ItemSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container 1",CreateItem("bsproclm",1,0,0)
+		SetGlobal("bs_Container01ItemSpawn","MYAREA",1)
+END
+
+/* add map note about smuggler meeting lace */
+IF
+	Global("bsSMMapnote","MYAREA",0)
+    GlobalGT("bsShucksBrother","GLOBAL",0)
+THEN
+	RESPONSE #100
+  		AddMapNote([4284.3568],@77)
+		SetGlobal("bsSMMapnote","MYAREA",1)
+
+END
+/* remove map note if smuggler work is over */
+IF
+    OR(4)
+        GlobalGT("bsWorkingWithSmugglers","GLOBAL",1)
+        GlobalGT("bsSmugglerQuest","GLOBAL",47)
+        Dead("bssmgl02")
+        GlobalGT("bsSmugglersLeave","GLOBAL",0)
+	Global("bsSMMapnote","MYAREA",1)
+THEN
+	RESPONSE #100
+  		RemoveMapNote([4284.3568],@77)
+		SetGlobal("bsSMMapnote","MYAREA",2)
+
 END

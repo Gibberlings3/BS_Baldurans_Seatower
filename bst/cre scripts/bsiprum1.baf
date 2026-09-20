@@ -1,0 +1,9 @@
+IF
+    See([PC])
+    !Allegiance(Myself,ENEMY)
+	Global("bs_TempleIslandQuest","GLOBAL",2) //after cutscene
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        StartDialogNoSet([PC])
+END

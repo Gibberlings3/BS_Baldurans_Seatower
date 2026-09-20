@@ -1,28 +1,12 @@
 //##################################################
 // Items
 
-/*
-// Almiran's Scroll
-  CREATE ~ITM~ VERSION ~V1  ~ ~bsalmirn~
-  COPY ~override/bsalmirn.itm~ ~override/bsalmirn.itm~
-    // Item Header: //
-      SAY          NAME2  @510       // Identified Name (strref)
-      WRITE_LONG   0x0018 2156       // Flags
-      WRITE_SHORT  0x001c 11         // Item type
-      WRITE_LONG   0x0034 1200       // Price
-      WRITE_SHORT  0x0038 1          // Stack amount
-      WRITE_ASCIIE 0x003a ~BSALMIRN~ // Inventory icon (BAM)
-      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
-      SAY          IDENTIFIED_DESC @511 // Identified Description (strref)
-      WRITE_ASCIIE 0x0058 ~BSALMRNC~ // Description icon (BAM)
-*/
-
 
 // Catacombs secret door key
   CREATE ~ITM~ VERSION ~V1  ~ ~bscckey~
   COPY ~override/bscckey.itm~ ~override/bscckey.itm~
     // Item Header: //
-      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      WRITE_LONG   0x0008 1697      // Unidentified Name (strref)
       SAY          NAME2  @514      // Identified Name (strref)
       WRITE_LONG   0x0018 109       // Flags
       WRITE_SHORT  0x001c 8         // Item type
@@ -31,7 +15,7 @@
       WRITE_SHORT  0x0038 1         // Stack amount
       WRITE_ASCIIE 0x003a ~bscdkey2~ // Inventory icon (BAM)
       WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
-      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x004c 0         // Weight
       SAY          IDENTIFIED_DESC @515 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~BSCCKYC~ // Description icon (BAM)
 
@@ -39,7 +23,7 @@
   CREATE ~ITM~ VERSION ~V1  ~ ~bscdkey~
   COPY ~override/bscdkey.itm~ ~override/bscdkey.itm~
     // Item Header: //
-      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      WRITE_LONG   0x0008 1697      // Unidentified Name (strref)
       SAY          NAME2  @516      // Identified Name (strref)
       WRITE_LONG   0x0018 45        // Flags
       WRITE_SHORT  0x001c 8         // Item type
@@ -48,16 +32,15 @@
       WRITE_SHORT  0x0038 1         // Stack amount
       WRITE_ASCIIE 0x003a ~BSCDKEY~ // Inventory icon (BAM)
       WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
-      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x004c 0         // Weight
       SAY          IDENTIFIED_DESC @517 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~BSCDKYC~ // Description icon (BAM)
-
 
 // Alguine's key
   CREATE ~ITM~ VERSION ~V1  ~ ~bsfmkey~
   COPY ~override/bsfmkey.itm~ ~override/bsfmkey.itm~
     // Item Header: //
-      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      WRITE_LONG   0x0008 1697      // Unidentified Name (strref)
       SAY          NAME2  @512       // Identified Name (strref)
       WRITE_LONG   0x0018 109        // Flags
       WRITE_SHORT  0x001c 8          // Item type
@@ -66,10 +49,9 @@
       WRITE_SHORT  0x0038 1          // Stack amount
       WRITE_ASCIIE 0x003a ~BSFMKEY~  // Inventory icon (BAM)
       WRITE_ASCIIE 0x0044 ~GMISC83~  // Ground icon (BAM)
-      WRITE_LONG   0x004c 1          // Weight
+      WRITE_LONG   0x004c 0          // Weight
       SAY          IDENTIFIED_DESC @513 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~BSFMKEYC~ // Description icon (BAM)
-
 
 // Seatower Prison pass
   CREATE ~ITM~ VERSION ~V1  ~ ~bsprpass~
@@ -173,7 +155,7 @@
       WRITE_SHORT  0x0038 1          // Stack amount
       WRITE_ASCIIE 0x003a ~YSALEPOT~ // Inventory icon (BAM)
       WRITE_ASCIIE 0x0044 ~GPOTN01~  // Ground icon (BAM)
-      WRITE_LONG   0x004c 8          // Weight
+      WRITE_LONG   0x004c 1          // Weight
       SAY          IDENTIFIED_DESC @505 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~YSALEPOC~ // Description icon (BAM)
 
@@ -202,11 +184,9 @@
       WRITE_SHORT  0x0038 1         // Stack amount
       WRITE_ASCIIE 0x003a ~IKEY10~  // Inventory icon (BAM)
       WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
-      WRITE_LONG   0x004c 1         // Weight
+      WRITE_LONG   0x004c 0         // Weight
       SAY          IDENTIFIED_DESC @501 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~CKEY10~  // Description icon (BAM)
-
-
 
 // Slave Trader's Pamphlet
   CREATE ~ITM~ VERSION ~V1  ~ ~bssmq001~
@@ -223,24 +203,6 @@
       SAY IDENTIFIED_DESC @539       // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~CSCRL2J~ // Description icon (BAM)
 
-/*
-// Sealed Box
-  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq002~
-  COPY ~override/bssmq002.itm~ ~override/bssmq002.itm~
-    // Item Header: //
-      SAY 	   NAME1  @540       // Unidentified Name (strref)
-      SAY          NAME2  @540       // Identified Name (strref)
-      WRITE_LONG   0x0018 2156       // Flags
-      WRITE_SHORT  0x001c 11         // Item type
-      WRITE_LONG   0x0034 1500       // Price
-      WRITE_SHORT  0x0038 1          // Stack amount
-      WRITE_ASCIIE 0x003a ~bssmq002~ // Inventory icon (BAM)
-      WRITE_ASCIIE 0x0044 ~GSACK01~  // Ground icon (BAM)
-      SAY          IDENTIFIED_DESC @541 // Identified Description (strref)
-//      WRITE_ASCIIE 0x0058 ~##~ // Description icon (BAM)
-*/
-
-
 // Lars' Drawing
   CREATE ~ITM~ VERSION ~V1  ~ ~bstq001~
   COPY ~override/bstq001.itm~ ~override/bstq001.itm~
@@ -253,59 +215,6 @@
       WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
       SAY          IDENTIFIED_DESC @532 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~bstqc01~ // Description icon (BAM)
-
-/*
-// Rabbit Cage
-  CREATE ~ITM~ VERSION ~V1  ~ ~bscage~
-  COPY ~override/bscage.itm~ ~override/bscage.itm~
-    // Item Header: //
-      SAY          NAME1  @533        // Unidentified Name (strref)
-      SAY          NAME2  @533      // Identified Name (strref)
-      WRITE_LONG   0x0018 44        // Flags
-      WRITE_LONG   0x0034 1         // Price
-      WRITE_SHORT  0x0038 1         // Stack amount
-      WRITE_ASCIIE 0x003a ~bscage~ // Inventory icon (BAM)
-      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
-      WRITE_LONG   0x004c 5         // Weight
-     // SAY          UNIDENTIFIED_DESC @534 // Unidentified Description (strref)
-      SAY          IDENTIFIED_DESC @534 // Identified Description (strref)
-      //WRITE_ASCIIE 0x0058 ~~ // Description icon (BAM)
-*/
-
-/*
-// Alive Rat
-  CREATE ~ITM~ VERSION ~V1  ~ ~bstqrat1~
-  COPY ~override/bstqrat1.itm~ ~override/bstqrat1.itm~
-    // Item Header: //
-      SAY          NAME1  @535        // Unidentified Name (strref)
-      SAY          NAME2  @535      // Identified Name (strref)
-      WRITE_LONG   0x0018 44        // Flags
-      WRITE_LONG   0x0034 1         // Price
-      WRITE_SHORT  0x0038 1         // Stack amount
-      WRITE_ASCIIE 0x003a ~bstqrat1~ // Inventory icon (BAM)
-      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
-      WRITE_LONG   0x004c 5         // Weight
-     // SAY          UNIDENTIFIED_DESC @536 // Unidentified Description (strref)
-      SAY          IDENTIFIED_DESC @536 // Identified Description (strref)
-      //WRITE_ASCIIE 0x0058 ~~ // Description icon (BAM)
-*/
-/*
-// Dead Rat
-  CREATE ~ITM~ VERSION ~V1  ~ ~bstqrat2~
-  COPY ~override/bstqrat2.itm~ ~override/bstqrat2.itm~
-    // Item Header: //
-      SAY          NAME1  @535        // Unidentified Name (strref)
-      SAY          NAME2  @535      // Identified Name (strref)
-      WRITE_LONG   0x0018 44        // Flags
-      WRITE_LONG   0x0034 1         // Price
-      WRITE_SHORT  0x0038 1         // Stack amount
-      WRITE_ASCIIE 0x003a ~bstqrat2~ // Inventory icon (BAM)
-      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
-      WRITE_LONG   0x004c 5         // Weight
-     // SAY          UNIDENTIFIED_DESC @537 // Unidentified Description (strref)
-      SAY          IDENTIFIED_DESC @537 // Identified Description (strref)
-      //WRITE_ASCIIE 0x0058 ~~ // Description icon (BAM)
-*/
 
 // Slave Trader's Notes
   CREATE ~ITM~ VERSION ~V1  ~ ~bssmq003~
@@ -322,12 +231,11 @@
       SAY IDENTIFIED_DESC @543       // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~CBOOK91~ // Description icon (BAM)
 
-
 // Tailor's key
   CREATE ~ITM~ VERSION ~V1  ~ ~bstaikey~
   COPY ~override/bstaikey.itm~ ~override/bstaikey.itm~
     // Item Header: //
-      SAY 	   NAME1  1697      // Unidentified Name (strref)
+      WRITE_LONG   0x0008 1697      // Unidentified Name (strref)
       SAY          NAME2  @548       // Identified Name (strref)
       WRITE_LONG   0x0018 109        // Flags
       WRITE_SHORT  0x001c 8          // Item type
@@ -336,10 +244,9 @@
       WRITE_SHORT  0x0038 1          // Stack amount
       WRITE_ASCIIE 0x003a ~bstaykey~  // Inventory icon (BAM)
       WRITE_ASCIIE 0x0044 ~GMISC83~  // Ground icon (BAM)
-      WRITE_LONG   0x004c 1          // Weight
+      WRITE_LONG   0x004c 0          // Weight
       SAY          IDENTIFIED_DESC @549 // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~BSFMKEYC~ // Description icon (BAM)
-
 
 // Treasure note: 500 gold
   CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt00~
@@ -354,7 +261,6 @@
       SAY IDENTIFIED_DESC @564       // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
 
-
 // Treasure note: 3000 gold
   CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt03~
   COPY ~override/bstrnt03.itm~ ~override/bstrnt03.itm~
@@ -367,7 +273,6 @@
       WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
       SAY IDENTIFIED_DESC @557       // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
-
 
 // Treasure note: 5000 gold
   CREATE ~ITM~ VERSION ~V1  ~ ~bstrnt05~
@@ -394,6 +299,392 @@
       WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
       SAY IDENTIFIED_DESC @559       // Identified Description (strref)
       WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+// Lord Dlusker's Journal
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsrsd04~
+  COPY ~override/bssmq003.itm~ ~override/bsrsd04.itm~
+    // Item Header: //
+      SAY NAME1 @590        		// Unidentified Name (strref)
+      SAY NAME2 @590             // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 37         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~IBOOK91~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GBOOK01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @591       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CBOOK91~ // Description icon (BAM)
+	  
+// Letter 1 from Ivonne
+  CREATE ~ITM~ VERSION ~V1  ~ ~bshdlet1~
+  COPY ~override/bshdlet1.itm~ ~override/bshdlet1.itm~
+    // Item Header: //
+      SAY          NAME1  @608 
+      SAY          NAME2  @608       // Identified Name (strref)
+      WRITE_LONG   0x0018 45        // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC7S~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @610 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC7S~ // Description icon (BAM)	  
+
+// Letter 1 from Balduin
+  CREATE ~ITM~ VERSION ~V1  ~ ~bshdlet2~
+  COPY ~override/bshdlet2.itm~ ~override/bshdlet2.itm~
+    // Item Header: //
+      SAY          NAME1  @609 
+      SAY          NAME2  @609       // Identified Name (strref)
+      WRITE_LONG   0x0018 45        // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8I~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @611 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8I~ // Description icon (BAM)
+	  
+// Letter 2 from Ivonne
+  CREATE ~ITM~ VERSION ~V1  ~ ~bshdlet3~
+  COPY ~override/bshdlet3.itm~ ~override/bshdlet3.itm~
+    // Item Header: //
+      SAY          NAME1  @608 
+      SAY          NAME2  @608       // Identified Name (strref)
+      WRITE_LONG   0x0018 45        // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC7S~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @612 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC7S~ // Description icon (BAM)
+	  
+// Letter from Balduin to Unknown
+  CREATE ~ITM~ VERSION ~V1  ~ ~bshdlet4~
+  COPY ~override/bshdlet4.itm~ ~override/bshdlet4.itm~
+    // Item Header: //
+      SAY          NAME1  @609 
+      SAY          NAME2  @609       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8I~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @613 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8I~ // Description icon (BAM)
+
+// Gnawed upon note 1
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihnot1~
+  COPY ~override/bsihnot1.itm~ ~override/bsihnot1.itm~
+    // Item Header: //
+      SAY          NAME1  @645
+      SAY          NAME2  @645       // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC7P~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @646 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC7P~ // Description icon (BAM)
+
+// Gnawed upon note 2
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihnot2~
+  COPY ~override/bsihnot2.itm~ ~override/bsihnot2.itm~
+    // Item Header: //
+      SAY          NAME1  @645
+      SAY          NAME2  @645       // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC7Q~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @647 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC7Q~ // Description icon (BAM)
+	 
+// Tooth of Iakhovas
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsitooth~
+  COPY ~override/bsitooth.itm~ ~override/bsitooth.itm~
+    // Item Header: //
+      SAY          NAME1  @614 
+      SAY          NAME2  @614       // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_ASCIIE 0x003a ~IKEY26~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @615 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CKEY26~ // Description icon (BAM)
+
+// Hermit's Notes (Old Temple Island)
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihrnt~
+  COPY ~override/bssmq003.itm~ ~override/bsihrnt.itm~
+    // Item Header: //
+      SAY NAME1 @630        		// Unidentified Name (strref)
+      SAY NAME2 @630             // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 37         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~IBOOK91~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GBOOK01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @631       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CBOOK91~ // Description icon (BAM)
+
+// Boulder
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsistone~
+  COPY ~override/bsistone.itm~ ~override/bsistone.itm~
+    // Item Header: //
+      SAY          NAME1  @632        // Unidentified Name (strref)
+      SAY          NAME2  @632      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bsistone~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 100         // Weight
+      SAY          IDENTIFIED_DESC @633 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~bsistond~ // Description icon (BAM)
+
+// Cheese
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsichees~
+  COPY ~override/bsichees.itm~ ~override/bsichees.itm~
+    // Item Header: //
+      SAY          NAME1  @634        // Unidentified Name (strref)
+      SAY          NAME2  @634      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_LONG   0x0034 25        // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bsicheei~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      SAY          IDENTIFIED_DESC @635 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~bsicheed~ // Description icon (BAM)
+
+// Umber Hulk Hide
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsiumbhh~
+  COPY ~override/bsiumbhh.itm~ ~override/bsiumbhh.itm~
+    // Item Header: //
+      SAY          NAME1  @648        // Unidentified Name (strref)
+      SAY          NAME2  @648      // Identified Name (strref)
+      WRITE_LONG   0x0018 44        // Flags
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bsiumbhi~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 25         // Weight
+      SAY          IDENTIFIED_DESC @649 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~bsiumbhd~ // Description icon (BAM)
+
+//Adventurer Note
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsiadvnt~
+  COPY ~override/bsiadvnt.itm~ ~override/bsiadvnt.itm~
+    // Item Header: //
+      SAY          NAME1  @652
+      SAY          NAME2  @652       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8A~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @653       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8A~ // Description icon (BAM)
+
+//Handwritten Note 1
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihnte1~
+  COPY ~override/bsihnte1.itm~ ~override/bsihnte1.itm~
+    // Item Header: //
+      SAY          NAME1  @656
+      SAY          NAME2  @656       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @657       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8C~ // Description icon (BAM)
+//Handwritten Note 1
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihnte2~
+  COPY ~override/bsihnte2.itm~ ~override/bsihnte2.itm~
+    // Item Header: //
+      SAY          NAME1  @656
+      SAY          NAME2  @656       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @658       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8C~ // Description icon (BAM)
+//Handwritten Note 1
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihnte3~
+  COPY ~override/bsihnte3.itm~ ~override/bsihnte3.itm~
+    // Item Header: //
+      SAY          NAME1  @656
+      SAY          NAME2  @656       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @659       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8C~ // Description icon (BAM)
+//Handwritten Note 1
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsihnte4~
+  COPY ~override/bsihnte4.itm~ ~override/bsihnte4.itm~
+    // Item Header: //
+      SAY          NAME1  @656
+      SAY          NAME2  @656       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @660       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8C~ // Description icon (BAM)
+
+// Old Temple Island bs0102 secret door key
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsislkey~
+  COPY ~override/bsislkey.itm~ ~override/bsislkey.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 1697      // Unidentified Name (strref)
+      SAY          NAME2  @663      // Identified Name (strref)
+      WRITE_LONG   0x0018 109       // Flags
+      WRITE_SHORT  0x001c 8         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2   // Item animation
+      WRITE_LONG   0x0034 7500      // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bscdkey2~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 0         // Weight
+      SAY          IDENTIFIED_DESC @664 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSCCKYC~ // Description icon (BAM)
+
+// Ritual Note (in bs0102, Old Temple Island - Fragmented Apparition)
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsiptmnt~
+  COPY ~override/bsiptmnt.itm~ ~override/bsiptmnt.itm~
+    // Item Header: //
+      SAY          NAME1  @667
+      SAY          NAME2  @667       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC7C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @668 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC7C~ // Description icon (BAM)
+
+// Candle
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsicandl~
+  COPY ~override/bsicandl.itm~ ~override/bsicandl.itm~
+    // Item Header: //
+      SAY          NAME1  @671        // Unidentified Name (strref)
+      SAY          NAME2  @671      // Identified Name (strref)
+      WRITE_LONG   0x0018 45        // Flags
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~IMISC74~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSACK01~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 1         // Weight
+      SAY          IDENTIFIED_DESC @672 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC74~ // Description icon (BAM)
+
+// Letter from Priestess of Umberlee
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsipuml1~
+  COPY ~override/bsipuml1.itm~ ~override/bsipuml1.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 13195  //Letter      		// Unidentified Name (strref)
+      WRITE_LONG   0x000c 13195                // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~ISCRL02~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @675       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CSCRL2J~ // Description icon (BAM)
+
+// Letter from Priestess of Umberlee
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsipuml2~
+  COPY ~override/bsipuml2.itm~ ~override/bsipuml2.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 13195  //Letter      		// Unidentified Name (strref)
+      WRITE_LONG   0x000c 13195                // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~ISCRL02~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @676       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CSCRL2J~ // Description icon (BAM)
+
+// Key to prison cells
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsprskey~
+  COPY ~override/bsprskey.itm~ ~override/bsprskey.itm~
+    // Item Header: //
+      WRITE_LONG   0x0008 1697      // Unidentified Name (strref)
+      SAY          NAME2  @677      // Identified Name (strref)
+      WRITE_LONG   0x0018 109       // Flags
+      WRITE_SHORT  0x001c 8         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2   // Item animation
+      WRITE_LONG   0x0034 7500      // Price
+      WRITE_SHORT  0x0038 1         // Stack amount
+      WRITE_ASCIIE 0x003a ~bscdkey2~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GMISC83~ // Ground icon (BAM)
+      WRITE_LONG   0x004c 0         // Weight
+      SAY          IDENTIFIED_DESC @678 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~BSCCKYC~ // Description icon (BAM)
+
+//note from prisoner
+  CREATE ~ITM~ VERSION ~V1  ~ ~bspris3a~
+  COPY ~override/bspris3a.itm~ ~override/bspris3a.itm~
+    // Item Header: //
+      SAY          NAME1  @684
+      SAY          NAME2  @684       // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @685       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8C~ // Description icon (BAM)
+
+// Official Amnian Collaboration Pass
+  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq006~
+  COPY ~override/bssmq006.itm~ ~override/bssmq006.itm~
+    // Item Header: //
+      SAY NAME1  @690        		// Unidentified Name (strref)
+      SAY NAME2 @690                 // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~YSTWRPSS~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @691       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~YSTWRPSC~ // Description icon (BAM)
+
+// Confirmation about Smuggler Bust
+  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq009~
+  COPY ~override/bssmq009.itm~ ~override/bssmq009.itm~
+    // Item Header: //
+      SAY NAME1  @694        		// Unidentified Name (strref)
+      SAY NAME2 @694                 // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x0022 ~  ~ #2    // Item animation
+      WRITE_SHORT  0x0038 1          // Stack amount
+      WRITE_ASCIIE 0x003a ~ISCRL02~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @695       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CSCRL2J~ // Description icon (BAM)
+
+//Handwritten Note (on Holger, to start fig delivery quest in case he's dead)
+  CREATE ~ITM~ VERSION ~V1  ~ ~bssmq007~
+  COPY ~override/bssmq007.itm~ ~override/bssmq007.itm~
+    // Item Header: //
+      SAY          NAME1  @656
+      SAY          NAME2  @656       // Identified Name (strref)
+      WRITE_LONG   0x0018 45         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~IMISC8C~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY IDENTIFIED_DESC @528       // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~CMISC8C~ // Description icon (BAM)
+
+// Seatower Proclamation
+  CREATE ~ITM~ VERSION ~V1  ~ ~bsproclm~
+  COPY ~override/bsproclm.itm~ ~override/bsproclm.itm~
+    // Item Header: //
+      SAY          NAME1  @496
+      SAY          NAME2  @496       // Identified Name (strref)
+      WRITE_LONG   0x0018 44         // Flags
+      WRITE_SHORT  0x001c 11         // Item type
+      WRITE_ASCIIE 0x003a ~bsproclm~ // Inventory icon (BAM)
+      WRITE_ASCIIE 0x0044 ~GSCRL01~  // Ground icon (BAM)
+      SAY          IDENTIFIED_DESC @497 // Identified Description (strref)
+      WRITE_ASCIIE 0x0058 ~ystwrpsc~ // Description icon (BAM)
 
 
 // -----

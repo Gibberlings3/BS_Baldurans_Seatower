@@ -1,0 +1,61 @@
+/* busting cook in Helm and Cloak: initiate dialogue */
+IF
+	Global("bs_SpawnFFSmuggler","MYAREA",1)
+	AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
+    Allegiance(Myself,NEUTRAL)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Myself)
+END
+
+/* Bust in Helm and Cloak done - will leave */
+IF
+	Global("bs_ReportSmugglersToFF","GLOBAL",5)
+	AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		EraseJournalEntry(@100137)
+		EraseJournalEntry(@100141)
+		AddJournalEntry(@100139,QUEST) //Reporting Smugglers to the Flaming Fist
+		EscapeAreaDestroy(5)
+		SetInterrupt(TRUE)
+END
+
+/* Reporting done - no longer needed, will leave */
+IF
+	GlobalGT("bs_ReportSmugglersToFF","GLOBAL",49)
+	AreaCheck("%SWBaldursGate_FlamingFistHQ_L1%")
+
+THEN
+	RESPONSE #100
+		EscapeAreaDestroy(5)
+END
+
+/* Manip Limmon will not be there while PC is being searched for murder */
+IF
+	GlobalLT("bs_ReportSmugglersToFF","GLOBAL",50)
+	AreaCheck("%SWBaldursGate_FlamingFistHQ_L1%")
+	Global("Chapter","GLOBAL",%tutu_chapter_7%)
+	Global("DukeThanks","GLOBAL",0)
+	Global("bs_DeactivateManip","MYAREA",0)
+THEN
+	RESPONSE #100
+		Deactivate(Myself)
+		SetGlobal("bs_DeactivateManip","MYAREA",1)
+END
+
+IF
+	GlobalLT("bs_ReportSmugglersToFF","GLOBAL",50)
+	AreaCheck("%SWBaldursGate_FlamingFistHQ_L1%")
+	GlobalGT("Chapter","GLOBAL",%tutu_chapter_6%)
+	GlobalGT("DukeThanks","GLOBAL",0)
+	Global("bs_DeactivateManip","MYAREA",1)
+THEN
+	RESPONSE #100
+		Activate(Myself)
+		SetGlobal("bs_DeactivateManip","MYAREA",2)
+END

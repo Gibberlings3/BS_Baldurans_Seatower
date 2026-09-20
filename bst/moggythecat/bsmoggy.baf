@@ -1,0 +1,17 @@
+
+IF
+	Global("bs_IlmaterMonasteryStronghold","GLOBAL",1)	
+	Global("bs_MoggysBed","MYAREA",0)
+THEN
+	RESPONSE #100
+		JumpToPoint([213.774])
+		Face(0)
+		SetGlobal("bs_MoggysBed","MYAREA",1)
+END
+
+IF
+	!Global("bs_MoggysBed","MYAREA",1)
+THEN
+	RESPONSE #100
+		RandomWalk()
+END

@@ -1,0 +1,168 @@
+IF
+	Clicked([ANYONE])
+	InMyArea(Player1)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player1,LeaveAreaLUA("bs0138","",[3271.685],0))
+	  Continue()
+END
+
+IF
+	Clicked([ANYONE])
+	InMyArea(Player2)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player2,LeaveAreaLUA("bs0138","",[3200.685],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player3)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player3,LeaveAreaLUA("bs0138","",[3271.651],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player4)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player4,LeaveAreaLUA("bs0138","",[3200.651],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player5)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player5,LeaveAreaLUA("bs0138","",[3271.623],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player6)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player6,LeaveAreaLUA("bs0138","",[3200.623],0))
+	  Continue()
+END
+
+
+	  /* random exit - deprecated
+IF
+	Clicked([ANYONE])
+	InMyArea(Player1)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player1,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player1,LeaveAreaLUA("bs0138","",[2617.1805],10))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player1,LeaveAreaLUA("bs0138","",[857.2267],14))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player1,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+END
+
+IF
+	Clicked([ANYONE])
+	InMyArea(Player2)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player2,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player2,LeaveAreaLUA("bs0138","",[2617.1805],10))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player2,LeaveAreaLUA("bs0138","",[332.1193],14))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player2,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player3)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player3,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player3,LeaveAreaLUA("bs0138","",[2617.1805],10))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player3,LeaveAreaLUA("bs0138","",[332.1193],14))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player3,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player4)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player4,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player4,LeaveAreaLUA("bs0138","",[2617.1805],10))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player4,LeaveAreaLUA("bs0138","",[332.1193],14))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player4,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player5)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player5,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player5,LeaveAreaLUA("bs0138","",[2617.1805],10))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player5,LeaveAreaLUA("bs0138","",[332.1193],14))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player5,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+END
+IF
+	Clicked([ANYONE])
+	InMyArea(Player6)
+	Range(LastTrigger,25)
+THEN
+	RESPONSE #25
+	  ActionOverride(Player6,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player6,LeaveAreaLUA("bs0138","",[2617.1805],10))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player6,LeaveAreaLUA("bs0138","",[332.1193],14))
+	  Continue()
+	RESPONSE #25
+	  ActionOverride(Player6,LeaveAreaLUA("bs0138","",[3233.597],0))
+	  Continue()
+END
+*/

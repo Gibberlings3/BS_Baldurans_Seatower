@@ -1,5 +1,9 @@
 IF
-	Global("bsSmugglersLeave","GLOBAL",1)
+	OR(4)
+		Global("bsSmugglersLeave","GLOBAL",1)
+		Global("bsSmugglerQuest","GLOBAL",40)
+		Global("bsSmugglerQuest","GLOBAL",41)
+		GlobalGT("bsSmugglerQuest","GLOBAL",49)
 THEN
 	RESPONSE #100
 		EscapeArea()
@@ -28,7 +32,7 @@ IF
 	Allegiance(Myself,NEUTRAL)
 	OR(5)
 		Allegiance("bssmgl02",ENEMY)
-		Dead("bssmgl03")
+		Dead("bssmgl02")
 		AttackedBy([GOODCUTOFF],DEFAULT)
 		HitBy([GOODCUTOFF],CRUSHING)
 		HPPercentLT(Myself,100)

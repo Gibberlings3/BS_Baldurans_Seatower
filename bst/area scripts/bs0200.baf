@@ -1,5 +1,82 @@
-/* Sea Caves */
+/* Seacave */
 
+/* check variable: group left prison */
+IF
+	InMyArea(Player1)
+	Global("bs_PCWasInPrisonArea","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_PCWasInPrisonArea","GLOBAL",0)
+END
+
+/* body of dead Adjutant will be gone after reporting */
+IF
+    GlobalGT("bsFoundSerjeante","GLOBAL",2)
+	InMyArea("bsdedadj")
+	Global("bsRemoveSerjeante","MYAREA",0)
+THEN
+    RESPONSE #100
+		ActionOverride("bsdedadj",DestroySelf())
+		SetGlobal("bsRemoveSerjeante","MYAREA",1)
+	END
+
+/* fight: spawn more priestesses */
+IF
+	DifficultyGT(EASIEST)
+    Global("bs_TempleIslandQuest","GLOBAL",15)
+THEN
+	RESPONSE #100
+		CreateCreature("bsiprum1",[1580.248],14)
+		CreateCreature("bsiprum1",[1754.383],8)
+        Continue()
+END
+IF
+	DifficultyGT(NORMAL)
+    Global("bs_TempleIslandQuest","GLOBAL",15)
+THEN
+	RESPONSE #100
+		CreateCreature("bsiprum1",[1562.429],7)
+        Continue()
+END
+IF
+	DifficultyGT(HARD)
+    Global("bs_TempleIslandQuest","GLOBAL",15)
+THEN
+	RESPONSE #100
+		CreateCreature("bsiprum1",[1436.356],11)
+        Continue()
+END
+IF
+    Global("bs_TempleIslandQuest","GLOBAL",15)
+THEN
+	RESPONSE #100
+        SetGlobal("bs_TempleIslandQuest","GLOBAL",16)
+END
+
+/* spawn Priestess of Umberlee if all Sahuagin are dead */
+IF
+	Dead("bssahu01")
+	Dead("bssahu02")
+	Dead("bssahu03")
+	Dead("bssahu05")
+	Global("bs_TempleIslandQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsiprum1",[1675.301],0)
+		SetGlobal("bs_TempleIslandQuest","GLOBAL",1)
+END
+/* spawn 2nd priestess after return */
+IF
+	InMyArea(Player1)
+	Global("bs_TempleIslandQuest","GLOBAL",10)
+	Global("bs_SpawnPriestess2","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsiprum2",[1730.340],0)
+		SetGlobal("bs_SpawnPriestess2","MYAREA",1)
+END
+
+/* set journal entry: Seacave discovered */
 IF
 	Global("bsSeaCaveOpen","GLOBAL",0)
 THEN
@@ -10,6 +87,7 @@ THEN
 		SetGlobal("bsSeaCaveOpen","GLOBAL",1)
 END
 
+/* boulder blocking way to ys0109 was removed: activate traveltrigger */
 IF
 	Global("bsSeaCaveOpen","GLOBAL",2)
 THEN
@@ -19,6 +97,7 @@ THEN
 		SetGlobal("bsSeaCaveOpen","GLOBAL",3)
 END
 
+/* first entry: deactivate travel trigger to Old Temple Island */
 IF
 	Global("bsCloseTempleIslandExit","MYAREA",0)
 THEN
@@ -28,14 +107,117 @@ THEN
 		SetGlobal("bsCloseTempleIslandExit","MYAREA",1)
 END
 
+/* activate travel trigger to Old Temple Island */
 IF
-	Global("bsTempleIslandOpen","GLOBAL",1)
-	GlobalLT("bsCloseTempleIslandExit","MYAREA",2)
+	Global("bsCloseTempleIslandExit","MYAREA",2)
 THEN
 	RESPONSE #100
 		TriggerActivation("travbs0160",TRUE)
 		TriggerActivation("bs0200t2",FALSE)
-		SetGlobal("bsCloseTempleIslandExit","MYAREA",2)
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",3)
+END
+
+/* upon return: deactivate travel trigger to Old Temple Island again */
+IF
+	GlobalGT("bs_TempleIslandQuest","GLOBAL",9)
+	GlobalLT("bsCloseTempleIslandExit","MYAREA",4)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0160",FALSE)
+		TriggerActivation("bs0200t2",TRUE)
+		EraseJournalEntry(@963)
+		EraseJournalEntry(@964)
+		EraseJournalEntry(@965)
+		EraseJournalEntry(@966)
+		EraseJournalEntry(@967)
+		EraseJournalEntry(@968)
+		EraseJournalEntry(@969)
+		EraseJournalEntry(@970)
+		EraseJournalEntry(@971)
+		EraseJournalEntry(@100007)
+/* erase all unsolved journal entries from temple island */
+//The Old Hermit's Notebook
+		EraseJournalEntry(@974)
+		EraseJournalEntry(@975)
+//The Rat in the Library
+		EraseJournalEntry(@978)
+		EraseJournalEntry(@979)
+//What is Going On in the Guarded Room?
+		EraseJournalEntry(@982)
+		EraseJournalEntry(@983)
+		EraseJournalEntry(@984)
+		EraseJournalEntry(@100006)
+//The Squirrel Pirate
+		EraseJournalEntry(@993)
+		EraseJournalEntry(@100056)
+		EraseJournalEntry(@100057)
+//A Hammer for the Pirates
+		EraseJournalEntry(@1001)
+		EraseJournalEntry(@1002)
+		EraseJournalEntry(@1003)
+//Umberlee's Curse
+		EraseJournalEntry(@1005)
+		EraseJournalEntry(@1006)
+//A Girl inside the Sarcophagus
+		EraseJournalEntry(@1012)
+		EraseJournalEntry(@1014)
+//~Secret Passage from Chapel to Arena?
+		EraseJournalEntry(@100001)
+		EraseJournalEntry(@100003)
+//~Hidden Mechanism in the Chapel's Altar?~
+		EraseJournalEntry(@100002)
+//Block the Malenti Water Hole
+		EraseJournalEntry(@100009)
+		EraseJournalEntry(@100010)
+		EraseJournalEntry(@100011)
+		EraseJournalEntry(@100042)
+//Water for the Castaways
+		EraseJournalEntry(@100014)
+		EraseJournalEntry(@100016)
+//Diddy's Missing Dagger
+		EraseJournalEntry(@100019)
+		EraseJournalEntry(@100020)
+//Dispute over Leadership between Castaways
+		EraseJournalEntry(@100024)
+		EraseJournalEntry(@100025)
+		EraseJournalEntry(@100026)
+//Defense System of the "Arena" Room
+		EraseJournalEntry(@100030)
+		EraseJournalEntry(@100033)
+		EraseJournalEntry(@100072)
+//Candles for the Redeemed
+		EraseJournalEntry(@100035)
+//Fragmented Soul
+		EraseJournalEntry(@100038)
+//Warm Cloth for a Confused Mother
+		EraseJournalEntry(@100051)
+		EraseJournalEntry(@100052)
+		EraseJournalEntry(@100071)
+//Destroy the Great Portal
+		EraseJournalEntry(@987)
+		EraseJournalEntry(@988)
+		EraseJournalEntry(@989)
+		EraseJournalEntry(@990)
+//The Door Riddle
+		EraseJournalEntry(@100068)
+		EraseJournalEntry(@100069)
+		EraseJournalEntry(@100082)
+//The Umber Hulk under the Library
+		EraseJournalEntry(@100074)
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",4)
+END
+
+/* close journal entry: Destroy the Great Portal */
+IF
+	!Dead("bsihermi")
+	GlobalGT("bs_TempleIslandQuest","GLOBAL",9)
+	Global("bs_JEDestroyPortal","MYAREA",0)
+	GlobalLT("bs_SahuaginPortalRoom","GLOBAL",2)
+	Global("bs_SawPortalRoom","GLOBAL",2)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100066,QUEST_DONE)
+		SetGlobal("bs_JEDestroyPortal","MYAREA",1)
 END
 
 /* player found the dead adjutant */
@@ -61,7 +243,6 @@ THEN
 END
 
 /* Interrogator's work - make Halfslinger go back to his house */
-
 IF
 	Global("bsInquisitorsWork","GLOBAL",2)
 THEN
@@ -82,3 +263,40 @@ THEN
 		SetGlobal("bsBlackPearlJournal","LOCALS",1)
 END
 
+/* PC has tooth after priestesses dialogue is done */
+/* set journal entry: what now with the tooth */
+/* also sets timer for Talos priest */
+IF
+	PartyHasItem("bsitooth")
+	GlobalGT("bs_TempleIslandQuest","GLOBAL",14)
+	Global("bs_ToothJournalEntry","MYAREA",0)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100059,QUEST)
+		SetGlobal("bs_i_SpawnTalosPriest","GLOBAL",1)
+		SetGlobalTimer("bs_i_SpawnTalosPriestTimer","GLOBAL",ONE_DAY)
+		SetGlobal("bs_ToothJournalEntry","MYAREA",1)
+END
+
+/* PC has evidence for Temple of Umberlee's intrigue - set journal entry */
+IF
+	PartyHasItem("bsipuml2")
+	GlobalLT("bs_IntrigueJournalEntry","MYAREA",2)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100062,QUEST)
+		SetGlobal("bs_IntrigueJournalEntry","MYAREA",2)
+END
+
+/* PC did not find evidence */
+IF
+	!InMyArea("bsiprum2")
+	Global("bs_TempleIslandQuest","GLOBAL",19)
+	Global("bs_IntrigueJournalEntry","MYAREA",0)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@1008)
+		EraseJournalEntry(@1010)
+		AddJournalEntry(@100083,QUEST_DONE)
+		SetGlobal("bs_IntrigueJournalEntry","MYAREA",1)
+END

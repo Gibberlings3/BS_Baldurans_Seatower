@@ -1,0 +1,39 @@
+/* secret door, bs0101: solve a riddle, first */
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bs_SolvedDoorRiddle","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreatureImpassable("bsihidor",[2693.1985],0)
+		SetGlobal("bs_SolvedDoorRiddle","MYAREA",1)
+END
+
+IF
+	InMyArea("bsihidor")
+	Global("bs_SolvedDoorRiddle","MYAREA",1)
+THEN
+	RESPONSE #100
+		ActionOverride("bsihidor",StartDialogueNoSet([PC]))
+END
+
+/* door is open */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	GlobalGT("bs_SolvedDoorRiddle","MYAREA",4)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11115)
+END
+
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007)
+END
+

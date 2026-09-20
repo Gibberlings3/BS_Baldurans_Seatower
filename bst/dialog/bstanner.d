@@ -1,53 +1,60 @@
 BEGIN bstanner
 
-/* Doppelganger quest
-Global("bsDoppTurnTower","GLOBAL",5)
+/*
+Global("bsDoppelgangerQuest","GLOBAL",12)
+PartyHasItem("bsdopdr")
+PartyHasItem("bsdpliqu")
+PartyHasItem("bsdpliq1")
+PartyHasItem("bsdpliq2")
 */
 
 //---------------------------------------------------------
 // general greeting after 3rd meeting
-CHAIN
-IF ~Global("bsTalkedToTanner","GLOBAL",2)~THEN bstanner GOSTORE
-	@2500 /* ~Ah, you again.~ */
-== bstanner IF ~Global("bsTannerQuest","GLOBAL",0)
-GlobalGT("bsDoppelgangerQuest","GLOBAL",14)~ THEN @2663 /* ~In case you stumble upon good liqueur, I would be interested in three bottles. It makes the leather go softer - and it gives me a better smell while working on it. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~ */ DO ~AddJournalEntry(@874,QUEST) SetGlobal("bsTannerQuest","GLOBAL",5)~
-END
-IF ~~ THEN + general_lines
 
-APPEND bstanner
-
-IF ~~ THEN general_lines
+IF ~Global("bsTalkedToTanner","GLOBAL",2)~THEN general_lines
 SAY @2615 /* ~Do you want to buy something?~ */
 	IF~Global("bsDoppelgangerQuest","GLOBAL",12)
 PartyHasItem("bsdopdr")~THEN REPLY @2609 /* ~The stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~ */ + doppelgangerquest
 + ~GlobalGT("bsTannerQuest","GLOBAL",0)
-GlobalLT("bsTannerQuest","GLOBAL",10)
+GlobalLT("bsTannerQuest","GLOBAL",4)
 OR(3)
 PartyHasItem("bsdpliqu")
 PartyHasItem("bsdpliq1")
-PartyHasItem("bsdpliq2")~ + @2616 /* ~I am here to bring you some liqueur.~ */+ liqueurquest
+PartyHasItem("bsdpliq2")~ + @2616 /* ~I am here to bring you some liqueur.~ */ + liqueurquest
 	IF~GlobalGT("bsTannerSport","GLOBAL",1)
 GlobalLT("bsTannerSport","GLOBAL",4)~THEN REPLY /* ~I spoke to Captain Dungarth about your problems with the garrison soldiers.~ */ @2502 GOTO 200
 	IF~~THEN REPLY @2501 /* ~Do you have anything for sale?~ */ GOTO 100
 	IF~~THEN REPLY @2503 /* ~Not today.~ */ EXIT
 END
 
-
-
 //---------------------------------------------------------
-// Open dialog
-IF ~Global("bsTalkedToTanner","GLOBAL",0)~ THEN BEGIN 0
-	SAY @2504 /* ~Yes?~ */
-	IF~~THEN REPLY @2505 GOTO 1 /* ~Who are you?~ */
-	IF~~THEN REPLY @2506 GOTO 2 /* ~What is this place? A tannery?~ */
-	IF~~THEN REPLY @2555 GOTO 4 /* ~It does smell rather... strongly in here.~ */
-	IF~~THEN REPLY @2507 GOTO 4 /* ~What is that awful stink in here?!~ */
+// second meeting - special dialogue.
+IF ~Global("bsTalkedToTanner","GLOBAL",1)~ THEN BEGIN 20
+	SAY @2530 /* ~Ah, you again.~ */
+	IF ~~ THEN DO ~SetGlobal("bsTalkedToTanner","GLOBAL",2)~ + bullying_guards
+	IF ~Global("bs_PCBulliedTanner","MYAREA",1)~ THEN + general_lines
+END
+
+IF ~~ THEN bullying_guards
+	SAY @2665 /* You got passed those awful guards alright?~ */
+	IF~~THEN REPLY @2531 /* ~Yes, why?~ */ GOTO 21
+	IF~~THEN REPLY @2664 /* ~"Awful guards"?~ */ GOTO 21
+	++ @2671 /* ~No chitchat, please. I am here to buy stuff.~ */ DO ~SetGlobal("bsTalkedToTanner","GLOBAL",2)~ + 101
 	IF~~THEN REPLY @2554 /* ~Good day to you.~ */ EXIT
 END
 
 //---------------------------------------------------------
-IF ~~ THEN BEGIN 1
-	SAY @2508 /* ~I'm the tanner. I produce all of the leather goods needed by the guards in the seatower.~ */
+// First meeting
+IF ~Global("bsTalkedToTanner","GLOBAL",0)
+Global("bsTannerQuest","GLOBAL",0)~ THEN BEGIN 0
+	SAY @2508 /* ~Greetings. I'm the tanner. I produce all of the leather goods needed by the guards in the Seatower.~ */
+	= @2663 /* ~In case you stumble upon good liqueur, I would be interested in three bottles. It makes the leather go softer - and it gives me a better smell while working on it. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~ */
+	IF ~~ THEN DO ~SetGlobal("bsTannerQuest","GLOBAL",1)~ UNSOLVED_JOURNAL @874 + first_greeting
+	END
+
+/* general dialogue first meeting */
+IF ~Global("bsTannerQuest","GLOBAL",1)~ THEN first_greeting
+	SAY @2504 /* ~What do you want?~ */
 	IF~~THEN REPLY @2509 GOTO 2 /* ~So this is the tannery?~ */
 	IF~~THEN REPLY @2555 GOTO 4 /* ~It does smell rather... strongly in here.~ */
 	IF~~THEN REPLY @2507 GOTO 4 /* ~What is that awful stink in here?!~ */
@@ -62,6 +69,7 @@ IF ~~ THEN BEGIN 2
 	SAY @2510 /* ~This is the tannery, yes. What else could it be?~ */
 	IF~~THEN REPLY @2555 GOTO 3 /* ~It does smell rather... strongly in here.~ */
 	IF~~THEN REPLY @2511 GOTO 3 /* ~But what is that awful stink in here?!~ */
+	IF~Global("bsDoppelgangerQuest","GLOBAL",12) PartyHasItem("bsdopdr")~THEN REPLY @2608 /* ~Without going into more details - the stink does cover the whole tower grounds today. I might be in need to use this to spread a different fume.~ */ DO ~SetGlobal("bsTalkedToTanner","GLOBAL",1)~ + doppelgangerquest
 	IF~~THEN REPLY @2602 /* ~I'm not interested in talking. Do you have anything for sale?~ */
 		DO~SetGlobal("bsTalkedToTanner","GLOBAL",1)~
 	GOTO 100
@@ -100,7 +108,7 @@ END
 
 IF ~~ THEN BEGIN 5.1
 	SAY @2605 /* ~That smell is the night water from most of the noble houses in Athkatla. For whatever reason legend has it that the night water from upper-class piss-pots is better for cleaning skins that the same product from the lower classes.~ */
-	=@2518 /* ~It's all the same to me - it goes in one end, comes out the other and ends up in a bucket.~ */
+	= @2518 /* ~It's all the same to me - it goes in one end, comes out the other and ends up in a bucket.~ */
 	IF~~THEN REPLY @2519 /* ~It does what?!~ */ GOTO 6
 	IF~~THEN REPLY @2520 /* ~I don't believe you.~ */ GOTO 6
 	IF~~THEN REPLY @2606 /* ~What do you use this for?~ */ GOTO 6
@@ -170,19 +178,13 @@ IF ~~ THEN BEGIN 9
 END
 
 
-//---------------------------------------------------------
-IF ~Global("bsTalkedToTanner","GLOBAL",1)~ THEN BEGIN 20
-	SAY @2530 /* ~Ah, you again. You got passed those awful guards okay?~ */
-	IF~~THEN REPLY @2531 /* ~Yes, why?~ */ GOTO 21
-	IF~~THEN REPLY @2664 /* ~"Awful guards"?~ */ GOTO 21
-	IF~~THEN REPLY @2554 /* ~Good day to you.~ */ EXIT
-END
 
 //---------------------------------------------------------
 IF ~~ THEN BEGIN 21
-	SAY @2532 /* ~They think it's good sport to make fun of us gnomes. The entrance to the tannery used to be through the East Tower but that was blocked up years ago after Nelanther pirates tried to capture the seatower. Now the only way down is the rope lift in Traitor's Tower.~ */
+	SAY @2532 /* ~They think it's good sport to make fun of us gnomes. The entrance to the tannery used to be through the East Tower but that was blocked up years ago after Nelanther pirates tried to capture the Seatower. Now the only way down is the rope lift in Traitor's Tower.~ */
 	IF~~THEN REPLY @2533 /* ~Ah.~ */ GOTO 30
 	IF~~THEN REPLY @2557 /* ~What of it?~ */ GOTO 30.1
+	++ @2505 /* Yes, it's quite complicated to get here, I must say.~ */  + 30.1
 	IF~~THEN REPLY @2559 /* ~I don't think there's anything I can do about that.~ */ GOTO 33
 END
 
@@ -200,8 +202,6 @@ IF ~~ THEN BEGIN 30.1
 	IF~!Race(Protagonist,GNOME)~THEN REPLY @2536 /* ~I could have a word with the garrison commander if that would help?~ */ GOTO 32
 	IF~~THEN REPLY @2559 /* ~I don't think there's anything I can do about that.~ */ GOTO 33
 END
-
-END//APPEND
 
 //---------------------------------------------------------
 CHAIN
@@ -357,7 +357,7 @@ END
 IF ~~ THEN doppelgangerquest_01
 SAY @2622 /* ~Ah, so you thought "the tanner's stink is malfesting itself all over the tower anyway, so he can spread this additional stink, too"?!~ */
 ++ @2623 /* ~Well... yes, actually.~ */ + doppelgangerquest_03
-++ @2625 /* ~Spreading these fumes would help the tower guard, actually.~ */ + doppelgangerquest_02
+++ @2625 /* ~Spreading these fumes would help the tower guard.~ */ + doppelgangerquest_02
 ++ @2626 /* ~Could you? It needs to be done via fume, not by burning it. If we could just put it in whatever you are preparing currently...~ */ + doppelgangerquest_04
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
@@ -367,6 +367,7 @@ IF ~~ THEN doppelgangerquest_02
 SAY @2627 /* ~So *you* say, but the Guard Commander will find something to blame me for afterwards, you can take my word for that!~ */
 ++ @2628 /* ~...Please? It needs to be done via fume, not by burning it. If we could just put it in whatever you are preparing currently...~ */ + doppelgangerquest_04
 ++ @2629 /* ~We'd just use one of your full tubs.~ */ + doppelgangerquest_04
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638  /* You better help, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
@@ -377,6 +378,7 @@ SAY @2630 /* ~Ahh, this is just too good to be true! And yes, that was sarcasm!~
 ++ @2625 /* ~Spreading these fumes would help the tower guard, actually.~ */ + doppelgangerquest_02
 ++ @2628 /* ~...Please? It needs to be done via fume, not by burning it. If we could just put it in whatever you are preparing currently...~ */ + doppelgangerquest_04
 ++ @2629 /* ~We'd just use one of your full tubs.~ */ + doppelgangerquest_04
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638  /* You better help or you'll regret it, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
@@ -387,6 +389,7 @@ SAY @2631 /* ~WHAT?! You want to spoil one of my tubs with that stuff?~ */
 ++ @2635 /* ~Look, it doesn't smell much for normal people. The smell is more irritating for doppelgangers.~ */ + doppelgangerquest_05
 ++ @2633 /* ~I will compensate you for it.~ */ + doppelgangerquest_06
 ++ @2634 /* ~Man, are you always that disobliging? The guard is fighting doppelgangers as we speak!~ */ + doppelgangerquest_07
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638 /* You better help or you'll regret it, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
@@ -395,7 +398,7 @@ IF ~~ THEN doppelgangerquest_05
 SAY @2636 /* ~It's irritating the hells out of me already, I tell you! I will not risk spoiling a whole load of my leather with that, no way!~ */
 ++ @2633 /* ~I will compensate you for it.~ */ + doppelgangerquest_06
 ++ @2634 /* ~Man, are you always that disobliging? The guard is fighting doppelgangers as we speak!~ */ + doppelgangerquest_07
-++ @2638 /* ~You better help us now or you'll regret it, gnome!~ */ + doppelgangerquest_08
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638 /* You better help or you'll regret it, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
@@ -404,15 +407,22 @@ IF ~~ THEN doppelgangerquest_05_1
 SAY @2637 /* ~Now explain to me again what I will get out of this?~ */
 ++ @2633 /* ~I will compensate you for it.~ */ + doppelgangerquest_06
 ++ @2634 /* ~Man, are you always that disobliging? The guard is fighting doppelgangers as we speak!~ */ + doppelgangerquest_07
-++ @2638 /* ~You better help us now or you'll regret it, gnome!~ */ + doppelgangerquest_08
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638 /* You better help or you'll regret it, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
 
 IF ~~ THEN doppelgangerquest_06
-SAY @2639 /* ~Compensating? I hope you don't think you could just give me some gold and that's it. I need to treat my skins properly or they'll rot! I have orders to fulfill!~ */
+SAY @2639 /* ~Compensating?~ */
+IF ~~ THEN + doppelgangerquest_06_a
+END
+
+IF ~~ THEN doppelgangerquest_06_a
+SAY @2666 /* ~I hope you don't think you could just give me some gold and that's it. I need to treat my skins properly or they'll rot! I have orders to fulfill!~ */
 ++ @2640 /* ~What would you want me to do as compensation?~ */ + doppelgangerquest_10
 ++ @2641 /* ~What do you want then? Should I collect the night waters from the soldiers? Or maybe take a leak into that tub over there, eh?!~ */ + doppelgangerquest_09
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638 /* You better help or you'll regret it, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
++ ~Global("bs_ThreatenedOnce","LOCALS",1)~ + @2649 /* ~Listen. You either help us demask the doppelgangers on the tower grounds or I'll make sure you'll lose a lot more than one batch today.~ */ + doppelgangerquest_10_1
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
@@ -420,26 +430,53 @@ END
 IF ~~ THEN doppelgangerquest_07
 SAY @2642 /* ~Yes, and I wish them all the good luck there is! I also understand that you don't *need* to spread these fumes to handle it!~ */
 ++ @2633 /* ~I will compensate you for it.~ */ + doppelgangerquest_06
-++ @2638 /* ~You better help us now or you'll regret it, gnome!~ */ + doppelgangerquest_08
++ ~Global("bs_ThreatenedOnce","LOCALS",0)~ + @2638 /* You better help or you'll regret it, gnome! */ DO ~SetGlobal("bs_ThreatenedOnce","LOCALS",1)~ + doppelgangerquest_08
 ++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
 ++ @2552 /* ~Never mind then.~ */ EXIT 
 END
 
 IF ~~ THEN doppelgangerquest_08
 SAY @2643 /* ~Oh, what would you do? Kill me, the Seatower Tanner? You think you'd come away with this? Oh, or even better - go complain to the Guard Commander? (laughs bitterly) And what would that change, eh?~ */
+++ @2667 /* ~Then what do you want?~ */ + doppelgangerquest_08_b
 ++ @2633 /* ~I will compensate you for it.~ */ + doppelgangerquest_06
-++ @2621 /* ~Maybe it wasn't such a good idea. Do you have anything for sale?~ */ + 100
-++ @2552 /* ~Never mind then.~ */ EXIT 
+++ @2668 /* I didn't mean it as a threat. I really think you'd regret it. */ + doppelgangerquest_08_a
+++ @2649 /* ~Listen. You either help us demask the doppelgangers on the tower grounds or I'll make sure you'll lose a lot more than one batch today.~ */ + doppelgangerquest_10_1
+END
+
+IF ~~ THEN doppelgangerquest_08_a
+SAY @2669 /* ~(sigh)~ */
+IF ~~ THEN + doppelgangerquest_08_b
+END
+
+IF ~~ THEN doppelgangerquest_08_b
+SAY @2670 /* ~Well, the *least* you could do is compensate me for my losses. */
+IF ~~ THEN + doppelgangerquest_06_a
 END
 
 IF ~~ THEN doppelgangerquest_09
 SAY @2644 /* ~Ha! You wish.~ */
 IF ~~ THEN + doppelgangerquest_10
 END
+END //APPEND
 
-IF ~~ THEN doppelgangerquest_10
-SAY @2645 /* ~I have enough night water. But I want compensation for the good stuff I put in there with it. Stop grinnin', I'm talking about liqueur. It makes the leather go softer - and it gives me a better smell while working on 'em.~ */
-= @2646 /* ~Bring me at least three bottles of liqueur. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~ */
+CHAIN
+IF ~~ THEN bstanner doppelgangerquest_10
+@2645 /* ~I have enough night water. But I want compensation for the good stuff I put in there with it. Stop grinnin', I'm talking about liqueur. It makes the leather go softer - and it gives me a better smell while working on 'em.~ */
+/* Liquer quest: no liquer so far */
+== bstanner IF ~Global("bsTannerQuest","GLOBAL",1)~ THEN @2506 /* ~I already told you about liquer I'd have a use for. I'll expect you to bring me three bottles of fine liquer to make up for my troubles.~ */
+/* Liquer quest: PC brought one liquer so far */
+== bstanner IF ~Global("bsTannerQuest","GLOBAL",2)~ THEN @2657 /* ~You already brought me one bottle. Keep the gold, I'll see this as investment for a moment to gloat in front of the damn guards. But I'll expect you to bring me two more bottles of fine liquer to make up for my troubles.~ */
+/* Liquer quest: PC brought two liquers so far */
+== bstanner IF ~Global("bsTannerQuest","GLOBAL",3)~ THEN @2659 /* ~You already brought me two bottles. Keep the gold, I'll see this as investment for a moment to gloat in front of the damn guards. But I'll expect you to bring me one more bottle of fine liquer to make up for my troubles.~ */
+/* Liquer quest: finished */
+== bstanner IF ~GlobalGT("bsTannerQuest","GLOBAL",3)~ THEN @2661 /* ~Hmm, alright. You already went through the trouble and brought me three bottles of good liquer. Keep the gold, I'll see this as investment for a moment to gloat in front of the damn guards. I'll do as you asked then.~ */
+END
+IF ~GlobalLT("bsTannerQuest","GLOBAL",4)~ THEN + doppelgangerquest_10_0
+IF ~GlobalGT("bsTannerQuest","GLOBAL",3)~ THEN + doppelgangerquest_13
+
+APPEND bstanner
+IF ~~ THEN doppelgangerquest_10_0
+SAY @2646 /* ~I want good liqueur. It doesn't matter what, just something strong and more exquisite than your ordinary bottle of red wine.~ */
 ++ @2647 /* ~Fine, I'll see what I'll find.~ */ + doppelgangerquest_11
 + ~OR(3)
 PartyHasItem("bsdpliqu")
@@ -452,12 +489,12 @@ END
 
 IF ~~ THEN doppelgangerquest_10_1
 SAY @2650 /* ~Woah, woah, easy there! Fine, fine! I'll do it, now tone it down you unfriendly <PRO_MANWOMAN>. Being bullied by every bully, that's just my life's luck.~ */
-IF ~~ THEN DO ~SetGlobal("bsTannerQuest","GLOBAL",10)~ + doppelgangerquest_13
+IF ~~ THEN DO ~SetGlobal("bs_PCBulliedTanner","MYAREA",1)~ + doppelgangerquest_13
 END
 
 IF ~~ THEN doppelgangerquest_11
 SAY @2651 /* ~Don't make it cheap, you hear? Five hours of work for naught, and I'm sure the damn Guard won't even appreciate it!~ */
-IF ~~ THEN DO ~SetGlobal("bsTannerQuest","GLOBAL",1)~ UNSOLVED_JOURNAL @876 + doppelgangerquest_13
+IF ~~ THEN DO ~SetGlobal("bsTannerQuestNoReward","MYAREA",1)~ UNSOLVED_JOURNAL @876 + doppelgangerquest_13
 END
 
 IF ~~ THEN doppelgangerquest_12
@@ -484,25 +521,13 @@ END
 
 END //APPEND
 
-
 CHAIN
 IF ~~ THEN bstanner liqueurquest
 @2655 /* ~Hm? Oh yes, I see.~ */
-== bstanner IF ~PartyHasItem("bsdpliqu")~ THEN @2656 /* ~"Herb Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1) AddexperienceParty(150)~
-== bstanner IF ~PartyHasItem("bsdpliqu")~ THEN @2657 /* ~Not bad. Rich flavor.~ */ DO ~TakePartyItem("bsdpliqu") DestroyItem("bsdpliqu")~
-== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2658 /* ~"Calimshan Plum Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1) AddexperienceParty(150)~
-== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2659 /* ~That's a nice one indeed.~ */ DO ~TakePartyItem("bsdpliq1") DestroyItem("bsdpliq1")~
-== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2660 /* ~"Amnian Bitter Liqueur".~ */ DO ~IncrementGlobal("bsTannerQuest","GLOBAL",1) AddexperienceParty(150)~
-== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2661 /* ~Yes, this will do.~ */  DO ~TakePartyItem("bsdpliq2") DestroyItem("bsdpliq2")~
+== bstanner IF ~PartyHasItem("bsdpliqu")~ THEN @2656 /* ~"Herb Liqueur". Not bad. Rich flavor.~ */
+== bstanner IF ~PartyHasItem("bsdpliq1")~ THEN @2658 /* ~"Calimshan Plum Liqueur". That's a fine one indeed.~ */
+== bstanner IF ~PartyHasItem("bsdpliq2")~ THEN @2660 /* ~"Amnian Bitter Liqueur". Yes, that will do nicely.~ */
 == bstanner @2662 /* ~Let me stow this away so the guard idiots don't see it when they come in here.~ */
+== bstanner IF ~Global("bs_PCBulliedTanner","MYAREA",1)~ THEN @2500 /* And, since you were asking *so nicely* for my help earlier, I will even pay you. Pfeh.~ */
 END
-IF ~~ THEN EXIT
-/* PC brings them for compensation - no pay */
-IF ~Global("bsTannerQuest","GLOBAL",2)~ THEN DO ~EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",3)~ THEN DO ~EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",4)~ THEN DO ~EraseJournalEntry(@874) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
-
-/* PC brings them as quest - gets pay */
-IF ~Global("bsTannerQuest","GLOBAL",6)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876)~ UNSOLVED_JOURNAL @877 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",7)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@876) EraseJournalEntry(@877)~ UNSOLVED_JOURNAL @878 EXIT
-IF ~Global("bsTannerQuest","GLOBAL",8)~ THEN DO ~GiveGoldForce(100) EraseJournalEntry(@874) EraseJournalEntry(@876) EraseJournalEntry(@877) EraseJournalEntry(@878) SetGlobal("bsTannerQuest","GLOBAL",10)~ SOLVED_JOURNAL @879 EXIT
+IF ~~ THEN DO ~SetGlobal("bs_TannerTakesLiquer","MYAREA",1)~ EXIT

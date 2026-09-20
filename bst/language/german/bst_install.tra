@@ -1,0 +1,23 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-08-12, 19:10
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@1000001 = ~Die "BS Company" praesentiert: "Baldurans Seeturm"~
+@1000002 = ~Du hast das falsche Spiel installiert.~
+@1000003 = ~Diese Mod sollte VOR der Worldmap-Mod installiert werden.~
+@1000004 = ~Aktualisiere Weltkarte ...~
+@1000005 = ~Diese Mod muss vor EET_End auf deiner EET-Installation installiert werden.~
+@1000006 = ~Diese Komponente wird in der Installation nicht benoetigt.~
+@1000007 = ~BST-Hauptkomponente benoetigt.~
+@1000008 = ~Installiere diese Komponente nach der BGT-Musikkomponente, Option 1 oder 3.~
+@1000009 = ~Korrigiere Musikeintraege für BGT~
+@1000026 = ~Karte des Seeturms beim Betreten des Gebiets aufdecken~
+@1000027 = ~Anpassung des Palastkampfes im Hinblick auf die Doppelgaenger-Invasion~
+@1000028 = ~Mehr Soldaten der Flammenden Faust in den Palast stellen, wenn sie ans Licht kommt~
+@1000029 = ~Anzahl der Doppelgaenger im Palast verringern, wenn sie ans Licht kommt~
+@1000030 = ~Mehr Doppelgaenger in den Palast stellen, wenn die Invasion nicht ans Licht kommt~
+@1000031 = ~Baldurs Gate Trilogy erkannt.~
+@1000032 = ~BG:EE erkannt.~
+@1000033 = ~EET erkannt.~
+@1000034 = ~Jarl's Adventure Pack: "Priest of Oghma, Gond and Ilmater in Baldur's Gate" erkannt. Crossmod hinzufügen.~

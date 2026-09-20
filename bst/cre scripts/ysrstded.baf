@@ -1,3 +1,15 @@
+/* sent by the King of the Restless Dead: change to script with Random Walk (also affects the skeletons out of the graves, but with no consequence other than that they attack a little slower */
+
+IF
+	GlobalGT("bsTalkedToRestlessDead","GLOBAL",8)
+	Global("bs_PrepareForGreatFight","LOCALS",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ysrstde2",OVERRIDE)
+END
+
+
+
 // Safety check - should already be Enemy()
 IF
   !Allegiance(Myself,ENEMY)
@@ -6,24 +18,6 @@ THEN
 	RESPONSE #100
 		Enemy()
 		Continue()
-END
-
-// If I'm going to fight and I can't see GOODCUTOFF
-// then keep moving randomly until I can see GOODCUTOFF.
-// This should mix things up nicely.
-IF
-  ActionListEmpty()
-  Allegiance(Myself,ENEMY)
-  !LOS(Player1,30)
-  !LOS(Player2,30)
-  !LOS(Player3,30)
-  !LOS(Player4,30)
-  !LOS(Player5,30)
-  !LOS(Player6,30)
-THEN
-  RESPONSE #100
-    RandomWalk()
-    Continue()
 END
 
 // Load a target

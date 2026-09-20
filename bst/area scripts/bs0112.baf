@@ -1,3 +1,20 @@
+/* correct loot for EET/BGT */
+%BGEE_ONLY_SLASH%%BGEE_ONLY_ASTERIKS%
+IF
+	Global("bs_AdjustLootLevel","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bs_AdjustLootLevel","MYAREA",1)
+		ActionOverride("Crate02",DestroyItem("RNDTRE02"))
+		ActionOverride("Crate02",CreateItem("RNDTRE06",0,0,0))
+		ActionOverride("Crate03",DestroyItem("RNDTRE03"))
+		ActionOverride("Crate03",CreateItem("RNDTRE07",0,0,0))
+		ActionOverride("Crate06",DestroyItem("RNDTRE04"))
+		ActionOverride("Crate06",CreateItem("RNDTRE08",0,0,0))
+		Continue()
+END
+%BGEE_ONLY_ASTERIKS%%BGEE_ONLY_SLASH%
+
 /* Spawn guarding and working orcs */
 IF
 	Global("bsCreateOrcs","MYAREA",0)
@@ -15,3 +32,25 @@ THEN
 		CreateCreature("bsorcarc",[2076.744],3) //Orc Archer
 		CreateCreature("bsorcprs",[2095.683],3) //Orc Priest
 END
+
+/* 5th smuggler quest */
+/* barrel starts "coughing" */
+IF
+	Global("bsSmugglerQuest","GLOBAL",22)
+	PartyHasItem("bssmq008")
+	InMyArea(Player1)
+	Global("bs_BarrelStartsCoughing","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreatureObject("bssmgl22",Player1,0,0,0)
+		SetGlobal("bs_BarrelStartsCoughing","MYAREA",1)
+END
+IF
+	Global("bs_BarrelStartsCoughing","MYAREA",1)
+	GlobalLT("bsSMQOpenedBox","GLOBAL",5)
+	Exists("bssmgl22")
+THEN
+	RESPONSE #100
+		ActionOverride("bssmgl22",StartDialogNoSet(Player1))
+END
+

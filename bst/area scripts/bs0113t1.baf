@@ -1,0 +1,57 @@
+
+/* check contents of container ManyBodies: bsdprmhp, bsdparst */
+/* 10 rings (bsdprrh1) will be treated as EasterEgg if all are brought to commander */
+
+/* all tems inside: remember */
+IF
+  Global("bsPCTookHeirloomsbs0113","GLOBAL",1)
+  HasItem("bsdprmhp",Myself)
+  HasItem("bsdparst",Myself)
+THEN
+  RESPONSE #100
+		SetGlobal("bsPCTookHeirloomsbs0113","GLOBAL",0)
+		Continue()
+END
+
+/* any item missing: remember */
+IF
+  Global("bsPCTookHeirloomsbs0113","GLOBAL",0)
+  OR(2)
+	!HasItem("bsdprmhp",Myself)
+	!HasItem("bsdparst",Myself)
+THEN
+  RESPONSE #100
+		SetGlobal("bsPCTookHeirloomsbs0113","GLOBAL",1)
+END
+
+/* reported to commander: pile with corpses will be empty */
+IF
+  GlobalGT("bsPCTookHeirloomsbs0113","GLOBAL",1)
+  Global("bs_Gavebsdprmhp","GLOBAL",0)
+  HasItem("bsdprmhp",Myself)
+THEN
+	RESPONSE #100
+		DestroyItem("bsdprmhp")
+		Continue()
+END
+ 
+IF
+  GlobalGT("bsPCTookHeirloomsbs0113","GLOBAL",1)  
+  Global("bs_Gavebsdparst","GLOBAL",0)
+  HasItem("bsdparst",Myself)
+THEN
+	RESPONSE #100
+		DestroyItem("bsdparst")
+		Continue()
+END  
+
+IF
+  GlobalGT("bsPCTookHeirloomsbs0113","GLOBAL",1)
+  GlobalLT("bs_ExGoldRing","MYAREA",11) //destroy 10!
+  HasItem("bsdprrh1",Myself)
+THEN
+	RESPONSE #100
+		DestroyItem("bsdprrh1")
+		IncrementGlobal("bs_ExGoldRing","MYAREA",1)
+		Continue()
+END

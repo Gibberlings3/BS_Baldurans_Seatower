@@ -1,0 +1,91 @@
+
+/* detect necklace in tomb */
+IF
+	HasItem("amul12","Container01")
+	Global("bs_TookGemDluskerTomb","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_TookGemDluskerTomb","GLOBAL",0)
+END
+
+IF
+	Global("bs_PlaceGemsContainer01","MYAREA",1)
+	Global("bs_TookGemDluskerTomb","GLOBAL",0)
+	!HasItem("amul12","Container01")
+THEN
+	RESPONSE #100
+		SetGlobal("bs_TookGemDluskerTomb","GLOBAL",1)
+END
+
+/* quest end, family took necklace themselves */
+IF
+	Global("bs_TookGemDluskerTomb","GLOBAL",2)
+	Global("bs_PlaceGemsContainer01","MYAREA",1)
+THEN
+	RESPONSE #100
+		ActionOverride("Container01",DestroyItem("amul12"))
+		SetGlobal("bs_PlaceGemsContainer01","MYAREA",2)
+END
+
+
+// Create Zombie - former Lord Clackoway
+IF
+	Global("bs_CreateZombie","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_CreateZombie","MYAREA",1)
+		CreateCreature("bsrsd04",[376.312],14)
+END
+
+IF
+	Dead("bsrsd04")
+	GlobalLT("bs_CreateZombie","MYAREA",2)
+	GlobalLT("bs_LadyDluskersPlea","GLOBAL",99)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@932,QUEST)
+		DisplayStringHead("Sarcophagus01",@11086)
+		SetGlobal("bs_CreateZombie","MYAREA",2)
+END
+
+IF
+	PartyHasItem("bsrsd04")
+	Global("bs_CreateZombie","MYAREA",2)
+	GlobalLT("bs_LadyDluskersPlea","GLOBAL",99)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@933,QUEST)
+		SetGlobal("bs_CreateZombie","MYAREA",3)
+END
+
+IF
+	Global("bs_OpenedDluskerTomb","GLOBAL",1)
+	Global("bs_CreateWraith","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bs_CreateWraith","MYAREA",1)
+		Wait(1)
+		CreateVisualEffect("SPRAISED",[407.347])
+		Wait(3)
+		CreateCreature("bsrsd05",[407.347],16)  // Lord Aldabert Dlusker II
+		SetInterrupt(TRUE)
+END
+
+IF
+	Dead("bsrsd05")
+	GlobalLT("bs_CreateWraith","MYAREA",2)
+	GlobalLT("bs_LadyDluskersPlea","GLOBAL",99)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@934,QUEST)
+		SetGlobal("bs_CreateWraith","MYAREA",2)
+END
+
+IF
+	Global("bs_PlaceGemsContainer01","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container01",CreateItem("amul12",0,0,0))
+		SetGlobal("bs_PlaceGemsContainer01","MYAREA",1)
+END

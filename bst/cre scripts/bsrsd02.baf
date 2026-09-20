@@ -1,0 +1,31 @@
+IF
+	OR(3)
+		Dead("bsrsd03")
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		Global("bs_LadyDluskersPlea","GLOBAL",99)
+	See([PC])
+THEN
+	RESPONSE #100	
+		SetGlobal("bs_LadyDluskersPlea","GLOBAL",99)	
+		RunAwayFrom(LastSeenBy(Myself),30)
+		EscapeAreaDestroy(5)
+END
+
+IF
+	Dead("bsrsd04")
+	GlobalLT("bs_LadyDluskersPlea","GLOBAL",3)
+	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+//		SetGlobal("bs_LadyDluskersPlea","GLOBAL",3)
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("bs_LadyDluskersPlea","GLOBAL",7)
+THEN
+	RESPONSE #100
+		ActionOverride("bsrsd03",EscapeAreaDestroy(5))
+		EscapeAreaDestroy(5)
+END

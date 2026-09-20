@@ -1,0 +1,19 @@
+/* despawn lense if Biff was already encountered */
+IF
+	HasItem("bslense1","Shieldman")
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Global("bsSpawnLens","MYAREA",1)
+THEN
+  RESPONSE #100
+		ActionOverride("Shieldman",DestroyItem("bslense1"))
+		SetGlobal("bsSpawnLens","MYAREA",2)
+END
+
+/* prevent spawning of lense if Biff was already encountered */
+IF
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Global("bsSpawnLens","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnLens","MYAREA",2)
+END

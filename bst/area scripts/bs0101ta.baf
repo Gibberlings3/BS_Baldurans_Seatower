@@ -1,0 +1,41 @@
+/* hidden stash in bunk bed, bs0101 */
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bs_DiddysDagger","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11123)
+		AddJournalEntry(@100020,QUEST)
+		SetGlobal("bs_DiddysDagger","MYAREA",2)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Global("bs_DiddysDagger","MYAREA",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11124)
+END
+
+
+IF
+	Clicked([ANYONE])
+	OR(2)
+		Global("bs_DiddysDagger","MYAREA",0)
+		GlobalGT("bs_DiddysDagger","MYAREA",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11132)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007)
+END
+

@@ -1,0 +1,39 @@
+/* Fragmented Apparition phantom */
+/* override script for the apparition in ghost form */
+/* fragment #2 */
+IF
+    HPLT(Myself,3)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("bs_i_PhantomTimer2","GLOBAL",120)
+        ReallyForceSpellRES("bsiphgc2",Myself) // Change into gaseous form
+END
+
+IF
+    See("bsiphtm1")
+    See([PC])
+    Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        ChangeEnemyAlly(Myself,NEUTRAL)
+END
+
+IF
+    See("bsiphtm1")
+    See([PC])
+    !Range("bsiphtm1",3)
+THEN
+    RESPONSE #100
+        MoveToObject("bsiphtm1")
+END
+
+
+IF
+    !See([PC])
+    Allegiance(Myself,ENEMY)
+    !Range("Brazier02",30)
+THEN
+    RESPONSE #100
+        ChangeEnemyAlly(Myself,NEUTRAL)
+        MoveToObjectNoInterrupt("Brazier02")
+END

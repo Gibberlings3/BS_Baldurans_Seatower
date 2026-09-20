@@ -1,0 +1,9 @@
+
+IF
+	GlobalGT("bs_CityKnowsBSTDoppel","GLOBAL",0)
+	Global("bs_MoreFF","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("flam10",[687.705],0)
+		SetGlobal("bs_MoreFF","MYAREA",1)
+END

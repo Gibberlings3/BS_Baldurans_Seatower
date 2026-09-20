@@ -1,0 +1,7 @@
+IF
+	Global("bs_OpenedDluskerTomb","GLOBAL",0)
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+		SetGlobal("bs_OpenedDluskerTomb","GLOBAL",1)
+END

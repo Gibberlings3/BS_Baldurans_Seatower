@@ -1,0 +1,629 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-09-06, 13:51
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@499 = ~Auch Adlige haben Momente, in denen sie einfach nur verschwinden und von niemandem gesehen werden wollen – sei es, um erhöhte öffentliche Aufmerksamkeit zu vermeiden oder um einem Attentat zu entgehen. Der Träger eines solchen Rings hat sicherlich schon oft die Worte „Ich weiß nicht, wo die Person hingegangen ist, sie war doch eben noch hier“ gehört, wenn sie unbemerkt verschwunden ist.
+
+EIGENSCHAFTEN:
+
+Verbesserte Unsichtbarkeit (1x täglich)
+  Dauer: 12 Stunden
+  Bereich: Anwender
+
+Gewicht: 0~
+@501 = ~Dies ist der Schlüssel, den Ihr bei der Köchin in Baldurans Seeturm gefunden habt. Er öffnet die Schuppen im Vorratsraum der Küche.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@503 = ~Ein Beutel mit Gänsefedern, den Ihr vom Kochlehrling bekommen habt und der dazu bestimmt ist, von der Seeturm-Pfeilmacherin zu Pfeilspitzen verarbeitet zu werden.
+
+Gewicht: 0~
+@505 = ~Ein Krug „Goldener Drache“-Bier, gebraut von der Köchin in Baldurans Seeturm. Ihr wollt Euch nicht unbedingt daran erinnern, was er Euch gekostet hat.
+
+Gewicht: 1~
+@507 = ~Eine bemerkenswert schlechte Kopie der originalen und sehr berühmten Schleuder „Arlas Drachenbann“. Nach all dem, was Ihr durchgemacht habt, um sie zu bekommen, war es wirklich nicht die Mühe wert, da die Kopie nur geringfügig besser ist als eine gewöhnliche Schleuder.
+
+EIGENSCHAFTEN:
+
+ETW0-Bonus: –1
+Schadensbonus: +1 (Geschoss)
+Initiativefaktor: 3
+Fertigkeit: Schleuder
+Typ: 1-händig
+Mindeststärke: 3
+
+Gewicht: 0~
+@509 = ~Mit diesem Pass erhaltet Ihr Zugang zum Seeturm-Gefängnis, das sich im Keller des Turms befindet. Der Eingang befindet sich die Treppe hinunter im Hauptturm.
+
+Gewicht: 0~
+@511 = ~Diese Schriftrolle soll eine versteckte Tür zu einigen Ruinen im Scharfzahnwald öffnen.
+
+Gewicht: 0~
+@513 = ~Alguines Schlüssel öffnet die verschlossene Tür in den Hallen der Zukünftigen Erinnerungen.
+
+Gewicht: 0~
+@515 = ~Dieser Schlüssel öffnet die versteckte Tür im Mausoleum unter Baldurans Seeturm.
+
+Gewicht: 0~
+@517 = ~Der Schlüssel zum Mausoleum im Chionthar-Turm. Die Seeturm-Katakomben liegen unterhalb des Turms.
+
+Gewicht: 0~
+@519 = ~Die Klinge dieses Dolches ist aus einem Knochen gefertigt, der von einem längst toten und vergessenen Monster abgeschnitten wurde. Die Klinge ist immer noch so scharf wie an dem Tag, an dem sie geschnitzt wurde – und verflucht.
+
+Gewicht: 1~
+@521 = ~Der geschwärzte und versengte Schädel hat das Feuer überlebt, das ihn eigentlich hätte zerstören sollen.
+
+Gewicht: 1~
+@523 = ~Diese Kerze enthält einen einzigen Zauber „Wunsch“. Indem Ihr sie nehmt, verweigert Ihr dem Hexenmeister seine letzte Bitte.
+
+Gewicht: 1~
+@525 = ~Die Kreatur, der diese ausgetrocknete Kralle einst gehörte, lebte nicht auf dieser Ebene.
+
+Gewicht: 1~
+@527 = ~Eine dicke rote Flüssigkeit rührt sich bedrohlich in der Flasche. Ihr habt dem Vergifteten das Leben geraubt, indem ihr sie an Euch genommen habt.
+
+Gewicht: 1~
+@530 = ~Ihr habt dieses alte Buch gefunden, das in der hintersten Ecke von Alguines Bibliothek vergraben war. Ihr versucht, das Buch zu lesen, aber je mehr Ihr lest, desto weniger Sinn ergibt es. Ein großer Teil des Buches scheint … zu fehlen … und der Rest scheint von jemandem geschrieben zu sein, der nicht viel älter als ein Kind ist. Schlimmer noch, jedes Mal, wenn Ihr das Buch aufschlagt, haben sich die Seiten verändert.~
+@532 = ~Dies ist die Zeichnung, die Euch Lars, der Waisenjunge, gegeben hat. Das Bild hat eine leichte Ähnlichkeit mit etwas, das ein Drache sein könnte. Ihr habt absolut keine Ahnung, wofür Ihr es verwenden wollt, aber wenn Ihr es einfach wegwerft, wird ein Kind sehr traurig sein und irgendwo wird wahrscheinlich ein Kätzchen sterben.
+
+Gewicht: 0~
+@534 = ~Dies ist der Käfig, den Gasthausmeister Roryn Euch gegeben hat, damit Ihr alle Kaninchen vom zweiten Stock des Seeturm-Gasthauses einsammelt.
+
+Gewicht: 5~
+@536 = ~Das ist die Ratte, die Ihr im ersten Stock des Seeturm-Gasthauses gefangen habt. Sie ist ungewöhnlich dick und hat ein kleines rosa Band am Schwanz, auf dem sorgfältig das Wort „Betsy“ geschrieben steht. Die Ratte schaut Euch an, zeigt aber keine Bissabsicht.
+
+Gewicht: 1~
+@537 = ~Dies ist der Kadaver der Ratte, die Ihr im ersten Stock des Seeturm-Gasthauses getötet habt. An ihrem Schwanz ist noch ein kleines rosa Band zu sehen, auf dem sorgfältig das Wort „Betsy“ geschrieben steht.
+
+Gewicht: 1~
+@539 = ~Dies ist die Kontaktinformation der Sklavenhändler, die Ihr von den Schmugglern erhalten habt. Es handelt sich um eine Werbung für „Wildtierausflüge“, die von „Leonhard dem Wilden“ organisiert werden, der im zweiten Stock des Seeturm-Gasthauses anzutreffen ist. Auf der Rückseite befindet sich ein handgeschriebener Vermerk: „Fragt nach der Besondere-Kreaturen-Tour!“
+
+Gewicht: 0~
+@541 = ~Die Kiste ist leicht, und wenn man sie schüttelt, bewegt sich nichts darin.
+
+Gewicht: 0~
+@543 = ~Dies sind die Notizen, die Ihr auf der Leiche von „Leonhard dem Wilden“, dem Sklavenhändler, gefunden habt. Sie enthalten einen Zeitplan mit einer Vielzahl von harmlos klingenden Ausflügen. Es gibt einen Eintrag mit einem Datum in der Zukunft, der "Jagd spezieller Kreaturen" heißt.
+
+Gewicht: 0~
+@545 = ~Der Ring hat die Form eines schmucklosen Silberrings. Sein unscheinbares Äußeres täuscht jedoch darüber hinweg, dass ihm mächtige Magie innewohnt. Ein Gegengiftring ist vor allem bei Adligen und einflussreichen Politikern sowie bei allen anderen Personen, die befürchten müssen, zu Opfern eines Mordanschlags zu werden, sehr beliebt.
+
+EIGENSCHAFTEN:
+
+Der Träger ist immun gegen Gift.
+
+Gewicht: 0~
+@547 = ~Perlen bestehen aus Aragonitschichten, die sich im Inneren von Austern und anderen Weichtieren mühsam um ein Stückchen Sand oder einen anderen Reizstoff gebildet haben. Die so entstandene Perle hat einen reichen, tiefen Glanz. Die meisten Perlen in der Welt sind weiß, es gibt aber auch seltenere Sorten wie Regenbogen- und schwarze Perlen. Diese Perle ist schwarz und wird wegen ihrer einzigartigen magischen Eigenschaften vor allem von Wahrsagern sehr geschätzt.
+
+Diese Perle ist frisch aus der Muschel und schimmert im Meerwasser.
+
+Gewicht: 0~
+@549 = ~Dieser Schlüssel öffnet die verschlossene Tür in der Schneiderei im Hafenviertel.
+
+Gewicht: 0~
+@551 = ~Dies ist das, was Meister Shizell „Nachahmerpulver“ nannte. Es ist in Wirklichkeit eine Flüssigkeit, kein Pulver, und es ist wirksam bei der Demaskierung von Doppelgängern, nicht von Nachahmern.
+
+Das Fläschchen ist nicht vollständig verschlossen, und man kann kleine Rauchschwaden aus dem Fläschchen austreten sehen. Das Fläschchen muss schnell benutzt werden, bevor seine Wirkung nachlässt. Wenn sie in die Nähe eines Doppelgängers gebracht wird, verbinden sich die Dämpfe, die für sich genommen harmlos sind, mit den Düften des Seeturms und seiner Umgebung zu einem Geruch, der die Doppelgänger in Wut versetzt, sodass sie sich in ihre natürliche Form verwandeln und angreifen.
+
+Gewicht: 0~
+@553 = ~Dies ist eine sehr staubige Flasche Kräuterlikör aus einer weit entfernten Destillerie. Sieht aus wie eine Flasche, die man am besten aufbewahrt, bis man sie dem richtigen Kenner schenken kann.
+
+Gewicht: 0~
+@555 = ~Der Inhalt des Fläschchens ist nicht mehr vorhanden. Der Trank ist gegen Doppelgänger nicht mehr wirksam.
+
+Gewicht: 0~
+@557 = ~Dieser Schatzbrief berechtigt den Inhaber zum Bezug einer Summe von 3.000 Gold, die in der Seeturm-Schatzkammer abgeholt werden kann.
+
+Gewicht: 0~
+@558 = ~Dieser Schatzbrief berechtigt den Inhaber zum Bezug einer Summe von 5.000 Gold, die in der Seeturm-Schatzkammer abgeholt werden kann.
+
+Gewicht: 0~
+@559 = ~Dieser Schatzbrief berechtigt den Inhaber zum Bezug einer Summe von 20.000 Gold, die in der Seeturm-Schatzkammer abgeholt werden kann.
+
+Gewicht: 0~
+@561 = ~Dies ist eine sehr exquisit aussehende Flasche von Pflaumenlikör aus Calimshan. Sieht aus wie eine Flasche, die man am besten aufbewahrt, bis man sie dem richtigen Kenner schenken kann.
+
+Gewicht: 1~
+@563 = ~Dies ist eine sehr exquisit aussehende Flasche von amnischen Bitterlikör. Sieht aus wie eine Flasche, die man am besten aufbewahrt, bis man sie dem richtigen Kenner schenken kann.
+
+Gewicht: 1~
+@564 = ~Dieser Schatzbrief berechtigt den Inhaber zum Bezug einer Summe von 500 Gold, die in der Seeturm-Schatzkammer abgeholt werden kann.
+
+Gewicht: 0~
+@566 = ~Dies ist ein leeres Fass.
+
+Gewicht: 5~
+@568 = ~Dies ist ein Fass voller Wasser.
+
+Gewicht: 20~
+@570 = ~Dieses Fass wurde von der Seeturm-Pfeilmacherin von innen mit einer feuerfesten Schicht überzogen. Es sollte einen Feuerelementar für mindestens einen Tag festhalten.
+
+EIGENSCHAFTEN:
+
+Gewicht: 20~
+@572 = ~Ihr habt den Feuerelementar aus dem Vorratsraum der Küche in diesem Fass gefangen. Das Fass fühlt sich leicht heiß an und Ihr hört von Zeit zu Zeit ein leises Knistern wie von einem Feuer.
+
+Gewicht: 20~
+@574 = ~Ein Krug mit „Goldener Drache“-Bier, gebraut von der Köchin in Baldurans Seeturm. Es war ein wenig mühsam, es zu bekommen, aber es wurde in bester Absicht für Euch eingeschenkt.
+
+EIGENSCHAFTEN:
+
+Immunität gegen Furcht und Panik
+Geschicklichkeit: –2
+Dauer: 15 Runden
+
+Gewicht: 1~
+@576 = ~Eine Talgdrüse, die Ihr von einem Seetroll erhalten habt. Sie sondert ständig eine geleeartige Substanz ab, die angeblich Metall besonders gut vor Wasser schützt.
+
+Gewicht: 1~
+@578 = ~Dies ist eine Linse, die zur Fokussierung von Lichtstrahlen verwendet wird.
+
+Gewicht: 0~
+@580 = ~Dieser Kristall ist rund wie eine Linse, aber völlig schwarz und undurchsichtig.
+
+Gewicht: 0~
+@582 = ~Trolle sind furchterregende Fleischfresser, die vor allem dafür bekannt sind, dass man sie kaum endgültig töten kann. Alle Trolle können regenerieren, und die meisten kann man nur durch den Einsatz von Feuer endgültig vernichten.
+
+Gewicht: 2~
+@584 = ~Dies ist eine Flasche mit trinkbarem Wasser.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@586 = ~Feuerelementare kommen aus der Elementarebene des Feuers und nutzen sengende Flammen als Portale, um Dimensionen zu durchqueren. Da ihnen die Flammen fehlen, um ihre Kraft aufrechtzuerhalten, schwindet ihre Macht sehr schnell. Daher suchen sie unermüdlich nach glühende Feuerstürmen, die ihnen als Wegweiser in ihr Heimatreich dienen.
+
+Gewicht: 2~
+@591 = ~Dies scheinen die persönlichen Aufzeichnungen von Fürst Dlusker zu sein. Sie erzählen von den finanziellen Schwierigkeiten der Familie und den zunehmend verzweifelten Versuchen des Fürsten, diese zu überwinden. Auf der letzten Seite steht:
+
+„Ich habe nun die Mittel, Aldabert II. persönlich nach dem verborgenen Schatz zu fragen. Wenn man bedenkt, dass die Priester 1.000 Gold für einen „Mit Toten sprechen“ verlangten, während ich eine „Temporäre Auferstehung“ für nur 200 Gold ergattert habe!
+
+Ich freue mich schon darauf, Margots Gesicht zu sehen, wenn ich ihr von einer Schatztruhe in unserem Haus erzählen kann! Ich werde es ihr noch nicht sagen, sie wird zu viel Angst davor haben, dass ich ein solches Ritual durchführe.
+
+Die Mönche haben uns versichert, dass das Mausoleum sicher ist, obwohl es in den Katakomben vermehrt untote Aktivitäten gibt. Ich hatte sowieso nicht vor, dorthin zu gehen, also sehe ich kein Problem. Außerdem habe ich die magische Halskette meines Großvaters, die mich vor jeglicher fehlgeleiteter Magie schützen wird.
+
+Die Warnung der Mönche ist die perfekte Ausrede, um Margot draußen warten zu lassen, damit sie sich keine Sorgen machen muss (und, Hand aufs Herz, wird sie auch davon abhalten sich einzumischen).“
+
+Gewicht:0~
+@593 = ~Dies ist eine Schriftrolle mit mehreren Symbolen. Obwohl Ihr sie nicht lesen könnt, scheint die Schriftrolle bereit zu sein, von demjenigen benutzt zu werden, der sie in der Hand hält.
+
+Gewicht: 0~
+@595 = ~Dies ist eine tote Ratte. Sie sieht erstaunlich intakt aus und wurde so platziert, dass Ihr sie finden MUSSTET.
+
+Gewicht: 1~
+@597 = ~Dieser Ring sieht nicht besonders aus, aber er ist eindeutig mit Magie verzaubert. Er hat eine feine Gravur mit der Aufschrift „Für A. in Liebe“. Ihr habt diesen Ring bei einer der Leichen unter der Schneiderei gefunden.
+
+Gewicht: 0~
+@598 = ~Dieser Ring sieht nicht besonders aus, hat aber eine schöne Gravur mit der Aufschrift „Für A. in Liebe“. Ihr habt ihn bei einer der Leichen unter der Schneiderei gefunden.
+
+EIGENSCHAFTEN:
+
+Trefferpunkte: +4
+
+Gewicht: 0~
+@600 = ~Dieser Ring wurde kunstvoll aus grünem Metall gefertigt und mit einem wertvollen Edelstein verziert. Ihr habt ihn bei einer der Leichen unter der Schneiderei gefunden.
+
+Gewicht: 0~
+@601 = ~Dieser Ring wurde kunstvoll aus grünem Metall gefertigt und mit einem wertvollen Edelstein verziert. Ihr habt ihn bei einer der Leichen unter der Schneiderei gefunden.
+
+EIGENSCHAFTEN:
+
+Säurewiderstand: auf 100 % gesetzt
+
+Gewicht: 0~
+@603 = ~So ungewöhnlich es auch erscheinen mag, dass ein Ring mit einer Eigenschaft zur Verbesserung der Waffenfertigkeit verzaubert wurde, so passt er doch perfekt in das Umfeld adliger Damen und Herren, die nicht in schweren Rüstungen herumlaufen wollen und dennoch einen guten Grund haben, ihre Verteidigungsfähigkeit zu verbessern – möglicherweise sogar ohne dass Angreifer etwas davon mitbekommen.
+
+EIGENSCHAFTEN:
+
+ETW0-Bonus: –1
+
+Gewicht: 0~
+@605 = ~Dieser Ring sieht aus wie ein einfacher Goldring, aber er ist eindeutig mit starker Magie verzaubert. Er hat eine Gravur, auf der steht: „Für <CHARNAME>, in Dankbarkeit“. Ihr habt ihn als verspätetes Zeichen der Wertschätzung von mehreren dankbaren Patriar-Familien der Stadt Baldurs Tor für Eure Hilfe gegen die Invasion der Doppelgänger erhalten.
+
+Gewicht: 0~
+@606 = ~Dieser Ring sieht aus wie ein einfacher Goldring, aber er ist eindeutig mit starker Magie verzaubert. Er hat eine Gravur, auf der steht: „Für <CHARNAME>, in Dankbarkeit“. Ihr habt ihn als verspätetes Zeichen der Wertschätzung von mehreren dankbaren Patriar-Familien der Stadt Baldurs Tor für Eure Hilfe gegen die Invasion der Doppelgänger erhalten.
+
+EIGENSCHAFTEN:
+
+Charisma: auf 18 gesetzt
+Regeneration: 1 Trefferpunkt pro 5 Runden
+
+Gewicht: 0~
+@607 = ~Dieser Ring sieht aus wie ein einfacher Goldring, aber er ist eindeutig mit starker Magie verzaubert. Er hat eine Gravur, auf der steht: „Für <CHARNAME>, in Dankbarkeit“. Ihr habt ihn als verspätetes Zeichen der Wertschätzung von mehreren dankbaren Patriar-Familien der Stadt Baldurs Tor für Eure Hilfe gegen die Invasion der Doppelgänger erhalten.
+
+EIGENSCHAFTEN:
+
+Charisma: +1
+Regeneration: 1 Trefferpunkt pro 5 Runden
+
+Gewicht: 0~
+@610 = ~Dies ist ein Liebesbrief von jemandem namens Ivonne an jemanden namens Balduin. Er duftet nach Rosen.~
+@611 = ~Dies ist ein Liebesbrief von Balduin an Ivonne. Er ist mit zwei ineinander verschlungenen Herzen unterzeichnet.~
+@612 = ~Dies ist ein weiterer Liebesbrief von Ivonne an Balduin. Sie dankt ihm überschwänglich für die schöne Zeichnung.~
+@613 = ~Lieber unbekannter Leser,
+
+wir haben bemerkt, dass jemand unsere versteckte Korrespondenz gelesen hat. Wir haben unseren geheimen Ort woanders hin verlegt. Dennoch möchten wir Euch herzlich dafür danken, dass Ihr unsere Kommunikation nicht gestört habt. Nehmt dies als Zeichen unserer Wertschätzung.
+
+Balduin und Ivonne~
+@615 = ~Diese Reliquie ist ein Zahn von Iakhovas, dem ehemaligen Geliebten von Umberlee. Er wurde von Balduran von seinen Seereisen zurückgebracht. Gerüchten zufolge kam er in seinen Besitz, als sein Schiff von Sahuagin angegriffen wurde.
+
+Er schenkte ihn dem Tempel von Umberlee, um die Gunst der Göttin für weitere Unternehmungen und die neu befestigte Stadt Baldurs Tor zu gewinnen.
+
+Der Zahn ist dem Tempel heilig.~
+@617 = ~Dieses juwelenbesetzte Stirnband würde schon allein viel Aufmerksamkeit erregen, aber es trägt einen subtilen Zauber in sich, der den Betrachter dazu bringt, den Träger in einem sehr positiven Licht zu sehen und ihn als großen Anführer oder vertrauenswürdige Autorität zu betrachten.
+
+EIGENSCHAFTEN:
+
+Charisma: Auf 18 gesetzt
+
+Gewicht: 1~
+@619 = ~Diese kleine Waffe wurde von Selûne, der Mondjungfrau, gesegnet und hat daher besondere Kräfte gegen Lykanthropen, die vom reinen Silberlicht des Mondes beeinflusst werden.
+
+EIGENSCHAFTEN:
+
+Kehrt sofort zum Werfer zurück.
+Kann Wesen verletzen, die nur von Silberwaffen verletzt werden.
+
+ETW0-Bonus:
+  –2
+  –4 gg. Lykanthropen
+Schaden:
+  1W3 +2 (Geschoss)
+  1W3 +4 (Geschoss) gg. Lykanthropen
+Initiativefaktor: 1
+Fertigkeit: Wurfpfeil
+Typ: 1-händig
+
+Gewicht: 0~
+@621 = ~Diese silberne Kugel verfügt über eine mächtige Beschwörungsformel, die den Anwender vor hinterhältigen Angriffen schützt.
+
+EIGENSCHAFTEN:
+
+Der Träger ist immun gegen hinterhältige Angriffe.
+
+Gewicht: 2~
+@623 = ~Dieser verzauberte Langbogen kann tödliche Pfeilsalven abfeuern. Es ist weder sein Name noch seine Geschichte bekannt. Es scheint sich um einen relativ neu hergestellten Gegenstand zu handeln, der noch keine Zeit hatte, echte Berühmtheit zu erlangen.
+
+EIGENSCHAFTEN:
+
+Angriffe pro Runde: +1
+
+ETW0-Bonus: –3
+Schadensbonus: +2 (Geschoss)
+Initiativefaktor: 5
+Fertigkeit: Langbogen
+Typ: 2-händig
+Mindeststärke: 6
+
+Gewicht: 3~
+@625 = ~Diese gesegnete Rüstung wurde von Priestern des Lathander zu dem einzigen Zweck geschaffen, die ständige Bedrohung Faerûns durch Untote und teuflische Monster zu bekämpfen. Sie hat im Laufe der Zeit viele Besitzer gehabt, von denen die meisten ein kurzes, aber aufregendes und erlebnisreiches Leben führten.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 1
+RK-Bonus:
+  –2 gg. Dämonen
+  –2 gg. Untote
+  –3 gg. Klingenwaffen
+  –5 gg. Klingenwaffen von Dämonen
+  –5 gg. Klingenwaffen von Untoten
+Mindeststärke: 12
+
+Gewicht: 25~
+@627 = ~Dieser Ring und etwa eine Handvoll anderer ähnlicher Ringe wurden vor etwa 300 Jahren von einem gnomischen Illusionisten/Dieb hergestellt, dessen Identität in der Geschichte verloren gegangen ist. Er kann bei Bedarf eine Reihe von Illusionszaubern auf seinen Träger wirken. Obwohl jeder ihn benutzen kann, ist er besonders beliebt bei Dieben und Zauberern, die ihre Feinde verwirren und in die Irre führen wollen.
+
+EIGENSCHAFTEN:
+
+Verschwimmen (1x täglich)
+  RK-Bonus: –3
+  RW-Bonus: –1
+  Dauer: 2 Phasen
+
+Unsichtbarkeit (1x täglich)
+  Dauer: 24 Stunden
+
+Spiegelbild (1x täglich)
+  Dauer: 13 Runden
+
+Mindestintelligenz: 14
+
+Gewicht: 0~
+@629 = ~Dies ist eine Ansammlung von Mykonidensporen. Das Pulver ist völlig trocken, sodass die Sporen lange Zeit überleben können.
+
+EIGENSCHAFTEN:
+
+Gewicht: 1~
+@631 = ~Dies ist das Notizbuch der Einsiedlerin in der Bibliothek der Alten Tempelinsel. Es ist leer und es fehlen bereits viele Seiten.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@633 = ~Dies ist ein ziemlich schwerer Felsbrocken.
+
+EIGENSCHAFTEN:
+
+Gewicht: 100~
+@635 = ~Dies ist ein Stück Käse. Es ist ein bisschen zu reif für Euren Geschmack.
+
+EIGENSCHAFTEN:
+
+Gewicht: 1~
+@638 = ~Dies ist eine silberne Gabel, und sie ist … magisch?
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@639 = ~In den Legenden ist nicht oft von Baldurans Silbergabel die Rede, was aber nicht bedeutet, dass sie für ihn nicht ebenso wertvoll gewesen sein könnte wie sein Buttermesser. Auf dem Schaft befindet sich eine kleine Gravur, die zu dem Namen passt, und sie ist aus massivem Silber.
+
+Jemand hat sie so verzaubert, dass man sie als magische Kopfbedeckung tragen kann. Ihr seid Euch fast sicher, dass dies nicht Baldurans Werk war, aber Ihr werdet es nie erfahren.
+
+EIGENSCHAFTEN:
+
+Infravision (bis zu 36,5 m)
+Schützt vor kritischen Treffern
+
+Gewicht: 0~
+@642 = ~Dies ist ein ramponiertes Grünsteinamulett. Der tiefgrüne Stein in der Mitte des Amuletts hat seinen Schimmer verloren, birgt jedoch nach wie vor mächtige Magie.
+
+EIGENSCHAFTEN:
+
+Der Anwender ist immun gegen:
+– Beherrschung
+– Betäubung
+– Bezauberung
+– Festhalten
+– Furcht
+– Gedanken lesen
+– Gesinnung erkennen
+– Psi-Kräfte
+– Schlaf
+– Schwachsinn
+– Verwirrung
+Dauer: 1 Phase
+
+Gewicht: 1~
+@644 = ~Eine Phiole mit Blut, die vorgibt, von einer mächtigen Landkreatur zu stammen. Die alte Einsiedlerin hat es aus Rattenblut, trockenem Sporenpulver und „etwas Magie“ hergestellt.
+
+Angewandt auf das von den Sahuagin im „Arena“-Raum errichtete Portal, sollte es die Magie eines mächtigen Meerestieres umkehren, die zur Erschaffung des Portals verwendet wurde, und hoffentlich das gesamte Portal zerstören, sodass es nicht noch einmal verwendet werden kann.
+
+EIGENSCHAFTEN:
+
+Gewicht: 1~
+@646 = ~Es handelt sich um handschriftliche Notizen der alten Einsiedlerin in der Bibliothek des Alten Tempels. Dem Zettel fehlen Teile, an denen sichtlich kleine Zähne genagt haben.
+
+Hier geht es um die Kapelle im Erdgeschoss der Hallen des Alten Tempels: „Ich habe sie gründlich untersucht, bin sogar auf dem Altar herumgesprungen, bis der Priester mir sagte, ich solle aufhören, aber ich konnte den Mechanismus nicht finden, der den Durchgang zu …“
+
+Der Rest des Textes ist verschwunden.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@647 = ~Es handelt sich um handschriftliche Notizen der alten Einsiedlerin in der Bibliothek des Alten Tempels. Dem Zettel fehlen Teile, an denen sichtlich kleine Zähne genagt haben.
+
+Diese Notiz enthält Einzelheiten über die Insel des Alten Tempels. Ihr könnt erkennen, dass sie sich in den Mondseen befindet und dass der Alte Tempel seinen Zweck so weit verloren hat, dass nicht mehr klar ist, wer hier verehrt wurde. Die Angaben darüber, um welche Gottheiten es sich gehandelt haben könnte, sind aufgrund der Schäden nicht mehr lesbar.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@649 = ~Die Haut des Erdkolosses besteht aus Chitinplatten und einer zähen, dunkelbraunen Haut. Selbst vom Erdkolosskörper gezogen wirkt sie dick und undurchdringlich.
+
+EIGENSCHAFTEN:
+
+Gewicht: 25~
+@651 = ~Dies ist ein sehr beruhigendes Hüfttuch aus rosa Seide. Die Worte „Gürtel der Verdammnis“ sind mit unruhiger Hand darauf gestickt.
+
+EIGENSCHAFTEN:
+
+Gewicht: 1~
+@655 = ~Dies ist ein Handwerkerhammer, ideal für alle Arten von Tischlerarbeiten.
+
+EIGENSCHAFTEN:
+
+Schaden: 1W4 (Wucht)
+Initiativefaktor: 4
+Fertigkeit: Kriegshammer
+Typ: 1-händig
+Mindeststärke: 9
+
+Gewicht: 6~
+@662 = ~Diese Stiefel wurden angeblich von Balduran, dem Gründer von Baldurs Tor, getragen. Sie wurden magisch verbessert, um sowohl vor Fett als auch vor kalten Füßen zu schützen, und scheinen dem berühmten Seemann, als der er bekannt war, würdig zu sein.
+
+Es gibt das Gerücht, dass ein befreundeter Magier Baldurans den Zauber „Bereich der frischen Luft“ hinzugefügt hat, nachdem sie wochenlang auf einem Schiff in stürmischer See zusammengepfercht waren, aber darüber gibt es keine Aufzeichnungen. Es könnte sich also um ein böswilliges Gerücht handeln, das von demjenigen verbreitet wurde, dem die gebrauchten Stiefel nach unserem Helden gehörten.
+
+EIGENSCHAFTEN:
+
+Bereich der frischen Luft (1x täglich)
+
+Kältewiderstand: +15 %
+Immunität gegen „Schmieren“
+
+Gewicht: 4~
+@664 = ~Dieser Schlüssel öffnet die versteckte Tür auf der zweiten unteren Ebene der Ruinen der Alten Tempelinsel.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@666 = ~Dieses Horn ist aus einer Muschel gefertigt. Es hat ein Loch an der Spitze und wurde ein wenig in Form geschnitzt, damit es gut in eine humanoide Hand passt.
+
+EIGENCHAFTEN:
+
+Gewicht: 1~
+@668 = ~Dies ist eine alte Ritualnotiz. Ihr könnt die Worte aufgrund des Verwesungszustandes kaum erkennen:
+
+„… wenn die Seele jedoch gespalten würde, wäre sie an der Weiterreise ins Jenseits gehindert. Sie würde nicht nur …“
+
+„… in einer gasförmigen, nicht materiellen Form. Aufgrund ihrer eingeschränkten Wahrnehmung werden die Fragmente …“
+
+„… müssen verhindern, dass die Fragmente aufeinandertreffen, sonst wird der Prozess umgekehrt und die Fragmente verschmelzen wieder, wodurch die Seele wieder ganz wird und sie …“
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@672 = ~Eine Kerze, so alt wie die Ruinen des Alten Tempels, aber immer noch brauchbar.
+
+EIGENSCHAFTEN:
+
+Gewicht: 1~
+@674 = ~Es handelt sich um das Holz eines Suth-Baumes, das dafür bekannt ist, dass es auch bei schweren Schlägen nicht splittert.
+
+EIGENSCHAFTEN:
+
+Gewicht: 4~
+@678 = ~Dieser Schlüssel öffnet die Gefängniszellen im Verlies von Baldurans Seeturm. Er wurde Euch gegeben, damit Ihr mit Turmwächter Shuck sprechen könnt. Er scheint auch die anderen Zellentüren zu öffnen, aber die Wachen werden dafür sorgen, dass diese nicht lange unverschlossen bleiben. Ihr solltet diesen Schlüssel aufbewahren, wenn Ihr später auch mit anderen Gefangenen sprechen wollt.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@680 = ~Dies ist eine leicht goldene Halskette mit einem Edelstein als Anhänger. Die Gravur lautet "Melly".
+
+EIGENSCHAFTEN:
+
+Gewicht: 1~
+@687 = ~Dies ist die Kiste, die der Schmuggler Edgar Euch gegeben hat. Das sollte die Nachtmasken herauslocken, die es auf die rivalisierende Schwarzer-Lotus-Schmuggelaktion abgesehen haben.
+
+EIGENSCHAFTEN:
+
+Gewicht: 40~
+@689 = ~Dies ist ein sehr feiner, leicht trockener Herrenduft, der in Calimshan sehr begehrt ist. Er ist normalerweise sehr teuer. Nun, wenn man ihn nicht von Schmugglern kauft, versteht sich.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@693 = ~Dies ist ein ungewöhnlich schweres Fass. Es ist verschlossen, aber es gibt mehrere kleinere Löcher im Rumpf, als ob der Inhalt gut belüftet werden sollte.
+
+EIGENSCHAFTEN:
+
+Gewicht: 120~
+@697 = ~Das ist die Kiste, die Holger Euch gegeben hat, um sie Bruce, einer Flammenden Faust, im Palast zu übergeben.
+
+Als Ihr sie schüttelt, hört Ihr das Klirren von Münzen. Ihr habt den Eindruck, dass die Kiste selbst auch ziemlich wertvoll ist.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@699 = ~Dies ist eine alte Münze, deren Herkunft Ihr nicht kennt. Sie scheint schon sehr lange im Brunnen gelegen zu haben.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~
+@50001 = ~Dieses Amulett aus reinstem Silber wurde vom Klerus der Mondmaid gesegnet, um Lykanthropen und untote Wesen abzuwehren.
+
+EIGENSCHAFTEN:
+
+RK-Bonus:
+  –2 gg. Lykanthropen
+  –2 gg. Untote
+RW-Bonus:
+  –2 gg. Lykanthropen
+  –2 gg. Untote
+
+Gewicht: 3~
+@50002 = ~Silberflegel von Selûne +1~
+@50003 = ~Dieser silberne Flegel wurde der Mondmaid geweiht und ist äußerst wirksam gegen Lykanthropen und Untote.
+
+EIGENSCHAFTEN:
+
+Trifft wie eine magische Waffe +3 gegen Lykanthropen und Untote.
+
+ETW0-Bonus:
+  –1
+  –3 gg. Lykanthropen
+  –3 gg. Untote
+Schaden:
+  1W6 +2 (Wucht)
+  1W6 +4 (Wucht) gg. Lykanthropen
+  1W6 +4 (Wucht) gg. Untote
+Initiativefaktor: 6
+Fertigkeit: Flegel/Morgenstern
+Typ: 1-händig
+Mindeststärke: 13
+
+Gewicht: 13~
+@50005 = ~Diese Schleuderkugel wurde mit der magischen Substanz namens Mondfeuer getränkt.  Dadurch wird die Treffergenauigkeit erhöht. Wenn das Geschoss einschlägt, wird eine Welle betäubender Kälte freigesetzt.
+
+EIGENSCHAFTEN:
+
+ETW0-Bonus: –1
+Schaden: 1W4 +2 (Geschoss)
+Schadensbonus: +2 (Kälte)
+Schusswaffe: Schleuder
+
+Gewicht: 0~
+@50007 = ~Die harten Platten, die Erdkolosse schützen, lassen sich relativ leicht zu humanoiden Rüstungen verarbeiten.  Diese dunkle Rüstung wurde vom Seeturm-Harnischmacher für <CHARNAME> zu einem Plattenpanzer verarbeitet.
+
+Die Handwerkskunst ist exzellent und sie könnte von einem entsprechend mächtigen Magier verzaubert werden.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 2
+RK-Bonus:
+  –1 gg. Geschosswaffen
+  –1 gg. Stichwaffen
+  –4 gg. Klingenwaffen
+  
+Mindeststärke: 12
+
+Gewicht: 40~
+@50009 = ~Die harten Platten, die Erdkolosse schützen, lassen sich relativ leicht zu humanoiden Rüstungen verarbeiten.  Diese dunkle Rüstung wurde vom Seeturm-Harnischmacher für <CHARNAME> zu einem Plattenpanzer verarbeitet und anschließend vom Seeturm-Magier verzaubert, wodurch der Schutz weiter erhöht wurde.
+
+EIGENSCHAFTEN:
+
+Der Träger ist immun gegen Schwachsinn und Verwirrung.
+
+Rüstungsklasse: 1
+RK-Bonus:
+  –1 gg. Geschosswaffen
+  –1 gg. Stichwaffen
+  –4 gg. Klingenwaffen
+Mindeststärke: 12
+
+Gewicht: 40~
+@50011 = ~Dieser robuste Kampfstab wurde aus Suth geschnitzt, dem härtesten bekannten Holz in Faerûn. Als solches muss er nicht einmal mit Eisen beschlagen sein, um im Kampf effektiv zu sein.  Die Verzauberung überträgt auch etwas von dieser Robustheit auf den Träger, wenn er den Stab in der Hand hält.
+
+Dieser Stab ist das stolze Ergebnis des Versuchs der Seeturm-Pfeilmacherin, eine Waffe zu schmieden. Der Stab ist gut, aber kreative Namensgebung ist nicht die Stärke der Pfeilmacherin, wie es scheint.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 3 durch Rindenhaut
+RW-Bonus:
+  –1 gg. Lähmung/Gift/Tod
+  –1 gg. Zauberstäbe
+  –1 gg. Versteinerung/Verwandlung
+  –1 gg. Odemwaffen
+
+ETW0-Bonus: –2
+Schaden: 1W6 +2 (Wucht)
+Initiativefaktor: 2
+Fertigkeit: Kampfstab
+Typ: 2-händig
+Mindeststärke: 5
+
+Gewicht: 3~
+@50013 = ~Dieser robuste Speer hat einen stabilen Schaft aus Suth, dem härtesten bekannten Holz in Faerûn.  Die Verzauberung überträgt auch etwas von dieser Robustheit auf den Träger, wenn er den Speer in der Hand hält.
+
+Dieser Stab ist das stolze Ergebnis der Seeturm-Pfeilmacherin, die sich im Waffenhandwerk versucht hat, und des Seeturm-Waffenschmieds, der ihn in einen Speer verwandelt hat.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 3 durch Rindenhaut
+RW-Bonus:
+  –1 gg. Lähmung/Gift/Tod
+  –1 gg. Zauberstäbe
+  –1 gg. Versteinerung/Verwandlung
+  –1 gg. Odemwaffen
+
+ETW0-Bonus: –2
+Schaden: 1W6 +2 (Stich)
+Initiativefaktor: 4
+Fertigkeit: Speer
+Typ: 2-händig
+Mindeststärke: 5
+
+Gewicht: 3~
+@50014 = ~Ein Ring ist ein kleines Band aus wertvollem Metall, das als Schmuck am Finger getragen wird. Einige Ringe sind verzaubert und verleihen magische Fähigkeiten. Diese Ringe sind heißbegehrt, insbesondere von Abenteurern und Magiern.
+
+Dies ist einer der Goldringe, die Ihr bei den Opfern des Doppelgänger-Plans gefunden habt.
+
+EIGENSCHAFTEN:
+
+Gewicht: 0~

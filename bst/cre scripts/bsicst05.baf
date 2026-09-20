@@ -1,0 +1,119 @@
+/* override script castaway quartermaster */
+
+/* received water. Initiate dialogue. - I couldn't make the counting work otherwise. */
+IF
+    See([PC])
+    Global("bs_CountWater","MYAREA",2)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        StartDialogNoSet([PC])
+END
+
+IF
+	!PartyHasItem("bsdrwate")
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_CountWater","MYAREA",2)
+END
+IF
+	NumItemsPartyGT("bsdrwate",9)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",10)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(50)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",10)
+END
+IF
+	NumItemsParty("bsdrwate",9)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",9)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(45)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",9)
+END
+IF
+	NumItemsParty("bsdrwate",8)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",8)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(40)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",8)
+END
+IF
+	NumItemsParty("bsdrwate",7)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",7)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(35)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",7)
+END
+IF
+	NumItemsParty("bsdrwate",6)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",6)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(30)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",6)
+END
+IF
+	NumItemsParty("bsdrwate",5)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",5)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(25)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",5)
+END
+IF
+	NumItemsParty("bsdrwate",4)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",4)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(20)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",4)
+END
+IF
+	NumItemsParty("bsdrwate",3)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",3)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(15)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",3)
+END
+IF
+	NumItemsParty("bsdrwate",2)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",2)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(10)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",2)
+END
+IF
+	NumItemsParty("bsdrwate",1)
+	Global("bs_CountWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",1)
+		DestroyItem("bsdrwate")
+		GiveGoldForce(5)
+		IncrementGlobal("bs_ReceivedWater","MYAREA",1)
+END

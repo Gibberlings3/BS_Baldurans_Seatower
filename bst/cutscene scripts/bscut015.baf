@@ -1,0 +1,14 @@
+// Fade to black and priestesses of Umberlee vanish
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+        Wait(3)
+        ActionOverride("bsiprum1",DestroySelf())
+        ActionOverride("bsiprum2",DestroySelf())
+        FadeFromColor([20.0],0)
+        EndCutSceneMode()
+END 

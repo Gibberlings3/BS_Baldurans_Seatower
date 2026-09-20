@@ -1,0 +1,100 @@
+OUTER_SPRINT %Add_Random_Castaway_Dialogue% %
+/* random dialogue: [Hegomee is chief] [level not cleared]
+GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",0)*/
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",0)
+RandomNum(3,1)~ THEN random_01
+SAY @461 /* ~It's a dire situation we are in.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",0)
+RandomNum(3,2)~ THEN random_02
+SAY @462 /* ~I hope we will be able to walk this level of the ruins again without being threatened by monsters, at least.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",0)
+RandomNum(3,3)~ THEN random_03
+SAY @463 /* ~We'll see how it all plays out, I guess.~ */
+IF ~~ THEN EXIT
+END
+
+/* random dialogue: [Hegomee is chief] [level cleared]
+GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",1)*/
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",1)
+RandomNum(4,1)~ THEN random_01
+SAY @464 /* ~We can go out again! I am so glad.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",1)
+RandomNum(4,2)~ THEN random_02
+SAY @465 /* ~Thank you for making our lives easier.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",1)
+RandomNum(4,3)~ THEN random_03
+SAY @466 /* ~So, Hegomee's plan worked out in the end.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Global("bs_SahuaginThreatGone","GLOBAL",1)
+RandomNum(4,4)~ THEN random_04
+SAY @467 /* ~I'm glad the tension between Hegomee and Fomthard is over.~ */
+IF ~~ THEN EXIT
+END
+
+/* random dialogue: [Fomthard is chief (became chief while level not cleared)] */
+IF ~GlobalGT("bs_ChangeOfLeadership","GLOBAL",19)
+RandomNum(4,1)~ THEN random_01
+SAY @468 /* ~So, it's Fomthard deciding our fate now.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalGT("bs_ChangeOfLeadership","GLOBAL",19)
+RandomNum(4,2)~ THEN random_02
+SAY @469 /* ~You can't accuse Fomthard of being a coward, going scouting like that. You really can't.~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalGT("bs_ChangeOfLeadership","GLOBAL",19)
+RandomNum(4,3)~ THEN random_03
+SAY @470 /* ~It's sad Hegomee's dead. He was a good fellow, and he meant well.~ */
+IF ~~ THEN EXIT
+END
+
+IF ~GlobalGT("bs_ChangeOfLeadership","GLOBAL",19)
+RandomNum(4,4)~ THEN random_04
+SAY @471 /* ~Hegomee had it coming, I tell you.~ */
+IF ~~ THEN EXIT
+END
+
+/* random dialogue: [noone is chief (level is cleared)] */
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Dead("bsicst04")
+RandomNum(4,1)~ THEN random_01
+SAY @472 /* ~We are without a leader! Oh gods, what will we do now?~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Dead("bsicst04")
+RandomNum(4,2)~ THEN random_02
+SAY @473 /* ~Great thing you did there, leaving us unprotected like this!~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Dead("bsicst04")
+RandomNum(4,3)~ THEN random_03
+SAY @474 /* ~Maybe that priest could give us shelter?~ */
+IF ~~ THEN EXIT
+END
+IF ~GlobalLT("bs_ChangeOfLeadership","GLOBAL",20)
+Dead("bsicst04")
+RandomNum(4,4)~ THEN random_04
+SAY @475 /* ~Will you be our leader now?~ */
+IF ~~ THEN EXIT
+END
+%

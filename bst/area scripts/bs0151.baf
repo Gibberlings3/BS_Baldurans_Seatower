@@ -58,6 +58,8 @@ THEN
 //		CreateCreature("bsgnold3",[380.448],8)
 		ActionOverride("bsalgbk",PickUpItem("BSPOTND"))
 		SmallWait(1)
+		ActionOverride("bsalgbk",DestroyItem("BSPOTND"))
+		SmallWait(1)
 		ActionOverride("bsalgbk",DestroySelf())
 		SetGlobal("bsDream151","GLOBAL",3)
 END

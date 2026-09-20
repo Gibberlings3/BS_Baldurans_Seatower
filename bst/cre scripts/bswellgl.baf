@@ -1,5 +1,19 @@
 /* script of girl at well */
 
+/* family will leave if doppelgangerquest starts */
+IF
+	GlobalGT("bsDoppelgangerInTower","GLOBAL",0)
+	AreaCheck("bs1000")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bsCuriousChildWell","MYAREA",8)
+		ActionOverride("bswellbo",EscapeArea())
+		ActionOverride("bswellma",EscapeArea())
+		ActionOverride(Myself,EscapeArea())
+		SetInterrupt(TRUE)
+END
+
 IF 
 	InMyArea(Player1)
 	InMyArea("bswellbo")
@@ -36,9 +50,8 @@ IF
 	GlobalTimerExpired("bsCCWellTimer","GLOBAL")
 THEN 
 	RESPONSE #100
-		DisplayStringHead(Myself,@11047)
-		Wait(1)
 		DisplayStringHead("Well01",@11047)
+		Wait(1)
 		SetGlobalTimer("bsCCWellTimer","GLOBAL",ONE_ROUND)
 		SetGlobal("bsCuriousChildWell","MYAREA",2)
 END

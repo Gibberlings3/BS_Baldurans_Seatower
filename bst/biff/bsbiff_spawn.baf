@@ -1,0 +1,8 @@
+IF
+	Global("bsBiffEasterEgg","GLOBAL",1)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bsBiffEasterEgg","GLOBAL",2)
+		CreateCreatureObjectDoor("bsbiff01",Player1,14,0,0)
+END

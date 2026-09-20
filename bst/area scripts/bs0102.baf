@@ -1,0 +1,299 @@
+/* group came from arena bs0104 - reset defense system */
+IF
+    InMyArea(Player1)
+    GlobalGT("bs_i_PortalRoomActivated","GLOBAL",0)
+    GlobalLT("bs_i_PortalRoomActivated","GLOBAL",4)
+THEN
+	RESPONSE #100
+        SetGlobal("bs_i_PortalRoomActivated","GLOBAL",0)
+END
+
+/* spawn more sahuagin when fighting baron Frohxlto - Acifer */
+IF
+    Global("bs0102_spawn_sahuagin03","MYAREA",1)
+    DifficultyGT(EASIEST)
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagg3",[1320.1935],10)
+        CreateCreature("bsisagg3",[1364.1952],10)
+        CreateCreature("bsisagg3",[1243.2003],10)
+        SetGlobal("bs0102_spawn_sahuagin03","MYAREA",2)
+END
+
+IF
+    Global("bs0102_spawn_sahuagin03","MYAREA",2)
+    LevelPartyGT(6)
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagg3",[495.2233],10)
+        CreateCreature("bsisagg3",[528.2303],10)
+        SetGlobal("bs0102_spawn_sahuagin03","MYAREA",3)
+END
+
+/* spawn more sahuagin when fighting the royal guards - Acifer */
+IF
+    Global("bs0102_spawn_sahuagin","MYAREA",1)
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg3",[586.2084],10)
+        CreateCreature("bsisagg3",[579.2163],10)
+        CreateCreature("bsisagg3",[667.2195],10)
+        SetGlobal("bs0102_spawn_sahuagin","MYAREA",2)
+END
+
+/* spawn even more sahuagin when fighting the royal guards - Acifer */
+IF
+    Global("bs0102_spawn_sahuagin","MYAREA",2)
+    //DifficultyGT(EASY)
+    LevelPartyGT(6)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg3",[495.2233],10)
+        CreateCreature("bsisagg3",[528.2303],10)
+        SetGlobal("bs0102_spawn_sahuagin","MYAREA",3)
+END
+
+/* spawn more sahuagin as royal guard for baron Ghrumshrtl - Acifer */
+IF
+    Global("bs0102_spawn_ghrumshrtl","MYAREA",0)
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagb2",[1774.1601],3)
+        CreateCreature("bsisagb2",[1874.1679],10)
+        SetGlobal("bs0102_spawn_ghrumshrtl","MYAREA",1)
+END
+
+/* spawn more sahuagin when fighting the baron Ghrumshrtl - Acifer */
+IF
+    Global("bs0102_spawn_sahuagin02","MYAREA",1)
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg3",[1320.1935],10)
+        CreateCreature("bsisagg3",[1364.1952],10)
+        CreateCreature("bsisagg3",[1243.2003],10)
+        SetGlobal("bs0102_spawn_sahuagin02","MYAREA",2)
+END
+
+/* spawn even more sahuagin when fighting the baron Ghrumshrtl - Acifer */
+IF
+    Global("bs0102_spawn_sahuagin02","MYAREA",2)
+    //DifficultyGT(EASY)
+    LevelPartyGT(6)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg3",[1127.2061],10)
+        CreateCreature("bsisagg3",[1117.2106],10)
+        SetGlobal("bs0102_spawn_sahuagin02","MYAREA",3)
+END
+
+/* Group has the tooth */
+IF
+    PartyHasItem("bsitooth")
+    GlobalLT("bs_TempleIslandQuest","GLOBAL",10)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@963)
+        AddJournalEntry(@970,QUEST)
+        SetGlobal("bs_TempleIslandQuest","GLOBAL",10)
+END
+
+
+/* portal room was visited. Sahuagin priestess moves in front of exit */
+IF
+    GlobalGT("bs_SahuaginPortalRoom","GLOBAL",0)
+    Global("bs_MoveToPortalroom","MYAREA",0)
+    InMyArea("bsisagp1")
+    Allegiance("bsisagp1",NEUTRAL)
+    Dead("bsisagg1")
+    Dead("bsisagg2")
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        ActionOverride("bsisagp1",JumpToPoint([980.1922]))
+        ActionOverride("bsisagp1",MoveToPointNoInterrupt([980.1922]))
+        ActionOverride("bsisagp1",Face(0))
+        SetGlobal("bs_MoveToPortalroom","MYAREA",1)
+        SetInterrupt(TRUE)
+END
+IF
+    Global("bs_SahuaginPortalRoom","GLOBAL",1)
+    Global("bs_MoveToPortalroom","MYAREA",0)
+    OR(2)
+        !InMyArea("bsisagp1")
+        !Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_MoveToPortalroom","MYAREA",2)
+END
+IF
+    Global("bs_SahuaginPortalRoom","GLOBAL",2)
+    Global("bs_MoveToPortalroom","MYAREA",2)
+    InMyArea("bsisagp1")
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_MoveToPortalroom","MYAREA",0) //reset so priestess moved if portal gets destroyed
+END
+
+/* the Sahuagin priestess moves here */
+IF
+    OR(2)
+        Global("bs_RebelDeal","GLOBAL",4)
+        Global("bs_ti_SahuaginMeeting","GLOBAL",4)
+    GlobalLT("bs_ti_SahuaginMeeting","GLOBAL",5)
+    !Dead("bsisagp1")
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagp1",[2189.1389],0)
+        SetGlobal("bs_ti_SahuaginMeeting","GLOBAL",5)
+END
+
+/* Rebel Baron and followers moved here */
+IF
+    Global("bs_RebelDeal","GLOBAL",3)
+    !Dead("bsisagr1")
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagr1",[1685.1748],3)
+        Continue()
+END
+IF
+    Global("bs_RebelDeal","GLOBAL",3)
+    !Dead("bsisagr2")
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagr2",[1762.1748],2)
+        Continue()
+END
+IF
+    Global("bs_RebelDeal","GLOBAL",3)
+    !Dead("bsisagr3")
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagr3",[1711.1679],2)
+        Continue()
+END
+IF
+    Global("bs_RebelDeal","GLOBAL",3)
+    !Dead("bsisagr4")
+THEN
+    RESPONSE #100
+        CreateCreature("bsisagr4",[1791.1680],2)
+        Continue()
+END
+IF
+    Global("bs_RebelDeal","GLOBAL",3)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_RebelDeal","GLOBAL",4)
+END
+
+/* open door Door01 */
+IF
+    Global("bs_OpenDoorQuest","MYAREA",2)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        ActionOverride("bsicst01",TakePartyItemNum("arow01",10)
+        ActionOverride("bsicst01",DestroyItem("bsislkey")
+        ActionOverride("bsicst01",MoveToObjectNoInterrupt("Door01"))
+        Wait(4)
+        Unlock("Door01" )
+//        OpenDoor("Door01")
+        DisplayStringHead("bsicst01",@11114)
+        ActionOverride("bsicst01",MoveToPointNoInterrupt([2638.2370]))
+        Wait(3)
+        SetGlobal("bs_OpenDoorQuest","MYAREA",3)
+        SetInterrupt(TRUE)
+END
+/* open door Door01 - failsafe */
+IF
+    Global("bs_OpenDoorQuest","MYAREA",3)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        Unlock("Door01" )
+//        OpenDoor("Door01")
+        SetGlobal("bs_OpenDoorQuest","MYAREA",4)
+        ActionOverride("bsicst01",MoveToPointNoInterrupt([2638.2370]))
+        SetInterrupt(TRUE)
+END
+
+/* spawn Fragmented Apparitions */
+IF
+    Global("bs_SpawnApparitions","MYAREA",0)
+THEN
+    RESPONSE #100
+        CreateCreature("bsiphtm1",[1254.1165],14)
+        CreateCreature("bsiphtm2",[510.814],8)
+        SetGlobal("bs_SpawnApparitions","MYAREA",1)
+END
+
+/* Journal entry about fragmented soul */
+IF
+    PartyHasItem("bsiptmnt")
+    Global("bs_RitualNoteJE","MYAREA",0)
+    Global("bs_ApparitionsMerge","MYAREA",0) //only if quest not finished yet
+THEN
+    RESPONSE #100
+        AddJournalEntry(@100038,QUEST)
+        SetGlobal("bs_RitualNoteJE","MYAREA",1)
+END
+
+/* find some trinkets in Sarcophagus */
+IF
+    Global("bs_PlaceTrinketsSarcophagus","MYAREA",0)
+THEN
+    RESPONSE #100
+		ActionOverride("Sarcophagus01",CreateItem("AMUL04",0,0,0))
+		ActionOverride("Sarcophagus01",CreateItem("AMUL13",0,0,0))
+		ActionOverride("Sarcophagus01",CreateItem("BRAC03",0,0,0))
+		ActionOverride("Sarcophagus01",CreateItem("CLCK12",0,0,0))
+		SetGlobal("bs_PlaceTrinketsSarcophagus","MYAREA",1)
+END
+
+
+/* Journal entry about pink waitscloth */
+IF
+    PartyHasItem("bsiwstcl")
+    Global("bs_ClothJE","MYAREA",0)
+    Global("bs_MotherhasCloth","MYAREA",1) //only if quest is open
+THEN
+    RESPONSE #100
+        AddJournalEntry(@100071,QUEST)
+        SetGlobal("bs_ClothJE","MYAREA",1)
+END
+
+/* journal entries, in case player just attacked the waiting Sahuagin baron without dialogue */
+IF
+    Dead("bsisagb1")
+    GlobalGT("bs_BaronDeal","GLOBAL",0)
+    GlobalGT("bs_RebelDeal","GLOBAL",0)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100007)
+        EraseJournalEntry(@966)
+        EraseJournalEntry(@968)
+        AddJournalEntry(@969,QUEST)
+        SetGlobal("bs_BaronDeal","GLOBAL",-1)
+END
+/* journal entries for both dead */
+IF
+    Dead("bsisagb1")
+    Dead("bsisagr1")
+    Global("bs_JournalBaronsDead","MYAREA",0)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@963)
+        EraseJournalEntry(@964)
+        EraseJournalEntry(@965)
+        EraseJournalEntry(@966)
+        EraseJournalEntry(@967)
+        EraseJournalEntry(@968)
+        EraseJournalEntry(@969)
+        EraseJournalEntry(@100007)
+        SetGlobal("bs_JournalBaronsDead","MYAREA",1)
+END

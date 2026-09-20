@@ -22,6 +22,18 @@ THEN
 		StartDialogNoSet(Player1)
 END
 
+/* take slaver booklet */
+IF
+	Global("bsSQCommanderKnowsTimes","LOCALS",1)
+	PartyHasItem("bssmq003")
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		TakePartyItem("bssmq003")
+		DestroyItem("bssmq003")
+		SetGlobal("bsSQCommanderKnowsTimes","LOCALS",2)
+END
+
 /* foreward quest with slave traders: PC left once and returns. */
 IF
 	Global("bsSlaveWitnessInterrogated","GLOBAL",1)
@@ -35,16 +47,61 @@ END
 /* Journal entry handling of PC reported everything from the Seacaves */
 IF
 	GlobalGT("bsFoundSerjeante","GLOBAL",1) //reported dead Adjutant
-	Global("bsSeaCaveOpenLOC","LOCALS",1) //reported seacave exit to traitor's tower
-	Global("bsFoundExitUmberleeLOC","LOCALS",1) //reported exit to temple of Umberlee
-	Global("bsFoundExitDocksLOC","LOCALS",1) //reported exit to docks
-//	Global("bsFoundSahuaginLOC","LOCALS",1) ##not done yet
-	Global("bsPCMetSmugglerLOC","LOCALS",1)
-	Global("bsTailorLOC","LOCALS",1) //reported about the tailor
-	Global("bsJournalHandlingSeaCave","LOCALS",0) 
+	Global("bsSeaCaveOpenLOC","MYAREA",1) //reported seacave exit to traitor's tower
+	Global("bsFoundExitUmberleeLOC","MYAREA",1) //reported exit to temple of Umberlee
+	Global("bsFoundExitDocksLOC","MYAREA",1) //reported exit to docks
+	Global("bsPCMetSmugglerLOC","MYAREA",1) //reported smuggler cell under tailor being taken over by doppelgangers
+	Global("bsTailorLOC","MYAREA",1) //reported about the tailor
+	Global("bsToldCorpseDump","MYAREA",1) //found doppelganger victims
+	GlobalGT("bs_ReportedSahuagin","MYAREA",0) //reported Sahuagin portal
+	Global("bsJournalHandlingSeaCave","MYAREA",0)
 THEN
 	RESPONSE #100
 		EraseJournalEntry(@818)
 		AddJournalEntry(@822,QUEST_DONE)
-		SetGlobal("bsJournalHandlingSeaCave","LOCALS",1)
+		SetGlobal("bsJournalHandlingSeaCave","MYAREA",1)
 END
+
+/* take heirlooms */
+IF
+	Global("bs_Gavebsdprmhp","GLOBAL",1)
+	PartyHasItem("bsdprmhp")
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItem("bsdprmhp")
+		DestroyItem("bsdprmhp")
+		GiveItemCreate("bsdprmhp",Myself,0,0,0)//keeps this item - stealable!
+		SetGlobalTimer("bs_SpawnRewardHeirloomTimer","GLOBAL",FOUR_DAYS)
+		SetGlobal("bs_SpawnRewardHeirloom","GLOBAL",1)
+		SetGlobal("bs_Gavebsdprmhp","GLOBAL",2)
+		SetInterrupt(TRUE)
+END
+IF
+	Global("bs_Gavebsdparst","GLOBAL",1)
+	PartyHasItem("bsdparst")
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItem("bsdparst")
+		DestroyItem("bsdparst")
+		SetGlobalTimer("bs_SpawnRewardHeirloomTimer","GLOBAL",FOUR_DAYS)
+		SetGlobal("bs_SpawnRewardHeirloom","GLOBAL",1)
+		SetGlobal("bs_Gavebsdparst","GLOBAL",2)
+		SetInterrupt(TRUE)
+END
+IF
+	Global("bsPCTookGoldrings","GLOBAL",1)
+	NumItemsParty("bsdprrh1",10)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItemNum("bsdprrh1",10)
+		DestroyItem("bsdprrh1")
+		SetGlobal("bsPCTookGoldrings","GLOBAL",3) //set to 3 for legacy reasons -> follow up easter egg
+		SetInterrupt(TRUE)
+END
+

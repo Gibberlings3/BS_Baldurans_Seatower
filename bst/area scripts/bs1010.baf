@@ -1,6 +1,15 @@
+/* check variable: group left prison */
+IF
+	InMyArea(Player1)
+	Global("bs_PCWasInPrisonArea","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_PCWasInPrisonArea","GLOBAL",0)
+END
+
 /* Open door to the storeroom - cook */
 IF 
-    Global("bsFireElementQuest","GLOBAL",1)
+  Global("bsFireElementQuest","GLOBAL",1)
 THEN
   RESPONSE #100
     SetInterrupt(FALSE)
@@ -87,4 +96,14 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("bsInquisitorsWork","GLOBAL",3)
+END
+
+/* create Mrs Souter and Melly (lost necklace quest) */
+IF
+  Global("bs_LostNecklaceQuest","GLOBAL",3)
+THEN
+  RESPONSE #100
+ 	 	SetGlobal("bs_LostNecklaceQuest","GLOBAL",4)
+		CreateCreature("bsqln001",[1315.780],12)
+		CreateCreature("bsqln002",[1328.762],2)
 END

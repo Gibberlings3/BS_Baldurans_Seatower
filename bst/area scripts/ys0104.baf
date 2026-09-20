@@ -1,0 +1,8 @@
+/* journal entry: PC bought Fletcher's Staff */
+IF
+    GlobalLT("bs_FletchersStaff","GLOBAL",6)
+    PartyHasItem("bsblun02")
+THEN
+    RESPONSE #100
+		SetGlobal("bs_FletchersStaff","GLOBAL",6)
+END

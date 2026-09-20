@@ -1,0 +1,9 @@
+
+IF
+    AreaCheck("ys0106")
+    Global("bs_DestroyEquipment","LOCALS",0)
+THEN
+    RESPONSE #100
+        DestroyAllEquipment()
+        SetGlobal("bs_DestroyEquipment","LOCALS",1)
+END

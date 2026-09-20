@@ -4,7 +4,9 @@
 // source   : ./DATA/DIALOG.BIF
 // dialog   : .\lang\en_us/dialog.tlk
 // dialogF  : (none)
-// @9192
+
+ADD_TRANS_ACTION ~TAMOKO~ BEGIN 14 15 16 17 18 END BEGIN END
+~SetGlobal("bs_KnowOfBhaalTamoko","GLOBAL",1)~
 
 BEGIN ~BSGORIOD~
 

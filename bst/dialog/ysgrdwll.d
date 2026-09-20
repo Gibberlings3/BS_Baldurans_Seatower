@@ -1,12 +1,12 @@
 BEGIN ysgrdwll
 
 IF ~RandomNum(6,1)~ THEN BEGIN 1
-  SAY @1120
+  SAY @1110
   IF ~~ THEN EXIT
 END
 
 IF ~RandomNum(6,2)~ THEN BEGIN 2
-  SAY @1121
+  SAY @1111
   IF ~~ THEN EXIT
 END
 
@@ -16,7 +16,7 @@ IF ~RandomNum(6,3)~ THEN BEGIN 3
 END
 
 IF ~RandomNum(6,4)~ THEN BEGIN 4
-  SAY @1123
+  SAY @1113
   IF ~~ THEN EXIT
 END
 
@@ -26,6 +26,6 @@ IF ~RandomNum(6,5)~ THEN BEGIN 5
 END
 
 IF ~RandomNum(6,6)~ THEN BEGIN 6
-  SAY @1125
+  SAY @1115
   IF ~~ THEN EXIT
 END

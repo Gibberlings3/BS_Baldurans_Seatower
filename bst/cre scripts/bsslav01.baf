@@ -1,0 +1,10 @@
+IF 
+	Allegiance(Myself,NEUTRAL)
+	OR(2)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		HitBy([GOODCUTOFF],CRUSHING)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSlaversAttack","MYAREA",2)
+		Enemy()
+END

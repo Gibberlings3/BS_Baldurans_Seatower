@@ -1,0 +1,21 @@
+/* script from Edgar, smuggler (appears for 3rd quest) */
+IF
+	OR(2)
+		Global("bsSmugglersLeave","GLOBAL",1)
+		GlobalGT("bsSmugglerQuest","GLOBAL",47)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+IF
+	Allegiance(Myself,NEUTRAL)
+	OR(4)
+		Allegiance("bssmgl02",ENEMY)
+		Dead("bssmgl02")
+		HitBy([PC],CRUSHING)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+	RESPONSE #100
+		Enemy()
+END

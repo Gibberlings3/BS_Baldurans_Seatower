@@ -1,0 +1,19 @@
+/* teleport group in front of ch7 Commander in Ch7 area */
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        LeaveAreaLUAPanic("bsch07","",[1150.675],6)
+        LeaveAreaLUA("bsch07","",[1150.675],6)
+        ActionOverride(Player2,LeaveAreaLUA("bsch07","",[1168.719],8))
+        ActionOverride(Player3,LeaveAreaLUA("bsch07","",[1097.763],8))
+        ActionOverride(Player4,LeaveAreaLUA("bsch07","",[1049.761],8))
+        ActionOverride(Player5,LeaveAreaLUA("bsch07","",[1009.735],10))
+        ActionOverride(Player6,LeaveAreaLUA("bsch07","",[993.695],10))
+        MultiPlayerSync()
+        CreateCreature("bscmdch7",[868.688],0)
+        MultiPlayerSync()
+        Wait(3)
+        ActionOverride("bscmdch7",Dialogue([PC]))
+END

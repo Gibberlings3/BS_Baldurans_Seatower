@@ -1,33 +1,638 @@
+/* player used shell horn - deactivate defence system. */
 IF
-	OR(2)
-		Difficulty(EASY)
-		LevelLT(Player1,5)
-	Global("bsSpawnTrolls","MYAREA",0)
+    InMyArea(Player1)
+    Global("bs_ihorn","GLOBAL",1)
+    GlobalLT("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetGlobal("bsSpawnTrolls","MYAREA",1)
-		CreateCreature("bsseatrl",[773.833],10) //nerfed Sea Troll
+        EraseJournalEntry(@100033)
+        EraseJournalEntry(@100072)
+        AddJournalEntry(@100030,QUEST)
+        SetGlobal("bs_i_PortalRoomActivated","GLOBAL",2)
+END
+/* after last spawn */
+IF
+    InMyArea(Player1)
+    Global("bs_ihorn","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+THEN
+	RESPONSE #100
+        SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",12)
 END
 
+/* deactivate hidden passage, if it was not cleared from the other side (in bs0101) */
 IF
-	!LevelLT(Player1,5)
-	Difficulty(NORMAL)
-	Global("bsSpawnTrolls","MYAREA",0)
+    GlobalLT("bs_SecretPassageOpen","GLOBAL",2)
+    Global("bs_CloseHiddenPassage","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsSpawnTrolls","MYAREA",1)
-		CreateCreature("bsseatrl",[773.833],10) //nerfed Sea Troll
-		CreateCreature("bsseatrl",[557.807],12) //nerfed Sea Troll
+		TriggerActivation("travbs0101",FALSE) //hidden passage to bs0101
+		SetGlobal("bs_CloseHiddenPassage","MYAREA",1)
 END
 
+/* Open hidden passage if it was opened in bs0101 */
 IF
-	!LevelLT(Player1,5)
-	DifficultyGT(NORMAL)
-	Global("bsSpawnTrolls","MYAREA",0)
+    GlobalGT("bs_SecretPassageOpen","GLOBAL",1)
+    GlobalLT("bs_CloseHiddenPassage","MYAREA",2)
 THEN
 	RESPONSE #100
-		SetGlobal("bsSpawnTrolls","MYAREA",1)
-		CreateCreature("bsseatrl",[773.833],10) //nerfed Sea Troll
-		CreateCreature("bsseatrl",[557.807],12) //nerfed Sea Troll
-		CreateCreature("bsseatrl",[1016.892],8) //nerfed Sea Troll
+		TriggerActivation("travbs0101",TRUE) //hidden passage to bs0101
+		SetGlobal("bs_CloseHiddenPassage","MYAREA",2)
+END
+
+/* portal is destroyed - set via dialogue */
+IF
+    Global("bs_POP","GLOBAL",2)
+THEN
+	RESPONSE #100
+        SoundActivate("PortalHumm",FALSE)
+        SetGlobal("bs_POP","GLOBAL",4)
+END
+
+/* defense system: monster waves */
+/* monster spawn: 1: skeletons */
+/* activation */
+IF
+    Dead("bsisagw1")
+    Dead("bsisagw2")
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",0)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("bs_i_MonsterSpawnbs0104_Timer","GLOBAL",15)
+		DisplayStringHead(Player1,@11131)
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+END
+/* monster spawn, depending on game difficulty */
+/* easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        StartCutSceneMode()
+        CreateCreature("bsislkt1",[718.830],10)
+        CreateVisualEffect("spsdimpa",[718.830])
+        CreateCreature("bsislkt1",[845.872],10)
+        CreateVisualEffect("spsdimpa",[845.872])
+        CreateCreature("bsislkt2",[649.1023],10)
+        CreateVisualEffect("spsdimpa",[649.1023])
+        PlaySound("EFF_M31C")
+        IncrementGlobal("bs_MonsterSpawn1","MYAREA",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+/* easy */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateCreature("bsislkt2",[515.734],13)
+        CreateVisualEffect("spsdimpa",[515.734])
+        IncrementGlobal("bs_MonsterSpawn1","MYAREA",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+/* normal */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateCreature("bsislkt1",[866.793],10)
+        CreateVisualEffect("spsdimpa",[866.793])
+        CreateCreature("bsislkt2",[1042.931],5)
+        CreateVisualEffect("spsdimpa",[1042.931])
+        IncrementGlobal("bs_MonsterSpawn1","MYAREA",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+/* hard */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateCreature("bsislkt2",[1079.647],0)
+        CreateVisualEffect("spsdimpa",[1079.647])
+        CreateCreature("bsislkt3",[744.1141],10)
+        CreateVisualEffect("spsdimpa",[744.1141])
+        IncrementGlobal("bs_MonsterSpawn1","MYAREA",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+/* hardest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(HARD)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateCreature("bsislkt3",[669.583],2)
+        CreateVisualEffect("spsdimpa",[669.583])
+        CreateCreature("bsislkt3",[606.1117],10)
+        CreateVisualEffect("spsdimpa",[606.1117])
+        IncrementGlobal("bs_MonsterSpawn1","MYAREA",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",1)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",2)
+        Wait(1)
+        EndCutSceneMode()
+        SetInterrupt(TRUE)
+END
+
+/* first monster wave defeated: detection */
+/* depending on how many monsters were spawned: easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsislktn",2)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",2)
+    Global("bs_MonsterSpawn1","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",3)
+END
+/* depending on how many monsters were spawned: easy */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsislktn",3)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",2)
+    Global("bs_MonsterSpawn1","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",3)
+END
+/* depending on how many monsters were spawned: normal */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsislktn",5)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",2)
+    Global("bs_MonsterSpawn1","MYAREA",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",3)
+END
+/* depending on how many monsters were spawned: hard */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsislktn",7)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",2)
+    Global("bs_MonsterSpawn1","MYAREA",4)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",3)
+END
+/* depending on how many monsters were spawned: hardest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsislktn",9)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",2)
+    Global("bs_MonsterSpawn1","MYAREA",5)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",3)
+END
+/* set timer before next wave */
+IF
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",3)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("bs_i_MonsterSpawnbs0104_Timer","GLOBAL",15)
+		DisplayStringHead(Player1,@11131)
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",4)
+END
+
+/* monster spawn 2: Otyug */
+/* monster spawn, depending on game difficulty */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",4)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+        CreateCreature("bsiotyug",[710.832],10)
+        CreateVisualEffect("spsdimpa",[710.832])
+        PlaySound("EFF_M31C")
+        IncrementGlobal("bs_MonsterSpawn2","MYAREA",1)
+        Continue()
+END
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",4)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+        CreateCreature("bsiotyug",[894.1030],10)
+        CreateVisualEffect("spsdimpa",[894.1030])
+        IncrementGlobal("bs_MonsterSpawn2","MYAREA",1)
+        Continue()
+END
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",4)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",5)
+END
+
+/* 2nd monster wave defeated: detection */
+/* depending on how many monsters were spawned: easiest, easy, normal */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Dead("bsiotyug")
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",5)
+    Global("bs_MonsterSpawn2","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",6)
+END
+/* depending on how many monsters were spawned: hard, hardest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsiotyug",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",5)
+    Global("bs_MonsterSpawn2","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",6)
+END
+/* set timer before next wave */
+IF
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",6)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("bs_i_MonsterSpawnbs0104_Timer","GLOBAL",15)
+		DisplayStringHead(Player1,@11131)
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",7)
+END
+
+/* monster spawn 3: Ettercap */
+/* monster spawn, depending on game difficulty */
+/* easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",7)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+        CreateCreature("bsietter",[828.899],10)
+        CreateVisualEffect("spsdimpa",[828.899])
+        PlaySound("EFF_M31C")
+        IncrementGlobal("bs_MonsterSpawn3","MYAREA",1)
+        Continue()
+END
+/* easy */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",7)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("bsietter",[671.819],10)
+        CreateVisualEffect("spsdimpa",[671.819])
+        IncrementGlobal("bs_MonsterSpawn3","MYAREA",1)
+        Continue()
+END
+/* hard */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",7)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+        CreateCreature("bsietter",[849.789],10)
+        CreateVisualEffect("spsdimpa",[849.789])
+        IncrementGlobal("bs_MonsterSpawn3","MYAREA",1)
+        Continue()
+END
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",7)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",8)
+END
+
+/* 3rd monster wave defeated: detection & set timer before next wave */
+/* depending on how many monsters were spawned: easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Dead("bsietter")
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",8)
+    Global("bs_MonsterSpawn3","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",9)
+END
+/* depending on how many monsters were spawned: easy & normal */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsietter",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",8)
+    Global("bs_MonsterSpawn3","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",9)
+END
+/* depending on how many monsters were spawned: hard & hardest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsietter",2)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",8)
+    Global("bs_MonsterSpawn3","MYAREA",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",9)
+END
+/* set timer before next wave */
+IF
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",9)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("bs_i_MonsterSpawnbs0104_Timer","GLOBAL",15)
+		DisplayStringHead(Player1,@11131)
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",10)
+END
+
+
+/* monster spawn 4: spiders */
+/* 4th wave monster spawn, depending on game difficulty */
+/* easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",10)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+        CreateCreature("bsispphs",[722.928],10)
+        CreateVisualEffect("spsdimpa",[722.928])
+        PlaySound("EFF_M31C")
+        IncrementGlobal("bs_MonsterSpawn4","MYAREA",1)
+        Continue()
+END
+/* higher than easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",10)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("bsispphs",[799.782],8)
+        CreateVisualEffect("spsdimpa",[799.782])
+        CreateCreature("bsispphs",[951.866],8)
+        CreateVisualEffect("spsdimpa",[951.866])
+        IncrementGlobal("bs_MonsterSpawn4","MYAREA",1)
+        Continue()
+END
+/* higher than normal */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",10)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+        CreateCreature("bsispphs",[851.739],0)
+        CreateVisualEffect("spsdimpa",[851.739])
+        CreateCreature("bsisppha",[653.815],12)
+        CreateVisualEffect("spsdimpa",[653.815])
+        IncrementGlobal("bs_MonsterSpawn4","MYAREA",1)
+        Continue()
+END
+/* higher than hard */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",10)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+    DifficultyGT(HARD)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisppha",[597.1054],0)
+        CreateVisualEffect("spsdimpa",[597.1054])
+        IncrementGlobal("bs_MonsterSpawn4","MYAREA",1)
+        Continue()
+END
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",10)
+    RealGlobalTimerExpired("bs_i_MonsterSpawnbs0104_Timer","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+END
+
+/* 4th monster wave defeated: detection */
+/* depending on how many monsters were spawned: easiest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    Dead("bsispphs")
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+    Global("bs_MonsterSpawn4","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",12)
+END
+/* depending on how many monsters were spawned: easy & normal */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsispphs",2)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+    Global("bs_MonsterSpawn4","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",12)
+END
+/* depending on how many monsters were spawned: hard */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsispphs",4)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+    Global("bs_MonsterSpawn4","MYAREA",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",12)
+END
+/* depending on how many monsters were spawned: hardest */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+    NumDeadGT("bsispphs",5)
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+    Global("bs_MonsterSpawn4","MYAREA",4)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_MonsterSpawnbs0104","GLOBAL",12)
+END
+
+/* all monsters defeated: deactivate defence system. */
+IF
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",12)
+    Global("bs_i_PortalRoomActivated","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_PortalRoomActivated","GLOBAL",2)
+END
+
+/* defense system deactivated - doors will be opened again */
+/* open hidden door - if it was already opened from bs0101 */
+IF
+    GlobalGT("bs_SecretPassageOpen","GLOBAL",1)
+    Global("bs_i_PortalRoomActivated","GLOBAL",2)
+THEN
+	RESPONSE #100
+		TriggerActivation("travbs0101",TRUE) //hidden passage to bs0101
+		Continue()
+END
+/* main door */
+IF
+    Global("bs_i_PortalRoomActivated","GLOBAL",2)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		TriggerActivation("Translc0102c",TRUE)
+        SetGlobal("bs_i_PortalRoomActivated","GLOBAL",3)
+        DisplayStringHead(Player1,@11098)
+        SetInterrupt(TRUE)
+END
+/* all monster spawns defeated: deactivate for good + journal entry */
+IF
+    Global("bs_i_MonsterSpawnbs0104","GLOBAL",12)
+    Global("bs_i_PortalRoomActivated","GLOBAL",3)
+THEN
+	RESPONSE #100
+        EraseJournalEntry(@100030)
+        EraseJournalEntry(@100033)
+        EraseJournalEntry(@100072)
+        AddJournalEntry(@100031,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_ihorn","GLOBAL",0)
+		SetGlobal("bs_i_PortalRoomActivated","GLOBAL",4)
+END
+
+/*journal entry about finding the portals */
+IF
+    !Dead("bsihermi")
+    InMyArea(Player1)
+    GlobalLT("bs_HermitQuests","GLOBAL",7)
+    GlobalLT("bs_SawPortalRoom","GLOBAL",2)
+THEN
+	RESPONSE #100
+        EraseJournalEntry(@100006)
+        AddJournalEntry(@983,QUEST)
+        SetGlobal("bs_SawPortalRoom","GLOBAL",2)
+END
+IF
+    Dead("bsihermi")
+    InMyArea(Player1)
+    GlobalLT("bs_HermitQuests","GLOBAL",7)
+    GlobalLT("bs_SawPortalRoom","GLOBAL",2)
+THEN
+	RESPONSE #100
+        EraseJournalEntry(@100006)
+        AddJournalEntry(@983,QUEST_DONE)
+        SetGlobal("bs_SawPortalRoom","GLOBAL",2)
+END
+
+/* portal is destroyed by PC's doing - set via item bsiblood */
+IF
+    InMyArea(Player1)
+    Global("bs_POP","GLOBAL",1)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        SoundActivate("PortalHumm",FALSE)
+        PlaySound("EFF_P92")
+        ScreenShake([20.20],4)
+        SetGlobal("bs_SahuaginPortalRoom","GLOBAL",2)
+        SetGlobal("bs_POP","GLOBAL",3)
+        DisplayStringHead(Player1,@11110)
+        SetInterrupt(TRUE)
+END
+/* journal entries - portal is destroyed by PC's doing */
+/* Old Hermit is alive */
+IF
+    !Dead("bsihermi")
+    InMyArea(Player1)
+    Global("bs_POP","GLOBAL",3)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        EraseJournalEntry(@987)
+        EraseJournalEntry(@988)
+        EraseJournalEntry(@989)
+        AddJournalEntry(@990,QUEST)
+        AddexperienceParty(400)
+        SetGlobal("bs_POP","GLOBAL",4)
+        SetInterrupt(TRUE)
+END
+/* Old Hermit is dead */
+IF
+    Dead("bsihermi")
+    InMyArea(Player1)
+    Global("bs_POP","GLOBAL",3)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        EraseJournalEntry(@987)
+        EraseJournalEntry(@988)
+        EraseJournalEntry(@989)
+        EraseJournalEntry(@990)
+        AddJournalEntry(@991,QUEST_DONE)
+        AddexperienceParty(500)
+        SetGlobal("bs_POP","GLOBAL",4)
+        SetInterrupt(TRUE)
+END
+
+//Journal Entry: PC knows where the passage leads now. */
+IF
+    GlobalGT("bs_SecretPassageOpen","GLOBAL",1)
+    GlobalLT("bs_SecretPassageOpen","GLOBAL",4)
+THEN
+  RESPONSE #100
+        SetInterrupt(FALSE)
+        EraseJournalEntry(@100001)
+        EraseJournalEntry(@100003)
+        AddJournalEntry(@100005,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_SecretPassageOpen","GLOBAL",4)
+        SetInterrupt(TRUE)
+END
+
+/* player used horn - reset */
+IF
+    InMyArea(Player1)
+    Global("bs_ihorn","GLOBAL",1)
+    !Global("bs_i_PortalRoomActivated","GLOBAL",1)
+THEN
+	RESPONSE #100
+        SetGlobal("bs_ihorn","GLOBAL",0)
 END

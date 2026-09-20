@@ -1,0 +1,21 @@
+/* general pirate script (Old Temple Island) - for all pirates */
+IF
+    See([PC])
+    OR(3)
+        Dead("bspircpt")
+        Allegiance("bspircpt",ENEMY)
+        Global("bsFightPirates","GLOBAL",1)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+
+IF
+    Allegiance(Myself,ENEMY)
+    Global("bsFightPirates","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bsFightPirates","GLOBAL",1)
+END

@@ -1,0 +1,9 @@
+/* spawn priestess of Talos */
+IF
+	Global("bs_i_SpawnTalosPriest","GLOBAL",4)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_i_SpawnTalosPriest","GLOBAL",5)
+		CreateCreature("bsitalos",[715.708],0)
+		Continue()
+END

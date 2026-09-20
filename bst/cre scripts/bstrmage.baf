@@ -1,7 +1,9 @@
 /* Doppelganger in mage's study dead: mage should initialize dialogue */
 IF
+	Global("bsDoppelgangerQuest","GLOBAL",6)
 	Dead("bsdopp01")
-	Global("bsDoppel01Dead","GLOBAL",0)
+	Global("bs_MageUsesMimicPowder","GLOBAL",0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		StartDialogNoSet(Player1)
@@ -11,9 +13,9 @@ END
 
 IF
 	Global("bsBlackPearlQuest","GLOBAL",2)
-	Global("bsBroughtBelladonna","GLOBAL",1)
-	Global("bsBroughtWolfpelt","GLOBAL",1)
-	Global("bsBroughtAnkheg","GLOBAL",1)
+	Global("bsBroughtBelladonna","GLOBAL",2)
+	Global("bsBroughtWolfpelt","MYAREA",1)
+	Global("bsBroughtAnkheg","MYAREA",1)
 THEN
 	RESPONSE #100 
 		EraseJournalEntry(@850)
@@ -27,3 +29,34 @@ THEN
 		SetGlobal("bsBlackPearlQuest","GLOBAL",3)
 END
 
+
+IF
+	Global("bsMageUmberHulkPlate","MYAREA",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+
+IF
+	Global("bsMageUmberHulkPlate","MYAREA",3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItemNum("bsplat02",1)
+		TakePartyItemNum("POTN21",1)
+		TakePartyItemNum("SCRL67",1)
+		TakePartyItemNum("MISC42",1)
+		DestroyItem("bsplat02")
+		DestroyItem("POTN21")
+		DestroyItem("SCRL67")
+		DestroyItem("MISC42")
+		GiveItemCreate("bsplat03",[PC],0,0,0)
+		TakePartyGold(6000)
+		DestroyGold(6000)
+		EraseJournalEntry(@100178)
+		AddJournalEntry(@100179,QUEST_DONE)
+		SetGlobal("bsMageUmberHulkPlate","MYAREA",4)
+		SetInterrupt(TRUE)
+END

@@ -1,0 +1,19 @@
+/* script for squirrel (pirate Gherkin) */
+
+/* if attacked - transform */
+IF
+    AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+    RESPONSE #100
+		SetInterrupt(FALSE)
+//		DestroyItem("MINHP1")
+        ReallyForceSpellRES("BSIPSQRS",Myself) //transform into human pirate
+        SetInterrupt(TRUE)
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        RandomWalk()
+END

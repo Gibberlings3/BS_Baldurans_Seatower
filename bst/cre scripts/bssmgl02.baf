@@ -1,31 +1,80 @@
+IF
+	Global("bs_SmugglerSlaverConfrontation","GLOBAL",1)
+	GlobalTimerExpired("bs_SmugglerSlaverConfrontTimer","GLOBAL")
+	OR(4)
+		Global("bsSmugglerQuest","GLOBAL",12)
+		Global("bsSmugglerQuest","GLOBAL",20)
+		Global("bsSmugglerQuest","GLOBAL",28)
+		Global("bsSmugglerQuest","GLOBAL",29)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_SmugglerSlaverConfrontation","GLOBAL",2)
+END
+
+
 
 IF 
 	Allegiance(Myself,NEUTRAL)
-	OR(4)
+	OR(6)
 		Allegiance("bssmgl03",ENEMY)
 		Dead("bssmgl03")
+		Allegiance("bssmgl08",ENEMY)
+		Dead("bssmgl08")
 		HitBy([PC],CRUSHING)
 		AttackedBy([GOODCUTOFF],DEFAULT)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,@11005)
-		ActionOverride("bssmgl02",DestroyItem("MINHP1"))
+		DestroyItem("MINHP1")
+		SetGlobal("bsSmugglerQuest","GLOBAL",48)
 		SetGlobal("bsSmugglerAttacked","GLOBAL",4)
 		Enemy()
+		SetInterrupt(TRUE)
 END
 
 
 IF
-	Global("bsSmugglersLeave","GLOBAL",1)
+	OR(4)
+		Global("bsSmugglersLeave","GLOBAL",1)
+		Global("bsSmugglerQuest","GLOBAL",40)
+		Global("bsSmugglerQuest","GLOBAL",41)
+		GlobalGT("bsSmugglerQuest","GLOBAL",49)
 THEN
 	RESPONSE #100
+		EraseJournalEntry(@824)
+		EraseJournalEntry(@825)
+		EraseJournalEntry(@826)
+		EraseJournalEntry(@827)
+		EraseJournalEntry(@828)
+		EraseJournalEntry(@829)
 		EraseJournalEntry(@830)
 		EraseJournalEntry(@832)
 		EraseJournalEntry(@833)
 		EraseJournalEntry(@834)
 		EraseJournalEntry(@835)
 		EraseJournalEntry(@838)
-		//##
+		EraseJournalEntry(@100102)
+		EraseJournalEntry(@100103)
+		EraseJournalEntry(@100104)
+		EraseJournalEntry(@100105)
+		EraseJournalEntry(@100106)
+		EraseJournalEntry(@100107)
+		EraseJournalEntry(@100109)
+		EraseJournalEntry(@100110)
+		EraseJournalEntry(@100112)
+		EraseJournalEntry(@100114)
+		EraseJournalEntry(@100128)
+		EraseJournalEntry(@100131)
+		EraseJournalEntry(@100132)
+		EraseJournalEntry(@100143)
+		EraseJournalEntry(@100144)
+		EraseJournalEntry(@100145)
+		EraseJournalEntry(@100146)
+		EraseJournalEntry(@100147)
+		EraseJournalEntry(@100150)
+		EraseJournalEntry(@100154)
+		EraseJournalEntry(@100156)
 		EscapeArea()
 END
 
@@ -34,6 +83,7 @@ END
 IF
 	Global("bsSmugglerAttacked","GLOBAL",2)
 	Allegiance(Myself,NEUTRAL)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		StartDialogNoSet(Player1)
@@ -51,7 +101,17 @@ IF
 		HPLT(Myself,10)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ClearAllActions()
-		SetGlobal("bsSmugglerAttacked","GLOBAL",2)
 		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("bsSmugglerAttacked","GLOBAL",2)
+		SetInterrupt(TRUE)
+END
+
+IF
+	GlobalGT("bsShucksBrother","GLOBAL",1)
+	HasItem("MINHP1",Myself)
+THEN
+	RESPONSE #100
+		DestroyItem("MINHP1")
 END

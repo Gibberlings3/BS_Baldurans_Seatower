@@ -1,0 +1,124 @@
+/* script for Old Hermit, Old Temple Island */
+
+/* rat is dead - reaction */
+IF
+	See([PC])
+	Dead("bsiherat")
+	Global("bs_HermitQuests","GLOBAL",4)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+			Dialogue([PC])
+END
+
+/* after cutscene - hermit made blood sample */
+IF
+	See([PC])
+	Global("bs_HermitQuests","GLOBAL",6)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+			Dialogue([PC])
+END
+
+/* rat in library Old Temple Island */
+IF
+	See([PC])
+    InMyArea(Player1)
+	!Dead("bsihermi")
+	!Dead("bsiherat")
+	HasItem("bsichees","Hole01")
+	GlobalLT("bs_RatShowsItself","MYAREA",4)
+THEN
+	RESPONSE #100
+        Activate("bsiherat")
+        PlaySound("AMB_E45A") //rat 01
+        DisplayStringHead("bsiherat",@11112)
+        DisplayStringHead("bsihermi",@11107)
+        ActionOverride("Hole01",DestroyItem("bsichees"))
+		SetGlobal("bs_RatShowsItself","MYAREA",4)
+END
+
+IF
+    InMyArea(Player1)
+	!Dead("bsihermi")
+	!Dead("bsiherat")
+	!HasItem("bsichees","Hole01")
+	Global("bs_RatShowsItself","MYAREA",0)
+THEN
+	RESPONSE #100
+		Deactivate("bsiherat")
+        RealSetGlobalTimer("bs_RatShowsItselfTimer","GLOBAL",5)
+		SetGlobal("bs_RatShowsItself","MYAREA",1)
+END
+
+IF
+	See([PC])
+    InMyArea(Player1)
+	!Dead("bsihermi")
+    Global("bs_RatShowsItself","MYAREA",1)
+    RealGlobalTimerExpired("bs_RatShowsItselfTimer","GLOBAL")
+THEN
+	RESPONSE #100
+        Activate("bsiherat")
+        PlaySound("AMB_E45A") //rat 01
+        DisplayStringHead("bsiherat",@11112)
+        DisplayStringHead("bsihermi",@11107)
+        SetGlobal("bs_RatShowsItself","MYAREA",2)
+        RealSetGlobalTimer("bs_RatShowsItselfTimer","GLOBAL",3)
+END
+
+
+IF
+	!Dead("bsiherat")
+	!Dead("bsihermi")
+    Global("bs_RatShowsItself","MYAREA",2)
+    RealGlobalTimerExpired("bs_RatShowsItselfTimer","GLOBAL")
+THEN
+	RESPONSE #100
+        Deactivate("bsiherat")
+        DisplayStringHead("bsihermi",@11099)
+        SetGlobal("bs_RatShowsItself","MYAREA",1)
+        RealSetGlobalTimer("bs_RatShowsItselfTimer","GLOBAL",15)
+END
+
+
+/* Old Hermit mumbling to himself - until rat is dead */
+IF
+	Dead("bsiherat")
+    GlobalLT("bs_HermitMutters","MYAREA",2)
+THEN
+	RESPONSE #100
+	  SetGlobal("bs_HermitMutters","MYAREA",2)
+END
+IF
+	See([PC])
+	!Dead("bsihermi")
+	!Dead("bsiherat")
+    Global("bs_HermitMutters","MYAREA",0)
+THEN
+	RESPONSE #100
+	  SetGlobalTimer("bs_HermitMuttersTimer","GLOBAL",2)
+	  SetGlobal("bs_HermitMutters","MYAREA",1)
+END
+
+IF
+	See([PC])
+	!Dead("bsihermi")
+	!See("bsiherat")
+    Global("bs_HermitMutters","MYAREA",1)
+    GlobalTimerExpired("bs_HermitMuttersTimer","GLOBAL")
+THEN
+	RESPONSE #25
+	  SetGlobalTimer("bs_HermitMuttersTimer","GLOBAL",50)
+	  DisplayStringHead("bsihermi",@11103)
+	RESPONSE #25
+	  SetGlobalTimer("bs_HermitMuttersTimer","GLOBAL",50)
+	  DisplayStringHead("bsihermi",@11104)
+	RESPONSE #25
+	  SetGlobalTimer("bs_HermitMuttersTimer","GLOBAL",50)
+	  DisplayStringHead("bsihermi",@11105)
+	RESPONSE #25
+	  SetGlobalTimer("bs_HermitMuttersTimer","GLOBAL",50)
+	  DisplayStringHead("bsihermi",@11106)
+END

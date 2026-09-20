@@ -1,0 +1,82 @@
+/* Global("bsBiffEasterEgg","GLOBAL",-1): Easter Egg cancelled: light display was activated */
+/* Global("bsBiffEasterEgg","GLOBAL",1):Biff will spawn if either bsb130, bsb133, or bsb136 will be entered */
+/* Global("bsBiffEasterEgg","GLOBAL",2): spawns Biff in either bsb130, bsb133, or bsb136 if paty member enters */
+/* Global("bsBiffEasterEgg","GLOBAL",3): Meeting with Biff is over */
+
+IF
+  !Global("bsBiffEasterEgg","GLOBAL",-1)
+  Global("bsActivateBookDisplay","MYAREA",1)
+THEN
+  RESPONSE #100
+		SetGlobal("bsBiffEasterEgg","GLOBAL",-1)
+END
+
+IF
+  OR(2)
+	!Global("bsBlackLensePlaced","MYAREA",1)
+	!Global("bsNoLenseInBackpack","MYAREA",1)
+  Global("bsBiffEasterEgg","GLOBAL",1)
+THEN
+  RESPONSE #100
+		SetGlobal("bsBiffEasterEgg","GLOBAL",0)
+END
+
+IF
+  Global("bsBlackLensePlaced","MYAREA",1)
+  Global("bsNoLenseInBackpack","MYAREA",1)
+  Global("bsBiffEasterEgg","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("bsBiffEasterEgg","GLOBAL",1)
+END
+	
+
+/* dark lense is placed and no other is in light display */
+IF
+  Global("bsBlackLensePlaced","MYAREA",1)
+  OR(9)
+	!HasItem("bslense2","light_black")
+	HasItem("bslense1","light_red")
+	HasItem("bslense1","light_orange")
+	HasItem("bslense1","light_yellow")
+	HasItem("bslense1","light_green")
+	HasItem("bslense1","light_blue")
+	HasItem("bslense1","light_purple")
+	HasItem("bslense1","light_violet")
+	HasItem("bslense1","light_black")
+THEN
+  RESPONSE #100
+		SetGlobal("bsBlackLensePlaced","MYAREA",0)
+END
+IF
+  !Global("bsBlackLensePlaced","MYAREA",1)
+  HasItem("bslense2","light_black")
+  !HasItem("bslense1","light_red")
+  !HasItem("bslense1","light_orange")
+  !HasItem("bslense1","light_yellow")
+  !HasItem("bslense1","light_green")
+  !HasItem("bslense1","light_blue")
+  !HasItem("bslense1","light_purple")
+  !HasItem("bslense1","light_violet")
+  !HasItem("bslense1","light_black")
+THEN
+  RESPONSE #100
+		SetGlobal("bsBlackLensePlaced","MYAREA",1)
+END
+
+/* no party member has transparent lense in inventory */
+IF
+  Global("bsNoLenseInBackpack","MYAREA",1)
+  PartyHasItem("bslense1")
+THEN
+  RESPONSE #100
+		SetGlobal("bsNoLenseInBackpack","MYAREA",0)
+END
+
+IF
+  !Global("bsNoLenseInBackpack","MYAREA",1)
+  !PartyHasItem("bslense1")
+THEN
+  RESPONSE #100
+		SetGlobal("bsNoLenseInBackpack","MYAREA",1)
+END

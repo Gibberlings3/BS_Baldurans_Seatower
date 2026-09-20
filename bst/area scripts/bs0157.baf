@@ -16,6 +16,7 @@ THEN
 END
 
 // Dream sequence completed
+
 IF
 	Global("bsDreamComplete","GLOBAL",1)
 THEN
@@ -148,8 +149,8 @@ THEN
 		SetGlobal("bsDreamComplete","GLOBAL",2)
 END
 
-/* finished */
 
+/* finished */
 IF
 	Global("bsDreamDone","GLOBAL",1)
 	Global("bsDreamDoneMoveGroup","MYAREA",0)

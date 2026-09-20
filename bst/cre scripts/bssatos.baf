@@ -1,0 +1,20 @@
+/* abbot offers healing once by himself */
+IF
+ Global("bsAbbotHeals","GLOBAL",2)
+ Global("bsAbbotHealingInjuryDetected","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsAbbotHealingInjuryDetected","MYAREA",1)
+END
+
+/* reset */
+IF
+ Global("bsAbbotHeals","GLOBAL",2)
+ Global("bsAbbotHealingInjuryDetected","MYAREA",2)
+ !See([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("bsAbbotHealingInjuryDetected","MYAREA",1)
+END
+
+

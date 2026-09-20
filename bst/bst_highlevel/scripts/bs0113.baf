@@ -1,0 +1,38 @@
+%BGEE_ONLY_SLASH%%BGEE_ONLY_ASTERIKS%
+IF
+	Global("bs_AdjustLootLevel","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bs_AdjustLootLevel","MYAREA",1)
+		ActionOverride("Body03",DestroyItem("RNDTRE02"))
+		ActionOverride("Body03",CreateItem("RNDTRE06",0,0,0))
+		Continue()
+END
+%BGEE_ONLY_ASTERIKS%%BGEE_ONLY_SLASH%
+
+IF
+	Global("Otyugh_Summon","BS0113",0)
+	DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("BSOTYUGH",[921.491],12)
+        Continue()
+END
+
+IF
+	Global("Otyugh_Summon","BS0113",0)
+	Difficulty(EASIEST)
+	LevelGT(Player1,6)
+THEN
+	RESPONSE #100
+        CreateCreature("BSOTYUGH",[1023.627],9)
+        Continue()
+END
+
+IF
+	Global("Otyugh_Summon","BS0113",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Otyugh_Summon","BS0113",1)
+END
+

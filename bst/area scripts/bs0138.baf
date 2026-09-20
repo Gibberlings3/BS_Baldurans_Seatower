@@ -1,0 +1,72 @@
+/* kill Dryad quest if light display was activated */
+IF
+	Global("bsActivateBookDisplay","MYAREA",1)
+	Global("bsDryadWater","GLOBAL",1)
+THEN
+  RESPONSE #100
+		EraseJournalEntry(@921)
+		AddJournalEntry(@925,QUEST_DONE)
+		SetGlobal("bsDryadWater","GLOBAL",2)
+END
+
+/* first entering area AND general: deactivate light display */
+IF
+  !Global("bsDeactivateLightDisplay","MYAREA",1)
+  OR(8)
+	!HasItem("bslense1","light_red")
+	!HasItem("bslense1","light_orange")
+	!HasItem("bslense1","light_yellow")
+	!HasItem("bslense1","light_green")
+	!HasItem("bslense1","light_blue")
+	!HasItem("bslense1","light_purple")
+	!HasItem("bslense1","light_violet")
+	!HasItem("bslense2","light_black")
+THEN
+  RESPONSE #100
+		AmbientActivate("Pyramidpt1",FALSE)
+		AmbientActivate("Pyramidpt2",FALSE)
+		AmbientActivate("Pyramidpt3",FALSE)
+		AmbientActivate("Pyramidpt4",FALSE)
+		SoundActivate("Pyramid",FALSE) //Sound
+		SetGlobal("bsDeactivateLightDisplay","MYAREA",1)
+		SetGlobal("bsActivateBookDisplay","MYAREA",0)
+END
+/* first entering area: place lenses */
+IF
+  Global("bsSpawnLens","MYAREA",0)
+THEN
+  RESPONSE #100
+		ActionOverride("Shieldman_1",CreateItem("bslense1",0,0,0))
+		ActionOverride("Shieldman_2",CreateItem("bslense1",0,0,0))
+		ActionOverride("Shieldman_3",CreateItem("bslense1",0,0,0))
+		ActionOverride("Shieldman_4",CreateItem("bslense1",0,0,0))
+		ActionOverride("light_black",CreateItem("bslense1",0,0,0))
+		SetGlobal("bsSpawnLens","MYAREA",1)
+END
+
+/* all lenses places correctly: light display gets activated */
+IF
+  !Global("bsDeactivateLightDisplay","MYAREA",2)
+  HasItem("bslense1","light_red")
+  HasItem("bslense1","light_orange")
+  HasItem("bslense1","light_yellow")
+  HasItem("bslense1","light_green")
+  HasItem("bslense1","light_blue")
+  HasItem("bslense1","light_purple")
+  HasItem("bslense1","light_violet")
+  HasItem("bslense2","light_black")
+//  !HasItem("bslense1","light_black")
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		PlaySound("EFF_P92")
+		ScreenShake([2599.1914],20)
+		AmbientActivate("Pyramidpt1",TRUE)
+		AmbientActivate("Pyramidpt2",TRUE)
+		AmbientActivate("Pyramidpt3",TRUE)
+		AmbientActivate("Pyramidpt4",TRUE)
+		SoundActivate("Pyramid",TRUE) //Sound
+		SetGlobal("bsDeactivateLightDisplay","MYAREA",2)
+		SetGlobal("bsActivateBookDisplay","MYAREA",1)
+		SetInterrupt(TRUE)
+END

@@ -26,5 +26,5 @@ IF
 	!Range(LastTrigger,20)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Player1,@11007)
+		DisplayStringHead(Myself,@11007)
 END

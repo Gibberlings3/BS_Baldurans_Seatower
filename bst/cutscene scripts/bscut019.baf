@@ -1,0 +1,13 @@
+/* cutscene gets triggered two times for 6th smuggler quest */
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+        FadeToColor([20.0],0)
+       	Wait(3)
+        FadeFromColor([20.0],0)
+		EndCutSceneMode()
+		ActionOverride("bssmgl02",StartDialogNoSet([PC]))
+END

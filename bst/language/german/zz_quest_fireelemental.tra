@@ -1,0 +1,28 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~(Der Feuerelementar versperrt den Weg zum Bierladen. Er schwebt in der am wenigsten feuchten Ecke des Kellers und zeigt keine Absichten Euch anzugreifen. Seine Flammen scheinen schwächer zu sein, als Ihr es erwartet hättet.)~
+@1 = ~(Ihr könntet versuchen, den Feuerelementar im Holzfass einzufangen, aber er würde sich wahrscheinlich ziemlich schnell durch das Holz fressen. Das Fass benötigt von innen eine feuerfeste Beschichtung.)~
+@2 = ~(Den Feuerelementar in dem feuerfesten Fass einfangen.)~
+@3 = ~(Darauf verzichten, das Fass zu benutzen.)~
+@4 = ~Bleibt auf Abstand, Bürger! Die Anwesenheit von Zivilisten auf dem Dach ist erlaubt, aber wir sind hier, um Eure Sicherheit zu gewährleisten.~
+@5 = ~Bitte haltet Euch von dem Leuchtfeuer fern. Das Feuer ist in mehrfacher Hinsicht gefährlich.~
+@6 = ~Ich habe hier einen Feuerelementar gefangen und werde ihn in die Flammen entlassen.~
+@7 = ~Wir haben ein Problem mit einem Feuerelementar im Lagerraum der Küche …~
+@8 = ~Ich weiß, dass Feuer Verbrennungen verursacht. Welche anderen Gefahren gibt es noch?~
+@9 = ~Das Feuer zieht Feuerelementare an? Was genau meint Ihr?~
+@10 = ~Ich habe darüber gelesen. Das Feuer zieht auch Feuerelementare außerhalb der Feuerstelle an, richtig?~
+@11 = ~Was tut Ihr, wenn ein Feuerelementar aus der Leuchtfeuerflamme kommt?~
+@12 = ~Keine Sorge, ich werde keinen Ärger machen.~
+@13 = ~Ich werde gehen, wohin ich will.~
+@14 = ~Solange Ihr Euch von dem Leuchtfeuer fernhaltet, ist das für mich in Ordnung.~
+@15 = ~Freut mich zu hören.~
+@16 = ~Wenn das Öl verschüttet wird, kann es leicht schwere Verbrennungen und ein großes Feuer verursachen. Außerdem ziehen große Feuer Feuerelementare an, und diese sind meist unberechenbar. In der Regel bleiben sie aber innerhalb der Flammen. Wenn sie das nicht tun, bin ich hier, um dafür zu sorgen, dass sie nicht weit kommen.~
+@17 = ~Im Vorratsraum? Ich kann Euch versichern, dass er nicht dem Leuchtfeuer entstammt. Ihr müsst den Hauptmann darüber informieren. Ich kann meinen Posten nicht verlassen. Da unten müsst Ihr ihn wahrscheinlich töten. Hier könnten wir ihn in die Flammen des Leuchtfeuers zurückdrängen, aber ich wüsste nicht, wie wir ihn hier hochbekommen, ohne dass jemand verletzt wird.~
+@18 = ~Normalerweise drängen wir sie zurück in die Flammen. Normalerweise ist das gar nicht so schwer, denn die Luft ist hier viel zu feucht, als dass sie weit kommen würden.~
+@19 = ~Nun, es ist wie ein Portal für sie, habe ich gehört. Sie können sich in großen Feuern manifestieren, wie das Leuchtfeuer eins ist, und sie können es auch benutzen, um in ihre Heimatebene zurückzukehren.~
+@20 = ~Aha, ich verstehe. Seid vorsichtig mit den heißen Flammen!~
+@21 = ~Das Leuchtfeuer ist so ein tolles Feuer! Wenn ich groß bin, möchte ich Leuchtfeuerwächter werden!~
+@22 = ~(seufz) Jedes Mal stehen wir hier und starren in die Flammen. Ich kann verstehen, warum es ihm so gut gefällt. Ich war auch mal jung.~

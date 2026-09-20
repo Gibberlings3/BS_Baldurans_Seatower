@@ -1,0 +1,119 @@
+/* Tanner collects liquer */
+
+/* collect liqueurs and set check variables */
+IF
+	PartyHasItem("bsdpliqu")
+	Global("bs_TannerTakesLiquer","MYAREA",1)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		TakePartyItem("bsdpliqu")
+		DestroyItem("bsdpliqu")
+		EraseJournalEntry(@871)
+		AddexperienceParty(250)
+        IncrementGlobal("bs_TannerLiqueurReward","MYAREA",1)
+		IncrementGlobal("bsTannerQuest","GLOBAL",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+IF
+	PartyHasItem("bsdpliq1")
+	Global("bs_TannerTakesLiquer","MYAREA",1)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		TakePartyItem("bsdpliq1")
+		DestroyItem("bsdpliq1")
+		EraseJournalEntry(@872)
+		AddexperienceParty(250)
+        IncrementGlobal("bs_TannerLiqueurReward","MYAREA",1)
+		IncrementGlobal("bsTannerQuest","GLOBAL",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+IF
+	PartyHasItem("bsdpliq2")
+	Global("bs_TannerTakesLiquer","MYAREA",1)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		TakePartyItem("bsdpliq2")
+		DestroyItem("bsdpliq2")
+		EraseJournalEntry(@873)
+		AddexperienceParty(250)
+        IncrementGlobal("bs_TannerLiqueurReward","MYAREA",1)
+		IncrementGlobal("bsTannerQuest","GLOBAL",1)
+        SetInterrupt(TRUE)
+        Continue()
+END
+/* done collecting (or there was none) */
+IF
+	Global("bs_TannerTakesLiquer","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_TannerTakesLiquer","MYAREA",0)
+END
+
+/* hand out reard */
+IF
+    Global("bsTannerQuestNoReward","MYAREA",0)
+    Global("bs_TannerLiqueurReward","MYAREA",1)
+THEN
+	RESPONSE #100
+		GiveGoldForce(100)
+        Continue()
+END
+IF
+    Global("bsTannerQuestNoReward","MYAREA",0)
+    Global("bs_TannerLiqueurReward","MYAREA",2)
+THEN
+	RESPONSE #100
+		GiveGoldForce(200)
+        Continue()
+END
+IF
+    Global("bsTannerQuestNoReward","MYAREA",0)
+    Global("bs_TannerLiqueurReward","MYAREA",3)
+THEN
+	RESPONSE #100
+		GiveGoldForce(300)
+        Continue()
+END
+/* done collecting (or there was none) */
+IF
+	GlobalGT("bs_TannerLiqueurReward","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_TannerLiqueurReward","MYAREA",0)
+END
+
+/* set journal entries */
+IF
+    GlobalLT("bs_TannerLiqueurJE","MYAREA",2)
+	Global("bsTannerQuest","GLOBAL",2)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@877,QUEST)
+        SetGlobal("bs_TannerLiqueurJE","MYAREA",2)
+END
+IF
+    GlobalLT("bs_TannerLiqueurJE","MYAREA",3)
+	Global("bsTannerQuest","GLOBAL",3)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@877)
+		AddJournalEntry(@878,QUEST)
+        SetGlobal("bs_TannerLiqueurJE","MYAREA",3)
+END
+IF
+    GlobalLT("bs_TannerLiqueurJE","MYAREA",4)
+	Global("bsTannerQuest","GLOBAL",4)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@874)
+		EraseJournalEntry(@876)
+		EraseJournalEntry(@877)
+		EraseJournalEntry(@878)
+		AddJournalEntry(@879,QUEST_DONE)
+        SetGlobal("bs_TannerLiqueurJE","MYAREA",4)
+END

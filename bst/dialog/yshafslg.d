@@ -166,7 +166,9 @@ END
 
 IF ~~ THEN BEGIN 20
 	SAY @1338 /* ~*BELCH* Here's your sling an' good luck with it.~ */
-	IF~~THEN DO ~GiveItemCreate("ysalbane",Player1,0,0,0) EraseJournalEntry(@730) SetGlobal("ys_HalfslingerAle","GLOBAL",5)~
+	IF~~THEN DO ~GiveItemCreate("ysalbane",Player1,0,0,0) EraseJournalEntry(@730)
+	EraseJournalEntry(@732)
+	SetGlobal("ys_HalfslingerAle","GLOBAL",5)~
 	SOLVED_JOURNAL @731
 	EXIT
 END

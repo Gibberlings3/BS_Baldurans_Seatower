@@ -1,0 +1,16 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~Bleibt stehen, <CHARNAME>! Ihr werdet des Mordes beschuldigt, die Flammende Faust sucht in der ganzen Stadt nach Euch. Unser Kommandant verlangt, Euch zu sehen. Ihr habt keine andere Wahl, als uns unauffällig zu folgen!~
+@1 = ~Ihr werdet wegen des Mordes an den Anführern des Eisenthrons gesucht. Ich habe keine andere Wahl, als Euch an die Flammende Faust zu übergeben, <CHARNAME>. Ihr habt uns – und der Stadt – sehr geholfen, indem Ihr die laufende Doppelgängerinvasion aufgedeckt habt. Ich denke, es ist nur fair, Euch eine Chance zu geben, Euch zu erklären.~
+@2 = ~Was wäre, wenn ich Euch sagen würde, dass ich verraten wurde und dass auch Doppelgänger involviert sind?~
+@3 = ~Es war eine Falle. Ihr habt gerade selbst gesagt, dass es möglich ist, dass Leute eine Person „sehen“, die Dinge tut, die sie nie getan hat.~
+@4 = ~Ja, ich habe sie getötet. Aber sie standen in Verbindung mit den Doppelgängeraktivitäten und dem allgemeinen Bösen, das über diese Stadt und die halbe Schwertküste kam.~
+@5 = ~Tut, was Ihr tun müsst. Ich schätze, ich kann meine Verhaftung eh nicht verhindern.~
+@6 = ~In diesem Fall … würde ich Euch glauben.~
+@7 = ~Meint Ihr damit Doppelgänger? Ja, ich glaube Euch.~
+@8 = ~Dann soll es so sein. Meine Soldaten werden Euch sofort zum Hauptquartier der Flammenden Faust bringen.~
+@9 = ~Na gut. Ich werde Euch gehen lassen, dieses eine Mal. Verlasst den Turm als frei<PRO_MANWOMAN>, aber kommt nicht wieder hierher, bevor die Mordvorwürfe ausgeräumt wurden. Ich werde meinen Soldaten nicht erklären können, warum sie Euch ein zweites Mal verhaften müssen.~
+@10 = ~Hm. Das ist eine schwere Entscheidung, <CHARNAME>. Aber ich glaube Euch.~

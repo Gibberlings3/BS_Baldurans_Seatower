@@ -1,0 +1,33 @@
+IF
+    GlobalGT("bs_i_SpawnTalosPriest","GLOBAL",9)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+IF
+	Global("bs_i_SpawnTalosPriest","GLOBAL",1)
+	GlobalGT("bs_TempleIslandQuest","GLOBAL",19)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+IF
+	Global("bs_i_SpawnTalosPriest","GLOBAL",2)
+	!See([PC])
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bs_i_SpawnTalosPriestTimer","GLOBAL",ONE_DAY)
+		SetGlobal("bs_i_SpawnTalosPriest","GLOBAL",1)
+		DestroySelf()
+END
+
+IF
+    See([PC])
+    Global("bs_i_SpawnTalosPriest","GLOBAL",2)
+THEN
+    RESPONSE #100
+        Dialogue([PC])
+END
+

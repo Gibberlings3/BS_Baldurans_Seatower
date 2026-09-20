@@ -5,7 +5,7 @@ IF
 	OR(2)
 		GlobalGT("bsConfrontSlaveTraders","GLOBAL",2)
 		GlobalGT("bsSlaverQuest","GLOBAL",3)
-	GlobalLT("bsConfrontSlaveTraders","GLOBAL",10)
+	GlobalLT("bsConfrontSlaveTraders","GLOBAL",9)
 	GlobalLT("bsSlaverQuest","GLOBAL",10)
 	Global("bsSQMapnote","MYAREA",0)
 THEN
@@ -16,14 +16,27 @@ THEN
 END
 /* Remove Map Note after quest end */
 IF
-	OR(2)
-		GlobalGT("bsConfrontSlaveTraders","GLOBAL",9)
+	OR(3)
+		GlobalGT("bsConfrontSlaveTraders","GLOBAL",8)
 		GlobalGT("bsSlaverQuest","GLOBAL",9)
+		GlobalGT("bsSlaversHostile","MYAREA",0)
 	GlobalLT("bsSQMapnote","MYAREA",2)
 THEN
 	RESPONSE #100
   		RemoveMapNote([459.3017],@47)
 		SetGlobal("bsSQMapnote","MYAREA",2)
+
+END
+
+/* despawn contacts if it is day */
+IF
+	Global("bsConfrontSlaveTraders","GLOBAL",3)
+	TimeOfDay(DAY)
+	InMyArea("bsslavff")
+THEN
+	RESPONSE #100
+		ActionOverride("bsslavff",DestroySelf())
+		SetGlobal("bsPlaceFF","MYAREA",0)
 
 END
 
@@ -41,8 +54,9 @@ END
 
 /* Place Slave traders */
 IF
-	OR(2)
+	OR(3)
 		Global("bsConfrontSlaveTraders","GLOBAL",4)
+		Global("bsConfrontSlaveTraders","GLOBAL",7)
 		Global("bsSlaverQuest","GLOBAL",4)
 	!Global("bsConfrontSlaveTraders","GLOBAL",3)
 	TimeOfDay(NIGHT)
@@ -59,7 +73,7 @@ THEN
 
 END
 
-/* all slavers dead */
+/* all slavers dead - create FF contact */
 IF 
 	Global("bsConfrontSlaveTraders","GLOBAL",4)
 	NumDead("bsslav05",2)
@@ -74,3 +88,23 @@ THEN
 		SetGlobal("bsConfrontSlaveTraders","GLOBAL",5)
 		CreateCreature("bsslavff",[476.3230],8)
 END
+
+/* all slavers dead - journal entry */
+IF
+	Global("bs_SmugglerSlaverConfrontation","GLOBAL",3)
+	NumDead("bsslav05",2)
+	NumDead("bsslav06",2)
+	Dead("bsslav04")
+	Dead("bsslav07")
+	InMyArea(Player1)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+        EraseJournalEntry(@829)
+        AddJournalEntry(@828,QUEST)
+		SetGlobal("bs_SmugglerSlaverConfrontation","GLOBAL",4)
+END
+
+
+
+

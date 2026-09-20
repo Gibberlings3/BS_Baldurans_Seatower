@@ -5,9 +5,8 @@ IF
 THEN
     RESPONSE #100
         CutSceneId(Player1)
-        FadeToColor([20.0],0)
-        Wait(3)
-        FadeFromColor([20.0],0)
-	EndcutSceneMode()
-//	ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
+        Wait(15)
+        GiveItemCreate("bsdrwate",Player1,0,0,0)
+        ActionOverride("bsidrips",StartDialogueNoSet(Player1))
+        EndCutSceneMode()
 END 

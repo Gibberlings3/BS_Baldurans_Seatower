@@ -1,0 +1,70 @@
+//Override Script of Sahuagin Rebel Leader Baron Frohxlto
+/* initiate first dialogue */
+IF
+    See([PC])
+    Global("bs_ti_SahuaginMeeting","GLOBAL",0)
+    AreaCheck("bs0101")
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        Wait(1)
+        StartDialogNoSet([PC])
+        SetInterrupt(TRUE)
+END
+/* initiate dialogue after priestess is gone */
+IF
+    See([PC])
+    !See("bsisagp1")
+    Global("bs_ti_SahuaginMeeting","GLOBAL",2)
+    AreaCheck("bs0101")
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        Wait(1)
+        StartDialogNoSet([PC])
+        SetInterrupt(TRUE)
+END
+
+// spawn helpers in area bs0101.are when attacked
+IF
+    Allegiance(Myself,ENEMY)
+    AreaCheck("bs0101")
+    Global("bs0101_spawn_sahuagin02","BS0101",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs0101_spawn_sahuagin02","BS0101",1)
+END
+
+// spawn helpers in area bs0102.are when attacked
+IF
+    Allegiance(Myself,ENEMY)
+    AreaCheck("bs0102")
+    Global("bs0102_spawn_sahuagin03","BS0102",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs0102_spawn_sahuagin03","BS0102",1)
+END
+
+IF
+    Global("bs_RebelDeal","GLOBAL",-1)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+IF
+    Global("bs_RebelDeal","GLOBAL",2)
+    Global("bs_MoveIntoRoom","LOCALS",0)
+    AreaCheck("bs0101")
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        MoveToPoint([1578.1597])
+        SmallWait(1)
+        Face(5)
+        SetGlobal("bs_MoveIntoRoom","LOCALS",1)
+        SetInterrupt(TRUE)
+END

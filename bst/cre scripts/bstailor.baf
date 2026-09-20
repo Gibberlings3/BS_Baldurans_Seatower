@@ -4,6 +4,7 @@ IF
 		AttackedBy([GOODCUTOFF],DEFAULT)
 		Global("bsDoppelAttacked","MYAREA",1)
 		Global("bsFoundExitDocks","GLOBAL",1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		SetGlobal("bsDoppelAttacked","MYAREA",1)

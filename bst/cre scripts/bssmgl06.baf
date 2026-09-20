@@ -2,6 +2,7 @@ IF
 	Global("bsPCMetSmugglerDoppelgangers","GLOBAL",0)
 	See([PC])
 	CombatCounter(0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		StartDialogNoSet([PC])
@@ -23,6 +24,7 @@ IF
 	Dead("bsdopp04")
 	Detect([PC])
 	CombatCounter(0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		SetGlobal("bsDoppelgangerChange","MYAREA",2)

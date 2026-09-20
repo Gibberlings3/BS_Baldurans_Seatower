@@ -1,0 +1,30 @@
+/* Set journal entry for water quest */
+IF
+	Global("bsDryadWater","GLOBAL",1)
+	Global("bsDryadWater_JE","MYAREA",0)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@921,QUEST)
+		SetGlobal("bsDryadWater_JE","MYAREA",1)
+END
+
+/* Dryad was killed */
+IF
+	Dead("bsdryada")
+	Global("bs_DryadKilled","MYAREA",0)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@921)
+		AddJournalEntry(@922,QUEST_DONE)
+		SetGlobal("bsDryadWater","GLOBAL",3)
+		SetGlobal("bs_DryadKilled","MYAREA",1)
+END
+
+/* spawn dryad */
+IF
+	Global("bsSpawnDryad","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnDryad","MYAREA",1)
+		CreateCreature("bsdryada",[777.1028],0) 
+END

@@ -1,0 +1,89 @@
+/* script for Mrs. Souter (mother) */
+IF
+    AreaCheck("ys0103")
+    Global("bs_LostNecklaceQuest","GLOBAL",3)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+IF
+    AreaCheck("bs1010")
+    GlobalGT("bs_LostNecklaceQuest","GLOBAL",9)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+IF
+	InMyArea(Player1)
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsqln001",CD_STATE_NOTVALID)
+	Global("bs_LostNecklace","MYAREA",4)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11142) // Are these the barracks? Is my daughter here?
+		Wait(1)
+		DisplayStringHead("bsqln001",@11148) //Mom! Mom!
+		Wait(1)
+		SetGlobal("bs_LostNecklace","MYAREA",5)
+END
+IF
+	InMyArea(Player1)
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bs_LostNecklace","MYAREA",5)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11143) //~I was told my daughter was brought in here.~
+        MoveToPoint([949.442])
+		SetGlobal("bs_LostNecklace","MYAREA",6)
+END
+IF
+	InMyArea(Player1)
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsqln001",CD_STATE_NOTVALID)
+	Global("bs_LostNecklace","MYAREA",6)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11145) // There you are! What were you thinking, running off like that?
+		Wait(1)
+		DisplayStringHead("bsqln001",@11146) //Mommy!
+		SetGlobal("bs_LostNecklace","MYAREA",7)
+END
+IF
+	InMyArea(Player1)
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsstgc",CD_STATE_NOTVALID)
+	Global("bs_LostNecklace","MYAREA",7)
+THEN
+	RESPONSE #100
+		DisplayStringHead("bsstgc",@11147) // We found her in the East Tower.
+		SetGlobal("bs_LostNecklace","MYAREA",8)
+END
+IF
+	InMyArea(Player1)
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bs_LostNecklace","MYAREA",8)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11144) // Thank you so much, sir.
+		Wait(2)
+		DisplayStringHead(Myself,@11149) // Come on, off we go!
+		SetGlobal("bs_LostNecklace","MYAREA",9)
+		SetGlobal("bs_LostNecklaceQuest","GLOBAL",3)
+END

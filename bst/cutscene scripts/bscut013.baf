@@ -1,0 +1,14 @@
+/* Sahuagin priestes enchants the group so they understad Sahuagin language */
+/* cut41s.bcs adapted */
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("bsisagp1")  
+		FaceObject(Player1)
+		SmallWait(1)
+        ForceSpell(Player1,DO_NOTHING)  // SPIN905.SPL
+        PlaySound("CHA_SM06")
+        Wait(2)
+        ActionOverride("bsisagp1",StartDialogueNoSet([PC]))
+END

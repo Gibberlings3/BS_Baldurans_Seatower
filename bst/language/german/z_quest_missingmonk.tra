@@ -1,0 +1,66 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-08-20, 06:40
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~Ihr seht aus wie jemand, der viel herumkommt. Ich brauche jemanden, der für mich eine kleine Untersuchung durchführt. Meine … meine Liebste wird vermisst, und ich kann meinen Posten nicht verlassen. Wärt Ihr bereit, nach ihr zu suchen? Es ist nicht weit, nur eine kurze Suche im Nordosten der Stadt, ob jemand weiß, wo sie hingegangen ist.~
+@1 = ~Erzählt mir mehr.~
+@2 = ~Nein, ich habe keine Zeit für so etwas.~
+@3 = ~Seid Ihr sicher? Ihr könntet einfach nach ihr fragen, wenn Ihr das nächste Mal in der Nähe des Ilmater-Schreins bei der „Zur Errötenden Nixe“ seid.~
+@4 = ~Gut, erzählt mir mehr.~
+@5 = ~„Zur Errötenden Nixe“? Nun, wenn Ihr mich dafür belohnt, dass ich mir auch einen Besuch drinnen leisten kann – warum nicht?~
+@6 = ~Ich sagte nein. Ihr müsst Euch jemand anderen suchen.~
+@7 = ~Verdammt. Es ist nicht so wichtig, ich bin sicher, sie hilft nur irgendwo den Armen, wie sie es normalerweise tut. Wie auch immer, ich muss meine Runde fortsetzen.~
+@8 = ~Oh, und ich glaube, der Seeturm-Kommandant sucht nach Euch. Es geht um einen unserer Gefangenen, der mit Euch sprechen möchte. Am besten geht Ihr zum Büro des Kommandanten – das ist im ersten Stock des Turms.~
+@9 = ~Ihr Name ist Martina und sie ist eine Ordensschwester des Ilmater-Klosters hier im Turm. Seht, der Hauptmann duldet keine Liaisons innerhalb des Turms. Es verstößt zwar nicht gegen offizielle Regeln, aber wir alle wissen, dass er Techtelmechtel innerhalb der Wache missbilligt. Also muss ich das geheim halten … Ich habe sie bereits als vermisst gemeldet, und der Kommandant hat schon einen Kameraden zur Untersuchung geschickt, ich kann also nichts mehr tun, ohne meinen Posten zu verlassen. Ich brauche die Hilfe eines Außenstehenden.~ ~Ihr Name ist Martina und sie ist eine Ordensschwester des Ilmater-Klosters hier im Turm. Seht, der Hauptmann duldet keine Liaisons innerhalb des Turms. Es verstößt zwar nicht gegen offizielle Regeln, aber wir alle wissen, dass er Techtelmechtel innerhalb der Wache missbilligt. Also muss ich das geheim halten … Ich habe sie bereits als vermisst gemeldet, und der Kommandant hat schon einen Kameraden zur Untersuchung geschickt, ich kann also nichts mehr tun, ohne meinen Posten zu verlassen. Ich brauche die Hilfe einer Außenstehenden.~
+@10 = ~Also, anscheinend wurde Martina am Ilmater-Schrein im Nordosten von Baldurs Tor gesehen, bevor sie wieder abreiste, aber das ist jetzt auch schon über zwei Wochen her! Der Abt meint, das sei nichts Ungewöhnliches und sieht keine Notwendigkeit für einen weiteren Suchtrupp. Ich weiß, dass Martina den Armen hilft, wo immer sie sie findet, und dass ihre Pflichten als Ordensschwester von Ilmater bedeuten, dass sie dort bleibt und hilft, wo sie Menschen in Not sieht. Es wäre nicht das erste Mal, dass sie deshalb wochenlang unentschuldigt fehlt. Aber dieses Mal hat sie sich zu lange nicht bei mir gemeldet, was ungewöhnlich für sie ist.~
+@11 = ~Ich warte verzweifelt auf Neuigkeiten. Wenn Ihr einfach zum Ilmater-Schrein im Nordosten der Stadt gehen und Euch nach ihrem Verbleib erkundigen würdet. Und ob sie gesehen wurde, nachdem wir nach ihr gesucht haben. Ich wäre Euch sehr dankbar. Ich werde Euch eine magische Halskette schenken, die ich letztes Jahr beim Kampftraining-Wettbewerb gewonnen habe.~
+@12 = ~Ich werde es tun.~
+@13 = ~Ich danke Euch! Bitte lasst mich so schnell wie möglich wissen, was Ihr herausgefunden habt. Ich werde in der Nähe sein … Nicht dass ich eine Wahl in dieser Angelegenheit hätte, haha.~
+@14 = ~Vielen Dank, dass Ihr Euch über Martinas Verbleib informiert. Lasst es mich wissen, sobald Ihr etwas in Erfahrung gebracht habt!~
+@15 = ~Martina hat am ersten Tag ihrer Visite einen Soldaten getroffen. Das wart nicht Ihr, nehme ich an?~
+@16 = ~Es kam etwas dazwischen. Auf ihrer Runde, um die Almosen zu verteilen, sah ein Bettler, wie Martina hinter den Ilmater-Schrein ging, und ein Soldat der Wache folgte ihr auf verdächtige Weise.~
+@17 = ~Nun, irgendjemand lügt. Entweder der Bettler, der Martina an dem Tag, an dem sie mit der Almosenausgabe anfing, mit einem Soldaten gesehen hat. Oder Ihr, dass Ihr sie nicht mehr gesehen habt, seit sie gegangen ist. Oder der Partner, den Ihr erwähnt habt, der ebenfalls sagte, er habe sie an diesem Tag nicht gesehen.~
+@18 = ~Ich bin dabei.~
+@19 = ~Hallo! Ich habe endlich freibekommen und konnte selbst herbeieilen. Einer der Bettler sagte, er habe sie zuletzt herkommen gesehen – mit einem Soldaten der Seeturm-Wache, nicht mehr und nicht weniger. Nach dem, was er sagte, muss das mein Kamerad gewesen sein, aber … ist … ist das … Martina?~
+@20 = ~Lenard, es tut mir sehr leid. Das scheint Martina zu sein.~
+@21 = ~Sagt Ihr es mir.~
+@22 = ~Wer sollte es sonst sein?~
+@23 = ~Sie … sie ist … Nein … nein, bitte, nein …~
+@24 = ~Ich … Das habe ich befürchtet, aber ich hatte gehofft … Danke … danke, dass Ihr sie für mich gefunden habt. Hier ist die Kette, wie versprochen … Ich bringe sie zurück ins Kloster und werde von der verdächtigen Beteiligung meines Kameraden berichten. Warum sollte er … (seufz) Kommt wieder zum Turm, ich bin sicher, der Abt möchte mit Euch sprechen, und vielleicht auch der Kommandant des Seeturms.~
+@25 = ~Ein … ein Soldat der Wache war bei ihr gewesen? Das ist der Tag, an dem mein Kamerad sagte, er könne sie nicht finden! Das passt nicht zusammen. Jetzt bekomme ich ein ganz schlechtes Gefühl.~
+@26 = ~Er macht gerade Besorgungen für den Hauptmann außerhalb des Turms, also kann ich ihn nicht zwingen, sich zu erklären. Bitte, so sinnlos es auch erscheinen mag, geht und seht nach, ob Ihr in der Nähe des Ilmater-Schreins weitere Hinweise finden könnt. Ihr Götter, wie sehr ich wünschte, meinen Posten verlassen zu können!~
+@27 = ~Bitte, wenn Ihr so gütig wärt, <SIRMAAM>. Habt Ihr eine Münze übrig?~
+@28 = ~Ich bin auf der Suche nach einer Ordensschwester von Ilmater mit dem Namen Martina. Habt Ihr sie in letzter Zeit gesehen?~
+@29 = ~Sicher, bitte sehr.~
+@30 = ~Nicht jetzt.~
+@31 = ~Martina? Ich kenne sie zwar, aber ich habe sie schon lange nicht mehr gesehen. Ich war allerdings bis letzte Woche nicht hier im Schrein. Vielleicht fragt Ihr andere meines Schlages, denn wir tauschen von Zeit zu Zeit die Plätze.~
+@32 = ~Vielen Dank, <LADYLORD>!~
+@33 = ~Lebt wohl.~
+@34 = ~Hallo! Ihr hättet doch nichts dagegen, Euch von ein oder zwei Münzen zu trennen, oder?~
+@35 = ~Vielen Dank für Eure Großzügigkeit.~
+@36 = ~Guten Tag.~
+@37 = ~Ich kenne sie. Sie ist eine gute Seele. Sie kommt in unregelmäßigen Abständen und verteilt Münzen an uns alle. Sie sagt, ihre Runden müssen unregelmäßig sein, sonst würden wir uns zu sehr auf sie verlassen … Die Götter mögen sie segnen. Aber ich habe sie schon seit Wochen nicht mehr gesehen. Ich war die letzten drei Wochen vorm Palast, und mein Kamerad Blurt war hier am Schrein, falls das eine Rolle spielen sollte. Er ist jetzt beim Palast, falls Ihr ihn auch fragen wollt.~
+@38 = ~Was für eine Schande, das mit Martina zu hören. Ich hoffe sehr, dass sie den Bastard, der das getan hat, erwischen werden!~
+@39 = ~Ah, Ihr seid es wieder. Danke, dass Ihr mir geholfen habt, den Mörder von Martina zu finden. Armes Mädchen, sie war so eine gute Frau.~
+@40 = ~Seid gegrüßt, <LADYLORD>. Könntet Ihr ein wenig Kleingeld entbehren?~
+@41 = ~Vielen Dank!~
+@42 = ~Einen schönen Tag für Euch.~
+@43 = ~Komisch, dass Ihr nach ihr fragt. Als ich vor zwei Wochen vor dem Schrein von Ilmater bettelte, kam auch ein Soldat des Seeturms und fragte nach ihr. Es stellte sich heraus, dass sie mehr Zeit damit verbrachte, Almosen für die Armen zu sammeln, als erwartet, und man machte sich im Kloster des Turms Sorgen über ihren Verbleib. Nun, sie ist mit dem Gold zurückgekommen, und ich habe meine Münze bekommen. Mögen die Götter sie segnen.~
+@44 = ~Ich vermute, der Soldat war ihr Geliebter, von dem sie immer erzählt, denn ich habe sie kurz darauf hinter den Ilmater-Schrein gehen sehen, heh.~
+@45 = ~Sie sind hinter den Schrein gegangen? Gemeinsam?~
+@46 = ~Wartet einen Moment. Soweit ich weiß, war es nicht ihr Liebhaber, der nach ihr gesucht hat.~
+@47 = ~Und wie hilft mir das?~
+@48 = ~Nun, nicht „gemeinsam“, aber nahe genug, dass es mir auffiel. Aber es könnte auch ein Zufall gewesen sein, wenn ich so darüber nachdenke.~
+@49 = ~Jetzt, da ich darüber nachdenke, habe ich Lenard erst später gesehen, als er nach ihr suchte. Ich habe einfach angenommen, dass der Soldat, der vorhin mit ihr am Schrein war, ihr Geliebter war. Ich beginne, mich zu fragen, warum der Soldat so viel Zeit hinter dem Schrein verbracht hat. Ich frage mich, was er dort gemacht hat … vielleicht einen Kater ausschlafen? Heh. Ich habe Martina nicht mehr gesehen, seit sie an diesem Tag die Almosen verteilt hat. Andererseits hatte ich auch nicht erwartet, sie in nächster Zeit wieder zu sehen.~
+@50 = ~Eure Freunde am Schrein sagen, dass sie schon lange keine Almosen mehr von Martina erhalten haben.~
+@51 = ~Vielen Dank für Eure Hilfe.~
+@52 = ~Tut mir leid, mehr kann ich Euch nicht sagen.~
+@53 = ~Ihr meint Limet? Er hat keine Almosen von Martina bekommen, als sie ihn besuchte? Habe ich nicht gewusst. Das ist aber seltsam. Nachdem sie vor dem Schrein Almosen verteilt hat, macht sie normalerweise ihre Runde hier am Palast. Also hätte sie trotz des Gesprächs mit dem Soldatenjungen nicht viel später im Palast sein müssen. Sie muss an diesem Tag nicht hierher gegangen ein. Nun, ihre Runden finden in unregelmäßigen Abständen statt. Jetzt bin ich froh, dass ich an diesem Tag am Schrein war.~
+@54 = ~Entweder das oder es ist etwas passiert. Ich wünsche Euch einen schönen Tag.~
+@55 = ~Oh, das wäre wirklich schade. Martina ist so ein netter Mensch. Ich hoffe sehr, dass es ihr gut geht.~
+@56 = ~Ich wünsche Euch einen schönen Tag, <SIRMAAM>.~
+@57 = ~Und ich hätte nichts gegen ein paar Münzen für meine Bemühungen, heh.~
+@58 = ~Ihr habt Martina gefunden. Mögen die Götter ihr gnädig sein. Ich kann nicht glauben, dass sie die ganze Zeit dort begraben war. Das arme Mädchen.~
+@59 = ~Wir haben von Martinas Mörder gehört. Von mir aus soll er im Gefängnis verrotten! Und ich dachte, es wäre ihr Geliebter, der sich an sie heranschleicht … Die Welt ist ein böser Ort.~
+@250 = ~Ich kenne meine Schwester Martina zwar, aber als sie das letzte Mal vorbeikam, war ich nicht hier. Fragt am besten eine der armen Seelen, die sich um den Schrein herum aufhalten. Um die kümmert sie sich immer, wenn sie hier ist.~

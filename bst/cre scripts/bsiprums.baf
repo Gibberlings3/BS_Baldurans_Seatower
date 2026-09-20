@@ -1,0 +1,15 @@
+IF
+    GlobalGT("bs_TempleIslandQuest","GLOBAL",18)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+IF
+    GlobalGT("bs_TempleIslandQuest","GLOBAL",14)
+    GlobalLT("bs_TempleIslandQuest","GLOBAL",19)
+    !Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        Enemy()
+END

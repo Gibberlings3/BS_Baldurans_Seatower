@@ -1,0 +1,10 @@
+/* Group found Melly's necklace (active quest) */
+IF
+    PartyHasItem("bsqln001")
+    Global("bs_LostNecklaceQuest","GLOBAL",5)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100078)
+        AddJournalEntry(@100080,QUEST)
+        SetGlobal("bs_LostNecklaceQuest","GLOBAL",6)
+END

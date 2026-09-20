@@ -1,0 +1,58 @@
+/* override script of guard in Seatower Barracks */
+
+/* at night */
+IF
+    !Global("bs_ItIsNight","MYAREA",1)
+    See([PC])
+    TimeOfDay(NIGHT)
+	!StateCheck("bssmgl16",CD_STATE_NOTVALID)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_ItIsNight","MYAREA",1)
+END
+
+IF
+    See([PC])
+    Global("bs_ItIsNight","MYAREA",1)
+	!StateCheck("bssmgl16",CD_STATE_NOTVALID)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        StartDialogNoSet([PC])
+END
+
+/* check whether he can see the PC at table */
+IF
+    OR(6)
+        InMyArea(Player1)
+        InMyArea(Player2)
+        InMyArea(Player3)
+        InMyArea(Player4)
+        InMyArea(Player5)
+        InMyArea(Player6)
+    See("ys0107t2")
+    !Global("bs_ISeeTheRoom","LOCALS",1)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        IncrementGlobal("bs_PCIsSeen","MYAREA",1)
+        SetGlobal("bs_ISeeTheRoom","LOCALS",1)
+        SetInterrupt(TRUE)
+END
+/* reset variable if he can't see PC at table */
+IF
+    !See("ys0107t2")
+    Global("bs_PCWasAtTable","MYAREA",0)
+    !Global("bs_ISeeTheRoom","LOCALS",0)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        IncrementGlobal("bs_PCIsSeen","MYAREA",-1)
+        SetGlobal("bs_ISeeTheRoom","LOCALS",0)
+        SetInterrupt(TRUE)
+END
+
+

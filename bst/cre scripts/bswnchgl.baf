@@ -158,7 +158,7 @@ THEN
 		DisplayStringHead(Myself,@2430)
 		Wait(2)
 		DisplayStringHead("bswnchwm",@11067)
-		Wait(2)
+		Wait(3)
 		DisplayStringHead("bswinch1",@11068)
 		SetGlobalTimer("bsCCWinchTimer","GLOBAL",TWO_ROUNDS)
 		SetGlobal("bsCuriousChildWinch","MYAREA",8)

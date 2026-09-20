@@ -12,7 +12,7 @@ IF ~NumTimesTalkedTo(0)~ THEN attendant
 SAY @10004 /* ~Yes, I know this is not the right pace for a young child like this boy. I can't help it that the old crone doesn't want to see him. Lars! Stop making a mess and drink your juice properly. Man, I wished someone would go upstairs and tell this woman that I am not getting paid for waiting up until she made up her mind about this child!~ */
 IF ~~ THEN DO ~SetGlobal("bsOrphanQuest","GLOBAL",1)~ UNSOLVED_JOURNAL @777 /* ~An Orphan in the Seatower
 
-Inside the Balduren's Seatower Inn I met a man who is travelling with a boy. The boy should appearently be picked up by a lady who resides on the first floor but so far did not make up her mind to really take over the boy. I could ask her what this is all about.~ */ EXIT
+Inside the Balduren's Seatower Inn I met a man who is travelling with a boy. The boy should apparently be picked up by a lady who resides on the first floor but so far did not make up her mind to really take over the boy. I could ask her what this is all about.~ */ EXIT
 END
 
 IF ~Global("bsOrphanQuest","GLOBAL",3)~ THEN attendant_01
@@ -130,7 +130,7 @@ END
 IF ~~ THEN grandma_13
 SAY @10047 /* ~So it... it could very well be that my worst nightmares...~ */
 IF ~Global("bsOrphanLies","LOCALS",1)~ THEN + grandma_14
-IF ~Global("bsOrphanLies","LOCALS",1)~ THEN + grandma_15
+IF ~Global("bsOrphanLies","LOCALS",2)~ THEN + grandma_15
 END 
 
 IF ~~ THEN grandma_14
@@ -140,7 +140,8 @@ END
 
 IF ~~ THEN grandma_15
 SAY @10049 /* ~Black hair and blue eyes... that is *him*, that is him... No, I can't stand it, I will not face this child... I thank you, stranger, for your help. I will take care of that boy, but not in my house. I need to leave.~ */
-IF ~~ THEN DO ~SetGlobal("bsOrphanQuest","GLOBAL",3) EraseJournalEntry(@777)~ 
+IF ~~ THEN DO ~SetGlobal("bsOrphanQuest","GLOBAL",3) EraseJournalEntry(@777)
+AddExperienceParty(50)~
 SOLVED_JOURNAL @778 /* ~An Orphan in the Seatower
 
 Oh, how "unfortunate"... The grandmother declined to even see her grandson and left without taking him on, after my description of his looks which was not exactly... accurate. Well, that happens if you trust a stranger's testimony more than checking yourself. I don't think I need to feel guilty here, if people are so silly!~ */ EXIT
@@ -195,7 +196,8 @@ IF ~~ THEN bstq001 downstairs_05
 @10066 /* ~Well then, Lars! Let's go to the carnival!~ */
 == bstq003 @10067 /* ~Wohoo!~ */
 END
-IF ~~ THEN DO ~SetGlobal("bsOrphanQuest","GLOBAL",6) EraseJournalEntry(@777)~  SOLVED_JOURNAL @779 /* ~An Orphan in the Seatower
+IF ~~ THEN DO ~SetGlobal("bsOrphanQuest","GLOBAL",6) EraseJournalEntry(@777)
+AddExperienceParty(50)~  SOLVED_JOURNAL @779 /* ~An Orphan in the Seatower
 
 This was heartwarming. The grandmother took on her grandson, and I think they will do fine.~ */ EXIT
 

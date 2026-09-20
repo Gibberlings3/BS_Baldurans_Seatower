@@ -1,0 +1,32 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~(schnief)~ [FCHIL04]
+@1 = ~Habt Ihr meine Halskette gesehen?~
+@2 = ~Entschuldigt, ich habe keine Zeit zum Plaudern. Ich muss gehen und meine Tochter vom Seeturm-Hauptmann abholen.~
+@3 = ~Meine Tochter! Wir haben einen Blick auf die große Kette im Windenhaus geworfen, und plötzlich war sie VERSCHWUNDEN! Ich bin so froh, dass sie so schnell gefunden wurde. Aber jetzt vermisst sie ihre Halskette.~
+@4 = ~(seufz) Sie muss ihre Halskette verloren haben, während sie umhergestreift ist.~
+@5 = ~Könnte es sich zufällig um diese handeln?~
+@6 = ~(Lüge) Oh, wie schade. Ich glaube, ich habe Eure Halskette gesehen – im Schnabel einer Elster, hoch über den Türmen fliegend!~
+@7 = ~Gut, ich suche Eure Kette. Wo könnte sie sein?~
+@8 = ~Und zum Glück ist das alles nicht mein Problem.~
+@9 = ~Schade. Schönen Tag noch.~
+@10 = ~In der Tat. Wenn Ihr uns entschuldigen würdet.~
+@11 = ~Auch Euch einen guten Tag, <PRO_SIRMAAM>.~
+@12 = ~Irgendwohin von hier … zu den Äpfeln!~
+@13 = ~Schätzchen, ich glaube, der gute Mann braucht es ein bisschen genauer. Gut<PRO_SIRMAAM>, mir wurde gesagt, dass meine Tochter in einem der Körbe im Ostturm gefunden wurde, wo auch immer das ist. Und ich habe sie im Windenhaus verloren. Ich nehme an, dass sie ihre Halskette irgendwo dazwischen verloren haben muss. Aber wir haben schon überall gesucht … Ich weiß nicht, was sie mit „Äpfeln“ meint. Ich bin sicher, dass sie nicht von der Küche redet. Die Köchin passt auf, dass niemand dort hineinkommt! Ich wäre Euch sehr dankbar, wenn Ihr die Augen offenhalten könntet. Sie mag diese Kette sehr gern.~ ~Schätzchen, ich glaube, die gute Frau braucht es ein bisschen genauer. Gut<PRO_SIRMAAM>, mir wurde gesagt, dass meine Tochter in einem der Körbe im Ostturm gefunden wurde, wo auch immer das ist. Und ich habe sie im Windenhaus verloren. Ich nehme an, dass sie ihre Halskette irgendwo dazwischen verloren haben muss. Aber wir haben schon überall gesucht … Ich weiß nicht, was sie mit „Äpfeln“ meint. Ich bin sicher, dass sie nicht von der Küche redet. Die Köchin passt auf, dass niemand dort hineinkommt! Ich wäre Euch sehr dankbar, wenn Ihr die Augen offenhalten könntet. Sie mag diese Kette sehr gern.~
+@14 = ~[Skie]Das kann ich SO nachempfinden. Ich hatte auch mal eine Halskette, die ich SO gern mochte … Moment, wo ist die eigentlich hin?~
+@15 = ~Meine Halskette!~
+@16 = ~Aber ja, das ist sie in der Tat! Vielen Dank, dass Ihr sie gefunden und uns zurückgegeben habt. Was sagt man, Melly?~
+@17 = ~Ich danke Euch.~
+@18 = ~Nehmt dies als Entschädigung. Ah, wir können endlich nach Hause gehen! Komm schon, Melly. Was für ein aufregender Tag!~
+@19 = ~[Imoen]Oh, hast du den Blick in ihren Augen gesehen? Das war lustig, <CHARNAME>.~
+@20 = ~Was ist? Nein! Meine Halskette!~
+@21 = ~[Imoen]Oooh, hast du gesehen, wie die Hoffnung in ihren Augen erloschen ist? Das war kein Spaß, <CHARNAME>!~
+@22 = ~[Jaheira]Ihr habt ein grausames Herz, <CHARNAME>.~
+@23 = ~G-Gorion wäre nicht stolz, <CHARNAME>.~
+@24 = ~Hmm, ich bin mir nicht sicher, ob ich diesen Blick in Euren Augen mag, mein Herr. Aber der Mann hat recht, Melly, wir werden die Halskette nicht wiederfinden, zumindest nicht heute. Wir gehen jetzt nach Hause. Komm schon, Melly. (seufz) Was für ein aufregender Tag.~ ~Hmm, ich bin mir nicht sicher, ob ich diesen Blick in Euren Augen mag, meine Dame. Aber die Frau hat recht, Melly, wir werden die Halskette nicht wiederfinden, zumindest nicht heute. Wir gehen jetzt nach Hause. Komm schon, Melly. (seufz) Was für ein aufregender Tag.~
+@25 = ~Dieses Mädchen hatte sich in einem der Körbe versteckt – direkt neben den Steinen für die Trebuchets!~
+@26 = ~Ist schon gut. Deine Mutter ist schon da.~

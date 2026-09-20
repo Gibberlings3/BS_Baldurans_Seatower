@@ -1,0 +1,8 @@
+/* spiders despawn if Biss was encountered */
+IF
+	InMyArea([PC])
+	GlobalGT("bsBiffEasterEgg","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

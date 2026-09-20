@@ -1,0 +1,38 @@
+IF
+	Global("bsSpawnFireElementals","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnFireElementals","MYAREA",1)
+		CreateCreature("bsfrelea",[421.318],0) //fire elemental in hall of memories
+		CreateCreature("bsfrelea",[481.406],0) 
+		CreateCreature("bsfrelea",[182.493],12)
+END
+
+// fire elementals track state of the doors
+IF
+	Global("bsDoorsAreOpen","MYAREA",1)
+	OR(2) 	
+		OpenState("DOOR0001",FALSE)
+		OpenState("DOOR0002",FALSE)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoorsAreOpen","MYAREA",0)
+END
+IF
+	Global("bsDoorsAreOpen","MYAREA",0)
+	OpenState("DOOR0001",TRUE)
+	OpenState("DOOR0002",TRUE)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoorsAreOpen","MYAREA",1)
+END
+
+/* first entering area: place lense */
+IF
+  Global("bsSpawnLens","MYAREA",0)
+THEN
+  RESPONSE #100
+		ActionOverride("Shieldman",CreateItem("bslense1",0,0,0))
+		SetGlobal("bsSpawnLens","MYAREA",1)
+END
+

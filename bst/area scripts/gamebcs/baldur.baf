@@ -1,3 +1,59 @@
+/* Hidden Letter: detect leaving of Seatower Area */
+IF
+	!AreaCheck("bs1000")
+	Global("bs_HiddenLettersLeftBST","GLOBAL",0)
+	GlobalGT("bs_HiddenLetters","GLOBAL",2)
+	GlobalLT("bs_HiddenLetters","GLOBAL",20)
+	!Global("bs_HiddenLetters","GLOBAL",4)
+	!Global("bs_HiddenLetters","GLOBAL",6)
+	!Global("bs_HiddenLetters","GLOBAL",8)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_HiddenLettersLeftBST","GLOBAL",1)
+		Continue()
+END
+
+/* do not use shell horn elsewhere */
+IF
+    !AreaCheck("bs0104")
+    InMyArea(Player1)
+    !Global("bs_ihorn","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_ihorn","GLOBAL",0)
+		Continue()
+END
+
+/* do not use rat blood elsewhere */
+IF
+    !AreaCheck("bs0104")
+    InMyArea(Player1)
+    Global("bs_POP","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("bs_POP","GLOBAL",0)
+        GiveItemCreate("bsiblood",Player1,0,0,0)
+        DisplayStringHead(Player1,@11111)
+        SetInterrupt(TRUE)
+		Continue()
+END
+
+/* spawn priest of Talos ("What to do with Iakhovas's Tooth") */
+IF
+	Global("bs_i_SpawnTalosPriest","GLOBAL",1)
+	GlobalLT("bs_TempleIslandQuest","GLOBAL",19)
+	GlobalTimerExpired("bs_i_SpawnTalosPriestTimer","GLOBAL")
+	AreaType(CITY)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bs_i_SpawnTalosPriest","GLOBAL",2)
+		CreateCreatureObject("bsitalos",Player1,0,0,0)
+        SetInterrupt(TRUE)
+		Continue()
+END
 
 /* If fire elemental is in barrel and PC dawdled too long */
 IF
@@ -7,28 +63,153 @@ IF
 	CombatCounter(0)
 THEN
 	RESPONSE #100
+        SetInterrupt(FALSE)
 		TakePartyItem("bsbarrl4") 
 		DestroyItem("bsbarrl4")
-		CreateCreatureObjectOffSet("bsfrelem",Player1,[5.5])
+		CreateCreatureObjectOffset("bsfrelem",Player1,[5.5])
 		EraseJournalEntry(@901)
 		EraseJournalEntry(@904)
 		EraseJournalEntry(@906)
 		EraseJournalEntry(@910)
 		AddJournalEntry(@911,QUEST_DONE)
+        AddexperienceParty(100)
 		ActionOverride("bsfrelem",Enemy())
 		SetGlobal("bsFireElementQuest","GLOBAL",13)
+        SetInterrupt(TRUE)
 		Continue()	
 END
+
+/* If PC has smuggler's barrel and dawdled too long */
+IF
+	Global("bsSmugglerQuest","GLOBAL",22)
+	OR(2)
+		GlobalTimerExpired("bsSmugglerQuestTimer5","GLOBAL")
+		AreaCheck("%NashkelCarnival%")
+	PartyHasItem("bssmq008")
+	!AreaCheck("bs1000")
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuest","GLOBAL",23)
+		Continue()
+END
+/* spawn Crimmor Ambassador out of barrel */
+IF
+	Global("bsSmugglerQuest","GLOBAL",23)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		TakePartyItem("bssmq008")
+		DestroyItem("bssmq008")
+		SetGlobal("bsSmugglerQuest","GLOBAL",24)
+		CreateCreatureObjectOffset("bssmgl17",Player1,[10.5])
+        SetInterrupt(TRUE)
+		Continue()
+END
+
 
 /* know Bhaal heritage */
 
 IF %BGT_VAR%
-OR(2)
- Global("P#KnowBhaal","GLOBAL",1) //BG1NPC Project
- PartyHasItem("%tutu_var%SCRL2J")
+OR(4)
+  Global("P#KnowBhaal","GLOBAL",1) //if BG1NPC is installed
+  PartyHasItem("SCRL2J")
+  Global("bs_KnowOfBhaalTamoko","GLOBAL",1) //Tamoko
+  Dead("Sarevok")
 Global("bsKnowBhaal","GLOBAL",0)
 THEN
  RESPONSE #100
  SetGlobal("bsKnowBhaal","GLOBAL",1)
  Continue()
+END
+
+/* HC found evidence for Innocent Prisoner quest and talked to the prisoner */
+IF
+	Global("bs_KnowsPrisonerIntrigue","GLOBAL",1)
+	PartyHasItem("bspris6b")
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100094,QUEST)
+		SetGlobal("bs_KnowsPrisonerIntrigue","GLOBAL",2)
+		Continue()
+END
+
+/* doppelganger quest: timer run out wile PC was away from the tower. There is only one timer but several quest instances need to be considered. */
+/* Global("bsDGQuestAborted","GLOBAL",2) is set in the Seatower Commander's dialogue if PC tells him that they won't help further after investigating the hole in the prison wall. */
+
+/* First stage:
+timer run out while PC was told to investigating the hole in the prison wall */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	Global("bsDoppelgangerQuest","GLOBAL",6)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",1)
+		Continue()
+END
+
+/* Second stage:
+timer run out after PC reported his findings from the tunnel into the docks / doppelganger tailor but did not fight against the doppelgangers in the barracks */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",6)
+	GlobalLT("bsDoppelgangerQuest","GLOBAL",10)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",3)
+		Continue()
+END
+
+/* Third stage:
+timer run out after PC received "Mimic Powder" */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",11)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",5)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",4)
+		Continue()
+END
+
+/* Fourth stage:
+timer run out after PC used tanner's help to spread the "Mimic Powder" across the tower's premises but PC did not kill all doppelgangers */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	GlobalGT("bsDoppelgangerQuest","GLOBAL",11)
+	GlobalLT("bsDoppelgangerInTower","GLOBAL",5)
+	NumDeadGT("bsdopp07",0)
+	Global("bsDGQuestAborted","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsDoppelgangerInTower","GLOBAL",12)
+		SetGlobal("bsDoppelgangerQuest","GLOBAL",19)
+		SetGlobal("bsDGQuestAborted","GLOBAL",5)
+		Continue()
+END
+
+/* Mimic Powder: will be expired */
+IF
+	GlobalTimerExpired("bsDoppelgangerQuestTimer","GLOBAL")
+	PartyHasItem("bsdopdr")
+	Global("bsReplaceMimicPoweder","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItem("bsdopdr")
+		GiveItemCreate("bsdopd2",Player1,0,0,0)
+		SetGlobal("bsReplaceMimicPoweder","MYAREA",1)
+		SetInterrupt(TRUE)
+		Continue()
 END

@@ -1,0 +1,9 @@
+/* override script of smuggler contact */
+
+IF
+    GlobalGT("bsSmugglerQuest","GLOBAL",24)
+THEN
+    RESPONSE #100
+        DestroySelf()
+END
+

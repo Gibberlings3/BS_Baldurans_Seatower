@@ -1,0 +1,24 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~Wie ich sehe, habt Ihr Euch bereits an dem Gegenstand bedient, den ich Euch hier überreichen wollte.~
+@1 = ~Mein Baum ist durstig. Bringt mir Wasser, dann werde ich Euch geben, was Ihr von diesem Ort braucht.~
+@2 = ~Ihr kommt mit einem Geschenk für meinen Baum.~
+@3 = ~Wie versprochen werde ich Euch schenken, was ich in meinem Besitz habe.~
+@4 = ~Meine Anwesenheit wird hier nicht mehr benötigt.~
+@5 = ~Ihr habt so viele Orte aufgesucht, um Wasser für meinen Baum zu besorgen. Ich weiß Eure Bemühungen zu schätzen.~
+@6 = ~Was ist das für ein Ort?~
+@7 = ~Was meint Ihr mit „was ich von diesem Ort brauche“?~
+@8 = ~Wo sollte ich hier Wasser finden?~
+@9 = ~Wie wäre es, wenn ich einfach an mich nehme, was Ihr versteckt?~
+@10 = ~Ich werde gehen.~
+@11 = ~Er dient einem Zweck, den Ihr mit der Zeit verstehen werdet.~
+@12 = ~Ist hier irgendetwas real?~
+@13 = ~Es ist so real, wie es sein muss.~
+@14 = ~Den Gegenstand, den Ihr sehen müsst.~
+@15 = ~Ihr habt auf Eurem Weg hierher bereits mehrere Orte durchquert.~
+@16 = ~Was muss ich hier finden?~
+@17 = ~Eure Handlungen werden abgewogen. Tut, was Euer Herz Euch sagt.~
+@18 = ~Ich werde solange hier sein, wie es nötig ist.~

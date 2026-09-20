@@ -1,0 +1,57 @@
+IF
+    Global("bs_ActivateThiefScript","LOCALS",0)
+    Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        ChangeAIScript("THIEF14T",RACE)
+        SetGlobal("bs_ActivateThiefScript","LOCALS",1)
+END
+
+IF
+    Global("bs_DestroyEquipment","LOCALS",0)
+    AreaCheck("ys0106")
+THEN
+    RESPONSE #100
+        DestroyAllEquipment()
+        SetGlobal("bs_DestroyEquipment","LOCALS",1)
+END
+
+IF
+    !See([PC])
+    AreaCheck("ys0106")
+    GlobalTimerExpired("bs_PrisonAmnishSpyTimer","MYAREA")
+    Global("bs_PrisonAmnishSpy","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_PrisonAmnishSpy","GLOBAL",10)
+        DestroySelf()
+END
+
+IF
+    GlobalGT("bs_PrisonAmnishSpy","GLOBAL",2)
+    AreaCheck("ys0106")
+THEN
+	RESPONSE #100
+        	DestroySelf()
+END
+
+IF
+	GlobalGT("DukeThanks","GLOBAL",0)
+    AreaCheck("%BaldursGateDocks_IronThrone_L4%")
+THEN
+	RESPONSE #100
+        	DestroySelf()
+END
+
+/* Remove in SoD/BGII */
+IF
+	OR(2)
+        GlobalGT("ENDOFBG1","GLOBAL",0)
+        GlobalGT("bd_plot","global",0)
+    AreaCheck("%BaldursGateDocks_IronThrone_L4%")
+THEN
+	RESPONSE #100
+        	DestroySelf()
+END
+
+

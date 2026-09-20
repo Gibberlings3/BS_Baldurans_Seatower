@@ -1,0 +1,16 @@
+/* Fragmented Apparaition phantom */
+/* override script for the apparition in mist form */
+/* fragment #2 */
+IF
+    RealGlobalTimerExpired("bs_i_PhantomTimer2","GLOBAL")
+THEN
+    RESPONSE #100
+        ReallyForceSpellRES("bsiphmc2",Myself)  // Change into ghost form
+END
+
+IF
+    !Range("Brazier02",20)
+THEN
+    RESPONSE #100
+        MoveToObject("Brazier02")
+END

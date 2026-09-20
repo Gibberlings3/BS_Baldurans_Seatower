@@ -1,0 +1,160 @@
+//This calls the King of the Restless Dead first time
+
+IF
+	OR(3)
+		Entered([ANYONE])
+		IsOverMe([ANYONE])
+		PartyHasItem("bsrds07")
+	Global("bsTalkedToRestlessDead","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Wait(1)
+		CreateVisualEffect("SPRAISED",[377.390])
+		Wait(3)
+		CreateCreature("ysrsdead",[377.390],2)
+		ActionOverride("ysrsdead",SetSequence(SEQ_AWAKE))
+		SetGlobal("bsTalkedToRestlessDead","GLOBAL",1)
+		SetInterrupt(TRUE)
+END
+
+// check that charname is in the right place
+// to read banning scroll
+IF
+	IsOverMe([PC])
+	Global("bs_PCIsOverKRDTrigger","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_PCIsOverKRDTrigger","MYAREA",1)
+END
+
+IF
+	!IsOverMe([PC])
+	Global("bs_PCIsOverKRDTrigger","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_PCIsOverKRDTrigger","MYAREA",0)
+END
+
+// This script triggers the Restless Dead warriors after banning the KotRD.
+//
+// There are three different warrior types so we'll try
+// to trigger them randomly. Once 14+ warriors have
+// been created we'll disable the script.
+IF
+	Difficulty(EASIEST)
+	Global("bsTalkedToRestlessDead","GLOBAL",9)
+THEN
+	RESPONSE #100
+		SetGlobal("bsRDDoomGuards","MYAREA",4)
+		SetGlobal("bsRDWarriors","MYAREA",12)
+		SetGlobal("bsTalkedToRestlessDead","GLOBAL",10)
+END
+IF
+	OR(2)
+        Difficulty(EASY)
+        Difficulty(NORMAL)
+	Global("bsTalkedToRestlessDead","GLOBAL",9)
+THEN
+	RESPONSE #100
+		SetGlobal("bsRDDoomGuards","MYAREA",2)
+		SetGlobal("bsRDWarriors","MYAREA",8)
+		SetGlobal("bsTalkedToRestlessDead","GLOBAL",10)
+END
+IF
+	DifficultyGT(NORMAL)
+	Global("bsTalkedToRestlessDead","GLOBAL",9)
+THEN
+	RESPONSE #100
+		SetGlobal("bsTalkedToRestlessDead","GLOBAL",10)
+END
+
+
+IF
+	GlobalLT("bsRDDoomGuards","MYAREA",9)
+	Global("bsTalkedToRestlessDead","GLOBAL",10)
+THEN
+	RESPONSE #20
+		CreateCreature("doomgu",[629.956],8)
+		CreateCreature("doomgu",[1209.820],0)
+		IncrementGlobal("bsRDDoomGuards","MYAREA",2)
+	RESPONSE #20
+		CreateCreature("doomgu",[367.678],0)
+		CreateCreature("doomgu",[1105.698],0)
+		IncrementGlobal("bsRDDoomGuards","MYAREA",2)
+	RESPONSE #20
+		CreateCreature("doomgu",[500.818],14)
+		CreateCreature("doomgu",[963.551],10)
+		IncrementGlobal("bsRDDoomGuards","MYAREA",2)
+END
+
+IF
+	RandomNum(3,1)
+	GlobalLT("bsRDWarriors","MYAREA",23)
+	Global("bsTalkedToRestlessDead","GLOBAL",10)
+THEN
+	RESPONSE #20
+		CreateCreature("ysrstdd1",[1403.234],2)
+		CreateCreature("ysrstdd1",[1067.400],0)
+		CreateCreature("ysrstdd1",[927.437],0)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd1",[887.412],2)
+		CreateCreature("ysrstdd1",[914.501],0)
+		CreateCreature("ysrstdd1",[840.681],0)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd1",[586.575],10)
+		CreateCreature("ysrstdd1",[728.543],10)
+		CreateCreature("ysrstdd1",[898.657],10)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd1",[992.1011],10)
+		CreateCreature("ysrstdd1",[1098.932],0)
+		CreateCreature("ysrstdd1",[994.975],10)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+END
+
+IF
+	RandomNum(3,2)
+	GlobalLT("bsRDWarriors","MYAREA",23)
+	Global("bsTalkedToRestlessDead","GLOBAL",10)
+THEN
+	RESPONSE #20
+		CreateCreature("ysrstdd2",[1404.1058],8)
+		CreateCreature("ysrstdd2",[1521.1093],0)
+		CreateCreature("ysrstdd2",[858.865],10)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd2",[1399.782],2)
+		CreateCreature("ysrstdd2",[722.716],0)
+		CreateCreature("ysrstdd2",[828.680],0)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd2",[333.631],10)
+		CreateCreature("ysrstdd2",[229.763],10)
+		CreateCreature("ysrstdd2",[275.430],2)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+END
+
+IF
+	RandomNum(3,3)
+	GlobalLT("bsRDWarriors","MYAREA",23)
+	Global("bsTalkedToRestlessDead","GLOBAL",10)
+THEN
+	RESPONSE #20
+		CreateCreature("ysrstdd3",[1404.1058],8)
+		CreateCreature("ysrstdd3",[354.933],0)
+		CreateCreature("ysrstdd3",[310.917],10)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd3",[646.538],0)
+		CreateCreature("ysrstdd3",[722.716],0)
+		CreateCreature("ysrstdd3",[828.680],0)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+	RESPONSE #20
+		CreateCreature("ysrstdd3",[531.852],14)
+		CreateCreature("ysrstdd3",[229.763],10)
+		CreateCreature("ysrstdd3",[275.430],2)
+		IncrementGlobal("bsRDWarriors","MYAREA",3)
+END

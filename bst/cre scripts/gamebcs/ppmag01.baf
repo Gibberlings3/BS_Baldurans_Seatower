@@ -1,0 +1,86 @@
+IF
+    HPLT(Myself,20)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,DRYAD_TELEPORT)  // SPWI995.SPL (Dimension Door)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_PROTECTION_FROM_NORMAL_WEAPONS)  // SPWI511.SPL (Protection From Normal Weapons)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_PROTECTION_FROM_NORMAL_WEAPONS)  // SPWI511.SPL (Protection From Normal Weapons)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_HASTE)  // SPWI305.SPL (Haste)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_PROTECTION_FROM_NORMAL_MISSILES)  // SPWI311.SPL (Protection From Normal Missiles)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)  // SPWI311.SPL (Protection From Normal Missiles)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_CONJURE_LESSER_FIRE_ELEMENTAL)  // SPWI516.SPL (Conjure Lesser Fire Elemental)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_CONJURE_LESSER_FIRE_ELEMENTAL)  // SPWI516.SPL (Conjure Lesser Fire Elemental)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_POWER_WORD_SLEEP)  // SPWI220.SPL (Power Word Sleep)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_POWER_WORD_SLEEP)  // SPWI220.SPL (Power Word Sleep)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_FIRE_SHIELD_RED)  // SPWI418.SPL (Fire Shield (Red))
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_FIRE_SHIELD_RED)  // SPWI418.SPL (Fire Shield (Red))
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_POLYMORPH_OTHER)  // SPWI415.SPL (Polymorph Other)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_POLYMORPH_OTHER)  // SPWI415.SPL (Polymorph Other)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

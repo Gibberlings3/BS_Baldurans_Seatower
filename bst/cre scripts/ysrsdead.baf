@@ -1,18 +1,38 @@
 // King of the Restless Dead
+
+/* King of the restless Dead gets banned */
+/* talk to PC */
 IF
-	Global("bsTalkedToKRD","GLOBAL",1)
+	Global("bsTalkedToRestlessDead","GLOBAL",3)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
-		SetGlobal("bsTalkedToKRD","GLOBAL",2)
 		FaceObject([PC])
 		StartDialogNoSet(Protagonist)
 END
 
+/* graphical effect for banned King of the Restless Dead */
 IF
-	Global("bsRaiseRestlesDead","MYAREA",1)
+	Global("bsTalkedToRestlessDead","GLOBAL",8)
+	AreaCheck("ys0119")
+
 THEN
 	RESPONSE #100
-		SetGlobal("bsRaiseRestlesDead","MYAREA",2)
+		SetInterrupt(FALSE)
+		SetGlobal("bsTalkedToRestlessDead","GLOBAL",9)
+		ForceSpellRes("BS00001",Myself)
+		Wait(1)
+		ActionOverride(Myself,DestroySelf())
+		SetInterrupt(TRUE)
+END
+
+
+/* first meeting */
+IF
+	Global("bsTalkedToRestlessDead","GLOBAL",1) //set by trigger script ys0119t3.bcs
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
 		FaceObject([PC])
 		StartDialogNoSet(Protagonist)
 END

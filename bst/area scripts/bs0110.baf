@@ -1,3 +1,13 @@
+/* deactivate the travel trigger to make sure */
+IF
+	Global("bsPCMetSmugglerDoppelgangers","GLOBAL",0)
+	Global("bsHideHiddenDoor","MYAREA",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("Tranbs0111",FALSE)
+ 	 	SetGlobal("bsHideHiddenDoor","MYAREA",1)
+END
+
 /* after PC emerged from the hidden door */
 
 IF

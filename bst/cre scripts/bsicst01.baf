@@ -1,0 +1,26 @@
+/* override script of castaway guard, bs0102 Old Temple Island */
+
+IF
+    Heard([ANYONE],99)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        DisplayStringHead(Myself,@11125) //~You won't go around attacking people!~
+        Enemy()
+        MoveToObject(LastHeardBy(Myself))
+        SetInterrupt(TRUE)
+END
+
+IF
+    Dead("bsicst04")
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        DisplayStringHead(Myself,@11126) //~You killed our leader!~
+        Enemy()
+        MoveToObject(LastHeardBy(Myself))
+        SetInterrupt(TRUE)
+END
+

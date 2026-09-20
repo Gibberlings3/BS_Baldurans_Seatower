@@ -1,0 +1,113 @@
+/* script of lost girl */
+IF
+    AreaCheck("ys0103")
+    Global("bs_LostNecklaceQuest","GLOBAL",3)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+IF
+    AreaCheck("bs1010")
+    GlobalGT("bs_LostNecklaceQuest","GLOBAL",9)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+IF
+	InMyArea(Player1)
+	InMyArea("bsstgc")
+	InMyArea("bsqln003")
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsstgc",CD_STATE_NOTVALID)
+	!StateCheck("bsqln003",CD_STATE_NOTVALID)
+	Global("bs_LostNecklaceQuest","GLOBAL",2)
+	Global("bs_LostNecklace","MYAREA",0)
+	AreaCheck("ys0103")
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11133) //Whaaaa!
+		Wait(1)
+		DisplayStringHead("bsstgc",@11134) //~Come, come, little one. - What happened?~
+		SetGlobal("bs_LostNecklace","MYAREA",1)
+END
+IF
+	InMyArea(Player1)
+	InMyArea("bsstgc")
+	InMyArea("bsqln003")
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsstgc",CD_STATE_NOTVALID)
+	!StateCheck("bsqln003",CD_STATE_NOTVALID)
+	Global("bs_LostNecklaceQuest","GLOBAL",2)
+	Global("bs_LostNecklace","MYAREA",1)
+	AreaCheck("ys0103")
+THEN
+	RESPONSE #100
+		DisplayStringHead("bsqln003",@11135) // ~I found her in one of the baskets in the East Tower, lower floor. She -~
+		Wait(2)
+		DisplayStringHead("bsstgc",@11136) //~(sigh) Lost her mom, I gather.~
+		SetGlobal("bs_LostNecklace","MYAREA",2)
+END
+IF
+	InMyArea(Player1)
+	InMyArea("bsstgc")
+	InMyArea("bsqln003")
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsstgc",CD_STATE_NOTVALID)
+	!StateCheck("bsqln003",CD_STATE_NOTVALID)
+	Global("bs_LostNecklaceQuest","GLOBAL",2)
+	Global("bs_LostNecklace","MYAREA",2)
+	AreaCheck("ys0103")
+THEN
+	RESPONSE #100
+		DisplayStringHead("bsstgc",@11137) //~Stop crying, alright? You'll wait here until we find your mom.~
+		Wait(2)
+		DisplayStringHead(Myself,@11138) //(sniffle)
+		SetGlobal("bs_LostNecklace","MYAREA",3)
+END
+IF
+	InMyArea(Player1)
+	InMyArea("bsstgc")
+	InMyArea("bsqln003")
+	Range([PC],25)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("bsstgc",CD_STATE_NOTVALID)
+	!StateCheck("bsqln003",CD_STATE_NOTVALID)
+	Global("bs_LostNecklaceQuest","GLOBAL",2)
+	Global("bs_LostNecklace","MYAREA",2)
+	AreaCheck("ys0103")
+THEN
+	RESPONSE #100
+		DisplayStringHead("bsstgc",@11139) //~Thank you, soldier. I'll take it from here.~
+		Wait(2)
+		DisplayStringHead("bsqln003",@11140) // ~Aye, Captain!~
+		SetGlobal("bs_LostNecklace","MYAREA",3)
+END
+
+IF
+	InMyArea(Player1)
+	InMyArea("bsqln002")
+	See([PC])
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("bs_LostNecklaceQuest","GLOBAL",4)
+	AreaCheck("bs1010")
+	!RealGlobalTimerNotExpired("bs_LostNecklaceTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11150) //~My neckla-ha-ha-haaace! (sniffle)~
+		RealSetGlobalTimer("bs_LostNecklaceTimer","GLOBAL",15)
+END

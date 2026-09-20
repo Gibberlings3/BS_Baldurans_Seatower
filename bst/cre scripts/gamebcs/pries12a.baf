@@ -1,0 +1,98 @@
+IF
+    See(NearestEnemyOf(Myself))
+    See(NearestMyGroupOfType)
+    Global("prep","LOCALS",0)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(LastSeenBy(Myself),CLERIC_CHANT)  // SPPR203.SPL (Chant)
+        ReallyForceSpell(LastSeenBy(Myself),CLERIC_STRENGTH_OF_ONE)  // SPPR312.SPL (Strength of One)
+        SetGlobal("prep","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_FLAME_STRIKE)  // SPPR503.SPL (Flame Strike)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),CLERIC_FLAME_STRIKE)  // SPPR503.SPL (Flame Strike)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_CLOAK_OF_FEAR)  // SPPR416.SPL (Cloak of Fear)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_CLOAK_OF_FEAR)  // SPPR416.SPL (Cloak of Fear)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    See(NearestMyGroupOfType)
+    HaveSpell(CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
+    HPPercentLT(Myself,80)
+    OR(3)
+        HPPercentLT(LastSeenBy(Myself),80)
+        HPPercentLT(SecondNearestMyGroupOfType,80)
+        HPPercentLT(ThirdNearestMyGroupOfType,80)
+THEN
+    RESPONSE #100
+        Spell(LastSeenBy(Myself),CLERIC_MASS_CURE)  // SPPR514.SPL (Mass Cure)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+    !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    See(NearestMyGroupOfType)
+    HPPercentLT(LastSeenBy(Myself),60)
+    HaveSpell(CLERIC_CURE_SERIOUS_WOUNDS)  // SPPR401.SPL (Cure Serious Wounds)
+THEN
+    RESPONSE #100
+        Spell(LastSeenBy(Myself),CLERIC_CURE_SERIOUS_WOUNDS)  // SPPR401.SPL (Cure Serious Wounds)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    See(NearestMyGroupOfType)
+    HPPercentLT(LastSeenBy(Myself),10)
+    HaveSpell(CLERIC_HEAL)  // SPPR607.SPL (Heal)
+THEN
+    RESPONSE #100
+        Spell(LastSeenBy(Myself),CLERIC_HEAL)  // SPPR607.SPL (Heal)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !Range(LastSeenBy(Myself),4)
+    HPPercentLT(Myself,60)
+    HaveSpell(CLERIC_CURE_SERIOUS_WOUNDS)  // SPPR401.SPL (Cure Serious Wounds)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_CURE_SERIOUS_WOUNDS)  // SPPR401.SPL (Cure Serious Wounds)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !Range(LastSeenBy(Myself),4)
+    HPPercentLT(Myself,10)
+    HaveSpell(CLERIC_HEAL)  // SPPR607.SPL (Heal)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_HEAL)  // SPPR607.SPL (Heal)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipRanged()
+        AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

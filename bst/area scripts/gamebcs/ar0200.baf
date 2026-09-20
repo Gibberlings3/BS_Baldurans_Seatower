@@ -7,6 +7,21 @@ THEN
 	RESPONSE #100
 		SetGlobal("bsCreateBeggars","MYAREA",1)
 		CreateCreature("bsmm002",[2061.3056],0)
+		Continue()
 END
 
+// Innocent Prisoner quest
+
+/* create Mrs. Malastair with body guards */
+IF
+	Global("bsCreateMalastair","MYAREA",0)
+	Global("bs_KnowsPrisonerIntrigue","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateMalastair","MYAREA",1)
+		CreateCreature("bspris07",[1036.767],0) //Mrs. Malastair
+		CreateCreature("bspris08",[982.767],15) //Guard
+		CreateCreature("bspris09",[1097.731],1) //Guard
+		Continue()
+END
 

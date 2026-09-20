@@ -1,0 +1,141 @@
+/*
+IF
+	Global("bs_OpenedWallHole","MYAREA",0)
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+		SetGlobal("bs_OpenedWallHole","MYAREA",1)
+END
+*/
+
+
+/* 1. letter taken to read */
+IF
+	GlobalLT("bs_HiddenLetters","GLOBAL",3)
+	OR(2)
+		PartyHasItem("bshdlet1")
+		Opened([ANYONE])
+THEN
+	RESPONSE #100
+		SetGlobal("bs_HiddenLetters","GLOBAL",3)
+END
+
+/* 2. letter taken to read */
+IF
+	GlobalLT("bs_HiddenLetters","GLOBAL",5)
+	OR(2)
+		PartyHasItem("bshdlet2")
+		Opened([ANYONE])
+THEN
+	RESPONSE #100
+		SetGlobal("bs_HiddenLetters","GLOBAL",5)
+END
+
+/* 3. letter taken to read */
+IF
+	GlobalLT("bs_HiddenLetters","GLOBAL",7)
+	OR(2)
+		PartyHasItem("bshdlet3")
+		Opened([ANYONE])
+THEN
+	RESPONSE #100
+		SetGlobal("bs_HiddenLetters","GLOBAL",7)
+END
+
+/* change to 2. letter upon return */
+IF
+	InMyArea(Player1)
+	Global("bs_HiddenLettersLeftBST","GLOBAL",1)
+	Global("bs_HiddenLetters","GLOBAL",3)
+	HasItem("bshdlet1",Myself)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("wallhole",DestroyItem("bshdlet1")
+		ActionOverride("wallhole",CreateItem("bshdlet2",1,0,0)
+		SetGlobal("bs_HiddenLettersLeftBST","GLOBAL",0)
+		SetGlobal("bs_HiddenLetters","GLOBAL",4)
+		SetInterrupt(TRUE)
+END
+
+/* change to 3. letter upon return */
+IF
+	InMyArea(Player1)
+	Global("bs_HiddenLettersLeftBST","GLOBAL",1)
+	Global("bs_HiddenLetters","GLOBAL",5)
+	HasItem("bshdlet2",Myself)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("wallhole",DestroyItem("bshdlet2")
+		ActionOverride("wallhole",CreateItem("bshdlet3",1,0,0)
+		SetGlobal("bs_HiddenLettersLeftBST","GLOBAL",0)
+		SetGlobal("bs_HiddenLetters","GLOBAL",6)
+		SetInterrupt(TRUE)
+END
+
+/* change to 4. letter upon return */
+IF
+	InMyArea(Player1)
+	Global("bs_HiddenLettersLeftBST","GLOBAL",1)
+	Global("bs_HiddenLetters","GLOBAL",7)
+	HasItem("bshdlet3",Myself)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("wallhole",DestroyItem("bshdlet3") 
+		ActionOverride("wallhole",CreateItem("bshdlet4",1,0,0) 
+		ActionOverride("wallhole",CreateItem("ring16",1,0,0) 
+		SetGlobal("bs_HiddenLettersLeftBST","GLOBAL",2)
+		SetGlobal("bs_HiddenLetters","GLOBAL",8)
+		SetInterrupt(TRUE)
+END
+
+/* if letter was taken, Ivonne will respawn upon next visit (via bs1000.bcs) */
+IF
+	OR(2)
+		!Global("Chapter","GLOBAL",%tutu_chapter_7%)
+		!Global("DukeThanks","GLOBAL",0)
+	Global("bs_HiddenLettersLeftBST","GLOBAL",1)
+	GlobalGT("bs_HiddenLetters","GLOBAL",1)
+	GlobalLT("bs_HiddenLetters","GLOBAL",20)
+	!HasItem("bshdlet1",Myself)
+	!HasItem("bshdlet2",Myself)
+	!HasItem("bshdlet3",Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_HiddenLetters","GLOBAL",20)
+		SetGlobal("bs_HiddenLettersLeftBST","GLOBAL",2)
+END
+
+/* upon entering the area: Deactivate wallhole */
+IF
+    Global("bs_HideWallhole","MYAREA",0)
+THEN
+    RESPONSE #100
+        ContainerEnable("wallhole",FALSE)
+        SetGlobal("bs_HideWallhole","MYAREA",1)
+END
+/* after talking to Ivonne: enable */
+IF
+	Global("bs_HiddenLetters","GLOBAL",2)
+    GlobalLT("bs_HideWallhole","MYAREA",2)
+THEN
+    RESPONSE #100
+        ContainerEnable("wallhole",TRUE)
+        SetGlobal("bs_HideWallhole","MYAREA",2)
+END
+
+/* destroy letters fail safe */
+IF
+	Global("bs_HiddenLetters","GLOBAL",22)
+    Global("bs_EmptyWallhole","MYAREA",0)
+THEN
+    RESPONSE #100
+        DestroyItem("bshdlet1")
+		DestroyItem("bshdlet2")
+		DestroyItem("bshdlet3")
+        SetGlobal("bs_EmptyWallhole","MYAREA",1)
+END
+
+

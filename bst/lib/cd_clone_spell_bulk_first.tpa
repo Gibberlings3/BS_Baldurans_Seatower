@@ -1,0 +1,157 @@
+/////                                                  \\\\\
+///// cd_clone_spell_bulk_first                        \\\\\
+/////                                                  \\\\\
+
+/*
+
+cd_clone_spell_bulk is a variant of cd_clone_spell that pushes all of
+the regexp copying into an array. You first define the function and clear 
+the array with cd_clone_spell_bulk_first. Then use the cd_clone_spell_bulk
+function as needed in your mod. Once you're done cloning spells, you run
+one big regexp copy by including cd_clone_spell_bulk_last.
+
+The regexp copy basically finds any effects that blocks/removes/reflects 
+the original spell and adds the same treatment to the new clone of it. E.g.
+if you clone Magic Missile into a new spell, the Shield spell and amulet
+are updated to block the clone as well. 
+
+used:
+  Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
+  P&P Celestials, as celestials/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
+  G3 Community Item Pack as g3cip/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
+
+platform:
+  bg2-based engines
+ 
+version history: 
+  * inception: unknown
+  * 2/1/25: oBG2 using 206s to block stacking would also block new 206 when creating clone; make an exception for it now
+  * 2/2 added make_divine and make_arcane options
+  * 2/5 removed the BUT_ONLY clause; if we're just cloning to have an alternative then the new file never gets created
+
+*/
+
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+
+DEFINE_ACTION_FUNCTION cd_clone_spell_bulk
+  INT_VAR
+    make_innate = 0
+    make_divine = 0
+    make_arcane = 0
+    make_atwill = 0
+  STR_VAR
+    source = ""
+    destination = ""
+  RET_ARRAY cd_clone_spell_array
+BEGIN
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_clone_spell_array BEGIN ~%destination%~ => ~%source%~ END
+
+COPY_EXISTING ~%source%.spl~ ~override/%destination%.spl~
+              ~%source%.spl~ ~override/%source%.spl~
+  READ_LONG  0x64 abil_off
+  READ_SHORT 0x68 abil_num
+  READ_LONG  0x6a fx_off
+  SET delta = 0
+  PATCH_IF make_atwill AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+    INSERT_BYTES   (fx_off) 48
+      WRITE_SHORT  (fx_off + 0x00)          171 // opcode
+      WRITE_BYTE   (fx_off + 0x02)            1 // target
+      WRITE_BYTE   (fx_off + 0x0c)            9 // timing
+      WRITE_BYTE   (fx_off + 0x12)          100 // probability
+      WRITE_ASCIIE (fx_off + 0x14) ~%DEST_RES%~ // resource
+    INSERT_BYTES   (fx_off) 48
+      WRITE_SHORT  (fx_off + 0x00)          172 // opcode
+      WRITE_BYTE   (fx_off + 0x02)            1 // target
+      WRITE_BYTE   (fx_off + 0x0c)            9 // timing
+      WRITE_BYTE   (fx_off + 0x12)          100 // probability
+      WRITE_ASCIIE (fx_off + 0x14) ~%DEST_RES%~ // resource
+    SET delta += 2
+    WRITE_SHORT 0x70 THIS + 2 // global fx count
+  END
+  FOR (index = "-1" ; index < abil_num ; ++index) BEGIN
+    PATCH_IF index < 0 BEGIN
+      SET offset = 0x70
+      SET abil_fx_idx = 0
+    END ELSE BEGIN
+      SET offset = (abil_off + 0x1e + (index * 0x28))
+      WRITE_SHORT  (abil_off + 0x20 + (index * 0x28)) (THIS + delta)
+      READ_SHORT   (abil_off + 0x20 + (index * 0x28)) abil_fx_idx
+    END
+    READ_SHORT  offset abil_fx_num
+    FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+      READ_SHORT (fx_off +        (0x30 * (index2 + abil_fx_idx))) opcode
+      PATCH_IF ((opcode = 200) OR (opcode = 201) OR (opcode = 206) OR (opcode = 223) OR (opcode = 226) OR (opcode = 227) OR (opcode = 228) OR (opcode = 259) OR (opcode = 318) OR (opcode = 321) OR (opcode = 324) OR (opcode = 333)) BEGIN
+        READ_ASCII (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx))) resref
+        PATCH_IF (("%resref%" STRING_COMPARE_CASE "" = 0) AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") AND
+                  ((opcode = 200) OR (opcode = 201) OR (opcode = 223) OR (opcode = 226) OR (opcode = 227) OR (opcode = 228) OR (opcode = 259) OR (opcode = 333))) BEGIN // static charge exception
+          WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx))) ~%SOURCE_RES%b~ #8
+        END
+        PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "%resref%" = 0) BEGIN
+          READ_BYTE (fx_off + 0x0c + (0x30 * (index2 + abil_fx_idx))) timing
+          READ_LONG (fx_off + 0x0e + (0x30 * (index2 + abil_fx_idx))) duration
+          PATCH_IF ((opcode != 321) AND (timing = 0) AND ((duration = 0) OR (duration = 1))) BEGIN
+            PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+              WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx))) ~%DEST_RES%~ #8
+            END
+          END ELSE BEGIN // non-zero durations need cloning
+            READ_ASCII   (fx_off +        (0x30 * (index2 + abil_fx_idx))) clone (48)
+            INSERT_BYTES (fx_off +        (0x30 * (index2 + abil_fx_idx))) 48
+              WRITE_ASCIIE (fx_off +        (0x30 * (index2 + abil_fx_idx))) ~%clone%~ #48
+              PATCH_IF (opcode = 206) AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN   // special exception for oBG2 spell stacking
+                WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx + 1))) ~%destination%~ #8 // otherwise old 206 blocks new 206
+              END ELSE BEGIN   
+                WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx))) ~%destination%~ #8
+              END  
+            SET delta += 1
+            SET abil_fx_num += 1
+            SET index2 += 1
+          END
+        END
+      END
+    END
+    WRITE_SHORT  offset abil_fx_num
+    PATCH_IF make_innate AND (index >= 0) AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+      WRITE_SHORT  (abil_off + 0x02 + (index * 0x28)) 4
+      READ_ASCII  (abil_off + 0x04 + (index * 0x28)) bam
+    END
+    PATCH_IF (make_divine OR make_arcane) AND (index >= 0) AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+      WRITE_SHORT  (abil_off + 0x02 + (index * 0x28)) 2
+    END
+  END
+  PATCH_IF make_innate AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+    WRITE_SHORT  0x1c 4                        // sets spell type to innate (4)
+    WRITE_LONG   0x34 1                        // sets spell level to 1 to avoid scripting issues
+    WRITE_ASCIIE 0x3a ~%bam%~ #8               // writes the bam filename from abilities to spell icon
+  END
+  PATCH_IF make_divine AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+    WRITE_SHORT  0x1c 2                        // sets spell type to divine (2)
+  END
+  PATCH_IF make_arcane AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+    WRITE_SHORT  0x1c 1                        // sets spell type to wizard (1)
+  END
+
+  ACTION_IF ((FILE_EXISTS_IN_GAME ~7eyes.2da~) AND (FILE_CONTAINS_EVALUATED (~7eyes.2da~ ~[ %TAB%]%source%[ %TAB%%LNL%%MNL%%WNL%]~))) THEN BEGIN
+  
+    COPY_EXISTING ~7eyes.2da~ ~override~      
+      COUNT_2DA_ROWS 3 rows // count number of legit rows
+      COUNT_2DA_COLS cols
+      SET header = cols - 2
+      REPLACE_TEXTUALLY ~^\([ %TAB%]*STATE[ %TAB%]+STRREF[ %TAB%]+[ %TAB%0-9]+\)~ ~\1 %header%~
+      FOR (index = 1 ;  index < rows ; ++index) BEGIN
+        READ_2DA_ENTRY index 0 3 rowname
+        SET match = 0
+        REPLACE_EVALUATE CASE_INSENSITIVE ~\(^%rowname%[ %TAB%].+[ %TAB%]\)%source%\([ %TAB%%LNL%%MNL%%WNL%]\)~ BEGIN
+          SET match = 1
+        END ~%MATCH1%%source% %destination%%MATCH2%~
+        PATCH_IF !match BEGIN
+          REPLACE_TEXTUALLY CASE_INSENSITIVE ~\(^%rowname%[ %TAB%][^%LNL%%MNL%%WNL%]+\)~ ~\1 *~
+        END
+      END        
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+
+  END
+
+END

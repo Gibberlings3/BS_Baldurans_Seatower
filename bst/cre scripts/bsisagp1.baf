@@ -1,0 +1,104 @@
+//Override Script of Sahuagin Priestess Ilxigantl
+IF
+    See([PC])
+    AttackedBy([GOODCUTOFF],DEFAULT)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+/* PC attacks baron although rebel Sahuagin is already killed */
+IF
+    Dead("bsisagr1")
+    OR(2)
+        Global("bs_BaronDeal","GLOBAL",-1)
+        Dead("bsisagb1")
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        DisplayStringHead(Myself,@11094) //~You fools!~
+        Enemy()
+        SetInterrupt(TRUE)
+END
+
+/* attack after portal was destroyed */
+IF
+    Global("bs_PCVisitedPortalRoom","LOCALS",2)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+/* start dialogue if the portal room was destroyed */
+IF
+    See([PC])
+    GlobalGT("bs_SahuaginPortalRoom","GLOBAL",1)
+    GlobalLT("bs_PCVisitedPortalRoom","LOCALS",2)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Dialogue([PC])
+END
+
+/* start dialogue if the portal room was visited */
+IF
+    See([PC])
+    Global("bs_SahuaginPortalRoom","GLOBAL",1)
+    Global("bs_PCVisitedPortalRoom","LOCALS",0)
+    GlobalLT("bs_MoveToPortalroom","MYAREA",2) //prevent dialogue to happen twice for some quest paths
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Dialogue([PC])
+END
+
+/* after dialogue with rebel - move to other end of hallway (bs0101) */
+IF
+    GlobalGT("bs_ti_SahuaginMeeting","GLOBAL",1)
+    Global("bs_MoveToEndOfHall","LOCALS",0)
+    AreaCheck("bs0101")
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        MoveToPointNoInterrupt([343.1895])
+        Face(11)
+        SetGlobal("bs_MoveToEndOfHall","LOCALS",1)
+        SetInterrupt(TRUE)
+END
+
+/* in case rebel Sahuagin group gets attacked before first dialogue starts - turn hostile, too */
+IF
+    Global("bs_ti_SahuaginMeeting","GLOBAL",0)
+    Heard([ANYONE],151)
+    InMyGroup(LastHeardBy(Myself))
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+        MoveToObject(LastHeardBy(Myself))
+END
+
+/* after dialogue in bs0101 - teleport away (fake teleport indo bs0102 - respawning via bs0102.bcs */
+IF
+    AreaCheck("bs0101")
+    Global("bs_ti_SahuaginMeeting","GLOBAL",4)
+    Global("bs_TeleportAway","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("bs_TeleportAway","LOCALS",1)
+        EscapeAreaDestroy(5)
+        SetInterrupt(TRUE)
+END
+
+/* in case if priestess is still in bs0101 when rebels move into bs0102: leave too */
+IF
+    AreaCheck("bs0101")
+    Global("bs_RebelDeal","GLOBAL",3)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END

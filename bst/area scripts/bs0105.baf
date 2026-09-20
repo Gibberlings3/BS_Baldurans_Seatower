@@ -1,0 +1,135 @@
+/* journal entry if notebook was found */
+IF
+    PartyHasItem("bsihrnt")
+    Global("bs_HermitQuests","GLOBAL",1)
+    Global("bs_FoundNotebook","MYAREA",0)
+THEN
+    RESPONSE #100
+        AddJournalEntry(@975,QUEST)
+        SetGlobal("bs_FoundNotebook","MYAREA",1)
+END
+
+/* rat is dead - reset variable */
+IF
+	Dead("bsiherat")
+    GlobalGT("bs_RatShowsItself","MYAREA",0)
+THEN
+	RESPONSE #100
+	  SetGlobal("bs_RatShowsItself","MYAREA",0)
+END
+
+/* rat is dead - increase quest variable */
+IF
+	Dead("bsiherat")
+    GlobalLT("bs_HermitQuests","GLOBAL",4)
+THEN
+	RESPONSE #100
+            SetGlobal("bs_HermitQuests","GLOBAL",4)
+END
+
+/* journal entry in case Old Hermit was killed */
+/* notebook quest */
+IF
+    Dead("bsihermi")
+    Global("bs_HermitQuests","GLOBAL",1)
+
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@974)
+        EraseJournalEntry(@975)
+        AddJournalEntry(@100048,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_HermitQuests","GLOBAL",99)
+END
+/* rat quest */
+IF
+    Dead("bsihermi")
+    GlobalGT("bs_HermitQuests","GLOBAL",1)
+    GlobalLT("bs_HermitQuests","GLOBAL",5)
+
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@978)
+        EraseJournalEntry(@979)
+        AddJournalEntry(@100049,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_HermitQuests","GLOBAL",99)
+END
+/* close portal quest */
+IF
+    Dead("bsihermi")
+    GlobalGT("bs_HermitQuests","GLOBAL",4)
+    GlobalLT("bs_HermitQuests","GLOBAL",6)
+
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@987)
+        AddJournalEntry(@100050,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_HermitQuests","GLOBAL",99)
+END
+
+/* set detection variable if note is found */
+IF
+    PartyHasItem("bsihnte1")
+    Global("bs_i_CursedTemple","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_i_CursedTemple","GLOBAL",1)
+END
+
+/* set detection variable if player has Fork of Balduran */
+IF
+    OR(2)
+        PartyHasItem("bsbalfrk")
+        PartyHasItem("bsbdboot")
+    Global("bs_BalduransItems","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_BalduransItems","GLOBAL",1)
+END
+
+
+/* PC found note about hidden door - set journal entry */
+IF
+	PartyHasItem("bsihnte4")
+	Global("bs_DoorJournalEntry","MYAREA",0)
+	GlobalGT("bs_i_HiddenDoorOpened","GLOBAL",0)
+	GlobalLT("bs_i_HiddenDoorOpened","GLOBAL",3)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100068,QUEST)
+		SetGlobal("bs_DoorJournalEntry","MYAREA",1)
+END
+
+/* blood tinkture is made - start Umber Hulk quest */
+/* set timer */
+IF
+    InMyArea(Player1)
+    !Dead("bsihermi")
+    !Dead("bsiumhlk")
+    GlobalGT("bs_HermitQuests","GLOBAL",6)
+    Global("bs_UmberHulkQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+        RealSetGlobalTimer("bs_UmberHulkQuestTimer","GLOBAL",5)
+        SetGlobal("bs_UmberHulkQuest","GLOBAL",1)
+END
+
+/* actual event */
+IF
+    InMyArea(Player1)
+    !Dead("bsihermi")
+    !Dead("bsiumhlk")
+    RealGlobalTimerExpired("bs_UmberHulkQuestTimer","GLOBAL")
+    GlobalGT("bs_HermitQuests","GLOBAL",6)
+    Global("bs_UmberHulkQuest","GLOBAL",1)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+        PlaySound("EFF_P92")
+        ScreenShake([20.20],10)
+        SetGlobal("bs_UmberHulkQuest","GLOBAL",2)
+        DisplayStringHead("bsihermi",@11141)
+        SetInterrupt(TRUE)
+END

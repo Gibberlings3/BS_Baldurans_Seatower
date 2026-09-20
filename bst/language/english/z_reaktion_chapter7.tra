@@ -1,0 +1,11 @@
+@0    = ~Hold there, <CHARNAME>! You are accused of murder, the Flaming Fist is looking for you all over the city. Our commander has requested to see you. You have no choice but to follow us quietly.~
+@1    = ~You are wanted for the murder of the Iron Throne leaders. I have no choice but to hand you over to the Flaming Fist, <CHARNAME>. You helped us - and the city - very much by revealing the ongoing doppelganger invasion. I think it only fair to give you a chance to explain yourself.~
+@2    = ~What if I told you that I was framed, and that doppelgangers were involved as well?~
+@3    = ~It was a setup. You just said yourself how it is possible to have people "see" a person doing things they never did.~
+@4    = ~Yes, I killed them. But they were connected to the doppelganger activities and the general evil that came over this city and half of the Sword Coast.~
+@5    = ~Do what you must. I guess I can't prevent my arrest, anyway.~
+@6    = ~In that case... I would believe you.~
+@7    = ~Are you referring to doppelgangers? Yes, I believe you.~
+@8    = ~Then so be it. My soldiers shall bring you to the Flaming Fist headquarters immediately.~
+@9    = ~Fine. I will let you go - this once. Leave the tower as a free <PRO_MANWOMAN>, but do not come here again before the murder accusations have been cleared. I will not be able to explain to my soldiers why they'd have to arrest you a second time.~
+@10   = ~Hmm. This is a tough decision, <CHARNAME>. But I believe you.~

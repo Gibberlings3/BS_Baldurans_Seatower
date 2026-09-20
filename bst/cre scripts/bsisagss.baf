@@ -1,0 +1,84 @@
+/* general Sahuagin script (Old Temple Island) - for all Sahuagin */
+/* turn hostile if the priestess is dead */
+IF
+    See([PC])
+    OR(2)
+        Dead("bsisagp1")
+        Allegiance("bsisagp1",ENEMY)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #20
+        DisplayStringHead(Myself,@11093) //~They killed the priestess!~
+        Enemy()
+    RESPONSE #80
+        Enemy()
+END
+
+/* turn hostile if the portals were destroyed */
+IF
+    See([PC])
+    GlobalGT("bs_SahuaginPortalRoom","GLOBAL",1)
+    Allegiance(Myself,NEUTRAL)
+    !Name("bsisagp1",Myself)
+THEN
+    RESPONSE #20
+        DisplayStringHead(Myself,@11096) //~They have desecrated the portals!~
+        Enemy()
+    RESPONSE #80
+        Enemy()
+END
+
+/* turn hostile if both barons are dead */
+IF
+    See([PC])
+    Dead("bsisagr1")
+    Dead("bsisagb1")
+    Allegiance(Myself,NEUTRAL)
+    !Name("bsisagp1",Myself)
+THEN
+    RESPONSE #20
+        DisplayStringHead(Myself,@11095) //~They killed the barons!~
+        Enemy()
+    RESPONSE #80
+        Enemy()
+END
+
+/* script for Sahuagin on bs0102 - get hostile if PC approaches without talking to Priestess again - except guards */
+IF
+    See([PC])
+    AreaCheck("bs0102")
+    GlobalLT("bs_ti_SahuaginMeeting","GLOBAL",5)
+    GlobalLT("bs_RebelDeal","GLOBAL",3)
+    Allegiance(Myself,NEUTRAL)
+    !Name("bsisagg1",Myself)
+    !Name("bsisagg2",Myself)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_HostileTooEarly","LOCALS",1)
+        Enemy()
+END
+/* turn neutral again in case quest proceeded after skipping talking to priestess */
+IF
+    !See([PC])
+    CombatCounter(0)
+    AreaCheck("bs0102")
+    GlobalGT("bs_RebelDeal","GLOBAL",2)
+    Allegiance(Myself,ENEMY)
+    Global("bs_HostileTooEarly","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_HostileTooEarly","LOCALS",2)
+        ChangeEnemyAlly(Myself,NEUTRAL)
+END
+
+/* script for Sahuagin on bs0104 - get hostile if PC approaches */
+IF
+    See([PC])
+    AreaCheck("bs0104")
+    Allegiance(Myself,NEUTRAL)
+    !Name("bsisagg1",Myself) //guards have other script here
+    !Name("bsisagg2",Myself) //guards have other script here
+THEN
+    RESPONSE #100
+        Enemy()
+END

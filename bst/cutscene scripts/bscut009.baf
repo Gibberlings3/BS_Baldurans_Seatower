@@ -1,0 +1,16 @@
+// Move the party to the blocked area
+IF	
+	True()
+THEN
+	RESPONSE #100
+	  CutSceneId(Player1)
+	  LeaveAreaLUAPanic("bs0128","",[332.1193],10)
+	  LeaveAreaLUA("bs0128","",[332.1193],10)
+	  ActionOverride(Player2,LeaveAreaLUA("bs0128","",[332.1193],10))
+	  ActionOverride(Player3,LeaveAreaLUA("bs0128","",[332.1193],10))
+	  ActionOverride(Player4,LeaveAreaLUA("bs0128","",[332.1193],10))
+	  ActionOverride(Player5,LeaveAreaLUA("bs0128","",[332.1193],10))
+	  ActionOverride(Player6,LeaveAreaLUA("bs0128","",[332.1193],10))
+	  MultiPlayerSync()
+	  EndCutSceneMode()
+END

@@ -1,0 +1,71 @@
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_MINOR_GLOBE_OF_INVULNERABILITY)  // SPWI406.SPL (Minor Globe of Invulneribility)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_MINOR_GLOBE_OF_INVULNERABILITY)  // SPWI406.SPL (Minor Globe of Invulneribility)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Remove Magic)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Remove Magic)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloud Kill)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloud Kill)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_MELF_ACID_ARROW)  // SPWI211.SPL (Melf's Acid Arrow)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_MELF_ACID_ARROW)  // SPWI211.SPL (Melf's Acid Arrow)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        Attack(NearestEnemyOf(Myself))
+END
+
