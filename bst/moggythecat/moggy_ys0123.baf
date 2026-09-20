@@ -1,0 +1,16 @@
+IF
+	Global("bs_SpawnMoggy","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsmoggy",[213.774],0)
+		SetGlobal("bs_SpawnMoggy","MYAREA",1)
+END
+
+IF
+	GlobalTimerExpired("bs_RatSpawnTimer","GLOBAL")
+	Global("bs_SpawnRatItem","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("RatPile",CreateItem("bsdedrat",0,0,0))
+		SetGlobal("bs_SpawnRatItem","MYAREA",1)
+END

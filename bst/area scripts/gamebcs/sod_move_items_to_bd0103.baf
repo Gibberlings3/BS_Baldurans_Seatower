@@ -1,0 +1,9 @@
+IF
+	Global("bs_IlmaterMonasteryStronghold","GLOBAL",1)
+	Global("bs_BSTPlayerChest","MYAREA",0)
+THEN
+	RESPONSE #100
+		MoveContainerContents("ys0123*Chest01","BD0103*PlayerChest00")
+		SetGlobal("bs_BSTPlayerChest","MYAREA",1)
+		Continue()
+END

@@ -1,0 +1,18 @@
+IF
+	!See([PC])
+	Global("bs_SpawnRewardHeirloom","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bs_SpawnRewardHeirloomTimer","GLOBAL",ONE_DAY)
+		SetGlobal("bs_SpawnRewardHeirloom","GLOBAL",1)
+		DestroySelf()
+END
+IF
+	!See([PC])
+	Global("bsPCTookGoldrings","GLOBAL",5)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bs_SpawnRewardHeirloomTimer","GLOBAL",ONE_DAY)
+		SetGlobal("bsPCTookGoldrings","GLOBAL",4)
+		DestroySelf()
+END

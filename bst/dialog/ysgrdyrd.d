@@ -1,12 +1,12 @@
 BEGIN ysgrdyrd
 
 IF ~RandomNum(6,1)~ THEN BEGIN 1
-  SAY @1130
+  SAY @1110
   IF ~~ THEN EXIT
 END
 
 IF ~RandomNum(6,2)~ THEN BEGIN 2
-  SAY @1131
+  SAY @1111
   IF ~~ THEN EXIT
 END
 

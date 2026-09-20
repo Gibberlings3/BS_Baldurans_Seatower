@@ -3,10 +3,23 @@ BEGIN ysselune
 // First time talked to
 IF ~NumTimesTalkedTo(0)~ 1
   SAY @1015
-  ++ @1016 + 2
+  + ~Global("bs_adventurer","LOCALS",0)~ + @1016 DO ~SetGlobal("bs_adventurer","LOCALS",1)~ + 2
   + ~Global("bsAskedForWork","LOCALS",0)~ + @1017 /* ~Anything going on here that would need an adventurer?~ */ DO ~SetGlobal("bsAskedForWork","LOCALS",1)~ + 21
   ++ @1018 + 3
-  ++ @1019 + 4
+  ++ @1034 + 7
+  + ~OR(12)
+    HPPercentLT(Player1,100)
+    HPPercentLT(Player2,100)
+    HPPercentLT(Player3,100)
+    HPPercentLT(Player4,100)
+    HPPercentLT(Player5,100)
+    HPPercentLT(Player6,100)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Player2,CD_STATE_NOTVALID)
+    !StateCheck(Player3,CD_STATE_NOTVALID)
+    !StateCheck(Player4,CD_STATE_NOTVALID)
+    !StateCheck(Player5,CD_STATE_NOTVALID)
+    !StateCheck(Player6,CD_STATE_NOTVALID)~ + @1019 + 4
   ++ @1020 + 5
 END
 
@@ -22,15 +35,41 @@ END
 IF ~~ 22
   SAY @1025 /* ~So the monks say. They should keep the catacombs clean but no-one has been down there for days! They are so lazy, those monks! Pain-Bearer, fuff!!! Sleep-Weaver more like!~ */
   ++ @1026 /* ~Are you sure about that?~ */ + 23
-  ++ @1028 + 2
-  ++ @1019 + 4
+  + ~Global("bs_adventurer","LOCALS",0)~ + @1028 DO ~SetGlobal("bs_adventurer","LOCALS",1)~ + 2
+  ++ @1034 + 7
+  + ~OR(12)
+    HPPercentLT(Player1,100)
+    HPPercentLT(Player2,100)
+    HPPercentLT(Player3,100)
+    HPPercentLT(Player4,100)
+    HPPercentLT(Player5,100)
+    HPPercentLT(Player6,100)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Player2,CD_STATE_NOTVALID)
+    !StateCheck(Player3,CD_STATE_NOTVALID)
+    !StateCheck(Player4,CD_STATE_NOTVALID)
+    !StateCheck(Player5,CD_STATE_NOTVALID)
+    !StateCheck(Player6,CD_STATE_NOTVALID)~ + @1019 + 4
   ++ @1020 + 5
 END
 
 IF ~~ 23
   SAY @1027 /* ~How would I know? What do you think I am - a gossip? I am a Priestess, remember!~ */
-  ++ @1028 + 2
-  ++ @1019 + 4
+  + ~Global("bs_adventurer","LOCALS",0)~ + @1028 DO ~SetGlobal("bs_adventurer","LOCALS",1)~ + 2
+  ++ @1034 + 7
+  + ~OR(12)
+    HPPercentLT(Player1,100)
+    HPPercentLT(Player2,100)
+    HPPercentLT(Player3,100)
+    HPPercentLT(Player4,100)
+    HPPercentLT(Player5,100)
+    HPPercentLT(Player6,100)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Player2,CD_STATE_NOTVALID)
+    !StateCheck(Player3,CD_STATE_NOTVALID)
+    !StateCheck(Player4,CD_STATE_NOTVALID)
+    !StateCheck(Player5,CD_STATE_NOTVALID)
+    !StateCheck(Player6,CD_STATE_NOTVALID)~ + @1019 + 4
   ++ @1020 + 5
 END
 
@@ -59,7 +98,19 @@ IF ~~ 6
   + ~Global("bsClearedCatacombs","GLOBAL",0)~ + @1017 DO ~AddJournalEntry(@774,QUEST)
 SetGlobal("bsClearedCatacombs","GLOBAL",1)~ + 21
   ++ @1034 + 7
-  ++ @1019 + 4
+  + ~OR(12)
+    HPPercentLT(Player1,100)
+    HPPercentLT(Player2,100)
+    HPPercentLT(Player3,100)
+    HPPercentLT(Player4,100)
+    HPPercentLT(Player5,100)
+    HPPercentLT(Player6,100)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Player2,CD_STATE_NOTVALID)
+    !StateCheck(Player3,CD_STATE_NOTVALID)
+    !StateCheck(Player4,CD_STATE_NOTVALID)
+    !StateCheck(Player5,CD_STATE_NOTVALID)
+    !StateCheck(Player6,CD_STATE_NOTVALID)~ + @1019 + 4
   ++ @1035 + 8
   ++ @1020 + 5
 END
@@ -72,9 +123,9 @@ END
 IF ~~ 8
   SAY @1037
   = @1038
-  ++ @1039 + 9
-  ++ @1040 + 10
-  ++ @1041 + 11
+  + ~Global("bs_history","LOCALS",0)~ + @1039 DO ~SetGlobal("bs_history","LOCALS",1)~ + 9
+  + ~Global("bs_worshippers","LOCALS",0)~ + @1040 DO ~SetGlobal("bs_worshippers","LOCALS",1)~ + 10
+  + ~Global("bs_shar","LOCALS",0)~ + @1041 DO ~SetGlobal("bs_shar","LOCALS",1)~ + 11
   ++ @1042 + 12
 END
 
@@ -87,9 +138,9 @@ END
 
 IF ~~ 10
   SAY @1046
-  ++ @1047 + 14
-  ++ @1048 + 15
-  ++ @1049 + 16
+  + ~Global("bs_swordslady","LOCALS",0)~ + @1047 DO ~SetGlobal("bs_swordslady","LOCALS",1)~ + 14
+  + ~Global("bs_oraclesmoon","LOCALS",0)~ + @1048 DO ~SetGlobal("bs_oraclesmoon","LOCALS",1)~ + 15
+  + ~Global("bs_silverstars","LOCALS",0)~ + @1049 DO ~SetGlobal("bs_silverstars","LOCALS",1)~ + 16
   ++ @1042 + 12
 END
 
@@ -101,29 +152,41 @@ END
 IF ~~ 12
   SAY @1051
   ++ @1034 + 7
-  ++ @1019 + 6
+  + ~OR(12)
+    HPPercentLT(Player1,100)
+    HPPercentLT(Player2,100)
+    HPPercentLT(Player3,100)
+    HPPercentLT(Player4,100)
+    HPPercentLT(Player5,100)
+    HPPercentLT(Player6,100)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Player2,CD_STATE_NOTVALID)
+    !StateCheck(Player3,CD_STATE_NOTVALID)
+    !StateCheck(Player4,CD_STATE_NOTVALID)
+    !StateCheck(Player5,CD_STATE_NOTVALID)
+    !StateCheck(Player6,CD_STATE_NOTVALID)~ + @1019 + 4
   ++ @1020 + 5
 END
 
 IF ~~ 13
   SAY @1052
-  ++ @1039 + 9
-  ++ @1040 + 10
-  ++ @1041 + 11
+  + ~Global("bs_history","LOCALS",0)~ + @1039 DO ~SetGlobal("bs_history","LOCALS",1)~ + 9
+  + ~Global("bs_worshippers","LOCALS",0)~ + @1040 DO ~SetGlobal("bs_worshippers","LOCALS",1)~ + 10
+  + ~Global("bs_shar","LOCALS",0)~ + @1041 DO ~SetGlobal("bs_shar","LOCALS",1)~ + 11
   ++ @1042 + 12
 END
 
 IF ~~ 14
   SAY @1053
-  ++ @1048 + 15
-  ++ @1049 + 16
+  + ~Global("bs_oraclesmoon","LOCALS",0)~ + @1048 DO ~SetGlobal("bs_oraclesmoon","LOCALS",1)~ + 15
+  + ~Global("bs_silverstars","LOCALS",0)~ + @1049 DO ~SetGlobal("bs_silverstars","LOCALS",1)~ + 16
   ++ @1054 + 12
 END
 
 IF ~~ 15
   SAY @1055
-  ++ @1047 + 14
-  ++ @1049 + 16
+  + ~Global("bs_swordslady","LOCALS",0)~ + @1047 DO ~SetGlobal("bs_swordslady","LOCALS",1)~ + 14
+  + ~Global("bs_silverstars","LOCALS",0)~ + @1049 DO ~SetGlobal("bs_silverstars","LOCALS",1)~ + 16
   ++ @1054 + 12
 END
 
@@ -131,8 +194,8 @@ IF ~~ 16
   SAY @1056
   = @1057
   = @1058
-  ++ @1047 + 14
-  ++ @1048 + 15
+  + ~Global("bs_swordslady","LOCALS",0)~ + @1047 DO ~SetGlobal("bs_swordslady","LOCALS",1)~ + 14
+  + ~Global("bs_oraclesmoon","LOCALS",0)~ + @1048 DO ~SetGlobal("bs_oraclesmoon","LOCALS",1)~ + 15
   ++ @1054 + 12
 END
 
@@ -140,10 +203,22 @@ END
 // Second time talked to
 IF ~NumTimesTalkedToGT(0)~ 17
   SAY @1059
-  ++ @1034 + 7
   + ~Global("bsAskedForWork","LOCALS",0)~ + @1017 DO ~SetGlobal("bsAskedForWork","LOCALS",1)~ + 21
-  ++ @1019 + 6
-  ++ @1028 + 2
+  ++ @1034 + 7
+  + ~OR(12)
+    HPPercentLT(Player1,100)
+    HPPercentLT(Player2,100)
+    HPPercentLT(Player3,100)
+    HPPercentLT(Player4,100)
+    HPPercentLT(Player5,100)
+    HPPercentLT(Player6,100)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Player2,CD_STATE_NOTVALID)
+    !StateCheck(Player3,CD_STATE_NOTVALID)
+    !StateCheck(Player4,CD_STATE_NOTVALID)
+    !StateCheck(Player5,CD_STATE_NOTVALID)
+    !StateCheck(Player6,CD_STATE_NOTVALID)~ + @1019 + 4
+  + ~Global("bs_adventurer","LOCALS",0)~ + @1028 DO ~SetGlobal("bs_adventurer","LOCALS",1)~ + 2
   ++ @1035 + 8
   ++ @1020 + 5
 END

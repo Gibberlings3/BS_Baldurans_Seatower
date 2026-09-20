@@ -1,0 +1,96 @@
+/* Water hole:  */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	Global("bs_WaterholeStringHead","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11117) //~Below the surface of the water, the hole continues downwards until it can no longer be made out in the blackness. The opening is narrow, but still wide enough for the Malenti to have gotten through. As long as the passage is not blocked, there is a risk that more Malenti or even Sahuagin could surface at any time.~
+		AddJournalEntry(@100042,QUEST)
+		SetGlobal("bs_WaterholeStringHead","MYAREA",1)
+END
+
+IF
+	Clicked([ANYONE])
+	!PartyHasItem("bsistone")
+	Global("bs_WaterholeStringHead","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11117)
+END
+
+/* Player has stone - give info */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	PartyHasItem("bsistone")
+	Global("bs_WaterholeStringHead","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringNoNameHead(Myself,@11118) //~The big boulder would be suitable to block the opening in the water hole.~
+		SetGlobal("bs_WaterholeStringHead","MYAREA",2)
+		EraseJournalEntry(@100042)
+		AddJournalEntry(@100011,QUEST)
+		SetInterrupt(TRUE)
+END
+/* place boulder - give DisplayStringHead about hole being closed */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	PartyHasItem("bsistone")
+    Global("bs_WaterholeStringHead","MYAREA",2)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringNoNameHead(Myself,@11119) //~You throw in the boulder and watch it sink. It comes to a halt almost out of your range of view. The underwater opening is temporarily blocked.~
+		TakePartyItemNum("bsistone",1)
+		SetGlobal("bs_WaterholeIsBlocked","GLOBAL",1)
+        SetGlobal("bs_WaterholeStringHead","MYAREA",3)
+		SetInterrupt(TRUE)
+END
+
+/* journal entries */
+/* quartermaster is still alive */
+IF
+	!Dead("bsicst05")
+	Global("bs_WaterholeStringHead","MYAREA",3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		EraseJournalEntry(@100011)
+		AddJournalEntry(@100012,QUEST)
+		SetGlobal("bs_WaterholeStringHead","MYAREA",4)
+		SetInterrupt(TRUE)
+END
+/* quartermaster is dead */
+IF
+	Dead("bsicst05")
+	Global("bs_WaterholeStringHead","MYAREA",3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		EraseJournalEntry(@100011)
+		AddJournalEntry(@100012,QUEST_DONE)
+		AddexperienceParty(100)
+		SetGlobal("bs_WaterholeStringHead","MYAREA",4)
+		SetInterrupt(TRUE)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	Global("bs_WaterholeStringHead","MYAREA",4)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11120) //~The underwater opening is blocked. This will not keep the water creatures out forwever, but removing it from below should be difficult enough to make this cave safe for some time.~
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,20)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007)
+END
+

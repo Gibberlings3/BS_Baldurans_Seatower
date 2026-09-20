@@ -1,0 +1,15 @@
+/* cutscene for Commander after doppelganger revelation */
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("bstrcmdr")
+        FadeToColor([20.0],0)
+       	Wait(3)
+       	JumpToPoint([1130.649])
+       	Face(2)
+        FadeFromColor([20.0],0)
+		EndCutSceneMode()
+		ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
+END

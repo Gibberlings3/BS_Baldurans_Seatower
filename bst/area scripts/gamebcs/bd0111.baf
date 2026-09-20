@@ -1,0 +1,13 @@
+
+/* create freed prisoner */
+IF
+	!Dead("bspris06")
+	GlobalLT("bd_plot","GLOBAL",55)
+	GlobalGT("bs_KnowsPrisonerIntrigue","GLOBAL",7)
+	Global("bsCreateMalastair","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreateMalastair","MYAREA",1)
+		CreateCreature("bspris06",[1036.491],0)
+		Continue()
+END

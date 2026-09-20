@@ -1,0 +1,97 @@
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_DEATH_WARD)  // SPPR409.SPL (Death Ward)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_DEATH_WARD)  // SPPR409.SPL (Death Ward)
+END
+
+IF
+    HaveSpell(CLERIC_MISCAST_MAGIC)  // SPPR310.SPL (Miscast Magic)
+    OR(2)
+        See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+        See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+THEN
+    RESPONSE #100
+        Spell(LastSeenBy(Myself),CLERIC_MISCAST_MAGIC)  // SPPR310.SPL (Miscast Magic)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_BLADE_BARRIER)  // SPPR603.SPL (Blade Barrier)
+    Global("blade","LOCALS",0)
+THEN
+    RESPONSE #100
+        Spell(Myself,NPC_BLADE_BARRIER)  // SPPR698.SPL (Blade Barrier)
+        SetGlobal("blade","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_SLAY_LIVING)  // SPPR511.SPL (Slay Living)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_SLAY_LIVING)  // SPPR511.SPL (Slay Living)
+        SetGlobal("startAttack","LOCALS",1)
+END
+
+IF
+    HaveSpell(CLERIC_SILENCE_15_FOOT)  // SPPR211.SPL (Silence, 15' Radius)
+    OR(2)
+        See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+        See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+THEN
+    RESPONSE #100
+        Spell(LastSeenBy(Myself),CLERIC_SILENCE_15_FOOT)  // SPPR211.SPL (Silence, 15' Radius)
+END
+
+IF
+    GlobalLT("startAttack","LOCALS",6)
+THEN
+    RESPONSE #100
+        IncrementGlobal("startAttack","LOCALS",1)
+        AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_MENTAL_DOMINATION)  // SPPR405.SPL (Mental Domination)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),CLERIC_MENTAL_DOMINATION)  // SPPR405.SPL (Mental Domination)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HaveSpell(CLERIC_CAUSE_CRITICAL_WOUNDS)  // SPPR510.SPL (Cause Critical Wounds)
+THEN
+    RESPONSE #100
+        Spell(NearestEnemyOf(Myself),CLERIC_CAUSE_CRITICAL_WOUNDS)  // SPPR510.SPL (Cause Critical Wounds)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HPPercentLT(Myself,50)
+    HaveSpell(CLERIC_CURE_MEDIUM_WOUNDS)  // SPPR315.SPL (Cure Medium Wounds)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_CURE_MEDIUM_WOUNDS)  // SPPR315.SPL (Cure Medium Wounds)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("antimagic","LOCALS",0)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(LastSeenBy(Myself),ANTI_MAGIC_ZONE)  // SPIN779.SPL (Anti-Magic)
+        SetGlobal("antimagic","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipRanged()
+        AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

@@ -1,0 +1,31 @@
+// Returns the numeric value for the specified song label.
+// Works for original and EE games.
+DEFINE_DIMORPHIC_FUNCTION get_song_value
+STR_VAR
+  label = ~~  // song label to look up
+RET
+  value       // numeric value associated with the song label
+BEGIN
+  OUTER_SET value = "-1"
+  ACTION_IF (FILE_EXISTS_IN_GAME ~songlist.ids~) BEGIN
+    OUTER_SET value = IDS_OF_SYMBOL(~songlist~ ~%label%~)
+  END ELSE ACTION_IF (FILE_EXISTS_IN_GAME ~musiclis.ids~) BEGIN
+    OUTER_SET value = IDS_OF_SYMBOL(~musiclis~ ~%label%~)
+  END ELSE ACTION_IF (FILE_EXISTS_IN_GAME ~music.ids~) BEGIN
+    OUTER_SET value = IDS_OF_SYMBOL(~music~ ~%label%~)
+  END ELSE ACTION_IF (FILE_EXISTS_IN_GAME ~songlist.2da~) BEGIN
+    COPY_EXISTING ~songlist.2da~ ~override~
+      READ_2DA_ENTRIES_NOW ~songlist~ 1
+      FOR (row = 3; row < songlist; ++row) BEGIN
+        READ_2DA_ENTRY_FORMER ~songlist~ row 1 entry
+        PATCH_IF (~%entry%~ STR_EQ ~%label%~) BEGIN
+          READ_2DA_ENTRY_FORMER ~songlist~ row 0 entry
+          PATCH_IF (IS_AN_INT ~entry~) BEGIN
+            SET value = entry
+          END
+          SET row = songlist
+        END
+      END
+    BUT_ONLY
+  END
+END

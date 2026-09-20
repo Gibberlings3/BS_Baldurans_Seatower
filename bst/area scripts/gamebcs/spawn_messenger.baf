@@ -1,0 +1,51 @@
+/* messenger for slave traders */
+IF
+	InMyArea(Player1)
+	!Dead("bsslav02")
+	!Global("bsWorkingWithSmugglers","GLOBAL",2)
+	GlobalGT("bsShucksBrother","GLOBAL",3)
+	GlobalGT("bsSmugglerQuest","GLOBAL",1)
+	GlobalTimerExpired("bsSlaveTimer2","GLOBAL") //just make sure messenger doesn't spawn directly at the dock's entrance
+	Global("bsSlaverQuest","GLOBAL",1)
+	CombatCounter(0)
+	OR(2)
+		!Global("Chapter","GLOBAL",%tutu_chapter_7%)
+		!Global("DukeThanks","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSlaverQuest","GLOBAL",2)
+		CreateCreatureObjectOffset("bsslvmsg",Player1,[5.5])
+		Continue()
+END
+
+/* messenger for heirloom reward (doppelganger quest) */
+IF
+	InMyArea(Player1)
+	Global("bs_SpawnRewardHeirloom","GLOBAL",1)
+	GlobalTimerExpired("bs_SpawnRewardHeirloomTimer","GLOBAL")
+	CombatCounter(0)
+	OR(2)
+		!Global("Chapter","GLOBAL",%tutu_chapter_7%)
+		!Global("DukeThanks","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_SpawnRewardHeirloom","GLOBAL",2)
+		CreateCreatureObjectOffset("bsgenmes",Player1,[5.5])
+		Continue()
+END
+		
+/* messenger for bonus smuggler quest */
+IF
+	%BGT_VAR%
+	Dead("Sarevok")
+	!Dead("bssmgl02")
+	Global("bsSmugglerQuestBonus","GLOBAL",1)
+	GlobalTimerExpired("bsSmugglerQuestBonus_T","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("bsSmugglerQuestBonus","GLOBAL",2)
+		CreateCreature("bssmglb2",[1257.2898],0) //Messenger
+		Continue()
+END
+
+

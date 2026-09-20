@@ -1,0 +1,23 @@
+/* smugglers get busted by Nashkel Guard */
+
+IF
+	True()
+THEN
+	RESPONSE #100
+        	CutSceneId(Player1)
+        	MoveViewObject("bssmgl02",INSTANT)
+			CreateCreature("bssmgl12",[3910.3532],12)
+			CreateCreature("bssmgl13",[3858.3490],12)
+			CreateCreature("bssmgl14",[3851.3558],12)
+        	SmallWait(1)
+        	ActionOverride("bssmgl14",MoveToObject("bssmgl02"))
+        	ActionOverride("bssmgl12",MoveToPoint([4014.3497]))
+        	ActionOverride("bssmgl13",MoveToPoint([4043.3559]))
+        	Wait(1)
+        	ActionOverride("bssmgl14",FaceObject("bssmgl02"))
+        	ActionOverride("bssmgl02",FaceObject("bssmgl14"))
+        	Wait(1)
+			EndCutSceneMode()
+        	ActionOverride("bssmgl02",StartDialogNoSet(Player1))
+END
+

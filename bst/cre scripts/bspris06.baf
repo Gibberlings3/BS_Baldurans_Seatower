@@ -1,0 +1,14 @@
+
+/* Remove in SoD/BGII */
+IF
+    Global("bs_PrisonerIntrigueThanks","GLOBAL",0)
+	OR(2)
+        GlobalGT("ENDOFBG1","GLOBAL",0)
+        GlobalGT("bd_plot","global",0)
+    AreaCheck("%BaldursGateDocks_IronThrone_L1%")
+THEN
+	RESPONSE #100
+        	DestroySelf()
+END
+
+

@@ -1,0 +1,24 @@
+
+// Check for: Group is over trigger
+IF
+	Global("bs_ArchShadowSpawn","MYAREA",0)
+	IsOverMe([ANYONE])
+THEN
+	RESPONSE #100
+        RealSetGlobalTimer("bs_i_ArchShadowSpawnTimer","GLOBAL",10)
+		DisplayStringHead(Myself,@11127)
+		SetGlobal("bs_ArchShadowSpawn","MYAREA",1)
+END
+
+IF
+	Global("bs_ArchShadowSpawn","MYAREA",1)
+	IsOverMe([ANYONE])
+	RealGlobalTimerExpired("bs_i_ArchShadowSpawnTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11128)
+		CreateVisualEffect("SPRAISED",[199.945])
+		Wait(3)
+		CreateCreature("bsiarchs",[199.945],13)
+		SetGlobal("bs_ArchShadowSpawn","MYAREA",2)
+END

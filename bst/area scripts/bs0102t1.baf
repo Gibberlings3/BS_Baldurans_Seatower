@@ -1,0 +1,14 @@
+// Check for: Group is near the door
+IF
+	GlobalLT("bs_IsNearDoor","MYAREA",2)
+	OR(2)
+		IsOverMe([ANYONE])
+		Entered([ANYONE])
+    !StateCheck(LastTrigger,STATE_INVISIBLE)
+    !StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+    !Name("bsisagg1",LastTrigger)
+    !Name("bsisagg2",LastTrigger)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_IsNearDoor","MYAREA",2)
+END

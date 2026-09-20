@@ -1,0 +1,17 @@
+/* disappear later */
+IF
+	GlobalGT("DukeThanks","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+
+/* initiate dialogue */
+IF
+	See([PC])
+	Global("DukeThanks","GLOBAL",0)
+THEN
+	RESPONSE #100
+		Dialogue([PC])
+END

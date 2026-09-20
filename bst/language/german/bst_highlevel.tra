@@ -1,0 +1,34 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@8000 = ~Goldene Scheibe~
+@8002 = ~Auf den ersten Blick sieht diese goldene Scheibe wie eine übergroße Münze aus, aber sie ist viel zu groß, um als eine Art antike Währung verwendet zu werden. Auf ihrer Oberseite erkennt man ein geprägtes Pentagramm. Sie sieht Jahrhunderte alt aus und scheint sehr wertvoll zu sein.~
+@8004 = ~Teufelsbann~
+@8005 = ~Der in den uralten Schmieden des Zwergenreichs Ammarindar hergestellte Teufelsbann wurde zu einem einzigen Zweck erschaffen: Die teuflischen Horden, die aus der Höllentorfeste strömen, sollten aufgehalten werden. Die aus kaltgeschmiedetem Eisen gefertigte und mit Runen verzierte Axt erwies sich bei der frühen Verteidigung des Zwergenreichs als furchterregend. Als Ammarindar fiel, ging die Waffe in dem Chaos verloren, das die Unholde über die Stadt brachten.
+
+EIGENSCHAFTEN:
+
+ETW0-Bonus:
+  −2
+  –4 gg. Teufel
+Schaden:
+  1W8 +2 (Klinge)
+  1W8 +4 (Klinge) gg. Teufel
+Initiativefaktor: 5
+Fertigkeit: Axt
+Typ: 1-händig
+Mindeststärke: 10
+
+Gewicht: 5~
+@8006 = ~Teleportation ohne Fehler~
+@8100 = ~Otyugh~
+@8101 = ~Otyugh~
+@8200 = ~Ihr entfernt die letzte Münze, und eine Art Siegel scheint zu brechen.~
+@8201 = ~Die Spannung in diesem Raum steigt rapide an. Ihr bezweifet, dass es eine gute Idee ist, die letzte Münze zu entfernen.~
+@8203 = ~Aus dieser Entfernung kann man nichts entziffern.~
+@8204 = ~Antike Runen in der Mitte dieses Heptagramms lauten wie folgt:
+„Sieben Runen mit sechs heiligen Scheiben zu finden,
+an den Rändern zu platzieren, die siebte zu binden.“~
+@8205 = ~Dieses große Heptagramm ist mit geheimnisvollen Runen graviert, die Ihr nicht entziffern könnt.~

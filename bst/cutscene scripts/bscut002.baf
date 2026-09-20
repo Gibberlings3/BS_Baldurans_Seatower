@@ -8,5 +8,5 @@ THEN
         FadeToColor([20.0],0)
         Wait(3)
         FadeFromColor([20.0],0)
-	EndcutSceneMode()
+        EndCutSceneMode()
 END 

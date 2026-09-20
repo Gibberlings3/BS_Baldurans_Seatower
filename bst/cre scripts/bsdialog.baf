@@ -2,6 +2,7 @@
 IF
 	See(Protagonist)
 	Global("bsDream151","GLOBAL",3)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Wait(1)
@@ -12,6 +13,7 @@ END
 IF
 	See(Protagonist)
 	Global("bsDreamComplete","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		SetGlobal("bsDreamComplete","GLOBAL",3)

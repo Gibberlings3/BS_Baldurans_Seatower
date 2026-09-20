@@ -41,43 +41,64 @@ THEN
 		SetGlobal("bs_LeonhardSpentGold","MYAREA",1)
 END
 
-/* slavers turn hostile */
+
+/* slavers turn hostile - spawn more attackers */
 IF
-	Global("bsSlaversAttack","MYAREA",1)
+	GlobalGT("bsSlaversAttack","MYAREA",0)
 	Global("bsCreateSlavers","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
-		SetGlobal("bsCreateSlavers","MYAREA",1)
+		SetInterrupt(FALSE)
+		ActionOverride("bsslav01",Enemy())
+		SetInterrupt(TRUE)
+        Continue()
+END
+IF
+	DifficultyGT(EASIEST)
+	GlobalGT("bsSlaversAttack","MYAREA",0)
+	Global("bsCreateSlavers","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
 		CreateCreature("bsslav02",[501.1032],0)
 		CreateCreature("bsslav02",[363.1148],12)
+		SetInterrupt(TRUE)
+        Continue()
+END
+IF
+	DifficultyGT(NORMAL)
+	GlobalGT("bsSlaversAttack","MYAREA",0)
+	Global("bsCreateSlavers","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
 		CreateCreature("bsslav02",[439.1220],10)
 		CreateCreature("bsslav03",[536.1159],2)
+		SetInterrupt(TRUE)
+        Continue()
+END
+IF
+	DifficultyGT(HARD)
+	GlobalGT("bsSlaversAttack","MYAREA",0)
+	Global("bsCreateSlavers","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
 		CreateCreature("bsslav03",[618.1122],8)
+		SetInterrupt(TRUE)
+        Continue()
 END
-
-/* slaver dead: PC does no longer work with smugglers, either */
 IF
-	Global("bsWorkingWithSmugglers","GLOBAL",1)
-	Dead("bsslav01")
+	GlobalGT("bsSlaversAttack","MYAREA",0)
+	Global("bsCreateSlavers","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
+		SetInterrupt(FALSE)
+		SetGlobal("bsCreateSlavers","MYAREA",1)
+		SetInterrupt(TRUE)
 END
 
-/* in case Leonhard was killed before he could foreward the gold, Shuck's brother will not be freed */
-IF
-	Global("bsShucksBrother","GLOBAL",4)
-	Dead("bsslav01")
-THEN
-	RESPONSE #100
-		EraseJournalEntry(@807)
-		EraseJournalEntry(@809)
-		EraseJournalEntry(@813)
-		AddJournalEntry(@810,QUEST_DONE)
-		SetGlobal("bsShucksBrother","GLOBAL",40)
-END
-
+/* spawn "Leonhard the Fierce" */
 IF
 	Global("bsCreateTraderContact","MYAREA",0)
 THEN
@@ -88,6 +109,7 @@ THEN
 END
 
 IF
+	!StateCheck("bstq004",CD_STATE_NOTVALID)
 	Global("bsCreateAnotherRabbit","MYAREA",1)
 THEN
 	RESPONSE #100
@@ -111,4 +133,66 @@ THEN
 		ActionOverride("bstq004",EscapeArea())
 		ActionOverride("bsroryn",EscapeArea())
 		SetGlobal("bsRabbitQuest","GLOBAL",3)
+END
+
+/* in case Leonhard was killed before he could foreward the gold, Shuck's brother will not be freed */
+IF
+	Global("bsShucksBrother","GLOBAL",4)
+	Dead("bsslav01")
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@807)
+		EraseJournalEntry(@809)
+		EraseJournalEntry(@813)
+		AddJournalEntry(@810,QUEST_DONE)
+		SetGlobal("bsShucksBrother","GLOBAL",40)
+END
+
+/* in case Leonhard was killed out of the blue (not via dialogue) - sort journal entries and variables */
+IF
+	Global("bsSlaversAttack","MYAREA",2)
+	!Global("bsShucksBrother","GLOBAL",4)
+	Dead("bsslav01")
+	Global("bsSlaverQuest","GLOBAL",3)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@840)
+		AddJournalEntry(@841,QUEST_DONE)
+		SetGlobal("bsSlaverQuest","GLOBAL",51)
+END
+IF
+	Global("bsSlaversAttack","MYAREA",2)
+	!Global("bsShucksBrother","GLOBAL",4)
+	Dead("bsslav01")
+	Global("bsSlaverQuest","GLOBAL",5)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@847)
+		AddJournalEntry(@848,QUEST_DONE)
+		SetGlobal("bsSlaverQuest","GLOBAL",12)
+END
+IF
+	Global("bsSlaversAttack","MYAREA",2)
+	!Global("bsShucksBrother","GLOBAL",4)
+	Dead("bsslav01")
+	Global("bsConfrontSlaveTraders","GLOBAL",8)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@849)
+		AddJournalEntry(@848,QUEST_DONE)
+		SetGlobal("bsSlaverQuest","GLOBAL",13)
+END
+
+/* PC cooperates with commander to convict slavers / killed Leonhard and has the notebook: journal entry */
+IF
+	Global("bs_JournalEntrySlavernote","MYAREA",0)
+	PartyHasItem("bssmq003")
+	OR(3)
+		Global("bsConfrontSlaveTraders","GLOBAL",2)
+		Global("bsConfrontSlaveTraders","GLOBAL",7)
+		Global("bsConfrontSlaveTraders","GLOBAL",8)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100164,QUEST)
+		SetGlobal("bs_JournalEntrySlavernote","MYAREA",1)
 END

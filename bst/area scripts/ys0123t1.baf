@@ -1,0 +1,26 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,10)
+	Global("bs_IlmaterMonasteryStronghold","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11088)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,10)
+	Global("bs_IlmaterMonasteryStronghold","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CreateCreatureImpassable("bsrsd08",[159.795],0)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,10)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007)
+END
+

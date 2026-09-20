@@ -19,6 +19,14 @@ THEN
 END
 
 IF
+	Global("bsBroughtBelladonna","GLOBAL",0)
+	!HasItem("MISC1I","Barrel02")
+THEN
+	RESPONSE #100
+		SetGlobal("bsBroughtBelladonna","GLOBAL",1)
+END
+
+IF
 	GlobalLT("bsFireElementQuest","GLOBAL",8)
 	Dead("bsfrelem")
 	GlobalGT("bsBarrelWithWater","GLOBAL",0)

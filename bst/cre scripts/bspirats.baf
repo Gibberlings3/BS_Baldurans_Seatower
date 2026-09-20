@@ -1,0 +1,17 @@
+
+
+/* after transformation of squirrel pirate */
+IF
+	Global("bs_ti_SquirrelQuest","GLOBAL",6)
+	AreaCheck("bs0160")
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetName(@124)
+        MoveToPoint([754.1595])
+        Wait(1)
+        JumpToPoint([754.1595])
+        MoveToPoint([754.1595])
+		SetGlobal("bs_ti_SquirrelQuest","GLOBAL",7)
+        SetInterrupt(TRUE)
+END

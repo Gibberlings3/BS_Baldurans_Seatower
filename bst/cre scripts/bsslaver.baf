@@ -29,3 +29,19 @@ THEN
 		SetGlobal("bsSlaversHostile","MYAREA",1)
 		Enemy()
 END
+
+/* despawn contacts at Wyrm's Crossing if it is day */
+IF
+	OR(3)
+		Global("bsConfrontSlaveTraders","GLOBAL",4)
+		Global("bsConfrontSlaveTraders","GLOBAL",7)
+		Global("bsSlaverQuest","GLOBAL",4)
+	!Global("bsConfrontSlaveTraders","GLOBAL",3)
+	TimeOfDay(DAY)
+	AreaCheck("%WyrmsCrossing%")
+THEN
+	RESPONSE #100
+		SetGlobal("bsPlaceSlavers","MYAREA",0)
+		DestroySelf()
+
+END

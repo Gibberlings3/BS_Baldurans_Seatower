@@ -1,0 +1,79 @@
+// Check for: Group is near the door
+/*
+IF
+	Global("bs_IsOverMeVisible","MYAREA",0)
+	OR(2)
+		IsOverMe([ANYONE])
+		Entered([ANYONE])
+    !StateCheck(LastTrigger,STATE_INVISIBLE)
+    !StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+    !Name("bssmgl16",LastTrigger)
+    Global("bsSmugglerQuest","GLOBAL",13)
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PCIsSeen","MYAREA",1)
+		SetGlobal("bs_IsOverMeVisible","MYAREA",1)
+END
+
+IF
+	Global("bs_IsOverMeVisible","MYAREA",1)
+	!IsOverMe([ANYONE])
+	!Entered([ANYONE])
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PCIsSeen","MYAREA",-1)
+		SetGlobal("bs_IsOverMeVisible","MYAREA",0)
+END
+
+IF
+	Global("bs_IsOverMeVisible","MYAREA",1)
+	OR(2)
+		IsOverMe([ANYONE])
+		Entered([ANYONE])
+    OR(2)
+		StateCheck(LastTrigger,STATE_INVISIBLE)
+		StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+    !Name("bssmgl16",LastTrigger)
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PCIsSeen","MYAREA",-1)
+		SetGlobal("bs_IsOverMeVisible","MYAREA",0)
+END
+*/
+IF
+	Global("bs_IsOverMeVisible","MYAREA",0)
+	OR(2)
+		IsOverMe([PC])
+		Entered([PC])
+    !StateCheck(LastTrigger,STATE_INVISIBLE)
+    !StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+    Global("bsSmugglerQuest","GLOBAL",13)
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PCIsSeen","MYAREA",1)
+		SetGlobal("bs_IsOverMeVisible","MYAREA",1)
+END
+
+IF
+	Global("bs_IsOverMeVisible","MYAREA",1)
+	!IsOverMe([PC])
+	!Entered([PC])
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PCIsSeen","MYAREA",-1)
+		SetGlobal("bs_IsOverMeVisible","MYAREA",0)
+END
+
+IF
+	Global("bs_IsOverMeVisible","MYAREA",1)
+	OR(2)
+		IsOverMe([PC])
+		Entered([PC])
+    OR(2)
+		StateCheck(LastTrigger,STATE_INVISIBLE)
+		StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PCIsSeen","MYAREA",-1)
+		SetGlobal("bs_IsOverMeVisible","MYAREA",0)
+END

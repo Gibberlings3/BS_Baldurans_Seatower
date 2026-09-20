@@ -1,0 +1,9 @@
+
+
+IF
+	AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	GlobalGT("bs_CityKnowsBSTDoppel","GLOBAL",0)
+THEN
+    RESPONSE #100
+        DestroySelf()
+END

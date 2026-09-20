@@ -1,0 +1,21 @@
+/* Biff Easter Egg is triggered: Dryad vanishes in case she was still there (also if dead) */
+
+/* prevent spawning of Dryad if Biff was already encountered */
+IF
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Global("bsSpawnDryad","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnDryad","MYAREA",2)
+END
+
+
+/* Dryad vanishes if Biff was already encountered */
+IF
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Exists("bsdryada")
+THEN
+	RESPONSE #100
+		SetGlobal("bsDryadWater","GLOBAL",3)
+		ActionOverride("bsdryada",DestroySelf())
+END

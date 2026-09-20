@@ -1,0 +1,8 @@
+IF
+	Global("bs_PlaceEvidence_JAP","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_PlaceEvidence_JAP","MYAREA",1)
+		ActionOverride("Container 1",CreateItem("bspris6b",0,0,0))
+		Continue()
+END

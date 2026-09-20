@@ -1,0 +1,10 @@
+
+
+//place proclamation into container
+IF
+	Global("bs_Container08ItemSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container 8",CreateItem("bsproclm",1,0,0)
+		SetGlobal("bs_Container08ItemSpawn","MYAREA",1)
+END

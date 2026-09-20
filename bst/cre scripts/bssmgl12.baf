@@ -1,0 +1,32 @@
+
+IF 
+	Allegiance(Myself,NEUTRAL)
+	OR(5)
+		Allegiance("bssmgl13",ENEMY)
+		Dead("bssmgl13")
+		HitBy([PC],CRUSHING)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		Global("bsSmugglerQuest","GLOBAL",8)
+THEN
+	RESPONSE #100
+		ActionOverride("bssmgl13",Enemy())
+		Enemy()
+END
+
+IF
+	Global("bs_SpawnFFAfterNM","MYAREA",3)
+	AreaCheck("%NashkelCarnival%")
+THEN
+	RESPONSE #100
+		ActionOverride("bssmgl13",EscapeAreaDestroy(5))
+		SetGlobal("bs_SpawnFFAfterNM","MYAREA",4)
+		EscapeAreaDestroy(5)
+END
+
+IF
+	See([PC])
+	Global("bs_SpawnFFAfterNM","MYAREA",1)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END

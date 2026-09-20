@@ -1,0 +1,20 @@
+IF 
+	Allegiance(Myself,NEUTRAL)
+	OR(5)
+		Allegiance("bssmgl10",ENEMY)
+		Dead("bssmgl10")
+		HitBy([PC],CRUSHING)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		GlobalGT("bs_NightMasksAttack","MYAREA",0)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	GlobalGT("bsSmugglerQuest","GLOBAL",49)
+
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

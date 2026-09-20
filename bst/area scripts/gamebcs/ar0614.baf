@@ -1,0 +1,12 @@
+/* Create Amnian Spy */
+IF
+	OR(2)
+		Global("bs_PrisonAmnishSpy","GLOBAL",10)
+		Global("bs_PrisonAmnishSpy","GLOBAL",2)
+	!Dead("bspris02")
+THEN
+	RESPONSE #100
+		IncrementGlobal("bs_PrisonAmnishSpy","GLOBAL",2)
+		CreateCreature("bspris02",[1076.492],3)
+		Continue()
+END

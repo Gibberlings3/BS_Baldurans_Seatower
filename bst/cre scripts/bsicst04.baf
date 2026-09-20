@@ -1,0 +1,45 @@
+/* override script of castaway leader, bs0101 Old Temple Island */
+
+IF
+    Heard([ANYONE],99)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        DisplayStringHead(Myself,@11125) //~You won't go around attacking people!~
+        Enemy()
+        MoveToObject(LastHeardBy(Myself))
+        SetInterrupt(TRUE)
+END
+
+/* Confrontation with Fomthard */
+
+/* timer still runs - player came up after Fomthard */
+IF
+    Range([PC],15)
+    Global("bs_ChangeOfLeadership","GLOBAL",3)
+    !RealGlobalTimerExpired("bs_ChangeOfLeadershipTimer","GLOBAL")
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateCreatureObjectOffset("bsicst02",Myself,[-10.-10])
+        ActionOverride("bsicst02",FaceObject(Myself))
+        ActionOverride("bsicst02",Attack(Myself))
+        SetGlobal("bs_ChangeOfLeadership","GLOBAL",4)
+        Kill(Myself)
+        SetInterrupt(TRUE)
+END
+
+/* timer run out - player followed too slow */
+IF
+    !Range([PC],15)
+    Global("bs_ChangeOfLeadership","GLOBAL",3)
+    RealGlobalTimerExpired("bs_ChangeOfLeadershipTimer","GLOBAL")
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateCreatureObjectOffset("bsicst02",Myself,[-10.-10])
+        SetGlobal("bs_ChangeOfLeadership","GLOBAL",4)
+        Kill(Myself)
+        SetInterrupt(TRUE)
+END

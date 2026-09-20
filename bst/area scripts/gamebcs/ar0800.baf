@@ -1,0 +1,20 @@
+// Tailor advertisement
+
+IF
+	Global("bsCreatebsnoba_d","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCreatebsnoba_d","MYAREA",1)
+		CreateCreature("bsnoba_d",[2467.1180],0)
+		Continue()
+END
+
+
+//place proclamation into container
+IF
+	Global("bs_Container03ItemSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container 3",CreateItem("bsproclm",1,0,0)
+		SetGlobal("bs_Container03ItemSpawn","MYAREA",1)
+END

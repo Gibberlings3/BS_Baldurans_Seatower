@@ -1,0 +1,37 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~Oh! Wo kommt Ihr denn her? Ich … ich habe bloß die großartigen Steinarbeiten dieser Mauern bewundert. Ich habe nichts anderes getan. Ich meine, warum sonst sollte ich Steine berühren? Dann werde ich mal gehen.~
+@1 = ~Oh, da IST ein Brief! Ich dachte, er sei weg … Ahem, einen schönen Tag für Euch, lieb<PRO_SIRMAAM>.~
+@2 = ~Oh, er hat nicht geantwortet … Mein Brief ist weg, also muss er ihn mitgenommen haben. Es war so ein gutes Versteck. Aber keine Antwort …~
+@3 = ~Ich muss um Verzeihung bitten. Ich habe Euren Brief genommen, ohne mir über die Konsequenzen im Klaren zu sein.~
+@4 = ~Ich muss um Verzeihung bitten. Ich habe Eure Korrespondenz genommen, ohne mir über die Konsequenzen im Klaren zu sein.~
+@5 = ~Es war ein schlechtes Versteck. Ich habe Euren Briefwechsel gefunden.~
+@6 = ~Ups, ich wusste, ich hätte es nicht nehmen sollen.~
+@7 = ~Vielleicht, wisst Ihr, wurde der Brief auf andere Weise entfernt? Jemand hat ihn gefunden, eine Maus hat ihn für ihr Nest benutzt … so etwas in der Art.~
+@8 = ~Der Brief ist also weg. Was solls? Geht und kämpft um Eure Liebe, Mädchen! Lasst Euch nicht beiseiteschieben, ohne es von ihm persönlich zu hören!~
+@9 = ~Oh, ja. Ich bin sicher, er hat Euch völlig vergessen. Das muss der einzige Grund für eine fehlende Antwort sein, die Anzeichen sind offensichtlich.~
+@10 = ~Nein, ich habe Euren kostbaren Brief genommen. Was wäre er Euch wert, hmm?~
+@11 = ~Das ist mir völlig egal. Ich werde mich verabschieden.~
+@12 = ~Ihr?~
+@13 = ~Ja. Hier, nehmt ihn zurück, zusammen mit meiner Entschuldigung.~
+@14 = ~Ja, das habe ich, aber ich kann sie nicht zurückgeben. Ich bitte um Verzeihung.~
+@15 = ~Und ich habe das sehr geschätzt. Wisst Ihr, als Abenteurer weiß man nie, wann man mal hinter die Büsche gehen muss.~
+@16 = ~Ja, und sie sind weg. Am besten, Ihr verschwindet auch.~
+@17 = ~Nun, sagen wir, ich hätte Euren kostbaren Brief. Was wäre er Euch wert, hmm?~
+@18 = ~Ihr … Ihr denkt …~
+@19 = ~Eigentlich war ich es, der Euren Briefwechsel genommen hat. Ich bitte um Verzeihung. Hier, nehmt ihn zurück.~
+@20 = ~Eigentlich war ich es, der Eure Korrespondenz genommen hat, aber ich kann sie nicht zurückgeben. Ich bitte um Verzeihung dafür.~
+@21 = ~Ich glaube, dass Ihr nicht zu viel in einen fehlenden Buchstaben hineininterpretieren, sondern nach Gewissheit suchen solltet.~
+@22 = ~Wenn es keinen Brief gibt, obwohl dies Euer versteckter Ort für Nachrichten ist, dann ist er vermutlich nicht sooo an Euch interessiert ist.~
+@23 = ~Nein, ich habe Euren kostbaren Brief genommen, und nun ist er weg. Am besten, Ihr verschwindet auch.~
+@24 = ~Dieses Gespräch hat lange genug gedauert. Ich werde mich verabschieden.~
+@25 = ~Das ist … das ist … ekelhaft … Lasst mich in Ruhe, Ihr Rohling!~
+@26 = ~Ich … ich muss zu ihm gehen, so-fort!~
+@27 = ~Oh nein, das habe ich befürchtet!~
+@28 = ~Nun, danke … denke ich. Hm, das geheime Versteck war doch nicht so geheim.~
+@29 = ~Ihr … Ihr seid so ein Rohling!~
+@30 = ~Ihr … Ihr seid so ein Rohling! Gut, dann nimm DAS im Austausch.~
+@31 = ~Bah. Unhöflich!~

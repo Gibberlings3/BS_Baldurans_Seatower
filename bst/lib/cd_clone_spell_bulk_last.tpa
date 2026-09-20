@@ -1,0 +1,102 @@
+/////                                                  \\\\\
+///// cd_clone_spell_bulk_last                         \\\\\
+/////                                                  \\\\\
+
+/*
+
+see notes in cd_clone_spell_bulk_first.tpa
+
+used:
+  P&P Celestials, as celestials/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
+  G3 Community Item Pack as g3cip/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
+
+platform:
+  bg2-based engines
+ 
+version history: 
+  unknown
+
+*/
+
+// first section: basically anything that removes/blocks the original spell should also remove/block the cloned innate.
+// basically: any time cd_clone_spell was invoked, an entry was made into the array cd_clone_spell_array. Now we look for
+// any block/remove (ops 206, 207, 226, 318, 321, 324) of the original and duplicate them into the same for the cloned
+// asset. We exclude both the original and cloned spell files from this check, as they were handled directly by the macro.
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+                          ~^.+\.itm$~ ~override~
+                          ~^.+\.spl$~ ~override~
+  READ_ASCII 0x00 type (3)
+  SET min_size = 0
+  PATCH_IF ("%type%" STRING_COMPARE_CASE "spl" = 0) BEGIN
+    READ_LONG  0x64 abil_off ELSE 0
+    READ_SHORT 0x68 abil_num ELSE 0
+    READ_LONG  0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x28
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    READ_SHORT 0x6e abil_fx_idx ELSE 0 // index for global loop
+  END ELSE
+  PATCH_IF ("%type%" STRING_COMPARE_CASE "itm" = 0) BEGIN
+    READ_LONG  0x64 abil_off ELSE 0
+    READ_SHORT 0x68 abil_num ELSE 0
+    READ_LONG  0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x38
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    READ_SHORT 0x6e abil_fx_idx ELSE 0 // index for global loop
+  END ELSE
+  PATCH_IF ("%type%" STRING_COMPARE_CASE "cre" = 0) BEGIN
+    READ_LONG  0x2c4 fx_off ELSE 0
+    READ_BYTE 0x33 fx_type ELSE 2
+    SET abil_off       = 0
+    SET abil_num       = 0
+    SET counter_offset = 0x2c8
+    SET abil_length    = 0
+    SET min_size       = 0x2d4
+    SET abil_fx_idx    = 0 // index for global loop
+  END ELSE BEGIN
+    PATCH_PRINT ~Warning: file type not recognized (%type%) on %SOURCE_FILE% in cd_clone_spell wrapup regexp copy~
+  END
+  PATCH_IF ((SOURCE_SIZE >= min_size) AND (min_size != 0)) BEGIN // min_size must get set by file type detection
+    SET new_fx = 0
+    FOR (index = "-1" ; index < abil_num ; ++index) BEGIN
+      PATCH_IF (index >= 0) BEGIN // on global loop, idx set in file type check, otherwise adjust & read in adjusted value
+        SET counter_offset = (abil_off + 0x1e + (abil_length * index))      // point to abil_fx_num offset
+        WRITE_SHORT (abil_off + 0x20 + (abil_length * index)) THIS + new_fx // adjust for effects already added
+        READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx   // read in new and correct idx
+      END
+      READ_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+      FOR (index2 = 0 ; index2 < counter ; ++index2) BEGIN
+        READ_SHORT (fx_off        + (0x08 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) opcode
+        PATCH_IF ((opcode = 206) OR (opcode = 207) OR (opcode = 266) OR (opcode = 318) OR (opcode = 321) OR (opcode = 324)) BEGIN
+          READ_ASCII (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) resref
+          PATCH_PHP_EACH cd_clone_spell_array AS clone => orig BEGIN
+            PATCH_IF (("%resref%" STRING_COMPARE_CASE "%orig%" = 0) AND ("%SOURCE_RES%" STRING_COMPARE_CASE "%orig%") AND ("%SOURCE_RES%" STRING_COMPARE_CASE "%clone%")) BEGIN
+              READ_ASCII     (fx_off +                           ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) template ((0x30 + (0xd8 * fx_type))) // read whole effect into a template
+              INSERT_BYTES   (fx_off +                           ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) (0x30 + (0xd8 * fx_type))            // insert new effect
+                WRITE_ASCIIE (fx_off +                           ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) "%template%"                         // insert data from template
+                WRITE_ASCIIE (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) ~%clone%~ #8                         // but point to cloned resource instead
+              SET new_fx  += 1
+              SET counter += 1
+              SET index2  += 1
+//PATCH_PRINT ~ == cloned effect for %clone% (from %orig%) on %SOURCE_FILE% (via op %opcode%)~ // uncomment for debugging
+            END // resref = orig check
+          END // patch_php_each
+        END // end opcode check
+      END // abil_fx loop
+      WRITE_SHORT counter_offset counter
+    END // ability loop
+    PATCH_IF (("%type%" STRING_COMPARE_CASE "cre" = 0) AND (new_fx > 0)) BEGIN // fix offsets for cre files if fx inserted
+      PATCH_FOR_EACH offset IN 0x2a0 0x2a8 0x2b0 0x2b8 0x2bc BEGIN
+        READ_LONG offset curr_off
+        PATCH_IF (fx_off < curr_off) BEGIN
+          WRITE_LONG offset (THIS + ((0x30 + (0xd8 * fx_type)) * new_fx))
+        END
+      END
+    END
+  END // end file size check
+  BUT_ONLY

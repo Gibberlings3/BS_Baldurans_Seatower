@@ -1,0 +1,12 @@
+/* Fire elementals despawn if Biff was met */
+IF
+	AreaCheck("bsb130")
+	GlobalGT("bsBiffEasterEgg","GLOBAL",0)
+	Global("bs_ByeByeBiff","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bs_ByeByeBiff","LOCALS",1)
+		DestroySelf()
+		SetInterrupt(TRUE)
+END

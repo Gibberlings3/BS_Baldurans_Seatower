@@ -1,0 +1,292 @@
+/* group came from arena bs0104 - reset defense system */
+IF
+    InMyArea(Player1)
+    GlobalGT("bs_i_PortalRoomActivated","GLOBAL",0)
+    GlobalLT("bs_i_PortalRoomActivated","GLOBAL",4)
+THEN
+	RESPONSE #100
+        SetGlobal("bs_i_PortalRoomActivated","GLOBAL",0)
+END
+
+/* spawn more sahuagin as guard of baron Frohklto - Acifer */
+IF
+    Global("bs0101_spawn_sahuagin01","MYAREA",0)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg4",[1743.1826],9)
+        CreateCreature("bsisagg4",[1871.1704],9)
+        CreateCreature("bsisagg4",[1251.1606],11)
+        CreateCreature("bsisagg4",[1664.1344],3)  
+        CreateCreature("bsisagg4",[1479.1694],11)
+        CreateCreature("bsisagg4",[1736.1572],4)              
+        SetGlobal("bs0101_spawn_sahuagin01","MYAREA",1)
+END
+
+/* spawn more sahuagin when fighting the baron Frohklto - Acifer */
+IF
+    Global("bs0101_spawn_sahuagin02","MYAREA",1)
+    DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg3",[937.1430],10)
+        CreateCreature("bsisagg3",[936.1485],10)
+        CreateCreature("bsisagg3",[968.1533],10)
+        SetGlobal("bs0101_spawn_sahuagin02","MYAREA",2)
+END
+
+/* spawn even more sahuagin when fighting the baron Frohklto - Acifer */
+IF
+    Global("bs0101_spawn_sahuagin02","MYAREA",2)
+    //DifficultyGT(EASY)
+    LevelPartyGT(6)
+THEN
+	RESPONSE #100
+        CreateCreature("bsisagg3",[1400.1009],0)
+        CreateCreature("bsisagg3",[1371.1049],0)
+        SetGlobal("bs0101_spawn_sahuagin02","MYAREA",3)
+END
+
+/* journal entries, in case player attacked the waiting rebel baron outside of dialogue */
+IF
+    !Dead("bsisagb1")
+    !Dead("bsisagp1")
+    Dead("bsisagr1")
+    GlobalGT("bs_RebelDeal","GLOBAL",0)
+    !GlobalGT("bs_BaronDeal","GLOBAL",0)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@965)
+        EraseJournalEntry(@969)
+        AddJournalEntry(@964,QUEST)
+        SetGlobal("bs_RebelDeal","GLOBAL",-1)
+END
+IF
+    !Dead("bsisagb1")
+    !Dead("bsisagp1")
+    Dead("bsisagr1")
+    GlobalGT("bs_RebelDeal","GLOBAL",0)
+    GlobalGT("bs_BaronDeal","GLOBAL",0)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@964)
+        EraseJournalEntry(@965)
+        EraseJournalEntry(@969)
+        AddJournalEntry(@966,QUEST)
+        SetGlobal("bs_RebelDeal","GLOBAL",-1)
+END
+/* journal entries for both dead */
+IF
+    Dead("bsisagb1")
+    Dead("bsisagr1")
+    Global("bs_JournalBaronsDead","MYAREA",0)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@963)
+        EraseJournalEntry(@964)
+        EraseJournalEntry(@965)
+        EraseJournalEntry(@966)
+        EraseJournalEntry(@967)
+        EraseJournalEntry(@968)
+        EraseJournalEntry(@969)
+        EraseJournalEntry(@100007)
+        SetGlobal("bs_JournalBaronsDead","MYAREA",1)
+END
+
+/* secret passage: altar bulged after one stone */
+IF
+    Global("bs_SecretPassageMechanism","MYAREA",0)
+    HasItem("bsistone","Altar01")
+THEN
+  RESPONSE #100
+        DisplayStringHead("bs0101t1",@11113)
+        AddJournalEntry(@100002,QUEST) //Hidden Mechanism in the Chapel's Altar?
+        SetGlobal("bs_SecretPassageMechanism","MYAREA",1)
+END
+
+/* secret passage opened */
+/* did not hear about passage from Old Hermit */
+IF
+    Global("bs_SecretPassageOpen","GLOBAL",0)
+    NumItemsGT("bsistone","Altar01",1)
+THEN
+  RESPONSE #100
+        PlaySound("AMB_D04A")
+        EraseJournalEntry(@100002)
+        AddJournalEntry(@100004,QUEST_DONE)
+        AddexperienceParty(100)
+        DisplayStringHead("bs0101t1",@11108)
+		TriggerActivation("bs0101t1",FALSE)
+		TriggerActivation("travbs0104",TRUE)
+        SetGlobal("bs_SecretPassageOpen","GLOBAL",2)
+END
+/* did hear about passage from Old Hermit */
+IF
+    Global("bs_SecretPassageOpen","GLOBAL",1)
+    NumItemsGT("bsistone","Altar01",1)
+THEN
+  RESPONSE #100
+        PlaySound("AMB_D04A")
+        EraseJournalEntry(@100002)
+        AddJournalEntry(@100004,QUEST_DONE)
+        AddexperienceParty(100)
+        EraseJournalEntry(@100001)
+        AddJournalEntry(@100003,QUEST)
+        DisplayStringHead("bs0101t1",@11108)
+		TriggerActivation("bs0101t1",FALSE)
+		TriggerActivation("travbs0104",TRUE)
+        SetGlobal("bs_SecretPassageOpen","GLOBAL",3)
+END
+
+/* open secret door */
+IF
+    Global("bs_SolvedDoorRiddle","MYAREA",5)
+THEN
+  RESPONSE #100
+        SetInterrupt(FALSE)
+        Unlock("Door01" )
+        OpenDoor("Door01")
+        EraseJournalEntry(@100068)
+        EraseJournalEntry(@100069)
+        EraseJournalEntry(@100082)
+        AddJournalEntry(@100070,QUEST_DONE)
+        SetGlobal("bs_SolvedDoorRiddle","MYAREA",6)
+        SetInterrupt(TRUE)
+END
+
+/* spawn Priest of Valkur */
+IF
+    Global("bs_PriestSpawn","MYAREA",0)
+THEN
+    RESPONSE #100
+        CreateCreature("bsitrnpr",[2443.1543],15)
+        SetGlobal("bs_PriestSpawn","MYAREA",1)
+END
+
+/* put items into barrels */
+IF
+	Global("bs_Barrel01ItemSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Crate01",CreateItem("potn08",1,0,0)
+		ActionOverride("Crate01",CreateItem("potn17",1,0,0)
+		ActionOverride("Barrel01",CreateItem("misc07",735,0,0)
+		ActionOverride("Barrel01",CreateItem("potn10",3,0,0)
+		ActionOverride("Barrel01",CreateItem("potn34",1,0,0)
+		ActionOverride("Barrel01",CreateItem("amul11",1,0,0)
+		ActionOverride("Barrel02",CreateItem("misc07",5,0,0)
+		ActionOverride("Barrel03",CreateItem("misc07",1,0,0)
+		ActionOverride("Barrel03",CreateItem("potn08",1,0,0)
+		SetGlobal("bs_Barrel01ItemSpawn","MYAREA",1)
+END
+
+/* journal entries, in case Priest of Valkur died */
+IF
+    Dead("bsitrnpr")
+    Global("bs_LacedonQuest","MYAREA",1)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@1005)
+        EraseJournalEntry(@1006)
+        AddJournalEntry(@100043,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_LacedonQuest","MYAREA",98)
+END
+
+/* journal entry, in case neutral Lacedons were killed */
+IF
+    Dead("bsilcdn2")
+    NumDeadGT("bsilcdn1",1)
+    Global("bs_LacedonQuest","MYAREA",1)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@1005)
+        EraseJournalEntry(@1006)
+        AddJournalEntry(@100044,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_LacedonQuest","MYAREA",99)
+END
+
+/* journal entry in case redeemed pirate was killed */
+IF
+    Dead("bsilcdn2")
+    Global("bs_LacedonQuest","MYAREA",4)
+
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100035)
+        AddJournalEntry(@100045,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_LacedonQuest","MYAREA",99)
+END
+
+
+/* journal entry in case Diddy was killed */
+IF
+    Dead("bsicst10")
+    GlobalGT("bs_DiddysDagger","MYAREA",0)
+    GlobalLT("bs_DiddysDagger","MYAREA",3)
+
+THEN
+    RESPONSE #100
+        TriggerActivation("bs0101tA",FALSE)
+        EraseJournalEntry(@100019)
+        EraseJournalEntry(@100020)
+        AddJournalEntry(@100022,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_DiddysDagger","MYAREA",99)
+END
+
+/* journal entry in case quartermaster is dead */
+//Water for the Castaways
+IF
+    Dead("bsicst05")
+    Global("bs_WaterQuest","MYAREA",2)
+    GlobalLT("bs_ReceivedWater","MYAREA",1000)
+
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100014)
+        EraseJournalEntry(@100015)
+        EraseJournalEntry(@100016)
+        AddJournalEntry(@100047,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_ReceivedWater","MYAREA",1000)
+END
+
+/* journal entry in case quartermaster is dead */
+//Water for the Castaways
+IF
+    Dead("bsicst05")
+    Global("bs_WaterQuest","MYAREA",2)
+    Global("bs_WaterholeIsBlocked","GLOBAL",0)
+
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100009)
+        EraseJournalEntry(@100010)
+        AddJournalEntry(@100046,QUEST_DONE)
+        AddexperienceParty(100)
+        SetGlobal("bs_WaterQuest","MYAREA",99)
+END
+
+/* PC found door riddle. Journal handling */
+/* GLOBAL variable so no journal entry is set if note of hermit is found later */
+IF
+    Global("bs_i_HiddenDoorOpened","GLOBAL",1)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100068)
+        AddJournalEntry(@100069,QUEST)
+        SetGlobal("bs_i_HiddenDoorOpened","GLOBAL",2)
+END
+
+/* journal entry: PC found Suth Wood */
+IF
+    Global("bs_FletchersStaff","GLOBAL",1)
+    PartyHasItem("bssuthwd")
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100167)
+		AddJournalEntry(@100168,QUEST)
+		SetGlobal("bs_FletchersStaff","GLOBAL",2)
+END

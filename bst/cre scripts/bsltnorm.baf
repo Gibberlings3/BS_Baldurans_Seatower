@@ -1,0 +1,7 @@
+/* script to toggle difficulty */
+IF
+	DifficultyLT(NORMAL)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

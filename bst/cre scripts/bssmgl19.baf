@@ -1,0 +1,21 @@
+/* override script of Seatower Sergeant (5th smuggler quest) */
+
+/* initiate dialogue */
+IF
+    See([PC])
+    NumberOfTimesTalkedTo(0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        StartDialogNoSet([PC])
+END
+
+IF
+    GlobalGT("bsSmugglerQuest","GLOBAL",24)
+THEN
+    RESPONSE #100
+        ActionOverride("bssmgl20",EscapeAreaDestroy(5))
+        EscapeAreaDestroy(5)
+END
+

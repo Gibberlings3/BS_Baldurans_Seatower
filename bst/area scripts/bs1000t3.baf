@@ -16,15 +16,16 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		ClearAllActions()
 		StartCutSceneMode()
 		DisplayStringHead(Myself,@11025)
 		SetGlobal("bsReleaseFireElement","MYAREA",1)
 		TakePartyItem("bsbarrl4")
 		DestroyItem("bsbarrl4")
 		GiveItemCreate("bsbarrl3",[PC],0,0,0)
-        	FadeToColor([20.0],0)
-        	Wait(3)
-        	FadeFromColor([20.0],0)
+		FadeToColor([20.0],0)
+		Wait(3)
+		FadeFromColor([20.0],0)
 		EraseJournalEntry(@901)
 		EraseJournalEntry(@904)
 		EraseJournalEntry(@906)
@@ -32,7 +33,7 @@ THEN
 		AddexperienceParty(1000)
 		AddJournalEntry(@902,QUEST_DONE)
 		SetGlobal("bsFireElementQuest","GLOBAL",10)
-		EndcutSceneMode()
+		EndCutSceneMode()
 		SetInterrupt(TRUE)
 END
 
@@ -41,5 +42,5 @@ IF
 	!Range(LastTrigger,15)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Player1,@11007)
+		DisplayStringHead(Myself,@11007)
 END

@@ -1,0 +1,28 @@
+/* lense despawns if Biff was already encountered */
+IF
+	HasItem("bslense1","Shelf01")
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Global("bsSpawnLens","MYAREA",1)
+THEN
+  RESPONSE #100
+		ActionOverride("Shelf01",DestroyItem("bslense1"))
+		SetGlobal("bsSpawnLens","MYAREA",2)
+END
+
+/* prevent lense from spawning at all if Biff was already met */
+IF
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Global("bsSpawnLens","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnLens","MYAREA",2)
+END
+
+/* prevent spiders from spawning at all if Biff was already met */
+IF
+	GlobalGT("bsBiffEasterEgg","GLOBAL",1)
+	Global("bsSpawnSpiders","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bsSpawnSpiders","MYAREA",2)
+END

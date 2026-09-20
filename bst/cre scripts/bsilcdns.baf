@@ -1,0 +1,54 @@
+/* general Lacedon script (Old Temple Island) - for neutral Lacedons */
+/* normal Lacedons: turn hostile if the higher lacedon gets attacked */
+IF
+    InMyArea("bsilcdn2")
+    OR(2)
+        Dead("bsilcdn2")
+        Allegiance("bsilcdn2",ENEMY)
+    Allegiance(Myself,NEUTRAL)
+    Name("bsilcdn3",Myself)
+THEN
+    RESPONSE #100
+        Enemy()
+        MoveToObject("bsilcdn2")
+END
+
+/* higher Lacedon: turn hostile if normal (neutral) lacedons gets attacked */
+IF
+    InMyArea("bsilcdn3")
+    OR(2)
+        Dead("bsilcdn3")
+        Allegiance("bsilcdn3",ENEMY)
+    Allegiance(Myself,NEUTRAL)
+    Name("bsilcdn2",Myself)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+/* All Lacedons transform into Pirates */
+IF
+
+    Global("bs_LacedonQuest","MYAREA",3)
+    Global("bs_LacedonTransformation","LOCALS",0)
+THEN
+    RESPONSE #100
+        ChangeEnemyAlly(Myself,NEUTRAL)
+        Polymorph(PIRATE)
+        SetPlayerSound(Myself,-1,SELECT_COMMON1)
+        SetPlayerSound(Myself,12354,DAMAGE)
+        SetPlayerSound(Myself,12348,DAMAGE)
+        SetName(@124)
+        SetGlobal("bs_LacedonTransformation","LOCALS",1)
+END
+
+IF
+
+    Global("bs_LacedonQuest","MYAREA",3)
+    Global("bs_LacedonTransformation","LOCALS",1)
+    Name("bsilcdn1",Myself)
+THEN
+    RESPONSE #100
+        SetDialog("bsilcdn3")
+        SetGlobal("bs_LacedonTransformation","LOCALS",2)
+END

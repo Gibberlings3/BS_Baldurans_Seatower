@@ -1,0 +1,94 @@
+/* always bad weather on this isle */
+
+/*
+IF
+  Global("bs_StormWheather","MYAREA",0)
+THEN
+  RESPONSE #100
+    Weather(RAIN)
+    SetGlobal("bs_StormWheather","MYAREA",1)
+END
+*/
+IF
+    OnCreation()
+THEN
+    RESPONSE #100
+        Weather(RAIN)
+END
+
+/* deactivate travel trigger to Sea Cave */
+IF
+	!PartyHasItem("bsitooth")
+	!Global("bsCloseTempleIslandExit","MYAREA",1)
+THEN
+	RESPONSE #100
+		TriggerActivation("travys0200",FALSE)
+		TriggerActivation("bs0160t1",TRUE)
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",1)
+END
+
+/* activate squirrel: after hermit got her notebook back (or she is dead). This is for quest stability reasons only */
+/* GlobalGT("bs_HermitQuests","GLOBAL",1) */
+/* deactivate before */
+IF
+	!Dead("BSPIRATS")
+    !Dead("bsihermi")
+	!GlobalGT("bs_HermitQuests","GLOBAL",1)
+	Global("bs_SquirrelShowsItself","MYAREA",0)
+THEN
+	RESPONSE #100
+		Deactivate("BSPIRATS")
+		SetGlobal("bs_SquirrelShowsItself","MYAREA",1)
+END
+/* activate after */
+IF
+	!Dead("BSPIRATS")
+	OR(2)
+        Dead("bsihermi")
+        GlobalGT("bs_HermitQuests","GLOBAL",1)
+    GlobalLT("bs_SquirrelShowsItself","MYAREA",2)
+THEN
+	RESPONSE #100
+        Activate("BSPIRATS")
+        SetGlobal("bs_SquirrelShowsItself","MYAREA",2)
+END
+
+/* activate travel trigger to Sea Cave */
+IF
+	PartyHasItem("bsitooth")
+	Global("bsCloseTempleIslandExit","MYAREA",2)
+THEN
+	RESPONSE #100
+		TriggerActivation("travys0200",TRUE)
+		TriggerActivation("bs0160t1",FALSE)
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",3)
+END
+
+/* Pirate reward and item exchange */
+IF
+	Global("bsTalkedToPirate","GLOBAL",3)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        ActionOverride("BSPIRCPT",TakePartyItem("bsihammr"))
+        ActionOverride("BSPIRCPT",DestroyItem("bsihammr"))
+        GiveItemCreate("ring13",Player1,2,0,0)
+        GiveItemCreate("ring19",Player1,1,0,0)
+        GiveItemCreate("misc39",Player1,2,0,0)
+        GiveGoldForce(862)
+        SetGlobal("bsTalkedToPirate","GLOBAL",4)
+        SetInterrupt(TRUE)
+END
+
+/* find some trinkets in Pile01 */
+IF
+    Global("bs_PlaceTrinketsPile01","MYAREA",0)
+THEN
+    RESPONSE #100
+		ActionOverride("Pile01",CreateItem("BOW05",0,0,0))
+		ActionOverride("Pile01",CreateItem("BLUN01",0,0,0))
+		ActionOverride("Pile01",CreateItem("AROW01",12,0,0))
+		ActionOverride("Pile01",CreateItem("SPER01",0,0,0))
+		ActionOverride("Pile01",CreateItem("MISC07",23,0,0))
+		SetGlobal("bs_PlaceTrinketsPile01","MYAREA",1)
+END

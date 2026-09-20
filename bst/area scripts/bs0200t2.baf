@@ -1,17 +1,59 @@
+/* First entry: something shimmers in the debth */
 IF
 	Clicked([ANYONE])
-//	Range(LastTrigger,15)
+	GlobalLT("bsCloseTempleIslandExit","MYAREA",2)
+	GlobalGT("bs_TempleIslandQuest","GLOBAL",-1)
+	GlobalLT("bs_TempleIslandQuest","GLOBAL",3)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself,@11012)
+		DisplayStringHead(Myself,@11091) //~The water in the pool is clear and deep blue. In the depths you can see a faint glow.~
 END
 
-/*
+/* Priestess of Umberlee was attacked and quest not taken */
 IF
 	Clicked([ANYONE])
-	!Range(LastTrigger,15)
+	GlobalLT("bsCloseTempleIslandExit","MYAREA",2)
+	Global("bs_TempleIslandQuest","GLOBAL",-1)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Player1,@11007)
+		DisplayStringHead(Myself,@11089) //~The water in the pool is clear and deep blue. You know now that the faint glow in the depths is an open portal where Sahuagin could emerge any time.~
 END
-*/
+
+/* quest was taken: give one warning before switching to travel trigger */
+IF
+	Clicked([ANYONE])
+	Global("bs_TempleIslandQuest","GLOBAL",3)
+	GlobalLT("bsCloseTempleIslandExit","MYAREA",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11090) //~The shimmer you see below the water surface now is a portal that will lead you to a secluded island. You know you should prepare and be ready before entering to this journey.~
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",2)
+END
+
+/* once: after returning from the island: no shimmer any more, portal seems to have been closed upon the group's return */
+IF
+	Clicked([ANYONE])
+	Global("bsCloseTempleIslandExit","MYAREA",4)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11092) //~The water in the pool is clear and seems to shimmer with a slight blue light, but the portal seems to be gone.~
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",5)
+END
+
+/* general text after quest and portal are closed */
+IF
+	Clicked([ANYONE])
+	Global("bsCloseTempleIslandExit","MYAREA",5)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11012) //~The water in the pool is clear and seems to shimmer with a slight blue light.~
+END
+
+/* portal was closed by Seatower Commander: set variable to switch description text */
+IF
+	Global("bs_TempleIslandQuest","GLOBAL",-2)
+	GlobalLT("bsCloseTempleIslandExit","MYAREA",4)
+THEN
+	RESPONSE #100
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",4)
+END

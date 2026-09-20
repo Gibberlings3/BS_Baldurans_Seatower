@@ -1,0 +1,31 @@
+/* A Girl returns into the hole in the ground */
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("bsidgirl")
+        FadeToColor([20.0],0)
+        Wait(2)
+        JumpToPoint([1839.753])
+        Face(14)
+		CreateCreatureImpassable("cutspy",[1850.740],0) //"OBSERVE"
+		SmallWait(7)
+        MoveViewObject("bsidgirl",INSTANT)
+        FadeFromColor([20.0],0)
+        Wait(1)
+        DisplayStringHead("bsidgirl",@11121)
+        Wait(4)
+        PlaySound("EFF_M26")
+        Polymorph(TANARRI)
+        Wait(2)
+        DisplayStringHead("bsidgirl",@11122)
+        Wait(3)
+//        ForceSpellPoint([1839.753],WIZARD_DIMENSION_DOOR)
+        MoveToPoint([1878.754])
+        Wait(1)
+		ActionOverride("cutspy",DestroySelf())
+		SmallWait(7)
+        EndCutSceneMode()
+        DestroySelf()
+END

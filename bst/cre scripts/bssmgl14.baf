@@ -1,0 +1,52 @@
+
+/* hand out collaboration pass */
+IF
+	OR(2)
+		Global("bs_PCHasCollaborationPass","MYAREA",1)
+		Global("bs_PCHasCollaborationPass","MYAREA",2)
+THEN
+	RESPONSE #100
+		GiveItemCreate("bssmq006",Player1,0,0,0)
+		AddJournalEntry(@100114,QUEST)
+		IncrementGlobal("bs_PCHasCollaborationPass","MYAREA",2)
+END
+
+IF
+	See([PC])
+	GlobalGT("bs_ReportSmugglersNashkel","GLOBAL",49)
+	PartyHasItem("bssmq006")
+	AreaCheck("%NashkelCarnival%")
+	Global("bs_TakeBackSmugglingPass","MYAREA",0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_TakeBackSmugglingPass","MYAREA",1)
+END
+IF
+	See([PC])
+	Global("bs_TakeBackSmugglingPass","MYAREA",1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	GlobalGT("bs_ReportSmugglersNashkel","GLOBAL",49)
+	!PartyHasItem("bssmq006")
+	AreaCheck("%NashkelCarnival%")
+THEN
+	RESPONSE #100
+		ActionOverride("bssmgl12",EscapeAreaDestroy(5))
+		ActionOverride("bssmgl13",EscapeAreaDestroy(5))
+		EscapeAreaDestroy(5)
+END
+
+IF
+	GlobalGT("bs_ReportSmugglersNashkel","GLOBAL",50)
+	AreaCheck("%Nashkel%")
+
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

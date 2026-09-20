@@ -1,0 +1,19 @@
+/* left portal, bs0104 */
+
+/* portal not destroyed */
+IF
+	Clicked([ANYONE])
+	GlobalLT("bs_SahuaginPortalRoom","GLOBAL",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11100)
+END
+
+/* portal destroyed */
+IF
+	Clicked([ANYONE])
+	Global("bs_SahuaginPortalRoom","GLOBAL",2)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11109)
+END

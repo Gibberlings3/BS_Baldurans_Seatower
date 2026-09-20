@@ -54,8 +54,9 @@ END
 
 //---------------------------------------------------------
 IF ~~ THEN BEGIN 6
-SAY @2447 /* ~I heard that in Tethyr they use tallow from Sea Trolls as it is especially water resistant. In case you ever come across such a creature, please bring the corresponding part to me - the sebaceous gland it is called I think.~ */
-IF ~~ THEN DO ~SetGlobal("bsWinchGreaseQuest","GLOBAL",1)~ UNSOLVED_JOURNAL @918 EXIT
+SAY @2447 /* ~I heard that in Tethyr they use tallow from Sea Trolls as it is especially water resistant. In case you ever come across such a creature, please bring the corresponding part to me - the sebaceous gland it is called I think. And take this - it might come in handy. Those trolls are tricky to kill.~ */
+IF ~~ THEN DO ~GiveItemCreate("POTN27",[PC],1,0,0)
+SetGlobal("bsWinchGreaseQuest","GLOBAL",1)~ UNSOLVED_JOURNAL @918 EXIT
 END
 
 IF ~~ THEN BEGIN 7

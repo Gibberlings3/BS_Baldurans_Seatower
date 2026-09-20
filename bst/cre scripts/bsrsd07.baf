@@ -1,0 +1,20 @@
+/* initiate dialogue upon first meeting */
+IF
+	GlobalLT("bsClearedCatacombs","GLOBAL",7)
+	CombatCounter(0)	
+	See([PC])
+THEN
+	RESPONSE #100	
+		Dialogue([PC])
+END
+
+/* initiate dialogue after restless Dead was banned */
+IF
+	Global("bsTalkedToRestlessDead","GLOBAL",10)
+	GlobalLT("bsClearedCatacombs","GLOBAL",18)
+	CombatCounter(0)	
+	See([PC])
+THEN
+	RESPONSE #100	
+		Dialogue([PC])
+END

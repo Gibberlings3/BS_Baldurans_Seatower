@@ -1,52 +1,47 @@
 BEGIN bsalgbk
 
-IF~RandomNum(8,1)~THEN BEGIN Open1
-	SAY @3500
-	IF~~THEN GOTO InfiniteStaircase
+/* Book Of the Planes bsalgbk.bcs */
+IF ~!Global("bs_bsalgbkopened","MYAREA",2)~ THEN open
+SAY @530 /*
+@530 = ~You found this old book buried in the far corner of Alguine's library. You try to read the book but the more you read, the less sense it makes. Much of the book seems to be just... missing... and the rest of it seems to be written by someone not much older than a child. Worse, each time you open the book the pages have changed.~
+*/
++ ~RandomNum(6,1)~ + @3500 /* ~Open another page~ */ DO ~IncrementGlobal("bs_bsalgbkopened","MYAREA",1)~ GOTO InfiniteStaircase
++ ~RandomNum(6,2)~ + @3500 /* ~Open another page~ */ DO ~IncrementGlobal("bs_bsalgbkopened","MYAREA",1)~ GOTO NineHells
++ ~RandomNum(6,3)~ + @3500 /* ~Open another page~ */ DO ~IncrementGlobal("bs_bsalgbkopened","MYAREA",1)~ GOTO TheGods
++ ~RandomNum(6,4)~ + @3500 /* ~Open another page~ */ GOTO Troubles
++ ~RandomNum(6,5)~ + @3500 /* ~Open another page~ */ DO ~IncrementGlobal("bs_bsalgbkopened","MYAREA",1)~ GOTO Lands
++ ~RandomNum(6,6)~ + @3500 /* ~Open another page~ */ DO ~IncrementGlobal("bs_bsalgbkopened","MYAREA",1)~ GOTO Races
+++ @3505 /* ~Close the book~ */ GOTO Close1
 END
 
-IF~RandomNum(8,3)~THEN BEGIN Open2
-	SAY @3500
-	IF~~THEN GOTO NineHells
+IF ~Global("bs_bsalgbkopened","MYAREA",2)~ THEN open
+SAY @530 /*
+@530 = ~You found this old book buried in the far corner of Alguine's library. You try to read the book but the more you read, the less sense it makes. Much of the book seems to be just... missing... and the rest of it seems to be written by someone not much older than a child. Worse, each time you open the book the pages have changed.~
+*/
+++ @3500 /* ~Open another page~ */ GOTO Troubles
+++ @3505 /* ~Close the book~ */ GOTO Close1
 END
 
-IF~RandomNum(8,4)~THEN BEGIN Open3
-	SAY @3500
-	IF~~THEN GOTO TheGods
+//---------------------------------------------------------
+IF ~~ THEN BEGIN Close1
+	SAY @3553
+	IF~~THEN DO ~SetGlobal("bsPlaneBookCreation","MYAREA",0) DestroySelf()~ EXIT
 END
 
-IF~
-	OR(3)
-		RandomNum(8,2)
-		RandomNum(8,5)
-		RandomNum(8,8)~THEN BEGIN Open4
-	SAY @3500
-	IF~~THEN GOTO Troubles
-END
-
-IF~RandomNum(8,6)~THEN BEGIN Open5
-	SAY @3500
-	IF~~THEN GOTO Lands
-END
-
-IF~RandomNum(8,7)~THEN BEGIN Open6
-	SAY @3500
-	IF~~THEN GOTO Races
-END
 
 //---------------------------------------------------------
 // Chapter headings
 IF ~~ THEN BEGIN InfiniteStaircase
-	SAY @3501
-	IF~~THEN REPLY @3502 GOTO Infinite1
-	IF~~THEN REPLY @3503 GOTO Infinite2
-	IF~~THEN REPLY @3504 GOTO Infinite3
-	IF~~THEN REPLY @3505 GOTO Close1
+	SAY @3501 /* ~The Infinite Staircase~ */
+	IF~~THEN REPLY @3502 /* ~The Staircase~ */ GOTO Infinite1
+	IF~~THEN REPLY @3503 /* ~The Mad Sorceress~ */ GOTO Infinite2
+	IF~~THEN REPLY @3504 /* ~The Doorways~ */ GOTO Infinite3
+	IF~~THEN REPLY @3505 /* ~Close the book~ */ GOTO Close1
 END
 
 IF ~~ THEN BEGIN NineHells
-	SAY @3506
-	IF~~THEN REPLY @3507 GOTO Avernus
+	SAY @3506 /* ~Baator, or, The Nine Hells~ */
+	IF~~THEN REPLY @3507 /* ~Avernus~ */ GOTO Avernus
 	IF~~THEN REPLY @3508 GOTO Cania
 	IF~~THEN REPLY @3509 GOTO Dis
 	IF~~THEN REPLY @3510 GOTO Maladomini
@@ -75,10 +70,10 @@ IF ~~ THEN BEGIN TheGods
 END
 
 IF ~~ THEN BEGIN Troubles
-	SAY @3528
-	IF~~THEN REPLY @3529 GOTO time1
-	IF~~THEN REPLY @3530 GOTO time2
-	IF~~THEN REPLY @3505 GOTO Close2
+	SAY @3528 /* ~The Time of Troubles~ */
+	IF~~THEN REPLY @3529 /* ~What happened in the Time of Troubles~ */ DO ~SetGlobal("bs_bsalgbkopened","MYAREA",3)~ GOTO time1
+	IF~~THEN REPLY @3530 /* ~What happened afterwards~ */ GOTO time2
+	IF~~THEN REPLY @3505 GOTO Close1
 END
 
 IF ~~ THEN BEGIN Lands
@@ -113,16 +108,7 @@ IF ~~ THEN BEGIN Races
 	IF~~THEN REPLY @3505 GOTO Close1
 END
 
-//---------------------------------------------------------
-IF ~~ THEN BEGIN Close1
-	SAY @3553
-	IF~~THEN EXIT
-END
 
-IF ~~ THEN BEGIN Close2
-	SAY @3554
-	IF~~THEN EXIT
-END
 
 //---------------------------------------------------------
 // Infinite Staircase
@@ -246,18 +232,20 @@ END
 
 //---------------------------------------------------------
 // Troubles
-IF ~~ THEN BEGIN time1
-	SAY @3574
-	IF~~THEN
-		DO~SetGlobal("bsReadBook","GLOBAL",1)~
-	GOTO Troubles
+CHAIN
+IF ~~ THEN bsalgbk time1
+@3574 /* ~Someone has erased this page by scraping the ink off with a rough stone and then making a drawing of a tree. The tree looks oddly familiar. Some of the following pages seem to be missing too.~ */
+== bsalgbk IF ~Global("bsReadBook","MYAREA",0)~ THEN @3554 /* ~A wave of weariness sweeps through you and vanishes as fast as it came. A voice in your head says 'Now <PRO_HESHE> saw.'~ */ DO~SetGlobal("bsReadBook","MYAREA",1)~ 
 END
+IF~GlobalGT("bs_TalkingBooks","GLOBAL",0)~THEN GOTO Troubles
+IF~Global("bs_TalkingBooks","GLOBAL",0)~THEN DO ~SetGlobal("bs_TalkingBooks","GLOBAL",1)~ GOTO Troubles
+
+
+APPEND bsalgbk
 
 IF ~~ THEN BEGIN time2
-	SAY @3564
-	IF~~THEN
-		DO~SetGlobal("bsReadBook","GLOBAL",1)~
-	GOTO Troubles
+	SAY @3564 /* ~This page is blank.~ */
+	IF~~THEN GOTO Troubles
 END
 
 //---------------------------------------------------------
@@ -373,4 +361,6 @@ IF ~~ THEN BEGIN Orcs
 	SAY @3592
 	IF~~THEN GOTO Races
 END
+
+END //APPEND
 

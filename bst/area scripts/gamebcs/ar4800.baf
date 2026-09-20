@@ -1,0 +1,13 @@
+//Nashkel
+
+/* Create Sergeant Telmov */
+IF
+	Global("bs_CreateSergeantSmugglers","MYAREA",0)
+	GlobalGT("chapter","GLOBAL",%tutu_chapter_3%)
+	GlobalLT("bsSmugglerQuest","GLOBAL",40)
+	!Dead("bssmgl02")
+THEN
+	RESPONSE #100
+		SetGlobal("bs_CreateSergeantSmugglers","MYAREA",1)
+		CreateCreature("bssmgl14",[3465.1863],2)
+END

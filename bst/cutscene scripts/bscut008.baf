@@ -5,14 +5,14 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId("ysfltchr")
-        	FadeToColor([20.0],0)
-        	Wait(3)
-        	FadeFromColor([20.0],0)
+		FadeToColor([20.0],0)
+		Wait(3)
+		FadeFromColor([20.0],0)
 		ActionOverride("ysfltchr",TakePartyItem("bsbarrl1"))
-        	ActionOverride("ysfltchr",DestroyItem("bsbarrl1"))
+		ActionOverride("ysfltchr",DestroyItem("bsbarrl1"))
 		ActionOverride("ysfltchr",TakePartyItem("POTN02"))
-        	ActionOverride("ysfltchr",DestroyItem("POTN02"))
+		ActionOverride("ysfltchr",DestroyItem("POTN02"))
 		ActionOverride("ysfltchr",GiveItemCreate("bsbarrl3",[PC],0,0,0))
-		EndcutSceneMode()
+		EndCutSceneMode()
 		ActionOverride("ysfltchr",StartDialogNoSet([PC]))
 END

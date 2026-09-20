@@ -1,0 +1,12 @@
+
+/* create Manip Limmon */
+IF
+	Global("bs_CreateSergeantSmugglers","MYAREA",0)
+	GlobalGT("chapter","GLOBAL",%tutu_chapter_4%)
+	GlobalGT("bsShucksBrother","GLOBAL",0)
+	GlobalLT("bsShucksBrother","GLOBAL",50)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_CreateSergeantSmugglers","MYAREA",1)
+		CreateCreature("bssmgl15",[1290.751],2)
+END

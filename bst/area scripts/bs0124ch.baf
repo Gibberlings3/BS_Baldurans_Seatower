@@ -1,6 +1,7 @@
 IF
 	Opened([ANYONE])
 	Range(LastTrigger,5)
+	Global("bsCreateStolenGold","MYAREA",1)
 	Global("bsPCSawStolenGold","GLOBAL",0)
 THEN
 	RESPONSE #100

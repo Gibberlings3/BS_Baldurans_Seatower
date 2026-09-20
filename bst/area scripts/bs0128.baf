@@ -5,7 +5,30 @@ THEN
 	RESPONSE #100
 		SetGlobal("bsCreateAlguine","MYAREA",1)
 		CreateCreature("bsalgune",[566.2005],2)
-		CreateCreature("bsalghst",[566.2005],2)
+//		CreateCreature("bsalghst",[566.2005],2)
+END
+
+/* spawn helper cre to call Alguine to enclave after Nabassu is dead */
+IF
+	Global("bsTalkToAlguineHFM","GLOBAL",3)
+	Global("bsAlguineTan","GLOBAL",0)
+	Dead("bstanar")
+	Global("bsFreedUlf","GLOBAL",1) //after Ulf had his speech and went away
+THEN
+	RESPONSE #100
+		CreateCreature("bsalghst",[785.383],2)
+		SetGlobal("bsAlguineTan","GLOBAL",1)
+END
+
+/* spawn helper cre to call Alguine to enclave, second visit of group */
+IF
+	Global("bsHFMTrap","GLOBAL",2)
+	Global("bsAlguineTan","GLOBAL",3)
+	Global("bsAlguineTan_2","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("bsalghst",[785.383],2)
+		SetGlobal("bsAlguineTan_2","MYAREA",1)
 END
 
 //journal entry

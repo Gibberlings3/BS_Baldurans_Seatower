@@ -1,0 +1,9 @@
+
+IF
+	Global("bs_CityKnowsBSTDoppel","GLOBAL",0)
+	Global("bs_MoreDopl","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("NOBLPA",[687.705],0)
+		SetGlobal("bs_MoreDopl","MYAREA",1)
+END

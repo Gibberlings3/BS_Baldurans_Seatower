@@ -1,0 +1,19 @@
+/* smuggler contact get busted by Tower Guard */
+
+IF
+	True()
+THEN
+	RESPONSE #100
+        	CutSceneId(Player1)
+        	MoveViewObject("bssmgl18",INSTANT)
+			CreateCreature("bssmgl19",[3604.3033],3)
+			CreateCreature("bssmgl20",[3648.3064],3)
+        	SmallWait(1)
+        	ActionOverride("bssmgl19",MoveToPoint([3551.3085]))
+        	Wait(1)
+        	ActionOverride("bssmgl18",FaceObject("bssmgl19"))
+        	Wait(1)
+			EndCutSceneMode()
+        	ActionOverride("bssmgl19",StartDialogNoSet("bssmgl18"))
+END
+

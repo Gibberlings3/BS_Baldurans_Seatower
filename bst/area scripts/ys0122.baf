@@ -1,0 +1,12 @@
+/* put items into chests */
+IF
+	Global("bs_ItemSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container001",CreateItem("arow02",10,0,0)
+		ActionOverride("Container001",CreateItem("bolt02",10,0,0)
+		ActionOverride("Container002",CreateItem("misc07",35,0,0)
+		ActionOverride("Container003",CreateItem("potn19",1,0,0)
+		ActionOverride("Container003",CreateItem("potn08",1,0,0)
+		SetGlobal("bs_ItemSpawn","MYAREA",1)
+END

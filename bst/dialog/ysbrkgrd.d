@@ -31,7 +31,10 @@ IF ~RandomNum(7,6)~ THEN BEGIN 6
 END
 
 IF ~RandomNum(7,7)
-		Global("bs##","GLOBAL",10)~ THEN BEGIN 7
+		OR(3)
+	Global("bsDoppelgangerQuest","GLOBAL",6)
+	Global("bsDoppelgangerQuest","GLOBAL",9)
+	GlobalGT("bsDGQuestAborted","GLOBAL",0)~ THEN BEGIN 7
   SAY @1106
   IF ~~ THEN EXIT
 END

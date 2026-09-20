@@ -1,0 +1,38 @@
+
+
+/* script of extra chapter 7 soldiers */
+IF
+	!Global("DukeThanks","GLOBAL",0)
+THEN
+    RESPONSE #100
+        DestroySelf()
+END
+
+IF
+    Heard("FFHUNT",1)  // Flaming Fist Enforcer
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+IF
+    Global("Captured","GLOBAL",1)
+	OR(2)
+		Global("bs_CityKnowsBSTDoppel","GLOBAL",0) //PC didn't finish reveal doppelgangers in tower
+		GlobalGT("bs_TowerArrestCh7","GLOBAL",1) //PC did help and already met commander once
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+IF
+    See([PC])
+    GlobalGT("bs_CityKnowsBSTDoppel","GLOBAL",0)
+	Global("bs_TowerArrestCh7","GLOBAL",0)
+    Allegiance(Myself,NEUTRAL)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        Dialogue([PC])
+END

@@ -1,0 +1,66 @@
+
+/* Dryad collects water */
+IF
+	!PartyHasItem("bsdrwate")
+	Global("bs_DrydTakesWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_DrydTakesWater","MYAREA",2)
+END
+IF
+	PartyHasItem("bsdrwate")
+	Global("bs_DrydTakesWater","MYAREA",1)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("bsdrwate",1)
+		IncrementGlobal("bs_DryadWaterCount","MYAREA",1)
+END
+/* Dryade hat alles Wasser genommen. Wenn es 5 mal Wasser war, gibt es noch eine Belohnung */
+IF
+	Global("bs_DrydTakesWater","MYAREA",2)
+	GlobalGT("bs_DryadWaterCount","MYAREA",4)
+	Global("bs_DryadExtraReward","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_DryadExtraReward","MYAREA",1)
+END
+
+IF
+	See([PC])
+	Global("bs_DryadExtraReward","MYAREA",1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("bs_DrydTakesWater","MYAREA",2)
+	GlobalLT("bs_DryadWaterCount","MYAREA",5)
+	Global("bs_DryadLeaves","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_DryadLeaves","MYAREA",1)
+END
+
+IF
+	See([PC])
+	Global("bs_DryadLeaves","MYAREA",1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	!Global("bsDryadWater","GLOBAL",3)
+	OR(2)
+		Global("bsDryadWater","GLOBAL",2) //set via bs0138.baf
+		Global("bs_DryadLeaves","MYAREA",2)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@921)
+		SetGlobal("bsDryadWater","GLOBAL",3)
+		DestroySelf()
+END
+

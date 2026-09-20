@@ -1,6 +1,6 @@
 // Move the party to the blocked area
 IF
-	!Global("bsAlguineBlockedPortal","GLOBAL",1)
+	GlobalLT("bsAlguineTan","GLOBAL",7)
 	OR(6)
 		IsOverMe(Player1)
 		IsOverMe(Player2)

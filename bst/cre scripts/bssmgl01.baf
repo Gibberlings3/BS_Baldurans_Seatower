@@ -5,8 +5,10 @@ IF
 		HitBy([PC],CRUSHING)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ClearAllActions()
 		SetGlobal("bsSmugglerAttacked","GLOBAL",3)
 		StartCutSceneMode() 
 		StartCutScene("bscut001")
+		SetInterrupt(TRUE)
 END

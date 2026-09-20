@@ -1,0 +1,69 @@
+
+/* bandit prisoner quest */
+
+/* hidden place was opened after note is gone */
+IF
+	GlobalGT("bs_BanditHiddenGold","GLOBAL",3)
+	Global("bs_BanditHiddenGoldDone","MYAREA",0)
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+  		RemoveMapNote([4330.1992],@76)
+        EraseJournalEntry(@100086)
+        AddJournalEntry(@100087,QUEST_DONE)
+ 	 	SetGlobal("bs_BanditHiddenGoldDone","MYAREA",1)
+END
+
+/* remove note and place gold inside if noone is around */
+IF
+	Global("bs_BanditHiddenGold","GLOBAL",3)
+	HasItem("bspris3a","BSContainer01")
+	!Range([PC],60)
+THEN
+    RESPONSE #100
+		ActionOverride("BSContainer01",DestroyItem("bspris3a"))
+		ActionOverride("BSContainer01",CreateItem("misc07",500,0,0))
+        SetGlobal("bs_BanditHiddenGold","GLOBAL",4)
+END
+
+/* hide stash (only for EE) BSContainer01 */
+%EE_only_slash%%EE_only_asteriks%
+IF
+	Global("bs_BanditHiddenGold","GLOBAL",0)
+    Global("bs_HideHiddenStash","MYAREA",0)
+THEN
+    RESPONSE #100
+        ContainerEnable("BSContainer01",FALSE)
+        SetGlobal("bs_HideHiddenStash","MYAREA",1)
+END
+
+/* quest active: unhide stash (only for EE) */
+IF
+	Global("bs_BanditHiddenGold","GLOBAL",1)
+    Global("bs_HideHiddenStash","MYAREA",1)
+THEN
+    RESPONSE #100
+        ContainerEnable("BSContainer01",TRUE)
+        SetGlobal("bs_HideHiddenStash","MYAREA",2)
+END
+%EE_only_asteriks%%EE_only_slash%
+
+/* place gold and add map point */
+IF
+	Global("bs_BanditHiddenGold","GLOBAL",1)
+THEN
+    RESPONSE #100
+  		AddMapNote([4330.1992],@76)
+		ActionOverride("BSContainer01",CreateItem("misc07",500,0,0))
+        SetGlobal("bs_BanditHiddenGold","GLOBAL",2)
+END
+/* journal entry once the note was placed */
+IF
+	Global("bs_BanditHiddenGold","GLOBAL",2)
+	HasItem("bspris3a","BSContainer01")
+THEN
+	RESPONSE #100
+        EraseJournalEntry(@100085)
+        AddJournalEntry(@100086,QUEST)
+ 	 	SetGlobal("bs_BanditHiddenGold","GLOBAL",3)
+END

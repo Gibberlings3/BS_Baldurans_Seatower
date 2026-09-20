@@ -1,29 +1,72 @@
 
+/* box of figs was delivered. Remove from party inventory */
 IF
-	Global("bsJournalEntries","MYAREA",0) 
-	GlobalLT("bsSmugglerQuest","GLOBAL",50)
 	Global("bsDeliverFigs","GLOBAL",1)
-	Global("bsSMQOpenedBox","GLOBAL",0) 
-	Global("bsSMQAteFigs","GLOBAL",0)
-	!GlobalTimerExpired("bsSmugglerQuestTimer1","GLOBAL")
+	Global("bs_RemoveBoxWithFigs","MYAREA",0)
 THEN
 	RESPONSE #100
 		EraseJournalEntry(@833)
+		TakePartyItem("bssmq002")
+		SetGlobal("bs_RemoveBoxWithFigs","MYAREA",1)
+END
+/* delivery was reported to the FF and they will come now */
+/* cook: 881.257 */
+IF
+	Global("bsDeliverFigs","GLOBAL",1)
+	Global("bs_ReportSmugglersToFF","GLOBAL",3)
+	InMyArea(Player1)
+	CombatCounter(0)
+	!Dead("bssmgl15")
+	Global("bs_SpawnFFSmuggler","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		CreateCreature("bssmgl15",[819.367],9)
+		SetGlobal("bs_SpawnFFSmuggler","MYAREA",1)
+		SetInterrupt(TRUE)
+END
+
+/* set journal entries - if smuggler quest is still active */
+/* cook was busted - via bssmugl15.bcs */
+/* everything was right */
+IF
+	!Dead("bssmgl02")
+	Global("bsJournalEntries","MYAREA",0) 
+	GlobalLT("bsSmugglerQuest","GLOBAL",50)
+	Global("bsDeliverFigs","GLOBAL",1)
+	Global("bsSMQAteFigs","GLOBAL",0)
+	Global("bsSMQTooLate","GLOBAL",0)
+	!Global("bs_ReportSmugglersToFF","GLOBAL",3)
+THEN
+	RESPONSE #100
 		AddJournalEntry(@834,QUEST)
 		SetGlobal("bsJournalEntries","MYAREA",1)
 END
-
+/* delivery was too late, box was open, or open + figs were missing */
 IF
+	!Dead("bssmgl02")
 	Global("bsJournalEntries","MYAREA",0) 
 	GlobalLT("bsSmugglerQuest","GLOBAL",50)
 	Global("bsDeliverFigs","GLOBAL",1)
-	OR(3)
-		Global("bsSMQOpenedBox","GLOBAL",1) 
+	OR(2)
 		Global("bsSMQAteFigs","GLOBAL",1)
-		GlobalTimerExpired("bsSmugglerQuestTimer1","GLOBAL")
+		Global("bsSMQTooLate","GLOBAL",1)
+	!Global("bs_ReportSmugglersToFF","GLOBAL",3)
 THEN
 	RESPONSE #100
-		EraseJournalEntry(@833)
 		AddJournalEntry(@835,QUEST)
+		SetGlobal("bsJournalEntries","MYAREA",1)
+END
+/* delivery was busted by FF */
+IF
+	!Dead("bssmgl02")
+	Global("bsJournalEntries","MYAREA",0)
+	GlobalLT("bsSmugglerQuest","GLOBAL",50)
+	Global("bsDeliverFigs","GLOBAL",1)
+	Global("bs_ReportSmugglersToFF","GLOBAL",5)
+	!Global("bs_ReportSmugglersToFF","GLOBAL",3)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100147,QUEST)
 		SetGlobal("bsJournalEntries","MYAREA",1)
 END

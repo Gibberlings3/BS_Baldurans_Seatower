@@ -1,0 +1,49 @@
+/* override script rebel leader, in bs0102, Old Temple Island */
+
+/* guard is dead. rebel leader initiates dialogue */
+IF
+    Dead("bsicst01")
+    CombatCounter(0)
+    Global("bs_ChangeOfLeadership","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_ChangeOfLeadership","GLOBAL",1)
+END
+
+IF
+    See([PC])
+    CombatCounter(0)
+    OR(2)
+        Global("bs_ChangeOfLeadership","GLOBAL",1)
+        Global("bs_ChangeOfLeadership","GLOBAL",4)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        StartDialogNoSet([PC])
+END
+
+IF
+    Global("bs_ChangeOfLeadership","GLOBAL",2)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("bs_ChangeOfLeadership","GLOBAL",3)
+        RealSetGlobalTimer("bs_ChangeOfLeadershipTimer","GLOBAL",120) //two minutes
+        EscapeAreaDestroy(5)
+        SetInterrupt(TRUE)
+END
+
+IF
+    OR(4)
+        Global("bs_ChangeOfLeadership","GLOBAL",10)
+        Global("bs_ChangeOfLeadership","GLOBAL",15)
+        Global("bs_ChangeOfLeadership","GLOBAL",17)
+        Global("bs_ChangeOfLeadership","GLOBAL",20)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        IncrementGlobal("bs_ChangeOfLeadership","GLOBAL",1)
+        EscapeAreaDestroy(5)
+        SetInterrupt(TRUE)
+END
+

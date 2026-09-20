@@ -1,28 +1,72 @@
 // Book
 IF
-	OR(6)
-		IsOverMe(Player1)
-		IsOverMe(Player2)
-		IsOverMe(Player3)
-		IsOverMe(Player4)
-		IsOverMe(Player5)
-		IsOverMe(Player6)
-	Global("bstabletrap","GLOBAL",0)
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	!Range(Player1,15)
+	Global("bsActivateBookDisplay","MYAREA",1)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself,@32)
-		SetGlobal("bstabletrap","GLOBAL",1)
+		DisplayStringHead(Myself,@53)
 END
 
 IF
-	!IsOverMe(Player1)
-	!IsOverMe(Player2)
-	!IsOverMe(Player3)
-	!IsOverMe(Player4)
-	!IsOverMe(Player5)
-	!IsOverMe(Player6)
-	Global("bstabletrap","GLOBAL",1)
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+	Range(Player1,15)
+	Global("bsActivateBookDisplay","MYAREA",1)
 THEN
 	RESPONSE #100
-		SetGlobal("bstabletrap","GLOBAL",0)
+		CreateCreature("bsalgb2",[766.2153],0)
+		SetGlobal("bsActivateBookDisplay","MYAREA",2)
 END
+
+IF
+	InMyArea("bsalgb2")
+	Global("bsActivateBookDisplay","MYAREA",2)
+THEN
+	RESPONSE #100
+		ActionOverride("bsalgb2",StartDialogueNoSet(Player1))
+END
+
+
+IF
+	!InMyArea("bsalgb2")
+	Global("bsActivateBookDisplay","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bsActivateBookDisplay","MYAREA",1)
+END
+
+
+/* bslense2 */
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	Global("bsActivateBookDisplay","MYAREA",0)
+	OR(2)
+		Global("bsBlackLense","MYAREA",0)
+		GlobalGT("bsBlackLense","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@32) 
+		IncrementGlobal("bsBlackLense","MYAREA",1)
+END
+
+IF
+	Global("bsBlackLense","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@52) 
+		GiveItemCreate("bslense2",Player1,1,0,0)
+		SetGlobal("bsBlackLense","MYAREA",2)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,20)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007) //~You are too far away to do anything here.~
+END
+

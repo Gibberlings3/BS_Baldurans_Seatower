@@ -1,0 +1,33 @@
+/* override script for Diddy, Castaway, bs0101, Old Temple Island */
+IF
+    Global("bs_DiddysDagger","MYAREA",6)
+THEN
+    RESPONSE #100
+        StartDialogueNoSet([PC])
+END
+
+IF
+    Global("bs_DiddysDagger","MYAREA",7)
+    !HasItem("dagg01",Myself)
+    Global("bs_DiddysEquipsDagger","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        DestroyGold(1)
+        GiveItemCreate("dagg01",Myself,0,0,0)
+        SetGlobal("bs_DiddysEquipsDagger","LOCALS",2)
+        SetInterrupt(TRUE)
+END
+
+IF
+    Global("bs_DiddysDagger","MYAREA",7)
+    HasItem("dagg01",Myself)
+    GlobalLT("bs_DiddysEquipsDagger","LOCALS",2)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        FillSlot(SLOT_WEAPON)
+        EquipItem("dagg01")
+        SetGlobal("bs_DiddysEquipsDagger","LOCALS",2)
+        SetInterrupt(TRUE)
+END

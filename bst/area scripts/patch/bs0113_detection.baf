@@ -1,0 +1,8 @@
+/* set variable for dialogue with commander */
+IF
+	GlobalLT("bsPCFoundHighLevEnc","GLOBAL",1)
+	InMyArea(Player1) 
+THEN
+	RESPONSE #100
+		SetGlobal("bsPCFoundHighLevEnc","GLOBAL",1)
+END

@@ -1,0 +1,30 @@
+//Override Script of Sahuagin Portal Room Guards
+IF
+    Global("bs0102_spawn_sahuagin","MYAREA",0)
+    Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        SetGlobal("bs0102_spawn_sahuagin","MYAREA",1)
+END
+
+IF
+    AreaCheck("bs0102")
+    Global("bs_IsNearDoor","MYAREA",2)
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+IF
+    Detect([PC])
+    Name("bsisagg1",Myself)
+    AreaCheck("bs0102")
+    Global("bs_IsNearDoor","MYAREA",0)
+    GlobalLT("bs_SahuaginPortalRoom","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        StartDialogNoSet(LastTrigger)
+END
+

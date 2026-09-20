@@ -1,0 +1,87 @@
+/* Fragmented Apparition phantom */
+/* override script for the apparition in ghost form */
+/* fragment #1 */
+IF
+    HPLT(Myself,3)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("bs_i_PhantomTimer1","GLOBAL",120)
+        ReallyForceSpellRES("bsiphgc1",Myself) // Change into gaseous form
+END
+
+IF
+    See("bsiphtm2")
+    See([PC])
+    Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        ChangeEnemyAlly(Myself,NEUTRAL)
+END
+
+IF
+    See("bsiphtm2")
+    See([PC])
+    !Range("bsiphtm2",3)
+THEN
+    RESPONSE #100
+        MoveToObject("bsiphtm2")
+END
+
+IF
+    Range("bsiphtm2",6)
+    See([PC])
+    Global("bs_ApparitionsMerge","MYAREA",0)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateVisualEffectObject("shwater","bsiphtm1")
+        CreateVisualEffectObject("shwater","bsiphtm2")
+        Wait(1)
+        ActionOverride("bsiphtm2",DestroySelf())
+        PlaySound("eff_p57")
+        Wait(1)
+        CreateVisualEffectObject("spbasewt","bsiphtm1")
+        Wait(3)
+        SetGlobal("bs_ApparitionsMerge","MYAREA",1)
+        SetInterrupt(TRUE)
+END
+
+IF
+    See([PC])
+    Global("bs_ApparitionsMerge","MYAREA",1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+        StartDialogNoSet([PC])
+END
+
+IF
+    Global("bs_ApparitionsMerge","MYAREA",2)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        CreateVisualEffectObject("spdeath3",Myself)
+        EraseJournalEntry(@100038)
+        AddJournalEntry(@100039,QUEST_DONE)
+        AddexperienceParty(250)
+        SetGlobal("bs_ApparitionsMerge","MYAREA",3)
+        SetInterrupt(TRUE)
+END
+
+IF
+    Global("bs_ApparitionsMerge","MYAREA",3)
+THEN
+    RESPONSE #100
+        DestroySelf()
+END
+
+
+IF
+    !See([PC])
+    Allegiance(Myself,ENEMY)
+    !Range("Brazier05",30)
+THEN
+    RESPONSE #100
+        ChangeEnemyAlly(Myself,NEUTRAL)
+        MoveToObjectNoInterrupt("Brazier05")
+END

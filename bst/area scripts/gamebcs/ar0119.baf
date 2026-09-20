@@ -1,0 +1,32 @@
+
+
+/* smuggler bonus quest */
+/* after Sarevok's death */
+IF
+	%BGT_VAR%
+	Dead("Sarevok")
+	!Dead("bssmgl02")
+	Global("bsSmugglerQuestBonus","GLOBAL",0)
+	Global("bsSmugglerQuest","GLOBAL",41)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bsSmugglerQuestBonus_T","GLOBAL",THREE_DAYS)
+		SetGlobal("bsSmugglerQuestBonus","GLOBAL",1)
+		CreateCreature("bssmglb2",[362.142],0) //Holger
+END
+
+/* in case Holger gets killed - correct variables and journal entries */
+IF
+	Dead("bssmgl02")
+	GlobalLT("bsSmugglerQuestBonus","GLOBAL",8)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@100158)
+		EraseJournalEntry(@100159)
+		EraseJournalEntry(@100160)
+		EraseJournalEntry(@100161)
+		EraseJournalEntry(@100162)
+		AddJournalEntry(@100163,QUEST_DONE)
+		SetGlobal("bsWorkingWithSmugglers","GLOBAL",2)
+		SetGlobal("bsSmugglerQuest","GLOBAL",51)
+END

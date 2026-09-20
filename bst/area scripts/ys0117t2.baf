@@ -1,0 +1,15 @@
+
+IF
+	Clicked([ANYONE])
+	Global("bs_OpenedDluskerTomb","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11087)
+END
+
+IF
+	Clicked([ANYONE])
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11085)
+END

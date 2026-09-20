@@ -1,0 +1,69 @@
+IF
+	Global("bs_destroyself","LOCALS",1)
+THEN
+	RESPONSE #100
+		DestroySelf() //failsafe
+END
+
+IF
+	Range("bsb130t2",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11156)
+		CreateVisualEffectObject("SPFIREPI",Myself)
+		Wait(2)
+		AddExperienceParty(2000)
+		SetGlobal("bs_destroyself","LOCALS",1)
+		DestroySelf()
+END
+
+IF
+	Range("bsb130t2",15)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		MoveToObject("bsb130t2")
+END
+
+IF
+	Range("bsb130t2",15)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11157)
+		ChangeEnemyAlly(Myself,NEUTRAL)
+END
+
+IF
+	Global("bsDoorsAreOpen","MYAREA",0)
+	Global("bsMovetoFire","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("bsMovetoFire","LOCALS",0)
+END
+
+IF
+	Global("bsDoorsAreOpen","MYAREA",1)
+	Global("bsMovetoFire","LOCALS",0)
+	!LOS([PC],15)
+THEN
+	RESPONSE #100
+		SetGlobal("bsMovetoFire","LOCALS",1)
+END
+IF
+	Global("bsMovetoFire","LOCALS",1)
+	!Range("bsb130t2",15)
+	!LOS([PC],15)
+THEN
+	RESPONSE #100
+		MoveToObject("bsb130t2")
+END
+
+IF
+	LOS([PC],15)
+	!Range("bsb130t2",15)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END

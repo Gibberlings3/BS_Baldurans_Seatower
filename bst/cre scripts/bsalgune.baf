@@ -1,8 +1,46 @@
+/* teleport group out */
+IF
+	Global("bsFutureMemoriesDone","MYAREA",0)
+	OR(2)
+		Global("bsAlguineAnnoyed","GLOBAL",1)
+		Global("bsDreamDone","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("bsFutureMemoriesDone","MYAREA",1)
+		ForceSpellRES("bs00002",Player1)		
+		FadeToColor([50.0],0)
+		Wait(3)
+		ActionOverride(Player1,LeaveAreaLUA("%BanditCamp%","",[2207.2491],3))
+		ActionOverride(Player2,LeaveAreaLUA("%BanditCamp%","",[2149.2437],3))
+		ActionOverride(Player3,LeaveAreaLUA("%BanditCamp%","",[2246.2424],3))
+		ActionOverride(Player4,LeaveAreaLUA("%BanditCamp%","",[2198.2392],3))
+		ActionOverride(Player5,LeaveAreaLUA("%BanditCamp%","",[2285.2373],3))
+		ActionOverride(Player6,LeaveAreaLUA("%BanditCamp%","",[2251.2336],3))
+		FadeFromColor([50.0],0)
+		SetInterrupt(TRUE)
+END
+
+/* no longer in bs0128 if met in later area */
+
+IF
+	AreaCheck("bs0128")
+	Global("bs_AlguineMovedOn","GLOBAL",0)
+	OR(2)
+		GlobalGT("bsTalkToAlguineFM6H1","GLOBAL",0)
+		GlobalGT("bsTalkToAlguineFM5","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_AlguineMovedOn","GLOBAL",1)
+		DestroySelf()
+END
+
 //---------------------------------------------------------
 // Reverse speech spell
 //---------------------------------------------------------
 IF
 	Global("bsAlguineSpeechSpell","GLOBAL",1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		ReallyForceSpell(Myself,WIZARD_CHAOS_VISUALS_ONLY)
@@ -18,6 +56,7 @@ END
 IF
 	Global("bsTalkToAlguineHFM","GLOBAL",0)
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Wait(1)
@@ -29,8 +68,11 @@ END
 //---------------------------------------------------------
 IF
 	Global("bsAlguineTan","GLOBAL",1)
+	AreaCheck("bs0128")
+	Global("bsAlguineTan_1","MYAREA",1)
 THEN
 	RESPONSE #100
+		Wait(1)
 		JumpToPoint([785.383])
 		SetGlobal("bsAlguineTan","GLOBAL",2)
 		Continue()
@@ -60,6 +102,7 @@ END
 IF
 	Global("bsAlguineTan","GLOBAL",5)
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		SetGlobal("bsAlguineTan","GLOBAL",6)
@@ -73,6 +116,7 @@ IF
 	Global("bsTalkToAlguineFM1","GLOBAL",0)
 	AreaCheck("bs0129")
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Dialogue(Protagonist)
@@ -85,6 +129,7 @@ IF
 	Global("bsTalkToAlguineFM2","GLOBAL",0)
 	AreaCheck("bs0130")
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Dialogue(Protagonist)
@@ -97,6 +142,7 @@ IF
 	Global("bsTalkToAlguineFM3L","GLOBAL",0)
 	AreaCheck("bs0131")
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Dialogue(Protagonist)
@@ -109,6 +155,7 @@ IF
 	Global("bsTalkToAlguineFM4","GLOBAL",0)
 	AreaCheck("bs0133")
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Dialogue(Protagonist)
@@ -121,6 +168,7 @@ IF
 	Global("bsTalkToAlguineFM5","GLOBAL",0)
 	AreaCheck("bs0134")
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Dialogue(Protagonist)
@@ -133,6 +181,7 @@ IF
 	AreaCheck("bs0140")
 	Global("bsDreamDone","GLOBAL",1)
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		Dialogue(Protagonist)

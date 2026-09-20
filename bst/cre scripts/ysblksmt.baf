@@ -1,0 +1,41 @@
+
+IF
+	Global("bs_FletchersStaff","GLOBAL",11)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("bs_FletchersStaff","GLOBAL",12)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItem("bsblun02")
+		TakePartyItemNum("DAGG02",1)
+		DestroyItem("bsblun02")
+		DestroyItem("DAGG02")
+		GiveItemCreate("bssper01",[PC],0,0,0)
+		TakePartyGold(1000)
+		DestroyGold(1000)
+		EraseJournalEntry(@100173)
+		AddJournalEntry(@100174,QUEST_DONE)
+		SetGlobal("bs_FletchersStaff","GLOBAL",13)
+		SetInterrupt(TRUE)
+END
+
+IF
+	Global("bs_UmberHulkHide","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TakePartyItemNum("bsiumbhh",1)
+		DestroyItem("bsiumbhh")
+		TakePartyGold(10000)
+		DestroyGold(10000)
+		AddJournalEntry(@100176,QUEST)
+		SetGlobalTimer("bs_ArmorerTimer","GLOBAL",ONE_DAY)
+		SetGlobal("bs_UmberHulkHide","MYAREA",3)
+		SetInterrupt(TRUE)
+END

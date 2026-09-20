@@ -1,3 +1,22 @@
+
+/* 5th smuggler quest, reporting smugglers to FF: timer expired, no barrel delivery. Spawn Tower Guard - in both bs1000 and bs1011 */
+IF
+	InMyArea(Player1)
+	Global("bs_ReportSmugglersToSeatower","GLOBAL",6)
+	GlobalGT("bsSmugglerQuest","GLOBAL",24)
+	GlobalTimerExpired("bsSmugglerQuestTimer5","GLOBAL")
+	!PartyHasItem("bssmq008")
+	!Exists("bssmgl17")
+	!Exists("bssmgl18")
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+        SetInterrupt(FALSE)
+		SetGlobal("bs_ReportSmugglersToSeatower","GLOBAL",7)
+		CreateCreatureObjectOffset("bssmgl19",Player1,[10.5])
+        SetInterrupt(TRUE)
+END
+
 /* Seatower Commander Airard */
 IF
 	Global("bsCreateCommancer","MYAREA",0)
@@ -40,22 +59,24 @@ IF
 THEN
 	RESPONSE #100
  	 	SetGlobal("bsDoppelgangerQuest","GLOBAL",2)
-		CreateCreature("bsprgrd1",[996.687],4)
+		CreateCreature("bsprgrd1",[996.687],14)
 END
 
 /* Doppelganger quest: clean up commander's study and let him talk to PC again and create Doppelganger in mage's study */
 
 IF
-	Global("bsDoppelgangerQuest","GLOBAL",5)
+	!StateCheck("bstrcmdr",CD_STATE_NOTVALID)
+	Global("bsDoppelgangerQuest","GLOBAL",6)
 	!Exists("bsdopp01")
+	Global("bsSpawnMageDoppelganger","MYAREA",0)
 THEN
 	RESPONSE #100
-        	ActionOverride("bsdopp02",DestroySelf())
-        	ActionOverride("bsdopp03",DestroySelf())
+        ActionOverride("bsdopp02",DestroySelf())
+        ActionOverride("bsdopp03",DestroySelf())
 		CreateCreature("bsdopp01",[821.1403],10)
-        	ActionOverride("bstrmage",FaceObject("bsdopp01"))
-        	ActionOverride("bsdopp01",Polymorph(CLERIC_MALE_HUMAN))
-		ActionOverride("bstrcmdr",StartDialogNoSet([PC]))
+        ActionOverride("bstrmage",FaceObject("bsdopp01"))
+        ActionOverride("bsdopp01",Polymorph(CLERIC_MALE_HUMAN))
+       	SetGlobal("bsSpawnMageDoppelganger","MYAREA",1)
 END
 
 /* PC reported to Commander about Doppelganger tailor: mage will be in the barracks and doppelganger from his study gone */
@@ -175,5 +196,15 @@ IF
 THEN
 	RESPONSE #100 
 		SetGlobal("bsShucksBrother","GLOBAL",5)
+END
+
+/* bookshelf: create book about sea trolls */
+IF
+	Global("bsShelf1CreateBooks","MYAREA",0)
+THEN
+	RESPONSE #100 
+		ActionOverride("Shelf01",CreateItem("bstrbook",0,0,0))
+		ActionOverride("Shelf01",CreateItem("bsbooka1",0,0,0))
+		SetGlobal("bsShelf1CreateBooks","MYAREA",1)
 END
 

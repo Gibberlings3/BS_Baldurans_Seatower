@@ -1,0 +1,22 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~Das Bett ist frisch gemacht und einsatzbereit. Zumindest wäre es das, aber man kann das Bett nicht herunterklappen. Die Katze ist im Weg.~
+@1 = ~(Eine streunende Katze, die im Kloster ein Zuhause gefunden hat. Die Ilmater-Mönche scheinen ihre Aufgabe, sich um die Bedürftigen zu kümmern, wirklich sehr ernst zu nehmen.)~
+@2 = ~(Die Katze sieht Euch an.)~
+@3 = ~(Nach unten greifen und die Katze streicheln.)~
+@4 = ~Ich möchte das Bett herunterklappen. Würdest du ein wenig zur Seite treten, hm?~
+@5 = ~Diese tote Ratte ist von dir, ja? Ein Geschenk? Das war SO nett von dir, Moggy. Ich danke dir vielmals!~
+@6 = ~Würdest du bitte aufhören, mir totes Ungeziefer in die Truhe zu legen?~
+@7 = ~(Katze in Ruhe lassen.)~
+@8 = ~(Mit hoher Stimme) Diese tote Ratte ist von dir, ja? Ein Geschenk? Das war SO nett von dir, Moggy. Ich danke dir VIELMALS!~
+@9 = ~(Moggy streicht um Eure Beine herum, offensichtlich sehr zufrieden mit sich selbst.)~
+@10 = ~(Moggy lässt sich von Euch streicheln.)~
+@11 = ~(Moggy lässt sich streicheln, aber ihr Schwanz zuckt.)~
+@12 = ~(Moggy hat die Geduld verloren. Ihr bekommt einen Kratzer ihrer Krallen.)~
+@13 = ~(Das war nicht der richtige Zeitpunkt! Ihr habt Moggys Zorn entfacht! Die Katze beißt Euch.)~
+@14 = ~(Ihr hast Euch Moggys Gunst verdient. Die Katze schnurrt, ihre Augen sind halb geschlossen. Ein Moment völliger Ruhe.)~
+@15 = ~(Die Katze wirft Euch einen Blick zu, der deutlich macht, dass sie sich setzen kann, wo immer sie will, solange sie will. Aber weil sie sich heute wirklich großzügig fühlt, könnte sie sich überlegen, ob sie nicht zur Seite gehen sollte … in einer Minute.)~
+@16 = ~(Moggy hat das Interesse verloren und geht weg.)~

@@ -1,25 +1,14 @@
 //---------------------------------------------------------
-// Initial halls all visited
-//---------------------------------------------------------
-IF
-	Global("bsVisitedHalls","GLOBAL",0)
-	Global("bsCreateAlguineFM1","GLOBAL",1)
-	Global("bsCreateAlguineFM2","GLOBAL",1)
-	Global("bsCreateAlguineFM3L","GLOBAL",1)
-	Global("bsCreateAlguineFM4","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("bsVisitedHalls","GLOBAL",4)
-END
-
-//---------------------------------------------------------
 // Area BS0128 - dead Tanarr'i
 //---------------------------------------------------------
+/*
 IF
+	AreaCheck("bs0128")
 	Global("bsTalkToAlguineHFM","GLOBAL",3)
 	Global("bsAlguineTan","GLOBAL",0)
 	Dead("bstanar")
 	Global("bsFreedUlf","GLOBAL",1) //after Ulf had his speech and went away
+	OR(2) InMyArea("bsalgune") Global("bs_AlguineMovedOn","GLOBAL",0)
 THEN
 	RESPONSE #100
 		JumpToPoint([785.383])
@@ -27,20 +16,76 @@ THEN
 		Wait(2)
 		SetGlobal("bsAlguineTan","GLOBAL",1)
 END
+Global("bsAlguineTan","GLOBAL",1)
+*/
+
+IF
+	AreaCheck("bs0128")
+	Global("bsAlguineTan","GLOBAL",1)
+	Global("bsAlguineTan_1","MYAREA",0)
+THEN
+	RESPONSE #100
+		Wait(11)
+//		ForceSpellRES("SPWI402",Myself)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
+		SetGlobal("bsAlguineTan_1","MYAREA",1)
+END
+
+IF 
+	AreaCheck("bs0128")
+	Global("bsAlguineTan","GLOBAL",1)
+	Global("bsAlguineTan_1","MYAREA",1)
+	!InMyArea("bsalgune")
+THEN
+	RESPONSE #100
+		SetGlobal("bsAlguineTan","GLOBAL",2)
+		CreateCreature("bsalgune",[785.383],2)
+END
+
+IF
+	AreaCheck("bs0128")
+	GlobalGT("bsAlguineTan","GLOBAL",1)
+	Global("bsAlguineTan_1","MYAREA",1)
+	InMyArea("bsalgune")
+THEN
+	RESPONSE #100
+		SetGlobal("bsAlguineTan_1","MYAREA",2)
+		DestroySelf()
+END
 
 //---------------------------------------------------------
 // Area BS0128 - charname's second visit
 //---------------------------------------------------------
 IF
-	Global("bsHFMTrap","GLOBAL",2)
+	AreaCheck("bs0128")
+	Global("bsAlguineTan_2","MYAREA",1)
 	Global("bsAlguineTan","GLOBAL",3)
 THEN
 	RESPONSE #100
-		JumpToPoint([785.383])
 		Wait(11)
-		ForceSpellRES("SPWI402",Myself)
-		Wait(2)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
 		SetGlobal("bsAlguineTan","GLOBAL",4)
+END
+
+IF
+	AreaCheck("bs0128")
+	Global("bsAlguineTan","GLOBAL",4)
+	!InMyArea("bsalgune")
+THEN
+	RESPONSE #100
+		SetGlobal("bsAlguineTan","GLOBAL",5)
+		CreateCreature("bsalgune",[785.383],2)
+END
+
+IF
+	AreaCheck("bs0128")
+	GlobalGT("bsAlguineTan","GLOBAL",4)
+	Global("bsAlguineTan_2","MYAREA",1)
+	InMyArea("bsalgune")
+THEN
+	RESPONSE #100
+		SetGlobal("bsAlguineTan_2","MYAREA",2)
+		DestroySelf()
 END
 
 //---------------------------------------------------------
@@ -48,15 +93,16 @@ END
 //---------------------------------------------------------
 IF
 	AreaCheck("bs0129")
-	Global("bsCreateAlguineFM1","GLOBAL",0)
+	Global("bsCreateAlguineFM1","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsCreateAlguineFM1","GLOBAL",1)
-		ForceSpellRES("SPWI402",Myself)
+		SetGlobal("bsCreateAlguineFM1","MYAREA",1)
+		IncrementGlobal("bsVisitedHalls","GLOBAL",1)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
 		Wait(2)
 		CreateCreature("bsalgune",[581.523],2)
 		Wait(1)
-		JumpToPoint([630.241])
+		DestroySelf()
 END
 
 //---------------------------------------------------------
@@ -64,15 +110,16 @@ END
 //---------------------------------------------------------
 IF
 	AreaCheck("bs0130")
-	Global("bsCreateAlguineFM2","GLOBAL",0)
+	Global("bsCreateAlguineFM2","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsCreateAlguineFM2","GLOBAL",1)
-		ForceSpellRES("SPWI402",Myself)
+		SetGlobal("bsCreateAlguineFM2","MYAREA",1)
+		IncrementGlobal("bsVisitedHalls","GLOBAL",1)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
 		Wait(2)
 		CreateCreature("bsalgune",[926.772],2)
 		Wait(1)
-		JumpToPoint([550.204])
+		DestroySelf()
 END
 
 //---------------------------------------------------------
@@ -80,15 +127,16 @@ END
 //---------------------------------------------------------
 IF
 	AreaCheck("bs0131")
-	Global("bsCreateAlguineFM3L","GLOBAL",0)
+	Global("bsCreateAlguineFM3L","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsCreateAlguineFM3L","GLOBAL",1)
-		ForceSpellRES("SPWI402",Myself)
+		SetGlobal("bsCreateAlguineFM3L","MYAREA",1)
+		IncrementGlobal("bsVisitedHalls","GLOBAL",1)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
 		Wait(2)
 		CreateCreature("bsalgune",[463.213],2)
 		Wait(1)
-		JumpToPoint([389.610])
+		DestroySelf()
 END
 
 //---------------------------------------------------------
@@ -96,15 +144,16 @@ END
 //---------------------------------------------------------
 IF
 	AreaCheck("bs0133")
-	Global("bsCreateAlguineFM4","GLOBAL",0)
+	Global("bsCreateAlguineFM4","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("bsCreateAlguineFM4","GLOBAL",1)
-		ForceSpellRES("SPWI402",Myself)
+		SetGlobal("bsCreateAlguineFM4","MYAREA",1)
+		IncrementGlobal("bsVisitedHalls","GLOBAL",1)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
 //		Wait(2) //for some reason this needs to be removed or he won't spawn
 		CreateCreature("bsalgune",[700.1078],8)
 		Wait(1)
-		JumpToPoint([389.610])
+		DestroySelf()
 END
 
 //---------------------------------------------------------
@@ -116,9 +165,9 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("bsCreateAlguineFM5","GLOBAL",1)
-		ForceSpellRES("SPWI402",Myself)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
 		Wait(2)
 		CreateCreature("bsalgune",[1479.1330],7)
 		Wait(1)
-		JumpToPoint([982.313])
+		DestroySelf()
 END

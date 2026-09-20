@@ -1,0 +1,8 @@
+/* soldier who brought the lost girl */
+IF
+    AreaCheck("ys0103")
+    Global("bs_LostNecklaceQuest","GLOBAL",3)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END

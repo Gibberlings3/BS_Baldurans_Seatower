@@ -1,0 +1,11 @@
+//Override Script of Ulf
+
+IF
+    See([PC])
+	!StateCheck(LastSeenBy(Myself),CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+    NumTimesTalkedTo(0)
+THEN
+    RESPONSE #100
+        Dialogue([PC])
+END

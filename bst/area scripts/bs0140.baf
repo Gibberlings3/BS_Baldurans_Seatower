@@ -1,19 +1,8 @@
+/* place book into shelf */
 IF
-	Global("bsFutureMemoriesDone","MYAREA",0)
-	OR(2)
-		Global("bsAlguineAnnoyed","GLOBAL",1)
-		Global("bsDreamDone","GLOBAL",2)
+  Global("bsSpawnBooks","MYAREA",0)
 THEN
-	RESPONSE #100
-		AddJournalEntry(@765,QUEST)
-		SetGlobal("bsFutureMemoriesDone","MYAREA",1)
-		SetGlobal("bsDreamDone","GLOBAL",3)
-		ActionOverride("bsalgune",ForceSpellRES("bs00002",Player1))
-		Wait(3)
-		ActionOverride(Player1,LeaveAreaLUA("%BanditCamp%","",[2207.2491],3))
-		ActionOverride(Player2,LeaveAreaLUA("%BanditCamp%","",[2149.2437],3))
-		ActionOverride(Player3,LeaveAreaLUA("%BanditCamp%","",[2246.2424],3))
-		ActionOverride(Player4,LeaveAreaLUA("%BanditCamp%","",[2198.2392],3))
-		ActionOverride(Player5,LeaveAreaLUA("%BanditCamp%","",[2285.2373],3))
-		ActionOverride(Player6,LeaveAreaLUA("%BanditCamp%","",[2251.2336],3))
+  RESPONSE #100
+		ActionOverride("Shelf01",CreateItem("BSBOOKA1",0,0,0)) //Fire Elementals
+		SetGlobal("bsSpawnBooks","MYAREA",1)
 END

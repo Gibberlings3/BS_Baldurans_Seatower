@@ -1,0 +1,188 @@
+/* override script of priest in bd0101, Old Temple Island */
+
+/* use antidote if poisoned */
+IF
+    StateCheck(Myself,STATE_POISONED)
+    !GlobalTimerNotExpired("bs_AntidoteTimer","LOCALS")
+    HasItem("POTN20",Myself)  // Antidote
+THEN
+    RESPONSE #100
+        UseItem("POTN20",Myself)  // Antidote
+        SetGlobalTimer("bs_AntidoteTimer","LOCALS",ONE_ROUND)
+END
+/*
+
+IF
+    See(NearestEnemyOf(Myself))
+    !Range(NearestEnemyOf(Myself),4)
+    StateCheck(Myself,STATE_POISONED)
+    HaveSpell(CLERIC_NEUTRALIZE_POISON)  // SPPR404.SPL (Neutralize Poison)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_NEUTRALIZE_POISON)  // SPPR404.SPL (Neutralize Poison)
+END
+
+
+IF
+    StateCheck(Myself,STATE_POISONED)
+    HaveSpell(CLERIC_SLOW_POISON)  // SPPR212.SPL (Slow Poison)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_SLOW_POISON)  // SPPR212.SPL (Slow Poison)
+        Continue()
+END
+
+IF
+    StateCheck(Myself,STATE_POISONED)
+    HaveSpell(CLERIC_NEUTRALIZE_POISON)  // SPPR404.SPL (Neutralize Poison)
+THEN
+    RESPONSE #100
+        Spell(Myself,CLERIC_NEUTRALIZE_POISON)  // SPPR404.SPL (Neutralize Poison)
+END
+*/
+
+/* initiate dialogue after cutscene */
+IF
+    See([PC])
+    !Allegiance(Myself,ENEMY)
+	Global("bs_LacedonQuest","MYAREA",2) //after 1st cutscene
+THEN
+    RESPONSE #100
+        Dialogue([PC])
+END
+
+/* exchange weapons */
+/* hammer */
+IF
+    Global("bs_AskedHammer","LOCALS",3)
+    OR(6)
+        See(Player1)
+        See(Player2)
+        See(Player3)
+        See(Player4)
+        See(Player5)
+        See(Player6)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        GiveItem("bsihammr",LastSeenBy(Myself))
+        SetGlobal("bs_AskedHammer","LOCALS",9)
+        TakePartyItemNum("HAMM01",1)
+        FillSlot(SLOT_WEAPON)
+        EquipItem("HAMM01")
+        SetInterrupt(TRUE)
+END
+/* flail - "BLUN08" */
+IF
+    Global("bs_AskedHammer","LOCALS",4)
+    OR(6)
+        See(Player1)
+        See(Player2)
+        See(Player3)
+        See(Player4)
+        See(Player5)
+        See(Player6)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        GiveItem("bsihammr",LastSeenBy(Myself))
+        SetGlobal("bs_AskedHammer","LOCALS",9)
+        TakePartyItemNum("BLUN08",1)
+        FillSlot(SLOT_WEAPON)
+        EquipItem("BLUN08")
+        SetInterrupt(TRUE)
+END
+/* flail - "BLUN02" */
+IF
+    Global("bs_AskedHammer","LOCALS",5)
+    OR(6)
+        See(Player1)
+        See(Player2)
+        See(Player3)
+        See(Player4)
+        See(Player5)
+        See(Player6)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        GiveItem("bsihammr",LastSeenBy(Myself))
+        SetGlobal("bs_AskedHammer","LOCALS",9)
+        TakePartyItemNum("BLUN02",1)
+        FillSlot(SLOT_WEAPON)
+        EquipItem("BLUN02")
+        SetInterrupt(TRUE)
+END
+/* mace - "BLUN04" */
+IF
+    Global("bs_AskedHammer","LOCALS",6)
+    OR(6)
+        See(Player1)
+        See(Player2)
+        See(Player3)
+        See(Player4)
+        See(Player5)
+        See(Player6)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        GiveItem("bsihammr",LastSeenBy(Myself))
+        SetGlobal("bs_AskedHammer","LOCALS",9)
+        TakePartyItemNum("BLUN04",1)
+        FillSlot(SLOT_WEAPON)
+        EquipItem("BLUN04")
+        SetInterrupt(TRUE)
+END
+/* morning star - "BLUN06" */
+IF
+    Global("bs_AskedHammer","LOCALS",7)
+    OR(6)
+        See(Player1)
+        See(Player2)
+        See(Player3)
+        See(Player4)
+        See(Player5)
+        See(Player6)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        GiveItem("bsihammr",LastSeenBy(Myself))
+        SetGlobal("bs_AskedHammer","LOCALS",9)
+        TakePartyItemNum("BLUN06",1)
+        FillSlot(SLOT_WEAPON)
+        EquipItem("BLUN06")
+        SetInterrupt(TRUE)
+END
+
+/* add journal entry */
+IF
+    Global("bs_AskedHammer","LOCALS",9)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@1002)
+        AddJournalEntry(@1003,QUEST)
+        SetGlobal("bs_AskedHammer","LOCALS",10)
+END
+
+/* after fight: heal */
+IF
+    !See([PC])
+    !See([ENEMY])
+    CombatCounter(0)
+    HPLT(Myself,35)
+THEN
+    RESPONSE #100
+        ApplySpellRES("SPIN711",Myself)
+END
+
+
+/* return to chapel */
+IF
+    !See([PC])
+    !See([ENEMY])
+    CombatCounter(0)
+    StateCheck(Myself,STATE_NORMAL)
+    !Range("Altar01",15)
+THEN
+    RESPONSE #100
+        MoveToObject("Altar01")
+END

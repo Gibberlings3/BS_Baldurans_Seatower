@@ -1,0 +1,35 @@
+
+
+/* Group enters the room unhidden - will be sealed until after the fight */
+IF
+	IsOverMe([PC])
+    !StateCheck(LastTrigger,STATE_INVISIBLE)
+    !StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+    Global("bs_ihorn","GLOBAL",0)
+    Global("bs_i_PortalRoomActivated","GLOBAL",0)
+	Global("bs_SahuaginPortalRoom","GLOBAL",0)
+THEN
+	RESPONSE #100
+        DisplayStringHead(Player1,@11097) //You sense a strong magic aura, blocking the way out. Some sort of defence system got activated!
+		TriggerActivation("Translc0102c",FALSE)
+		TriggerActivation("travbs0101",FALSE) //hidden passage to bs0101
+        AddJournalEntry(@100033,QUEST)
+		SetGlobal("bs_SahuaginPortalRoom","GLOBAL",1)
+		SetGlobal("bs_i_PortalRoomActivated","GLOBAL",1)
+END
+
+/* Group reenters the room unhidden - activate again if monsters are left */
+IF
+	IsOverMe([PC])
+    !StateCheck(LastTrigger,STATE_INVISIBLE)
+    !StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+    Global("bs_ihorn","GLOBAL",0)
+    Global("bs_i_PortalRoomActivated","GLOBAL",0)
+    GlobalLT("bs_i_MonsterSpawnbs0104","GLOBAL",11)
+THEN
+	RESPONSE #100
+        DisplayStringHead(Player1,@11130) //You sense a strong magic aura, blocking the way out. The defence system got activated again!
+		TriggerActivation("Translc0102c",FALSE)
+		TriggerActivation("travbs0101",FALSE) //hidden passage to bs0101
+		SetGlobal("bs_i_PortalRoomActivated","GLOBAL",1)
+END

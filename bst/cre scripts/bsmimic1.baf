@@ -3,6 +3,7 @@ IF
 	OpenState("DOOR 04",TRUE)
 	Global("bsOpenMimic","MYAREA",0)
 	Allegiance(Myself,NEUTRAL)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -18,6 +19,7 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+%EET_BGT_only_slash%%EET_BGT_only_asteriks%
 IF
 //	Global("JermienJob","GLOBAL",1)
 	Global("bsCreateMimicBlood","MYAREA",0)
@@ -26,6 +28,7 @@ THEN
 		CreateItem("MISC6Y",0,0,0)
 		SetGlobal("bsCreateMimicBlood","MYAREA",1)
 END
+%EET_BGT_only_asteriks%%EET_BGT_only_slash%
 
 IF
 	OR(3)
@@ -41,6 +44,7 @@ THEN
 		ActionOverride("bsmimic1",DestroyItem("mage01"))
 		SetGlobal("bsOpenMimic","MYAREA",2)
 		Enemy()
+		SetInterrupt(TRUE)
 END
 
 

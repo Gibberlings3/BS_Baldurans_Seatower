@@ -1,0 +1,17 @@
+// check that Moggy is in the right place
+// to block the bed
+IF
+	IsOverMe("bsmoggy")
+	Global("bs_MoggyIsHere","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_MoggyIsHere","MYAREA",1)
+END
+
+IF
+	!IsOverMe("bsmoggy")
+	GlobalGT("bs_MoggyIsHere","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_MoggyIsHere","MYAREA",0)
+END

@@ -1,0 +1,73 @@
+// This script primes script ys0119t1.
+//
+// If the tomb has been clicked on then prime the trap.
+// If the trap is not primed then it will not call
+// the King of the Restless Dead.
+IF
+	Clicked([ANYONE])
+	Global("bs_ys0119TombTrigger%tomb_number%","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11001)
+		ForceSpellRes("BS00003",LastTrigger)
+		CreateCreature("ysrstdd1",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		CreateCreature("ysrstdd3",[-1.-1],0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11002)
+		ForceSpellRes("BS00003",LastTrigger)
+		GiveItemCreate("MISC18",LastTrigger,1,1,0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11003)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11001)
+		ForceSpellRes("BS00003",LastTrigger)
+		CreateCreature("ysrstdd1",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		CreateCreature("ysrstdd3",[-1.-1],0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11003)
+		ForceSpellRes("BS00003",LastTrigger)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11002)
+		ForceSpellRes("BS00003",LastTrigger)
+		GiveItemCreate("AMUL09",LastTrigger,1,1,0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11003)
+		ForceSpellRes("BS00003",LastTrigger)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11002)
+		ForceSpellRes("BS00003",LastTrigger)
+		GiveItemCreate("RING10",LastTrigger,1,1,0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11002)
+		ForceSpellRes("BS00003",LastTrigger)
+		GiveItemCreate("MISC21",LastTrigger,1,1,0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+	RESPONSE #10
+		DisplayStringHead(Myself,@11001)
+		ForceSpellRes("BS00003",LastTrigger)
+		CreateCreature("ysrstdd1",[-1.-1],0)
+		CreateCreature("ysrstdd2",[-1.-1],0)
+		CreateCreature("ysrstdd3",[-1.-1],0)
+		SetGlobal("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+END
+
+
+/* display stringhead if this tomb was already looted */
+IF
+	Clicked([ANYONE])
+	Global("bs_ys0119TombTrigger%tomb_number%","MYAREA",1)
+THEN
+	RESPONSE #100
+		ForceSpellRes("BS00003",LastTrigger)
+		DisplayStringHead(Myself,@11000)
+END

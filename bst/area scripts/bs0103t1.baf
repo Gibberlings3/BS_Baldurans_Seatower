@@ -1,0 +1,42 @@
+IF
+    GlobalLT("bs_Infravision","MYAREA",2)
+    OR(2)
+        Entered([ANYONE])
+        IsOverMe([ANYONE])
+    %OR_RACE_GOBLIN%
+        Race(LastTrigger,ELF)
+        Race(LastTrigger,HALF_ELF)
+        Race(LastTrigger,DWARF)
+        Race(LastTrigger,GNOME)
+        Race(LastTrigger,HALFORC)
+        Race(LastTrigger,TIEFLING)
+        StateCheck(LastTrigger,STATE_INFRAVISION)
+        HasItem("bsicandl",LastTrigger)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        DisplayStringHead(Myself,@11116)
+        ContainerEnable("HiddenPile01",TRUE)
+        SetGlobal("bs_Infravision","MYAREA",2)
+        SetInterrupt(TRUE)
+END
+
+IF
+    Global("bs_Infravision","MYAREA",0)
+    OR(2)
+        Entered([ANYONE])
+        IsOverMe([ANYONE])
+    %NO_RACE_GOBLIN%
+    !Race(LastTrigger,ELF)
+    !Race(LastTrigger,HALF_ELF)
+    !Race(LastTrigger,DWARF)
+    !Race(LastTrigger,GNOME)
+    !Race(LastTrigger,HALFORC)
+    !Race(LastTrigger,TIEFLING)
+    !StateCheck(LastTrigger,STATE_INFRAVISION)
+    !HasItem("bsicandl",LastTrigger)
+THEN
+    RESPONSE #100
+        DisplayStringHead(Myself,@11129)
+        SetGlobal("bs_Infravision","MYAREA",1)
+END

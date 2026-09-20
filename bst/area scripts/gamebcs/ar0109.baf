@@ -1,0 +1,16 @@
+
+
+/* smuggler bonus quest */
+/* after Sarevok's death */
+IF
+	%BGT_VAR%
+	Dead("Sarevok")
+	!Dead("bssmgl02")
+	Global("bsSmugglerQuest","GLOBAL",41)
+	Global("bs_SpawnFFSmugglerBonus","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bs_SpawnFFSmugglerBonus","MYAREA",1)
+		CreateCreature("bssmgl21",[396.446],2) //Bruce
+		Continue()
+END

@@ -1,0 +1,28 @@
+/* After arrival: dormant portal shimmers in the debth */
+IF
+	InMyArea(Player1)
+	Global("bs_PortalStringHead","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11101) //)~In a good dive's depth, you see the shimmer of the portal back to the Seacave under Balduran's Seatower. The portal is inactive, though - you'll need the Tooth of Iakhovas to activate it.~
+		SetGlobal("bs_PortalStringHead","MYAREA",1)
+END
+
+IF
+	Clicked([ANYONE])
+	!PartyHasItem("bsitooth")
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11101) //)~In a good dive's depth, you see the shimmer of the portal back to the Seacave under Balduran's Seatower. The portal is inactive, though - you'll need the Tooth of Iakhovas to activate it.~
+END
+
+/* Player has Tooth - portal gets active. give one warning before switching to travel trigger */
+IF
+	Clicked([ANYONE])
+	PartyHasItem("bsitooth")
+	Global("bsCloseTempleIslandExit","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11102) //~With the tooth near it, the portal awakes. It is ready to take you back to the Seacave below Balduran's Seatower. Without knowing for sure, you are certain that there will be no way to return to this island once you enter.~
+		SetGlobal("bsCloseTempleIslandExit","MYAREA",2)
+END

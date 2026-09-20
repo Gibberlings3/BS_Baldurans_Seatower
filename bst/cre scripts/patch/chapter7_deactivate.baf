@@ -1,0 +1,22 @@
+
+/* chapter 7 while fugitive */
+/* deactivate normal tower guards */
+IF
+	Global("bs_Chapter6Deactivate","LOCALS",0)
+	Global("Chapter","GLOBAL",%tutu_chapter_7%)
+	Global("DukeThanks","GLOBAL",0)
+THEN
+	RESPONSE #100
+		Deactivate(Myself)
+		SetGlobal("bs_Chapter6Deactivate","LOCALS",1)
+END
+
+/* activate normal tower guards */
+IF
+	Global("bs_Chapter6Deactivate","LOCALS",1)
+	!Global("DukeThanks","GLOBAL",0)
+THEN
+	RESPONSE #100
+		Activate(Myself)
+		SetGlobal("bs_Chapter6Deactivate","LOCALS",2)
+END

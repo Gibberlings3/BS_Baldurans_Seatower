@@ -1,16 +1,39 @@
-/* Spawn prison guards */
+/* innocent prison quest - prisoner dies */
+IF
+	Global("bs_KnowsPrisonerIntrigue","GLOBAL",7)
+	Global("bsKillMalastair","MYAREA",0)
+	InMyArea("bspris06")
+	!Dead("bspris06")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("bspris06",TakePartyItem("bspris6b"))
+		ActionOverride("bspris06",DestroyItem("bspris6b"))
+		ActionOverride("bspris06",Kill(Myself))
+		ReputationInc(-1)
+		EraseJournalEntry(@100094)
+		EraseJournalEntry(@100097)
+		AddJournalEntry(@100096,QUEST_DONE)
+		SetGlobal("bsKillMalastair","MYAREA",1)
+		SetInterrupt(TRUE)
+END
+
+/* Spawn characters: prison guards, prisoners, Sahuagin Scout */
 IF
 	Global("bsCreateGuards","MYAREA",0)
 THEN
 	RESPONSE #100
+        SetInterrupt(FALSE)
  	 	SetGlobal("bsCreateGuards","MYAREA",1)
 		CreateCreature("bsprgrd2",[603.531],14)
 		CreateCreature("bssahu04",[636.528],14)
-		Unlock("Door 01")
-		Unlock("Door 02")
-		Unlock("Door 03")
-		Unlock("Door 04")
-		Unlock("Door 05")
+		CreateCreature("bspris01",[445.435],15)
+		CreateCreature("bspris02",[1135.428],3)
+		CreateCreature("bspris03",[1020.333],3)
+		CreateCreature("bspris04",[905.261],3)
+		CreateCreature("bspris05",[771.176],3)
+		CreateCreature("bspris06",[160.324],14)
+        SetInterrupt(TRUE)
 END
 
 /* second guard will only spawn for normal quest path, not if PC enters first time after Sarevok is dead */
@@ -27,15 +50,83 @@ END
 
 IF
 	GlobalGT("bsPrisonEntry","GLOBAL",0)
-	Exists("bssahu04")
-	Global("bsDestroySahuagin","MYAREA",0)
+	!Exists("bssahu04")
+	!Dead("bssahu04")
+	Global("bsMoveSahuagin","MYAREA",0)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
+ 	 	SetGlobal("bsMoveSahuagin","MYAREA",1)
+		CreateCreature("bssahu04",[457.603],10)
+		SetInterrupt(TRUE)
+END
+
+/* group (re)entered prison - close and lock all doors */
+IF
+	InMyArea(Player1)
+	Global("bs_PCWasInPrisonArea","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CloseDoor("Door 01")
+		CloseDoor("Door 02")
+		CloseDoor("Door 03")
+		CloseDoor("Door 04")
+		CloseDoor("Door 05")
 		CloseDoor("Door 06")
-		ActionOverride("bssahu04",DestroySelf())
- 	 	SetGlobal("bsDestroySahuagin","MYAREA",1)
-		SmallWait(1)
-		CreateCreature("bssahu04",[446.428],14)
+		CloseDoor("Door 07")
+		Wait(1)
+		Lock("Door 01")
+		Lock("Door 02")
+		Lock("Door 03")
+		Lock("Door 04")
+		Lock("Door 05")
+		Lock("Door 06")
+		Lock("Door 07")
+		SetGlobal("bs_PCWasInPrisonArea","GLOBAL",1)
+END
+
+/* start spore colony quest (leads to noticing the secret passage) */
+
+IF
+	GlobalGT("bsPrisonEntry","GLOBAL",1)
+	Global("bsSpawnMyconiziden","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		TriggerActivation("Travbs1010",FALSE) //prevent player to leave the area before spawn is completed. This is a safety measure due to glitches in the EE
+		CreateCreature("bspspore",[427.149],15)
+		SetGlobal("bsSpawnMyconiziden","MYAREA",1)
+		SetInterrupt(TRUE)
+END
+IF
+	Global("bsSpawnMyconiziden","MYAREA",1)
+	DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		CreateCreature("icmyc01",[602.221],14)
+		SetGlobal("bsSpawnMyconiziden","MYAREA",2)
+		SetInterrupt(TRUE)
+END
+IF
+	Global("bsSpawnMyconiziden","MYAREA",2)
+    DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		CreateCreature("icmyc01",[513.231],14)
+		SetGlobal("bsSpawnMyconiziden","MYAREA",3)
+		SetInterrupt(TRUE)
+END
+IF
+	InMyArea("bspspore")
+    Global("bsPrisonMyconiziden","GLOBAL",0)
+THEN
+    RESPONSE #100
+		SetInterrupt(FALSE)
+		TriggerActivation("Travbs1010",TRUE)
+        SetGlobal("bsPrisonMyconiziden","GLOBAL",1)
+		SetInterrupt(TRUE)
 END
 
 /* remove 1st prison guard after PC is gone after dialogue */
@@ -51,7 +142,7 @@ THEN
 END
 
 
-/* deactivate travel trigger to sea caves */
+/* deactivate travel trigger to Seacave */
 IF
 	Global("bsCloseSeaExit","MYAREA",0)
 THEN
@@ -61,7 +152,7 @@ THEN
 		SetGlobal("bsCloseSeaExit","MYAREA",1)
 END
 
-
+/* remove info trigger and open travel trigger once the opening is discovered */
 IF
 	Global("bsPrisonMyconiziden","GLOBAL",5)
 THEN
@@ -90,7 +181,6 @@ IF
 	Global("bsCreateShuck","MYAREA",0)
 THEN
 	RESPONSE #100
-		CloseDoor("Door 07")
 		CreateCreature("bsshuck",[603.362],14)
  	 	SetGlobal("bsCreateShuck","MYAREA",1)
 END
@@ -114,23 +204,15 @@ THEN
 		ActionOverride("yshafslg",Dialogue([PC]))
 END
 
-/* start Myconiziden-Quest (leads to noticing the secret passage) */
-
+/* detect spore colony dead */
 IF
-///	GlobalGT("bsShucksBrother","GLOBAL",7)
-	Global("bsPrisonMyconiziden","GLOBAL",0)
+	GlobalLT("bsPrisonMyconiziden","GLOBAL",3)
+	Dead("bspspore")
 THEN
 	RESPONSE #100
-		SetGlobal("bsPrisonMyconiziden","GLOBAL",1)
-END
-
-IF
-	Global("bsPrisonMyconiziden","GLOBAL",2)
-THEN
-	RESPONSE #100
+        EraseJournalEntry(@753)
+        AddJournalEntry(@754,QUEST)
  	 	SetGlobal("bsPrisonMyconiziden","GLOBAL",3)
-		CreateCreature("bsmycon1",[602.221],14)
-		CreateCreature("bsmycon1",[513.231],14)
 END
 
 /* Sahuagin will die eventually */
@@ -140,8 +222,25 @@ IF
 	!Dead("bssahu04")
 THEN
 	RESPONSE #100
-		Unlock("Door 06")
-		OpenDoor("Door 06")
 		ActionOverride("bssahu04",Kill(Myself))
  	 	SetGlobal("bsPrisonSahuaginGone","MYAREA",1)
+END
+
+/* bandit prisoner will be gone after note was placed */
+IF
+	Global("bs_BanditHiddenGold","GLOBAL",4)
+	InMyArea("bspris03")
+THEN
+	RESPONSE #100
+		ActionOverride("bspris03",DestroySelf())
+		SetGlobal("bs_BanditHiddenGold","GLOBAL",5)
+END
+
+/* innocent  prisoner will be gone after evidence was handed over */
+IF
+	GlobalGT("bs_KnowsPrisonerIntrigue","GLOBAL",7)
+	InMyArea("bspris06")
+THEN
+	RESPONSE #100
+		ActionOverride("bspris06",DestroySelf())
 END

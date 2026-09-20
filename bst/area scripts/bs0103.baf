@@ -1,0 +1,96 @@
+/* place spore colony */
+IF
+    Global("bs_SpawnSporeColony","MYAREA",0)
+THEN
+    RESPONSE #100
+        CreateCreature("bsispore",[2492.532],4)
+        SetGlobal("bs_SpawnSporeColony","MYAREA",1)
+END
+
+/* place umber hulk */
+IF
+    Global("bs_SpawnUmberHulk","MYAREA",0)
+THEN
+    RESPONSE #100
+        CreateCreature("bsiumhlk",[1503.1332],4)
+        SetGlobal("bs_SpawnUmberHulk","MYAREA",1)
+END
+
+/* Journal Entry: PC found the Adventurer Note */
+IF
+    PartyHasItem("bsiadvnt")
+    Global("bs_ti_UmberBetrayal","GLOBAL",0)
+THEN
+    RESPONSE #100
+        AddJournalEntry(@1010,QUEST)
+        SetGlobal("bs_ti_UmberBetrayal","GLOBAL",1)
+END
+
+/* upon entering the area: Deactivate HiddenPile01 */
+IF
+    Global("bs_HideHiddenPile","MYAREA",0)
+THEN
+    RESPONSE #100
+        ContainerEnable("HiddenPile01",FALSE)
+        SetGlobal("bs_HideHiddenPile","MYAREA",1)
+END
+
+/* spawn more Malenti as long as hole is not blocked */
+/* after player saw the hole */
+/* game difficulty "NORMAL" - only once */
+IF
+    GlobalGT("bs_WaterholeStringHead","MYAREA",0)
+    GlobalLT("bs_WaterholeStringHead","MYAREA",3)
+    Global("bs_SpawnMoreMalenti","MYAREA",0)
+    Difficulty(NORMAL)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("bs_MalentiSpawnTimer","GLOBAL",10800)
+        SetGlobal("bs_SpawnMoreMalenti","MYAREA",1)
+END
+/* game difficulty "HARD" */
+IF
+    GlobalGT("bs_WaterholeStringHead","MYAREA",0)
+    GlobalLT("bs_WaterholeStringHead","MYAREA",3)
+    !Global("bs_SpawnMoreMalenti","MYAREA",1)
+    Difficulty(HARD)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("bs_MalentiSpawnTimer","GLOBAL",3600)
+        SetGlobal("bs_SpawnMoreMalenti","MYAREA",1)
+END
+/* game difficulty "HARDEST" */
+IF
+    GlobalGT("bs_WaterholeStringHead","MYAREA",0)
+    GlobalLT("bs_WaterholeStringHead","MYAREA",3)
+    !Global("bs_SpawnMoreMalenti","MYAREA",1)
+    Difficulty(HARDEST)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("bs_MalentiSpawnTimer","GLOBAL",1800)
+        SetGlobal("bs_SpawnMoreMalenti","MYAREA",1)
+END
+/* timer run out - spawn Malenti. These have RandomWalk() */
+IF
+    GlobalGT("bs_WaterholeStringHead","MYAREA",0)
+    GlobalLT("bs_WaterholeStringHead","MYAREA",3)
+    Global("bs_SpawnMoreMalenti","MYAREA",1)
+    RealGlobalTimerExpired("bs_MalentiSpawnTimer","GLOBAL")
+THEN
+    RESPONSE #100
+        CreateCreature("bsimalnt",[442.2157],12)
+        CreateCreature("bsimaln2",[427.2212],12)
+        SetGlobal("bs_SpawnMoreMalenti","MYAREA",2)
+END
+
+
+/* Journal Entry: PC killed Umber Hulk (for active quest) */
+IF
+    Dead("bsiumhlk")
+    Global("bs_UmberHulkQuest","GLOBAL",3)
+THEN
+    RESPONSE #100
+        EraseJournalEntry(@100074)
+        AddJournalEntry(@100075,QUEST_DONE)
+        SetGlobal("bs_UmberHulkQuest","GLOBAL",4)
+END

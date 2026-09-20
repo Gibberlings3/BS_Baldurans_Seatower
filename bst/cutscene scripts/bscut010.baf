@@ -1,0 +1,15 @@
+/* King of the restless Dead gets banned */
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetInterrupt(FALSE)
+		Wait(1)
+		CreateVisualEffect("SPRAISED",[377.390])
+		Wait(3)
+		CreateCreature("ysrsdead",[377.390],2)
+		ActionOverride("ysrsdead",SetSequence(SEQ_AWAKE))
+		SetInterrupt(TRUE)
+		EndCutSceneMode()
+END

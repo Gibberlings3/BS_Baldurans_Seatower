@@ -1,0 +1,9 @@
+
+/* spawn random walk guards */
+IF
+    Global("bs_SpawnRandomWalkGuards","MYAREA",0)
+THEN
+    RESPONSE #100
+        CreateCreature("bssmgl16",[913.322],0)
+        SetGlobal("bs_SpawnRandomWalkGuards","MYAREA",1)
+END

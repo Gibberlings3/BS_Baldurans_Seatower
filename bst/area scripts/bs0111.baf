@@ -1,3 +1,17 @@
+/* correct loot for EET/BGT */
+%BGEE_ONLY_SLASH%%BGEE_ONLY_ASTERIKS%
+IF
+	Global("bs_AdjustLootLevel","MYAREA",0)
+THEN
+	RESPONSE #100
+ 	 	SetGlobal("bs_AdjustLootLevel","MYAREA",1)
+		ActionOverride("Barrel02",DestroyItem("RNDTRE02"))
+		ActionOverride("Barrel02",CreateItem("RNDTRE06",0,0,0))
+		Continue()
+END
+%BGEE_ONLY_ASTERIKS%%BGEE_ONLY_SLASH%
+
+
 /* Spawn smuggler doppelganger */
 IF
 	Global("bsCreateDoppelgangerSmuggler","MYAREA",0)

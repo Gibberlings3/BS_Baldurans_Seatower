@@ -1,0 +1,59 @@
+// creator: Shai Hulud
+// game: Balduran's Seatower
+// date: 2026-03-30, 21:16
+// Caution: This file is in UTF-8 format because it uses several special characters of non-english languages
+
+@0 = ~(Der Brunnen des Turms. Aufgrund der Nähe zum Meer ist das Wasser eher brackig und kein Trinkwasser, aber gut genug für die Bewässerung der landwirtschaftlichen Flächen.)~
+@1 = ~(Den Brunnen benutzen, um das Fass mit Wasser zu füllen.)~
+@2 = ~(Das Fass mit dem Feuerelementar in den Brunnen tauchen.)~
+@3 = ~(Einen Schluck von dem Brunnenwasser probieren).~
+@4 = ~(Eine Goldmünze in den Brunnen werfen, so wie es Tradition ist, um sich etwas zu wünschen.)~
+@5 = ~(Eine weitere Goldmünze in den Brunnen werfen, so wie es Tradition ist, wenn man sich etwas wünscht.)~
+@6 = ~(Einen Kieselstein in den Brunnen fallen lassen.)~
+@7 = ~(Einen weiteren Kieselstein in den Brunnen fallen lassen.)~
+@8 = ~(Den zehnten Kieselstein in den Brunnen fallen lassen.)~
+@9 = ~(Den Brunnen in Ruhe lassen.)~
+@10 = ~(Das Fass schwimmt auf der Wasseroberfläche und sinkt langsam, als Wasser eindringt.)~
+@11 = ~(Das Fass wieder herausfischen.)~
+@12 = ~(Ihr beobachtet, wie sich das Fass vollständig mit Wasser füllt und den Feuerelementar ertränkt.)~
+@13 = ~(Das Fass ist jetzt voll Wasser. Der Feuerelementar ist tot.)~
+@14 = ~(Das Fass ist jetzt voll Wasser.)~
+@15 = ~(Das Wasser schmeckt salzig und ein wenig faul, aber besser als manches, das Ihr in der Wildnis getrunken habt.)~
+@16 = ~(Als die Münze auf die Oberfläche trifft, macht sie ein deutliches „Platsch“-Geräusch und versinkt dann außer Sichtweite im Wasser.)~
+@17 = ~[Imoen] Oh, das möchte ich auch tun. Was hast du dir gewünscht, <CHARNAME>? Warte! Sags mir nicht, sonst geht es nicht in Erfüllung. So! Und weg ist er. Ich wünsche mir ein schönes, gemütliches Haus in einer nicht allzu großen Stadt, mit Dienern und einer KATZE nur für mich … Nein, ich meine, ich werde mir DAS NICHT wünschen, denn man soll es ja nicht laut sagen!~
+@18 = ~[Alora] Ich auch, ich auch! (Luft hol) Jetzt rein mit dir. Mach mich glücklich!~
+@19 = ~(Auch diese Münze macht beim Aufprall auf die Wasseroberfläche ein deutliches „Platsch“-Geräusch und sinkt dann außer Sichtweite ins Wasser.)~
+@20 = ~[Jaheira] Ich weiß NICHT, was Ihr damit erreichen wollt, <CHARNAME>. Bitte sagt mir, dass Ihr nicht an wunscherfüllende Brunnen glaubt.~
+@21 = ~[Imoen] Gib ihm Zeit, gib ihm Zeit, <CHARNAME>! Es wird nicht schneller gehen, wenn du es dir mehrmals wünschst. Obwohl … das macht wirklich Spaß. (kicher) Uuuund hopp!~
+@22 = ~(seufz)~
+@23 = ~Am besten schimpfen wir nicht über <CHARNAME> für dieses Spiel – er hat so schon wenig genug Freude an seinem Leben.~ ~Am besten schimpfen wir nicht über <CHARNAME> für dieses Spiel – sie hat so schon wenig genug Freude an ihrem Leben.~
+@24 = ~[Imoen] Du weißt, dass ich mich jedes Mal zurückhalten muss, wenn du das tust, damit ich es nicht auch tue, oder? Ich bin soooo stolz auf mich, dass ich nicht die ganze Goldbeutel hineingeworfen habe!~
+@25 = ~[Minsc] Minsk versteht nicht, warum <CHARNAME> den Brunnen zum Reinigen all dieser Goldmünzen benutzen will … Was, Boo? Ah! Ich verstehe. <CHARNAME> versteckt sie für später. Sehr schlau!~
+@26 = ~[Eldoth] Nur für den Fall, dass jemand in Erwägung zieht, unser gesamtes Gold in diesen Brunnen zu werfen, seid versichert, dass ich erwarte, dass Ihr es wieder herausholt.~
+@27 = ~[Kagain] Jeder, der daran denkt, unser gesamtes Gold in diesen Brunnen zu werfen, wird durch meine Hand sterben.~
+@28 = ~[Ajantis, with Imoen] Das wäre in der Tat eine große Verschwendung, Imoen. Ich weiß nie, wann Ihr im Scherz redet und wann …~
+@29 = ~[Imoen, with Ajantis]… wann ich im Begriff bin, etwas völlig Dummes zu tun? Ah, Ajantis …~
+@30 = ~[Imoen] Keine Sorge. Ich würde NIE meinen ganzen Goldbeutel hineinwerfen …~
+@31 = ~[Ajantis, with Imoen] Ich bin erleichtert, das zu hören.~
+@32 = ~[Imoen] Ich würde natürlich den von jemand anderem hineinwerfen! (kicher)~
+@33 = ~[Alora] Hätte ich gewusst, dass Ihr Euch so leicht von Eurem Gold trennt, <CHARNAME>, hätte ich nicht so viel Zeit damit verbracht, die Taschen anderswo zu durchsuchen. (kicher) Aber lasst Euch von mir nicht den Spaß verderben!~
+@34 = ~[Montaron] Hätte ich gewusst, dass Ihr Euch so leicht von Goldmünzen trennt, hätte ich mich nicht mit Euch verbündet, <CHARNAME>. Sind wir hier nun fertig?~
+@35 = ~[Imoen] Ich weiß, ich habe es gerade selbst getan, aber … Sich all die Münzen für Jahrtausende auf dem Grund des kalten, dunklen Wassers vorzustellen, bevor jemand sie wieder zum Leuchten bringt, ist ziemlich deprimierend … Man muss sich auf die Wünsche konzentrieren! Die Wünsche! Ich hoffe, du hast dir etwas Tolles gewünscht, <CHARNAME>.~
+@36 = ~[Yeslick, PC male] Ich bin mir nicht sicher, was Ihr Euch da wünscht, Junge, aber ich bin mir ziemlich sicher, dass ein mehrfacher Wunsch die Wahrscheinlichkeit, dass er in Erfüllung geht, nicht erhöht.~
+@37 = ~Ich bin mir nicht sicher, was Ihr Euch da wünscht, Mädel, aber ich bin mir ziemlich sicher, dass ein mehrfacher Wunsch die Wahrscheinlichkeit, dass er in Erfüllung geht, nicht erhöht.~
+@38 = ~Ich weiß n-nicht, was Ihr Euch wünscht, <CHARNAME>, aber ich hoffe s-sehr, dass es das Gold wert ist.~
+@39 = ~Es gibt KEINEN Wunsch, der es rechtfertigt, Gold auf diese Weise wegzuwerfen.~
+@40 = ~Törichter Glaube. Das Gold wäre besser für Ausrüstung für unsere vor uns liegenden Aufgaben ausgegeben.~
+@41 = ~[Xan] Ich werde nicht näher darauf eingehen, warum die menschliche Tradition, Gold in Brunnen zu werfen, eine völlig törichte Sache ist – und obendrein sinnlos.~
+@42 = ~[Eldoth] Das nächste Mal, wenn Ihr Euch danach fühlt Gold wegzuwerfen, gebt es einfach mir. Ich kann auch Träume wahr werden lassen, mindestens so gut wie dieser Brunnen.~
+@43 = ~[Skie] Wenn Ihr Euch danach fühlt Gold wegzuwerfen, steckt es einfach hier in meinen Geldbeutel, <CHARNAME>!~
+@44 = ~Das ist so malerisch – <CHARNAME> am Brunnen des Seeturms stehend, sich seine Herzensbedürfnisse wünschend … Würdet Ihr das bitte noch einmal machen? Ich muss den Geist nur richtig einfangen …~ ~Das ist so malerisch – <CHARNAME> am Brunnen des Seeturms stehend, sich ihre Herzensbedürfnisse wünschend … Würdet Ihr das bitte noch einmal machen? Ich muss den Geist nur richtig einfangen …~
+@45 = ~Wie könnt Ihr Gold für so ein kindisches Spiel verschwenden? Es gibt viel bessere Möglichkeiten, Gold in einer Stadt auszugeben.~
+@46 = ~Ich schätze, Ihr seid der einzige, der versucht, den Brunnnengeist mit Goldmünzen statt mit Kieselsteinen zu verhöhnen, <CHARNAME>. (Törichtes Verhalten. Ich schätze, ich kann dankbar sein, dass <PRO_HESHE> nur eine Goldmünze auf einmal wirft.)~
+@47 = ~[Kivan] Eines Tages wird man in diesem Brunnen einen ertrunkenen Dummkopf finden, der von den vielen Goldmünzen am Grund angelockt wurde.~
+@48 = ~Nach relativ kurzer Zeit hört Ihr ein „Platsch“-Geräusch, als der Kieselstein auf die Wasseroberfläche trifft.~
+@49 = ~(Ihr hört wieder ein „Platsch“-Geräusch, als der Kieselstein auf die Wasseroberfläche trifft.)~
+@50 = ~(Das erwartete „Platsch“-Geräusch wird von dem wütenden Zischen eines ertrunkenen Geistes verschluckt, den Ihr gestört habt!)~
+@51 = ~Wir kommen gerne in den Turm. Die Kinder mögen die Tiere, und es ist sicher hier.~
+@52 = ~Ich werde etwas von meinem Brot aufheben und später die Möwen füttern.~
+@53 = ~Ich möchte später die Kühe streicheln.~

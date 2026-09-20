@@ -1,0 +1,69 @@
+/* The Captain's Table:  */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,5)
+	OR(3)
+		GlobalLT("bsSmugglerQuest","GLOBAL",13)
+		Global("bsSmugglerQuest","GLOBAL",17)
+		Global("bs_PCTakesFlask","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11152)
+END
+
+/* Player was seen - give info */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,5)
+	Global("bs_PCIsSeen","MYAREA",2)
+	!StateCheck("bssmgl16",CD_STATE_NOTVALID)
+	Global("bsSmugglerQuest","GLOBAL",13)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringNoNameHead(Myself,@11155)
+		SetGlobal("bs_PCWasAtTable","MYAREA",1)
+		ActionOverride("bssmgl16",StartDialogNoSet([PC]))
+		SetInterrupt(TRUE)
+END
+
+
+/* Player takes flagrance - give info */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,5)
+	GlobalLT("bs_PCIsSeen","MYAREA",2)
+	Global("bsSmugglerQuest","GLOBAL",13)
+	Global("bs_PCTakesFlask","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringNoNameHead(Myself,@11153)
+		SetGlobal("bs_PCTakesFlask","MYAREA",1)
+		SetGlobal("bsSmugglerQuest","GLOBAL",16)
+		EraseJournalEntry(@100104)
+		GiveItemCreate("bssmq005",LastTrigger,0,0,0)
+		AddJournalEntry(@100105,QUEST)
+		SetInterrupt(TRUE)
+END
+
+/* table without flagrance: if dialogue with captain fails */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,5)
+	GlobalGT("bsSmugglerQuest","GLOBAL",13)
+	!Global("bsSmugglerQuest","GLOBAL",17)
+THEN
+	RESPONSE #100
+		DisplayStringNoNameHead(Myself,@11154)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,5)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007)
+END
+
+

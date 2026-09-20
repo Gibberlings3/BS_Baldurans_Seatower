@@ -4,8 +4,8 @@ IF
 	OR(2)
 		Global("bsPrisonEntry","GLOBAL",1)
 		Global("bsJumpStartDGQuest","GLOBAL",1)
-	!See("bssahu04")
 	See([PC])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		StartDialogNoSet([PC])

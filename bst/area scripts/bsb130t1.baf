@@ -1,0 +1,55 @@
+/* Dryad quest is active: get water from Fountain / water source */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	Global("bsDryadWater","GLOBAL",1)
+	Global("%bsLookedAtWater%","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11079)
+		SetGlobal("%bsLookedAtWater%","MYAREA",1)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	Global("bsDryadWater","GLOBAL",1)
+	Global("%bsLookedAtWater%","MYAREA",1)
+	Global("%bsTookWater%","MYAREA",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11078)
+		GiveItemCreate("bsdrwate",Player1,1,0,0)
+		SetGlobal("%bsTookWater%","MYAREA",1)
+END
+
+
+/* If water for Dryad was taken here */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+	Global("bsDryadWater","GLOBAL",1)
+	Global("%bsTookWater%","MYAREA",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11080)
+		SetGlobal("%bsLookedAtWater%","MYAREA",1)
+END
+
+/* General interaction with water source: get general description */
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,20)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11077)
+		SetGlobal("%bsLookedAtWater%","MYAREA",1)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,20)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@11007)
+END

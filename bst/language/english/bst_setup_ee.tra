@@ -1,0 +1,675 @@
+/* Please note: This file contains lines from bst_setup.tra that differ for EE. Contains the different lines ONLY.*/
+@499 = ~Even a lord or a lady has moments when they simply want to disappear and not be seen by anyone, be it to avoid increased public attention or to escape an assassination attempt. The wearer of such a ring has certainly heard the words "I don't know where they went, they were just here a moment ago" many a time as they slipped away unnoticed.
+
+STATISTICS:
+
+Charge abilities:
+– Improved Invisibility once per day
+  Duration: 12 hours
+  Area of Effect: The user
+
+Weight: 0~
+
+@501 = ~This is the key you found on the cook in Balduran's Seatower. It opens the sheds in the kitchen's storeroom.
+
+Weight: 0~
+
+@503 = ~A bag of goose feathers given to you by the cook's apprentice and destined to be turned into arrow fletchings by the seatower fletcher.
+
+Weight: 0~
+
+@505 = ~A tankard of Golden Dragon Ale brewed by the cook in Balduran's Seatower. You don't particularly want to remember what it cost you.
+
+Weight: 1~
+
+@507 = ~A notably poor copy of the original and very famous Arla's Dragonsbane sling. After all you went through to get this, it really wasn't worth the effort, as the copy is only marginally better than an ordinary sling.
+
+
+STATISTICS:
+
+THAC0: +1
+Damage: +1 (missile)
+Speed Factor: 3
+Proficiency Type: Sling
+Type: One-handed
+Requires:
+ 3 Strength
+
+Weight: 0~
+
+@509 = ~This pass will grant you access to the Seatower's prison, located in the cellar of the tower. The entry is down the stairs in the main tower.
+
+Weight: 0~
+
+@511 = ~This scroll is supposed to open a hidden door to some ruins in the Wood of Sharp Teeth.
+
+Weight: 0~
+
+@513 = ~Alguine's key opens the locked door in the Halls of Future Memories.
+
+Weight: 0~
+
+@515 = ~This key opens the hidden door in the catacombs under Balduran's Seatower.
+
+Weight: 0~
+
+@517 = ~The key to the mausoleum in the Chionthar Tower. The Seatower catacombs lie below the tower.
+
+Weight: 0~
+
+@519 = ~The blade of this dagger is made of a bone cut from some long-dead and forgotten monster. The edge is still as sharp as the day it was carved—and cursed.
+
+Weight: 1~
+
+@521 = ~The blackened and scorched skull has survived the fire that should have destroyed it.
+
+Weight: 1~
+
+@523 = ~This candle contains a single Wish spell. In taking it, you denied the Sorcerer his last request.
+
+Weight: 1~
+
+@525 = ~The creature that once owned this desiccated talon did not live on this plane.
+
+Weight: 1~
+
+@527 = ~A thick red fluid stirs menacingly in the bottle. In taking it, you denied the Poisoned Man his life.
+
+Weight: 1~
+
+@530 = ~You found this old book buried in the far corner of Alguine's library. You can try to read the book, but the more you read, the less sense it makes. Much of the book seems to be... missing... and the rest of it seems to be written by someone not much older than a child. Worse yet, each time you open the book, the pages have changed.~
+
+@532  = ~This is the drawing given to you by Lars, the orphan boy. The picture bears a slight resemblance to what could be a dragon. You have absolutely no idea what you would use this for, but if you just dump it, a child will be very sad and a kitten will die somewhere, probably.
+
+Weight: 0~
+
+@534  = ~This is the cage Inn Master Roryn gave you to collect all the rabbits from the third floor of Balduran's Seatower Inn.
+
+Weight: 5~
+
+@536  = ~This is the rat you caught on the second floor of the Seatower Inn. It is unusually fat and has a tiny pink ribbon on its tail, with "Betsy" carefully written on it.
+The rat looks at you, but shows no intent to bite you.
+
+Weight: 1~
+@537  = ~This is the carcass of the rat you killed on the second floor of the Seatower Inn. You can still see a tiny pink ribbon on its tail, with "Betsy" carefully written on it.
+
+Weight: 1~
+
+@539  = ~This is the slave traders' contact information you received from the smugglers. It is an advertisement for "wild animal excursions" organized by "Leonhard the Fierce", who can be met on the third floor of the Seatower inn. There is a handwritten note on the back that says "ask for the special creatures tour".
+
+Weight: 0~
+
+@541  = ~The box is light, and nothing moves inside when shaken.
+
+Weight: 0~
+
+@543  = ~These are the notes you found on the body of "Leonhard the Fierce", the slave trader contact. It contains a schedule of a variety of innocent-sounding excursions.
+There is one entry with a date in the future called "Special Creatures Pursuit".
+
+Weight: 0~
+
+@545  = ~[#73913 (BGII)]This ring is an unadorned silver band. However, its plain appearance belies the powerful magic within. A Ring of Anti-Venom is eagerly sought after by royalty, influential political figures, and other potential assassination targets.
+
+STATISTICS:
+
+Equipped abilities:
+– Immunity to poison
+
+Weight: 0~
+
+@547  = ~[main text from #17520 BGII]Pearls consist of layers of aragonite agonizingly formed around a bit of grit or other irritant inside oysters and other mollusks. The resulting pearl has a rich, deep luster. Most of the pearls in the realms are white; however there are varieties that are much more rare such as rainbow and black. This pearl is black, a highly valued variant for their unique magical properties, particularly by diviners.
+
+This pearl is fresh from its shell and gleams with seawater.
+
+Weight: 0~
+
+@549  = ~This key opens the locked door inside the tailor's shop in the Docks District.
+
+Weight: 0~
+
+@551  = ~This is what Master Shizell called "mimic powder". It is in fact a liquid, not a powder, and it is effective in unmasking doppelgangers, not mimics.
+The flask is not completely stoppered and small wisps of fumes can be seen coming out of it. The flask needs to be used quickly before its effectiveness fades. When brought in close proximity to a doppelganger, the fumes—inoffensive on their own—combine with the odors of the Seatower and its environs into a scent that drives doppelgangers into a rage, shifting into their natural forms and attacking.
+
+Weight: 0~
+
+@553  = ~This is a very dusty bottle of herbal liqueur from some faraway distillery.
+This looks like a bottle that is best kept safe until you can give it to the right connoisseur.
+
+Weight: 0~
+
+@555  = ~There is no more content inside the flask. The potion is no longer effective against doppelgangers.
+
+Weight: 0~
+
+@557  = ~This treasury note entitles the bearer to a sum of 3,000 gold, to be collected in the Seatower Treasury.
+
+Weight: 0~
+@558  = ~This treasury note entitles the bearer to a sum of 5,000 gold, to be collected in the Seatower Treasury.
+
+Weight: 0~
+@559  = ~This treasury note entitles the bearer to a sum of 20,000 gold, to be collected in the Seatower Treasury.
+
+Weight: 0~
+
+@561  = ~This is a very exquisite-looking bottle of Calimshan Plum Liqueur.
+This looks like a bottle that is best kept safe until you can give it to the right connoisseur.
+
+Weight: 1~
+
+@563  = ~This is a very exquisite-looking bottle of Amnian Bitter Liqueur.
+This looks like a bottle that is best kept safe until you can give it to the right connoisseur.
+
+Weight: 1~
+@564  = ~This treasury note entitles the bearer to a sum of 500 gold, to be collected in the Seatower Treasury.
+
+Weight: 0~
+
+@566  = ~This is an empty barrel.
+
+Weight: 5~
+
+@568  = ~This is a barrel full of water.
+
+Weight: 20~
+
+@570  = ~This barrel was coated on the inside with a fire-resistant layer by the Seatower fletcher. It should hold a fire elemental for at least a day.
+
+Weight: 20~
+
+@572  = ~You trapped the fire elemental from the kitchen's storeroom inside this barrel.
+The barrel feels slightly hot and you hear a low crackling like from a fire from time to time.
+
+Weight: 20~
+
+@574 = ~A tankard of Golden Dragon Ale brewed by the cook in Balduran's Seatower. Getting it was a bit bothersome, but it was poured for you with best intentions in mind.
+
+STATISTICS:
+
+Special: Prevents fear
+Dexterity: -2
+Duration: 15 turns
+
+Weight: 1~
+
+@576 = ~The sebaceous gland you gained from a Sea Troll. It's constantly oozing a gelatinous substance that is said to protect metal against water exceptionally well.
+
+Weight: 1~
+
+@578 = ~This is a lens used for focusing light beams.
+
+Weight: 0~
+
+@580 = ~This crystal is round like a lens but completely black and opaque.
+
+Weight: 0~
+
+@582 = ~[BG:EE #32739]Trolls are horrid carnivores that are most well known for being hard to kill. All trolls regenerate, and most can only be killed through the use of fire.
+
+Weight: 2~
+
+@584 = ~This is a flask of drinkable water.
+
+Weight: 0~
+
+@586 = ~Fire elementals emerge from the Elemental Plane of Fire, utilizing scorching flames as portals to traverse dimensions. Lacking flames to sustain their vigor, their power wanes swiftly. Hence, they relentlessly seek fiery conflagrations, which serve as conduits to their native realm.
+
+Weight: 2~
+
+@591 = ~This seems to be Lord Dlusker's personal notes. It tells about the family's financial struggles and the lord's increasingly frantic attempts to overcome them.
+The last page reads:
+"I now have the means to ask Aldabert II personally about the hidden treasure! To think that the priests wanted 1,000 gold pieces for one Speak with Dead, while I got my hands on a Temporary Resurrection for just 200!
+I'm looking forward to seeing Margot's face when I can tell her about a treasure chest in our home! I won't tell her just yet, she'll be too scared about me performing such a ritual.
+The monks assured us that the mausoleum is safe despite some increased undead activity in the catacombs. I didn't plan on going there, anyway, so I do not see a problem. Plus, I have my grandfather's magical necklace that will protect me from any misfired magic.
+The monks' warning will be the perfect excuse to make Margot wait outside so she doesn't have to worry, though (and, hand on heart, will also stop her from interfering)."
+
+Weight: 0~
+
+@593 = ~This is a scroll covered with several symbols.
+Although you are not able to read it, the scroll seems ready to be used by whoever is holding it.
+
+Weight: 0~
+
+@595 = ~This is a dead rat. It looks surprisingly intact and was placed so you *had* to find it.
+
+Weight: 1~
+
+@597 = ~This ring does not look like much, but it is clearly enchanted with magic. It has a fine engraving reading "For A. in Love". You found this ring on one of the corpses under the tailor's shop.
+
+Weight: 0~
+@598 = ~This ring does not look like much, but has a fine engraving reading "For A. in Love". You found this on one of the corpses under the tailor's shop.
+
+STATISTICS:
+
+Equipped abilities:
+– Hit Points: +4
+
+Weight: 0~
+
+@600 = ~This ring was artistically crafted of green metal and adorned with a valuable gemstone. You found this on one of the corpses under the tailor shop.
+
+Weight: 0~
+@601 = ~This ring was artistically crafted of green metal and adorned with a valuable gemstone. You found this on one of the corpses under the tailor shop.
+
+STATISTICS:
+
+Equipped abilities:
+– Acid Resistance set to 100%
+
+Weight: 0~
+
+@603 = ~As unusual as it may seem that a ring has been enchanted with a property to improve weapon skills, it fits in perfectly with the environment of noble ladies and lords who do not want to walk around in heavy armor and yet have a good reason to improve their ability to defend themselves—possibly even without any attackers being aware.
+
+STATISTICS:
+
+Equipped abilities:
+– THAC0: +1
+
+Weight: 0~
+
+@605 = ~This ring looks like a simple gold ring, but it is clearly enchanted with strong magic. It has an engraving which says "For <CHARNAME>, in gratitude." You received this as a belated token of appreciation from several thankful Patriar Families of the city of Baldur's Gate for your help against the doppelganger invasion.
+
+Weight: 0~
+@606 = ~This ring looks like a simple gold ring, but it is clearly enchanted with strong magic. It has an engraving which says "For <CHARNAME>, in gratitude." You received this as a belated token of appreciation from several thankful Patriar Families of the city of Baldur's Gate for your help against the doppelganger invasion.
+
+STATISTICS:
+
+Equipped abilities:
+– Raises wearer's charisma to 18
+– Wearer regenerates 1 Hit Point every 5 rounds
+
+Weight: 0~
+@607 = ~This ring looks like a simple gold ring, but it is clearly enchanted with strong magic. It has an engraving which says "For <CHARNAME>, in gratitude." You received this as a belated token of appreciation from several thankful Patriar Families of the city of Baldur's Gate for your help against the doppelganger invasion.
+
+STATISTICS:
+
+Equipped abilities:
+– Charisma: +1
+– Regenerate 1 Hit Point every 5 rounds
+
+Weight: 0~
+
+@610 = ~This is a love letter from someone called Ivonne to someone called Balduin. It smells of roses.
+
+Weight: 0~
+@611 = ~This is a love letter from Balduin to Ivonne. It is signed with two intertwined hearts.
+
+Weight: 0~
+@612 = ~This is another love letter from Ivonne to Balduin. She thanks him effusively for the nice drawing.
+
+Weight: 0~
+@613 = ~Dear unknown reader,
+
+We noticed that someone was reading our hidden correspondence. We moved our secret place elsewhere.
+
+Nevertheless, you have our sincere thanks for not disturbing our communication. Take this as our token of appreciation.
+
+Balduin and Ivonne
+
+Weight: 0~
+
+@615 = ~This relic is a tooth from Iakhovas, former lover of Umberlee. It was brought back by Balduran from his sea travels. Rumor has it that he came into possession of it when his ship was attacked by sahuagin.
+He donated it to the Temple of Umberlee to gain the goddess's favor for further ventures and the newly fortified city of Baldur's Gate.
+The tooth is sacred to the temple.~
+
+@617  = ~This jewel-studded headband would already fetch plenty of attention on its own, but it bears a subtle enchantment that makes viewers see the bearer in a very positive light, regarding <PRO_HIMHER> as a great leader or trustworthy authority.
+
+STATISTICS:
+
+Equipped abilities:
+– Charisma: Set to 18
+
+Weight: 1~
+
+@619  = ~This small weapon has been blessed by Selûne, the Moonmaiden, and as such, it has special powers against lycanthropes, which are affected by the moon's pure silver light.
+
+STATISTICS:
+
+Combat abilities:
+– Returns to the wielder's hand when thrown
+– Can harm creatures that can only be harmed by silver weapons
+
+THAC0: +2, +4 vs. lycanthropes
+Damage: 1d3+2, +4 vs. lycanthropes (missile)
+Speed Factor: 1
+Proficiency Type: Dart
+Type: One-handed
+
+Weight: 0~
+
+@621  = ~This silvery sphere has a powerful abjuration that protects the user from backstabs.
+
+STATISTICS:
+
+Equipped abilities:
+– Immunity to backstabs
+
+Weight: 2~
+
+@623  = ~This enchanted longbow can launch deadly volleys of arrows. There is no known name or history; it seems to be a relatively recently made item that hasn't had the time to gather any real fame yet.
+
+STATISTICS:
+
+Combat abilities:
+– 1 extra attack per round
+
+THAC0: +3
+Damage: +2 (missile)
+Speed Factor: 5
+Proficiency Type: Longbow
+Type: Two-handed
+Requires:
+ 6 Strength
+
+Weight: 3~
+
+@625  = ~This blessed suit of armor was created by the clergy of Lathander for the sole purpose of combating the constant threat of undead as well as fiendish monsters to Faerûn. It has had a great number of owners over the ages, most of whom lived short but exciting and action-filled lives.
+
+Equipped abilities:
+– +2 bonus to Armor Class vs. demonic and undead creatures
+
+Armor Class: 1 (-2 vs. slashing)
+Requires:
+ 12 Strength
+
+Weight: 25~
+
+@627  = ~This ring and about a handful others similar to it were some three hundred years ago by a gnome thief/illusionist whose identity has been lost to history. It can cast a number of illusion spells on the wearer on demand. Although anyone can use it, it's a favorite of thieves and wizards who seek to befuddle and mislead their enemies.
+
+STATISTICS:
+
+Charge abilities:
+– Blur once per day
+  Special: Armor Class bonus of +3 and +1 bonus to saving throws
+  Duration: 2 turns
+
+– Invisibility once per day
+  Duration: 24 hours
+
+– Mirror Image once per day
+  Special: Creates 5 illusory duplicates of the wearer
+  Duration: 13 rounds
+
+Requires:
+ 14 Intelligence
+
+Weight: 0~
+
+@629 = ~This is a cluster of myconid spores. The powder is completely dry, which allows the spores to persist for a long time.
+
+Weight: 1~
+
+@631 = ~This is the notebook of the hermit in the library of the Old Temple Island. It is empty, with a lot of pages already missing.
+
+Weight: 0~
+
+@633 = ~This is a fairly heavy boulder.
+
+Weight: 100~
+
+@635 = ~This is a piece of cheese. It is a bit too ripe for your taste.
+
+Weight: 1~
+
+@638 = ~This is a silver fork, and it is... magical?
+
+Weight: 0~
+@639 = ~The legends do not often speak of Balduran's Silver Fork, but that does not mean that it could not have been just as valuable to him as his Butter Knife. There is a small engraving at the shaft which fits the name, and it is of solid silver.
+Someone enchanted it so it can be worn as a magic headgear. You are almost certain that this was not Balduran's doing, but you'll never know.
+
+STATISTICS:
+
+Equipped abilities:
+– Infravision up to 120 ft.
+– Protects against critical hits
+
+Weight: 0~
+
+@642 = ~[BG:EE #22139 adapted]This is a tattered Greenstone Amulet. The deep green stone at the center of the amulet has lost its shimmer, but it still hold powerful magics.
+
+STATISTICS:
+
+Charge abilities:
+– This amulet confers the wearer protection against charm, confusion, fear, domination, ESP, Detect Alignment, hold, stun, psionics, sleep, and feeblemind, much like the 8th-level wizard spell Mind Blank. However, the protection effect uses one charge each time it is used and will only last for 1 turn.
+
+Weight: 1~
+
+@644 = ~A vial of blood that imitates to come from a powerful land creature. The Old Hermit made it out of rat's blood, dry spore powder, and "quite some magic".
+Applied to the portal built by the sahuagin in the "Arena" room, it should reverse the magic of a powerful sea creature used to create the portal and hopefully destroy the entire portal so that it cannot be used again.
+
+Weight: 1~
+
+@646 = ~These are handwritten notes from the Old Hermit in the Old Temple library. The note is missing parts, visibly gnawed upon by small teeth.
+This one is about the chapel on the first floor of the Old Temple halls. "I investigated it thoroughly—even jumped on the altar some until the priest told me to stop, but I couldn't find the mechanism that would open the passage to—"
+The rest of the text is gone.
+
+Weight: 0~
+@647 = ~These are handwritten notes from the Old Hermit in the Old Temple library. The note is missing parts, visibly gnawed upon by small teeth.
+This one gives details about the Old Temple Island. You can make out that it is located in the Moonshae Seas, and that the Old Temple has lost its purpose to a point where it is no longer clear who was worshipped here. The details about which deities it could have been are no more readable due to the damage.
+
+Weight: 0~
+
+@649 = ~This umber hulk hide consists of chitin plates and tough skin of a dark brown hue. Even off of the umber hulk's body, it looks thick and impenetrable.
+
+STATISTICS:
+
+Weight: 25~
+
+@651 = ~This is a very comforting waistcloth out of pink silk. The words "Girdle of Doom" are embroidered with an unsteady hand.
+
+STATISTICS:
+
+Weight: 1~
+
+@655 = ~This is a craftsman's hammer, ideal for doing all kinds of carpentry work.
+
+STATISTICS:
+
+Damage: 1d4 (crushing)
+Speed Factor: 4
+Proficiency Type: War Hammer
+Type: One-handed
+Requires:
+ 9 Strength
+
+Weight: 6~
+
+@662 = ~These boots were supposedly worn by Balduran, the founder of Baldur's Gate. They were magically enhanced to protect against both Grease and cold feet, and seem worthy of the famous sailor he was known as.
+There is a rumor that a mage friend of Balduran's added the Zone of Sweet Air spell after they spent weeks crammed together on a ship in stormy seas, but there is no record of this, so it could be a malicious rumor spread by whoever owned the used boots after our hero.
+
+STATISTICS:
+
+Equipped abilities:
+– Cold Resistance: +15%
+– Immunity to Grease
+
+Charge abilities:
+– Zone of Sweet Air once per day
+  Special: Repels all noxious elements from poisonous vapors and clouds
+
+Weight: 4~
+
+@664 = ~This key opens the hidden door on the second lower level of the Old Temple Island ruins.
+
+STATISTICS:
+
+Weight: 0~
+
+@666 = ~This is horn made out of a seashell. It has a hole at the tip and has been carved a little into shape so it fits nicely into a humanoid hand.
+
+STATISTICS:
+
+Weight: 1~
+
+@668 = ~This is an old ritual note. You can hardly make out the words due to the state of decay:
+"...however, if the soul were split, it would be hindered to advance to the afterlife. Not only would it stay...
+...in a gaseous, nonmaterial form. Due to their restricted perception, the fragments will...
+...need to prevent the fragments from meeting, otherwise the process will be reversed and the fragments will merge again, making the soul whole again, enabling them to..."
+
+STATISTICS:
+
+Weight: 0~
+//@669 = EE Description in setup.tra
+//@670 = EE Description in setup.tra
+
+@672 = ~A candle, as old as the ancient temple ruins, but still usable.
+
+STATISTICS:
+
+Weight: 1~
+
+@674 = ~This is the wood of a suth tree, known for its ability not to splinter even under heavy blows.
+
+STATISTICS:
+
+Weight: 4~
+
+@678 = ~This key opens the prison cells in the Balduran's Seatower dungeon. It was given to you so you can speak to Tower Guard Shuck. It also seems to open the other cell doors, but the guards will see to it that those are not left unlocked for long.
+You should hold on to this key if you want to talk to other prisoners later.
+
+
+STATISTICS:
+
+Weight: 0~
+
+@680 = ~This is a light gold necklace with a gemstone as a pendant. The engraving reads "Melly".
+
+STATISTICS:
+
+Weight: 1~
+
+@687 = ~This is the crate the smuggler Edgar gave you. This should lure out the Night Masks who target the rival Black Lotus smuggling operation.
+
+STATISTICS:
+
+Weight: 40~
+
+@689 = ~This is a very fine, slightly dry fragrance for men that is highly sought-after in Calimshan.
+It is usually very expensive. Well, if you don't buy it from smugglers, of course.
+
+STATISTICS:
+
+Weight: 0~
+
+@693 = ~This is an unusually heavy barrel. It is closed, but there are several smaller holes in the hull, as if the contents should be well ventilated.
+
+STATISTICS:
+
+Weight: 120~
+
+@697 = ~This is the box Holger gave to you to hand it to Bruce, a Flaming Fist in the palace.
+When you shake it, you can hear the clink of coins. You have the impression that the box itself is quite valuable, too.
+
+STATISTICS:
+
+Weight: 0~
+
+@699 = ~This is an old coin, its origin unknown to you. It seems to have been in the well for a very long time.
+
+STATISTICS:
+
+Weight: 0~
+
+
+@50001 = ~This amulet of purest silver has been blessed by the clergy of the Moonmaiden to ward off lycanthropes and undead beings.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +2 vs. lycanthropes and undead
+– Saving Throws: +2 vs. lycanthropes and undead
+
+Weight: 3~
+
+@50003 = ~This silver flail has been consecrated to the Moonmaiden and is highly effective against lycanthropes and undead.
+
+STATISTICS:
+
+THAC0: +1, +3 vs. lycanthropes and undead
+Damage: 1d6+2, +4 vs. lycanthropes and undead
+Damage type: Crushing
+Speed Factor: 6
+Proficiency Type: Flail/Morning Star
+Type: One-handed
+Requires:
+ 13 Strength
+
+Weight: 13~
+
+@50005 = ~This sling bullet has been drenched in the magical substance known as moonfire. As a result it has become more accurate in hitting opponents. When the bullet connects it unleashes a wave of numbing cold.
+
+STATISTICS:
+
+THAC0: +1
+Damage: 1d4+2, +2 cold damage
+Damage type: Missile
+Launcher: Sling
+
+Weight: 0~
+
+@50007 = ~The hard plates that protect umber hulks are reasonably easy to craft into humanoid armor. This dark suit of armor was fashioned into plate mail for <CHARNAME> by the Seatower armorer.
+
+The craftsmanship is excellent and it could possibly be enchanted by a suitably powerful mage.
+
+STATISTICS:
+
+Armor Class: 2 (-2 vs. slashing, 1 vs. piercing and missile)
+
+Requires:
+ 12 Strength
+
+Weight: 40~
+
+@50009 = ~The hard plates that protect umber hulks are reasonably easy to craft into humanoid armor. This dark suit of armor was fashioned into plate mail for <CHARNAME> by the Seatower armorer and then enchanted by the Seatower mage, further increasing its protection.
+
+STATISTICS:
+
+Equipped abilities:
+– Immunity to confusion and feeblemindedness
+
+Armor Class: 1 (-3 vs. slashing, 0 vs. piercing and missile)
+
+Requires:
+ 12 Strength
+
+Weight: 40~
+
+@50011 = ~This sturdy quarterstaff has been carved from suth, the hardest known wood in Faerûn. As such it need not even be ironshod to be effective in combat. The enchantment also transfers some of this sturdiness to the wielder while the staff is held.
+This staff is the proud result of the Seatower fletcher trying her hand at weapon crafting. The staff is good, but creative naming is not the fletcher's forte, it seems.
+
+STATISTICS:
+
+Equipped abilities:
+– Wielder is under the effect of Barkskin (base Armor Class of 3, +1 to all saves except Spell)
+
+THAC0: +2
+Damage: 1d6+2 (crushing)
+Speed Factor: 2
+Proficiency Type: Quarterstaff
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+
+@50013 = ~This sturdy spear has a robust shaft carved from suth, the hardest known wood in Faerûn. The enchantment also transfers some of this sturdiness to the wearer while the spear is held.
+This staff is the proud result of the Seatower fletcher trying her hand at weapon crafting and the Seatower armorer turning it into a spear.
+
+Equipped abilities:
+– Wielder is under the effect of Barkskin (base Armor Class of 3, +1 to all saves except Spell)
+
+THAC0: +2
+Damage: 1d6+2 (piercing)
+Speed Factor: 4
+Proficiency Type: Spear
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+@50014 = ~[#17054 adjusted]A ring is a small band of precious metal that is used as jewelry. Some rare rings have had enchantments placed upon them that confer various magical abilities. These rings are highly sought after, especially by those of the adventuring profession.
+
+This is one of the gold rings you found with the victims of the doppelganger scheme.
+
+STATISTICS:
+
+Weight: 0~

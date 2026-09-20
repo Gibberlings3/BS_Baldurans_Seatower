@@ -30,8 +30,16 @@ IF ~RandomNum(7,6)~ THEN BEGIN 6
   IF ~~ THEN EXIT
 END
 
-IF ~RandomNum(7,7)
-		GlobalGT("bs##","GLOBAL",9)~ THEN BEGIN 7
-  SAY @1096
+IF ~RandomNum(7,7)~ THEN BEGIN 6
+  SAY @1097
   IF ~~ THEN EXIT
+END
+
+IF ~Global("bs_CommentedDGQuest","MYAREA",0)
+		OR(3)
+	Global("bsDoppelgangerQuest","GLOBAL",6)
+	Global("bsDoppelgangerQuest","GLOBAL",9)
+	GlobalGT("bsDGQuestAborted","GLOBAL",0)~ THEN BEGIN 7
+  SAY @1096
+  IF ~~ THEN DO ~SetGlobal("bs_CommentedDGQuest","MYAREA",1)~ EXIT
 END

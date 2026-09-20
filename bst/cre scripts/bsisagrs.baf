@@ -1,0 +1,67 @@
+/* turn hostile if rebel baron does */
+
+IF
+    OR(2)
+        Global("bs_RebelDeal","GLOBAL",-1)
+        Dead("bsisagr1")
+    Allegiance(Myself,NEUTRAL)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+/* rebels move into bs0102: leave here */
+IF
+    AreaCheck("bs0101")
+    Global("bs_RebelDeal","GLOBAL",3)
+THEN
+    RESPONSE #100
+        EscapeAreaDestroy(5)
+END
+
+/* rebels move into room */
+
+IF
+    Global("bs_RebelDeal","GLOBAL",2)
+    Global("bs_MoveIntoRoom","LOCALS",0)
+    AreaCheck("bs0101")
+    Name("BSISAGR2",Myself)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        MoveToPoint([1671.1583])
+        SmallWait(1)
+        Face(5)
+        SetGlobal("bs_MoveIntoRoom","LOCALS",1)
+        SetInterrupt(TRUE)
+END
+
+IF
+    Global("bs_RebelDeal","GLOBAL",2)
+    Global("bs_MoveIntoRoom","LOCALS",0)
+    AreaCheck("bs0101")
+    Name("BSISAGR3",Myself)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        MoveToPoint([1653.1643])
+        SmallWait(1)
+        Face(5)
+        SetGlobal("bs_MoveIntoRoom","LOCALS",1)
+        SetInterrupt(TRUE)
+END
+
+IF
+    Global("bs_RebelDeal","GLOBAL",2)
+    Global("bs_MoveIntoRoom","LOCALS",0)
+    AreaCheck("bs0101")
+    Name("BSISAGR4",Myself)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        MoveToPoint([1546.1667])
+        SmallWait(1)
+        Face(5)
+        SetGlobal("bs_MoveIntoRoom","LOCALS",1)
+        SetInterrupt(TRUE)
+END

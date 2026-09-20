@@ -1,0 +1,8 @@
+/* set detection variable if player has Log Book of Balduran */
+IF
+    PartyHasItem("misc87")
+    Global("bs_BalduransLogbook","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("bs_BalduransLogbook","GLOBAL",1)
+END

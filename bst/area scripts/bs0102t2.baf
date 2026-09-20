@@ -1,0 +1,58 @@
+/* A Girl appears after opening once */
+IF
+	Global("bs_BinkyWakeup","GLOBAL",0)
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+        CreateCreature("bsidgirl",[1609.420],14)
+		SetGlobal("bs_BinkyWakeup","GLOBAL",1)
+END
+
+/* A Girl initiates dialogue */
+IF
+	!StateCheck("bsidgirl",CD_STATE_NOTVALID)
+	OR(2)
+		Global("bs_BinkyWakeup","GLOBAL",1)
+		Global("bs_BinkyWakeup","GLOBAL",5)
+    InMyArea("bsidgirl")
+THEN
+    RESPONSE #100
+		ActionOverride("bsidgirl",StartDialogNoSet([PC]))
+END
+
+/* Binky appears after opening again */
+IF
+	Global("bs_BinkyWakeup","GLOBAL",2)
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+        CreateCreature("bsidooms",[1609.420],14)
+		SetGlobal("bs_BinkyWakeup","GLOBAL",3)
+END
+
+/* Binky initiates dialogue after being woken up */
+IF
+	!StateCheck("bsidooms",CD_STATE_NOTVALID)
+    InMyArea("bsidooms")
+    Global("bs_BinkyWakeup","GLOBAL",3)
+THEN
+    RESPONSE #100
+		ActionOverride("bsidooms",StartDialogNoSet([PC]))
+END
+
+/* A Girl reappears after Binky is dead */
+IF
+	OR(2)
+		Global("bs_BinkyWakeup","GLOBAL",3) //failsafe if "Binky" dies too quickly
+		Global("bs_BinkyWakeup","GLOBAL",4)
+	Dead("bsidooms")
+    !InMyArea("bsidgirl")
+    !Dead("bsidgirl")
+	InMyArea(Player1)
+	CombatCounter(0)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+        CreateCreatureObjectOffset("bsidgirl",Player1,[-20.20])
+		SetGlobal("bs_BinkyWakeup","GLOBAL",5)
+END

@@ -3,166 +3,191 @@
 
 BEGIN bsslav01
 
+/* also: was sent to slavers by Holger */
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",8)
+GlobalLT("bsSlaverQuest","GLOBAL",13)~ THEN confrontation
+SAY @0 /* You! You show your face here, after what you did to my men. Holger had a good hand in choosing his mercenaries, I have to give him that. It is a pity we meet under such circumstances. */
+IF ~~ THEN + confrontation_01
+END
+
 /* first meeting */
 IF ~NumTimesTalkedTo(0)
 AreaCheck("YS0113")~ THEN welcome
-SAY ~Welcome, welcome dear guests - Leonhard my name, Leonhard 'the Fierce', as they like to call me. I organize excursions into the *wild*... Nothing dangerous for our customers, of course. Unfortunately, I am totally full - booked out. So, unless you have a voucher, I am very sorry to say that you'll have to wait until next round, when the new tours are being planned.~
+SAY @1 /* Welcome, welcome dear guests - Leonhard my name, Leonhard 'the Fierce', as they like to call me. I organize excursions into the *wild*... Nothing dangerous for our customers, of course. Unfortunately, I am totally full - booked out. So, unless you have a voucher, I am very sorry to say that you'll have to wait until next round, when the new tours are being planned. */
 /* no conditions are met */
-IF ~!PartyHasItem("bssmq001") !Global("bsSlaverQuest","GLOBAL",3)~ THEN EXIT
-
-/* quest to free Shuck's brother */
-+ ~PartyHasItem("bssmq001")~ + ~I do have a voucher - I think. I am interested in the "special creatures".~ + slavetrader_03
-+ ~PartyHasItem("bssmq001")~ + ~Cut the crap. I know you are the contact of the slave traders.~ + slavetrader_01
-
-/* Just in case the PC never talked to Leonhard before getting Holger's message */
-+ ~Global("bsSlaverQuest","GLOBAL",3)~ + ~Greetings from Holger. I was told to speak to you about an assignment.~ DO ~SetGlobal("bsAskedForWork","LOCALS",2)~ + slaverquest
-
-/* good bye line */
-+ ~OR(2)
-PartyHasItem("bssmq001")
-Global("bsSlaverQuest","GLOBAL",3)~ + ~Good day to you.~ + slavetrader_17
+IF ~~ THEN EXIT
 END
 
 /* slaver quest finished - Flaming Fist was there */
-IF ~Global("bsSlaverQuest","GLOBAL",6)~ THEN confrontation
-SAY ~You! You have guts to show your face here, after what you did to my men. Well, after what you *supposedly* did to my men, as I do not have any proof that it was you who betrayed us to the Flaming Fist. I do not have much information because none of mine came out alive, but that *they* appeared I know.~
-IF ~~ THEN DO ~SetGlobal("bsSlaverQuest","GLOBAL",11)~ + confrontation_01
+IF ~Global("bsSlaverQuest","GLOBAL",6)~ THEN confrontation_a
+SAY @6 /* You! You have guts to show your face here, after what you did to my men. Well, after what you *supposedly* did to my men, as I do not have any proof that it was you who betrayed us to the Flaming Fist. I do not have much information because none of mine came out alive, but that *they* appeared I know. */
+IF ~~ THEN DO ~SetGlobal("bsSlaverQuest","GLOBAL",12)~ + confrontation_01
+END
+
+/* slaver quest finished - PC was betrayed, no Flaming Fist */
+IF ~Global("bsSlaverQuest","GLOBAL",5)~ THEN confrontation_b
+SAY @7 /* You! You show your face here, after what you did to my men. Well, after what you *supposedly* did to my men, as I do not have any proof, the dead seldom tell tales. */
+++ @8 /* Don't pretend to be oblivious! Your men tried to enslave me. How about we "talk" about this a little, hm? */ + confrontation_00
+++ @9 /* They told me I shouldn't blame you. You really didn't know your bosses would try to enslave me? */ + confrontation_00
 END
 
 /* general greetings line */
 IF ~AreaCheck("YS0113")~ THEN welcome_again
-SAY ~There you are again! What can I do for you?~
+SAY @10 /* There you are again! What can I do for you? */
 
 /* slavers quest finished - no Flaming Fist */
-+ ~Global("bsSlaverQuest","GLOBAL",5)~ + ~Your men tried to enslave me. How about we "talk" about this a little, hm?~ + confrontation_00
++ ~Global("bsSlaverQuest","GLOBAL",5)~ + @8 /* Don't pretend to be oblivious! Your men tried to enslave me. How about we "talk" about this a little, hm? */ + confrontation_00
 
 /* quest to free Shuck's brother */
-+ ~PartyHasItem("bssmq001")~ + ~I do have a voucher - I think. I am interested in the "special creatures".~ + slavetrader_03
-+ ~PartyHasItem("bssmq001")~ + ~Cut the crap. I know you are the contact of the slave traders.~ + slavetrader_01
++ ~PartyHasItem("bssmq001")
+GlobalLT("bsShucksBrother","GLOBAL",3)~ + @2 /* I do have a voucher - I think. I am interested in the "special creatures". */ + slavetrader_03
++ ~PartyHasItem("bssmq001")
+GlobalLT("bsShucksBrother","GLOBAL",3)~ + @3 /* Cut the crap. I know you are the contact of the slave traders. */ + slavetrader_01
 
 + ~Global("bsShucksBrother","GLOBAL",3) PartyGoldGT(19999)
-!GlobalTimerExpired("bsSlaveTimer1","GLOBAL")~ + ~I have the sum you requested. Let's make the deal for Shuck's brother.~ + slavetrader_10
+!GlobalTimerExpired("bsSlaveTimer1","GLOBAL")~ + @11 /* I have the sum you requested. Let's make the deal for Shuck's brother. */ + slavetrader_10
 + ~Global("bsShucksBrother","GLOBAL",3) PartyGoldGT(19999)
-GlobalTimerExpired("bsSlaveTimer1","GLOBAL")~ + ~I have the sum you requested. Let's make the deal for Shuck's brother.~ + slavetrader_10_1
-+ ~Global("bsShucksBrother","GLOBAL",3) Global("bsAskedForWork","LOCALS",0)~ + ~I decided I don't care about Shuck's brother any more. But I want to work for you.~ DO ~EraseJournalEntry(@809) SetGlobal("bsShucksBrother","GLOBAL",31) SetGlobal("bsAskedForWork","LOCALS",1)~ SOLVED_JOURNAL @807 + slavetrader_01_2
+GlobalTimerExpired("bsSlaveTimer1","GLOBAL")~ + @11 /* I have the sum you requested. Let's make the deal for Shuck's brother. */ + slavetrader_10_1
++ ~Global("bsShucksBrother","GLOBAL",3) Global("bsAskedForWork","LOCALS",0)~ + @12 /* I decided I don't care about Shuck's brother any more. But I want to work for you. */ DO ~EraseJournalEntry(@809) SetGlobal("bsShucksBrother","GLOBAL",31) SetGlobal("bsAskedForWork","LOCALS",1)~ SOLVED_JOURNAL @807 + slavetrader_01_2
 
 /* PC got Holger's message */
-+ ~Global("bsSlaverQuest","GLOBAL",3)~ + ~Greetings from Holger. I was told to speak to you about an assignment.~ DO ~SetGlobal("bsAskedForWork","LOCALS",2)~ + slaverquest
++ ~Global("bsSlaverQuest","GLOBAL",3)~ + @4 /* Greetings from Holger. I was told to speak to you about an assignment. */ DO ~SetGlobal("bsAskedForWork","LOCALS",2)~ + slaverquest
 
 /* general questions */
-+ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0) Global("bsAskedCommander","LOCALS",0)~ + ~You have your residence wall to wall with the Seatower Commander? Isn't that a bit... bold?~ DO ~SetGlobal("bsAskedCommander","LOCALS",1)~ + slavetrader_12
-+ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0) GlobalLT("bsSlaverQuest","GLOBAL",2) Global("bsAskedForWork","LOCALS",0)~ + ~I'd like to work for you.~ DO ~SetGlobal("bsAskedForWork","LOCALS",1)~ + slavetrader_15
++ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0) Global("bsAskedCommander","LOCALS",0)~ + @13 /* You have your residence wall to wall with the Seatower Commander? Isn't that a bit... bold? */ DO ~SetGlobal("bsAskedCommander","LOCALS",1)~ + slavetrader_12
++ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0) GlobalLT("bsSlaverQuest","GLOBAL",2) Global("bsAskedForWork","LOCALS",0)~ + @14 /* I'd like to work for you. */ DO ~SetGlobal("bsAskedForWork","LOCALS",1)~ + slavetrader_15
 
 /* farewell line */
-++ ~Nothing, Farewell.~ + slavetrader_17
+++ @15 /* Nothing, Farewell. */ + slavetrader_17
 
 /* general confront slave traders line */
-+ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ + ~I am here to learn more about your operations. You better participate in telling me as much as you know!~ + attack
-+ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ + ~No more talking around! I will end your false being here and now!~ + attack
++ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ + @16 /* I am here to learn more about your operations. You better participate in telling me as much as you know! */ + attack_01
++ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ + @17 /* No more talking around! I will end your false being here and now! */ + attack
 END
 
 /* after slavers quest is finished - PC confronts Leonhard */
 IF ~~ THEN confrontation_00
-SAY ~Ah, I understand what happened. And here I was, thinking you betrayed us. There was a gap in communication between me and my men, you see - the dead do seldom tell tales. Hm, seems they understood me wrong when I said that we should keep an eye on you because of your talents. I do apologize for the inconveniences, <CHARNAME>. I'd have preferred this would have turned out differently - especially because then quite a lot of my best men wouldn't be dead now.~
+SAY @18 /* They - ah, I understand what happened. And here I was, thinking Holger betrayed us. There was a gap in communication between me and my bosses, as it seems. Yes, coming at Holger for our losses was my idea, but seems they understood me wrong when I said that we should keep an eye on you because of your talents. I do apologize for the inconveniences, <CHARNAME>. I'd have preferred this would have turned out differently - especially because then quite a lot of my best men wouldn't be dead now. */
 IF ~~ THEN + confrontation_01
 END
 
 IF ~~ THEN confrontation_01
-SAY ~So, what it's going to be? Did you come to "end" the whole affair, or can we go separate ways like civilized people?~
-++ ~Best you go and do not return, before I change my mind.~ + confrontation_02
-+ ~Global("bsSlaverQuest","GLOBAL",5)~ + ~Hey - I do not judge your men. I would have done the same. You should scold them for taking on the wrong prey, though - if they wouldn't be dead already, that is.~ + confrontation_03
-++ ~Indeed, I came to end your presence in this tower and the city once and for all!~ + attack
+SAY @19 /* So, what it's going to be? Did you come to "end" the whole affair, or can we go separate ways like civilized people? */
+++ @20 /* Best you go and do not return, before I change my mind. */ + confrontation_02
++ ~Global("bsSlaverQuest","GLOBAL",5)~ + @21 /* Hey - I do not judge your men. I would have done the same. You should scold them for taking on the wrong prey, though - if they wouldn't be dead already, that is. */ + confrontation_03
++ ~Global("bsSlaverQuest","GLOBAL",5)~ + @22 /* What's done is done - I certainly got the better deal on this one. But if you lay one hand on Holger, you're dead! */ + protect_holger
+++ @23 /* Indeed, I came to end your presence in this tower and the city once and for all! */ + attack
 END
 
 IF ~~ THEN confrontation_02
-SAY ~I will take my leave, then. No more adventures into the 'wild' by Leonhard the Fierce - at least not from here.~
+SAY @24 /* I will take my leave, then. No more adventures into the 'wild' by Leonhard the Fierce - at least not from here. */
 IF ~~ THEN DO ~ActionOverride("bsslav01",EscapeArea())~ EXIT
-IF ~Global("bsSlaverQuest","GLOBAL",5)~ THEN DO ~EraseJournalEntry(@847) SetGlobal("bsSlaverQuest","GLOBAL",12) ActionOverride("bsslav01",EscapeArea())~ SOLVED_JOURNAL @846 EXIT
+IF ~Global("bsSlaverQuest","GLOBAL",5)~ THEN DO ~EraseJournalEntry(@847) SetGlobal("bsSlaverQuest","GLOBAL",11) ActionOverride("bsslav01",EscapeArea())~ SOLVED_JOURNAL @846 EXIT
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",8)~ THEN DO ~
+EraseJournalEntry(@849)
+SetGlobal("bsSlaverQuest","GLOBAL",11)
+SetGlobal("bsSlaversAttack","MYAREA",1)~ SOLVED_JOURNAL @846 EXIT
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",8)
+GlobalLT("bsShucksBrother","GLOBAL",5)~ THEN DO ~
+EraseJournalEntry(@849)
+EraseJournalEntry(@807)
+EraseJournalEntry(@809)
+EraseJournalEntry(@813)
+AddJournalEntry(@811,QUEST_DONE)
+SetGlobal("bsSlaverQuest","GLOBAL",11)
+SetGlobal("bsShucksBrother","GLOBAL",40)
+SetGlobal("bsSlaversAttack","MYAREA",1)~ SOLVED_JOURNAL @846 EXIT
+
+END
+
+IF ~~ THEN protect_holger
+SAY @25 /* Do not worry, going back at Holger is the least of my problems now. And - with whom I would do so? You were very thorough in decimating my men. Nah, even my bosses got the message, you can trust me on this. */
+IF ~~ THEN + confrontation_03
 END
 
 IF ~~ THEN confrontation_03
-SAY ~Oh, you would have been a preferable business partner, I sense as much. If you ever come to Athkatla, make sure to make yourself seen by our bosses - we have always use for a <PRO_MANWOMAN> like you.~
+SAY @26 /* Oh, you would have been a preferable business partner, I sense as much. If you ever come to Athkatla, make sure to make yourself seen by our bosses. We have always use for a <PRO_MANWOMAN> like you - and I do *not* mean as wares. */
 IF ~~ THEN + confrontation_02
 END
 
 IF ~~ THEN slavetrader_01
-SAY ~Oh, how blunt! And rather confronting. Let us do this with style... yes? You are interested in the "special creatures", I take it.~
-++ ~Fine. You have a "special creature" I have a high interest in. I would like to have him back.~ + slavetrader_03
-++ ~Hearing you talk like this sickens me, but I came here to free a person, so let's talk business.~ + slavetrader_03
-++ ~I will put my weapon through your scull very "elegantly" if you do not tell me where Shuck's brother is this instant!~ + slavetrader_02
-++ ~No more talking around! I will end your false being here and now!~ + attack
-++ ~I couldn't care less about freeing a slave. I only came here because I want to work with you, nothing else.~ DO ~EraseJournalEntry(@809) SetGlobal("bsShucksBrother","GLOBAL",31) SetGlobal("bsAskedForWork","LOCALS",1)~ SOLVED_JOURNAL @807 + slavetrader_01_1
+SAY @27 /* Oh, how blunt! And rather confronting. Let us do this with style... yes? You are interested in the "special creatures", I take it. */
+++ @28 /* Fine. You have a "special creature" I have a high interest in. I would like to have him back. */ + slavetrader_03
+++ @29 /* Hearing you talk like this sickens me, but I came here to free a person, so let's talk business. */ + slavetrader_03
+++ @30 /* I will put my weapon through your scull very "elegantly" if you do not tell me where Shuck's brother is this instant! */ + slavetrader_02
+++ @17 /* No more talking around! I will end your false being here and now! */ + attack
+++ @31 /* I couldn't care less about freeing a slave. I only came here because I want to work with you, nothing else. */ DO ~EraseJournalEntry(@809) SetGlobal("bsShucksBrother","GLOBAL",31) SetGlobal("bsAskedForWork","LOCALS",1)~ SOLVED_JOURNAL @807 + slavetrader_01_1
 END
 
 IF ~~ THEN slavetrader_01_1
-SAY ~Is that so? Interesting.~
-= ~And you do have a voucher, indeed! Let me take this, then - before it raises false hopes in other potential customers.~
+SAY @32 /* Is that so? Interesting. */
+= @33 /* And you do have a voucher, indeed! Let me take this, then - before it raises false hopes in other potential customers. */
 IF ~~ THEN DO ~TakePartyItem("bssmq001") DestroyItem("bssmq001") SetGlobal("bsConfrontSlaveTraders","GLOBAL",1)~ + slavetrader_15
 END
 
 IF ~~ THEN slavetrader_01_2
-SAY ~Is that so? Well, then I guess I do not have to delay his shipping any longer. Noted.~
+SAY @34 /* Is that so? Well, then I guess I do not have to delay his shipping any longer. Noted. */
 IF ~~ THEN + slavetrader_15
 END
 
 IF ~~ THEN slavetrader_02
-SAY ~Now then, I see you are on a quest to save a ... youngman in distress.~
+SAY @35 /* Now then, I see you are on a quest to save a ... youngman in distress. */
 IF ~~ THEN + slavetrader_03
 END
 
 IF ~~ THEN slavetrader_03
-SAY ~And you do have a voucher, indeed! Let me take this, then - before it raises false hopes in other potential customers.~
+SAY @33 /* And you do have a voucher, indeed! Let me take this, then - before it raises false hopes in other potential customers. */
 IF ~~ THEN DO ~TakePartyItem("bssmq001") DestroyItem("bssmq001") SetGlobal("bsConfrontSlaveTraders","GLOBAL",1)~ + slavetrader_04
 END
 
 IF ~~ THEN slavetrader_04
-SAY ~So, the person you are talking about came to us from Nashkel, hm? Ah, yes, I remember. Rather skinny and not very strong, that one. Are you sure you insist on one so sickly - I have much finer specimen available, if you are willing to pay the price.~
-++ ~I'm insisting on that one, yes.~ + slavetrader_05
-++ ~Tell me how I can get him back now!~ + slavetrader_05
-++ ~Tempting... but I guess my gold won't suffice for a "better specimen".~ + slavetrader_05
-++ ~No more talking around! I will end your false being here and now!~ + attack
+SAY @36 /* ~So, the only person you could be interested in came to us from Nashkel, hmm? Rather skinny and not very strong, that one. Are you sure you insist on one so sickly? I have much finer specimens available, if you are willing to pay the price.~ */
+++ @37 /* I'm insisting on that one, yes. */ + slavetrader_05
+++ @38 /* Tell me how I can get him back now! */ + slavetrader_05
+++ @39 /* Tempting... but I guess my gold won't suffice for a "better specimen". */ + slavetrader_05
+++ @17 /* No more talking around! I will end your false being here and now! */ + attack
 END
 
 IF ~~ THEN slavetrader_05
-SAY ~Well then. For the advantageous meek sum of only 20,000 gold he will be back with you by the morn'. What do you say?~
-++ ~20,000 gold? Are you serious?~ + slavetrader_07
-+ ~PartyGoldGT(19999)~ + ~Fine, here is the gold.~ + slavetrader_10
-++ ~That is a large sum, but I will be back with the gold.~ + slavetrader_09
-++ ~That's too much.~ + slavetrader_06
-++ ~Forget it, I'm out of here.~ + slavetrader_08
-++ ~No more talking around! I will end your false being here and now!~ + attack
+SAY @40 /* Well then. For the advantageous meek sum of only 20,000 gold he will be back with you by the morn'. What do you say? */
+++ @41 /* 20,000 gold? Are you serious? */ + slavetrader_07
++ ~PartyGoldGT(19999)~ + @42 /* Fine, here is the gold. */ + slavetrader_10
+++ @43 /* That is a large sum, but I will be back with the gold. */ + slavetrader_09
+++ @44 /* That's too much. */ + slavetrader_06
+++ @45 /* Forget it, I'm out of here. */ + slavetrader_08
+++ @17 /* No more talking around! I will end your false being here and now! */ + attack
 END
 
 IF ~~ THEN slavetrader_06
-SAY ~I'm sorry, but that is the minimum of what I can offer - I already gave you a great discount. Look, we have to retrieve him out of the normal delivery routine, and doing so with such short notice is costly.~
-++ ~20,000 gold? Are you serious?~ + slavetrader_07
-+ ~PartyGoldGT(19999)~ + ~Fine, here is the gold.~ + slavetrader_10
-++ ~That is a large sum, but I will be back with the gold.~ + slavetrader_09
-++ ~Forget it, I'm out of here.~ + slavetrader_08
-++ ~No more talking around! I will end your false being here and now!~ + attack
+SAY @46 /* I'm sorry, but that is the minimum of what I can offer - I already gave you a great discount. Look, we have to retrieve him out of the normal delivery routine, and doing so with such short notice is costly. */
+++ @41 /* 20,000 gold? Are you serious? */ + slavetrader_07
++ ~PartyGoldGT(19999)~ + @42 /* Fine, here is the gold. */ + slavetrader_10
+++ @43 /* That is a large sum, but I will be back with the gold. */ + slavetrader_09
+++ @45 /* Forget it, I'm out of here. */ + slavetrader_08
+++ @17 /* No more talking around! I will end your false being here and now! */ + attack
 END
 
 IF ~~ THEN slavetrader_07
-SAY ~I know, it is a surprisingly low sum, but it's a special offer for you.~
-+ ~PartyGoldGT(19999)~ + ~Fine, here is the gold.~ + slavetrader_10
-++ ~That is a large sum, but I will be back with the gold.~ + slavetrader_09
-++ ~That's too much.~ + slavetrader_06
-++ ~Forget it, I'm out of here.~ + slavetrader_08
-++ ~No more talking around! I will end your false being here and now!~ + attack
+SAY @47 /* I know, it is a surprisingly low sum, but it's a special offer for you. */
++ ~PartyGoldGT(19999)~ + @42 /* Fine, here is the gold. */ + slavetrader_10
+++ @43 /* That is a large sum, but I will be back with the gold. */ + slavetrader_09
+++ @44 /* That's too much. */ + slavetrader_06
+++ @45 /* Forget it, I'm out of here. */ + slavetrader_08
+++ @17 /* No more talking around! I will end your false being here and now! */ + attack
 END
 
 IF ~~ THEN slavetrader_08
-SAY ~Hm, that would be a pity. Do return if you change your mind.~
+SAY @48 /* Hm, that would be a pity. Do return if you change your mind. */
 IF ~~ THEN + slavetrader_09_1
 END
 
 IF ~~ THEN slavetrader_09
-SAY ~Splendid! I will make preparations for the delivery while you are raising the gold.~
+SAY @49 /* Splendid! I will make preparations for the delivery while you are raising the gold. */
 IF ~~ THEN + slavetrader_09_1
 END
 
 IF ~~ THEN slavetrader_09_1
-SAY ~Be quick about it, as your man is being transported elsewhere soon.~
+SAY @50 /* Be quick about it, as your man is being transported elsewhere soon. */
 IF ~~ THEN DO ~
 EraseJournalEntry(@809)
 AddJournalEntry(@812,QUEST)
@@ -171,7 +196,7 @@ SetGlobalTimer("bsSlaveTimer1","GLOBAL",FIVE_DAYS)~ + slavetrader_11
 END
 
 IF ~~ THEN slavetrader_10
-SAY ~Wonderful! Let me stow this away carefully. I will make preparations for the delivery. Your man will be brought to the Ilmater Monastery the coming day.~
+SAY @51 /* Wonderful! Let me stow this away carefully. I will make preparations for the delivery. Your man will be brought to the Ilmater Monastery the coming day. */
 IF ~~ THEN DO ~TakePartyGold(20000)
 EraseJournalEntry(@809)
 EraseJournalEntry(@812)
@@ -181,7 +206,7 @@ SetGlobalTimer("bsSlaveTimer2","GLOBAL",ONE_DAY)~ + slavetrader_11
 END
 
 IF ~~ THEN slavetrader_10_1
-SAY ~Oh, I am so sorry, but you are too late. The transport already took place and he is on the sea on his trip to elsewhere. Do let me know if I can do anything else for you, though.~
+SAY @52 /* Oh, I am so sorry, but you are too late. The transport already took place and he is on the sea on his trip to elsewhere. Do let me know if I can do anything else for you, though. */
 IF ~~ THEN DO ~
 EraseJournalEntry(@809)
 EraseJournalEntry(@812)
@@ -190,51 +215,51 @@ SetGlobal("bsShucksBrother","GLOBAL",35)~ EXIT
 END
 
 IF ~~ THEN slavetrader_11
-SAY ~Is there any more questions? If not, I would ask you to leave.~
+SAY @53 /* Is there any more questions? If not, I would ask you to leave. */
 
 /* general questions */
-+ ~Global("bsAskedCommander","LOCALS",0)~ + ~You have your residence wall to wall with the Seatower Commander? Isn't that a bit... bold?~ DO ~SetGlobal("bsAskedCommander","LOCALS",1)~ + slavetrader_12
-+ ~GlobalLT("bsSlaverQuest","GLOBAL",2) Global("bsAskedForWork","LOCALS",0)~ + ~I'd like to work for you.~ DO ~SetGlobal("bsAskedForWork","LOCALS",1)~ + slavetrader_15
++ ~Global("bsAskedCommander","LOCALS",0)~ + @13 /* You have your residence wall to wall with the Seatower Commander? Isn't that a bit... bold? */ DO ~SetGlobal("bsAskedCommander","LOCALS",1)~ + slavetrader_12
++ ~GlobalLT("bsSlaverQuest","GLOBAL",2) Global("bsAskedForWork","LOCALS",0)~ + @14 /* I'd like to work for you. */ DO ~SetGlobal("bsAskedForWork","LOCALS",1)~ + slavetrader_15
 
 /* PC got Holger's message */
-+ ~Global("bsSlaverQuest","GLOBAL",3)~ + ~Greetings from Holger. I was told to speak to you about an assignment.~ DO ~SetGlobal("bsAskedForWork","LOCALS",2)~ + slaverquest
++ ~Global("bsSlaverQuest","GLOBAL",3)~ + @4 /* Greetings from Holger. I was told to speak to you about an assignment. */ DO ~SetGlobal("bsAskedForWork","LOCALS",2)~ + slaverquest
 
 /* farewell line */
-++ ~Nothing, Farewell.~ + slavetrader_17
+++ @15 /* Nothing, Farewell. */ + slavetrader_17
 
 /* confront the slavers */
-+ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ + ~No more talking around! I will end your false being here and now!~ + attack
++ ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ + @17 /* No more talking around! I will end your false being here and now! */ + attack
 END
 
 IF ~~ THEN slavetrader_12
-SAY ~(smiles) Well, the commander surely has his suspicions, but there is nothing he can *prove*, so I guess he thinks he's smart by letting us operate from right under his nose. He is not our customer and probably never will be, such a pity this is. The man doesn't know what he is missing.~
-++ ~You mean the Commander cannot be bribed?~ + slavetrader_13
-++ ~There are people who do not get corrupted by power? I am surprised to hear that.~ + slavetrader_14 
-++ ~Farewell.~ + slavetrader_17
+SAY @54 /* (smiles) Well, the commander surely has his suspicions, but there is nothing he can *prove*, so I guess he thinks he's smart by letting us operate from right under his nose. He is not our customer and probably never will be, such a pity this is. The man doesn't know what he is missing. */
+++ @55 /* You mean the Commander cannot be bribed? */ + slavetrader_13
+++ @56 /* There are people who do not get corrupted by power? I am surprised to hear that. */ + slavetrader_14 
+++ @57 /* Farewell. */ + slavetrader_17
 END
 
 IF ~~ THEN slavetrader_13
-SAY ~No, he cannot be bribed. Every time we tried - not *me*, of course - he used it to try to get a hold of us, sneaky little commander.~
+SAY @58 /* No, he cannot be bribed. Every time we tried - not *me*, of course - he used it to try to get a hold of us, sneaky little commander. */
 IF ~~ THEN + slavetrader_14
 END
 
 IF ~~ THEN slavetrader_14
-SAY ~Yes, there are wealthy men who do not fall to their pride - the city is irritatingly lucky with both the Flaming Fist *and* the Seatower Forces being under such men. Or maybe it will be to their disadvantage, as such men need to be killed to get past them, since turning them is not possible.~
-= ~But - noone here is planning on assassinating the commander now, is there? We, at least, have no such plans. It is so nice and comfy here in this little Balduran's Tower of his, so I would be a fool to go against him. Also, there ar *so* many customers amongst the noble and wealthy who like to come to the tower, it is a pleasure to do business here.~
+SAY @59 /* Yes, there are wealthy men who do not fall to their pride - the city is irritatingly lucky with both the Watch *and* the Seatower Guard being under such men. Or maybe it will be to their disadvantage, as such men need to be killed to get past them, since turning them is not possible. */
+= @60 /* But - noone here is planning on assassinating the commander now, is there? We, at least, have no such plans. It is so nice and comfy here in this little Balduran's Tower of his, so I would be a fool to go against him. Also, there are *so* many customers amongst the noble and wealthy who like to come to the tower, it is a pleasure to do business here. */
 IF ~~ THEN EXIT
 END
 
 
 IF ~~ THEN slavetrader_15
-SAY ~Work for me? Now, now, what could you do for me. How about getting me a cup of nice, hot tea, hm?~
-++ ~You know what I mean.~ + slavetrader_16
-++ ~Fine, suit yourself.~ EXIT
+SAY @61 /* Work for me? Now, now, what could you do for me. How about getting me a cup of nice, hot tea, hm? */
+++ @62 /* You know what I mean. */ + slavetrader_16
+++ @63 /* Fine, suit yourself. */ EXIT
 END
 
 CHAIN
 IF ~~ THEN bsslav01 slavetrader_16
-~Do I, now?~
-== bsslav01 IF ~Class(Player1,PALADIN) %PLAYER1_NO_BLACKGUARD%~ THEN ~I see you before me, a paladin in shining armor, asking the slave trader for work. I am sorry if I do seem hesitant.~
+@64 /* Do I, now? */
+== bsslav01 IF ~Class(Player1,PALADIN) %PLAYER1_NO_BLACKGUARD%~ THEN @65 /* I see you before me, a paladin in shining armor, asking the slave trader for work. I am sorry if I do seem hesitant. */
 == bsslav01 IF ~!Class(Player1,PALADIN) 
 OR(5)
 Class(Player2,PALADIN)
@@ -246,64 +271,67 @@ Class(Player6,PALADIN)
 %PLAYER3_NO_BLACKGUARD%
 %PLAYER4_NO_BLACKGUARD%
 %PLAYER5_NO_BLACKGUARD%
-%PLAYER6_NO_BLACKGUARD%~ THEN ~I see you before me, a person who does work together with a paladin in shining armor, asking the slave trader for work. I am sorry if I do seem hesitant.~
-== bsslav01 ~See, the problem is this. I do not know you, so I don't know whether I can trust you. But to get to know you, you would have to work for me - which I could only do if I'd know I could trust you - you see the problem? So, the situation normally goes like this: you work for one of our partners. And if they trust you, then there might be a chance they will recommend you to us.~
-== bsslav01 IF ~Global("bsWorkingWithSmugglers","GLOBAL",1)~ THEN ~You are working for the smugglers in Nashkel, or so I've heard. That's a good start! Do their tasks to their satisfaction, and we will hear from each other again. Until then - this will be a mere customer-seller relation.~
-== bsslav01 IF ~Global("bsWorkingWithSmugglers","GLOBAL",0)~ THEN ~I wouldn't know of any such a constellation, so I am sorry, but this is a customer-seller relation only.~
+%PLAYER6_NO_BLACKGUARD%~ THEN @66 /* I see you before me, a person who does work together with a paladin in shining armor, asking the slave trader for work. I am sorry if I do seem hesitant. */
+== bsslav01 @67 /* See, the problem is this. I do not know you, so I don't know whether I can trust you. But to get to know you, you would have to work for me - which I could only do if I'd know I could trust you - you see the problem? So, the situation normally goes like this: you work for one of our partners. And if they trust you, then there might be a chance they will recommend you to us. */
+== bsslav01 IF ~Global("bsWorkingWithSmugglers","GLOBAL",1)~ THEN @68 /* You are working for the smugglers in Nashkel, or so I've heard. That's a good start! Do their tasks to their satisfaction, and we will hear from each other again. Until then - this will be a mere customer-seller relation. */
+== bsslav01 IF ~Global("bsWorkingWithSmugglers","GLOBAL",0)~ THEN @69 /* I wouldn't know of any such a constellation, so I am sorry, but this is a customer-seller relation only. */
 END
 IF ~~ THEN EXIT
 
 APPEND bsslav01
 
 IF ~~ THEN slavetrader_17
-SAY ~Good day to you, dear guest!~
+SAY @70 /* Good day to you, dear guest! */
 IF ~~ THEN EXIT
 END
 
 
 /* slavers quest */
 IF ~~ THEN slaverquest
-SAY ~Ah! So he sends you, the newly aquinted partner, hmm? Fine. We trust Holger so if he thinks you are trustworthy, so do we. We offer you a job to protect our wares while we ready one of our shipments. Are you interested?~
-++ ~Your "wares"? Do I get any more information than that?~ + slaverquest_01
-++ ~Just tell me what I need to know.~ + slaverquest_04
-++ ~I don't think I can help you with this.~ + slaverquest_02
-+ ~!Global("bsAskedForWork","LOCALS",1)~ + ~I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this.~ + slaverquest_02
-+ ~Global("bsAskedForWork","LOCALS",1)~ + ~I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this.~ + slaverquest_03
+SAY @71 /* Ah! So he sends you, the newly aquinted partner, hmm? Fine. We trust Holger so if he thinks you are trustworthy, so do we. We offer you a job to protect our wares while we ready one of our shipments. Are you interested? */
+++ @72 /* Your "wares"? Do I get any more information than that? */ + slaverquest_01
+++ @73 /* Just tell me what I need to know. */ + slaverquest_04
+++ @74 /* I don't think I can help you with this. */ + slaverquest_02
++ ~!Global("bsAskedForWork","LOCALS",1)~ + @75 /* I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this. */ + slaverquest_02
++ ~Global("bsAskedForWork","LOCALS",1)~ + @75 /* I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this. */ + slaverquest_03
 END
 
 END //APPEND
 
 CHAIN
 IF ~~ THEN bsslav01 slaverquest_01
-~Why? You already know the drill from Holger. The less you know, the better - for you.~
-== bsslav01 IF ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ THEN ~You know what I stand for, so I am sure you can draw your own conclusions.~
-== bsslav01 IF ~Global("bsAskedForWork","LOCALS",1)~ THEN ~But since you already asked about working for us, I am sure there will be no problems, hmm?~
-== bsslav01 IF ~Global("bsConfrontSlaveTraders","GLOBAL",0)~ THEN ~Let's just say that we, hmm, specialised in life wares. Special creatures... very special creatures, which are well wanted in other parts of this world, were they can be aquired legally. We are only suppplying the demand that is already there.~ 
-== bsslav01 IF ~!Global("bsAskedForWork","LOCALS",1)~ THEN ~But don't overstrain your brain. The less you think about it, the smoother the operation wil go.~
-== bsslav01 ~We need you to be ready to protect the transfer against any unexpected visitors... like the Flaming Fist, for example. Are you in?~
+@76 /* Why? You already know the drill from Holger. The less you know, the better - for you. */
+== bsslav01 IF ~GlobalGT("bsConfrontSlaveTraders","GLOBAL",0)~ THEN @77 /* You know what I stand for, so I am sure you can draw your own conclusions. */
+== bsslav01 IF ~Global("bsAskedForWork","LOCALS",1)~ THEN @78 /* But since you already asked about working for us, I am sure there will be no problems, hmm? */
+== bsslav01 IF ~Global("bsConfrontSlaveTraders","GLOBAL",0)~ THEN @79 /* Let's just say that we, hmm, specialised in life wares. Special creatures... very special creatures, which are well wanted in other parts of this world, were they can be aquired legally. We are only suppplying the demand that is already there. */ 
+== bsslav01 IF ~!Global("bsAskedForWork","LOCALS",1)~ THEN @80 /* But don't overstrain your brain. The less you think about it, the smoother the operation will go. */
+== bsslav01 @81 /* We need you to be ready to protect the transfer against any unexpected visitors... like the Flaming Fist, for example. Are you in? */
 END
-++ ~Just tell me what I need to know.~ + slaverquest_04
-++ ~I don't think I can help you with this.~ + slaverquest_02
-+ ~!Global("bsAskedForWork","LOCALS",1)~ + ~I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this.~ + slaverquest_02
-+ ~Global("bsAskedForWork","LOCALS",1)~ + ~I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this.~ + slaverquest_03
+++ @73 /* Just tell me what I need to know. */ + slaverquest_04
+++ @74 /* I don't think I can help you with this. */ + slaverquest_02
++ ~!Global("bsAskedForWork","LOCALS",1)~ + @75 /* I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this. */ + slaverquest_02
++ ~Global("bsAskedForWork","LOCALS",1)~ + @75 /* I have a suspicion about what your wares are, and I do not want to have any part in slave trading! Smuggling wares is fine, but not this. */ + slaverquest_03
 
 APPEND bsslav01
 
 IF ~~ THEN slaverquest_02
-SAY ~Do you now. Hmm. A pity, you really would be strong mercenaries. Ah well. I will let you live, for Holger's sake.~
-IF ~~ THEN DO ~EraseJournalEntry(@840) SetGlobal("bsSlaverQuest","GLOBAL",10)~ SOLVED_JOURNAL @841 EXIT
+SAY @82 /* Do you now. Hmm. A pity, you really would be strong mercenaries. Ah well. I will let you live, for Holger's sake. */
+IF ~~ THEN DO ~EraseJournalEntry(@840) SetGlobal("bsSlaverQuest","GLOBAL",50)~ SOLVED_JOURNAL @841 EXIT
+IF ~Global("bsWorkingWithSmugglers","GLOBAL",1)~ THEN DO ~EraseJournalEntry(@840) SetGlobal("bsSlaverQuest","GLOBAL",50)
+SetGlobal("bs_SmugglerSlaverConfrontation","GLOBAL",1)
+SetGlobalTimer("bs_SmugglerSlaverConfrontTimer","GLOBAL",ONE_DAY)~ SOLVED_JOURNAL @841 EXIT
 END
 
 IF ~~ THEN slaverquest_03
-SAY ~Oh? But you basically *begged* for it not too long ago! Well, life is full of surprises.~ 
+SAY @83 /* Oh? But you basically *begged* for it not too long ago! Well, life is full of surprises. */ 
 IF ~~THEN + slaverquest_02
 END
 
 IF ~~ THEN slaverquest_04
-SAY ~Very good! Come to the western shore of the Chionthar, south of Wyrm's Crossing when night has fallen. We will await you and tell you the details then. Bring your weapons, don't draw any attention, and be ready to fight any unexpected "guests" - just in case we get detected. It happens rarely, but sometimes the Flaming Fist has a lucky day.~
-IF ~~ THEN DO ~DestroyItem("bssmq003") EraseJournalEntry(@840)
+SAY @84 /* Very good! Come to the western shore of the Chionthar, south of Wyrm's Crossing when night has fallen. We will await you and tell you the details then. Bring your weapons, don't draw any attention, and be ready to fight any unexpected "guests" - just in case we get detected. It happens rarely, but sometimes the Flaming Fist has a lucky day. */
+IF ~~ THEN DO ~ActionOverride("bsslav01",DestroyItem("bssmq003")) EraseJournalEntry(@840)
 SetGlobal("bsSlaverQuest","GLOBAL",4) SetGlobal("bsConfrontSlaveTraders","GLOBAL",1)~ UNSOLVED_JOURNAL @843 EXIT
-IF ~Global("bsConfrontSlaveTraders","GLOBAL",2)~ THEN DO ~DestroyItem("bssmq003")
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",2)~ THEN DO ~ActionOverride("bsslav01",DestroyItem("bssmq003"))
 EraseJournalEntry(@840)
 EraseJournalEntry(@880)
 AddJournalEntry(@882,QUEST)
@@ -311,28 +339,40 @@ SetGlobal("bsSlaverQuest","GLOBAL",4)~ UNSOLVED_JOURNAL @843 EXIT
 END
 
 IF ~~ THEN attack
-SAY ~Then this is where our business comes to a quick end. Everyone - kill this fool!~
-IF ~~ THEN DO ~SetGlobal("bsSlaversAttack","MYAREA",1) 
-SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
-ActionOverride("bsslav01",Enemy())~ EXIT
+SAY @85 /* Then this is where our business comes to a quick end. Everyone - kill this fool! */
+IF ~~ THEN DO ~SetGlobal("bsSlaversAttack","MYAREA",1)~ EXIT
 IF ~Global("bsSlaverQuest","GLOBAL",3)~ THEN DO ~EraseJournalEntry(@840)
 AddJournalEntry(@841,QUEST_DONE)
-SetGlobal("bsSlaverQuest","GLOBAL",10) SetGlobal("bsSlaversAttack","MYAREA",1) 
-SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
-ActionOverride("bsslav01",Enemy())~ EXIT
+SetGlobal("bsSlaverQuest","GLOBAL",52) SetGlobal("bsSlaversAttack","MYAREA",1)~ EXIT
 IF ~GlobalLT("bsShucksBrother","GLOBAL",5)~ THEN DO ~
 EraseJournalEntry(@807)
 EraseJournalEntry(@809)
 EraseJournalEntry(@813)
 AddJournalEntry(@810,QUEST_DONE)
-SetGlobal("bsShucksBrother","GLOBAL",40) SetGlobal("bsSlaversAttack","MYAREA",1) SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
-ActionOverride("bsslav01",Enemy())~ EXIT
+SetGlobal("bsShucksBrother","GLOBAL",40) SetGlobal("bsSlaversAttack","MYAREA",1)~ EXIT
 IF ~Global("bsSlaverQuest","GLOBAL",5)~ THEN DO ~
 EraseJournalEntry(@847)
-SetGlobal("bsSlaversAttack","MYAREA",1) 
-SetGlobal("bsSlaverQuest","GLOBAL",12)
-SetGlobal("bsWorkingWithSmugglers","GLOBAL",0)
-ActionOverride("bsslav01",Enemy())~ SOLVED_JOURNAL @848 EXIT
+SetGlobal("bsSlaverQuest","GLOBAL",11)
+SetGlobal("bsSlaversAttack","MYAREA",1)~ SOLVED_JOURNAL @848 EXIT
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",8)~ THEN DO ~
+EraseJournalEntry(@849)
+SetGlobal("bsSlaverQuest","GLOBAL",13)
+SetGlobal("bsSlaversAttack","MYAREA",1)~ SOLVED_JOURNAL @848 EXIT
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",8)
+GlobalLT("bsShucksBrother","GLOBAL",5)~ THEN DO ~
+EraseJournalEntry(@849)
+EraseJournalEntry(@807)
+EraseJournalEntry(@809)
+EraseJournalEntry(@813)
+AddJournalEntry(@810,QUEST_DONE)
+SetGlobal("bsSlaverQuest","GLOBAL",13)
+SetGlobal("bsShucksBrother","GLOBAL",40)
+SetGlobal("bsSlaversAttack","MYAREA",1)~ SOLVED_JOURNAL @848 EXIT
+END
+
+IF ~~ THEN attack_01
+SAY @86 /* I will do nothing of the sort, and we both know very well where it will lead to if you pressure this on. Do you have the authority to confront me like this? I do not see any tower guards with you, so I guess the answer is "no"! Leave, before this turns ugly. */
+IF ~~ THEN EXIT
 END
 
 END //APPEND
@@ -343,10 +383,10 @@ END //APPEND
 
 BEGIN bsslvmsg
 
-IF ~True()~ THEN message
-SAY ~Hey, I have a message for <CHARNAME>. Greetings from Holger - our partners requested backup now. Go into the Seatower and talk to Leonhard 'the Fierce' on the third floor. Tell him Holger sent you.~
-IF ~~ THEN DO ~EraseJOurnalEntry(@839)
-SetGlobal("bsSlaverQuest","GLOBAL",3) ActionOverride("bsslvmsg",EscapeArea())~ UNSOLVED_JOURNAL @840 EXIT
+IF ~Global("bsSlaverQuest","GLOBAL",2)~ THEN message
+SAY @87 /* Hey, I have a message for <CHARNAME>. Greetings from Holger - our partners requested backup now. Go into the Seatower and talk to Leonhard 'the Fierce' on the third floor. Tell him Holger sent you. */
+IF ~~ THEN DO ~EraseJournalEntry(@839)
+SetGlobal("bsSlaverQuest","GLOBAL",3) ActionOverride("bsslvmsg",EscapeAreaDestroy(5))~ UNSOLVED_JOURNAL @840 EXIT
 END
 
 
@@ -354,14 +394,14 @@ END
 /* Flaming Fist at slavers' meeting point */
 BEGIN bsslavff
 IF ~Global("bsConfrontSlaveTraders","GLOBAL",3)~ THEN info
-SAY ~Good that you are here. The plan is the following: we Flaming Fist will approach the slavers from the south, trying to intercept the transfer of the slaves. Your part is to approach them from the north, to help us distract the slavers and prevent them from fleeing in this direction. Take down any of their mercenaries you see. Good luck.~
+SAY @88 /* Good that you are here. The plan is the following: we Flaming Fist will approach the slavers from the south, trying to intercept the transfer of the slaves. Your part is to approach them from the north, to help us distract the slavers and prevent them from fleeing in this direction. Take down any of their mercenaries you see. Good luck. */
 IF ~~ THEN DO ~EraseJournalEntry(@883) 
 SetGlobal("bsConfrontSlaveTraders","GLOBAL",4)
 ActionOverride("bsslavff",MoveToPointNoInterrupt([372.2475])) ActionOverride("bsslavff",DestroySelf())~ UNSOLVED_JOURNAL @887 EXIT
 END
 
 IF ~Global("bsConfrontSlaveTraders","GLOBAL",5)~ THEN after_fight
-SAY ~Good job on stopping the slaver mercenaries! We could free the slaves in the meantime and conviscate one of their ships. This was a very successful mission. Go to the Seatower Commander tomorrow, I am sure he wants to tell you personally.~
+SAY @89 /* Good job on stopping the slaver mercenaries! We could free the slaves in the meantime and conviscate one of their ships. This was a very successful mission. Go to the Seatower Commander tomorrow, I am sure he wants to tell you personally. */
 IF ~~ THEN DO ~EraseJournalEntry(@887) 
 SetGlobal("bsConfrontSlaveTraders","GLOBAL",6)
 ActionOverride("bsslavff",EscapeArea())~ UNSOLVED_JOURNAL @888 EXIT
@@ -373,22 +413,41 @@ END
 
 BEGIN bsslav04
 
-IF ~NumTimesTalkedTo(0)~ THEN greeting
-SAY ~Er, boss?~
+IF ~!GlobalGT("bsSlaverQuest","GLOBAL",4)
+!GlobalGT("bsConfrontSlaveTraders","GLOBAL",7)
+Global("bsSlaversHostile","MYAREA",0)~ THEN greeting
+SAY @90 /* Er, boss? */
 IF ~~ THEN EXTERN bsslav07 meeting
 IF ~Global("bsSlaverQuest","GLOBAL",4)
 Global("bsConfrontSlaveTraders","GLOBAL",4)~ THEN EXTERN bsslav07 meeting_01
 IF ~GlobalLT("bsSlaverQuest","GLOBAL",4)
 Global("bsConfrontSlaveTraders","GLOBAL",4)~ THEN EXTERN bsslav07 ffattack
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",7)~ THEN EXTERN bsslav07 holger_attack
 END
 
 BEGIN bsslav07
 
-/* 1. PC works with slavers and didn't tell Seatower commander about the shipment 
+/* 1. PC works with slavers and didn't tell Seatower Commander about the shipment
 Global("bsSlaverQuest","GLOBAL",4)
 GlobalLT("bsConfrontSlaveTraders","GLOBAL",4)
 */IF ~Global("bsSlaverQuest","GLOBAL",4) GlobalLT("bsConfrontSlaveTraders","GLOBAL",4)~ THEN meeting
-SAY ~Ah, there is our backup. We were quite excited when Leonhard told us about heavily armed mercenaries instead of the normal smuggler rogues. Plus, knowing that you are a rather new acquaintance, we decided we have a better use for you - in the Copper Coronet's gladiator rings. Everyone, grab them!~
+SAY @91 /* Ah, there is our backup. We were quite excited when Leonhard told us about heavily armed mercenaries instead of the normal smuggler rogues. */
+++ @92 /* Alright, I'm here. Now what? */ + betrayal
+++ @93 /* I decided I'll crash your party myself. Let's see how good you are with those knives of yours! */ + betrayal_01
+END
+
+IF ~~ THEN betrayal
+SAY @94 /* See, the wares are already boarded - except the ones we are about to aquire. I am sure you can imagine what will happen now. */
+IF ~~ THEN + betrayal_02
+END
+
+IF ~~ THEN betrayal_01
+SAY @95 /* What? Ho, you make the decision easy, then! */
+IF ~~ THEN + betrayal_02
+END
+
+IF ~~ THEN betrayal_02
+SAY @96 /* Don't blame our boss Leonhard the Fierce, this comes from higher up. This is nothing personal, we would have liked to do business with you. But Holger sent you, and we can't let it go unpunished that he lost the smuggler tunnels beneath the Sea Tower to the Flaming Fist, you understand the impact this had on our operations? Normally, we would have told Holger to meet up with us, but we'll start by collecting you for the gladiator rings of the Copper Coronet. Without you, Holger will be a sitting duck. Everyone, grab them! */
 IF ~~ THEN DO ~EraseJournalEntry(@843)
 SetGlobal("bsSlaversHostile","MYAREA",1) SetGlobal("bsSlaverQuest","GLOBAL",5) ActionOverride("bsslav07",Enemy())~ UNSOLVED_JOURNAL @847 EXIT
 IF ~Dead("bsslav01")~ THEN DO ~EraseJournalEntry(@843)
@@ -402,7 +461,7 @@ Global("bsConfrontSlaveTraders","GLOBAL",4)
 */
 IF ~Global("bsSlaverQuest","GLOBAL",4)
 Global("bsConfrontSlaveTraders","GLOBAL",4)~ THEN meeting_01
-SAY ~Ah, there is our backup. We were quite excited when Leonhard told us about heavily armed mercenaries instead of the normal smuggler rogues... What is the uproar at the ships? Flaming Fist! We've been found out! You - it must have been you! You betrayed us! Everyone, fight!~
+SAY @97 /* Ah, there is our backup. We were quite excited when Leonhard told us about heavily armed mercenaries instead of the normal smuggler rogues... What is the uproar at the ships? Flaming Fist! We've been found out! You - it must have been you! You betrayed us! Everyone, fight! */
 IF ~~ THEN DO ~EraseJournalEntry(@847)
 AddJournalEntry(@845,QUEST_DONE)
 SetGlobal("bsSlaversHostile","MYAREA",1) SetGlobal("bsSlaverQuest","GLOBAL",6) ActionOverride("bsslav07",Enemy())~ UNSOLVED_JOURNAL @888 EXIT
@@ -415,9 +474,24 @@ Global("bsConfrontSlaveTraders","GLOBAL",4)
 */
 IF ~GlobalLT("bsSlaverQuest","GLOBAL",4)
 Global("bsConfrontSlaveTraders","GLOBAL",4)~ THEN ffattack
-SAY ~Who are you? And what is the uproar at the ships? I see Flaming Fist! We've been found out! Everyone, fight!~
+SAY @98 /* Who are you? And what is the uproar at the ships? I see Flaming Fist! We've been found out! Everyone, fight! */
 IF ~~ THEN DO ~SetGlobal("bsSlaversHostile","MYAREA",1) ActionOverride("bsslav07",Enemy())~ EXIT
 END
 
+/* meeting with slavers for Holger; no crashing of slaver delivery. */
+IF ~Global("bsConfrontSlaveTraders","GLOBAL",7)~ THEN holger_attack
+SAY @99 /* Ah, there is Holger's mercenaries. That coward didn't come himself now, did he? Yes, he's smart like that. Let you walk into the trap for him, eh? */
+++ @92 /* Alright, I'm here. Now what? */ + holger_attack_01
+++ @100 /* Oh, Holger was very aware and made no secret about what I'll have to expect from you. */ + holger_attack_01
+++ @101 /* No need for talk, I think. */ + holger_attack_01
+END
+
+
+IF ~~ THEN holger_attack_01
+SAY @102 /* Don't blame our boss Leonhard the Fierce, this comes from higher up. This is nothing personal, we would have liked to do business with you. But Holger sent you, and we can't let it go unpunished that he lost the smuggler tunnels beneath the Sea Tower to the Flaming Fist, you understand the impact this had on our operations? It doesn't matter that the coward didn't show. We start by collecting you for the gladiator rings of the Copper Coronet. Without you, Holger will be a sitting duck. Everyone, grab them! */
+IF ~~ THEN DO ~SetGlobal("bsSlaversHostile","MYAREA",1) SetGlobal("bsConfrontSlaveTraders","GLOBAL",8)
+EraseJournalEntry(@829)
+ActionOverride("bsslav07",Enemy())~ UNSOLVED_JOURNAL @849 EXIT
+END
 
 

@@ -1,42 +1,101 @@
 			BS Company Presents:
                         ---  Balduran's Seatower  ---
 		Modification for BGT, BG:EE, and EET
-		
+
+
+DESCRIPTION
+COMPONENTS
+LIST OF QUESTS
+INSTALLATION
+COMPATIBILITY
+KNOWN ISSUES
+CREDITS
+TOOLS USED
+LEGAL INFORMATION
+HISTORY
+
 
 *Citizens of Baldur's Gate!
 
-We are happy to give you the chance to take a stroll around the Balduran's Seatower!
+Come and take a stroll around the Balduran's Seatower!
 
 Enter and be at awe at the great architecture, the wonders, and hidden treasures that will await anyone bold enough to enter the tower with adventures in mind!*	
 
-This is an Early Access Open Beta version (EAOB). 
-Expect bugs and please report anything you'll find in the BST Forum at Gibberlings!	 
-All existing quests of the EAOB are finishable but more content is planned for future versions. 
+BS Balduran's Seatower Modification (BST) is a mod for BGT, BG:EE, and EET, adding a new part to Baldur's Gate City, with several larger and small quests and encounters inside the new city district, outside in new dungeons, as well as related additions to the existing areas.
 
-BS Balduran's Seatower Modification (BST) is a mod for BGT, BG:EE, and EET, adding a new area to Baldur's Gate City, with several larger and small quests and encounters inside the new city district as well as related additions to the existing areas.
+v1 is released as a public beta. Keep in mind that there could still be bugs. Please report anything you notice to the mod's forums!
 
 
 
 DESCRIPTION
 
 The Seatower Area is accessible via the far south-west corner of the Docks Disrict. After visiting once, it is accessible via the worldmap.
-In the Early Access Open Beta there is also a direct travel trigger from the docks to the seatower area.
 
-The Early Access Open Beta has approximately 50% of the planned content which can be played without any loose ends. It is directly compatible with BGT, BG:EE w/o SoD, and EET.
+The mod is directly compatible with BGT, BG:EE w/o SoD, and EET.
 
-If you need the Worldmap for other mods, install it after BST and use the current 10.2.6.
+If you need the Worldmap mod for other mods, install it after BST.
 
-You can play from a previous save if it is from before entering BG city for the first time. In this case, the Seatower will not show on your worldmap but is accessible through a direct travel link from the south west corner of the docks.
+BST makes changes to the Worldmap, so you need to start a new game if you install the mod.
 
-Have a look at the readme to see a list of the available quests - but don't spoil yourself too much! Everything starts by entering the Seatower area. 
-
-Note: After installation of the EAOB, you need to play a new game or at least a save where you did not visit the BG City Areas before.
-The Seatower Area is reachable via a direct travel trigger from the south-west corner of the Docks.
-For a new game, the Seatower Area will also be on the worldmap. 
+Have a look at the walkthroughs below if you get stuck in a quest. All quests start by / are available after entering the Seatower area.
 
 
 
-LIST OF COMPONENTS (EAOB)
+COMPONENTS
+
+The first and main component adds the Seatower and all quests to the game.
+
+The second, optional component "Reveal Seatower Map When Entering Area" reveals the main Seatower area upon first entering.
+
+The third, optional component "Adapt Palace Fight with Regard to Doppelganger Invasion" adjusts the fight in the Palace depending on whether the threat was revealed or not.
+There is three options:
+1. "Place More Flaming Fist soldiers into the Palace if Revealed": this will add one more soldier.
+2. "Reduce Number of Doppelgangers in Palace if Revealed": this will remove one doppelganger.
+3. "Place More Doppelgangers into Palace if Invasion was not Revealed": this will add one more doppleganger.
+All three options should be compatible with Jarl's Adventure Pack's changes to the palace scene.
+
+The fourth component is for BGT only: "Correct music entries for BGT". It will correct the area music of BST areas in BGT to match fitting ones, otherwise some area music would be out of place.
+It is not needed for BGT Music choice "Hybrid BG1 and BGII Music". This is the default case considered. In case "Hybrid BG1 and BGII Music" component is installed OR the game is not BGT, this component will be skipped automatically.
+
+
+
+LIST OF QUESTS
+
+
+"A Girl inside the Sarcophagus":
+-------------------------------
+Aquired by opening the sarcophagus in the crypt area of the lower inner temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Open the Sarcophagus and talk to A Girl.
+- Open the Sarcophagus again. Fight the Doomsayer "Binky".
+- A Girl will talk to you again and there will be a small cutscene when she goes away.
+
+
+"A Hammer for the Pirates":
+-------------------------------
+Given by the Pirate Capatin on the outside of the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Talk to the Pirate Captain. He will mention that they need a craftman's hammer for the repairs to their ship.
+- Talk to the Priest of Valkur in the old chapel on the upper inner level of the temple ruins.
+- Give the Priest of Valkur either a war hammer, a mace, or a morning star in exchange for the craftman's hammer. The hammer will also drop if the priest dies.
+- Bring the craftman's hammer to the Pirate Captain.
+Note: an appropriate weapon can either be bought from the castaway headmaster (quest "The Door Riddle"), the pirate Dirk outside, or found in a hidden stash in the cave system (Note: to find the hidden stash, infravision is required).
+
+
+"Another Smuggler Errand":
+-------------------------------
+Given by Holger if the smuggler errands in BG1 were finished ("Working with the Smugglers").
+This will be another smuggler errand which will either trigger after Sarevok's death (for BGT / with a mod that keeps the game in BG1 after S. death), or SoD.
+
+-Talk to Holger. He is in the Three Old Kegs ground floor (same spot for BG1 / SoD).
+-Take the box to Bruce, a Flaming Fist soldier inside the palace, 2nd floor.
+-Talk to Holger again to get your reward.
+Note: For BG:SoD/EET with e.g. EndlessBG1, the quest can also be started in BG1 and finished in SoD.
+
 
 "An Orphan in the Seatower": 
 -------------------------------
@@ -49,12 +108,64 @@ There are two quest ends:
 Quest reward item is "Lars' Drawing" which has no use whatsoever. 
 
 
+"Bandit Communication":
+-------------------------------
+Given by the bandit in the Seatower Prison. He is in the second to right cell in the first aisle.
+Prerequisite: only evil aligned PC; quest "The Prisoner in the Seatower Prison" is aquired/finished.
+Note: the prison cell doors will be locked each time the prison was left. The prison key is required to open them again. Do not lose this key, there will be no replacement.
+
+Walkthrough: Talk to the bandit. When the dialogue is about to end, the bandit will ask the PC to deliver a note to a contact.
+- Accept the note and place it into the hiding place specififed. There will be 500 gp inside already. Upon returning to the hiding place (going away far enough is sufficient to trigger the change), the note will be gone and there will be another 500gp.
+- After the note was taken from his contacts, the bandit will be gone from the Seatower Prison. Talk to the Tower Guard Jay to get a scolding, including one loss in reputation.
+The note is written in code so it can't be read. The hiding place is on a tree on Wyrm's Crossing, on the other side of the river than the city (side of Tenya's house), on a single tree with read leaves (around [4330.1992]).
+Note: for the EEs, the hiding place container will indeed be hidden until the bandit talks about it. For BGT, it will be there but empty before talking to the bandit.
+
+
+"Betrayed by the Priestess of Umberlee?":
+-------------------------------
+Aquired by finding evidence on the temple island or afterwards.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is either on the Old Temple Island or back after finishing it.
+
+Walkthrough:
+- In the cave system on the island, collect the note on one of the dead adventurers.
+- Talk to the Sahuagin Priestess on the island and ask about the mentioned conspiracy.
+- The main Sahuagin baron on the island also tells about the conspiracy.
+- After returning to the Sea Cave under the Balduran's Seatower, confront the Priestessess of Umberlee with the accusations or just attack them.
+- Collect the compromising letter from one of the dead priestesses.
+There is two options:
+1. Bring the letter to the Seatower Commander.
+2. Bring the evidence to either Jalantha or Tenya (inside the tmple), if they are still available. Note: they will also request the tooth relic and attack if the PC can't provide it.
+
+Note: the quest can also be aquired if no hints were found on the island but only the evidence was collected after confronting the Priestesses of Umberlee.
+
+
+"Block the Malenti Water Hole":
+-------------------------------
+Given by the quartermaster of the castaways in the hidden rooms on the upper inner level of the temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island. Quest "The Door Riddle" needs to be finished to gain access to the hidden rooms.
+
+Walkthrough:
+- Ask to quartermaster about how much water they'd need.
+- Place a boulder into the water hole the Malenti are coming through. Boulders can be found on the outside area of the temple island.
+- Tell quartermaster that the hole is blocked.
+
+
 "Cage the Rabbits":
 -------------------------------
-Given by Inn Master Roryn after incident on third floor for quest "Strange Happenings in Room No. 3.4" if none of the rabbit were killed. 
+Given by Inn Master Roryn after incident on third floor for quest "Strange Happenings in Room No. 3.4" if none of the rabbits were killed.
 
-Walkthrough: The PC receives a cage and has to cage the rabbits on the third level of the Seatower (done by klicking on the rabbits). Quest ends after giving the cage back to Inn Master Roryn.
+Walkthrough: The PC receives a cage and has to collect the rabbits on the third level of the Seatower (done by klicking on the rabbits and picking them up via dialogue). Quest ends after giving the cage back to Inn Master Roryn.
 There is 11 rabbits in total. The quest can be ended any time by giving back the cage, quest reward is 50 gold for every caught rabbit. 
+
+
+"Candle for the Redeemed":
+-------------------------------
+Given by the man formerly being a Higher Lacedon (quest "Umberlee's Curse").
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island, and "Umberlee's Curse" is finished.
+
+Walkthrough:
+- Collect the candle from the altar in the crypt area of the lower inner temple ruins.
+- Bring the candle to the quest giver.
 
 
 "Confront the Slave Traders in Baldur's Gate": 
@@ -66,21 +177,98 @@ Walkthrough: After learning that Leonhard "the Fierce" on the third floor of the
 2. the PC needs to gather information about *when* the slavers will transfer slaves next.
 There are different possibilities to gather these information, depending on whether the PC is working with the smugglers or not (quest "Working with the Smugglers"):
 -If working with the smugglers, the PC will be summoned to Leonhard "the Fierce" into the Seatower and get information about when and where. With these information, the PC can go to the Seatower Commander.
--Independent on whether the PC is working with the smugglers, the information can be gathered by freeing Shuck's brother (quest "Help Shuck's Brother") and telling the Seatower Commander about it, and killing Leonhard "the Fierce" which will drop a booklet with all the dates. In this case the knowledge about where will be aquired viy Shuck's freed brother by the Seatower Commander (PC has to leave and return to the Commander for him to have the information).
+-Independent on whether the PC is working with the smugglers, the information can be gathered by freeing Shuck's brother (quest "Help Shuck's Brother") and telling the Seatower Commander about it, and killing Leonhard "the Fierce" which will drop a booklet with all the dates. In this case the knowledge about where will be aquired via Shuck's freed brother by the Seatower Commander (PC has to leave and return to the Commander for him to have the information).
 3. After time and place are known, the slave traders can be confronted at night on the map with the bridge (Wyrm's Crossing) in the far south corner on the west bank of the river. A Flaming Fist Soldier will approach the PC before the meeting place of the slavers.
 4. The PC needs to fight the slavers at the meeting point.
 5. The quest is finished after talking to the Seatower Commander again.
 Note: in BG:EE/EET the area can be left at the west border. Do not leave the area during the fight with the slavers because returning via the worldmap will bring you to the bridge again and not into the south corner so you'll have to walk back to the meeting point which might be immersion breaking.
 Note: If the quest to save Shuck's brother was declined and the PC does not work with the smugglers, the slavers cannot be confronted. The booklet can still be brought to the Seatower Commander in case Leonhard was killed.
 Note: if the PC works with the smugglers (quest "Working with the Smugglers"), the slavers can be confronted without the smugglers turning hostile as long as Leonhard "the Fierce", the slaver contact, was not killed.
+Note: If the PC does not work with the slavers but with the smugglers, confrontation of the slavers and especially Leonhard the Fierce will happen by itself and the notebook can then be handed to the commander without risking the smuggler's cooperation.
 
 
 "Dark Power in the Seatower Catacombs": 
 -------------------------------
-Given by abbot in the Ilmater Monastery. 
+Given by abbot in the Ilmater Monastery. You can ask for tasks the first time you approach him.
 
-Walkthrough: PC will receive two keys (for legacy reasons it's two). The first opens the tomb in the "Chionthar Tower", the second one opens the hidden door inside the tomb to the catacombs. PC needs to talk to the Restles Dead in the far away tomb of the catacombs (behind a hidden door). Quest ends after reporting to the abbot.
-Note: Depending on the behavior of the PC and whether the tombs are plundered, this quest can be finished without any fighting or a lot of fighting.
+Note: the keys disappear after use, including the key to the inner catacombs.
+Note: This quest was revised and extended since the Early Access versions. It always contains fighting Undead now.
+
+Walkthrough:
+- Enter catacombs through the mausoleum in Chionthar Tower (southwest).
+- Clear the outer area of the catacombs from undead.
+- Find the key that was dropped in the catacombs. [Possible quest ending: give now key back to the abbot.]
+- Open hidden door to the inner catacombs. Talk to monk Fuller.
+- Clear the inner catacombs from undead.
+- Enter the inner sanctum and talk to the King of the Restless Dead.
+- Collect dropped spell scroll. [Possible quest ending: give scroll to Fuller.]
+- Talk to Fuller or not, tell him to leave or not. Note: if Fuller stays, he'll most probably die in the coming fight with undead.
+- Do the banning ritual using the scroll. [complete quest ending].
+In all cases, collect your reward from the abbot.
+
+
+"Defense System of the "Arena" Room":
+-------------------------------
+Aquired by entering the guarded "Arena" room.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Enter the "Arena" room either by the main entrance (the Sahuagin guards will turn hostile) or by the secret passage (quests "Secret Passage from Chapel to Arena?" and/or "Hidden Mechanism in the Chapel's Altar?").
+- The defense system will be activated upon entering the arena without being Invisible.
+- Fight the 4 monster waves to deactivate it for good. Number of monsters depends on game difficulty.
+1. wave: Skelettons
+2. wave: Otyugh
+3. wave: Ettercap
+4. Wave: Phase Spiders. (for hard/hardest game difficulty also Astral Phase Spider).
+- For temporary deactivation, collect the Shell Horn from one of the dead Sahuagin. Blowing it will temporarily deactivate the defense system and kill all currently present monsters. As long as there is still monster waves open, the defense system will reactive upon reentering the arena. The Shell Horn can be used every time. The Shell Horn has no use after all monster waves are done.
+
+
+"Destroy the Great Portal":
+-------------------------------
+Given by the Old Hermit in the library on the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island. Quest "What is Going On in the Guarded Room?" needs to be finished.
+Quest "The Rat in the Library" needs to be finished.
+
+Walkthrough:
+- Ask the Old Hermit what can be done to destroy the great portal the Sahuagin are working on.
+- Get the Dry Spore Powder from the spore colony in the cave system.
+- The Old Hermit will make a special tincture with which the portal can be destroyed.
+- Enter the Arena Room and destroy the portal using the tincture. Alternatively, kill all Sahuagin on the island. In this case, the Old Hermit will offer to destroy the portal herself.
+
+Note: There was once a glitch where using the tincture in another area than the arena room let to it being gone. In this case, the quest can't be completed.
+Note: If you ask the Old Hermit about Balduran's items, now she will be ready to hand over Balduran's Boots. If you asked about the boots before, she will hand them over now.
+
+
+"Diddy's Missing Dagger":
+-------------------------------
+Given by Diddy, a castaway in the hidden rooms on the upper inner level of the temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island. Quest "The Door Riddle" needs to be finished to gain access to the hidden rooms.
+
+Walkthrough:
+- Talk to Diddy. She will tell about her missing dagger and where she left it.
+There is two options to solve the quest.
+1. Go into the dormitory adjacent to the hidden rooms and search for Diddy's dagger.
+2. Ask Diddy whether she is sure her dagger will be there until the dialogue develops.
+- The following dialogue with another Castaway will tell that he has Diddy's dagger now.
+1. Tell the other castaway to give Diddy her dagger back.
+2. Give Diddy some gold so she can buy a new one from the quartermaster.
+3. Do not help Diddy further.
+Reward is one healing potion but will only be given if the PC claims it.
+
+
+"Dispute over Leadership between Castaways":
+-------------------------------
+Given by castaway prisoner in the hidden room on the lower inner level of the temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island. Quest "The Door Riddle" needs to be finished to gain access to the hidden rooms.
+
+Walkthrough:
+- Talk to the leader, the prisoner, and the other castaways to learn about the leadership dispute.
+If you want to make the castaway held prisoner the new leader:
+- Kill the guard that is with him.
+- Follow the former prisoner to the hidden rooms on the upper level and watch the scene.
+- Collect the former leader's sword as a reward.
+If you do not want to switch leadership, free the upper level of the inner ruins from Sahuagin and tell the leader. After that, talk to the now free prisoner.
+Note: The quest will also be solved if the guard and/or leader are killed after the Sahuagin threat has been eliminated, but the former prisoner will not take the position any more.
 
 
 "Doppelgangers Inside the Seatower": 
@@ -88,7 +276,7 @@ Note: Depending on the behavior of the PC and whether the tombs are plundered, t
 This is the main quest inside the tower which is connected to a lot of other quests.
 Chapter 1-5: quest starts after or during quest "The Breach in the Seatower Prison": after the hole in the prison wall is reported to the Seatower Commander.
 After Sarevok was revealed in the Duchal Palace (or is dead/BGII): quest starts directly by speaking to the Seatower Commander the first time.
-Note: after the quest started there will be a quest timer of 5 to one ingame days depending on the quest status. Exceeding the timer while being away from the tower grounds or the seacave will set the quest to completed without the PC's help. 
+Note: after the quest started there will be a quest timer of 5 to one ingame days depending on the quest status. Exceeding the timer while being away from the tower grounds or the seacave will set the quest to completed without the PC's help.
 
 Walkthrough: 
 - Quest starts in the Seatower Commander's Office: he will be attacked by two doppelgangers.
@@ -107,6 +295,7 @@ Note: There is a total of five disguised doppelgangers on the tower grounds outs
 Note: if going to the tanner by entering via the Chaintower and going clock wise to the Traitor's Tower, no disguised doppelgangers will be met on the way. If going via South Harbor Tower, 4 of 5 disguised doppelgangers will be met before reaching the tanner.
 - PC needs to talk to Captain again after defeating all 5 doppelgangers.
 - Quest ends by talking to Seatower Commander.
+Note: For BGT and EET, the mimic drops a bottle of Mimic's Blood. This is the BGII item. It can be sold to and rebought from the Seatower mage and serves no purpose in this mod.
 
 
 "Fire Elemental in the Seatower Storeroom": 
@@ -124,10 +313,38 @@ There are five possible quest ends:
 
 "Fire Proof Barrel for the Seatower Armorer": 
 -------------------------------
-Given by the armorer if asked whether he can make a barrel fire proof. 
+Given by the armorer if asked whether he can make a barrel fire proof. Quest can also be aquired via the fletcher: she will mention that the armorer is always in need of fire proof equipment.
 
-Walkthrough: Empty barrel has to be in the PC's inventory to ask. Quest can also be aquired via the fletcher: she will mention that the armorer is always in need of fire proof equipment. Armorer will ask the PC to also fill the barrel with water so he doesn't have to carry it. The fire coated barrel can be filled with water at the well on the seatower grounds after the quest "Fire Elemental in the Seatower Storeroom" is finished.
-Quest ends by selling the barrel to the armorer.
+Walkthrough:
+- Empty barrel has to be in the PC's inventory to ask.
+- Armorer will ask the PC to also fill the barrel with water so he doesn't have to carry it. The fire proof coated barrel can be filled with water at the well on the seatower grounds after the quest "Fire Elemental in the Seatower Storeroom" is finished.
+- Quest ends by selling the barrel to the armorer.
+Note: quest also be started by directly bringing the fire proof barrel (with ot without water) to the armorer.
+
+
+"Fletcher's Woodwork":
+-------------------------------
+Given by the fletcher.
+
+If talked to a second time (or after taking the feathers), the fletcher will ask for wood the PC might find on their travels.
+
+Walkthrough:
+-The Suth Timber is on the Old Temple Island (quest "Retrieve Iakhovas's Tooth") in a pile on the Inside upper level.
+- bring the Suth Timber to the fletcher, she will notice it if it is in inventory.
+- Sell the wood to the fletcher. She'll say that she'll make a staff out of it.
+-Come back after a day and the staff will be finished.
+The staff can be bought but doesn't have to to close the quest.
+
+
+"Fragmented Soul":
+-------------------------------
+Aquired by reading the note on the table in the crypt area of the lower inner temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Attack one of the Fragmented Apparitions in the crypt area of the lower inner temple ruins so it follows the group. One is near the crypt entrance, the other one in the far west end of the crypt.
+- Lead one Fragmented Apparition to the other one. They need to see a party member to stay hostile and follow.
+- Once they see each other, they will approach each other and merge.
 
 
 "Halfslinger's Ale": 
@@ -141,6 +358,7 @@ Walkthrough: Quest item handed out by the cook after completion of the quest "Fi
 -------------------------------
 Given by Shuck inside the Seatower Prison. 
 Prerequisite: quest "The Prisoner in the Seatower Prison" is aquired/finished.
+Note: the prison cell doors will be locked each time the prison was left. The prison key is required to open them again. Do not lose this key, there will be no replacement.
 
 Walkthrough: 
 -after talking to Shuck, PC needs to go and talk to the smugglers at the Nashkell Carnival (south of the Lotus Tent).
@@ -153,6 +371,27 @@ Note: the gold can be aquired via the Seatower Commander, which will start the q
 Note: Nathoriel can only be freed in case the PC goes through with these quest steps, otherwise quest will fail (i.e. if the smugglers are killed before giving the voucher, PC does not pay the gold in time, Leonhard was killed too early.)
 
 
+"Hidden Letters":
+-------------------------------
+Note: this quest does not have journal entries. It's more of an Easter Egg.
+
+Walkthrough:
+- Talk to Yvonne at the entrance to the Seatower area. Afterwards, look into the hidden stash in the wall (very small, around [1120.401]).
+1 You can either leave the letter and come back from time to time and see what's inside the hidden stash. If you put all letters back there will eventually a reward.
+2 Or you can remove letters, then Yvonne will return after a while. Give her the letter you removed. Requesting a reward or just being rude will lead to 1 reputation malus.
+Note: opening the container without taking the letter(s) out will also advance the quest, assuming the PC looked at them. This makes more sense for the EEs where item description can be opened while an item is still inside a container. For BGT, recommended way is to take them out for reading and then put them back in (before leaving the area).
+
+
+"Hidden Mechanism in the Chapel's Altar?":
+-------------------------------
+Aquired by placing a boulder on the altar on the old chapel in the upper inner level of the temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Place at least two boulders onto the altar to make the hidden passage appear.
+Boulders can be found on the outside area of the island.
+
+
 "Ingredients for the Seatower Mage": 
 -------------------------------
 Given by Seatower Mage Master Shizell on second floor of the tower. 
@@ -163,31 +402,140 @@ Items requested are:
 -Belladonna flower. One Belladona flower is added to the kitchen storeroom behind a locked door (accessible via quest "Fire Elemental in the Seatower Storeroom").
 -Winter Wolf pelt.
 -Ankheg shell.
+Note: the locked door in the kitchen storeroom needs a key. The key has to be stolen from the cook.
 
 
-"Liqueur for the Tanner": 
+"Liqueur for the Tanner":
 -------------------------------
-Given by the tanner after or during the quest "Doppelgangers Inside the Seatower". 
+Given by the tanner. The tanner is outside the Seatower fortifications. To reach him, go up the pallisade, down via the Traitor Tower, outside onto the shore, and up the pathway to the northwest.
 
 Walkthrough: Quest items is three bottles of liqueur, quest ends by bringing all of them to the tanner.
 -Herb Liqueur: is in a wine shelf under the Tailor's Shop (accessible via the quest "The Breach in the Seatower Prison")
 -Plum Liqueur: is in Ye Olde Inn (AR1113 in BG:EE)
 -Bitter Liqueur: is in Durlag's Tower, level with Riggilo
+Note: If items are brought as payment for the tanner's help with "Doppelgangers Inside the Seatower", there will be no gold reward, unless he was threatened to help.
+
+
+"Lord Dlusker's Tomb Visit":
+-------------------------------
+Given by Lady Dlusker outside the Chionthar Tower (southwest corner) on the main Seatower area.
+Requirement: Quest "Dark Power in the Seatower Catacombs" is aquired (i.e. group has key to mausoleum).
+
+Walkthrough:
+- Go into the mausoleum.
+- Kill the zombie and collect the dropped journal.
+- Hand the journal to Lady Dlusker.
+- Clear the Dluskers' family tomb. Note: there is a wraith inside.
+Lady Dlusker will ask for the family heiloom that is inside the tomb. If it was not taken, the reply options will account for this.
 
 
 "Missing Monk in the Seatower": 
 -------------------------------
 Given by Tower Guard Lenard on the outside door of the South Harbor Tower. Objective is to search for the monk Martina. 
 
-Walkthrough: PC needs to ask the beggar "Lime" in front of the Ilmater Shrine, then beggar "Blurt" in front of the Palace, then investigate the pile behind the Ilmater Shrine. Quest ends with Tower Guard Lenard appearing behind the shrine, too.
-The quest can be rejected. After finishing the quest, going to the Seatower Commander on the second floor of the tower will start the quest "The Prisoner in the Seatower Prison".
+Walkthrough:
+- PC needs to ask the beggar "Lime" in front of the Ilmater Shrine,
+- then beggar "Blurt" in front of the Palace,
+- then investigate the pile behind the Ilmater Shrine.
+- Quest ends with Tower Guard Lenard appearing behind the shrine, too.
+Note: The quest can be rejected.
+Note: After finishing or rejecting the quest, going to the Seatower Commander on the second floor of the tower will start the quest "The Prisoner in the Seatower Prison" which opens up the closed off areas.
+
+
+"Moggy the Cat":
+-------------------------------
+Note: this quest does not have journal entries. It's more of an Easter Egg.
+
+Walkthrough:
+- Pet the cat in the Ilmater Monastery on the Seatower grounds.
+Her reactions are completely random, i.e. do not follow a pattern.
+She can:
+-let you pet her.
+-twitches tail
+-scratches you
+-bites you. Biting will only happen once and will give "Moggy's Wrath" (Disease with CHA -2 malus [I wanted to simulate blood poisoning without making this Easter Egg too severe].)
+Note: If you manage to pet her for 6 times in a row without her tail switching (or scratching/biting) she'll purr and it will grant "Moggy's Favor" (+1 Luck bonus for 60 seconds).
+Also note Moggy's content for "My Room on the Ilmater Monastery".
 
 
 "Myconides in the Seatower Prison": 
 -------------------------------
-Given by Tower Guard Jai after the PC entered the prison with a Prison Pass (from quest "Help Shuck's Brother" or "Doppelgangers Inside the Seatower" depending on game chapter). 
+Given by Tower Guard Jai after the PC entered the prison with a Prison Pass  (from quest "The Prisoner in the Seatower Prison" or "Doppelgangers Inside the Seatower" depending on game chapter).
 
-Walkthrough: Quest end is if the Myconides and the spore colony in the Prison is destroyed. The spore colony is in the corner behind the cell door of the cell on the north wall.
+Walkthrough: Quest end is if the spore colony in the Prison is destroyed. The spore colony is in the cell on the far right on the north wall.
+
+
+"My Room on the Ilmater Monastery":
+-------------------------------
+After completing the whole quest "Dark Power in the Seatower Catacombs", the PC can use one of the rooms in the monastery. There is a chest and a bed. The bed can be used to rest, or to bide time until certain hours of the day (e.g. midnight etc.).
+Note: when biding time, the game time will just be fast forwarded without giving the party resting benefits.
+- Monk PCs will get the room for free.
+- Non Monk PCs will have to pay 1000gp.
+
+Moggy content:
+- Have a look in your room after some days. Moggy the cat will leave a present on the floor.
+- Make sure to first compliment her for it and then pet her. The first time after finding a dead rat, it will grant "Moggy's Favor" (+1 Luck bonus for 60 s).
+Note: If the PC does not compliment her, there will be no more presents.
+
+Note with regard to the PC's chest:
+- Content of the personal chest will automatically be transferred to the chest in the palace in SoD.
+- Crossmod: Install BST after EndlessBG1 to have the ingame possibility to transfer all items from the monastery chest into the PC's chest inside the Palace after Sarevok is defeated. Talk to the butler to activate the move.
+
+
+
+"Rats in the Seatower Inn":
+-------------------------------
+Quest given by Inn Master Roryn after finishing the quest "Cage the Rabbits".
+
+Walkthrough: Quest starts by guest complaining about rats on the second floor while PC is near Inn Master Roryn. The "rats" is only one rat "Betsy" on the second floor of the tower, right at the stairs when coming up from below. Quest ends by giving the rat to Inn Master Roryn.
+There are two quest ends:
+-the rat was taken alive
+-the rat was killed and the carcass is given to Inn Master Roryn.
+
+
+"Reporting Smugglers to Nashkel Guard":
+-------------------------------
+Given by Sergeant Telmov. He will be in front of the Nashkel Garrison after the bandit camp was cleared.
+
+Depending on where the smuggler errands will be, the soldiers can be warned and informed, and busting of the smugglers or their clients can be arranged.
+
+There is the possibility to receive an official "Collaboration Pass" to prove that the PC only works for the smugglers to have them arrested. For the first try, the PC needs CHR 18 or above. For the second try, CHR 16 or above.
+
+Note: There is reply options tagged with (truth) or (lie). If you answer (truth), journal entries will assume you want to report the smugglers. If you answer (lie), then it is assumed that you want to play off the soldiers, e.g. to receive a collaboration pass and use it for smuggler heists. (It is also assumed that the PC either wants to work for the smugglers and not with the soldiers or vice versa - the detection variable is the same as for working for/against the smugglers, but reversed. Note: Answering inconsistent (true) or (lie) with the Guard and with the smugglers can lead to wrong journal entries regarding the PC's motivation.)
+
+
+"Reporting Smugglers to the Flaming Fist":
+-------------------------------
+Given by either Manip Limmon inside the Flaming Fist Headquarters or the Captain of the Guard Dungarth of the Seatower (inside the Seatower Barracks).
+
+Depending on where the smuggler errands will be, the soldiers can be warned and informed, and busting of the smugglers or their clients can be arranged.
+
+The PC can convince Manip Limmon not to bust the first delivery (to the cook in Helm&Cloak) while the PC is present. Chose this if you want to continue working for the smugglers.
+
+The PC can ask the Seatower Captain for one smuggler item directly (4th smuggler quest). Success will be increased if the PC is not a gnome, has some official document, has helped the Seatower against the doppelgangers inside the barracks at least, and behaves politely.
+
+Note: There is reply options tagged with (truth) or (lie). If you answer (truth), journal entries will assume you want to report the smugglers. if you answer (lie), then it is assumed that you want to play off the soldiers, e.g. to receive a collaboration pass and use it for smuggler heists. (It is also assumed that the PC either wants to work for the smugglers and not with the soldiers or vice versa - the detection variable is the same as for working for/against the smugglers, but reversed. Note: Answering inconsistent (true) or (lie) with the Guard and with the smugglers can lead to wrong journal entries regarding the PC's motivation.)
+
+
+"Retrieve Iakhovas's Tooth":
+-------------------------------
+This is the main quest on the remote island called "Old Temple Island". There is several other sidequests on the island which are described separately.
+Given after talking to the Priestess of Umberlee in the Sea Cave beneath Balduran's Seatower (The cave is accessible after getting access to the Seatower prison ("The Prisoner in the Seatower Prison") and after destroying the spore colony there ("Myconides in the Seatower Prison").)
+The priestess will appear in front of the north-east stairs after all Sahuagin in the Sea Cave are defeated.
+Note: There is no time limit with regard to when to enter the portal.
+
+Walkthrough:
+- Accept quest given by the Priestess of Umberlee. She will open a portal in the pool in the Sea Cave.
+- Enter the portal to go to the Old Temple Island.
+- Negotiate with the Sahuagin to get the tooth back. There is several possibilities:
+1. Kill the main Sahuagin baron for the rebel baron.
+2. Kill the rebel baron for the main baron.
+3. Steal the tooth from the main baron.
+With the tooth in inventory, the island can be left via the portal the group came through.
+- Talk to the High Priestess of Umberlee that is now also in the Sea Cave.
+There is two possible quest ends:
+1. Give the tooth to the Priestesses of Umberlee.
+2. Confront and/or fight the Priestesses of Umberlee. Collecting / keeping the tooth will start the quest "What to do with Iakhovas's Tooth".
 
 
 "Sea Troll Sebaceous Gland for the Seatower Winchman":  
@@ -195,7 +543,49 @@ Walkthrough: Quest end is if the Myconides and the spore colony in the Prison is
 Given by Head Winchman Brydw in the Winch Tower.
 
 Walkthrough: PC needs to kill a Sea Troll and take the dropped item. 
-Sea Troll currently is in the north of the Shipwreck Area at the beach.
+Sea Troll are:
+- in the north of the Shipwreck Area at the beach.
+- in the northwest corner of the Temple Island (quest "Retrieve Iakhovas's Tooth").
+Note: The winchmal will accept any number of Sebaceous Gland items brought to him, also if the quest is already marked as finished.
+
+
+"Secret Passage from Chapel to Arena?":
+-------------------------------
+Given by the Old Hermit in the library on the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Place two boulders on the altar on the old chapel in the upper inner level of the temple ruins. Boulders can be found on the outside area.
+- Quest will be marked as finished once the group entered the Arena room.
+
+
+"Staff to Spear":
+-------------------------------
+Given by the Seatower Armorer.
+If the PC has the Suth Staff +2 from the Fletcher (quest "Fletcher's Woodwork"), the armorer will offer to alter it into a spear.
+
+-The change will cost 1000 gold and consume one dagger +1.
+-Before the armorer is ready, the PC has to ask for the fletcher's consent for the change of her weapon.
+
+
+"Strange Happenings in Room No. 3.4":
+-------------------------------
+First journal entries by two guests inside the tower talking about rats and strange happenings in one of the rooms. Actual quest starts when PC talks to mage Klaus on the third floor of the tower.
+
+Walkthrough: Quest ends outside when PC talks to Klaus again and fights the monster he conjures. After the fight Klaus will give the PC the quest "The Mysterious Scroll" and move to Ilmater Monastery.
+Leads to quest "Cage the Rabbits" if PC speaks to Inn Master Roryn after the incident inside the room.
+
+
+"The Amnian Spy":
+-------------------------------
+Note: this quest does not have journal entries.
+Gondolainy, the Amnian Spy, will be inside the Seatower Prison, cell on the right in the first aisle.
+Prerequisite: quest "The Prisoner in the Seatower Prison" is aquired/finished.
+Note: the prison cell doors will be locked each time the prison was left. The prison key is required to open them again. Do not lose this key, there will be no replacement.
+
+Walkthrough: When talking to Gondolainy, she will try to seduce the PC into freeing her.
+- If the PC agrees, she will leave, which will lead to a scolding of the guard and a loss in reputation.
+- Independent on whether she was freed, if the PC talked to Gondolainy before investigating the Iron Throne before Sarevok's coronation, she will be inside the Iron Throne, 4th level. The PC can prevent fighting her by chosing the obvious reply options.
 
 
 "The Breach in the Seatower Prison": 
@@ -209,15 +599,30 @@ The quest is finished if all findings are reported to the Seatower Commander:
 -exit to the Traitor's Tower - will leave the secret tunnel open
 -exit to the Docks
 -whereabouts of the smugglers under the tower
--doppelgangers inside the tailor's shop.
+-doppelgangers inside the tailor's shop
+-finding of doppelganger victims under the tailor shop cellar
+-reported Sahuagin portal in seacave.
 Reporting about the doppelgangers inside the Tailor's shop will also proceed the quest "Doppelgangers Inside the Seatower".
 
 
 "The Dead Adjutant": 
 -------------------------------
-Starts by fining the buried dead Adjutant in the Seacave. Prerequsisite is quest "The Breach in the Seatower Prison". 
+Starts by finding the buried dead Adjutant in the Seacave. Prerequsisite is quest "The Breach in the Seatower Prison".
 
 Walkthrough: Ends by reporting about the dead adjutant to the Seatower Commander.
+
+
+"The Door Riddle":
+-------------------------------
+Aquired by either reading notes from the Old Hermit or investigating the torch holder next to the hidden door on the upper inner level of the inner ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Investigate the torch holder next to the hidden door on the upper inner level.
+- The correct choices to open the hidden door are the displayed sea creatures in the order they were passed by when walking to the door, coming from the south-west aisle:
+1. Octopus
+2. Turtle
+3. Swordfish.
 
 
 "The Fletcher's Feathers": 
@@ -227,81 +632,323 @@ Given by Matha the fletcher.
 Walkthrough: Quest item handed out by cook's assistant after talking to the cook first.
 
 
+"The Innocent Prisoner":
+-------------------------------
+Given by Timothy Malastair, inside the Seatower Prison, cell on the farthest corner away from the guards.
+Prerequisite: quest "The Prisoner in the Seatower Prison" is aquired/finished.
+Note: the prison cell doors will be locked each time the prison was left. The prison key is required to open them again. Do not lose this key, there will be no replacement.
+
+Walkthrough: Talk to Malastair and listen to his story.
+Note: after this first meeting, there will be no journal entry if the evidence for his innocence isn't in the group's possession yet.
+- After finding evidence for his innocence, a journal entry will be set.
+The evidence can be handed in at several places:
+1 The evidence can be handed in to the Seatower Commander.
+2 For bg1re, BGT, EndlessBG1, or Transitions: if Duke Eltan is available after Sarevok's scheme was revealed or after Sarevok is dead, the evidence can be handed in to Duke Eltan.
+3 In SoD (for a continuous game), the evidence can be handed in to Duke Eltan before the PC leaves with the Flaming Fist against the crucade.
+4 In BG1, Malastair can be asked for gold. In this case, his mother will be waiting behind the Temple of Helm with two body guards to hand over the gold (3000 / 5000 gp according to what is requested) and take the evidence.
+5 The evidence can be destroyed before Malastairs eyes, which will lead to a loss in reputation point and his death.
+- If the evidence was given for free (and not to Duke Eltan), Duke Eltan will react to it next he is talked to (if he is present via bg1re/BGT/EndlessBG1/Transitions/SoD).
+- If freed, Malastair will make two more appearances: one inside the gound floor of the Iron Throne in BG1 after Sarevok is dead (for BGT/EndlessBG1/Transitions). Another one in the Iron Throne building in SoD (for a continuous game).
+The evidence is a written note from Sarevok which will be at the same place like his journal (i.e. with Cythandria in the Iron Throne building).
+Note: Jarl's Adventure Pack's component "IMPROVED/RESTORED: Ducal Palace" moves Sarevok's journal into the palace. If BST is installed after JAP, the evidence will then also be there.
+Also: for the crossmod content with regard to Duke Eltan to show, BST needs also to be installed after EndlessBG1, Transitions, and bg1re.
+For all crossmod content, there will be no issues if the install order is reversed, other that the content will not show.
+
+
+"The Lost Necklace":
+-------------------------------
+Starts after asking the Seatower Captain Dungarth in the barracks what it is he is doing. Continues with Mrs. Souter (and Melly) in the Seatower Inn.
+This quest was meant to give a reason to stroll around and visit the Seatower grounds, including the ballustrade and the interiors of the fortification towers.
+
+Walkthrough:
+- In the barracks after talking to Captain Dungarth and asking what his job as Commander of the Garrison is, witness the scene with the lost child Melly and her mother picking her up.
+- Meet Melly and her mother (Mrs. Souter) again in the Seatower Inn (main building, ground floor).
+- They will tell you that Melly lost her necklace.
+There is two possible endings:
+- Lie to them that a magpie took the necklace.
+- Find the nacklace and return it to them. Reward is a sum of gold.
+The necklace is in Dradeels Tower, upper floor. It's laying on the ground. Dradeels Tower is the one in the southwest corner of the fortification, and only reachable by going up onto the balustrade (entry up is either via the Winch tower or South Harbor Tower.)
+
+
+"The Mysterious Scroll":
+-------------------------------
+Given by Klaus after the quest "Strange Happenings in Room No. 3.4" is finished. One side objective is to free Ulf, Klaus' companion. If freed, Ulf will be with Klaus in the Ilmater Monastery.
+
+Walkthrough:
+- Quest item is "Almiran's Scroll".
+- Halbazzer Drinn in the Sorcerous Sundries will know more about he quest item "Almiran's Scroll" and it can later be given to him, either sold for 1000 gold or for free; if given for free the PC will get a "Ring of Anti-Venom" (normal BGII item) next they talk to Halbazzer Drinn.
+- Edwin should also know where the scroll should be used.
+
+- Go to Bandit Camp area between the ruins.
+- Enter the dungeon "Hall of Future Memories" by reading the scroll via "use item" function in item description.
+- The party will be greeted by Alguine (pronouce Al-ween).
+- Investigate the dungeon as far as you want. Dungeon investigation can be skipped by talking to Alguine. Alguine will give the key to the locked door if requested or if all portals are investigated.
+Note: if you want to free Klaus' friend Ulf, you should not skip the whole dungeon. Prepare to meet a Fledgling Nabassu.
+
+- Meet Alguine in his home.
+- Visit the library area.
+- Solve the color light riddle to be able to read the book in the library.
+To solve the color light riddle, place one transparent lense in each colored field, and the balckened lense inside the black field.
+- Lenses are hidden with the statues, and also in the rooms behind the picture portals. The black lense will be obtained from the book on the pedestral.
+Note:
+You do not have to fight any of the monsters behind the three picture portals. Left portal: The fire elementals will walk into the flames once the doors are open and the group stays out of their way. Middle portal: The dryad will ask for water for her tree which can be collected at all fountains (quest "Water for the Dryad's Tree"). Right portal: The spiders can by avoided by collecting the lense while invisible.
+
+- After placing the lenses, the color display will be activated. Go into the library and read the book on the table until the pages about the Times of Troubles showed.
+- Rest inside the dungeon. You will have a taunting dream after which the PC can chose one ability of the following, depending on their actions.
+Majority of good choices:
+	- Cure Serious Wounds
+	- Free Action
+	- Holy Power
+	- Lesser Restoration
+	- Neutralize Poison
+	- Remove Curse
+Majority of evil choices:
+	- Cause Serious Wounds
+	- Cloak of Fear
+	- Contagion
+	- Emotion, Hopelessness
+	- Mental Domination
+	- Polymorph Other
+Half good, half evil choices:
+	- Improved Invisibility
+	- Minor Globe of Invulnerability
+	- Otiluke's Resilient Sphere
+	- Secret Word
+	- Spirit Armor
+	- Stoneskin
+Note: the dialogue of the dream sequence are restored unused ressources from the game. The area artwork and putting it all together for this dream sequence was done by Yovaneth.
+
+
+"The Old Hermit's Notebook":
+-------------------------------
+Given by the Old Hermit in the library on the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Talk to the Old Hermit and ask the questions provided. She will tell that she misses her notebook.
+- The notebook is on her desk. Give it back to the her.
+
+
 "The Prisoner in the Seatower Prison": 
 -------------------------------
 Given by the Seatower Commander. Quest item is the Prison Pass which will grant access to the tower's prison. 
 Prerequisite: quest "Missing Monk in the Seatower" is finished or declined.
 
-Walkthrough: This is just an interim quest to get the PC into the prison without spoiling content via journal title. It ends once the PC talks to Shuck inside the prison. Getting access to the prison will start the quests "Myconides in the Seatower Prison" and "Help Shuck's Brother".
+Walkthrough: This is just an interim quest to get the PC into the prison without spoiling content via journal title. It ends once the PC talks to Shuck inside the prison.
+Getting access to the prison will start the quests "Bandit Communication", "Help Shuck's Brother", "Myconides in the Seatower Prison", and "The Innocent Prisoner".
+
+Note: for handing in the Prison Pass, the PC will receive a key to the Seatower Prison cells. This key is necessary to open the cells and talk to the prisoners, including Shuck (quest "Help Shuck's Brother" which opens up the smuggler and slaver quest lines). The prison cells are closed and locked every time the PC leaves the prison, so the key must be kept if all available content is to be played. Access to the prison is open once the pass was handed over, though, so the key could be left on the table with the guards if one doesn't want to carry it around.
 
 
-"The Stolen Ilmater's Alms": 
+"The Rat in the Library":
 -------------------------------
-Given by Script if PC takes the stolen gold out of the trunk in Dragon Tower (only available after hearing about it, quest "Help Shuck's Brother"). 
+Given by the Old Hermit in the library on the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island. The notebook was handed back to the Old Hermit (quest "The Old Hermit's Notebook").
 
-Walkthrough: Two possible quest ends: gold can be returned to the abbot in the Ilmater Monastery, or PC can lie to the abbot that the gold is gone and keep it.
+Walkthrough:
+Main goal is to kill the rat that only shows for a few seconds before disappearing again.
+- You can kill the rat any way you manage.
+- To make the rat stay, solve the quest "The Squirrel Pirate". Put the cheese reward into the small hole by one of the shelves. The rat will now stay visible and can be killed more easily.
+- The Old Hermit will initiate dialogue as soon as the rat is dead. Quest reward is what Old Hermit sees as her most valuable magic item.
+
+
+"The Squirrel Pirate":
+-------------------------------
+Given by Effy, Pirate Mage on the outside of the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Talk to Effy and ask about the squirrel.
+- Talk to the Old Hermit in the library about the squirrel.
+- Hit/attack the squirrel. He will turn back into a pirate who goes to Effy.
+- Talk to Effy to get your reward.
+Alternatively:
+- Tell Effy what the Old Hermit told you. Talk to Effy again and insist that she now knows the cure and should give you your reward.
+Note: Independent on quest status, the pirate can be transformed back at any time by hitting him while he is in shape of a squirrel.
+He will also transform back into human shape without the info from the Old Hermit, but who would attack a squirrel?!
+
+
+"The Stolen Ilmater's Alms":
+-------------------------------
+Given by Script if PC takes the stolen gold out of the trunk in Dragon Tower (only available after hearing about it, quest "Help Shuck's Brother").
+
+Walkthrough:
+- After Shuck told about the hiding place of the gold, go inside Dragon Tower.
+- The gold will be inside the chest. (Chest is locked.)
+Note: The gold will only be inside after the group heard about its presence.
+
+Two possible quest ends:
+- gold can be returned to the abbot in the Ilmater Monastery.
+- PC can lie to the abbot that the gold is gone and keep it.
 
 
 "The Tanner's Troubles": 
 -------------------------------
 Given by Tanner if talked to a second time. 
+Note: If the tanner gets threatened for help in the quest "Doppelgangers Inside the Seatower", this quest cannot be aquired.
 
-Walkthrough: Requires talking to the Captain in the Barracks and reporting back to the tanner. Quest ends different depending on charisma and whether the PC is a gnome.
+Walkthrough:
+- After hearing about the tanner's troubles with the Guard, talk to the Captain in the Barracks.
+- Report back to the tanner.
+Quest ends different depending on charisma and whether the PC is a gnome.
 
 
-"Rats in the Seatower Inn": 
+"The Umber Hulk under the Library":
 -------------------------------
-Quest given by Inn Master Roryn after finishing the quest "Cage the Rabbits". 
+Given by the Old Hermit in the library on the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
 
-Walkthrough: Quest starts by guest complaining about rats on the second floor while PC is near Inn Master Roryn. The "rats" is only one rat "Betsy" on the second floor of the tower, right at the stairs when coming up from below. Quest ends by giving the rat to Inn Master Roryn.
-There are two quest ends:
--the rat was taken alive
--the rat was killed and the carcass is given to Inn Master Roryn.
+Walkthrough:
+- After the Old Hermit made the special tincture with which the portal can be destroyed (quest "Destroy the Great Portal"), the earth in the library will shake a little.
+- Talk to the Old Hermit to hear that it is the Umber Hulk digging in the caves (bs0103).
+- Kill the Umber Hulk.
+Note: The Umber Hulk will drop the Umber Hulk Hide, from which the armorer in the Seatower will make an Umber Hulk Platemail ("Umber Hulk Plate").
 
 
-"Strange Happenings in Room No. 3.4": 
+"Umber Hulk Plate":
 -------------------------------
-First journal entries by two guests inside the tower talking about rats and strange happenings in one of the rooms. Actual quest starts when PC talks to mage Klaus on the third floor of the tower. 
+Given by the Seatower Armorer.
 
-Walkthrough: Quest ends outside when PC talks to Klaus again and fights the monster he conjures. After the fight Klaus will give the PC the quest "The Mysterious Scroll" and move to Ilmater Monastery.
-Leads to quest "Cage the Rabbits" if PC speaks to Inn Master Roryn after the incident inside the room.
+- Talk to the armorer with the Umber Hulk Hide in the PC's inventory ("The Umber Hulk under the Library").
+- For 10.000 gold, the armorer will make an Umber Hulk Plate in one day.
+
+
+"Umber Hulk Plate Upgrade":
+-------------------------------
+Given by the Seatower Mage.
+
+- Talk to the mage with the Umber Hulk Plate in the PC's inventory ("Umber Hulk Plate").
+- For one potion of Clarity, one scroll of Armor, one diamond, and 6000 gold, the mage will enchant the Umber Hulk Plate immediately.
+
+
+"Umberlee's Curse":
+-------------------------------
+Given by Priest of Valkur in the old chapel or by talking ot the Higher Lacedon on the upper inner level of the temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Ask the Priest of Valkur how to redeem the Lacedons.
+- Get one of the boulders from the outside island area and place it onto the old altar.
+- Tell the priest about the boulder.
+- Talk to the redeemed former Higher Lacedon to get your reward.
+
+
+"Warm Cloth for a Confused Mother":
+-------------------------------
+Given by talking to the confused mother in the lower hidden rooms of the castaways.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island and quest "A Girl inside the Sarcophagus" is finished. Quest "The Door Riddle" needs to be finished to gain access to the hidden rooms.
+
+Walkthrough:
+- Collect the waistcloth from the dead doomsayer (quest "A Girl inside the Sarcophagus").
+- Bring the cloth to the confused mother.
+You can talk to the guard afterwards to receive more words of thanks.
+
+
+"Water for the Castaways":
+-------------------------------
+Given by the quartermaster of the castaways in the hidden rooms on the upper inner level of the temple ruins.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island. Quest "The Door Riddle" needs to be finished to gain access to the hidden rooms.
+
+Walkthrough:
+- Water can be collected in the cave area by the stalakmites by clicking on them.
+Note: for each flask there will be a cutscene where nothing happens and which feels just a tad too long, and it's on purpose.
+- Collect as many as you want and bring them to the quartermaster.
+There is two possibilities to close the quest:
+- Bring 10 flasks of water.
+- Block the Malenti entrance (quest "Block the Malenti Water Hole") and reporting back to the quartermaster.
+
+
+"Water for the Dryad's Tree":
+-------------------------------
+Given by the dryad in the middle room behind the picture portal in the "Hall of Future Memories".
+Prerequisite: quest "The Mysterious Scroll" is aquired and group is inside the dungeon.
+
+Walkthrough:
+- The dryad asks for water in exchange for the lense.
+- Go to any fountain inside the dungeon to get water. The dryad will hand over the lense for one flask, but every fountain will give water.
+
+The dryad will give a hint about an easter egg you can encounter before activating the light display. I will not describe this here, or it won't be an easter egg.
+
+
+"What is Going On in the Guarded Room?":
+-------------------------------
+Given by the Old Hermit in the library or by talking to the Sahuagin guarding the exit on the lower inner level of the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is aquired and group is on the Old Temple Island.
+
+Walkthrough:
+- Talk to the Sahuagin guards or the Old Hermit to learn about the guarded room.
+- Investigate the guarded room or talk to the Old Hermit until the group learns that the Sahuagin are building a portal inside the guarded room.
+
+
+"What to do with Iakhovas's Tooth":
+-------------------------------
+Aquired in case the PC still has or collected the tooth after talking to/fighting the Priestesses of Uberlee after returning from the Old Temple Island.
+Prerequisite: quest "Retrieve Iakhovas's Tooth" is finished.
+
+Walkthrough:
+There is four possibilities.
+1. Give the tooth to the Seatower Commander. He will accept it as possible leverage against the temple if he also receives the evidence for the temple's intrigue (quest "Betrayed by the Priestess of Umberlee?").
+2. Sell the tooth to a Priestess of Talos that will approach the group after one ingame day. She offers 4000 (5000) gp and a scroll of Ice Storm. This will give one point loss in reputation.
+3. Give the tooth to the Priest of Helm in N Baldur's Gate. He will promise to return it to the Temple of Umberlee without conditions.
+4. Give the tooth back to the priestesses of Umberlee inside the temple. Only if High Priestes Jalantha or Tenya (inside the temple) are still available.
+Note: both will only take the tooth back together with the evidence. If the tooth is offered to Jalantha without showing the evidence first, she will attack. If the PC does not freely hand in both items, the priestesses will attack.
 
 
 "Working for the Slavers": 
 -------------------------------
 Given by Leonhard "the Fierce" on the third floor of the tower. Prerequisite is giving him the voucher received for the quest "Help Shuck's Brother" and working for Holger ("Working for the Smugglers"). 
 
-Walkthrough: Quest ends after the slave trader's transfer of merchandise is finished. After finishing the (first) two quests for the smugglers and finishing the quest about Shuck's brother, one ingame day later there will be a message inside one of the BG city areas to call the PC to Leonahrd "the Fierce" inside the third level of the tower.
-There are several quest ends:
--Slavers can be betrayed to the Seatower Commander (quest "Confront the Slave Traders in Baldur's Gate").
--PC meets with slavers without telling the Seatower Commander.
+Walkthrough:
+- After finishing the (first) two quests for the smugglers and finishing the quest about Shuck's brother, one ingame day later there will be a message inside one of the BG city areas to call the PC to Leonhard "the Fierce" inside the third level of the tower.
+Note: Slavers can be betrayed to the Seatower Commander (quest "Confront the Slave Traders in Baldur's Gate").
+Quest ends after the slave trader's transfer of merchandise is finished.
 
 
 "Working with the Smugglers": 
 -------------------------------
 Given by Holger (the smuggler) on the Nashkell Carnival south of the Lotus Tent, only after talking to him for the quest "Help Shuck's Brother". 
 
-Walkthrough: PC has to ask to work for Holger. Holger will note the presence of paladins but give the PC a chance nontheless.
+Note: While the possibility to sell out the smugglers and also, to go about the smuggler quests themselves and how they develop for each path are meant absolutely serious, it is still written with a little tongue-in-cheek. Thus, don't be afraid to role play here - nothing really grave will happen.
+
+Walkthrough:
+- PC has to ask to work for Holger. Holger will note the presence of paladins but give the PC a chance nonetheless.
 -first quest is to deliver a sealed box to the cook in the Helm and Cloak (timer: three days)
 -second quest is to report back about the smugglers in the Seatower. The whereabouts of the smugglers in the Seatower will be known while doing the quest "The Breach in the Seatower Prison".
--there is no more quests yet but this will be expanded on.
-Quest ends by reporting to Holger on the Nashkell Carnival south of the Lotus Tent. Smugglers will leave.
-After working for the smugglers, finishing quest "Help Shuck's Brother", and Leonhard "the Fierce" (slave trader contact on the third floor for the tower) still alive, the PC will get a message for quest "Working for the Slavers".
-Note: the smugglers will attack if Leonhard "the Fierce" inside the Seatower was killed.
-Easter Egg: when working / having worked for the smugglers, the smuggler in chapter 6 who offers to take the group inside the city will refer to Holger.
+-third quest is to confront Night Masks. For this, get the crate from Edgar northwest of the Lotus Tent at Nashel Carnival at night and carry it visibly north. Not far away will be Night Masks who will attack. After the Night Masks are dead, there will be soldiers.
+Note: chose any non-hostile reply option. The only difference is whether the PC knows what is inside the crate when giving it back to Holger or not. Give the crate back to Holger.
+-4th quest is retrieving back a smuggled item from Baldur's Gate, to be precise from the Seatower Barracks, second floor (Captain's quarters). The item can either be stolen. Make sure not to be spotted by the guard on duty. If the PC was caught stealing or for the direct route, the Captain can be talked to about the smuggler item in his possession to give it back. Success will be increased if the PC is not a gnome, has some official document, has helped the Seatower against the doppelgangers inside the barracks at least, and behaves politely.
+Note: if the smugglers should be busted ("Reporting Smugglers to the Flaming Fist"), the Nashkel Guard needs to be informed before giving back the fragrant to Holger.
+-5th quest: carry a heavy barrel through the smuggler tunnel beneath the Seatower. For this, get the barrel out of the front yard of the tailor shop (Dock's District). Go through the tunnels and the sea cave, emerge to the outside at the coast beneath the Seatower. The smuggler contact will wait here.
+The PC has to decide whether to open he barrel or not, and whether to report the smuggler contact or not. Follow-ups will be accordingly.
+If the barrel gets opened, Holger will only forgive if the PC did not work for the slavers, or if the PC did all smuggler quests until then.
+6th quest: protect Holger in a meeting with a new contact. Just tell Holger when he is ready and wait until the meeting is over.
+
+Note: quests 3-6 can be denied, but it will kill the easter egg follow ups.
+
+Quest cycle in BG1 ends after 6th quest. Smugglers will leave.
+After finishing the first two quests for the smugglers, finishing quest "Help Shuck's Brother", and Leonhard "the Fierce" (slave trader contact on the third floor for the tower) still alive, the PC will get a message for quest "Working for the Slavers" after one day if they stated interest in wanting to work for the slavers to Holger.
+Note: the smugglers will attack if Leonhard "the Fierce" inside the Seatower was killed too early, i.e. without having a good explanation for Holger. There is quest paths were Leonhard can be killed without repercussions from the smugglers, it will be clear in the game.
+
+There will be a follow-up quest later ("Another Smuggler Errand").
+
+Note: There is reply options tagged with (truth) or (lie). If you answer (truth), journal entries will assume you want to work with the smugglers. if you answer (lie), then it is assumed that you want to play off the smugglers to report them to the soldiers. (It is also assumed that the PC either wants to work for the smugglers and not with the soldiers or vice versa - the detection variable is the same as for working for/against the soldiers, but reversed. Answering inconsistent can lead to wrong journal entries regarding the PC's motivation.)
+
+Easter Eggs:
+1: when working / having worked for the smugglers, the smuggler in chapter 6 who offers to take the group inside the city will refer to Holger.
+2. for a continuous game in BGT/EET and after having done at least 5 of the 6 smuggler quests in BG1, the smugglers in Amkethran will refer to Holger after the PC helped them to fend off the monks.
+
 
 
 INSTALLATION
 
-Note: If you've previously installed the mod, remove it before extracting the new version. To do this, uninstall all previously installed components and delete the mod folder and executables. When installing or uninstalling, do not close the DOS window by clicking on the X button! Instead, press the Enter key when instructed to do so.
+Note: v1 and higher is not backwards compatible with the eaob versions.
+
+General note: When installing or uninstalling manually, do not close the DOS window by clicking on the X button! Instead, press the Enter key when instructed to do so.
 
 
 BGII:EE
 If you use BG Enhanced Edition from GOG or Steam, you need to prepare your game before installing any mods:
 Link: https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
-
-(deprecated tool: 
-https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-based-dlc-into-something-weidu-nearinfinity-dltcep-can-use/p1)
 
  
 General (Windows, Mac OS X, and Linux)
@@ -320,7 +967,7 @@ If properly extracted, you should have a bst folder, setup-bst, and setup-bst.co
 Also run setup-bst.command in your game folder to uninstall the mod.
 
 Linux
-Download the latest version of WeiDU for Linux from WeiDU.org and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, cd to your BG installation directory, run 'tolower' and answer Y to both queries. You can avoid running the second option (linux.ini) if you have already ran it once in the same directory. If you are unsure, running tolower and choosing both options is the safe bet.
+Download the latest version of WeiDU for Linux from WeiDU.org and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, cd to your BG installation directory.
 Run WeInstall setup-bst in your game folder to install the mod. Then run wine BGMain.exe and start playing.
 
 
@@ -343,13 +990,16 @@ BP-Worldmap-Mod:
 -The Seatower Mod is independent of the Worldmap Mod, but compatible. The new area will be patched to the Worldmap of all compatible games (BGT, BG:EE, EET). If the Worldmap Mod is needed for other mods, the preferred order would be BST - Worldmap Mod.
 If the Worldmap Mod is installed after BST, the icon of the BST area will be also added but will be shifted on the worldmap.
 
+Modder's Note for v1: The dialogues were revised heavily. State numbers for interjection points for NPC comments might very well be shifted and need to be adjusted for mod NPCs. If you use STATE_WHICH_SAYS to determine interjection points, note that the tra path of the installed mod has changed to "weidu_external/bst/language/"!
+
 
 KNOWN ISSUES
 
 When uninstalling the mod there is error messages about "error copying" of several files (mainly are files) which can be ignored.
 
-There are several items that still miss description items.
+There are some items that still miss description items.
 
+In BGT, the Simplified Chinese version gives warnings about text encoding errors in NI. These are false positives.
 
 
 +++++++++++++++Please do not translate below here ++++++++++++++++++++++++
@@ -359,6 +1009,10 @@ CREDITS
 
 The current list of credits is here:
 https://www.gibberlings3.net/forums/topic/30846-credits/
+
+Kaelyn, Llewren: proofreading (English version)
+Shai Hulud: German translation
+Abdel-613: Simplified Chinese translation
 
 
 
@@ -370,17 +1024,26 @@ WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
  					(formerly: http://www.weidu.org)
 grepWin					http://tools.stefankueng.com/grepWin.html
 WinMerge				http://winmerge.org/
+Kate Editor				https://kate-editor.org/
+WeiDU Syntax Highlighters for Notepad++		https://github.com/Argent77/NotePad_PlusPlus_WeiDU/releases
+Notepad++				https://notepad-plus-plus.org/downloads/
+WeiDU Syntax Highlighting for the Kate		https://github.com/Argent77/Kate-WeiDU/releases
+DeepL Translator		https://www.deepl.com/en
+Adobe Photoshop design elements assisted with Adobe Firefly
 
 Modding communities, tutorials and technical assistance:
 
-The Gibberlings Three			https://www.gibberlings3.net/
+The Gibberlings Three		https://www.gibberlings3.net/
 Pocket Plane Group			http://pocketplane.net
 Spellhold Studios			http://www.shsforums.net/
-Kerzenburgforum (German)		https://baldurs-gate.de/index.php
-The Black Wyrm's Lair			http://blackwyrmlair.net
+Kerzenburgforum (German)	https://baldurs-gate.de/index.php
+The Black Wyrm's Lair		http://blackwyrmlair.net
 
 Further Links:
 DLC Merger 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+
+D&D Wiki: https://dnd-wiki.org/
+https://www.deepl.com/en/translator
 
 
 LEGAL INFORMATION
@@ -393,6 +1056,141 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 
 HISTORY
+Version 1.0:
+NEW LANGUAGE VERSIONS:
+-German
+-Simplified Chinese
+REVISED LANGUAGE VERSIONS:
+-English version proofread
+NEW CONTENT:
+-new component added: "Reveal Seatower Map When Entering Area"
+-optional component added: crossmod for checking for Ilmater kits from other mods.
+-For BGT, optional component was added (needed for "Full BG1" or "All BG1+BGII songs" options of BGT-Music).
+-new component added: "Adapt Palace Fight with Regard to Doppelganger Invasion", with three options: 1. "Place More FF soldiers into the Palace if Revealed", 2. "Reduce Number of Doppelgangers in Palace if Revealed", 3. "Place More Doppelgangers into Palace if Invasion was not Revealed". Number of specified characters will be changed by one accordingly.
+-added more smuggler quests, including the possibility to report them to the authorities (Nashkel/Flaming Fist/Seatower).
+-added prisoners to the Seatower dungeon, including two quests and one encounter with follow-up.
+-Quest content for "Old Temple Island (working title)" added: 22 new quests.
+-Quest "The Mysterious Scroll" added.
+-"My Room on the Ilmater Monastery" added: after clearing the catacombs, PC can have a bed in the monastery.
+-Quest "Lord Dlusker's Tomb Visit" added.
+-Quest "The Lost Necklace" added.
+-side quest added: hidden letters (in bs1000.are). No journal entries or XP, this is more of an EasterEgg.
+-added new magical items to shops
+-added items that can be forged: Umber hulk plate from umber hulk hide (armorer), umber hulk plate can be enchanted by Seatower mage; Suth Staff +2 by Fletcher out of Suth Timber; Staff can be changed to Suth Spear +2 by armorer.
+-key to locked storeroom cubicle can now be pickpocketed from cook (for Belladonna!)
+-reaction of tower in beginning of chapter 7 added. If the PC helped with doppelganger invasion, the Seatower Commander will let them go once.
+-dungeon with ritual chamber can be reported to Seatower Commander.
+-pile of corpses under tailor shop can be reported to Seatower Commander.
+-family heirlooms of doppelganger victims can be found by the corpses and brought to the Seatower Commander. There will be follow-ups depending on how many heirlooms were returned.
+-added Moggy the Cat to the Ilmater Monastery
+-Rabbit and Rat quests: More interjections: Imoen, Faldorn
+-Scar now reacts if tailor was revealed to Seatower Commander (extra dialogue when talking to Scar). Phrased Seatower Nerfed Commander's referring to Scar more general in case the group did not work for Scar.
+-Noblewoman Miss Dorothea added who talks about the new Tailor in EBaldursGate.
+-Added almanach about Sea trolls (bstrbook.itm). Added to: Mage's library in Seatower (bs1011.are), Library in Halls of Future Memories (bs0138.are), Beregost_TravenhurstManor_L1
+-Added Almanach about Fire Elementals (bsbooka1.itm). Added to: Alguine's Quarters (bs0140.are, Halls of Future Memories), Library in Halls of Future Memories (bs0138.are), Mage's library in Seatower (bs1011.are).
+-more loot in chests
+-Temple of Selune offers one scroll of restoration.
+-Added Seatower Proclamation to some places. The item has no real purpose.
+-added crossmod with JAP: Priestess of Ilmater can be asked about missing Martina.
+CONTENT CHANGES:
+-new worldmap icon by Parys, integrated by weigo.
+-reworked Tanner's dialogue. Quest "Liqueur for the Tanner" will be given upon first meeting. Quest "The Tanner's Troubles" can no longer be aquired if tanner was threatened to help with "Doppelgangers Inside the Seatower" because the tanner won't tell about his problems any more.
+-quest "Dark Power in the Seatower Catacombs" revised. There will always be fighting now.
+-Spore Colony in Seatower prison is now a cre that spawns Myconides.
+-High Level Encounter area bs0113: there will be only one Otyugh for game difficulty EASIEST.
+-backup of smugglers if Holger is attacked: number dependend on game difficulty.
+-backup of slavers if Leonhad the Fierce is attacked: number dependend on game difficulty.
+-Guards in barracks and Seatower Commander should now also fight doppelgangers.
+-Family at the well will leave when doppelganger hunt starts.
+-added "can steal" to shop of Seatower Mage.
+-reworked shops to sensibly reduce magical items.
+-slavers now give better explanation for their behavior at the end.
+-mage buys back empty mimic powder bottle.
+-orphan child quest gives 50 xp.
+OPTIMIZATIONS:
+-added breakthrough through garden wall next to the fetcher's house.
+-make prison script more stable (added SetInterrupt(), Sahuagin will only be moved into cell if still alive).
+-revised cutscene for tanner's "stink" (quest "Doppelgangers Inside the Seatower").
+-Girl and Commoner in Winch tower should face Head Winchman Brydw.
+-DisplayStringHead of Black Pearl in bs01200: changed from LastTrigger to Myself.
+-SetInterrupt() added to numerous script blocks to ensure their disruptability.
+-added ClearAllActions() before cutscene starts.
+-Sahaugin Scout in Seatower prison moved to one of the open cells on the southwest wall.
+-Sex of BSGLABRE.cre changed from SUMMONED to NEITHER.
+-Sea Troll's Sebaceous Gland (bswnchft.itm) is no longer tagged as a critical item so it can be sold anywhere.
+-renamed Leonhard to Leonhard the Fierce (cre and Tooltip).
+-added a corpse to the sand pile where the adjutant was buried (bs0200.are).
+-opening chest with stolen alms should only lead to journal entry when the PC found the gold inside.
+-added mapnote and info trigger to stairs down to prison (in bs1010.are).
+-bsblank.wav mute soundfile added to mute some lines.
+-Changed +3 Long Sword from High Level Encounter to generic one.
+-bsslav02, bsslav03, bsslav07: changed Race script from THIEF14T to THIEF4.
+-bsslav05: added Race script THIEF4.
+-bsslav06: changed Race script to THIEF4; moved initinv2.bcs to General.
+-Mimic Powder (full) tagged as "bottle". It's too short in inventory and can't be sold, anyway (critical item).
+-Mimic Powder (empty) price changed to 5 gp.
+-Removed the "splish" above the girl's head when she throws a coin into the well.
+-Abbot of Ilmater Monatsery will give identified scroll.
+-Info Trigger: Change "DisplayStringHead(Player1" to "DisplayStringHead(Myself"
+-Removed Testing / Direct travel trigger between bs1000 and Docks.
+-added map note "smuggler meeting place" to Nashkel Carnival as long as the smuggler quests are active.
+-added SetInterrupt(TRUE) to scripts.
+-Changed patching of spawn scripts to EXTEND_TOP (+Continue()) to make sure quest characters appear in game areas (Beggars of Missing Monk quest, Messenger for slave trader quest).
+-Unified the titles: it's "Captain of the Seatower" Seatower Commander Airard, and "Garrison Commander" Captain Dungarth. And yes, the mixup of captain and commander is on purpose.
+-Changed "okay" to "alright".
+-Removed doubled lines for Almiran's Scroll in setup.tra.
+-fire elemental quest: added reply options if PC has almanach in inventory.
+-changed variable number if lady was lied to (Orphan child quest).
+-check for variable "KnowBhaal" to detect knowledge of Bhaal heritage revised.
+-added "talk to group" script to bsslav06.cre (slave trader bouncer in end fight).
+-several smaller dialogue improvements.
+-Added !StateCheck("name",CD_STATE_NOTVALID) to dialogue initiations.
+-Mapnotes to main area (bs1000.are) now via ADD_MAP_NOTE in tp2 (to prevent issues in BGT minimap).
+-added safety script block to make sure doors are indeed open.
+-replaced redundant cutscene bscut007.
+-removed unused triggers (bs1000, bs1001).
+FIXES:
+-some area fixes.
+-added song+rest encounters to all areas not to screw up following tweak mods.
+-in case "stone boulder" door in ys0109 glitches so it can be closed, door will be opened via script again.
+-Sahuagin in prison should be in cell after cutscene.
+-Fixed reward and journal entry for quest "Liqueur for the Tanner" if all three liqueurs are handed in at once.
+-Captain should not give quest related dialogue too soon (added check variable).
+-corrected outline from Barrel01 in ys0112.are (corrected value for smallest x vertex).
+-if the PC solved Martina's murder, commander should not say extra line about imprisoned soldier who stole the alms.
+-Fixed info trigger in bs1020.
+-Songs in main area (bs1000): corrected for BG:EE and for EET in main component.
+-entrance to tailor shop from Docks now requires full party.
+-corrected random num lines from tower guards to refer to doppelgangers
+-added extra deactivation to travel trigger of hidden door in bs0110.are
+-bs0151.baf: Make helper cre destroy potion
+-Corrected coordinates for BGT worldmap
+-Corrected item weights (consistent with game items)
+-Tailor also has key (unstealable) before transformation in case he gets killed too fast
+-moved one script text line to the correct section in the setup.tra (@528 -> @11084, in bsbodyt1.baf).
+-corrected description of bscckey.itm: (@515 in setup.tra): hidden door is in catacombs, not mausoleum.
+-corrected description of fire proof barrel: was coated by fletcher, not armorer.
+-Removed a scrambled text line from the Seatower farmer's dialogue that made him sound like a doppelganger (was a line from King of the Dead).
+-removed extra entry to ACTION.IDS for BG:EE.
+-typo corrections.
+-removed unused b011100.pvr.
+-removed BGII strings from gpuse.baf.
+-There should be no NVROL in Roryn's dialogue if the number of caught rabbits glitches to a higher number.
+RESTRUCTURING:
+-made mod files not overwrite themselves / mod folder does not get changed upon install (i.e. use of weidu_external)
+-mod is traified
+-all tras are in utf8
+-lowercased filenames
+-lines for installation window are now in bst-install.tra.
+-added AUTO_TRA path
+-deleted deprecated code in several files.
+-removed unnecessary folder "ids".
+-moved BGII scripts provided for BG:EE into different folder.
+-added EE specific item descriptions (using a separate bst_setup_ee.tra).
+-bst.ini: added Yovaneth and jastey (head leads) to author names; install order update: BST needs to be installed after EndlessBG1, Transitions, bg1re, and Jarl's Adventure Pack (for crossmod content to show).
+-added more relevant links to readme.
+-Modder's Note for v1: The dialogues were revised heavily. State numbers for interjection points for NPC comments might very well be shifted and need to be adjusted for mod NPCs. If you use STATE_WHICH_SAYS to determine interjection points, note that the tra path of the installed mod has changed to "weidu_external/bst/language/"!
+
 Version EAOB.9:
 -sea troll revision for smoother killing experience, by CamDawg: oBG2 troll handling not needed on EEs; Adding interrupt-false to dead troll transformation; Adding item, swapping 'dead' script to highest script slot.
 -fletcher should not forget that she already received feathers if asked to coat the barrel (feather quest should not have to be done twice).
