@@ -1064,7 +1064,6 @@ REVISED LANGUAGE VERSIONS:
 -English version proofread
 NEW CONTENT:
 -new component added: "Reveal Seatower Map When Entering Area"
--optional component added: crossmod for checking for Ilmater kits from other mods.
 -For BGT, optional component was added (needed for "Full BG1" or "All BG1+BGII songs" options of BGT-Music).
 -new component added: "Adapt Palace Fight with Regard to Doppelganger Invasion", with three options: 1. "Place More FF soldiers into the Palace if Revealed", 2. "Reduce Number of Doppelgangers in Palace if Revealed", 3. "Place More Doppelgangers into Palace if Invasion was not Revealed". Number of specified characters will be changed by one accordingly.
 -added more smuggler quests, including the possibility to report them to the authorities (Nashkel/Flaming Fist/Seatower).
