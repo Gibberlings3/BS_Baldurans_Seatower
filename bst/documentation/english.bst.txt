@@ -1056,7 +1056,11 @@ Just like anywhere else, the graphics and area art of the mod is copyrighted acc
 
 
 HISTORY
-Version 1.0:
+Version 1.0_Beta260923:
+-small Simplified Chinese revision
+-correction of changelog in readme
+
+Version 1.0_Beta260920:
 NEW LANGUAGE VERSIONS:
 -German
 -Simplified Chinese
